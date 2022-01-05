@@ -1,6 +1,6 @@
 ## 黄心阳(Xinyang Huang)
 
-![img.jpg](https://github.com/xinyanghuang7/xinyanghuang7.github.io/blob/main/photo.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/200)西安电子科技大学
+![img.jpg](https://github.com/xinyanghuang7/xinyanghuang7.github.io/blob/main/photo.jpg)西安电子科技大学
 
 
 You can use the [editor on GitHub](https://github.com/xinyanghuang7/xinyanghuang7.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
