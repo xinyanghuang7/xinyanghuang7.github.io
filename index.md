@@ -2,7 +2,6 @@
 
 ![img.jpg](https://github.com/xinyanghuang7/xinyanghuang7.github.io/blob/main/picture/photo.jpg?raw=true)西安电子科技大学
 
-<img src="https://github.com/xinyanghuang7/xinyanghuang7.github.io/blob/main/picture/photo.jpg" width = "300" height = "200" alt="图片名称" align=center />
 
 
 
@@ -19,7 +18,7 @@
       <p><a href="/index-en.html">English Version</a></p>
     </td>
     <td width="25%">
-      <img src="https://github.com/xinyanghuang7/xinyanghuang7.github.io/blob/main/picture/photo.jpg" width="100%">
+      <img src="/picture/photo.jpg" width="100%">
     </td>
   </tr>
 </table>
