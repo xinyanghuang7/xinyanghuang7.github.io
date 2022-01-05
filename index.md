@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## 黄心阳(Xinyang Huang)
 
 You can use the [editor on GitHub](https://github.com/xinyanghuang7/xinyanghuang7.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
 
