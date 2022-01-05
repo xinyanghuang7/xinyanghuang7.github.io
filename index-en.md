@@ -10,7 +10,7 @@
       <a href="/index.html">中文版</a>
     </td>
     <td width="25%">
-      <img src="/zhengjianzhao.jpg" width="100%">
+      <img src="/picture/photo.jpg" width="100%">
     </td>
   </tr>
 </table>
