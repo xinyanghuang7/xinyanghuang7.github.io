@@ -1,5 +1,8 @@
 ## 黄心阳(Xinyang Huang)
 
+<img src="https://github.com/xinyanghuang7/xinyanghuang7.github.io/blob/main/photo.jpg" width="150" height="200" align="middle" /> 西安电子科技大学
+
+
 You can use the [editor on GitHub](https://github.com/xinyanghuang7/xinyanghuang7.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
