@@ -6,7 +6,7 @@
       <p><b>学历：本科生</b></p>
       <p><b>专业：智能科学与技术</b></p>
       <p><b>学院：西安电子科技大学人工智能学院</b></p>
-      <p><b>邮箱：1254245097@qq.com</b></p>
+      <p><b>邮箱：1254245097@qq.com / xinyanghuang@stu.xidian.edu.cn</b></p>
       <p><b>地址：陕西省西安市西洋路兴隆段266号</b></p>
       <p><b>邮编：710126</b></p>
       <p><a href="/index-en.html">English Version</a></p>
