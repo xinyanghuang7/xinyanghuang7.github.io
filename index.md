@@ -19,10 +19,11 @@
 </div>
 
 ---
+### Share my learning with you
 
-黄心阳，男
+我的本科学习笔记会在[我的CSDN](https://blog.csdn.net/m0_52935007?spm=1001.2014.3001.5343)上发布。
 
-[我的CSDN](https://blog.csdn.net/m0_52935007?spm=1001.2014.3001.5343)
+我的AI文献阅读笔记会在[我的知乎](https://www.zhihu.com/people/xinyanghuang/posts)上发布。
 
 [我的Github](https://github.com/xinyanghuang7)
 
