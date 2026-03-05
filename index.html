@@ -1,296 +1,1459 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="scroll-smooth">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeCraft | 技术分享</title>
-    <meta name="description" content="一个分享技术心得与学习笔记的博客">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
+    <meta name="description" content="专为美股长期价值投资者打造的专业财经博客，提供每日宝藏标的、投资认知加餐和科技核心标的分析">
+    <title>美股财经博客 | 长期价值投资</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Highlight.js -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" id="hljs-light">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" id="hljs-dark" disabled>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        primary: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            200: '#bfdbfe',
-                            300: '#93c5fd',
-                            400: '#60a5fa',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            800: '#1e40af',
-                            900: '#1e3a8a',
-                        }
-                    }
-                }
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #faf8f5;
+            --color-bg-alt: #f0ebe3;
+            --color-text: #1a1a2e;
+            --color-text-light: #4a4a5a;
+            --color-accent: #c9a227;
+            --color-accent-dark: #a08220;
+            --color-dark: #0f1419;
+            --color-border: #d4cfc7;
+            --color-success: #2d5a3d;
+            --color-warning: #8b4513;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Source Sans Pro', -apple-system, sans-serif;
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            font-size: 17px;
+            font-weight: 300;
+            letter-spacing: 0.01em;
+            overflow-x: hidden;
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-accent-dark));
+            z-index: 1000;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--color-dark);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--color-accent-dark);
+            transition: var(--transition-smooth);
+        }
+
+        header.scrolled {
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--color-accent);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: var(--transition-bounce);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+        }
+
+        .logo span {
+            color: #fff;
+            font-weight: 300;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-date {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--color-dark) 0%, #1a1a2e 50%, #16213e 100%);
+            padding: 8rem 2rem 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 0.3s forwards;
+        }
+
+        .hero .subtitle {
+            font-size: 1rem;
+            color: var(--color-accent);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.5s forwards;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.02em;
+            line-height: 1.1;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.7s forwards;
+        }
+
+        .hero .tagline {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-style: italic;
+            color: rgba(255,255,255,0.7);
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1s forwards;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.4);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .scroll-indicator:hover {
+            color: var(--color-accent);
+        }
+
+        .scroll-indicator::after {
+            content: '↓';
+            display: block;
+            text-align: center;
+            margin-top: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 6rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--color-text);
+            position: relative;
+        }
+
+        .section-number {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--color-accent);
+            margin-right: 1.5rem;
+            line-height: 1;
+            opacity: 0.8;
+            transition: var(--transition-bounce);
+        }
+
+        .section:hover .section-number {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        .section-title-group {
+            flex: 1;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--color-text);
+            letter-spacing: 0.05em;
+            margin-bottom: 0.3rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            font-style: italic;
+        }
+
+        .section-date {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-align: right;
+        }
+
+        /* Stock Pick Card */
+        .stock-card {
+            background: #fff;
+            border: 1px solid var(--color-border);
+            padding: 3rem;
+            margin-bottom: 2rem;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            transition: var(--transition-smooth);
+            overflow: hidden;
+        }
+
+        .stock-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+
+        .stock-card:hover {
+            box-shadow: 0 12px 50px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+        }
+
+        .stock-card:hover::before {
+            width: 6px;
+        }
+
+        .stock-header {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .stock-ticker {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--color-text);
+            letter-spacing: 0.05em;
+            line-height: 1;
+        }
+
+        .stock-name {
+            font-size: 1rem;
+            color: var(--color-text-light);
+            margin-top: 0.5rem;
+        }
+
+        .stock-exchange {
+            display: inline-block;
+            background: var(--color-bg-alt);
+            padding: 0.3rem 0.8rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-light);
+            margin-top: 0.5rem;
+        }
+
+        .stock-meta {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stock-meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stock-meta-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-text-light);
+            margin-bottom: 0.4rem;
+        }
+
+        .stock-meta-value {
+            font-weight: 600;
+            color: var(--color-text);
+            font-size: 1.1rem;
+        }
+
+        .highlight-box {
+            background: var(--color-bg-alt);
+            padding: 1.8rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--color-accent);
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .highlight-box:hover {
+            background: #f5f1eb;
+            transform: translateX(5px);
+        }
+
+        .highlight-box h4 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .highlight-box.positive { border-left-color: var(--color-success); }
+        .highlight-box.positive h4 { color: var(--color-success); }
+
+        .highlight-box.warning { border-left-color: var(--color-warning); }
+        .highlight-box.warning h4 { color: var(--color-warning); }
+
+        .highlight-box.tip { border-left-color: var(--color-accent-dark); }
+        .highlight-box.tip h4 { color: var(--color-accent-dark); }
+
+        .highlight-box ul {
+            margin-left: 0;
+            padding-left: 1.2rem;
+        }
+
+        .highlight-box li {
+            margin-bottom: 0.6rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box li::marker {
+            color: var(--color-accent);
+        }
+
+        /* Investment Wisdom Section */
+        .wisdom-card {
+            background: linear-gradient(135deg, var(--color-dark) 0%, #1a1a2e 100%);
+            color: #fff;
+            padding: 4rem;
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+
+        .wisdom-card::before {
+            content: '"';
+            position: absolute;
+            top: -30px;
+            left: 30px;
+            font-family: var(--font-display);
+            font-size: 20rem;
+            color: rgba(201, 162, 39, 0.08);
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .wisdom-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(201, 162, 39, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .wisdom-theme {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .wisdom-title {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            position: relative;
+            z-index: 1;
+        }
+
+        .wisdom-content {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .wisdom-rules {
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            position: relative;
+            z-index: 1;
+            transition: var(--transition-smooth);
+        }
+
+        .wisdom-rules:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(201, 162, 39, 0.5);
+        }
+
+        .wisdom-rules h4 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--color-accent);
+            margin-bottom: 1.2rem;
+        }
+
+        .wisdom-rules ol {
+            padding-left: 1.5rem;
+        }
+
+        .wisdom-rules li {
+            margin-bottom: 1rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.7;
+        }
+
+        .wisdom-rules li::marker {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        .wisdom-case {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 2rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .wisdom-case h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        .wisdom-takeaway {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--color-accent);
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-left: 3px solid var(--color-accent);
+            background: rgba(201, 162, 39, 0.05);
+            position: relative;
+            z-index: 1;
+            transition: var(--transition-smooth);
+        }
+
+        .wisdom-takeaway:hover {
+            background: rgba(201, 162, 39, 0.1);
+            padding-left: 2rem;
+        }
+
+        /* Market Data Section */
+        .market-grid {
+            display: grid;
+            gap: 2.5rem;
+        }
+
+        .stock-detail-card {
+            background: #fff;
+            border: 1px solid var(--color-border);
+            padding: 2.5rem;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stock-detail-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-accent-dark));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .stock-detail-card:hover {
+            border-color: var(--color-accent);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .stock-detail-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .stock-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--color-border);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .stock-detail-ticker {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .stock-detail-name {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-top: 0.3rem;
+        }
+
+        .stock-price {
+            text-align: right;
+        }
+
+        .price-value {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .price-change {
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        .price-up { color: var(--color-success); }
+        .price-down { color: #8b2635; }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric {
+            text-align: center;
+            padding: 1rem;
+            background: var(--color-bg-alt);
+            transition: var(--transition-smooth);
+        }
+
+        .metric:hover {
+            background: #e8e2d8;
+            transform: scale(1.02);
+        }
+
+        .metric-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-value {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .news-list {
+            margin-top: 1.5rem;
+        }
+
+        .news-item {
+            padding: 1.2rem 0;
+            border-bottom: 1px solid var(--color-border);
+            transition: var(--transition-smooth);
+        }
+
+        .news-item:hover {
+            background: rgba(201, 162, 39, 0.03);
+            margin: 0 -1rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-title {
+            font-size: 1rem;
+            margin-bottom: 0.6rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .news-perspective {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            padding-left: 1rem;
+            border-left: 3px solid var(--color-accent);
+            line-height: 1.6;
+        }
+
+        .news-perspective strong {
+            color: var(--color-accent-dark);
+        }
+
+        /* Analysis Section */
+        .analysis-box {
+            background: linear-gradient(135deg, #f8f6f3 0%, #f0ebe3 100%);
+            padding: 3rem;
+            border: 1px solid var(--color-border);
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .analysis-box::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 3rem;
+            right: 3rem;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+        }
+
+        .analysis-title {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            color: var(--color-text);
+            text-align: center;
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .analysis-column h4 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid;
+        }
+
+        .analysis-column.opportunity h4 {
+            color: var(--color-success);
+            border-color: var(--color-success);
+        }
+
+        .analysis-column.risk h4 {
+            color: var(--color-warning);
+            border-color: var(--color-warning);
+        }
+
+        .analysis-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #fff;
+            border-left: 3px solid var(--color-border);
+            transition: var(--transition-smooth);
+        }
+
+        .analysis-item:hover {
+            border-left-color: var(--color-accent);
+            transform: translateX(5px);
+        }
+
+        .analysis-item strong {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+        }
+
+        .analysis-item p {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            line-height: 1.6;
+        }
+
+        .analysis-summary {
+            background: var(--color-dark);
+            color: #fff;
+            padding: 2rem;
+            font-size: 1rem;
+            line-height: 1.9;
+            border-left: 4px solid var(--color-accent);
+            position: relative;
+        }
+
+        .analysis-summary::before {
+            content: '💡';
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            opacity: 0.5;
+        }
+
+        .analysis-summary strong {
+            color: var(--color-accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-dark);
+            color: rgba(255,255,255,0.6);
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+
+        footer .disclaimer {
+            max-width: 800px;
+            margin: 1.5rem auto 0;
+            font-size: 0.8rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
-    </script>
-    
-    <link rel="stylesheet" href="css/style.css">
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 6rem 1.5rem 4rem;
+                min-height: 50vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-header {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .section-number {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .stock-card {
+                padding: 2rem;
+            }
+
+            .stock-ticker {
+                font-size: 2rem;
+            }
+
+            .stock-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .wisdom-card {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .wisdom-title {
+                font-size: 1.6rem;
+            }
+
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .analysis-box {
+                padding: 2rem;
+            }
+
+            main {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--color-dark);
+            color: var(--color-accent);
+            border: 1px solid var(--color-accent);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 99;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--color-accent);
+            color: var(--color-dark);
+            transform: translateY(-5px);
+        }
+    </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
-    
-    <!-- Mobile Header -->
-    <header class="lg:hidden fixed top-0 left-0 right-0 h-14 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 z-50 flex items-center justify-between px-4">
-        <div class="flex items-center gap-3">
-            <button id="mobile-menu-btn" class="p-2 -ml-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-            </button>
-            <span class="font-mono font-semibold text-lg">CodeCraft</span>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <header id="header">
+        <div class="nav-container">
+            <a href="#" class="logo">Value<span>Invest</span></a>
+            <ul class="nav-links">
+                <li><a href="#stock-pick">宝藏标的</a></li>
+                <li><a href="#wisdom">认知加餐</a></li>
+                <li><a href="#market">市场早报</a></li>
+            </ul>
+            <div class="nav-date">2026年3月5日</div>
         </div>
-        <button id="mobile-theme-btn" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-            <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
-            </svg>
-            <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
-            </svg>
-        </button>
     </header>
 
-    <!-- Sidebar -->
-    <aside id="sidebar" class="fixed left-0 top-0 bottom-0 w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 z-40">
-        <div class="flex flex-col h-full">
-            <!-- Logo -->
-            <div class="h-16 flex items-center px-6 border-b border-gray-200 dark:border-gray-700">
-                <a href="#home" class="flex items-center gap-2 font-mono font-bold text-xl">
-                    <span class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center text-white text-sm">CC</span>
-                    <span>CodeCraft</span>
-                </a>
-            </div>
-            
-            <!-- Nav -->
-            <nav class="flex-1 px-4 py-6 overflow-y-auto">
-                <ul class="space-y-1">
-                    <li>
-                        <a href="#home" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-                            </svg>
-                            <span>首页</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#posts" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                            </svg>
-                            <span>文章列表</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tags" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
-                            </svg>
-                            <span>标签</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#about" class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-                            </svg>
-                            <span>关于</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            
-            <!-- Sidebar Footer -->
-            <div class="p-4 border-t border-gray-200 dark:border-gray-700">
-                <button id="theme-toggle" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                    <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
-                    </svg>
-                    <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
-                    </svg>
-                    <span class="dark:hidden">暗色模式</span>
-                    <span class="hidden dark:block">亮色模式</span>
-                </button>
-            </div>
+    <section class="hero">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-content">
+            <div class="subtitle">美股长期价值投资</div>
+            <h1>每日财经博客</h1>
+            <p class="tagline">"以合理的价格买入优秀的企业，远胜过以便宜的价格买入平庸的企业" —— 沃伦·巴菲特</p>
         </div>
-    </aside>
+        <a href="#stock-pick" class="scroll-indicator">向下滚动</a>
+    </section>
 
-    <!-- Mobile Overlay -->
-    <div id="mobile-overlay" class="fixed inset-0 bg-black/50 lg:hidden z-30 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <main>
+        <!-- Section 1: Daily Stock Pick -->
+        <section class="section" id="stock-pick">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <div class="section-title-group">
+                    <h2 class="section-title">美股每日宝藏标的</h2>
+                    <p class="section-subtitle">深度挖掘符合价值投资逻辑的稀缺标的</p>
+                </div>
+                <div class="section-date">2026/03/05</div>
+            </div>
 
-    <!-- Main Content -->
-    <main class="lg:ml-64 min-h-screen pt-14 lg:pt-0">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-            
-            <!-- Home Section -->
-            <section id="home" class="page-section">
-                <div class="mb-12">
-                    <h1 class="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent">
-                        CodeCraft
-                    </h1>
-                    <p class="text-xl text-gray-600 dark:text-gray-400 mb-6">
-                        分享技术心得，记录学习轨迹
-                    </p>
-                    <div class="flex flex-wrap gap-3">
-                        <a href="#posts" class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium transition-colors">
-                            <span>浏览文章</span>
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                            </svg>
-                        </a>
-                        <a href="https://github.com/xinyanghuang7" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100 rounded-lg font-medium transition-colors">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                            <span>GitHub</span>
-                        </a>
+            <div class="stock-card">
+                <div class="stock-header">
+                    <div>
+                        <div class="stock-ticker">VST</div>
+                        <div class="stock-name">Vistra Corp.</div>
+                        <span class="stock-exchange">纽约证券交易所 · 上市满5年</span>
                     </div>
                 </div>
 
-                <!-- Featured Tags -->
-                <div class="mb-12">
-                    <h2 class="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">热门标签</h2>
-                    <div class="flex flex-wrap gap-2" id="featured-tags">
-                        <!-- Tags will be injected by JS -->
+                <div class="stock-meta">
+                    <div class="stock-meta-item">
+                        <span class="stock-meta-label">所属行业</span>
+                        <span class="stock-meta-value">电力公用事业</span>
+                    </div>
+                    <div class="stock-meta-item">
+                        <span class="stock-meta-label">核心业务</span>
+                        <span class="stock-meta-value">竞争性电力生产与零售</span>
+                    </div>
+                    <div class="stock-meta-item">
+                        <span class="stock-meta-label">市值定位</span>
+                        <span class="stock-meta-value">大盘成长股</span>
+                    </div>
+                    <div class="stock-meta-item">
+                        <span class="stock-meta-label">股息率</span>
+                        <span class="stock-meta-value">~1.5%</span>
                     </div>
                 </div>
 
-                <!-- Recent Posts Preview -->
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">最新文章</h2>
-                        <a href="#posts" class="text-primary-600 dark:text-primary-400 hover:underline text-sm">查看全部 →</a>
-                    </div>
-                    <div id="recent-posts" class="space-y-4">
-                        <!-- Recent posts will be injected by JS -->
-                    </div>
+                <div class="highlight-box positive">
+                    <h4>✅ 核心价值亮点</h4>
+                    <ul>
+                        <li><strong>AI电力需求爆发受益者：</strong>美国AI数据中心电力需求呈指数级增长，Vistra作为德州最大电力供应商占据核心区位优势，未来5年数据中心电力需求预计翻倍，公司已锁定多个超大规模数据中心长期购电协议（PPA），收入可预测性强</li>
+                        <li><strong>战略并购驱动增长：</strong>公司持续通过并购扩张版图，近期完成对Energy Harbor核电资产的收购，核电作为基荷电源在AI时代价值重估，为公司带来稳定的现金流和更低的边际运营成本</li>
+                        <li><strong>估值存在安全边际：</strong>相比同业龙头NextEra Energy（NEE）的估值溢价，Vistra当前估值仍处于合理偏低区间，股息收益率约1.5%且保持持续增长态势，符合长期复利投资逻辑</li>
+                    </ul>
                 </div>
-            </section>
 
-            <!-- Posts Section -->
-            <section id="posts" class="page-section hidden">
-                <div class="mb-8">
-                    <h1 class="text-3xl font-bold mb-2">文章列表</h1>
-                    <p class="text-gray-600 dark:text-gray-400">探索技术世界的各个角落</p>
+                <div class="highlight-box warning">
+                    <h4>⚠️ 核心风险提示</h4>
+                    <ul>
+                        <li><strong>区域市场波动风险：</strong>电力价格受德州ERCOT市场供需波动影响显著，极端天气事件（如2021年德州雪灾导致电价飙升数百倍）可能造成短期业绩剧烈波动，投资者需有承受季度业绩波动的心理准备</li>
+                        <li><strong>监管政策不确定性：</strong>核电业务面临严格的联邦和州级监管，任何核安全事故、环保政策收紧或废料处理法规变化都可能冲击公司长期盈利能力和资本开支计划</li>
+                    </ul>
                 </div>
+
+                <div class="highlight-box tip">
+                    <h4>💡 长期持有建议</h4>
+                    <p>建议持有周期<strong>2-4年</strong>，单个标的仓位控制在投资组合的<strong>3%-5%</strong>以内。Vistra适合作为能源基础设施板块的卫星配置，与科技成长股形成行业分散。建议在季度业绩波动导致股价回调时分批建仓，避免一次性重仓。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Investment Wisdom -->
+        <section class="section" id="wisdom">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <div class="section-title-group">
+                    <h2 class="section-title">每日投资认知加餐</h2>
+                    <p class="section-subtitle">萃取价值投资大师的智慧精华</p>
+                </div>
+                <div class="section-date">2026/03/05 · 价值投资</div>
+            </div>
+
+            <div class="wisdom-card">
+                <div class="wisdom-theme">安全边际的本质</div>
+                <h3 class="wisdom-title">以4毛钱买1块钱的东西</h3>
                 
-                <!-- Filter Bar -->
-                <div class="mb-6 flex flex-col sm:flex-row gap-4">
-                    <div class="relative flex-1">
-                        <input type="text" id="search-input" placeholder="搜索文章..." 
-                            class="w-full pl-10 pr-4 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all">
-                        <svg class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                        </svg>
+                <div class="wisdom-content">
+                    <p>巴菲特在历年《致股东的信》中反复强调："投资的第一原则是永远不要亏损，第二原则是永远记住第一原则。"这一看似简单的表述，实则是对格雷厄姆在《聪明的投资者》中提出的<strong>安全边际（Margin of Safety）</strong>概念的终极诠释。</p>
+                    <p style="margin-top: 1rem;">安全边际的核心要义在于：只有当股票市场价格显著低于其内在价值时，才具备足够的投资保护垫。这不是简单的"抄底"，而是为<strong>估值计算的可能错误</strong>和<strong>不可预知的外部风险</strong>预留缓冲空间。正如建筑工程师在设计桥梁时会将承载能力远超预期最大负荷一样，聪明的投资者也会为自己可能的误判留下余地。</p>
+                </div>
+
+                <div class="wisdom-image" style="margin: 2rem 0; text-align: center;">
+                    <img src="images/value-investing.jpg" alt="价值投资概念图" style="max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
+                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 0.5rem; font-style: italic;">价值投资的艺术：寻找市场价格与内在价值之间的鸿沟</p>
+                </div>
+
+                <div class="wisdom-rules">
+                    <h4>可落地执行规则</h4>
+                    <ol>
+                        <li><strong>计算内在价值：</strong>使用DCF（现金流折现）模型或巴菲特偏好的"未来十年可分配现金流折现法"，对企业未来现金流进行保守估计。关键在"保守"——宁可低估也不高估，宁可错过也不买贵</li>
+                        <li><strong>设定买入阈值：</strong>只有当市场价格 ≤ 内在价值 × 0.6（即6折以下）时才考虑建仓。这个40%的折扣空间，就是你的安全边际——它保护你不被自己的过度乐观所伤害</li>
+                        <li><strong>分批建仓纪律：</strong>首次买入不超过计划仓位的50%，价格每下跌10%-15%加仓25%。这种金字塔式建仓法确保你的成本始终低于市场平均，即使初次判断有误也有回旋余地</li>
+                    </ol>
+                </div>
+
+                <div class="wisdom-case">
+                    <h4>经典案例：巴菲特2008年投资美国银行</h4>
+                    <p>2008年金融危机期间，美国银行（Bank of America）股价从每股50美元暴跌至不足3美元，市场恐慌情绪达到顶点。当时美国银行的账面价值约为每股20美元，但市场价格仅为其1.5折——巨大的安全边际吸引了巴菲特的目光。</p>
+                    <p style="margin-top: 0.8rem;">巴菲特以50亿美元获得美国银行优先股（年股息6%）+ 认股权证（行权价约7.14美元）。到2017年，这部分投资价值超过170亿美元，年化回报率超过20%。</p>
+                    <p style="margin-top: 0.8rem;"><strong>关键启示：</strong>极端恐慌时刻，优质企业的市场价格往往远低于其内在价值，此时安全边际最大。但前提是你必须有足够的知识判断这是"优质企业"而非"价值陷阱"，以及足够的耐心等到市场恢复理性。</p>
+                </div>
+
+                <div class="wisdom-takeaway">
+                    安全边际不是折扣，而是对"计算错误"和"不可预知风险"的缓冲垫。没有安全边际的投资，就像没有安全带的高速驾驶——你可能赢很多次，但只需要输一次。
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Market News -->
+        <section class="section" id="market">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <div class="section-title-group">
+                    <h2 class="section-title">美股科技核心标的每日财经资讯早报</h2>
+                    <p class="section-subtitle">机构级专业投研参考，专为长期价值投资者定制</p>
+                </div>
+                <div class="section-date">2026/03/05</div>
+            </div>
+
+            <div class="market-grid">
+                <!-- Market Overview Image -->
+                <div style="grid-column: 1 / -1; margin-bottom: 1rem;">
+                    <img src="images/tech-analysis.jpg" alt="科技股票分析可视化" style="width: 100%; height: 300px; object-fit: cover; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                </div>
+
+                <!-- NVIDIA -->
+                <div class="stock-detail-card">
+                    <div class="stock-detail-header">
+                        <div>
+                            <div class="stock-detail-ticker">NVDA</div>
+                            <div class="stock-detail-name">NVIDIA Corporation · AI芯片龙头</div>
+                        </div>
+                        <div class="stock-price">
+                            <div class="price-value">$180.05</div>
+                            <div class="price-change price-up">▲ +0.78% (+$1.40)</div>
+                        </div>
                     </div>
-                    <select id="sort-select" class="px-4 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none">
-                        <option value="newest">最新发布</option>
-                        <option value="oldest">最早发布</option>
-                    </select>
+
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <div class="metric-label">成交量</div>
+                            <div class="metric-value">177.58M</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">日高/日低</div>
+                            <div class="metric-value">$180.90/$176.92</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">超额收益</div>
+                            <div class="metric-value price-up">+1.19% vs SPX</div>
+                        </div>
+                    </div>
+
+                    <div class="news-list">
+                        <div class="news-item">
+                            <div class="news-title">🎯 FY26 Q4财报超预期：营收$68.1B（同比+73%），EPS $1.76</div>
+                            <div class="news-perspective"><strong>【长线视角】</strong>AI基础设施投资持续强劲，Grace Blackwell芯片在推理市场占据主导地位。但需关注 hyperscaler（微软、谷歌、Meta、亚马逊）资本支出增速是否已达阶段性峰值，以及客户集中度风险（前四大客户贡献超40%收入）</div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-title">📈 Bernstein、BofA、Citi等多家投行上调目标价至$300</div>
+                            <div class="news-perspective"><strong>【长线视角】</strong>机构普遍看好AI算力长期需求，华尔街69位分析师一致看好。但需注意：当前Forward P/E约22.5x已反映相当乐观预期，若业绩增长边际放缓，估值压缩风险不容忽视</div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-title">🚀 黄仁勋展望：2030年AI基础设施年度支出将达$3-4万亿</div>
+                            <div class="news-perspective"><strong>【长线视角】</strong>长期TAM（总可寻址市场）依然巨大，Vera Rubin架构将进一步巩固领先地位。当前股价较历史高点回撤约15%，为长期投资者提供潜在布局机会，但建议分批建仓以平滑波动</div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Posts Grid -->
-                <div id="posts-grid" class="grid gap-4">
-                    <!-- Posts will be injected by JS -->
-                </div>
-            </section>
+                <!-- Meta -->
+                <div class="stock-detail-card">
+                    <div class="stock-detail-header">
+                        <div>
+                            <div class="stock-detail-ticker">META</div>
+                            <div class="stock-detail-name">Meta Platforms, Inc. · 社交+AI双引擎</div>
+                        </div>
+                        <div class="stock-price">
+                            <div class="price-value">$666.83</div>
+                            <div class="price-change price-up">▲ +1.79% (+$11.75)</div>
+                        </div>
+                    </div>
 
-            <!-- Tags Section -->
-            <section id="tags" class="page-section hidden">
-                <div class="mb-8">
-                    <h1 class="text-3xl font-bold mb-2">标签云</h1>
-                    <p class="text-gray-600 dark:text-gray-400">按主题浏览文章</p>
-                </div>
-                <div id="tags-cloud" class="flex flex-wrap gap-3">
-                    <!-- Tags will be injected by JS -->
-                </div>
-            </section>
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <div class="metric-label">成交量</div>
+                            <div class="metric-value">19.6M</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">日高/日低</div>
+                            <div class="metric-value">$668.80/$657.67</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">超额收益</div>
+                            <div class="metric-value price-up">+2.20% vs SPX</div>
+                        </div>
+                    </div>
 
-            <!-- About Section -->
-            <section id="about" class="page-section hidden">
-                <div class="mb-8">
-                    <h1 class="text-3xl font-bold mb-2">关于</h1>
+                    <div class="news-list">
+                        <div class="news-item">
+                            <div class="news-title">🤝 与AMD达成芯片合作协议，供应链多元化降本</div>
+                            <div class="news-perspective"><strong>【长线视角】</strong>采用AMD定制芯片降低对NVIDIA的单一依赖，有助于控制AI训练和推理成本。但短期内NVIDIA GPU仍是训练和推理主力，META AI基础设施支出的70%以上仍流向NVDA，对成本结构影响有限</div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-title">💰 Q4营收$59.89B超预期，EPS $8.88 vs 预期$8.21</div>
+                            <div class="news-perspective"><strong>【长线视角】</strong>广告业务基本面稳健复苏，AI推荐算法（Reels、Feed、Stories）显著提升广告点击率和转化率。Reality Labs季度亏损收窄至$4.6B，2026年预计总亏损降至$15B以下，长期盈利能力持续改善</div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-title">🎯 分析师一致目标价$844.44，较当前仍有~26%上行空间</div>
+                            <div class="news-perspective"><strong>【长线视角】</strong>当前Forward P/E约21.7x处于历史合理区间，低于过去5年均值。2026年预计回购+分红回报股东超$500亿，资本回报率达4%+。但需关注宏观经济波动对广告预算的潜在影响</div>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Nebius -->
+                <div class="stock-detail-card">
+                    <div class="stock-detail-header">
+                        <div>
+                            <div class="stock-detail-ticker">NBIS</div>
+                            <div class="stock-detail-name">Nebius Group N.V. · AI基础设施新贵</div>
+                        </div>
+                        <div class="stock-price">
+                            <div class="price-value">$97.78</div>
+                            <div class="price-change">开盘参考</div>
+                        </div>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <div class="metric-label">市值</div>
+                            <div class="metric-value">$24.62B</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">52周区间</div>
+                            <div class="metric-value">$18.31-$141.10</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">波动率</div>
+                            <div class="metric-value">Beta 4.02⚠️</div>
+                        </div>
+                    </div>
+
+                    <div class="news-list">
+                        <div class="news-item">
+                            <div class="news-title">🏢 微软签订多年期$17B收入协议，成核心客户</div>
+                            <div class="news-perspective"><strong>【长线视角】</strong>获得全球顶级科技公司背书，验证Nebius技术实力和数据中心质量。但$17B为多年累计金额，收入确认周期长，短期对财务改善有限。需关注后续能否拓展更多超大规模客户</div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-title">🏗️ 2025年计划建设数百兆瓦数据中心，GPU扩至24万台</div>
+                            <div class="news-perspective"><strong>【长线视角】</strong>激进产能扩张契合AI基础设施需求爆发，预计2025年ARR达$750M-1B。但资本开支巨大且公司尚未盈利，自由现金流持续为负，股权稀释风险需警惕</div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-title">🎴 NVIDIA合作伙伴关系，获折扣价顶级GPU供应</div>
+                            <div class="news-perspective"><strong>【长线视角】</strong>供应链优势明显（每片GPU节省~$5K），在欧洲数据中心市场具备竞争力。但地缘政治风险（俄罗斯背景）可能限制部分欧美敏感行业客户合作，且高Beta（4.02）意味着极高波动率</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analysis Summary -->
+            <div class="analysis-box">
+                <h3 class="analysis-title">华尔街AI首席分析师专业研判</h3>
                 
-                <div class="prose dark:prose-invert max-w-none">
-                    <div class="bg-white dark:bg-gray-800 rounded-xl p-6 sm:p-8 shadow-sm border border-gray-200 dark:border-gray-700 mb-8">
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="w-16 h-16 bg-primary-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
-                                CC
-                            </div>
-                            <div>
-                                <h2 class="text-xl font-bold">CodeCraft</h2>
-                                <p class="text-gray-600 dark:text-gray-400">技术博主</p>
-                            </div>
+                <div class="analysis-grid">
+                    <div class="analysis-column opportunity">
+                        <h4>📈 机会端分析</h4>
+                        
+                        <div class="analysis-item">
+                            <strong>NVIDIA (NVDA)</strong>
+                            <p>AI训练与推理需求仍处于早期阶段，Grace Blackwell架构提供显著TCO优势。企业级AI采用率快速上升，数据中心业务有望维持30%+增速至2027年。自动驾驶（DRIVE平台）和人形机器人（Jetson）开辟第二增长曲线</p>
                         </div>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                            热爱编程与技术的探索者。在这里，我分享关于软件开发、系统架构、以及技术学习路上的心得体会。
-                        </p>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                            这个博客使用纯前端技术构建，托管于 GitHub Pages。如果你对我的文章有任何问题或建议，欢迎在 GitHub 上交流。
-                        </p>
+                        
+                        <div class="analysis-item">
+                            <strong>Meta (META)</strong>
+                            <p>AI驱动的广告效率提升带动ROAS（广告支出回报率）上升20%+，Reels货币化率持续改善。AI智能眼镜（Ray-Ban Meta）销量破百万，2026年或推出带显示屏版本。预计回购+分红回报股东超$500亿/年</p>
+                        </div>
+                        
+                        <div class="analysis-item">
+                            <strong>Nebius (NBIS)</strong>
+                            <p>垂直整合AI云服务商定位独特，绑定微软头部客户。欧洲数据中心布局避开美国厂商直接竞争，2025年预计ARR达$750M-1B。NVIDIA合作获GPU折扣，单位经济效益优于同行</p>
+                        </div>
                     </div>
 
-                    <div class="grid sm:grid-cols-2 gap-4">
-                        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
-                            <h3 class="font-semibold mb-2 flex items-center gap-2">
-                                <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-                                </svg>
-                                技术栈
-                            </h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm">关注后端开发、云原生、DevOps 等技术领域</p>
+                    <div class="analysis-column risk">
+                        <h4>⚠️ 风险端分析</h4>
+                        
+                        <div class="analysis-item">
+                            <strong>NVIDIA (NVDA)</strong>
+                            <p>客户集中度风险极高（前四大客户贡献超40%收入），微软、谷歌、亚马逊、Meta均在加速自研芯片。中国市场面临持续出口管制风险。当前估值已透支部分乐观预期，业绩增速边际放缓可能导致估值压缩</p>
                         </div>
-                        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700">
-                            <h3 class="font-semibold mb-2 flex items-center gap-2">
-                                <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                                </svg>
-                                学习理念
-                            </h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm">持续学习，深度思考，实践出真知</p>
+                        
+                        <div class="analysis-item">
+                            <strong>Meta (META)</strong>
+                            <p>Reality Labs年亏损仍超$15亿，VR/AR商业化进度慢于预期。TikTok等短视频竞争持续，年轻用户流失风险存在。监管风险（反垄断、隐私政策）未完全消除，欧盟数字市场法案影响待观察</p>
+                        </div>
+                        
+                        <div class="analysis-item">
+                            <strong>Nebius (NBIS)</strong>
+                            <p>尚未实现盈利，烧钱速度快，2025年预计自由现金流仍为负。与超大规模云厂商（AWS/Azure/GCP）直接竞争压力大。地缘政治风险（俄罗斯背景）可能限制欧美政府/敏感行业客户合作。Beta 4.02意味着极高波动率</p>
                         </div>
                     </div>
                 </div>
-            </section>
 
-            <!-- Article Section (for individual posts) -->
-            <section id="article" class="page-section hidden">
-                <button id="back-to-posts" class="mb-4 flex items-center gap-1 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-                    </svg>
-                    <span>返回文章列表</span>
-                </button>
-                <article id="article-content" class="prose dark:prose-invert prose-lg max-w-none">
-                    <!-- Article content will be injected here -->
-                </article>
-            </section>
-
-        </div>
+                <div class="analysis-summary">
+                    <strong>综合投资态度与操作策略：</strong>NVDA与META作为AI基础设施与应用层龙头，长期配置价值稳固，当前估值处于合理偏低区间（NVDA Forward P/E ~22.5x，META ~21.7x），建议维持核心仓位并在市场恐慌时分批加仓。NBIS作为高成长小盘股，适合风险承受能力较强的投资者小仓位（不超过组合2%）定投参与，需做好波动50%+的心理准备。整体策略：防御性进攻，重点配置盈利确定性高的头部标的，小仓位博弈高成长标的。
+                </div>
+            </div>
+        </section>
     </main>
 
-    <script src="js/main.js"></script>
+    <footer>
+        <p>美股长期价值投资 · 数据驱动 · 独立思考</p>
+        <p class="disclaimer">
+            免责声明：本博客内容仅供学习交流使用，不构成任何投资建议。股市有风险，投资需谨慎。
+            所有数据均来自公开可溯源渠道（SEC公告、公司财报、权威财经媒体），作者不对信息的准确性、完整性作任何明示或暗示的保证。
+            投资者应根据自身风险承受能力独立做出投资决策，过往业绩不代表未来表现。
+        </p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Scroll Progress Bar
+        function updateProgressBar() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        }
+
+        // Header scroll effect
+        function updateHeader() {
+            const header = document.getElementById('header');
+            if (window.pageYOffset > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+
+        // Back to top button visibility
+        function updateBackToTop() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Intersection Observer for fade-in animations
+        function initScrollAnimations() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.section').forEach(section => {
+                observer.observe(section);
+            });
+        }
+
+        // Smooth scroll for navigation links
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const headerOffset = 80;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize all functions
+        window.addEventListener('scroll', () => {
+            updateProgressBar();
+            updateHeader();
+            updateBackToTop();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initScrollAnimations();
+            initSmoothScroll();
+            updateProgressBar();
+        });
+
+        // Prevent animation flickering on page load
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+    </script>
 </body>
 </html>
