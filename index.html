@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美股财经博客 | 长期价值投资</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #faf8f5;
+            --color-bg-alt: #f0ebe3;
+            --color-text: #1a1a2e;
+            --color-text-light: #4a4a5a;
+            --color-accent: #c9a227;
+            --color-accent-dark: #a08220;
+            --color-dark: #0f1419;
+            --color-border: #d4cfc7;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Source Sans Pro', -apple-system, sans-serif;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            font-size: 17px;
+            font-weight: 300;
+            letter-spacing: 0.01em;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--color-dark);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--color-accent-dark);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--color-accent);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: #fff;
+            font-weight: 300;
+        }
+
+        .nav-date {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--color-dark) 0%, #1a1a2e 100%);
+            padding: 6rem 2rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201,162,39,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 1rem;
+            letter-spacing: 0.02em;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .hero .tagline {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--color-accent);
+            font-weight: 400;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 5rem;
+            position: relative;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--color-text);
+        }
+
+        .section-number {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--color-accent);
+            margin-right: 1.5rem;
+            line-height: 1;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--color-text);
+            letter-spacing: 0.05em;
+        }
+
+        .section-date {
+            margin-left: auto;
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Stock Pick Card */
+        .stock-card {
+            background: #fff;
+            border: 1px solid var(--color-border);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            transition: var(--transition);
+        }
+
+        .stock-card:hover {
+            box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .stock-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--color-accent);
+        }
+
+        .stock-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .stock-ticker {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--color-text);
+            letter-spacing: 0.05em;
+        }
+
+        .stock-name {
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+            margin-top: 0.3rem;
+        }
+
+        .stock-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .stock-meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stock-meta-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-light);
+            margin-bottom: 0.2rem;
+        }
+
+        .stock-meta-value {
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .highlight-box {
+            background: var(--color-bg-alt);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 3px solid var(--color-accent);
+        }
+
+        .highlight-box h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .highlight-box.positive h4 { color: #2d5a3d; }
+        .highlight-box.warning h4 { color: #8b4513; }
+        .highlight-box.tip h4 { color: var(--color-accent-dark); }
+
+        .highlight-box ul {
+            margin-left: 0;
+            padding-left: 1.2rem;
+        }
+
+        .highlight-box li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Investment Wisdom Section */
+        .wisdom-card {
+            background: var(--color-dark);
+            color: #fff;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wisdom-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-family: var(--font-display);
+            font-size: 15rem;
+            color: rgba(201,162,39,0.1);
+            line-height: 1;
+        }
+
+        .wisdom-theme {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        .wisdom-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .wisdom-content {
+            font-size: 1rem;
+            line-height: 1.9;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 2rem;
+        }
+
+        .wisdom-rules {
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(201,162,39,0.3);
+        }
+
+        .wisdom-rules h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        .wisdom-rules ol {
+            padding-left: 1.2rem;
+        }
+
+        .wisdom-rules li {
+            margin-bottom: 0.8rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .wisdom-case {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .wisdom-case h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-accent);
+            margin-bottom: 0.8rem;
+        }
+
+        .wisdom-takeaway {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--color-accent);
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-left: 2px solid var(--color-accent);
+        }
+
+        /* Market Data Section */
+        .market-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .stock-detail-card {
+            background: #fff;
+            border: 1px solid var(--color-border);
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .stock-detail-card:hover {
+            border-color: var(--color-accent);
+        }
+
+        .stock-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .stock-detail-ticker {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+
+        .stock-detail-name {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        .stock-price {
+            text-align: right;
+        }
+
+        .price-value {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .price-change {
+            font-size: 0.9rem;
+            margin-top: 0.2rem;
+        }
+
+        .price-up { color: #2d5a3d; }
+        .price-down { color: #8b2635; }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .metric {
+            text-align: center;
+            padding: 0.8rem;
+            background: var(--color-bg-alt);
+        }
+
+        .metric-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-light);
+            margin-bottom: 0.3rem;
+        }
+
+        .metric-value {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .news-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-title {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-perspective {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            padding-left: 1rem;
+            border-left: 2px solid var(--color-accent);
+        }
+
+        .news-perspective strong {
+            color: var(--color-accent-dark);
+        }
+
+        /* Analysis Section */
+        .analysis-box {
+            background: linear-gradient(135deg, #f8f6f3 0%, #f0ebe3 100%);
+            padding: 2.5rem;
+            border: 1px solid var(--color-border);
+            margin-top: 3rem;
+        }
+
+        .analysis-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: var(--color-text);
+        }
+
+        .analysis-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .analysis-item h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
+        }
+
+        .analysis-item .opportunity {
+            color: #2d5a3d;
+        }
+
+        .analysis-item .risk {
+            color: #8b4513;
+        }
+
+        .analysis-summary {
+            background: var(--color-dark);
+            color: #fff;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            border-left: 4px solid var(--color-accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-dark);
+            color: rgba(255,255,255,0.6);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        footer .disclaimer {
+            max-width: 800px;
+            margin: 1rem auto 0;
+            font-size: 0.75rem;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section:nth-child(2) { animation-delay: 0.1s; }
+        .section:nth-child(3) { animation-delay: 0.2s; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-header {
+                flex-wrap: wrap;
+            }
+
+            .section-number {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stock-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .wisdom-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .wisdom-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">Value<span>Invest</span></div>
+            <div class="nav-date">2026年3月5日</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="subtitle">美股长期价值投资</div>
+            <h1>每日财经博客</h1>
+            <div class="tagline">"以合理的价格买入优秀的企业，远胜过以便宜的价格买入平庸的企业"</div>
+        </div>
+    </section>
+
+    <main>
+        <!-- Section 1: Daily Stock Pick -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h2 class="section-title">美股每日宝藏标的</h2>
+                <div class="section-date">2026/03/05</div>
+            </div>
+
+            <div class="stock-card">
+                <div class="stock-header">
+                    <div class="stock-ticker">VST</div>
+                    <div class="stock-name">Vistra Corp. · 纽约证券交易所</div>
+                </div>
+
+                <div class="stock-meta">
+                    <div class="stock-meta-item">
+                        <span class="stock-meta-label">所属行业</span>
+                        <span class="stock-meta-value">电力公用事业</span>
+                    </div>
+                    <div class="stock-meta-item">
+                        <span class="stock-meta-label">主营业务</span>
+                        <span class="stock-meta-value">竞争性电力生产与零售</span>
+                    </div>
+                    <div class="stock-meta-item">
+                        <span class="stock-meta-label">市值区间</span>
+                        <span class="stock-meta-value">大盘股</span>
+                    </div>
+                </div>
+
+                <div class="highlight-box positive">
+                    <h4>✅ 核心价值亮点</h4>
+                    <ul>
+                        <li>美国AI数据中心电力需求爆发式增长，Vistra作为德州最大电力供应商直接受益，未来5年数据中心电力需求预计翻倍</li>
+                        <li>公司持续通过并购扩张（如近期收购Energy Harbor核电资产），锁定稳定长期购电协议，现金流可预测性强</li>
+                        <li>估值较同行NextEra Energy仍有折价，股息收益率约1.5%且持续增长，符合长期复利逻辑</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box warning">
+                    <h4>⚠️ 核心风险提示</h4>
+                    <ul>
+                        <li>电力价格受德州市场波动影响，极端天气（如2021年德州雪灾）可能造成短期业绩剧烈波动</li>
+                        <li>核电业务面临监管政策风险，任何安全事故或环保政策变化都可能冲击长期盈利能力</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box tip">
+                    <h4>💡 长期持有建议</h4>
+                    <p>建议持有周期2-4年，单个标的仓位不超过组合的5%，适合作为能源基础设施板块的配置标的</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Investment Wisdom -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h2 class="section-title">每日投资认知加餐</h2>
+                <div class="section-date">2026/03/05 · 价值投资</div>
+            </div>
+
+            <div class="wisdom-card">
+                <div class="wisdom-theme">安全边际的本质</div>
+                <h3 class="wisdom-title">以4毛钱买1块钱的东西</h3>
+                
+                <div class="wisdom-content">
+                    <p>巴菲特在《致股东的信》中反复强调："投资的第一原则是永远不要亏损，第二原则是永远记住第一原则。"格雷厄姆在《聪明的投资者》中提出的安全边际概念，正是这一原则的具体实践——只有当股票市场价格显著低于其内在价值时，才具备足够的安全边际。</p>
+                </div>
+
+                <div class="wisdom-rules">
+                    <h4>可落地执行规则</h4>
+                    <ol>
+                        <li>计算企业内在价值：使用DCF模型或巴菲特偏好的"未来现金流折现法"，保守估计未来10年可分配现金流</li>
+                        <li>设定买入阈值：只有当市场价格 ≤ 内在价值 × 0.6（即6折以下）时才考虑建仓</li>
+                        <li>分批建仓纪律：首次买入不超过计划仓位的50%，价格每下跌10%加仓25%，确保成本持续摊低</li>
+                    </ol>
+                </div>
+
+                <div class="wisdom-case">
+                    <h4>经典案例</h4>
+                    <p>2008年金融危机期间，美国银行(BAC)股价跌至每股3美元以下，远低于其账面价值。巴菲特以50亿美元获得优先股+认股权证，最终获利超100亿美元。关键启示：极端恐慌时，优质企业的市场价格往往远低于内在价值，安全边际最大。</p>
+                </div>
+
+                <div class="wisdom-takeaway">
+                    安全边际不是折扣，而是对"计算错误"和"不可预知风险"的缓冲垫。
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Market News -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h2 class="section-title">美股科技核心标的每日财经资讯早报</h2>
+                <div class="section-date">2026/03/05</div>
+            </div>
+
+            <div class="market-grid">
+                <!-- NVIDIA -->
+                <div class="stock-detail-card">
+                    <div class="stock-detail-header">
+                        <div>
+                            <div class="stock-detail-ticker">NVDA</div>
+                            <div class="stock-detail-name">NVIDIA Corporation</div>
+                        </div>
+                        <div class="stock-price">
+                            <div class="price-value">$180.05</div>
+                            <div class="price-change price-up">+0.78% (+$1.40)</div>
+                        </div>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <div class="metric-label">成交量</div>
+                            <div class="metric-value">177.58M</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">日高/日低</div>
+                            <div class="metric-value">$180.90/$176.92</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">vs 标普500</div>
+                            <div class="metric-value price-up">+1.19%</div>
+                        </div>
+                    </div>
+
+                    <div class="news-list">
+                        <div class="news-item">
+                            <div class="news-title">FY26 Q4财报超预期：营收$68.1B（+73% YoY），EPS $1.76</div>
+                            <div class="news-perspective"><strong>【长线视角】</strong>AI基础设施投资持续强劲，Grace Blackwell芯片需求旺盛，但需关注 hyperscaler 资本支出增速放缓风险</div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-title">Bernstein、BofA等多家投行上调目标价至$300</div>
+                            <div class="news-perspective"><strong>【长线视角】</strong>机构普遍看好长期需求，但估值已反映部分乐观预期，需警惕业绩增速边际放缓</div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-title">管理层展望：2030年AI基础设施支出将达$3-4万亿/年</div>
+                            <div class="news-perspective"><strong>【长线视角】</strong>长期TAM依然巨大，当前股价已较历史高点回撤约15%，提供潜在买入机会</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meta -->
+                <div class="stock-detail-card">
+                    <div class="stock-detail-header">
+                        <div>
+                            <div class="stock-detail-ticker">META</div>
+                            <div class="stock-detail-name">Meta Platforms, Inc.</div>
+                        </div>
+                        <div class="stock-price">
+                            <div class="price-value">$666.83</div>
+                            <div class="price-change price-up">+1.79% (+$11.75)</div>
+                        </div>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <div class="metric-label">成交量</div>
+                            <div class="metric-value">19.6M</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">日高/日低</div>
+                            <div class="metric-value">$668.80/$657.67</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">vs 标普500</div>
+                            <div class="metric-value price-up">+2.20%</div>
+                        </div>
+                    </div>
+
+                    <div class="news-list">
+                        <div class="news-item">
+                            <div class="news-title">与AMD达成芯片合作协议，降低对NVIDIA依赖</div>
+                            <div class="news-perspective"><strong>【长线视角】</strong>供应链多元化有利于控制成本，但短期内NVIDIA GPU仍是主力，对META成本结构影响有限</div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-title">Q4营收$59.89B超预期，EPS $8.88 vs 预期$8.21</div>
+                            <div class="news-perspective"><strong>【长线视角】</strong>广告业务基本面稳健，Reality Labs亏损收窄，AI推荐算法提升广告效率，长期盈利能力持续改善</div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-title">分析师一致目标价$844.44，较当前仍有约26%上行空间</div>
+                            <div class="news-perspective"><strong>【长线视角】</strong>估值处于合理区间（Forward P/E约21.7x），但需关注宏观经济对广告支出的潜在影响</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nebius -->
+                <div class="stock-detail-card">
+                    <div class="stock-detail-header">
+                        <div>
+                            <div class="stock-detail-ticker">NBIS</div>
+                            <div class="stock-detail-name">Nebius Group N.V.</div>
+                        </div>
+                        <div class="stock-price">
+                            <div class="price-value">$97.78</div>
+                            <div class="price-change">开盘价格</div>
+                        </div>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <div class="metric-label">市值</div>
+                            <div class="metric-value">$24.62B</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">52周区间</div>
+                            <div class="metric-value">$18.31-$141.10</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Beta</div>
+                            <div class="metric-value">4.02</div>
+                        </div>
+                    </div>
+
+                    <div class="news-list">
+                        <div class="news-item">
+                            <div class="news-title">微软签订多年期$17B收入协议，成为其核心客户</div>
+                            <div class="news-perspective"><strong>【长线视角】</strong>获得顶级客户背书验证技术能力，但收入确认周期长，短期对财务改善有限，需关注后续客户拓展进展</div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-title">计划2025年建设数百兆瓦数据中心，GPU容量目标24万台</div>
+                            <div class="news-perspective"><strong>【长线视角】</strong>激进的产能扩张策略契合AI基础设施需求爆发，但资本开支巨大且当前尚未盈利，现金流压力值得关注</div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-title">受益于NVIDIA合作伙伴关系，可获得折扣价顶级GPU</div>
+                            <div class="news-perspective"><strong>【长线视角】</strong>供应链优势明显，但地缘政治风险（俄罗斯背景）可能限制部分欧美客户合作，需持续关注</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analysis Summary -->
+            <div class="analysis-box">
+                <h3 class="analysis-title">华尔街AI首席分析师专业研判</h3>
+                
+                <div class="analysis-item">
+                    <h4 class="opportunity">机会端分析</h4>
+                    <p><strong>NVDA：</strong>AI训练与推理需求仍处于早期阶段，Grace Blackwell架构提供显著TCO优势，企业级AI采用率快速上升，数据中心业务有望维持30%+增速至2027年</p>
+                    <p><strong>META：</strong>AI驱动的广告效率提升带动ROAS上升，Reels货币化率持续改善，AI智能眼镜等新品类开辟增量市场，2026年预计回购+分红回报股东超$500亿</p>
+                    <p><strong>NBIS：</strong>垂直整合的AI云服务商定位独特，绑定微软等头部客户，欧洲数据中心布局避开美国厂商直接竞争，2025年预计ARR达$750M-1B</p>
+                </div>
+
+                <div class="analysis-item">
+                    <h4 class="risk">风险端分析</h4>
+                    <p><strong>NVDA：</strong>客户集中度风险（前四大客户贡献超40%收入），部分大客户自研芯片进展加速，中国市场不确定性持续</p>
+                    <p><strong>META：</strong>Reality Labs年亏损仍超$150亿，VR/AR商业化进度慢于预期，TikTok等短视频竞争持续</p>
+                    <p><strong>NBIS：</strong>尚未实现盈利，烧钱速度较快，与超大规模云厂商直接竞争压力大，估值波动率高（Beta 4.02）</p>
+                </div>
+
+                <div class="analysis-summary">
+                    <strong>综合投资态度与操作策略：</strong>NVDA与META作为AI基础设施与应用层龙头，长期配置价值依然稳固，当前估值处于合理偏低区间，建议维持核心仓位逢低分批加仓；NBIS作为高成长小盘股，适合风险承受能力较强的投资者小仓位定投参与。整体策略偏向防御性进攻，重点配置盈利确定性高的头部标的。
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>美股长期价值投资 · 数据驱动 · 独立思考</p>
+        <p class="disclaimer">
+            免责声明：本博客内容仅供学习交流使用，不构成任何投资建议。股市有风险，投资需谨慎。
+            所有数据均来自公开可溯源渠道，作者不对信息的准确性、完整性作任何保证。
+            投资者应根据自身风险承受能力独立做出投资决策。
+        </p>
+    </footer>
+</body>
+</html>
