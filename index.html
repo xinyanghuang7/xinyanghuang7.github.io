@@ -3,52 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="专注美股长期价值投资，每日分享宝藏标的、投资认知与科技核心资讯">
+    <meta name="description" content="专注美股长期价值投资，每日分享宝藏标的、投资认知与科技核心资讯。信奉巴菲特-芒格式的价值投资理念。">
+    <meta name="keywords" content="美股投资,价值投资,巴菲特,美股分析,VST,NVDA,META">
+    <meta name="author" content="ValueInvest"
+    <meta name="theme-color" content="#c9a227">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="美股价值投资笔记 | 长期主义投资者的每日必读">
+    <meta property="og:description" content="每日深度分析美股宝藏标的，分享价值投资认知，追踪科技核心动态。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xinyanghuang7.github.io/">
+    <meta property="og:image" content="https://xinyanghuang7.github.io/images/hero-bg.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="美股价值投资笔记">
+    <meta name="twitter:description" content="每日深度分析美股宝藏标的，分享价值投资认知。">
+    <meta name="twitter:image" content="https://xinyanghuang7.github.io/images/hero-bg.jpg">
+    
     <title>美股价值投资笔记 | 长期主义投资者的每日必读</title>
+    
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "美股价值投资笔记",
+        "description": "专注美股长期价值投资，每日分享宝藏标的、投资认知与科技核心资讯",
+        "url": "https://xinyanghuang7.github.io/",
+        "author": {
+            "@type": "Person",
+            "name": "ValueInvest"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ValueInvest Blog"
+        }
+    }
+    </script>
 </head>
 <body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    
     <!-- Scroll Progress Bar -->
-    <div class="progress-bar" id="progressBar"></div>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
 
     <header id="header">
         <div class="nav-container">
-            <a href="index.html" class="logo">Value<span>Invest</span></a>
-            <ul class="nav-links">
-                <li><a href="#about">关于</a></li>
-                <li><a href="#archive">文章目录</a></li>
-            </ul>
-            <div class="nav-date" id="currentDate"></div>
+            <a href="index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="主导航">
+                <ul class="nav-links">
+                    <li><a href="#about">关于</a></li>
+                    <li><a href="#archive">文章目录</a></li>
+                </ul>
+            </nav>
+            <time class="nav-date" id="currentDate" datetime=""></time>
         </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-bg-pattern" style="background-image: url('images/hero-bg.jpg');"></div>
+    <section class="hero" role="banner">
+        <div class="hero-bg-pattern" style="background-image: url('images/hero-bg.jpg');" aria-hidden="true"></div>
         <div class="hero-content">
             <div class="subtitle">美股长期价值投资</div>
             <h1>价值投资笔记</h1>
             <p class="tagline">"以合理的价格买入优秀的企业，远胜过以便宜的价格买入平庸的企业"</p>
             <p class="hero-description">每日深度分析美股宝藏标的，分享价值投资认知，追踪科技核心动态。数据驱动，独立思考，专注长期复利增长。</p>
         </div>
-        <a href="#about" class="scroll-indicator">向下滚动</a>
+        <a href="#about" class="scroll-indicator" aria-label="向下滚动到关于部分">向下滚动</a>
     </section>
 
-    <main>
+    <main id="main">
         <!-- About Section -->
-        <section class="section" id="about">
+        <section class="section" id="about" aria-labelledby="about-title">
             <div class="section-header">
-                <div class="section-number">01</div>
+                <div class="section-number" aria-hidden="true">01</div>
                 <div class="section-title-group">
-                    <h2 class="section-title">关于博主</h2>
+                    <h2 class="section-title" id="about-title">关于博主</h2>
                     <p class="section-subtitle">专注长期价值投资的独立研究者</p>
                 </div>
             </div>
 
             <div class="author-profile">
-                <div class="author-avatar">V</div>
+                <div class="author-avatar" aria-hidden="true">V</div>
                 <div class="author-info">
                     <h3>ValueInvest</h3>
                     <div class="author-title">美股长期价值投资者</div>
@@ -67,13 +111,24 @@
         </section>
 
         <!-- Archive Section -->
-        <section class="section" id="archive">
+        <section class="section" id="archive" aria-labelledby="archive-title">
             <div class="section-header">
-                <div class="section-number">02</div>
+                <div class="section-number" aria-hidden="true">02</div>
                 <div class="section-title-group">
-                    <h2 class="section-title">文章目录</h2>
+                    <h2 class="section-title" id="archive-title">文章目录</h2>
                     <p class="section-subtitle">按日期归档的所有文章</p>
                 </div>
+            </div>
+
+            <!-- Search Box -->
+            <div class="search-container" role="search">
+                <input type="search" 
+                       id="searchInput" 
+                       class="search-input" 
+                       placeholder="搜索文章..."
+                       aria-label="搜索文章"
+                       autocomplete="off">
+                <div id="searchResults" class="search-results" role="listbox"></div>
             </div>
 
             <div class="archive-list" id="archiveList">
@@ -107,17 +162,28 @@
         </p>
     </footer>
 
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">
+        🌓
+    </button>
+
     <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">
+        ↑
+    </button>
 
     <script src="js/main.js"></script>
     <script>
-        // Set current date
-        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('zh-CN', {
+        // Set current date with proper datetime attribute
+        const now = new Date();
+        const dateStr = now.toLocaleDateString('zh-CN', {
             year: 'numeric',
             month: 'long',
             day: 'numeric'
         });
+        const dateEl = document.getElementById('currentDate');
+        dateEl.textContent = dateStr;
+        dateEl.setAttribute('datetime', now.toISOString().split('T')[0]);
     </script>
 </body>
 </html>
