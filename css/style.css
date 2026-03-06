@@ -15,6 +15,47 @@
     --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
+/* Dark Mode */
+body.dark-mode {
+    --color-bg: #0f1419;
+    --color-bg-alt: #1a1a2e;
+    --color-text: #e8e6e3;
+    --color-text-light: #9a9a8a;
+    --color-border: #2a2a3a;
+}
+
+body.dark-mode .stock-card,
+body.dark-mode .stock-detail-card,
+body.dark-mode .author-profile {
+    background: #1a1a2e;
+}
+
+body.dark-mode .metric,
+body.dark-mode .highlight-box {
+    background: #252538;
+}
+
+/* Performance: will-change for animated elements */
+.progress-bar,
+.back-to-top,
+.archive-item,
+.stock-card::before {
+    will-change: transform, opacity;
+}
+
+/* Font loading optimization */
+@font-face {
+    font-family: 'Cormorant Garamond';
+    font-display: swap;
+    src: local('Cormorant Garamond');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-display: swap;
+    src: local('Source Sans Pro');
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
@@ -900,7 +941,139 @@ footer .disclaimer {
     color: rgba(255,255,255,0.4);
 }
 
-/* Back to top button */
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    width: 50px;
+    height: 50px;
+    background: var(--color-dark);
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    z-index: 99;
+}
+
+.dark-mode-toggle:hover {
+    background: var(--color-accent);
+    color: var(--color-dark);
+    transform: scale(1.1);
+}
+
+/* Search Box */
+.search-container {
+    position: relative;
+    max-width: 400px;
+    margin: 2rem auto;
+}
+
+.search-input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: var(--transition-smooth);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 50;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.search-result-item {
+    display: block;
+    padding: 1rem 1.5rem;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.search-result-item:hover {
+    background: var(--color-bg-alt);
+    padding-left: 2rem;
+}
+
+.search-no-results {
+    padding: 1rem 1.5rem;
+    color: var(--color-text-light);
+    text-align: center;
+}
+
+/* Image lazy loading */
+img[data-src] {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+img[data-src].loaded {
+    opacity: 1;
+}
+
+/* Skip to main content (accessibility) */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-accent);
+    color: var(--color-dark);
+    padding: 1rem 2rem;
+    z-index: 1001;
+    text-decoration: none;
+    font-weight: 600;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 1rem;
+}
+
+/* Focus visible for keyboard navigation */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
 .back-to-top {
     position: fixed;
     bottom: 2rem;
