@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://xinyanghuang7.github.io/sitemap.xml
+
+# Optimize crawl rate
+Crawl-delay: 1
