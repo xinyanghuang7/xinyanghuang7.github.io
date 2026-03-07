@@ -3,88 +3,329 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="专为美股长期价值投资者打造的专业财经博客">
-    <title>美股财经博客 | 长期价值投资</title>
+    <meta name="description" content="{{DATE}}美股宝藏标的分析：{{STOCK_NAME}}深度解析，{{THEME}}投资认知分享">
+    <meta name="keywords" content="美股投资,价值投资,{{STOCK_TICKER}},巴菲特,{{THEME_KEYWORD}}">
+    <meta name="author" content="ValueInvest">
+    <meta name="theme-color" content="#c9a227">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{DATE}}美股分析：{{STOCK_TICKER}} + {{THEME}} | 美股价值投资笔记">
+    <meta property="og:description" content="每日深度分析美股宝藏标的，分享价值投资认知，追踪科技核心动态。">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://xinyanghuang7.github.io/posts/{{YEAR}}/{{MONTH}}/{{DAY}}.html">
+    <meta property="og:image" content="https://xinyanghuang7.github.io/images/posts/{{DATE}}-value.jpg">
+    
+    <title>{{DATE}}美股分析：{{STOCK_TICKER}} + {{THEME}} | 美股价值投资笔记</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --color-bg: #faf8f5;
-            --color-bg-alt: #f0ebe3;
-            --color-text: #1a1a2e;
-            --color-text-light: #4a4a5a;
-            --color-accent: #c9a227;
-            --color-accent-dark: #a08220;
-            --color-dark: #0f1419;
-            --color-border: #d4cfc7;
-            --font-display: 'Cormorant Garamond', Georgia, serif;
-            --font-body: 'Source Sans Pro', -apple-system, sans-serif;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: var(--font-body);
-            background: var(--color-bg);
-            color: var(--color-text);
-            line-height: 1.7;
-            font-size: 17px;
-        }
-        /* TODO: Add your custom styles here */
-    </style>
+    
+    <link rel="stylesheet" href="../../../css/style.css">
 </head>
 <body>
-    <header>
+    <!-- Scroll Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <header id="header">
         <div class="nav-container">
-            <a href="#" class="logo">Value<span>Invest</span></a>
-            <div class="nav-date">YYYY年MM月DD日</div>
+            <a href="../../../index.html" class="logo">Value<span>Invest</span></a>
+            <ul class="nav-links">
+                <li><a href="../../../index.html#about">关于</a></li>
+                <li><a href="../../../index.html#archive">文章目录</a></li>
+            </ul>
+            <div class="nav-date">{{DATE_CN}}</div>
         </div>
     </header>
 
     <section class="hero">
-        <div class="hero-bg-pattern"></div>
+        <div class="hero-bg-pattern" style="background-image: url('../../../images/hero-bg.jpg');"></div>
         <div class="hero-content">
-            <div class="subtitle">美股长期价值投资</div>
-            <h1>每日财经博客</h1>
-            <p class="tagline">"以合理的价格买入优秀的企业..."</p>
+            <div class="subtitle">美股每日财经分析</div>
+            <h1>{{STOCK_NAME}}深度解析</h1>
+            <p class="tagline">"{{THEME_QUOTE}}"</p>
         </div>
+        <a href="#stock-pick" class="scroll-indicator">向下滚动</a>
     </section>
 
     <main>
-        <!-- Section 1: Daily Stock Pick -->
+        <!-- ============================================ -->
+        <!-- MODULE 1: 美股每日宝藏标的 -->
+        <!-- ============================================ -->
         <section class="section" id="stock-pick">
             <div class="section-header">
                 <div class="section-number">01</div>
-                <h2 class="section-title">美股每日宝藏标的</h2>
-                <div class="section-date">YYYY/MM/DD</div>
+                <div class="section-title-group">
+                    <h2 class="section-title">美股每日宝藏标的</h2>
+                    <p class="section-subtitle">深度挖掘符合价值投资逻辑的稀缺标的</p>
+                </div>
+                <div class="section-date">{{DATE_SHORT}}</div>
             </div>
-            <!-- TODO: Add stock pick content -->
+
+            <div class="stock-card">
+                <div class="stock-header">
+                    <div>
+                        <div class="stock-ticker">{{STOCK_TICKER}}</div>
+                        <div class="stock-name">{{COMPANY_FULL_NAME}}</div>
+                        <span class="stock-exchange">{{EXCHANGE}} · {{LISTING_INFO}}</span>
+                    </div>
+                </div>
+
+                <div class="stock-meta">
+                    <div class="stock-meta-item">
+                        <span class="stock-meta-label">所属行业</span>
+                        <span class="stock-meta-value">{{INDUSTRY}}</span>
+                    </div>
+                    <div class="stock-meta-item">
+                        <span class="stock-meta-label">核心业务</span>
+                        <span class="stock-meta-value">{{CORE_BUSINESS}}</span>
+                    </div>
+                    <div class="stock-meta-item">
+                        <span class="stock-meta-label">市值定位</span>
+                        <span class="stock-meta-value">{{MARKET_CAP}}</span>
+                    </div>
+                    <div class="stock-meta-item">
+                        <span class="stock-meta-label">股息率</span>
+                        <span class="stock-meta-value">{{DIVIDEND_YIELD}}</span>
+                    </div>
+                </div>
+
+                <!-- 核心价值亮点 -->
+                <div class="highlight-box positive">
+                    <h4>✅ 核心价值亮点</h4>
+                    <ul>
+                        <li><strong>{{HIGHLIGHT_1_TITLE}}：</strong>{{HIGHLIGHT_1_DETAIL}}
+                            <!-- 示例格式：
+                            AI电力需求爆发受益者：美国AI数据中心电力需求呈指数级增长，Vistra作为德州最大
+                            电力供应商占据核心区位优势，未来5年数据中心电力需求预计翻倍，公司已锁定多个超大规模
+                            数据中心长期购电协议（PPA），收入可预测性强
+                            -->
+                        </li>
+                        <li><strong>{{HIGHLIGHT_2_TITLE}}：</strong>{{HIGHLIGHT_2_DETAIL}}</li>
+                        <li><strong>{{HIGHLIGHT_3_TITLE}}：</strong>{{HIGHLIGHT_3_DETAIL}}</li>
+                    </ul>
+                </div>
+
+                <!-- 核心风险提示 -->
+                <div class="highlight-box warning">
+                    <h4>⚠️ 核心风险提示</h4>
+                    <ul>
+                        <li><strong>{{RISK_1_TITLE}}：</strong>{{RISK_1_DETAIL}}
+                            <!-- 示例格式：
+                            区域市场波动风险：电力价格受德州ERCOT市场供需波动影响显著，极端天气事件
+                            （如2021年德州雪灾导致电价飙升数百倍）可能造成短期业绩剧烈波动
+                            -->
+                        </li>
+                        <li><strong>{{RISK_2_TITLE}}：</strong>{{RISK_2_DETAIL}}</li>
+                    </ul>
+                </div>
+
+                <!-- 长期持有建议 -->
+                <div class="highlight-box tip">
+                    <h4>💡 长期持有建议</h4>
+                    <p>建议持有周期<strong>{{HOLD_PERIOD}}</strong>，单个标的仓位控制在投资组合的<strong>{{POSITION_SIZE}}</strong>以内。
+                    {{HOLDING_ADVICE}}</p>
+                </div>
+            </div>
         </section>
 
-        <!-- Section 2: Investment Wisdom -->
+        <!-- ============================================ -->
+        <!-- MODULE 2: 每日投资认知加餐 -->
+        <!-- ============================================ -->
         <section class="section" id="wisdom">
             <div class="section-header">
                 <div class="section-number">02</div>
-                <h2 class="section-title">每日投资认知加餐</h2>
-                <div class="section-date">YYYY/MM/DD</div>
+                <div class="section-title-group">
+                    <h2 class="section-title">每日投资认知加餐</h2>
+                    <p class="section-subtitle">萃取价值投资大师的智慧精华</p>
+                </div>
+                <div class="section-date">{{DATE_SHORT}} · {{INVESTMENT_STYLE}}</div>
             </div>
-            <!-- TODO: Add investment wisdom content -->
+
+            <div class="wisdom-card">
+                <div class="wisdom-theme">{{WISDOM_THEME}}</div>
+                <h3 class="wisdom-title">{{WISDOM_TITLE}}</h3>
+                
+                <div class="wisdom-content">
+                    <p>{{WISDOM_CORE_IDEA}}</p>
+                    <p style="margin-top: 1rem;">{{WISDOM_DETAILED_EXPLANATION}}</p>
+                </div>
+
+                <!-- 配图位置 - MANDATORY -->
+                <div class="wisdom-image" style="margin: 2rem 0; text-align: center;">
+                    <img src="../../../images/posts/{{DATE}}-value.jpg" 
+                         alt="{{WISDOM_THEME}}概念图" 
+                         style="max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
+                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 0.5rem; font-style: italic;">
+                        {{IMAGE_CAPTION}}
+                    </p>
+                </div>
+
+                <!-- 可落地执行规则 -->
+                <div class="wisdom-rules">
+                    <h4>可落地执行规则</h4>
+                    <ol>
+                        <li><strong>{{RULE_1_TITLE}}：</strong>{{RULE_1_DETAIL}}
+                            <!-- 示例：计算内在价值：使用DCF（现金流折现）模型... -->
+                        </li>
+                        <li><strong>{{RULE_2_TITLE}}：</strong>{{RULE_2_DETAIL}}</li>
+                        <li><strong>{{RULE_3_TITLE}}：</strong>{{RULE_3_DETAIL}}</li>
+                    </ol>
+                </div>
+
+                <!-- 经典案例 -->
+                <div class="wisdom-case">
+                    <h4>经典案例：{{CASE_TITLE}}</h4>
+                    <p>{{CASE_PARAGRAPH_1}}</p>
+                    <p style="margin-top: 0.8rem;">{{CASE_PARAGRAPH_2}}</p>
+                    <p style="margin-top: 0.8rem;"><strong>关键启示：</strong>{{CASE_LESSON}}</p>
+                </div>
+
+                <!-- 一句话记忆点 -->
+                <div class="wisdom-takeaway">
+                    {{WISDOM_TAKEAWAY}}
+                </div>
+            </div>
         </section>
 
-        <!-- Section 3: Market News -->
+        <!-- ============================================ -->
+        <!-- MODULE 3: 美股科技核心标的每日财经资讯早报 -->
+        <!-- ============================================ -->
         <section class="section" id="market">
             <div class="section-header">
                 <div class="section-number">03</div>
-                <h2 class="section-title">美股科技核心标的每日财经资讯早报</h2>
-                <div class="section-date">YYYY/MM/DD</div>
+                <div class="section-title-group">
+                    <h2 class="section-title">美股科技核心标的每日财经资讯早报</h2>
+                    <p class="section-subtitle">机构级专业投研参考，专为长期价值投资者定制</p>
+                </div>
+                <div class="section-date">{{DATE_SHORT}}</div>
             </div>
-            <!-- TODO: Add market news content -->
+
+            <div class="market-grid">
+                <!-- 配图位置 - MANDATORY -->
+                <div style="grid-column: 1 / -1; margin-bottom: 1rem;">
+                    <img src="../../../images/posts/{{DATE}}-tech.jpg" 
+                         alt="科技股票分析可视化" 
+                         style="width: 100%; height: 300px; object-fit: cover; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                </div>
+
+                <!-- STOCK 1 -->
+                <div class="stock-detail-card">
+                    <div class="stock-detail-header">
+                        <div>
+                            <div class="stock-detail-ticker">{{STOCK1_TICKER}}</div>
+                            <div class="stock-detail-name">{{STOCK1_NAME}} · {{STOCK1_TAGLINE}}</div>
+                        </div>
+                        <div class="stock-price">
+                            <div class="price-value">{{STOCK1_PRICE}}</div>
+                            <div class="price-change {{STOCK1_CHANGE_CLASS}}">{{STOCK1_CHANGE}}</div>
+                        </div>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <div class="metric-label">成交量</div>
+                            <div class="metric-value">{{STOCK1_VOLUME}}</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">日高/日低</div>
+                            <div class="metric-value">{{STOCK1_HIGH_LOW}}</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">超额收益</div>
+                            <div class="metric-value {{STOCK1_ALPHA_CLASS}}">{{STOCK1_ALPHA}}</div>
+                        </div>
+                    </div>
+
+                    <div class="news-list">
+                        <div class="news-item">
+                            <div class="news-title">{{STOCK1_NEWS1_TITLE}}</div>
+                            <div class="news-perspective"><strong>【长线视角】</strong>{{STOCK1_NEWS1_PERSPECTIVE}}</div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-title">{{STOCK1_NEWS2_TITLE}}</div>
+                            <div class="news-perspective"><strong>【长线视角】</strong>{{STOCK1_NEWS2_PERSPECTIVE}}</div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-title">{{STOCK1_NEWS3_TITLE}}</div>
+                            <div class="news-perspective"><strong>【长线视角】</strong>{{STOCK1_NEWS3_PERSPECTIVE}}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STOCK 2 -->
+                <div class="stock-detail-card">
+                    <!-- Same structure as STOCK 1 -->
+                </div>
+
+                <!-- STOCK 3 -->
+                <div class="stock-detail-card">
+                    <!-- Same structure as STOCK 1 -->
+                </div>
+            </div>
+
+            <!-- 华尔街分析师专业研判 -->
+            <div class="analysis-box">
+                <h3 class="analysis-title">华尔街AI首席分析师专业研判</h3>
+                
+                <div class="analysis-grid">
+                    <div class="analysis-column opportunity">
+                        <h4>📈 机会端分析</h4>
+                        
+                        <div class="analysis-item">
+                            <strong>{{STOCK1_TICKER}}</strong>
+                            <p>{{STOCK1_OPPORTUNITY}}</p>
+                        </div>
+                        
+                        <div class="analysis-item">
+                            <strong>{{STOCK2_TICKER}}</strong>
+                            <p>{{STOCK2_OPPORTUNITY}}</p>
+                        </div>
+                        
+                        <div class="analysis-item">
+                            <strong>{{STOCK3_TICKER}}</strong>
+                            <p>{{STOCK3_OPPORTUNITY}}</p>
+                        </div>
+                    </div>
+
+                    <div class="analysis-column risk">
+                        <h4>⚠️ 风险端分析</h4>
+                        
+                        <div class="analysis-item">
+                            <strong>{{STOCK1_TICKER}}</strong>
+                            <p>{{STOCK1_RISK}}</p>
+                        </div>
+                        
+                        <div class="analysis-item">
+                            <strong>{{STOCK2_TICKER}}</strong>
+                            <p>{{STOCK2_RISK}}</p>
+                        </div>
+                        
+                        <div class="analysis-item">
+                            <strong>{{STOCK3_TICKER}}</strong>
+                            <p>{{STOCK3_RISK}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analysis-summary">
+                    <strong>综合投资态度与操作策略：</strong>{{ANALYSIS_SUMMARY}}
+                </div>
+            </div>
         </section>
     </main>
 
     <footer>
         <p>美股长期价值投资 · 数据驱动 · 独立思考</p>
-        <p class="disclaimer">免责声明：本博客内容仅供学习交流使用，不构成任何投资建议。</p>
+        <p class="disclaimer">
+            免责声明：本博客内容仅供学习交流使用，不构成任何投资建议。股市有风险，投资需谨慎。
+            所有数据均来自公开可溯源渠道（SEC公告、公司财报、权威财经媒体），作者不对信息的准确性、完整性作任何明示或暗示的保证。
+            投资者应根据自身风险承受能力独立做出投资决策，过往业绩不代表未来表现。
+        </p>
     </footer>
+
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <script src="../../../js/main.js"></script>
 </body>
 </html>

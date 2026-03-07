@@ -1,358 +1,405 @@
 ---
 name: us-stock-blog
-description: Create and deploy a professional US stock investment blog with AI-generated images. Use when the user wants to create, update, or deploy a financial blog about US stock value investing. Supports content generation, AI image creation via ModelScope, and automatic GitHub Pages deployment.
+description: Generate professional US stock investment blog posts with rich content, AI-generated images, and institutional-quality analysis. Creates three-module articles (daily stock pick + investment wisdom + tech market report) following Warren Buffett value investing principles.
 ---
 
-# US Stock Investment Blog Creator
+# US Stock Value Investment Blog Generator
 
-Create and deploy a professional US stock value investment blog with rich content and AI-generated imagery.
+Generate professional, magazine-quality US stock investment blog posts with three comprehensive modules.
 
-## When to Use
+## When to Use This Skill
 
-- User wants to create a US stock investment blog
-- User wants to update blog content with daily stock picks
-- User wants to generate and add AI images to the blog
-- User wants to deploy the blog to GitHub Pages
+- Creating daily investment blog posts
+- Analyzing specific stocks with deep fundamental research
+- Generating educational content about value investing principles
+- Creating market analysis reports for tech stocks
+- **CRITICAL**: Every article MUST include 2 AI-generated images and follow the exact three-module structure
 
-## Prerequisites
+## Output Quality Standard
 
-Required environment variables:
-- `MODELSCOPE_TOKEN` - For AI image generation
-- `GITHUB_TOKEN` - For GitHub Pages deployment (Personal Access Token with `repo` scope)
+**Reference Quality**: The blog post from 2026-03-05 (VST + Margin of Safety) is the gold standard. Every new article must match or exceed this quality level:
 
-Python dependencies (for stock ratings):
-```bash
-pip install tradingview-ta yfinance
+✅ **Rich Content**: Each module has substantial depth (not just bullet points)
+✅ **Professional Analysis**: Data-driven insights with specific numbers and percentages
+✅ **Visual Appeal**: 2 high-quality AI-generated images properly placed
+✅ **Consistent Structure**: Follows the exact HTML template and CSS classes
+✅ **Magazine Style**: Editorial quality writing like Barron's or Forbes
+
+## Three-Module Structure (MANDATORY)
+
+Every blog post MUST contain exactly these three sections:
+
+### Module 1: 美股每日宝藏标的 (Daily Stock Pick)
+**Purpose**: Deep fundamental analysis of one quality stock
+
+**Required Elements**:
+1. **Header**: Stock ticker + full company name
+2. **Meta Info**: Industry, core business, market cap, dividend yield
+3. **✅ 核心价值亮点** (3 points minimum):
+   - Each point must have data backing (e.g., "未来5年数据中心电力需求预计翻倍")
+   - Explain the business logic, not just state facts
+   - Include specific metrics when available
+4. **⚠️ 核心风险提示** (2 points minimum):
+   - Be honest about risks, don't sugarcoat
+   - Explain WHY it's a risk and potential impact
+   - Use real historical examples if applicable
+5. **💡 长期持有建议**: Hold period (e.g., 2-4 years), position size (e.g., 3%-5%), portfolio role
+
+**Writing Style**: Professional analyst report, concise but thorough
+
+**Example Quality** (from VST article):
+```
+✅ AI电力需求爆发受益者：美国AI数据中心电力需求呈指数级增长，Vistra作为德州最大
+电力供应商占据核心区位优势，未来5年数据中心电力需求预计翻倍，公司已锁定多个超大规模
+数据中心长期购电协议（PPA），收入可预测性强
+
+⚠️ 区域市场波动风险：电力价格受德州ERCOT市场供需波动影响显著，极端天气事件
+（如2021年德州雪灾导致电价飙升数百倍）可能造成短期业绩剧烈波动
 ```
 
-## Quick Start
+### Module 2: 每日投资认知加餐 (Investment Wisdom)
+**Purpose**: Educational content about value investing principles
 
-```powershell
-# Create new blog
-.\scripts\create-blog.ps1
+**Required Elements**:
+1. **主题**: One-sentence core concept
+2. **核心理念**: Detailed explanation quoting Buffett/Munger/Graham
+3. **可落地执行规则** (3 specific rules):
+   - Actionable steps, not vague advice
+   - Include specific thresholds (e.g., "6折以下才考虑建仓")
+   - Numbered list with clear hierarchy
+4. **经典案例**: Real historical case study:
+   - Specific dates and numbers
+   - What happened
+   - Key lessons learned
+5. **一句话记忆点**: Memorable takeaway quote
+6. **配图**: AI-generated concept image (MANDATORY)
 
-# Generate images for blog
-.\scripts\generate-images.ps1
+**Writing Style**: Educational but sophisticated, like a masterclass
 
-# Deploy to GitHub Pages
-.\scripts\deploy.ps1 -Repo "username.github.io"
-```
+**Image Requirements**:
+- Generate ONE image for this module
+- Theme: Professional financial concept, warm golden tones
+- Style: Editorial/magazine aesthetic
+- Size: 1200x800px minimum
+- Placement: After the "核心理念" paragraph
 
-## Daily Blog Publishing (每日自动发布)
-
-自动提取博客中提到的股票代码，获取评级，并发布到 GitHub Pages。
-
-### Setup
-
-1. **配置 API 密钥（本地安全存储）：**
-
-   ```powershell
-   cd ~/.openclaw/skills/us-stock-blog
-   
-   # 复制模板并编辑
-   cp .env.example .env
-   
-   # 填入你的密钥
-   notepad .env
-   ```
-
-   `.env` 内容示例：
-   ```
-   GITHUB_TOKEN=your_github_pat_here
-   MODELSCOPE_TOKEN=your_modelscope_token_here
-   ```
-
-2. **加载环境变量：**
-
-   ```powershell
-   # PowerShell
-   Get-Content .env | ForEach-Object { $k, $v = $_ -split '=', 2; [Environment]::SetEnvironmentVariable($k, $v, "Process") }
-   
-   # 验证
-   $env:GITHUB_TOKEN
-   ```
-
-### Daily Workflow
-
-**创建博客内容：**
-
-```powershell
-# 创建博客内容（简单 HTML 片段）
-$content = @"
-<h3>VST / Vistra Corp.</h3>
-<p>电力公用事业 / 竞争性电力生产与零售</p>
-<p>AI电力需求爆发受益者...</p>
-"@
-
-$content | Out-File -Encoding UTF8 "content/2026-03-07.html"
-```
-
-**一键发布（自动提取股票 + 获取评级 + 推送）：**
-
-```powershell
-# 方式1：自动提取股票代码
-.\scripts\daily-publish.ps1 -BlogFile "content/2026-03-07.html"
-
-# 方式2：指定股票代码
-.\scripts\daily-publish.ps1 -BlogFile "content/2026-03-07.html" -Symbols "VST,NEE"
-
-# 方式3：仅生成本地文件（不推送）
-.\scripts\daily-publish.ps1 -BlogFile "content/2026-03-07.html" -SkipPush
-```
-
-脚本会自动：
-1. 🔍 从内容中提取股票代码（如 VST, NEE, NVDA）
-2. 📊 获取 TradingView 技术指标
-3. 🏦 获取 Yahoo Finance 分析师评级
-4. 📈 计算综合评级（强烈买入/买入/中性/卖出/强烈卖出）
-5. 📝 在文末添加评级汇总表格
-6. 🚀 推送到 GitHub Pages
-
-### Generated Output
-
-生成的博客会自动添加一个评级汇总 Section：
-
+**Example Quality** (from Margin of Safety article):
 ```html
-<section id="ratings-summary">
-  <h2>本文提及标的投资评级汇总</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>代码</th>
-        <th>综合评级</th>
-        <th>分数</th>
-        <th>技术面</th>
-        <th>分析师</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>VST</td>
-        <td>🚀 强烈买入</td>
-        <td>+1.85</td>
-        <td>BUY (11/2/8)</td>
-        <td>买入 | +23.5%</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
+<div class="wisdom-image" style="margin: 2rem 0; text-align: center;">
+    <img src="../../../images/value-investing.jpg" alt="价值投资概念图" 
+         style="max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
+    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 0.5rem; font-style: italic;">
+        价值投资的艺术：寻找市场价格与内在价值之间的鸿沟
+    </p>
+</div>
 ```
 
-## Security (安全管理)
+### Module 3: 美股科技核心标的每日财经资讯早报 (Tech Market Report)
+**Purpose**: Daily news and analysis for major tech stocks
 
-⚠️ **绝不提交 API 密钥到 GitHub！**
+**Required Elements**:
+1. **3-5 Tech Stocks**: NVDA, META, AAPL, MSFT, GOOGL, NBIS, etc.
+2. **For each stock**:
+   - Current price, change %, volume
+   - Day high/low
+   - 3 recent news items with 【长线视角】analysis
+3. **华尔街分析师专业研判**:
+   - 📈 机会端分析 (bull case for each stock)
+   - ⚠️ 风险端分析 (bear case for each stock)
+4. **综合投资态度与操作策略**: Summary under 100 words
+5. **配图**: AI-generated tech visualization (MANDATORY)
 
-| 安全做法 | 说明 |
-|---------|------|
-| ✅ `.env` | 本地存储密钥，已加入 `.gitignore` |
-| ✅ `.env.example` | 模板文件，不含真实密钥 |
-| ✅ 环境变量 | 脚本运行时从环境变量读取 |
-| ❌ 硬编码 | 绝不在代码中写死密钥 |
+**Writing Style**: Institutional research report quality
 
-**完整安全指南：** `references/security-guide.md`
+**Image Requirements**:
+- Generate ONE image for this module
+- Theme: Modern tech/finance visualization
+- Style: Futuristic, holographic data charts, blue and gold accents
+- Size: 1600x600px (wide banner style)
+- Placement: At the top of the market grid
 
-## Stock Ratings Feature (股票交易评级)
-
-Automatically fetch technical indicators and analyst ratings for any stock.
-
-### Data Sources
-
-| Source | Data Type | Weight |
-|--------|-----------|--------|
-| **TradingView** | Technical indicators (RSI, MACD, Moving Averages, etc.) | 40% |
-| **Yahoo Finance** | Analyst ratings from Wall Street firms | 60% |
-
-### Rating Scale
-
-| Score | Rating | Color | Description |
-|-------|--------|-------|-------------|
-| +2 | 🚀 强烈买入 | Green | Strong Buy - Multiple bullish signals |
-| +1 | 📈 买入 | Light Green | Buy - Positive outlook |
-| 0 | ➖ 中性 | Yellow | Neutral - Mixed signals |
-| -1 | 📉 卖出 | Orange | Sell - Negative outlook |
-| -2 | 🔻 强烈卖出 | Red | Strong Sell - Multiple bearish signals |
-
-### Usage
-
-**Command Line:**
-```bash
-# Single stock
-python scripts/get_stock_ratings.py AAPL NASDAQ
-
-# Output includes:
-# - TradingView technical summary (BUY/SELL/NEUTRAL counts)
-# - Yahoo Finance analyst consensus
-# - Price targets and upside potential
-# - Composite rating with confidence level
-```
-
-**Python API:**
-```python
-from scripts.get_stock_ratings import get_stock_rating, format_rating_for_blog
-
-# Get rating for a stock
-rating = get_stock_rating("AAPL", company_name="Apple Inc.", exchange="NASDAQ")
-
-# Access individual components
-print(rating.composite_rating)  # "买入"
-print(rating.composite_score)   # 1.2
-print(rating.confidence)        # "高"
-
-# Generate HTML for blog
-html = format_rating_for_blog(rating)
-```
-
-**Batch Processing:**
-```python
-from scripts.get_stock_ratings import get_stock_ratings_batch
-
-stocks = [
-    {"symbol": "AAPL", "company_name": "Apple Inc.", "exchange": "NASDAQ"},
-    {"symbol": "VST", "company_name": "Vistra Corp.", "exchange": "NYSE"},
-    {"symbol": "NVDA", "company_name": "NVIDIA Corp.", "exchange": "NASDAQ"},
-]
-
-ratings = get_stock_ratings_batch(stocks)
-for r in ratings:
-    print(f"{r.symbol}: {r.composite_rating} (score: {r.composite_score})")
-```
-
-### Integration with Blog
-
-1. Include the CSS in your HTML `<head>`:
+**Example Quality**:
 ```html
-<link rel="stylesheet" href="assets/rating-styles.css">
+<div style="grid-column: 1 / -1; margin-bottom: 1rem;">
+    <img src="../../../images/tech-analysis.jpg" alt="科技股票分析可视化" 
+         style="width: 100%; height: 300px; object-fit: cover; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+</div>
 ```
 
-2. Add the rating HTML to your stock pick section:
+## Article Generation Workflow
+
+### Step 1: Research and Content Creation
+
+**CRITICAL**: Do NOT use the basic template. Generate FULL CONTENT for all three modules.
+
+1. **Choose Focus Stock** (for Module 1):
+   - Research SEC filings, recent earnings
+   - Identify 3 strong bullish points with data
+   - Identify 2 genuine risks
+
+2. **Choose Investment Theme** (for Module 2):
+   - Select from: Margin of Safety, Moat, Circle of Competence, 
+                 Long-term Holding, Independent Thinking, etc.
+   - Find a real Buffett/Munger quote
+   - Identify a historical case study
+
+3. **Research Tech News** (for Module 3):
+   - Use latest market data (within 24 hours)
+   - Select 3-5 relevant tech stocks
+   - Find 3 significant news items per stock
+   - Write institutional-quality analysis
+
+### Step 2: Generate AI Images (MANDATORY)
+
+Every article MUST have 2 images. Use these prompts as templates:
+
+**Image 1: Value Investing Concept** (for Module 2):
+```
+Prompt: "Professional financial investment concept, [SPECIFIC_THEME]. 
+Vintage leather-bound investment ledger with gold pen, golden calculator, 
+stock certificates scattered artistically, warm golden hour lighting, 
+dark wood desk surface, luxury gold and deep navy blue color scheme, 
+editorial magazine photography style, shallow depth of field"
+
+Examples by theme:
+- Margin of Safety: "...measuring gap between price and value, bridge metaphor..."
+- Economic Moat: "...medieval castle with golden walls, protection concept..."
+- Compound Interest: "...snowball effect with golden coins, exponential growth..."
+```
+
+**Image 2: Tech Stock Visualization** (for Module 3):
+```
+Prompt: "Modern tech stock analysis visualization, holographic data charts 
+floating in dark space, AI chip circuit patterns, stock price charts 
+going upward, futuristic blue and gold neon accents, high-tech financial 
+data center atmosphere, professional trading floor screens, 
+dark navy background with golden light particles"
+```
+
+**Image Generation Command**:
+```powershell
+# Generate Image 1 (Value Investing)
+$prompt1 = "Professional financial investment concept, vintage leather-bound investment ledger..."
+python us-stock-blog/scripts/generate-images.ps1 -Prompt $prompt1 -Output "images/posts/2026-03-08-value.jpg"
+
+# Generate Image 2 (Tech Analysis)
+$prompt2 = "Modern tech stock analysis visualization, holographic data charts..."
+python us-stock-blog/scripts/generate-images.ps1 -Prompt $prompt2 -Output "images/posts/2026-03-08-tech.jpg"
+```
+
+### Step 3: Build Complete HTML Article
+
+**CRITICAL**: Do NOT use the minimal template. Use the FULL template from 2026-03-05 article as reference.
+
+**Required Structure**:
 ```html
-<section class="section" id="stock-pick">
-    <div class="section-header">
-        <div class="section-number">01</div>
-        <h2 class="section-title">美股每日宝藏标的</h2>
-    </div>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- Meta tags (SEO optimized) -->
+    <meta charset="UTF-8">
+    <meta name="description" content="...">
+    <title>2026年3月8日美股分析：[STOCK] + [THEME] | 美股价值投资笔记</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <!-- Header with Navigation -->
     
-    <!-- Stock pick content here -->
+    <!-- Hero Section with Background Image -->
+    <section class="hero" style="background-image: url('../../../images/hero-bg.jpg');">
+        <div class="subtitle">美股每日财经分析</div>
+        <h1>[Stock]深度解析</h1>
+        <p class="tagline">"[Theme Quote]"</p>
+    </section>
     
-    <!-- Rating widget -->
-    <div class="stock-rating">
-        <div class="rating-header">
-            <span class="rating-badge rating-买入">买入</span>
-            <span class="rating-confidence">置信度: 高</span>
-        </div>
-        <div class="rating-section">
-            <h4>📈 技术指标 (TradingView)</h4>
-            <p>综合建议: <strong>BUY</strong></p>
-            <p>指标统计: 买入12 | 卖出3 | 中性5</p>
-        </div>
-        <div class="rating-summary">
-            <p>💡 【买入】技术面BUY，目标价上涨空间+15.3%，建议关注</p>
-        </div>
-    </div>
-</section>
+    <main>
+        <!-- Module 1: Stock Pick -->
+        <section class="section" id="stock-pick">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h2 class="section-title">美股每日宝藏标的</h2>
+                <div class="section-date">2026/03/08</div>
+            </div>
+            
+            <div class="stock-card">
+                <!-- Full content here -->
+            </div>
+        </section>
+        
+        <!-- Module 2: Investment Wisdom -->
+        <section class="section" id="wisdom">
+            <!-- Full content with IMAGE -->
+        </section>
+        
+        <!-- Module 3: Market News -->
+        <section class="section" id="market">
+            <!-- Full content with IMAGE -->
+        </section>
+    </main>
+    
+    <footer></footer>
+</body>
+</html>
 ```
 
-### Supported Exchanges
+### Step 4: Add Stock Ratings (Optional but Recommended)
 
-- `NASDAQ` - 纳斯达克
-- `NYSE` - 纽约证券交易所
-- `AMEX` - 美国证券交易所
-- `CRYPTO` - 加密货币 (使用 `screener="crypto"`)
-
-## Workflow
-
-### Step 1: Create Blog Content
-
-1. Read the blog template from `assets/blog-template.html`
-2. Generate daily content following the structure:
-   - **Module 1**: Daily Stock Pick (宝藏标的)
-   - **Module 2**: Investment Wisdom (投资认知加餐)
-   - **Module 3**: Market Morning Report (科技核心标早报)
-3. Update the HTML with new content
-
-### Step 2: Generate AI Images
-
-Use ModelScope API to generate 3 types of images:
+If the article mentions specific stocks, add automatic rating summary:
 
 ```powershell
-$prompts = @(
-    "Professional financial investment concept, Wall Street atmosphere, golden bull statue silhouette against dark navy blue background, abstract stock market chart lines flowing upward, luxury gold and deep blue color scheme",
-    "Value investing concept art, vintage leather-bound investment ledger with gold pen, golden calculator, stock certificates scattered artistically, warm golden hour lighting, dark wood desk surface",
-    "Modern tech stock analysis visualization, holographic data charts floating in dark space, AI chip circuit patterns, futuristic blue and gold neon accents"
-)
+# Get ratings for mentioned stocks
+python us-stock-blog/scripts/get_stock_ratings.py [SYMBOL] [EXCHANGE]
+
+# This will output HTML that can be inserted at the end of the article
 ```
 
-See `references/modelscope-api.md` for detailed API usage.
+### Step 5: Update Index and Deploy
 
-### Step 3: Deploy to GitHub
+1. **Add to Archive**: Update `index.html` with new article link
+2. **Generate Images**: Ensure both images are generated and saved to correct paths
+3. **Deploy to GitHub**:
+   ```powershell
+   # Option 1: Use GitHub API (recommended)
+   .\us-stock-blog\scripts\daily-publish.ps1 -Date "2026-03-08"
+   
+   # Option 2: Manual Git push
+   git add .
+   git commit -m "Add 2026-03-08 article: [STOCK] + [THEME]"
+   git push origin main
+   ```
 
-Use GitHub Contents API for deployment:
+## Content Quality Checklist
 
-```powershell
-# Get current file SHA
-$sha = (Invoke-RestMethod -Uri "https://api.github.com/repos/USER/REPO/contents/index.html").sha
+Before considering an article complete, verify:
 
-# Prepare payload
-$payload = @{
-    message = "Update blog"
-    content = [Convert]::ToBase64String([IO.File]::ReadAllBytes("index.html"))
-    sha = $sha  # Required for existing files
-} | ConvertTo-Json -Compress
+### Content Depth
+- [ ] Module 1 has 3 detailed bullish points with data
+- [ ] Module 1 has 2 genuine risk warnings
+- [ ] Module 2 includes a real Buffett/Munger quote
+- [ ] Module 2 has a historical case study with specific numbers
+- [ ] Module 3 covers 3-5 tech stocks
+- [ ] Module 3 has institutional-quality bull/bear analysis
 
-# Push to GitHub
-Invoke-RestMethod -Uri "https://api.github.com/repos/USER/REPO/contents/index.html" `
-    -Method Put `
-    -Headers @{
-        "Authorization" = "token $env:GITHUB_TOKEN"
-        "Content-Type" = "application/json"
-    } `
-    -Body $payload
+### Visual Elements
+- [ ] 2 AI-generated images created
+- [ ] Image 1 placed in Module 2 with proper styling
+- [ ] Image 2 placed in Module 3 with proper styling
+- [ ] All images use correct relative paths (../../../images/...)
+
+### Technical Quality
+- [ ] HTML uses correct CSS classes from style.css
+- [ ] Meta tags are SEO-optimized
+- [ ] Navigation links work correctly
+- [ ] Article is added to index.html archive
+- [ ] All links use correct relative paths
+
+### Writing Quality
+- [ ] No vague statements ("可能"、"也许")
+- [ ] All claims backed by data or logic
+- [ ] Professional tone throughout
+- [ ] No grammar or spelling errors
+- [ ] Consistent formatting
+
+## Common Mistakes to AVOID
+
+❌ **Mistake 1**: Using the minimal template instead of full article structure
+❌ **Mistake 2**: Forgetting to generate images
+❌ **Mistake 3**: Shallow content (bullet points without explanation)
+❌ **Mistake 4**: No data backing for claims
+❌ **Mistake 5**: Wrong image paths or missing images
+❌ **Mistake 6**: Not updating index.html
+❌ **Mistake 7**: Generic/vague risk warnings
+❌ **Mistake 8**: No historical case studies in Module 2
+
+## CSS Class Reference
+
+Use these exact classes for consistent styling:
+
+```css
+/* Section Headers */
+.section { }
+.section-header { }
+.section-number { }  /* 01, 02, 03 */
+.section-title { }
+.section-subtitle { }
+.section-date { }
+
+/* Stock Cards */
+.stock-card { }
+.stock-header { }
+.stock-ticker { }  /* Large ticker symbol */
+.stock-name { }
+.stock-meta { }
+.highlight-box { }
+.highlight-box.positive { }  /* Green left border */
+.highlight-box.warning { }   /* Orange left border */
+.highlight-box.tip { }       /* Blue left border */
+
+/* Wisdom Section */
+.wisdom-card { }
+.wisdom-theme { }   /* Topic label */
+.wisdom-title { }   /* H3 title */
+.wisdom-content { }
+.wisdom-image { }   /* Container for image */
+.wisdom-rules { }
+.wisdom-case { }
+.wisdom-takeaway { }  /* Bottom quote box */
+
+/* Market Section */
+.market-grid { }
+.stock-detail-card { }
+.stock-detail-header { }
+.metrics-grid { }
+.metric { }
+.news-list { }
+.news-item { }
+.news-title { }
+.news-perspective { }
+.analysis-box { }
 ```
 
-See `references/github-api.md` for complete deployment guide.
+## Examples and References
 
-## Blog Structure
+**Gold Standard Article**: `posts/2026/03/05.html`
+- Full three-module structure
+- Rich content with data
+- 2 properly placed images
+- Professional analysis quality
 
+**CSS Styles**: `css/style.css`
+- Complete design system
+- Responsive breakpoints
+- Typography hierarchy
+
+**Image Templates**: See "Step 2: Generate AI Images" section above
+
+## Environment Variables
+
+Required for full functionality:
+
+```bash
+MODELSCOPE_TOKEN=your_modelscope_api_token
+GITHUB_TOKEN=your_github_personal_access_token
 ```
-blog/
-├── index.html              # Main blog page
-├── images/
-│   ├── hero-bg.jpg        # Hero section background
-│   ├── value-investing.jpg # Investment wisdom section
-│   └── tech-analysis.jpg  # Market report section
-└── css/ (optional)
-```
 
-## Design System
-
-- **Colors**: Dark navy `#0f1419`, Gold accent `#c9a227`, Cream background `#faf8f5`
-- **Typography**: Cormorant Garamond (display), Source Sans Pro (body)
-- **Style**: Editorial/Magazine + Luxury/Refined aesthetic
-- **Features**: Scroll progress bar, fade-in animations, hover effects
-
-## Resources
-
-- `references/modelscope-api.md` - Image generation API details
-- `references/github-api.md` - GitHub deployment guide
-- `references/blog-examples.md` - Sample content structures
-- `references/rating-examples.md` - Rating integration examples
-- `references/security-guide.md` - API key security best practices
-- `assets/blog-template.html` - Starting HTML template
-- `assets/rating-styles.css` - Stock rating widget styles
-- `scripts/get_stock_ratings.py` - Stock rating data fetcher
-- `scripts/generate_daily_blog.py` - Daily blog generator with auto-ratings
-- `scripts/daily-publish.ps1` - One-click daily publish script
-- `.env.example` - Environment variable template (safe to commit)
+Store in `.env` file (NEVER commit to GitHub).
 
 ## Troubleshooting
 
-**Image generation timeout**: ModelScope tasks can take 2-5 minutes. Implement polling with 5-second intervals.
+**Images not showing**: Check relative paths (should be `../../../images/...` from posts/2026/03/)
 
-**GitHub 422 error**: Ensure SHA is provided when updating existing files.
+**CSS not loading**: Verify path to style.css (should be `../../../css/style.css`)
 
-**Token authentication**: Verify `GITHUB_TOKEN` has `repo` scope permissions.
+**Stock ratings not working**: Install dependencies: `pip install tradingview-ta yfinance`
 
-**Stock Rating Issues**:
-- `ImportError`: Install dependencies with `pip install tradingview-ta yfinance`
-- `TradingView API error`: Check internet connection and stock symbol validity
-- `Yahoo Finance empty`: Some stocks may not have analyst coverage (common for small-caps)
+**ModelScope image generation slow**: Normal - takes 2-5 minutes per image. Implement polling.
+
+## Success Metrics
+
+A successfully generated article should:
+1. Match or exceed the quality of 2026-03-05 article
+2. Have 2 high-quality AI-generated images
+3. Contain rich, data-driven content in all three modules
+4. Follow the exact HTML/CSS structure
+5. Work correctly when viewed on GitHub Pages
