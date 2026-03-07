@@ -38,6 +38,119 @@ pip install tradingview-ta yfinance
 .\scripts\deploy.ps1 -Repo "username.github.io"
 ```
 
+## Daily Blog Publishing (每日自动发布)
+
+自动提取博客中提到的股票代码，获取评级，并发布到 GitHub Pages。
+
+### Setup
+
+1. **配置 API 密钥（本地安全存储）：**
+
+   ```powershell
+   cd ~/.openclaw/skills/us-stock-blog
+   
+   # 复制模板并编辑
+   cp .env.example .env
+   
+   # 填入你的密钥
+   notepad .env
+   ```
+
+   `.env` 内容示例：
+   ```
+   GITHUB_TOKEN=your_github_pat_here
+   MODELSCOPE_TOKEN=your_modelscope_token_here
+   ```
+
+2. **加载环境变量：**
+
+   ```powershell
+   # PowerShell
+   Get-Content .env | ForEach-Object { $k, $v = $_ -split '=', 2; [Environment]::SetEnvironmentVariable($k, $v, "Process") }
+   
+   # 验证
+   $env:GITHUB_TOKEN
+   ```
+
+### Daily Workflow
+
+**创建博客内容：**
+
+```powershell
+# 创建博客内容（简单 HTML 片段）
+$content = @"
+<h3>VST / Vistra Corp.</h3>
+<p>电力公用事业 / 竞争性电力生产与零售</p>
+<p>AI电力需求爆发受益者...</p>
+"@
+
+$content | Out-File -Encoding UTF8 "content/2026-03-07.html"
+```
+
+**一键发布（自动提取股票 + 获取评级 + 推送）：**
+
+```powershell
+# 方式1：自动提取股票代码
+.\scripts\daily-publish.ps1 -BlogFile "content/2026-03-07.html"
+
+# 方式2：指定股票代码
+.\scripts\daily-publish.ps1 -BlogFile "content/2026-03-07.html" -Symbols "VST,NEE"
+
+# 方式3：仅生成本地文件（不推送）
+.\scripts\daily-publish.ps1 -BlogFile "content/2026-03-07.html" -SkipPush
+```
+
+脚本会自动：
+1. 🔍 从内容中提取股票代码（如 VST, NEE, NVDA）
+2. 📊 获取 TradingView 技术指标
+3. 🏦 获取 Yahoo Finance 分析师评级
+4. 📈 计算综合评级（强烈买入/买入/中性/卖出/强烈卖出）
+5. 📝 在文末添加评级汇总表格
+6. 🚀 推送到 GitHub Pages
+
+### Generated Output
+
+生成的博客会自动添加一个评级汇总 Section：
+
+```html
+<section id="ratings-summary">
+  <h2>本文提及标的投资评级汇总</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>代码</th>
+        <th>综合评级</th>
+        <th>分数</th>
+        <th>技术面</th>
+        <th>分析师</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>VST</td>
+        <td>🚀 强烈买入</td>
+        <td>+1.85</td>
+        <td>BUY (11/2/8)</td>
+        <td>买入 | +23.5%</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+```
+
+## Security (安全管理)
+
+⚠️ **绝不提交 API 密钥到 GitHub！**
+
+| 安全做法 | 说明 |
+|---------|------|
+| ✅ `.env` | 本地存储密钥，已加入 `.gitignore` |
+| ✅ `.env.example` | 模板文件，不含真实密钥 |
+| ✅ 环境变量 | 脚本运行时从环境变量读取 |
+| ❌ 硬编码 | 绝不在代码中写死密钥 |
+
+**完整安全指南：** `references/security-guide.md`
+
 ## Stock Ratings Feature (股票交易评级)
 
 Automatically fetch technical indicators and analyst ratings for any stock.
@@ -222,10 +335,14 @@ blog/
 - `references/modelscope-api.md` - Image generation API details
 - `references/github-api.md` - GitHub deployment guide
 - `references/blog-examples.md` - Sample content structures
+- `references/rating-examples.md` - Rating integration examples
+- `references/security-guide.md` - API key security best practices
 - `assets/blog-template.html` - Starting HTML template
 - `assets/rating-styles.css` - Stock rating widget styles
 - `scripts/get_stock_ratings.py` - Stock rating data fetcher
-- `scripts/` - Helper scripts for automation
+- `scripts/generate_daily_blog.py` - Daily blog generator with auto-ratings
+- `scripts/daily-publish.ps1` - One-click daily publish script
+- `.env.example` - Environment variable template (safe to commit)
 
 ## Troubleshooting
 
