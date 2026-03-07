@@ -1,0 +1,184 @@
+:root {
+  --rating-strong-buy: #22c55e;
+  --rating-buy: #84cc16;
+  --rating-neutral: #eab308;
+  --rating-sell: #f97316;
+  --rating-strong-sell: #ef4444;
+}
+
+/* 股票评级容器 */
+.stock-rating {
+  background: linear-gradient(135deg, #faf8f5 0%, #f0ebe3 100%);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 20px 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* 评级头部 */
+.rating-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--color-accent);
+}
+
+/* 评级徽章 */
+.rating-badge {
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 18px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rating-强烈买入 { background: var(--rating-strong-buy); }
+.rating-买入 { background: var(--rating-buy); }
+.rating-中性 { background: var(--rating-neutral); }
+.rating-卖出 { background: var(--rating-sell); }
+.rating-强烈卖出 { background: var(--rating-strong-sell); }
+
+.rating-confidence {
+  font-size: 14px;
+  color: var(--color-text-light);
+  font-weight: 500;
+}
+
+/* 评级分区 */
+.rating-section {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+}
+
+.rating-section h4 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--color-text);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rating-section p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: var(--color-text-light);
+}
+
+.rating-section strong {
+  color: var(--color-text);
+}
+
+/* 评级总结 */
+.rating-summary {
+  background: var(--color-dark);
+  color: white;
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin-top: 16px;
+}
+
+.rating-summary p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* 评分条 */
+.rating-score-bar {
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  margin: 12px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.rating-score-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.rating-score-fill.positive { background: linear-gradient(90deg, var(--rating-buy), var(--rating-strong-buy)); }
+.rating-score-fill.neutral { background: var(--rating-neutral); }
+.rating-score-fill.negative { background: linear-gradient(90deg, var(--rating-sell), var(--rating-strong-sell)); }
+
+/* 指标网格 */
+.indicators-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.indicator-item {
+  text-align: center;
+  padding: 10px;
+  background: white;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.indicator-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text);
+  display: block;
+}
+
+.indicator-label {
+  font-size: 11px;
+  color: var(--color-text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* 目标价展示 */
+.price-targets {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.price-target {
+  text-align: center;
+  padding: 12px 16px;
+  background: white;
+  border-radius: 8px;
+  min-width: 80px;
+}
+
+.price-target .label {
+  font-size: 11px;
+  color: var(--color-text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.price-target .value {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* 数据来源标签 */
+.data-source {
+  font-size: 11px;
+  color: var(--color-text-light);
+  text-align: right;
+  margin-top: 12px;
+  font-style: italic;
+}
