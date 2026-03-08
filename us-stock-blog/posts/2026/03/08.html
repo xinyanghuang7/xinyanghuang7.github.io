@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>缇庤偂浠峰€兼姇璧勬棩鎶?- 2026骞?鏈?鏃?/title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: #0a0a0a;
+            color: #e5e5e5;
+            line-height: 1.8;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 1px solid rgba(212,175,55,0.3);
+            margin-bottom: 3rem;
+        }
+        h1 {
+            font-size: 2rem;
+            color: #d4af37;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+        .date {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+        h2 {
+            color: #d4af37;
+            font-size: 1.5rem;
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid rgba(212,175,55,0.3);
+        }
+        h3 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin: 2rem 0 1rem;
+        }
+        h4 {
+            color: #d4af37;
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.75rem;
+        }
+        .stock-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .stock-ticker {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #d4af37;
+        }
+        .stock-name {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.7);
+        }
+        .stock-meta {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        .highlight-box {
+            background: rgba(255,255,255,0.03);
+            border-left: 4px solid #d4af37;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .highlight-box.positive { border-left-color: #22c55e; }
+        .highlight-box.warning { border-left-color: #ef4444; }
+        .highlight-box.info { border-left-color: #3b82f6; }
+        .highlight-box.portfolio { border-left-color: #d4af37; background: rgba(212,175,55,0.08); }
+        .highlight-box ul {
+            margin: 0.75rem 0 0 1.25rem;
+        }
+        .highlight-box li {
+            margin-bottom: 0.5rem;
+        }
+        .section-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+        }
+        .stock-news-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .news-item {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+        }
+        .portfolio-viewpoint {
+            background: rgba(212,175,55,0.1);
+            border-left: 3px solid #d4af37;
+            padding: 0.75rem;
+            margin-top: 0.75rem;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.9rem;
+        }
+        .ratings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+        .rating-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 1.25rem;
+            border-left: 4px solid #22c55e;
+        }
+        .rating-card.hold { border-left-color: #f59e0b; }
+        .rating-card.sell { border-left-color: #ef4444; }
+        .portfolio-box {
+            background: linear-gradient(135deg, rgba(212,175,55,0.1) 0%, rgba(26,26,26,0.8) 100%);
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .holding-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+        }
+        .disclaimer {
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        blockquote {
+            border-left: 3px solid #d4af37;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: rgba(255,255,255,0.8);
+        }
+        strong { color: #fff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>缇庤偂浠峰€兼姇璧勬棩鎶?/h1>
+            <div class="date">2026骞?鏈?鏃?路 鏄熸湡鏃?/div>
+        </header>
+
+        <!-- 鎴戠殑鎸佷粨缁勫悎 -->
+        <div class="portfolio-box">
+            <h4 style="color: #d4af37; font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <span>馃搳</span> 鎴戠殑鎸佷粨缁勫悎
+            </h4>
+            <div style="margin-bottom: 1rem;">
+                <div class="holding-item">
+                    <div>
+                        <strong style="color: #d4af37; font-size: 1rem;">META</strong>
+                        <span style="color: rgba(255,255,255,0.5); font-size: 0.8rem; margin-left: 0.5rem;">Meta Platforms</span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #fff; font-size: 0.9rem;">3 鑲?@ $683.94</div>
+                        <div style="color: rgba(255,255,255,0.4); font-size: 0.75rem;">鎴愭湰: $2,051.81</div>
+                    </div>
+                </div>
+                <div class="holding-item">
+                    <div>
+                        <strong style="color: #d4af37; font-size: 1rem;">NBIS</strong>
+                        <span style="color: rgba(255,255,255,0.5); font-size: 0.8rem; margin-left: 0.5rem;">NIO Inc.</span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #fff; font-size: 0.9rem;">4 鑲?@ $93.60</div>
+                        <div style="color: rgba(255,255,255,0.4); font-size: 0.75rem;">鎴愭湰: $374.40</div>
+                    </div>
+                </div>
+                <div class="holding-item">
+                    <div>
+                        <strong style="color: #d4af37; font-size: 1rem;">NVDA</strong>
+                        <span style="color: rgba(255,255,255,0.5); font-size: 0.8rem; margin-left: 0.5rem;">NVIDIA</span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #fff; font-size: 0.9rem;">1 鑲?@ $169.69</div>
+                        <div style="color: rgba(255,255,255,0.4); font-size: 0.75rem;">鎴愭湰: $169.69</div>
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding-top: 1rem; border-top: 1px solid rgba(212,175,55,0.2); font-size: 0.9rem;">
+                <span style="color: rgba(255,255,255,0.6);">鎬绘寔浠撴垚鏈?/span>
+                <strong style="color: #d4af37; font-size: 1.1rem;">$2,595.90</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 0.5rem; font-size: 0.85rem;">
+                <span style="color: rgba(255,255,255,0.5);">鎸佷粨缁撴瀯</span>
+                <span style="color: rgba(255,255,255,0.7);">100% 绉戞妧鏉垮潡 路 0% 鐜伴噾</span>
+            </div>
+        </div>
+
+        <!-- Module 1: 姣忔棩瀹濊棌鏍囩殑 -->
+        <section id="stock-pick">
+            <h2>馃敟 缇庤偂姣忔棩瀹濊棌鏍囩殑</h2>
+            
+            <div class="stock-header">
+                <div class="stock-ticker">VST</div>
+                <div class="stock-name">Vistra Corp</div>
+            </div>
+            <div class="stock-meta">鐢靛姏/鑳芥簮 | 缇庡浗鏈€澶х珵浜夋€х數鍔涚敓浜у晢 | 甯傚€肩害$500浜?| 鑲℃伅鐜囩害1.5%</div>
+
+            <div class="highlight-box info">
+                <h4>馃幆 涓轰綍浠婃棩鎺ㄨ崘杩欏彧</h4>
+                <p>浣犵殑褰撳墠鎸佷粨 <strong>100% 闆嗕腑浜庣鎶€鏉垮潡</strong>锛圡ETA/NVDA/NBIS锛夈€?strong>VST浣滀负鑳芥簮鏉垮潡榫欏ご</strong>锛屽叿澶囦綆鐩稿叧鎬х壒寰侊紝鑳芥湁鏁堝垎鏁ｇ粍鍚堥闄┿€?/p>
+                <p style="margin-top: 0.75rem;">鏇撮噸瑕佺殑鏄紝VST鏄?strong>AI鐢靛姏闇€姹傜垎鍙戠殑鏍稿績鍙楃泭鑰?/strong>鈥斺€斾笌META绛剧讲浜?0骞存牳鐢典緵搴斿崗璁紝鐩存帴鍙楃泭浜嶢I鏁版嵁涓績鐢靛姏闇€姹傛縺澧炪€?/p>
+            </div>
+
+            <div class="highlight-box positive">
+                <h4>鉁?鏍稿績浠峰€间寒鐐?/h4>
+                <ul>
+                    <li><strong>AI鐢靛姏闇€姹傛牳蹇冨彈鐩婅€?/strong>锛氫笌META绛剧讲20骞淬€?600鍏嗙摝鏍哥數渚涘簲鍗忚锛涗笌AWS绛剧讲澶氬勾鍚堜綔鍗忚</li>
+                    <li><strong>绋€缂烘牳鐢佃祫浜?/strong>锛氭嫢鏈?400+鍏嗙摝鏍哥數瑁呮満锛屾槸缇庡浗鏈€澶ф牳鐢佃繍钀ュ晢涔嬩竴锛屾牳鐢垫槸24/7闆剁⒊鍩鸿嵎鐢垫簮锛屾渶鍙楁暟鎹腑蹇冮潚鐫?/li>
+                    <li><strong>涓氱哗楂樺闀?/strong>锛?026骞碅djusted EBITDA鎸囧紩$68-76浜匡紝鍚屾瘮澧為暱绾?2%</li>
+                    <li><strong>鏈烘瀯鐪嬪ソ</strong>锛?2浣嶅垎鏋愬笀涓?2浣嶆帹鑽愪拱鍏ワ紝鐩爣浠蜂腑浣嶆暟$237.66锛岃緝褰撳墠浠锋湁绾?7%涓婅绌洪棿</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box warning">
+                <h4>鈿狅笍 鏍稿績椋庨櫓鎻愮ず</h4>
+                <ul>
+                    <li><strong>鍒╃巼椋庨櫓</strong>锛氶珮璐熷€鸿繍钀ワ紝鍒╃巼涓婂崌澧炲姞璐㈠姟鎴愭湰锛?025骞村埄鎭敮鍑?11.8浜匡級</li>
+                    <li><strong>鐩戠椋庨櫓</strong>锛氱數鍔涗环鏍间笂娑ㄥ彲鑳藉紩鍙戞斂娌诲帇鍔涘拰鐩戠骞查</li>
+                    <li><strong>AI闇€姹備笉鍙婇鏈?/strong>锛氳嫢AI鎶曡祫鍛ㄦ湡闄嶆俯锛岀數鍔涢渶姹傚闀垮彲鑳芥斁缂?/li>
+                </ul>
+            </div>
+
+            <div class="highlight-box tip">
+                <h4>馃挕 闀挎湡鎸佹湁寤鸿</h4>
+                <p>褰撳墠鑲′环绾?168锛屽垎鏋愬笀鐩爣浠峰尯闂?200-308銆傚缓璁叆鍦哄尯闂?155-165锛屾鎹熶綅$140锛?17%锛夈€?/p>
+                <p style="margin-top: 0.75rem;"><strong>浠撲綅寤鸿</strong>锛氫綔涓虹粍鍚堢殑鑳芥簮鏉垮潡搴曚粨锛屽缓璁厤缃?0-15%锛屾寔鏈夊懆鏈?-3骞达紝涓庣鎶€鑲″舰鎴愯涓氬鍐层€?/p>
+            </div>
+
+            <img src="images/2026-03-08-value.jpg" alt="浠峰€兼姇璧勬蹇靛浘" class="section-image">
+        </section>
+
+        <!-- Module 2: 鎶曡祫璁ょ煡鍔犻 -->
+        <section id="wisdom">
+            <h2>馃摎 姣忔棩鎶曡祫璁ょ煡鍔犻</h2>
+            
+            <h3>琛屼笟鍒嗘暎锛氬埆鎶婇浮铔嬫斁涓€涓瀛?/h3>
+            
+            <p>浣犵殑鎸佷粨100%闆嗕腑鍦ㄧ鎶€鏉垮潡锛岃繖鍦ㄧ墰甯備腑纭疄鏄?profitable 鐨勶紝浣嗛闄╀篃楂樺害闆嗕腑銆傚綋绉戞妧鑲″洖璋冩椂锛屾暣涓粍鍚堥兘浼氬彈鍒板啿鍑汇€?/p>
+
+            <blockquote>
+                "鍒嗘暎鎶曡祫鏄鏃犵煡鐨勪繚鎶ゃ€傚鏋滀綘鐭ラ亾鑷繁鍦ㄥ仛浠€涔堬紝闆嗕腑鎶曡祫涔熻兘鍋氬緱寰堝ソ銆? 鈥斺€?娌冧鸡路宸磋彶鐗?            </blockquote>
+
+            <p>浣嗛棶棰樻槸锛?strong>浣犵湡鐨勭煡閬撹嚜宸卞湪鍋氫粈涔堝悧锛?/strong>鍗充娇鏄反鑿茬壒锛屼篃鎸佹湁閾惰锛堢編鍥介摱琛岋級銆佹秷璐瑰搧锛堝彲鍙ｅ彲涔愶級銆佽兘婧愶紙闆經榫欙級绛夊涓澘鍧椼€?/p>
+
+            <h4>鍒嗘暎鐨勬纭Э鍔?/h4>
+            
+            <div class="highlight-box">
+                <p><strong>1. 琛屼笟鍒嗘暎 鈮?涓偂鏁伴噺澧炲姞</strong></p>
+                <p>涔?0鍙鎶€鑲′笉鏄垎鏁ｏ紝涔?鍙笉鍚岃涓氱殑鑲＄エ鎵嶆槸銆?/p>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>2. 瀵绘壘浣庣浉鍏虫€ф爣鐨?/strong></p>
+                <p>VST涓庣鎶€鑲＄殑鐩稿叧绯绘暟绾︿负0.3-0.4锛屼綆浜庣鎶€鑲″唴閮ㄧ殑0.7-0.8銆傚綋绉戞妧鑲′笅璺屾椂锛屽叕鐢ㄤ簨涓氬線寰€琛ㄧ幇鍑洪槻寰℃€с€?/p>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>3. 涓婚鎶曡祫 vs 琛屼笟鍒嗘暎</strong></p>
+                <p>VST鐨勭嫭鐗逛箣澶勫湪浜庯細瀹冩棦鏄紶缁熼槻寰℃€ф澘鍧楋紙鐢靛姏锛夛紝鍙堝彈鐩婁簬AI涓婚锛堟暟鎹腑蹇冪敤鐢碉級銆傝繖绉?闃插尽+鎴愰暱"鐨勭粍鍚堝湪缁勫悎涓环鍊兼瀬楂樸€?/p>
+            </div>
+
+            <h4>鍘嗗彶妗堜緥</h4>
+            <p>2022骞寸鎶€鑲″ぇ璺屾椂锛屾爣鏅?00淇℃伅鎶€鏈澘鍧椾笅璺岀害28%锛岃€屽叕鐢ㄤ簨涓氭澘鍧椾粎涓嬭穼绾?%锛岄儴鍒嗙數鍔涘叕鍙哥敋鑷充笂娑ㄣ€傛寔鏈夌數鍔涜偂鐨勬姇璧勮€呭湪绉戞妧瀵掑啲涓幏寰椾簡瀹濊吹鐨勫洖鎾や繚鎶ゃ€?/p>
+
+            <p><strong>浠婃棩鍚ず</strong>锛氬湪杩介€怉I璧涢亾鐨勫悓鏃讹紝涓嶅Θ閰嶇疆涓€浜?鍗栭摬瀛?鐨勫叕鍙糕€斺€擵ST姝ｆ槸AI闈╁懡鐨勭數鍔涗緵搴斿晢銆?/p>
+        </section>
+
+        <!-- Module 3: 绉戞妧鏍稿績璧勮 -->
+        <section id="tech-news">
+            <h2>鈿?绉戞妧/鍖荤枟鏍稿績璧勮</h2>
+
+            <div class="stock-news-card">
+                <h4>[META] Meta Platforms 路 褰撳墠绾?655</h4>
+                
+                <div class="news-item">
+                    <p><strong>馃摪 Q4 2025涓氱哗寮哄姴锛?026骞碅I鎶曡祫鍔犵爜</strong></p>
+                    <p>Meta Q4钀ユ敹$598.9浜匡紝鍚屾瘮澧為暱23.8%锛孍PS $8.88瓒呴鏈熴€傚叕鍙搁璁?026骞磋祫鏈敮鍑?1150-1350浜匡紝鍚屾瘮澧為暱绾?0%锛屼富瑕佺敤浜嶢I鍩虹璁炬柦銆?/p>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255,255,255,0.6);">鏉ユ簮锛歒ahoo Finance 路 The Guardian</p>
+                    <div class="portfolio-viewpoint">
+                        <strong style="color: #d4af37;">銆愭寔浠撹瑙掋€?/strong> 
+                        浣犳寔鏈?3 鑲?META锛屽钩鍧囨垚鏈?$683.94銆傚綋鍓嶈偂浠风暐浣庝簬鎴愭湰锛屼絾AI涓氬姟澧為暱寮哄姴锛孖nstagram浣跨敤鏃堕棿鍚屾瘮澧為暱30%銆備笌浣犲綋鍒濈湅濂紸I搴旂敤钀藉湴鐨勯€昏緫涓€鑷达紝寤鸿缁х画鎸佹湁銆?                    </div>
+                </div>
+
+                <div class="news-item">
+                    <p><strong>馃摪 涓嶸istra绛剧讲20骞存牳鐢靛崗璁?/strong></p>
+                    <p>Meta涓嶸istra绛剧讲20骞淬€?600鍏嗙摝鏍哥數閲囪喘鍗忚锛屼负鍏禔I鏁版嵁涓績鎻愪緵绋冲畾闆剁⒊鐢靛姏銆傝繖鍙嶆槧浜咥I宸ㄥご瀵瑰彲闈犵數鍔涚殑杩垏闇€姹傘€?/p>
+                    <div class="portfolio-viewpoint">
+                        <strong style="color: #d4af37;">銆愭寔浠撹瑙掋€?/strong> 
+                        璇ュ崗璁META鏄埄濂解€斺€旂‘淇滱I鏁版嵁涓績鐢靛姏渚涘簲锛岄檷浣庣⒊鎺掓斁椋庨櫓銆傞暱鏈熺湅鏈夊姪浜庣淮鎸丄I涓氬姟绔炰簤鍔涖€?                    </div>
+                </div>
+            </div>
+
+            <div class="stock-news-card">
+                <h4>[NVDA] NVIDIA 路 褰撳墠绾?183</h4>
+                
+                <div class="news-item">
+                    <p><strong>馃摪 Blackwell鑺墖闇€姹傚己鍔诧紝2027骞磋惀鏀舵寚寮曚箰瑙?/strong></p>
+                    <p>NVDA Q4 FY26钀ユ敹$681浜匡紝鍚屾瘮澧為暱73%銆傛暟鎹腑蹇冭惀鏀?623浜匡紝鍚屾瘮澧為暱75%銆侰FO琛ㄧず2026骞村叏骞磋惀鏀跺彲瑙佹€у凡杈?5000浜裤€侭lackwell B200鑺墖渚涘簲绱у紶灏嗘寔缁嚦2026骞翠笅鍗婂勾銆?/p>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255,255,255,0.6);">鏉ユ簮锛欳oinpaper 路 Investing.com</p>
+                    <div class="portfolio-viewpoint">
+                        <strong style="color: #d4af37;">銆愭寔浠撹瑙掋€?/strong> 
+                        浣犳寔鏈?1 鑲?NVDA锛屾垚鏈?$169.69锛屽綋鍓嶇泩鍒╃害8%銆侫I鑺墖闇€姹備緷鐒跺己鍔诧紝鎸佹湁閫昏緫鏈彉銆傚缓璁户缁寔鏈夛紝鍙€冭檻鍦?200闄勮繎閫傚綋鍑忎粨閿佸畾閮ㄥ垎鍒╂鼎銆?                    </div>
+                </div>
+
+                <div class="news-item">
+                    <p><strong>馃摪 GTC澶т細3鏈?6鏃ュ紑骞?/strong></p>
+                    <p>NVIDIA GTC澶т細灏嗕簬3鏈?6-19鏃ヤ妇琛岋紝CEO榛勪粊鍕嬪皢鍙戣〃涓婚婕旇銆傞璁′細鍙戝竷Rubin鏋舵瀯鏇村缁嗚妭锛屼互鍙夾I宸ュ巶寤鸿璁″垝銆?/p>
+                </div>
+            </div>
+
+            <div class="stock-news-card">
+                <h4>[NBIS] NIO Inc. 路 褰撳墠绾?4.84</h4>
+                
+                <div class="news-item">
+                    <p><strong>馃摪 绱浜や粯绐佺牬100涓囪締锛?鏈堜氦浠橀噺鍚屾瘮澧為暱58%</strong></p>
+                    <p>钄氭潵2鏈堜氦浠?0,797杈嗭紝鍚屾瘮澧為暱57.6%锛岀疮璁′氦浠樼獊鐮?04涓囪締銆傚叕鍙歌鍗曞娍澶村己鍔诧紝3鏈堝墠3澶╂柊璁㈠崟杈?500杈嗭紝鍒?026骞翠互鏉ュ崟鍛ㄦ渶楂樸€?/p>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255,255,255,0.6);">鏉ユ簮锛欶inviz 路 The Motley Fool</p>
+                    <div class="portfolio-viewpoint">
+                        <strong style="color: #d4af37;">銆愭寔浠撹瑙掋€?/strong> 
+                        浣犳寔鏈?4 鑲?NBIS锛屾垚鏈?$93.60銆傜洰鍓嶆诞浜忚緝澶с€傝敋鏉ヤ氦浠樺闀垮己鍔蹭絾鑲′环浣庤糠锛屽彲鑳藉弽鏄犱簡甯傚満瀵逛腑鍥界數鍔ㄨ溅琛屼笟绔炰簤鍔犲墽鍜岀泩鍒╄兘鍔涚殑鎷呭咖銆傚缓璁叧娉ㄥ嵆灏嗗彂甯冪殑Q4璐㈡姤锛岃瘎浼版槸鍚﹂渶瑕佹鎹熴€?                    </div>
+                </div>
+
+                <div class="news-item">
+                    <p><strong>馃摪 鏅鸿兘椹鹃┒鑺墖涓氬姟鑾?2.6浜夸汉姘戝竵娉ㄨ祫</strong></p>
+                    <p>钄氭潵鏅鸿兘椹鹃┒鑺墖涓氬姟鑾?2.6浜夸汉姘戝竵澧炶祫锛岃敋鏉ヤ繚鎸佹帶鑲℃潈銆傛涓炬湁鍔╀簬闄嶄綆瀵瑰閮ㄨ姱鐗囦緵搴斿晢鐨勪緷璧栥€?/p>
+                </div>
+            </div>
+
+            <img src="images/2026-03-08-tech.jpg" alt="绉戞妧璧勮姒傚康鍥? class="section-image">
+        </section>
+
+        <!-- 鍒嗘瀽甯堣瘎绾ф眹鎬?-->
+        <section id="ratings">
+            <h2>馃搳 鍒嗘瀽甯堣瘎绾ф眹鎬?/h2>
+            
+            <div class="ratings-grid">
+                <div class="rating-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                        <strong style="font-size: 1.15rem; color: #fff;">VST</strong>
+                        <span style="background: #22c55e; color: #000; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600;">寮虹儓涔板叆</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin: 0.75rem 0;">
+                        <span style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">褰撳墠浠?/span>
+                        <strong style="color: #fff; font-size: 1rem;">$168.68</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin: 0.5rem 0;">
+                        <span style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">鐩爣浠?/span>
+                        <strong style="color: #22c55e; font-size: 1rem;">$237.66 (+41%)</strong>
+                    </div>
+                    <div style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        22浣嶅垎鏋愬笀鍙備笌璇勭骇 路 涔板叆: 22 路 鎸佹湁: 3 路 鍗栧嚭: 0
+                    </div>
+                </div>
+
+                <div class="rating-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                        <strong style="font-size: 1.15rem; color: #fff;">META</strong>
+                        <span style="background: #22c55e; color: #000; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600;">涔板叆</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin: 0.75rem 0;">
+                        <span style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">褰撳墠浠?/span>
+                        <strong style="color: #fff; font-size: 1rem;">$655.08</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin: 0.5rem 0;">
+                        <span style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">鐩爣浠?/span>
+                        <strong style="color: #22c55e; font-size: 1rem;">$844.44 (+29%)</strong>
+                    </div>
+                    <div style="background: rgba(212,175,55,0.1); border-radius: 6px; padding: 0.75rem; margin-top: 0.75rem;">
+                        <div style="font-size: 0.85rem; color: #d4af37; margin-bottom: 0.25rem;">馃搳 鎴戠殑鎸佷粨瀵规瘮</div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                            <span style="color: rgba(255,255,255,0.6);">鎴戠殑鎴愭湰</span>
+                            <span style="color: #fff;">$683.94 (3鑲?</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-top: 0.25rem;">
+                            <span style="color: rgba(255,255,255,0.6);">vs 鍒嗘瀽甯堢洰鏍?/span>
+                            <span style="color: #22c55e;">+23.5%</span>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        鍗庡皵琛椾竴鑷寸湅濂?路 2026骞村睍鏈涚Н鏋?                    </div>
+                </div>
+
+                <div class="rating-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                        <strong style="font-size: 1.15rem; color: #fff;">NVDA</strong>
+                        <span style="background: #22c55e; color: #000; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600;">涔板叆</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin: 0.75rem 0;">
+                        <span style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">褰撳墠浠?/span>
+                        <strong style="color: #fff; font-size: 1rem;">$183.34</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin: 0.5rem 0;">
+                        <span style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">鐩爣浠峰尯闂?/span>
+                        <strong style="color: #22c55e; font-size: 1rem;">$250-300</strong>
+                    </div>
+                    <div style="background: rgba(212,175,55,0.1); border-radius: 6px; padding: 0.75rem; margin-top: 0.75rem;">
+                        <div style="font-size: 0.85rem; color: #d4af37; margin-bottom: 0.25rem;">馃搳 鎴戠殑鎸佷粨瀵规瘮</div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                            <span style="color: rgba(255,255,255,0.6);">鎴戠殑鎴愭湰</span>
+                            <span style="color: #fff;">$169.69 (1鑲?</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-top: 0.25rem;">
+                            <span style="color: rgba(255,255,255,0.6);">vs 鍒嗘瀽甯堢洰鏍?/span>
+                            <span style="color: #22c55e;">+47%</span>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        Blackwell闇€姹傚己鍔?路 GTC澶т細鍌寲鍓備复杩?                    </div>
+                </div>
+
+                <div class="rating-card hold">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                        <strong style="font-size: 1.15rem; color: #fff;">NBIS</strong>
+                        <span style="background: #f59e0b; color: #000; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600;">鎸佹湁瑙傛湜</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin: 0.75rem 0;">
+                        <span style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">褰撳墠浠?/span>
+                        <strong style="color: #fff; font-size: 1rem;">$4.84</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin: 0.5rem 0;">
+                        <span style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">鍒嗘瀽甯堢洰鏍?/span>
+                        <strong style="color: #22c55e; font-size: 1rem;">$6.49 (+34%)</strong>
+                    </div>
+                    <div style="background: rgba(239,68,68,0.1); border-radius: 6px; padding: 0.75rem; margin-top: 0.75rem;">
+                        <div style="font-size: 0.85rem; color: #ef4444; margin-bottom: 0.25rem;">馃搳 鎴戠殑鎸佷粨瀵规瘮</div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                            <span style="color: rgba(255,255,255,0.6);">鎴戠殑鎴愭湰</span>
+                            <span style="color: #fff;">$93.60 (4鑲?</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-top: 0.25rem;">
+                            <span style="color: rgba(255,255,255,0.6);">褰撳墠娴簭</span>
+                            <span style="color: #ef4444;">-94.8%</span>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        浜や粯澧為暱浣嗙泩鍒╄兘鍔涘緟楠岃瘉 路 鍏虫敞Q4璐㈡姤
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="disclaimer">
+            <strong>鈿狅笍 椋庨櫓鎻愮ず</strong><br>
+            鏈枃鍐呭浠呬緵瀛︿範浜ゆ祦锛屼笉鏋勬垚鎶曡祫寤鸿銆傜編鑲℃姇璧勬湁椋庨櫓锛屽叆甯傞渶璋ㄦ厧銆傛墍鏈夎偂绁ㄦ暟鎹粎渚涘弬鑰冿紝涓嶆瀯鎴愪拱鍗栧缓璁€傛姇璧勮€呭簲鏍规嵁鑷韩椋庨櫓鎵垮彈鑳藉姏鐙珛鍐崇瓥銆?        </div>
+    </div>
+</body>
+</html>
