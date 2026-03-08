@@ -3,511 +3,487 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="2026年3月8日美股宝藏标的分析：UnitedHealth(UNH)防御性医疗巨头，如何培养长期持有的投资心态">
-    <meta name="keywords" content="美股投资,价值投资,UNH,UnitedHealth,联合健康,医疗股,防御性投资,长期持有,巴菲特">
-    <meta name="author" content="ValueInvest">
-    <meta name="theme-color" content="#c9a227">
-    
-    <meta property="og:title" content="2026年3月8日美股分析：UNH + 长期持有心态 | 美股价值投资笔记">
-    <meta property="og:description" content="联合健康防御性护城河分析，如何培养长期持有的投资心态">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://xinyanghuang7.github.io/posts/2026/03/08.html">
-    <meta property="og:image" content="https://xinyanghuang7.github.io/images/posts/2026-03-08-value.jpg">
-    
-    <title>2026年3月8日美股分析：UNH + 长期持有心态 | 美股价值投资笔记</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../../css/style.css">
+    <title>美股价值投资日报 - 2026年3月8日</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: #0a0a0a;
+            color: #e5e5e5;
+            line-height: 1.8;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 1px solid rgba(212,175,55,0.3);
+            margin-bottom: 3rem;
+        }
+        h1 {
+            font-size: 2rem;
+            color: #d4af37;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+        .date {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+        h2 {
+            color: #d4af37;
+            font-size: 1.5rem;
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid rgba(212,175,55,0.3);
+        }
+        h3 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin: 2rem 0 1rem;
+        }
+        h4 {
+            color: #d4af37;
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.75rem;
+        }
+        .stock-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .stock-ticker {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #d4af37;
+        }
+        .stock-name {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.7);
+        }
+        .stock-meta {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        .highlight-box {
+            background: rgba(255,255,255,0.03);
+            border-left: 4px solid #d4af37;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .highlight-box.positive { border-left-color: #22c55e; }
+        .highlight-box.warning { border-left-color: #ef4444; }
+        .highlight-box.info { border-left-color: #3b82f6; }
+        .highlight-box.portfolio { border-left-color: #d4af37; background: rgba(212,175,55,0.08); }
+        .highlight-box ul {
+            margin: 0.75rem 0 0 1.25rem;
+        }
+        .highlight-box li {
+            margin-bottom: 0.5rem;
+        }
+        .section-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+        }
+        .stock-news-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .news-item {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+        }
+        .portfolio-viewpoint {
+            background: rgba(212,175,55,0.1);
+            border-left: 3px solid #d4af37;
+            padding: 0.75rem;
+            margin-top: 0.75rem;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.9rem;
+        }
+        .ratings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+        .rating-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 1.25rem;
+            border-left: 4px solid #22c55e;
+        }
+        .rating-card.hold { border-left-color: #f59e0b; }
+        .rating-card.sell { border-left-color: #ef4444; }
+        .portfolio-box {
+            background: linear-gradient(135deg, rgba(212,175,55,0.1) 0%, rgba(26,26,26,0.8) 100%);
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .holding-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+        }
+        .disclaimer {
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        blockquote {
+            border-left: 3px solid #d4af37;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: rgba(255,255,255,0.8);
+        }
+        strong { color: #fff; }
+    </style>
 </head>
 <body>
-    <div class="progress-bar" id="progressBar"></div>
+    <div class="container">
+        <header>
+            <h1>美股价值投资日报</h1>
+            <div class="date">2026年3月8日 · 星期日</div>
+        </header>
 
-    <header id="header">
-        <div class="nav-container">
-            <a href="../../../index.html" class="logo">Value<span>Invest</span></a>
-            <ul class="nav-links">
-                <li><a href="../../../index.html#about">关于</a></li>
-                <li><a href="../../../index.html#archive">文章目录</a></li>
-            </ul>
-            <div class="nav-date">2026年3月8日</div>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="hero-bg-pattern" style="background-image: url('../../../images/hero-bg.jpg');"></div>
-        <div class="hero-content">
-            <div class="subtitle">美股每日财经分析</div>
-            <h1>UnitedHealth 深度解析</h1>
-            <p class="tagline">"长期持有的艺术：用时间换取复利的奇迹"</p>
-        </div>
-        <a href="#stock-pick" class="scroll-indicator">向下滚动</a>
-    </section>
-
-    <main>
-        <!-- Section 1: Daily Stock Pick -->
-        <section class="section" id="stock-pick">
-            <div class="section-header">
-                <div class="section-number">01</div>
-                <div class="section-title-group">
-                    <h2 class="section-title">美股每日宝藏标的</h2>
-                    <p class="section-subtitle">深度挖掘符合价值投资逻辑的稀缺标的</p>
-                </div>
-                <div class="section-date">2026/03/08</div>
-            </div>
-
-            <div class="stock-card">
-                <div class="stock-header">
+        <!-- 我的持仓组合 -->
+        <div class="portfolio-box">
+            <h4 style="color: #d4af37; font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <span>📊</span> 我的持仓组合
+            </h4>
+            <div style="margin-bottom: 1rem;">
+                <div class="holding-item">
                     <div>
-                        <div class="stock-ticker">UNH</div>
-                        <div class="stock-name">UnitedHealth Group Inc.</div>
-                        <span class="stock-exchange">NYSE · 美股医疗板块龙头</span>
+                        <strong style="color: #d4af37; font-size: 1rem;">META</strong>
+                        <span style="color: rgba(255,255,255,0.5); font-size: 0.8rem; margin-left: 0.5rem;">Meta Platforms</span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #fff; font-size: 0.9rem;">3 股 @ $683.94</div>
+                        <div style="color: rgba(255,255,255,0.4); font-size: 0.75rem;">成本: $2,051.81</div>
                     </div>
                 </div>
-
-                <div class="stock-meta">
-                    <div class="stock-meta-item">
-                        <span class="stock-meta-label">所属行业</span>
-                        <span class="stock-meta-value">医疗保健 / 保险服务</span>
+                <div class="holding-item">
+                    <div>
+                        <strong style="color: #d4af37; font-size: 1rem;">NBIS</strong>
+                        <span style="color: rgba(255,255,255,0.5); font-size: 0.8rem; margin-left: 0.5rem;">NIO Inc.</span>
                     </div>
-                    <div class="stock-meta-item">
-                        <span class="stock-meta-label">核心业务</span>
-                        <span class="stock-meta-value">健康保险(UnitedHealthcare) + 医疗服务(Optum)</span>
-                    </div>
-                    <div class="stock-meta-item">
-                        <span class="stock-meta-label">市值定位</span>
-                        <span class="stock-meta-value">美股医疗板块最大，防御性蓝筹股</span>
-                    </div>
-                    <div class="stock-meta-item">
-                        <span class="stock-meta-label">股息率</span>
-                        <span class="stock-meta-value">约1.4%，连续14年股息增长</span>
+                    <div style="text-align: right;">
+                        <div style="color: #fff; font-size: 0.9rem;">4 股 @ $93.60</div>
+                        <div style="color: rgba(255,255,255,0.4); font-size: 0.75rem;">成本: $374.40</div>
                     </div>
                 </div>
-
-                <div class="highlight-box positive">
-                    <h4>✅ 核心价值亮点</h4>
-                    <ul>
-                        <li><strong>双引擎业务模式：</strong>UnitedHealthcare提供稳定保险现金流，Optum提供高增长医疗服务收入，业务协同效应显著。保险业务提供客户导流，Optum提供数据洞察，形成闭环生态</li>
-                        <li><strong>行业龙头地位稳固：</strong>美国最大健康保险商，服务超5000万人，规模优势带来定价权和成本优势。Optum是最大药房福利管理商(PBM)，药品议价能力极强</li>
-                        <li><strong>防御性护城河深厚：</strong>医疗需求刚性，经济周期波动对其影响小。即使在2008年金融危机期间，UNH业绩依然稳健，是理想的防御性配置标的</li>
-                        <li><strong>稳健财务表现：</strong>ROE长期维持在20%以上，自由现金流充沛，股息连续增长14年。资本回报率(ROIC)持续高于加权平均资本成本(WACC)，创造持续经济价值</li>
-                        <li><strong>老龄化趋势核心受益：</strong>美国65岁以上人口占比持续上升，Medicare Advantage业务增长潜力巨大。预计2030年Medicare参保人数将突破8000万，UNH是最大受益者之一</li>
-                    </ul>
-                </div>
-
-                <div class="highlight-box warning">
-                    <h4>⚠️ 核心风险提示</h4>
-                    <ul>
-                        <li><strong>医保政策不确定性：</strong>政府医保政策调整（如Medicare Advantage报销率削减）可能压缩利润空间。政治周期带来的政策风险是医疗股最大不确定性来源</li>
-                        <li><strong>网络安全风险：</strong>2024年2月Change Healthcare（UNH子公司）遭受勒索软件攻击，造成8.72亿美元损失。医疗数据敏感性高，安全投入持续增加将侵蚀利润</li>
-                        <li><strong>医疗成本通胀压力：</strong>创新药（如GLP-1减肥药、肿瘤免疫疗法）价格昂贵，可能推高医疗成本，挤压保险业务利润率</li>
-                        <li><strong>反垄断监管压力：</strong>PBM（药房福利管理）业务模式面临FTC调查，若被要求拆分或改变定价机制，可能影响Optum盈利能力</li>
-                    </ul>
-                </div>
-
-                <div class="highlight-box tip">
-                    <h4>💡 长期持有建议</h4>
-                    <p>建议持有周期<strong>5年以上</strong>，作为防御性核心仓位配置<strong>3%-5%</strong>。UNH适合作为投资组合的"压舱石"——当科技股波动剧烈时，UNH提供稳定现金流和防御性保护。当前Forward P/E约18x，处于历史中位水平。重点关注季度财报中Optum业务增速、Medicare Advantage会员增长、医疗损失率(MLR)等指标。</p>
+                <div class="holding-item">
+                    <div>
+                        <strong style="color: #d4af37; font-size: 1rem;">NVDA</strong>
+                        <span style="color: rgba(255,255,255,0.5); font-size: 0.8rem; margin-left: 0.5rem;">NVIDIA</span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #fff; font-size: 0.9rem;">1 股 @ $169.69</div>
+                        <div style="color: rgba(255,255,255,0.4); font-size: 0.75rem;">成本: $169.69</div>
+                    </div>
                 </div>
             </div>
+            <div style="display: flex; justify-content: space-between; padding-top: 1rem; border-top: 1px solid rgba(212,175,55,0.2); font-size: 0.9rem;">
+                <span style="color: rgba(255,255,255,0.6);">总持仓成本</span>
+                <strong style="color: #d4af37; font-size: 1.1rem;">$2,595.90</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 0.5rem; font-size: 0.85rem;">
+                <span style="color: rgba(255,255,255,0.5);">持仓结构</span>
+                <span style="color: rgba(255,255,255,0.7);">100% 科技板块 · 0% 现金</span>
+            </div>
+        </div>
+
+        <!-- Module 1: 每日宝藏标的 -->
+        <section id="stock-pick">
+            <h2>🔥 美股每日宝藏标的</h2>
+            
+            <div class="stock-header">
+                <div class="stock-ticker">VST</div>
+                <div class="stock-name">Vistra Corp</div>
+            </div>
+            <div class="stock-meta">电力/能源 | 美国最大竞争性电力生产商 | 市值约$500亿 | 股息率约1.5%</div>
+
+            <div class="highlight-box info">
+                <h4>🎯 为何今日推荐这只</h4>
+                <p>你的当前持仓 <strong>100% 集中于科技板块</strong>（META/NVDA/NBIS）。<strong>VST作为能源板块龙头</strong>，具备低相关性特征，能有效分散组合风险。</p>
+                <p style="margin-top: 0.75rem;">更重要的是，VST是<strong>AI电力需求爆发的核心受益者</strong>——与META签署了20年核电供应协议，直接受益于AI数据中心电力需求激增。</p>
+            </div>
+
+            <div class="highlight-box positive">
+                <h4>✅ 核心价值亮点</h4>
+                <ul>
+                    <li><strong>AI电力需求核心受益者</strong>：与META签署20年、2600兆瓦核电供应协议；与AWS签署多年合作协议</li>
+                    <li><strong>稀缺核电资产</strong>：拥有6400+兆瓦核电装机，是美国最大核电运营商之一，核电是24/7零碳基荷电源，最受数据中心青睐</li>
+                    <li><strong>业绩高增长</strong>：2026年Adjusted EBITDA指引$68-76亿，同比增长约22%</li>
+                    <li><strong>机构看好</strong>：22位分析师中22位推荐买入，目标价中位数$237.66，较当前价有约37%上行空间</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box warning">
+                <h4>⚠️ 核心风险提示</h4>
+                <ul>
+                    <li><strong>利率风险</strong>：高负债运营，利率上升增加财务成本（2025年利息支出$11.8亿）</li>
+                    <li><strong>监管风险</strong>：电力价格上涨可能引发政治压力和监管干预</li>
+                    <li><strong>AI需求不及预期</strong>：若AI投资周期降温，电力需求增长可能放缓</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box tip">
+                <h4>💡 长期持有建议</h4>
+                <p>当前股价约$168，分析师目标价区间$200-308。建议入场区间$155-165，止损位$140（-17%）。</p>
+                <p style="margin-top: 0.75rem;"><strong>仓位建议</strong>：作为组合的能源板块底仓，建议配置10-15%，持有周期2-3年，与科技股形成行业对冲。</p>
+            </div>
+
+            <img src="images/2026-03-08-value.jpg" alt="价值投资概念图" class="section-image">
         </section>
 
-        <!-- Section 2: Investment Wisdom -->
-        <section class="section" id="wisdom">
-            <div class="section-header">
-                <div class="section-number">02</div>
-                <div class="section-title-group">
-                    <h2 class="section-title">每日投资认知加餐</h2>
-                    <p class="section-subtitle">萃取价值投资大师的智慧精华</p>
-                </div>
-                <div class="section-date">2026/03/08 · 长期持有心态</div>
+        <!-- Module 2: 投资认知加餐 -->
+        <section id="wisdom">
+            <h2>📚 每日投资认知加餐</h2>
+            
+            <h3>行业分散：别把鸡蛋放一个篮子</h3>
+            
+            <p>你的持仓100%集中在科技板块，这在牛市中确实是 profitable 的，但风险也高度集中。当科技股回调时，整个组合都会受到冲击。</p>
+
+            <blockquote>
+                "分散投资是对无知的保护。如果你知道自己在做什么，集中投资也能做得很好。" —— 沃伦·巴菲特
+            </blockquote>
+
+            <p>但问题是：<strong>你真的知道自己在做什么吗？</strong>即使是巴菲特，也持有银行（美国银行）、消费品（可口可乐）、能源（雪佛龙）等多个板块。</p>
+
+            <h4>分散的正确姿势</h4>
+            
+            <div class="highlight-box">
+                <p><strong>1. 行业分散 ≠ 个股数量增加</strong></p>
+                <p>买10只科技股不是分散，买3只不同行业的股票才是。</p>
             </div>
 
-            <div class="wisdom-card">
-                <div class="wisdom-theme">长期持有心态</div>
-                <h3 class="wisdom-title">长期持有的艺术：用时间换取复利的奇迹</h3>
+            <div class="highlight-box">
+                <p><strong>2. 寻找低相关性标的</strong></p>
+                <p>VST与科技股的相关系数约为0.3-0.4，低于科技股内部的0.7-0.8。当科技股下跌时，公用事业往往表现出防御性。</p>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>3. 主题投资 vs 行业分散</strong></p>
+                <p>VST的独特之处在于：它既是传统防御性板块（电力），又受益于AI主题（数据中心用电）。这种"防御+成长"的组合在组合中价值极高。</p>
+            </div>
+
+            <h4>历史案例</h4>
+            <p>2022年科技股大跌时，标普500信息技术板块下跌约28%，而公用事业板块仅下跌约1%，部分电力公司甚至上涨。持有电力股的投资者在科技寒冬中获得了宝贵的回撤保护。</p>
+
+            <p><strong>今日启示</strong>：在追逐AI赛道的同时，不妨配置一些"卖铲子"的公司——VST正是AI革命的电力供应商。</p>
+        </section>
+
+        <!-- Module 3: 科技核心资讯 -->
+        <section id="tech-news">
+            <h2>⚡ 科技/医疗核心资讯</h2>
+
+            <div class="stock-news-card">
+                <h4>[META] Meta Platforms · 当前约$655</h4>
                 
-                <div class="wisdom-content">
-                    <p>巴菲特说：<strong>"如果你不愿意持有一只股票十年，那就不要持有它十分钟。"</strong>但这话容易理解，极难执行。长期持有最大的敌人不是市场波动，而是<strong>投资者自己的情绪</strong>——贪婪让我们在高点追高，恐惧让我们在低点割肉。</p>
-                    <p style="margin-top: 1rem;">芒格在《穷查理宝典》中揭示了一个反直觉的事实：<strong>投资成功的关键不是智商，而是性格。</strong>你需要的是当别人贪婪时恐惧、当别人恐惧时贪婪的逆向思维，以及在市场剧烈波动时依然能睡个好觉的定力。</p>
-                </div>
-
-                <div class="wisdom-image" style="margin: 2rem 0; text-align: center;">
-                    <img src="../../../images/posts/2026-03-08-value.jpg" alt="长期持有概念图" style="max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
-                    <p style="font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 0.5rem; font-style: italic;">时间是优秀企业的朋友，是平庸企业的敌人</p>
-                </div>
-
-                <div class="wisdom-rules">
-                    <h4>可落地执行规则</h4>
-                    <ol>
-                        <li><strong>用"永久资金"投资：</strong>只投入3-5年甚至更长时间不用的钱。如果这笔钱下个月可能需要还房贷，你就无法承受波动。巴菲特的伯克希尔可以永久持有，因为他没有赎回压力。普通投资者应该建立"核心仓位+卫星仓位"的结构，核心仓位用长钱，卫星仓位用短钱</li>
-                        <li><strong>区分"价格波动"与"价值变化"：</strong>股价跌了30%，但公司基本面没变，这是<strong>机会</strong>；股价涨了30%，但公司护城河在崩塌，这是<strong>陷阱</strong>。关注企业本身，而非股价数字。巴菲特说："市场短期是投票机，长期是称重机。"</li>
-                        <li><strong>建立"持有清单"制度：</strong>写下你买入某只股票的3个核心理由。当市场恐慌时，对照清单检查：这些理由还成立吗？如果成立，下跌就是加仓机会；如果不成立，才是卖出理由。不要因价格波动而动摇。</li>
-                        <li><strong>限制看盘频率：</strong>每天看盘10次，你就会被短期波动绑架。试试每周只看一次，甚至每月一次。长期投资者应该像企业主一样思考——你不会每天问自己"我的餐厅今天值多少钱"，而是关注"我的餐厅生意好不好"。</li>
-                        <li><strong>拥抱波动，而非逃避：</strong>巴菲特说："波动是朋友，不是敌人。"股价波动创造了低价买入的机会。如果你喜欢的餐厅打5折，你会高兴；为什么你喜欢的股票打5折，你却恐慌？</li>
-                    </ol>
-                </div>
-
-                <div class="wisdom-case">
-                    <h4>经典案例：巴菲特持有可口可乐30年</h4>
-                    <p>1988年巴菲特开始买入可口可乐，随后的10年里，可口可乐股价经历过多次大幅回调：1991年跌35%，1998-2000年跌50%，2008年金融危机再跌30%。如果巴菲特是"趋势投资者"，他早就在第一次回调时割肉了。</p>
-                    <p style="margin-top: 0.8rem;">但巴菲特始终持有，因为他相信<strong>品牌护城河没有改变</strong>——全球每天卖出19亿份可口可乐产品，这个基本事实没有变。30年后，这笔投资的回报率超过20倍，年化回报率约12%，加上股息再投资，总回报更为惊人。</p>
-                    <p style="margin-top: 0.8rem;"><strong>关键启示：</strong>如果你在每次回调时恐慌卖出，就不会有这个结果。长期持有的关键是找到好企业，然后让它为你工作。时间是优秀企业的朋友——可口可乐的复利效应在10年后才开始真正显现。</p>
-                </div>
-
-                <div class="wisdom-takeaway">
-                    长期持有的本质，是相信时间的力量。伟大的企业会穿越周期，而你的任务是不要被周期甩下车。复利是世界第八大奇迹，但复利需要时间——你能给它的最大礼物，就是耐心。
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 3: Market News -->
-        <section class="section" id="market">
-            <div class="section-header">
-                <div class="section-number">03</div>
-                <div class="section-title-group">
-                    <h2 class="section-title">美股科技核心标的每日财经资讯早报</h2>
-                    <p class="section-subtitle">机构级专业投研参考，专为长期价值投资者定制</p>
-                </div>
-                <div class="section-date">2026/03/08</div>
-            </div>
-
-            <div class="market-grid">
-                <div style="grid-column: 1 / -1; margin-bottom: 1rem;">
-                    <img src="../../../images/posts/2026-03-08-tech.jpg" alt="科技股票分析可视化" style="width: 100%; height: 300px; object-fit: cover; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-                </div>
-
-                <!-- LLY -->
-                <div class="stock-detail-card">
-                    <div class="stock-detail-header">
-                        <div>
-                            <div class="stock-detail-ticker">LLY</div>
-                            <div class="stock-detail-name">Eli Lilly & Co. · 减肥药龙头</div>
-                        </div>
-                        <div class="stock-price">
-                            <div class="price-value">$892.45</div>
-                            <div class="price-change price-up">▲ +1.85% (+$16.20)</div>
-                        </div>
-                    </div>
-
-                    <div class="metrics-grid">
-                        <div class="metric">
-                            <div class="metric-label">成交量</div>
-                            <div class="metric-value">3.2M</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-label">日高/日低</div>
-                            <div class="metric-value">$898.50/$882.30</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-label">超额收益</div>
-                            <div class="metric-value price-up">+2.35% vs SPX</div>
-                        </div>
-                    </div>
-
-                    <div class="news-list">
-                        <div class="news-item">
-                            <div class="news-title">💊 Zepbound销售额超预期，产能扩张顺利推进</div>
-                            <div class="news-perspective"><strong>【长线视角】</strong>GLP-1减肥药需求持续强劲，北美市场份额稳步提升。印第安纳州新工厂即将投产，产能瓶颈有望缓解。长期增长逻辑清晰，但需关注诺和诺德竞争加剧</div>
-                        </div>
-                        <div class="news-item">
-                            <div class="news-title">📈 分析师上调目标价至$950，看好阿尔茨海默药物管线</div>
-                            <div class="news-perspective"><strong>【长线视角】</strong>Donanemab获批为长期增长开辟新赛道。减肥药+阿尔茨海默双轮驱动，估值虽高但护城河深厚。适合长期持有，短期波动可忽略</div>
-                        </div>
-                        <div class="news-item">
-                            <div class="news-title">⚠️  Medicare谈判价格可能低于预期</div>
-                            <div class="news-perspective"><strong>【长线视角】</strong>政府药价谈判是 Pharma 行业最大政治风险。但减肥药不在Medicare覆盖范围，短期影响有限。长期看，创新药定价权仍掌握在企业手中</div>
-                        </div>
+                <div class="news-item">
+                    <p><strong>📰 Q4 2025业绩强劲，2026年AI投资加码</strong></p>
+                    <p>Meta Q4营收$598.9亿，同比增长23.8%，EPS $8.88超预期。公司预计2026年资本支出$1150-1350亿，同比增长约60%，主要用于AI基础设施。</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255,255,255,0.6);">来源：Yahoo Finance · The Guardian</p>
+                    <div class="portfolio-viewpoint">
+                        <strong style="color: #d4af37;">【持仓视角】</strong> 
+                        你持有 3 股 META，平均成本 $683.94。当前股价略低于成本，但AI业务增长强劲，Instagram使用时间同比增长30%。与你当初看好AI应用落地的逻辑一致，建议继续持有。
                     </div>
                 </div>
 
-                <!-- JNJ -->
-                <div class="stock-detail-card">
-                    <div class="stock-detail-header">
-                        <div>
-                            <div class="stock-detail-ticker">JNJ</div>
-                            <div class="stock-detail-name">Johnson & Johnson · 医疗巨头</div>
-                        </div>
-                        <div class="stock-price">
-                            <div class="price-value">$158.30</div>
-                            <div class="price-change price-up">▲ +0.62% (+$0.98)</div>
-                        </div>
-                    </div>
-
-                    <div class="metrics-grid">
-                        <div class="metric">
-                            <div class="metric-label">成交量</div>
-                            <div class="metric-value">8.5M</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-label">日高/日低</div>
-                            <div class="metric-value">$159.20/$156.80</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-label">超额收益</div>
-                            <div class="metric-value price-up">+1.12% vs SPX</div>
-                        </div>
-                    </div>
-
-                    <div class="news-list">
-                        <div class="news-item">
-                            <div class="news-title">🏥 Kenvue消费者健康业务剥离后更聚焦创新药</div>
-                            <div class="news-perspective"><strong>【长线视角】</strong>免疫学和肿瘤学管线丰富，Tremfya、Darzalex等重磅药物销售稳健。剥离低增长业务后，利润率有望提升。防御性特征明显，股息率约3%</div>
-                        </div>
-                        <div class="news-item">
-                            <div class="news-title">💰 连续62年股息增长，股息贵族典范</div>
-                            <div class="news-perspective"><strong>【长线视角】</strong>AAA信用评级（全美仅两家），财务极其稳健。适合保守投资者作为核心防御仓位。估值合理（Forward P/E约15x），长期配置价值突出</div>
-                        </div>
-                        <div class="news-item">
-                            <div class="news-title">⚠️ 滑石粉诉讼案达成和解，不确定性消除</div>
-                            <div class="news-perspective"><strong>【长线视角】</strong>70亿美元和解协议虽然金额巨大，但一次性解决历史包袱。管理层预计和解后每股收益将提升。诉讼风险消除，估值压制因素减弱</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PFE -->
-                <div class="stock-detail-card">
-                    <div class="stock-detail-header">
-                        <div>
-                            <div class="stock-detail-ticker">PFE</div>
-                            <div class="stock-detail-name">Pfizer Inc. · 制药巨头</div>
-                        </div>
-                        <div class="stock-price">
-                            <div class="price-value">$25.85</div>
-                            <div class="price-change price-down">▼ -0.42% (-$0.11)</div>
-                        </div>
-                    </div>
-
-                    <div class="metrics-grid">
-                        <div class="metric">
-                            <div class="metric-label">成交量</div>
-                            <div class="metric-value">45.2M</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-label">日高/日低</div>
-                            <div class="metric-value">$26.20/$25.60</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-label">超额收益</div>
-                            <div class="metric-value price-down">+0.08% vs SPX</div>
-                        </div>
-                    </div>
-
-                    <div class="news-list">
-                        <div class="news-item">
-                            <div class="news-title">💊 新冠疫苗收入大幅下滑后积极转型</div>
-                            <div class="news-viewpoint"><strong>【长线视角】</strong>新冠收入从峰值的370亿美元降至不足50亿，但肿瘤和炎症管线有看点。收购Seagen增强肿瘤业务，2026年新品上市潮有望提振业绩</div>
-                        </div>
-                        <div class="news-item">
-                            <div class="news-title">📉 当前PE处于历史最低区间，股息率超6%</div>
-                            <div class="news-viewpoint"><strong>【长线视角】</strong>估值已反映最悲观预期，适合逆向布局。但需耐心等待催化剂——新药上市、管线突破或并购。股息率虽高，但需关注派息可持续性</div>
-                        </div>
-                        <div class="news-item">
-                            <div class="news-title">⚠️ 口服GLP-1药物临床数据将公布</div>
-                            <div class="news-viewpoint"><strong>【长线视角】</strong>Danuglipron口服减肥药是关键催化剂。若临床数据积极，可能重塑竞争格局（患者更倾向于口服vs注射）。但距离上市还有2-3年，不确定性仍高</div>
-                        </div>
+                <div class="news-item">
+                    <p><strong>📰 与Vistra签署20年核电协议</strong></p>
+                    <p>Meta与Vistra签署20年、2600兆瓦核电采购协议，为其AI数据中心提供稳定零碳电力。这反映了AI巨头对可靠电力的迫切需求。</p>
+                    <div class="portfolio-viewpoint">
+                        <strong style="color: #d4af37;">【持仓视角】</strong> 
+                        该协议对META是利好——确保AI数据中心电力供应，降低碳排放风险。长期看有助于维持AI业务竞争力。
                     </div>
                 </div>
             </div>
 
-            <!-- Analysis Summary -->
-            <div class="analysis-box">
-                <h3 class="analysis-title">华尔街医疗行业首席分析师专业研判</h3>
+            <div class="stock-news-card">
+                <h4>[NVDA] NVIDIA · 当前约$183</h4>
                 
-                <div class="analysis-grid">
-                    <div class="analysis-column opportunity">
-                        <h4>📈 机会端分析</h4>
-                        
-                        <div class="analysis-item">
-                            <strong>Eli Lilly (LLY)</strong>
-                            <p>GLP-1减肥药市场空间预计2030年达1300亿美元，Zepbound/Mounjaro市场份额持续提升。阿尔茨海默药物Donanemab获批开辟第二增长曲线。产能扩张顺利，2026年供应瓶颈有望缓解。创新药定价权依然稳固</p>
-                        </div>
-                        
-                        <div class="analysis-item">
-                            <strong>Johnson & Johnson (JNJ)</strong>
-                            <p>AAA信用评级+62年股息增长记录，是防御性投资的典范。创新药管线稳健，免疫学和肿瘤学领域优势明显。滑石粉诉讼和解消除不确定性，估值压制因素减弱。适合作为组合的"压舱石"</p>
-                        </div>
-                        
-                        <div class="analysis-item">
-                            <strong>Pfizer (PFE)</strong>
-                            <p>估值处于20年最低水平，股息率超6%，风险收益比改善。Seagen并购整合顺利，肿瘤管线补强。口服GLP-1若成功可能重塑竞争格局。适合逆向投资者小仓位布局，但需有耐心</p>
-                        </div>
-                    </div>
-
-                    <div class="analysis-column risk">
-                        <h4>⚠️ 风险端分析</h4>
-                        
-                        <div class="analysis-item">
-                            <strong>Eli Lilly (LLY)</strong>
-                            <p>估值处于历史最高水平（Forward P/E约35x），任何不及预期都可能导致剧烈回调。诺和诺德竞争加剧，价格战风险存在。阿尔茨海默药物商业化进度慢于预期</p>
-                        </div>
-                        
-                        <div class="analysis-item">
-                            <strong>Johnson & Johnson (JNJ)</strong>
-                            <p>滑石粉诉讼虽和解，但其他产品责任诉讼风险仍存。创新药增长放缓，生物类似药竞争加剧。医疗科技业务受宏观经济影响，设备采购延迟风险</p>
-                        </div>
-                        
-                        <div class="analysis-item">
-                            <strong>Pfizer (PFE)</strong>
-                            <p>新冠收入断崖式下滑后，新产品接棒进度慢于预期。口服GLP-1临床数据不确定，若失败将重创估值。高负债（并购Seagen）限制派息增长空间。价值陷阱风险需警惕</p>
-                        </div>
+                <div class="news-item">
+                    <p><strong>📰 Blackwell芯片需求强劲，2027年营收指引乐观</strong></p>
+                    <p>NVDA Q4 FY26营收$681亿，同比增长73%。数据中心营收$623亿，同比增长75%。CFO表示2026年全年营收可见性已达$5000亿。Blackwell B200芯片供应紧张将持续至2026年下半年。</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255,255,255,0.6);">来源：Coinpaper · Investing.com</p>
+                    <div class="portfolio-viewpoint">
+                        <strong style="color: #d4af37;">【持仓视角】</strong> 
+                        你持有 1 股 NVDA，成本 $169.69，当前盈利约8%。AI芯片需求依然强劲，持有逻辑未变。建议继续持有，可考虑在$200附近适当减仓锁定部分利润。
                     </div>
                 </div>
 
-                <div class="analysis-summary">
-                    <strong>综合投资态度与操作策略：</strong>医疗板块是典型的防御性行业，在经济不确定时期表现稳健。建议配置：LLY（成长型，减肥药+阿尔茨海默双驱动，适合长期持有）、JNJ（防御型，AAA评级+稳定股息，核心仓位）、PFE（逆向型，估值触底但需耐心等待催化剂）。整体策略：以防御性医疗股（UNH、JNJ）为组合"压舱石"，小仓位配置高成长标的（LLY），避免追高估值过高标的。
+                <div class="news-item">
+                    <p><strong>📰 GTC大会3月16日开幕</strong></p>
+                    <p>NVIDIA GTC大会将于3月16-19日举行，CEO黄仁勋将发表主题演讲。预计会发布Rubin架构更多细节，以及AI工厂建设计划。</p>
                 </div>
             </div>
 
-            <!-- Analyst Ratings -->
-            <div class="analysis-box" style="margin-top: 2rem;">
-                <h3 class="analysis-title">📊 华尔街分析师评级汇总</h3>
-                <div class="stock-ratings-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
-                    
-                    <div class="rating-card" style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 1.25rem; border-left: 4px solid #22c55e;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-                            <strong style="font-size: 1.1rem; color: #fff;">UNH</strong>
-                            <span style="background: #22c55e; color: #000; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">买入</span>
-                        </div>
-                        <div style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 0.5rem;">UnitedHealth Group</div>
-                        <div style="display: flex; justify-content: space-between; margin: 0.75rem 0;">
-                            <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">当前价</span>
-                            <strong style="color: #fff;">$286.48</strong>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; margin: 0.5rem 0;">
-                            <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">目标价</span>
-                            <strong style="color: #22c55e;">$373.96</strong>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; margin: 0.5rem 0;">
-                            <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">上涨空间</span>
-                            <strong style="color: #22c55e;">+30.5%</strong>
-                        </div>
-                        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                            34位分析师 | 21买入 6持有 2卖出
-                        </div>
-                        
-                        <div style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.05);">
-                            <div style="font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-bottom: 0.25rem;">TradingView 技术指标</div>
-                            <div style="display: flex; gap: 0.5rem; font-size: 0.7rem;">
-                                <span style="background: rgba(34,197,94,0.2); color: #4ade80; padding: 0.1rem 0.4rem; border-radius: 3px;">买入</span>
-                                <span style="color: rgba(255,255,255,0.5);">MA(10) RSI(9) MACD(8)</span>
-                            </div>
-                        </div>
+            <div class="stock-news-card">
+                <h4>[NBIS] NIO Inc. · 当前约$4.84</h4>
+                
+                <div class="news-item">
+                    <p><strong>📰 累计交付突破100万辆，2月交付量同比增长58%</strong></p>
+                    <p>蔚来2月交付20,797辆，同比增长57.6%，累计交付突破104万辆。公司订单势头强劲，3月前3天新订单达3500辆，创2026年以来单周最高。</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(255,255,255,0.6);">来源：Finviz · The Motley Fool</p>
+                    <div class="portfolio-viewpoint">
+                        <strong style="color: #d4af37;">【持仓视角】</strong> 
+                        你持有 4 股 NBIS，成本 $93.60。目前浮亏较大。蔚来交付增长强劲但股价低迷，可能反映了市场对中国电动车行业竞争加剧和盈利能力的担忧。建议关注即将发布的Q4财报，评估是否需要止损。
                     </div>
-
-                    <div class="rating-card" style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 1.25rem; border-left: 4px solid #22c55e;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-                            <strong style="font-size: 1.1rem; color: #fff;">LLY</strong>
-                            <span style="background: #22c55e; color: #000; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">强烈买入</span>
-                        </div>
-                        <div style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 0.5rem;">Eli Lilly & Co.</div>
-                        <div style="display: flex; justify-content: space-between; margin: 0.75rem 0;">
-                            <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">当前价</span>
-                            <strong style="color: #fff;">$990.33</strong>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; margin: 0.5rem 0;">
-                            <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">目标价</span>
-                            <strong style="color: #22c55e;">$1,100.00</strong>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; margin: 0.5rem 0;">
-                            <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">上涨空间</span>
-                            <strong style="color: #22c55e;">+11.1%</strong>
-                        </div>
-                        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                            28位分析师 | 26买入 2持有 0卖出
-                        </div>
-                        
-                        <div style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.05);">
-                            <div style="font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-bottom: 0.25rem;">TradingView 技术指标</div>
-                            <div style="display: flex; gap: 0.5rem; font-size: 0.7rem;">
-                                <span style="background: rgba(34,197,94,0.2); color: #4ade80; padding: 0.1rem 0.4rem; border-radius: 3px;">强烈买入</span>
-                                <span style="color: rgba(255,255,255,0.5);">MA(15) RSI(14) MACD(12)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rating-card" style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 1.25rem; border-left: 4px solid #eab308;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-                            <strong style="font-size: 1.1rem; color: #fff;">JNJ</strong>
-                            <span style="background: #eab308; color: #000; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">持有</span>
-                        </div>
-                        <div style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 0.5rem;">Johnson & Johnson</div>
-                        <div style="display: flex; justify-content: space-between; margin: 0.75rem 0;">
-                            <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">当前价</span>
-                            <strong style="color: #fff;">$240.40</strong>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; margin: 0.5rem 0;">
-                            <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">目标价</span>
-                            <strong style="color: #22c55e;">$265.00</strong>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; margin: 0.5rem 0;">
-                            <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">上涨空间</span>
-                            <strong style="color: #22c55e;">+10.2%</strong>
-                        </div>
-                        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                            22位分析师 | 12买入 8持有 2卖出
-                        </div>
-                        
-                        <div style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.05);">
-                            <div style="font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-bottom: 0.25rem;">TradingView 技术指标</div>
-                            <div style="display: flex; gap: 0.5rem; font-size: 0.7rem;">
-                                <span style="background: rgba(234,179,8,0.2); color: #facc15; padding: 0.1rem 0.4rem; border-radius: 3px;">中性</span>
-                                <span style="color: rgba(255,255,255,0.5);">MA(8) RSI(8) MACD(7)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="rating-card" style="background: rgba(255,255,255,0.05); border-radius: 8px; padding: 1.25rem; border-left: 4px solid #eab308;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-                            <strong style="font-size: 1.1rem; color: #fff;">PFE</strong>
-                            <span style="background: #eab308; color: #000; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600;">持有</span>
-                        </div>
-                        <div style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 0.5rem;">Pfizer Inc.</div>
-                        <div style="display: flex; justify-content: space-between; margin: 0.75rem 0;">
-                            <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">当前价</span>
-                            <strong style="color: #fff;">$27.05</strong>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; margin: 0.5rem 0;">
-                            <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">目标价</span>
-                            <strong style="color: #22c55e;">$32.50</strong>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; margin: 0.5rem 0;">
-                            <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">上涨空间</span>
-                            <strong style="color: #22c55e;">+20.1%</strong>
-                        </div>
-                        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                            25位分析师 | 8买入 14持有 3卖出
-                        </div>
-                        
-                        <div style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.05);">
-                            <div style="font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-bottom: 0.25rem;">TradingView 技术指标</div>
-                            <div style="display: flex; gap: 0.5rem; font-size: 0.7rem;">
-                                <span style="background: rgba(234,179,8,0.2); color: #facc15; padding: 0.1rem 0.4rem; border-radius: 3px;">中性</span>
-                                <span style="color: rgba(255,255,255,0.5);">MA(7) RSI(7) MACD(6)</span>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-                <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(201,162,39,0.1); border-radius: 6px; font-size: 0.85rem; color: rgba(255,255,255,0.7);">
-                    <strong style="color: #c9a227;">📈 数据来源：</strong>TradingView (技术指标) + Yahoo Finance (分析师评级) + Finnhub (实时股价) | 更新时间：2026-03-08
+
+                <div class="news-item">
+                    <p><strong>📰 智能驾驶芯片业务获22.6亿人民币注资</strong></p>
+                    <p>蔚来智能驾驶芯片业务获22.6亿人民币增资，蔚来保持控股权。此举有助于降低对外部芯片供应商的依赖。</p>
+                </div>
+            </div>
+
+            <img src="images/2026-03-08-tech.jpg" alt="科技资讯概念图" class="section-image">
+        </section>
+
+        <!-- 分析师评级汇总 -->
+        <section id="ratings">
+            <h2>📊 分析师评级汇总</h2>
+            
+            <div class="ratings-grid">
+                <div class="rating-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                        <strong style="font-size: 1.15rem; color: #fff;">VST</strong>
+                        <span style="background: #22c55e; color: #000; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600;">强烈买入</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin: 0.75rem 0;">
+                        <span style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">当前价</span>
+                        <strong style="color: #fff; font-size: 1rem;">$168.68</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin: 0.5rem 0;">
+                        <span style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">目标价</span>
+                        <strong style="color: #22c55e; font-size: 1rem;">$237.66 (+41%)</strong>
+                    </div>
+                    <div style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        22位分析师参与评级 · 买入: 22 · 持有: 3 · 卖出: 0
+                    </div>
+                </div>
+
+                <div class="rating-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                        <strong style="font-size: 1.15rem; color: #fff;">META</strong>
+                        <span style="background: #22c55e; color: #000; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600;">买入</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin: 0.75rem 0;">
+                        <span style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">当前价</span>
+                        <strong style="color: #fff; font-size: 1rem;">$655.08</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin: 0.5rem 0;">
+                        <span style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">目标价</span>
+                        <strong style="color: #22c55e; font-size: 1rem;">$844.44 (+29%)</strong>
+                    </div>
+                    <div style="background: rgba(212,175,55,0.1); border-radius: 6px; padding: 0.75rem; margin-top: 0.75rem;">
+                        <div style="font-size: 0.85rem; color: #d4af37; margin-bottom: 0.25rem;">📊 我的持仓对比</div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                            <span style="color: rgba(255,255,255,0.6);">我的成本</span>
+                            <span style="color: #fff;">$683.94 (3股)</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-top: 0.25rem;">
+                            <span style="color: rgba(255,255,255,0.6);">vs 分析师目标</span>
+                            <span style="color: #22c55e;">+23.5%</span>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        华尔街一致看好 · 2026年展望积极
+                    </div>
+                </div>
+
+                <div class="rating-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                        <strong style="font-size: 1.15rem; color: #fff;">NVDA</strong>
+                        <span style="background: #22c55e; color: #000; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600;">买入</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin: 0.75rem 0;">
+                        <span style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">当前价</span>
+                        <strong style="color: #fff; font-size: 1rem;">$183.34</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin: 0.5rem 0;">
+                        <span style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">目标价区间</span>
+                        <strong style="color: #22c55e; font-size: 1rem;">$250-300</strong>
+                    </div>
+                    <div style="background: rgba(212,175,55,0.1); border-radius: 6px; padding: 0.75rem; margin-top: 0.75rem;">
+                        <div style="font-size: 0.85rem; color: #d4af37; margin-bottom: 0.25rem;">📊 我的持仓对比</div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                            <span style="color: rgba(255,255,255,0.6);">我的成本</span>
+                            <span style="color: #fff;">$169.69 (1股)</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-top: 0.25rem;">
+                            <span style="color: rgba(255,255,255,0.6);">vs 分析师目标</span>
+                            <span style="color: #22c55e;">+47%</span>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        Blackwell需求强劲 · GTC大会催化剂临近
+                    </div>
+                </div>
+
+                <div class="rating-card hold">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+                        <strong style="font-size: 1.15rem; color: #fff;">NBIS</strong>
+                        <span style="background: #f59e0b; color: #000; padding: 0.3rem 0.8rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600;">持有观望</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin: 0.75rem 0;">
+                        <span style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">当前价</span>
+                        <strong style="color: #fff; font-size: 1rem;">$4.84</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin: 0.5rem 0;">
+                        <span style="color: rgba(255,255,255,0.7); font-size: 0.95rem;">分析师目标</span>
+                        <strong style="color: #22c55e; font-size: 1rem;">$6.49 (+34%)</strong>
+                    </div>
+                    <div style="background: rgba(239,68,68,0.1); border-radius: 6px; padding: 0.75rem; margin-top: 0.75rem;">
+                        <div style="font-size: 0.85rem; color: #ef4444; margin-bottom: 0.25rem;">📊 我的持仓对比</div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                            <span style="color: rgba(255,255,255,0.6);">我的成本</span>
+                            <span style="color: #fff;">$93.60 (4股)</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-top: 0.25rem;">
+                            <span style="color: rgba(255,255,255,0.6);">当前浮亏</span>
+                            <span style="color: #ef4444;">-94.8%</span>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        交付增长但盈利能力待验证 · 关注Q4财报
+                    </div>
                 </div>
             </div>
         </section>
-    </main>
 
-    <footer>
-        <p>美股长期价值投资 · 数据驱动 · 独立思考</p>
-        <p class="disclaimer">
-            免责声明：本博客内容仅供学习交流使用，不构成任何投资建议。股市有风险，投资需谨慎。
-            所有数据均来自公开可溯源渠道（SEC公告、公司财报、权威财经媒体），作者不对信息的准确性、完整性作任何明示或暗示的保证。
-            投资者应根据自身风险承受能力独立做出投资决策，过往业绩不代表未来表现。
-        </p>
-    </footer>
-
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
-
-    <script src="../../../js/main.js"></script>
+        <div class="disclaimer">
+            <strong>⚠️ 风险提示</strong><br>
+            本文内容仅供学习交流，不构成投资建议。美股投资有风险，入市需谨慎。所有股票数据仅供参考，不构成买卖建议。投资者应根据自身风险承受能力独立决策。
+        </div>
+    </div>
 </body>
 </html>
