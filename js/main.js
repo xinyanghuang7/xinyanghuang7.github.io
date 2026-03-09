@@ -1,4 +1,4 @@
-// ============================================
+﻿// ============================================
 // Premium Frontend Interactions
 // ============================================
 
@@ -247,31 +247,31 @@ console.log('%c Long-term Thinking, High-contrast Design ', 'color: #888; font-s
 const articles = [
     {
         date: '2026-03-11',
-        title: '2026骞?鏈?1鏃ョ編鑲″垎鏋愶細LLY + 瀹夊叏杈归檯',
-        desc: '浠婃棩鐒︾偣锛歀LY 绀兼潵鍒惰嵂鍖荤枟鍋ュ悍鍒嗘瀽 + 瀹夊叏杈归檯鐨勬湰璐?,
+        title: '2026年3月11日美股分析：LLY + 安全边际',
+        desc: '今日焦点：LLY 礼来制药医疗健康分析 + 安全边际的本质',
         url: 'posts/2026/03/11.html',
-        keywords: ['LLY', '绀兼潵', '鍒惰嵂', '鍖荤枟', '瀹夊叏杈归檯']
+        keywords: ['LLY', '礼来', '制药', '医疗', '安全边际']
     },
     {
         date: '2026-03-08',
-        title: '2026骞?鏈?鏃ョ編鑲″垎鏋愶細UNH + 闀挎湡鎸佹湁蹇冩€?,
-        desc: '浠婃棩鐒︾偣锛歎NH鑱斿悎鍋ュ悍闃插尽鎬у垎鏋?+ 闀挎湡鎸佹湁鐨勫績鎬佷慨鐐?,
+        title: '2026年3月8日美股分析：UNH + 长期持有心态',
+        desc: '今日焦点：UNH联合健康防御性分析 + 长期持有的心态修炼',
         url: 'posts/2026/03/08.html',
-        keywords: ['UNH', '鑱斿悎鍋ュ悍', '鍖荤枟', '闀挎湡鎸佹湁']
+        keywords: ['UNH', '联合健康', '医疗', '长期持有']
     },
     {
         date: '2026-03-07',
-        title: '2026骞?鏈?鏃ョ編鑲″垎鏋愶細GOOGL + 鎶ゅ煄娌宠瘑鍒?,
-        desc: '浠婃棩鐒︾偣锛欸OOGL Alphabet AI鎶ゅ煄娌冲垎鏋?+ 璇嗗埆鐪熸鎶ゅ煄娌崇殑鎶曡祫鍘熷垯',
+        title: '2026年3月7日美股分析：GOOGL + 护城河识别',
+        desc: '今日焦点：GOOGL Alphabet AI护城河分析 + 识别真正护城河的投资原则',
         url: 'posts/2026/03/07.html',
-        keywords: ['GOOGL', 'Alphabet', '璋锋瓕', 'AI', '鎶ゅ煄娌?]
+        keywords: ['GOOGL', 'Alphabet', '谷歌', 'AI', '护城河']
     },
     {
         date: '2026-03-05',
-        title: '2026骞?鏈?鏃ョ編鑲″垎鏋愶細VST + 瀹夊叏杈归檯',
-        desc: '浠婃棩鐒︾偣锛歏ST 鐢靛姏鑲℃繁搴﹀垎鏋?+ 宸磋彶鐗瑰畨鍏ㄨ竟闄呭師鍒欒В璇?,
+        title: '2026年3月5日美股分析：VST + 安全边际',
+        desc: '今日焦点：VST 电力股深度分析 + 巴菲特安全边际原则解读',
         url: 'posts/2026/03/05.html',
-        keywords: ['VST', 'Vistra', '鐢靛姏', '瀹夊叏杈归檯', '宸磋彶鐗?]
+        keywords: ['VST', 'Vistra', '电力', '安全边际', '巴菲特']
     }
 ];
 
@@ -307,7 +307,7 @@ function displaySearchResults(results) {
     if (!searchResults) return;
     
     if (results.length === 0) {
-        searchResults.innerHTML = '<div class="search-no-results">鏈壘鍒扮浉鍏虫枃绔?/div>';
+        searchResults.innerHTML = '<div class="search-no-results">未找到相关文章</div>';
         searchResults.style.display = 'block';
         return;
     }
