@@ -1,4 +1,8 @@
-// Scroll Progress Bar
+// ============================================
+// Premium Frontend Interactions
+// ============================================
+
+// Scroll Progress Bar with smooth update
 function updateProgressBar() {
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -9,11 +13,11 @@ function updateProgressBar() {
     }
 }
 
-// Header scroll effect
+// Header scroll effect with blur enhancement
 function updateHeader() {
     const header = document.getElementById('header');
     if (header) {
-        if (window.pageYOffset > 100) {
+        if (window.pageYOffset > 80) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
@@ -21,41 +25,34 @@ function updateHeader() {
     }
 }
 
-// Back to top button visibility
-function updateBackToTop() {
-    const backToTop = document.getElementById('backToTop');
-    if (backToTop) {
-        if (window.pageYOffset > 500) {
-            backToTop.classList.add('visible');
-        } else {
-            backToTop.classList.remove('visible');
-        }
-    }
-}
-
-// Scroll to top
-function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-// Intersection Observer for fade-in animations
-function initScrollAnimations() {
+// Reveal sections on scroll with stagger effect
+function initScrollReveal() {
+    const sections = document.querySelectorAll('.section');
     const observerOptions = {
         root: null,
-        rootMargin: '0px',
+        rootMargin: '0px 0px -100px 0px',
         threshold: 0.1
     };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+    
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
+                // Add stagger delay based on child index
+                const children = entry.target.querySelectorAll('.fade-child');
+                children.forEach((child, i) => {
+                    setTimeout(() => {
+                        child.classList.add('visible');
+                    }, i * 100); // 100ms stagger between children
+                });
+                
                 entry.target.classList.add('visible');
+                sectionObserver.unobserve(entry.target);
             }
         });
     }, observerOptions);
-
-    document.querySelectorAll('.section').forEach(section => {
-        observer.observe(section);
+    
+    sections.forEach(section => {
+        sectionObserver.observe(section);
     });
 }
 
@@ -69,7 +66,7 @@ function initSmoothScroll() {
                 const headerOffset = 80;
                 const elementPosition = target.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
+                
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: 'smooth'
@@ -79,75 +76,32 @@ function initSmoothScroll() {
     });
 }
 
-// Format date for display
-function formatDate(dateStr) {
-    const date = new Date(dateStr);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    return `${year}年${month}月${day}日`;
-}
-
-// Get current date in YYYY-MM-DD format
-function getCurrentDate() {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const day = String(now.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-}
-
-// Throttle scroll events for performance
-function throttle(func, limit) {
-    let inThrottle;
-    return function(...args) {
-        if (!inThrottle) {
-            func.apply(this, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
+// Back to top and dark mode toggle visibility
+function updateFloatingButtons() {
+    const backToTop = document.getElementById('backToTop');
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const scrollY = window.pageYOffset;
+    
+    if (backToTop) {
+        if (scrollY > 500) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    }
+    
+    if (darkModeToggle) {
+        if (scrollY > 300) {
+            darkModeToggle.classList.add('visible');
+        } else {
+            darkModeToggle.classList.remove('visible');
         }
     }
 }
 
-// Lazy load images
-function initLazyLoading() {
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.add('loaded');
-                    observer.unobserve(img);
-                }
-            });
-        }, { rootMargin: '50px 0px' });
-
-        document.querySelectorAll('img[data-src]').forEach(img => {
-            imageObserver.observe(img);
-        });
-    } else {
-        // Fallback for older browsers
-        document.querySelectorAll('img[data-src]').forEach(img => {
-            img.src = img.dataset.src;
-        });
-    }
-}
-
-// Reading progress persistence
-function saveReadingProgress() {
-    const scrollPercent = Math.round(
-        (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
-    );
-    localStorage.setItem(`reading-progress-${location.pathname}`, scrollPercent);
-}
-
-function restoreReadingProgress() {
-    const saved = localStorage.getItem(`reading-progress-${location.pathname}`);
-    if (saved && saved > 0 && saved < 100) {
-        const scrollTo = (saved / 100) * (document.documentElement.scrollHeight - window.innerHeight);
-        window.scrollTo({ top: scrollTo, behavior: 'instant' });
-    }
+// Scroll to top
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // Dark mode toggle
@@ -163,80 +117,110 @@ function initDarkMode() {
     if (darkModeToggle) {
         darkModeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
-            localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+            localStorage.setItem('dark-mode', 
+                document.body.classList.contains('dark-mode') ? 'dark' : 'light');
         });
     }
 }
 
-// Search functionality
-function initSearch() {
-    const searchInput = document.getElementById('searchInput');
-    const searchResults = document.getElementById('searchResults');
-    
-    if (!searchInput) return;
-    
-    let searchData = [];
-    
-    // Load search index
-    fetch('search-index.json')
-        .then(r => r.json())
-        .then(data => { searchData = data; })
-        .catch(() => console.log('Search index not available'));
-    
-    const performSearch = debounce((query) => {
-        if (!query || query.length < 2) {
-            searchResults.innerHTML = '';
-            return;
-        }
+// Lazy load images with fade-in effect
+function initLazyLoading() {
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        img.classList.add('loaded');
+                    }
+                    observer.unobserve(img);
+                }
+            });
+        }, { rootMargin: '50px 0px', threshold: 0.01 });
         
-        const results = searchData.filter(item => 
-            item.title.toLowerCase().includes(query.toLowerCase()) ||
-            (item.content && item.content.toLowerCase().includes(query.toLowerCase()))
-        ).slice(0, 5);
-        
-        searchResults.innerHTML = results.map(r => 
-            `<a href="${r.url}" class="search-result-item">${r.title}</a>`
-        ).join('') || '<div class="search-no-results">无结果</div>';
-    }, 300);
-    
-    searchInput.addEventListener('input', (e) => performSearch(e.target.value));
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        // Fallback: load all images immediately
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.dataset.src;
+        });
+    }
 }
 
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
+// Reading progress persistence
+function saveReadingProgress() {
+    const scrollPercent = Math.round(
+        (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
+    );
+    const path = location.pathname;
+    localStorage.setItem(`reading-progress-${path}`, scrollPercent);
+}
+
+function restoreReadingProgress() {
+    const saved = localStorage.getItem(`reading-progress-${location.pathname}`);
+    if (saved && saved > 0 && saved < 100) {
+        const scrollTo = (saved / 100) * (document.documentElement.scrollHeight - window.innerHeight);
+        window.scrollTo({ top: scrollTo, behavior: 'instant' });
+    }
+}
+
+// Throttle function for performance
+function throttle(func, limit) {
+    let inThrottle;
+    return function(...args) {
+        if (!inThrottle) {
+            func.apply(this, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
     };
 }
 
-// Initialize all functions
+// Debounce function
+function debounce(func, wait) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+}
+
+// Initialize everything
 const throttledScroll = throttle(() => {
     updateProgressBar();
     updateHeader();
-    updateBackToTop();
+    updateFloatingButtons();
     saveReadingProgress();
 }, 100);
 
 window.addEventListener('scroll', throttledScroll);
 
 document.addEventListener('DOMContentLoaded', () => {
-    initScrollAnimations();
+    initScrollReveal();
     initSmoothScroll();
     initLazyLoading();
     initDarkMode();
-    initSearch();
     updateProgressBar();
+    updateFloatingButtons();
     
-    // Restore reading position after a short delay
-    setTimeout(restoreReadingProgress, 100);
+    // Restore reading position after DOM ready
+    setTimeout(restoreReadingProgress, 150);
+    
+    // Add fade-child classes to section content for stagger effect
+    document.querySelectorAll('.section').forEach(section => {
+        const children = section.children;
+        for (let i = 0; i < children.length; i++) {
+            if (!children[i].classList.contains('section-header')) {
+                children[i].classList.add('fade-child');
+            }
+        }
+    });
 });
 
-// Prevent animation flickering on page load
 window.addEventListener('load', () => {
     document.body.style.opacity = '1';
 });
@@ -244,4 +228,169 @@ window.addEventListener('load', () => {
 // Respect reduced motion preference
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.documentElement.style.scrollBehavior = 'auto';
+    // Remove animation classes
+    document.querySelectorAll('.fade-child').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+    });
 }
+
+// Console greeting
+console.log('%c ValueInvest ', 'background: #d4af37; color: #000; font-size: 20px; font-weight: bold; padding: 10px;');
+console.log('%c Long-term Thinking, High-contrast Design ', 'color: #888; font-size: 12px;');
+
+// ============================================
+// Search Functionality
+// ============================================
+
+// Article database (auto-generated from archive)
+const articles = [
+    {
+        date: '2026-03-11',
+        title: '2026骞?鏈?1鏃ョ編鑲″垎鏋愶細LLY + 瀹夊叏杈归檯',
+        desc: '浠婃棩鐒︾偣锛歀LY 绀兼潵鍒惰嵂鍖荤枟鍋ュ悍鍒嗘瀽 + 瀹夊叏杈归檯鐨勬湰璐?,
+        url: 'posts/2026/03/11.html',
+        keywords: ['LLY', '绀兼潵', '鍒惰嵂', '鍖荤枟', '瀹夊叏杈归檯']
+    },
+    {
+        date: '2026-03-08',
+        title: '2026骞?鏈?鏃ョ編鑲″垎鏋愶細UNH + 闀挎湡鎸佹湁蹇冩€?,
+        desc: '浠婃棩鐒︾偣锛歎NH鑱斿悎鍋ュ悍闃插尽鎬у垎鏋?+ 闀挎湡鎸佹湁鐨勫績鎬佷慨鐐?,
+        url: 'posts/2026/03/08.html',
+        keywords: ['UNH', '鑱斿悎鍋ュ悍', '鍖荤枟', '闀挎湡鎸佹湁']
+    },
+    {
+        date: '2026-03-07',
+        title: '2026骞?鏈?鏃ョ編鑲″垎鏋愶細GOOGL + 鎶ゅ煄娌宠瘑鍒?,
+        desc: '浠婃棩鐒︾偣锛欸OOGL Alphabet AI鎶ゅ煄娌冲垎鏋?+ 璇嗗埆鐪熸鎶ゅ煄娌崇殑鎶曡祫鍘熷垯',
+        url: 'posts/2026/03/07.html',
+        keywords: ['GOOGL', 'Alphabet', '璋锋瓕', 'AI', '鎶ゅ煄娌?]
+    },
+    {
+        date: '2026-03-05',
+        title: '2026骞?鏈?鏃ョ編鑲″垎鏋愶細VST + 瀹夊叏杈归檯',
+        desc: '浠婃棩鐒︾偣锛歏ST 鐢靛姏鑲℃繁搴﹀垎鏋?+ 宸磋彶鐗瑰畨鍏ㄨ竟闄呭師鍒欒В璇?,
+        url: 'posts/2026/03/05.html',
+        keywords: ['VST', 'Vistra', '鐢靛姏', '瀹夊叏杈归檯', '宸磋彶鐗?]
+    }
+];
+
+// Search function
+function searchArticles(query) {
+    if (!query || query.trim().length === 0) {
+        return [];
+    }
+    
+    const lowerQuery = query.toLowerCase().trim();
+    
+    return articles.filter(article => {
+        // Search in title
+        if (article.title.toLowerCase().includes(lowerQuery)) return true;
+        
+        // Search in description
+        if (article.desc.toLowerCase().includes(lowerQuery)) return true;
+        
+        // Search in keywords
+        if (article.keywords.some(kw => kw.toLowerCase().includes(lowerQuery))) return true;
+        
+        // Search in date
+        if (article.date.includes(lowerQuery)) return true;
+        
+        return false;
+    });
+}
+
+// Display search results
+function displaySearchResults(results) {
+    const searchResults = document.getElementById('searchResults');
+    
+    if (!searchResults) return;
+    
+    if (results.length === 0) {
+        searchResults.innerHTML = '<div class="search-no-results">鏈壘鍒扮浉鍏虫枃绔?/div>';
+        searchResults.style.display = 'block';
+        return;
+    }
+    
+    const html = results.map(article => `
+        <a href="${article.url}" class="search-result-item">
+            <div class="search-result-date">${article.date}</div>
+            <div class="search-result-title">${article.title}</div>
+            <div class="search-result-desc">${article.desc}</div>
+        </a>
+    `).join('');
+    
+    searchResults.innerHTML = html;
+    searchResults.style.display = 'block';
+}
+
+// Initialize search
+function initSearch() {
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+    
+    if (!searchInput) return;
+    
+    // Debounced search
+    const debouncedSearch = debounce((query) => {
+        if (query.trim().length === 0) {
+            searchResults.style.display = 'none';
+            return;
+        }
+        
+        const results = searchArticles(query);
+        displaySearchResults(results);
+    }, 300);
+    
+    // Input event
+    searchInput.addEventListener('input', (e) => {
+        debouncedSearch(e.target.value);
+    });
+    
+    // Focus event
+    searchInput.addEventListener('focus', () => {
+        if (searchInput.value.trim().length > 0) {
+            const results = searchArticles(searchInput.value);
+            displaySearchResults(results);
+        }
+    });
+    
+    // Click outside to close
+    document.addEventListener('click', (e) => {
+        if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+            searchResults.style.display = 'none';
+        }
+    });
+    
+    // Keyboard navigation
+    searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            searchResults.style.display = 'none';
+            searchInput.blur();
+        }
+    });
+}
+
+// Add to DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+    initScrollReveal();
+    initSmoothScroll();
+    initLazyLoading();
+    initDarkMode();
+    initSearch(); // Add search initialization
+    updateProgressBar();
+    updateFloatingButtons();
+    
+    // Restore reading position after DOM ready
+    setTimeout(restoreReadingProgress, 150);
+    
+    // Add fade-child classes to section content for stagger effect
+    document.querySelectorAll('.section').forEach(section => {
+        const children = section.children;
+        for (let i = 0; i < children.length; i++) {
+            if (!children[i].classList.contains('section-header')) {
+                children[i].classList.add('fade-child');
+            }
+        }
+    });
+});
