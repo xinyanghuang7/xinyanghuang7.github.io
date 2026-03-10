@@ -1,6 +1,8 @@
-﻿// ============================================
+// ============================================
 // Premium Frontend Interactions
 // ============================================
+
+document.documentElement.classList.add('js-enhanced');
 
 // Scroll Progress Bar with smooth update
 function updateProgressBar() {
