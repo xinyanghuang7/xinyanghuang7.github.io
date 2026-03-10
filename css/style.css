@@ -9,8 +9,8 @@
     /* Text Colors */
     --text-primary: #FFFFFF;
     --text-secondary: rgba(255,255,255,0.85);
-    --text-tertiary: rgba(255,255,255,0.6);
-    --text-muted: rgba(255,255,255,0.4);
+    --text-tertiary: rgba(255,255,255,0.78);
+    --text-muted: rgba(255,255,255,0.68);
     
     /* Accent - Metallic Luxury */
     --accent-gold: #d4af37;
@@ -59,9 +59,22 @@
     --z-overlay: 1000;
 }
 
+html {
+    background: var(--bg-primary);
+    scroll-behavior: smooth;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 /* Dark Mode Default - we're already dark */
 body {
-    background: var(--bg-primary);
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top, rgba(212,175,55,0.08), transparent 32%),
+        linear-gradient(180deg, #0b0b0b 0%, #101010 28%, #11131a 100%);
     color: var(--text-primary);
     font-family: var(--font-body);
     font-size: 1.05rem;
@@ -215,6 +228,23 @@ header.scrolled {
     pointer-events: none;
 }
 
+.hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.08;
+    mix-blend-mode: screen;
+    pointer-events: none;
+}
+
+.hero-bg-pattern::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10,10,10,0.1) 0%, rgba(10,10,10,0.55) 100%);
+}
+
 .hero-content {
     max-width: 1000px;
     position: relative;
@@ -288,7 +318,7 @@ header.scrolled {
 }
 
 .scroll-indicator::after {
-    content: '鈫?;
+    content: '↓';
     display: block;
     margin-top: 0.5rem;
     font-size: 1.1rem;
@@ -300,17 +330,40 @@ main {
     max-width: 1200px;
     margin: 0 auto;
     padding: var(--space-3xl) var(--space-lg);
+    position: relative;
+    z-index: 1;
 }
 
 /* Section Styling */
 .section {
     margin-bottom: var(--space-3xl);
+    opacity: 1;
+    transform: none;
+}
+
+.js-enhanced .section {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s var(--ease-smooth), transform 0.8s var(--ease-smooth);
 }
 
-.section.visible {
+.js-enhanced .section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-child {
+    opacity: 1;
+    transform: none;
+}
+
+.js-enhanced .fade-child {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s var(--ease-smooth), transform 0.6s var(--ease-smooth);
+}
+
+.js-enhanced .fade-child.visible {
     opacity: 1;
     transform: translateY(0);
 }
@@ -822,6 +875,16 @@ main {
     color: var(--text-primary);
 }
 
+.news-title a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.news-title a:hover {
+    color: var(--accent-gold);
+}
+
 .news-perspective {
     font-size: 0.95rem;
     color: var(--text-tertiary);
@@ -1065,7 +1128,7 @@ main {
 }
 
 /* Technical rating */
-.rating-card div[style*="TradingView 鎶€鏈寚鏍?] {
+.rating-card div[style*="TradingView 技术指标"] {
     margin-top: var(--space-sm);
     padding-top: var(--space-sm);
     border-top: 1px solid rgba(255,255,255,0.08);
@@ -1226,20 +1289,37 @@ footer .disclaimer {
 
 /* Responsive Typography */
 @media (max-width: 768px) {
-    .hero { padding: var(--space-2xl) var(--space-md) var(--space-xl); }
-    .section-header { flex-direction: column; align-items: flex-start; gap: var(--space-sm); }
+    .hero {
+        min-height: 56vh;
+        padding: var(--space-3xl) var(--space-md) var(--space-2xl);
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-sm);
+    }
+
     .section-number { font-size: 3rem; }
     .nav-links { display: none; }
     .nav-container { padding: var(--space-sm) var(--space-md); }
-    .stock-card, .stock-detail-card, .wisdom-card, .analysis-box {
+
+    .stock-card,
+    .stock-detail-card,
+    .wisdom-card,
+    .analysis-box {
         padding: var(--space-lg);
-        margin-left: calc(-1 * var(--space-lg));
-        margin-right: calc(-1 * var(--space-lg));
-        border-radius: 0;
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: var(--radius-md);
     }
+
     main { padding: var(--space-xl) var(--space-md); }
-    .metrics-grid { grid-template-columns: 1fr 1fr; }
+    .metrics-grid { grid-template-columns: 1fr; }
     .analysis-grid { grid-template-columns: 1fr; }
+    .stock-meta { grid-template-columns: 1fr; }
+    .hero .subtitle { letter-spacing: 0.18em; }
+    .nav-date { letter-spacing: 0.08em; }
 }
 
 /* Print Styles */
