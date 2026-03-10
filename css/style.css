@@ -8,9 +8,9 @@
     
     /* Text Colors */
     --text-primary: #FFFFFF;
-    --text-secondary: rgba(255,255,255,0.92);
-    --text-tertiary: rgba(255,255,255,0.82);
-    --text-muted: rgba(255,255,255,0.74);
+    --text-secondary: rgba(255,255,255,0.85);
+    --text-tertiary: rgba(255,255,255,0.6);
+    --text-muted: rgba(255,255,255,0.4);
     
     /* Accent - Metallic Luxury */
     --accent-gold: #d4af37;
@@ -465,19 +465,17 @@ main {
 
 /* Highlight Boxes - Elegant */
 .highlight-box {
-    background: rgba(18,18,18,0.96);
+    background: rgba(255,255,255,0.03);
     padding: var(--space-lg);
     margin: var(--space-md) 0;
     border-left: 4px solid var(--accent-gold);
-    border: 1px solid rgba(255,255,255,0.08);
     position: relative;
     transition: var(--transition-medium);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    box-shadow: var(--shadow-sm);
 }
 
 .highlight-box:hover {
-    background: rgba(24,24,24,0.98);
+    background: rgba(255,255,255,0.05);
     transform: translateX(8px);
 }
 
@@ -494,14 +492,14 @@ main {
 
 .highlight-box.positive {
     border-left-color: var(--accent-emerald);
-    background: linear-gradient(135deg, rgba(18,18,18,0.98) 0%, rgba(16,185,129,0.10) 100%);
+    background: rgba(16,185,129,0.05);
 }
 
 .highlight-box.positive h4 { color: var(--accent-emerald); }
 
 .highlight-box.warning {
     border-left-color: var(--accent-amber);
-    background: linear-gradient(135deg, rgba(18,18,18,0.98) 0%, rgba(245,158,11,0.10) 100%);
+    background: rgba(245,158,11,0.05);
 }
 
 .highlight-box.warning h4 { color: var(--accent-amber); }
@@ -664,14 +662,12 @@ main {
     font-family: var(--font-display);
     font-size: clamp(1.1rem, 2.5vw, 1.4rem);
     font-style: italic;
-    color: var(--text-primary);
+    color: var(--accent-gold);
     margin-top: var(--space-xl);
     padding: var(--space-lg);
     border-left: 4px solid var(--accent-gold);
-    border: 1px solid rgba(212,175,55,0.22);
-    background: rgba(18,18,18,0.96);
+    background: rgba(212,175,55,0.08);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    box-shadow: var(--shadow-sm);
 }
 
 /* Market Grid */
