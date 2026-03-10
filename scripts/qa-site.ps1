@@ -18,7 +18,7 @@ foreach ($file in $postFiles) {
     $content = Get-Content -Raw -Encoding UTF8 $file.FullName
     $rel = $file.FullName.Substring($root.Length + 1)
 
-    if ($content -notmatch '<script src="\.\./\.\./\.\./js/main\.js"></script>') {
+    if ($content -notmatch '<script src="\.\./\.\./\.\./js/main\.js(?:\?v=[^"'']+)?"></script>') {
         Add-Issue "$rel missing main.js include"
     }
 
