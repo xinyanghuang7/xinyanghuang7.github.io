@@ -28,7 +28,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="css/style.css?v=20260311c">
+    <link rel="stylesheet" href="css/style.css?v=20260312a">
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -122,13 +122,23 @@
 
             <!-- Search Box -->
             <div class="search-container" role="search">
+                <label class="sr-only" for="searchInput">搜索文章</label>
                 <input type="search" 
                        id="searchInput" 
                        class="search-input" 
                        placeholder="搜索文章..."
                        aria-label="搜索文章"
-                       autocomplete="off">
-                <div id="searchResults" class="search-results" role="listbox"></div>
+                       aria-controls="searchResults"
+                       aria-expanded="false"
+                       aria-haspopup="listbox"
+                       autocomplete="off"
+                       autocapitalize="off"
+                       autocorrect="off"
+                       spellcheck="false"
+                       inputmode="search"
+                       enterkeyhint="search">
+                <div id="searchStatus" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+                <div id="searchResults" class="search-results" role="listbox" hidden></div>
             </div>
 
             <div class="archive-list" id="archiveList">
@@ -217,7 +227,7 @@
         ↑
     </button>
 
-    <script src="js/main.js?v=20260311c"></script>
+    <script src="js/main.js?v=20260312a"></script>
     <script>
         // Set current date with proper datetime attribute
         const now = new Date();
@@ -232,3 +242,4 @@
     </script>
 </body>
 </html>
+

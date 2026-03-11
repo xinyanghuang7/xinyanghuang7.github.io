@@ -335,98 +335,257 @@ const articles = [
     }
 ];
 
+function normalizeSearchText(value) {
+    return String(value || '')
+        .toLowerCase()
+        .replace(/[\u3000\s]+/g, ' ')
+        .replace(/[./]/g, '-')
+        .replace(/年|月/g, '-')
+        .replace(/日/g, '')
+        .trim();
+}
+
+function buildArticleSearchFields(article) {
+    const [year, month, day] = article.date.split('-');
+    const numericMonth = String(Number(month));
+    const numericDay = String(Number(day));
+
+    return [
+        article.title,
+        article.desc,
+        article.date,
+        `${year}-${numericMonth}-${numericDay}`,
+        `${year}/${numericMonth}/${numericDay}`,
+        `${year}年${numericMonth}月${numericDay}日`,
+        ...article.keywords
+    ].map(normalizeSearchText);
+}
+
 // Search function
 function searchArticles(query) {
-    if (!query || query.trim().length === 0) {
+    const normalizedQuery = normalizeSearchText(query);
+
+    if (!normalizedQuery) {
         return [];
     }
-    
-    const lowerQuery = query.toLowerCase().trim();
-    
+
     return articles.filter(article => {
-        // Search in title
-        if (article.title.toLowerCase().includes(lowerQuery)) return true;
-        
-        // Search in description
-        if (article.desc.toLowerCase().includes(lowerQuery)) return true;
-        
-        // Search in keywords
-        if (article.keywords.some(kw => kw.toLowerCase().includes(lowerQuery))) return true;
-        
-        // Search in date
-        if (article.date.includes(lowerQuery)) return true;
-        
-        return false;
+        const searchableFields = buildArticleSearchFields(article);
+        return searchableFields.some(field => field.includes(normalizedQuery));
     });
+}
+
+function setSearchResultsVisibility(searchInput, searchResults, isVisible) {
+    if (!searchInput || !searchResults) {
+        return;
+    }
+
+    searchResults.hidden = !isVisible;
+    searchInput.setAttribute('aria-expanded', isVisible ? 'true' : 'false');
+}
+
+function updateSearchStatus(statusEl, message) {
+    if (statusEl) {
+        statusEl.textContent = message;
+    }
+}
+
+function getSearchResultLinks(searchResults) {
+    if (!searchResults) {
+        return [];
+    }
+
+    return Array.from(searchResults.querySelectorAll('.search-result-item'));
+}
+
+function setActiveSearchResult(searchResults, activeIndex) {
+    const items = getSearchResultLinks(searchResults);
+
+    items.forEach((item, index) => {
+        const isActive = index === activeIndex;
+        item.classList.toggle('is-active', isActive);
+        item.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        item.tabIndex = isActive ? 0 : -1;
+    });
+
+    return items;
 }
 
 // Display search results
 function displaySearchResults(results) {
     const searchResults = document.getElementById('searchResults');
-    
+
     if (!searchResults) return;
-    
+
     if (results.length === 0) {
-        searchResults.innerHTML = '<div class="search-no-results">未找到相关文章</div>';
-        searchResults.style.display = 'block';
+        searchResults.innerHTML = '<div class="search-no-results" role="status">未找到相关文章</div>';
         return;
     }
-    
-    const html = results.map(article => `
-        <a href="${article.url}" class="search-result-item">
+
+    const html = results.map((article, index) => `
+        <a href="${article.url}" class="search-result-item" role="option" aria-selected="false" tabindex="-1" data-search-index="${index}">
             <div class="search-result-date">${article.date}</div>
             <div class="search-result-title">${article.title}</div>
             <div class="search-result-desc">${article.desc}</div>
         </a>
     `).join('');
-    
+
     searchResults.innerHTML = html;
-    searchResults.style.display = 'block';
 }
 
 // Initialize search
 function initSearch() {
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
-    
-    if (!searchInput) return;
-    
-    // Debounced search
-    const debouncedSearch = debounce((query) => {
-        if (query.trim().length === 0) {
-            searchResults.style.display = 'none';
+    const searchStatus = document.getElementById('searchStatus');
+
+    if (!searchInput || !searchResults) return;
+
+    let activeIndex = -1;
+    let lastResults = [];
+    let isComposing = false;
+
+    const closeResults = ({ clearMarkup = false } = {}) => {
+        activeIndex = -1;
+        setActiveSearchResult(searchResults, activeIndex);
+        setSearchResultsVisibility(searchInput, searchResults, false);
+
+        if (clearMarkup) {
+            searchResults.innerHTML = '';
+        }
+    };
+
+    const renderResults = (query) => {
+        const normalizedQuery = normalizeSearchText(query);
+
+        if (!normalizedQuery) {
+            lastResults = [];
+            updateSearchStatus(searchStatus, '');
+            closeResults({ clearMarkup: true });
             return;
         }
-        
-        const results = searchArticles(query);
-        displaySearchResults(results);
-    }, 300);
-    
-    // Input event
-    searchInput.addEventListener('input', (e) => {
-        debouncedSearch(e.target.value);
+
+        lastResults = searchArticles(normalizedQuery);
+        displaySearchResults(lastResults);
+        activeIndex = -1;
+        setActiveSearchResult(searchResults, activeIndex);
+        setSearchResultsVisibility(searchInput, searchResults, true);
+
+        updateSearchStatus(
+            searchStatus,
+            lastResults.length > 0
+                ? `找到 ${lastResults.length} 篇相关文章`
+                : '未找到相关文章'
+        );
+    };
+
+    const debouncedSearch = debounce(renderResults, 220);
+
+    const moveActiveResult = (direction) => {
+        const items = setActiveSearchResult(searchResults, activeIndex);
+        if (!items.length) {
+            return;
+        }
+
+        activeIndex = direction > 0
+            ? Math.min(activeIndex + 1, items.length - 1)
+            : Math.max(activeIndex - 1, 0);
+
+        const updatedItems = setActiveSearchResult(searchResults, activeIndex);
+        const activeItem = updatedItems[activeIndex];
+
+        if (activeItem) {
+            activeItem.focus();
+            activeItem.scrollIntoView({ block: 'nearest' });
+        }
+    };
+
+    searchInput.addEventListener('compositionstart', () => {
+        isComposing = true;
     });
-    
-    // Focus event
+
+    searchInput.addEventListener('compositionend', (event) => {
+        isComposing = false;
+        renderResults(event.target.value);
+    });
+
+    ['input', 'search'].forEach((eventName) => {
+        searchInput.addEventListener(eventName, (event) => {
+            if (isComposing) {
+                return;
+            }
+
+            debouncedSearch(event.target.value);
+        });
+    });
+
     searchInput.addEventListener('focus', () => {
-        if (searchInput.value.trim().length > 0) {
-            const results = searchArticles(searchInput.value);
-            displaySearchResults(results);
+        if (normalizeSearchText(searchInput.value)) {
+            renderResults(searchInput.value);
         }
     });
-    
-    // Click outside to close
-    document.addEventListener('click', (e) => {
-        if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-            searchResults.style.display = 'none';
-        }
-    });
-    
-    // Keyboard navigation
-    searchInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            searchResults.style.display = 'none';
+
+    searchInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeResults();
             searchInput.blur();
+            return;
+        }
+
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+            if (!lastResults.length && normalizeSearchText(searchInput.value)) {
+                renderResults(searchInput.value);
+            }
+
+            const items = getSearchResultLinks(searchResults);
+            if (!items.length) {
+                return;
+            }
+
+            event.preventDefault();
+            moveActiveResult(event.key === 'ArrowDown' ? 1 : -1);
+        }
+    });
+
+    searchResults.addEventListener('keydown', (event) => {
+        const items = getSearchResultLinks(searchResults);
+        if (!items.length) {
+            return;
+        }
+
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            closeResults();
+            searchInput.focus();
+            return;
+        }
+
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+            event.preventDefault();
+            moveActiveResult(event.key === 'ArrowDown' ? 1 : -1);
+        }
+    });
+
+    searchResults.addEventListener('mousemove', (event) => {
+        const target = event.target.closest('.search-result-item');
+        if (!target) {
+            return;
+        }
+
+        const items = getSearchResultLinks(searchResults);
+        activeIndex = items.indexOf(target);
+        setActiveSearchResult(searchResults, activeIndex);
+    });
+
+    searchResults.addEventListener('click', (event) => {
+        if (event.target.closest('.search-result-item')) {
+            closeResults();
+        }
+    });
+
+    document.addEventListener('pointerdown', (event) => {
+        if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
+            closeResults();
         }
     });
 }
