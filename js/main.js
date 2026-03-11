@@ -1,4 +1,4 @@
-// ============================================
+﻿// ============================================
 // Premium Frontend Interactions
 // ============================================
 
@@ -106,23 +106,59 @@ function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Dark mode toggle
+// Theme toggle
+const THEME_STORAGE_KEY = 'valueinvest-theme';
+const THEME_COLORS = {
+    dark: '#0a0a0a',
+    light: '#f6efe2'
+};
+
+function updateThemeMeta(theme) {
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (metaThemeColor) {
+        metaThemeColor.setAttribute('content', THEME_COLORS[theme]);
+    }
+    document.documentElement.style.colorScheme = theme;
+}
+
+function updateThemeToggle(theme) {
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    if (!darkModeToggle) return;
+
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    darkModeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+    darkModeToggle.setAttribute('aria-label', nextTheme === 'light' ? '切换到浅色模式' : '切换到深色模式');
+    darkModeToggle.setAttribute('title', nextTheme === 'light' ? '切换到浅色模式' : '切换到深色模式');
+}
+
+function applyTheme(theme) {
+    const normalizedTheme = theme === 'light' ? 'light' : 'dark';
+    document.body.classList.toggle('dark-mode', normalizedTheme === 'dark');
+    document.body.classList.toggle('light-mode', normalizedTheme === 'light');
+    document.documentElement.setAttribute('data-theme', normalizedTheme);
+    updateThemeMeta(normalizedTheme);
+    updateThemeToggle(normalizedTheme);
+}
+
+function getStoredTheme() {
+    const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+    return storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : 'dark';
+}
+
 function initDarkMode() {
     const darkModeToggle = document.getElementById('darkModeToggle');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const savedMode = localStorage.getItem('dark-mode');
-    
-    if (savedMode === 'dark' || (!savedMode && prefersDark)) {
-        document.body.classList.add('dark-mode');
+    applyTheme(getStoredTheme());
+
+    if (!darkModeToggle || darkModeToggle.dataset.themeBound === 'true') {
+        return;
     }
-    
-    if (darkModeToggle) {
-        darkModeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            localStorage.setItem('dark-mode', 
-                document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-        });
-    }
+
+    darkModeToggle.dataset.themeBound = 'true';
+    darkModeToggle.addEventListener('click', () => {
+        const nextTheme = document.body.classList.contains('light-mode') ? 'dark' : 'light';
+        applyTheme(nextTheme);
+        localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+    });
 }
 
 // Lazy load images with fade-in effect
@@ -166,7 +202,7 @@ function restoreReadingProgress() {
     const saved = localStorage.getItem(`reading-progress-${location.pathname}`);
     if (saved && saved > 0 && saved < 100) {
         const scrollTo = (saved / 100) * (document.documentElement.scrollHeight - window.innerHeight);
-        window.scrollTo({ top: scrollTo, behavior: 'instant' });
+        window.scrollTo({ top: scrollTo, behavior: 'auto' });
     }
 }
 
@@ -201,41 +237,49 @@ const throttledScroll = throttle(() => {
 
 window.addEventListener('scroll', throttledScroll);
 
-document.addEventListener('DOMContentLoaded', () => {
-    initScrollReveal();
-    initSmoothScroll();
-    initLazyLoading();
-    initDarkMode();
-    updateProgressBar();
-    updateFloatingButtons();
-    
-    // Restore reading position after DOM ready
-    setTimeout(restoreReadingProgress, 150);
-    
-    // Add fade-child classes to section content for stagger effect
+function decorateSectionsForReveal() {
     document.querySelectorAll('.section').forEach(section => {
-        const children = section.children;
-        for (let i = 0; i < children.length; i++) {
-            if (!children[i].classList.contains('section-header')) {
-                children[i].classList.add('fade-child');
+        Array.from(section.children).forEach(child => {
+            if (!child.classList.contains('section-header')) {
+                child.classList.add('fade-child');
             }
-        }
+        });
     });
-});
+}
 
-window.addEventListener('load', () => {
-    document.body.style.opacity = '1';
-});
+function applyReducedMotionFallback() {
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+    }
 
-// Respect reduced motion preference
-if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.documentElement.style.scrollBehavior = 'auto';
-    // Remove animation classes
     document.querySelectorAll('.fade-child').forEach(el => {
         el.style.opacity = '1';
         el.style.transform = 'none';
     });
 }
+
+function initPage() {
+    decorateSectionsForReveal();
+    initScrollReveal();
+    initSmoothScroll();
+    initLazyLoading();
+    initDarkMode();
+    initSearch();
+    updateProgressBar();
+    updateHeader();
+    updateFloatingButtons();
+    applyReducedMotionFallback();
+
+    // Restore reading position after DOM ready
+    setTimeout(restoreReadingProgress, 150);
+}
+
+document.addEventListener('DOMContentLoaded', initPage, { once: true });
+
+window.addEventListener('load', () => {
+    document.body.style.opacity = '1';
+});
 
 // Console greeting
 console.log('%c ValueInvest ', 'background: #d4af37; color: #000; font-size: 20px; font-weight: bold; padding: 10px;');
@@ -387,26 +431,3 @@ function initSearch() {
     });
 }
 
-// Add to DOMContentLoaded
-document.addEventListener('DOMContentLoaded', () => {
-    initScrollReveal();
-    initSmoothScroll();
-    initLazyLoading();
-    initDarkMode();
-    initSearch(); // Add search initialization
-    updateProgressBar();
-    updateFloatingButtons();
-    
-    // Restore reading position after DOM ready
-    setTimeout(restoreReadingProgress, 150);
-    
-    // Add fade-child classes to section content for stagger effect
-    document.querySelectorAll('.section').forEach(section => {
-        const children = section.children;
-        for (let i = 0; i < children.length; i++) {
-            if (!children[i].classList.contains('section-header')) {
-                children[i].classList.add('fade-child');
-            }
-        }
-    });
-});
