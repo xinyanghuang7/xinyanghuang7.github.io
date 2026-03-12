@@ -1,11 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ValueInvest favicon">
   <defs>
-    <linearGradient id="gold" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#f4cf57"/>
-      <stop offset="1" stop-color="#b88914"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#1f1f1f"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0cf6a"/>
+      <stop offset="100%" stop-color="#b8860b"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="14" fill="#0a0a0a"/>
-  <path d="M18 16h8.2L32 42.6 37.8 16H46L35.9 50h-7.8L18 16Z" fill="url(#gold)"/>
-  <path d="M14 10h36" stroke="#d4af37" stroke-opacity="0.45" stroke-width="1.5" stroke-linecap="round"/>
+  <rect width="64" height="64" rx="16" fill="url(#bg)"/>
+  <path d="M15 18l11 28h4l11-28h-6.2L28 37.6 21.1 18H15z" fill="url(#gold)"/>
+  <path d="M39.5 18h9.5v5.5h-9.5zM39.5 29.25h9.5v5.5h-9.5zM39.5 40.5h9.5V46h-9.5z" fill="#f8f1dc" opacity="0.92"/>
 </svg>
