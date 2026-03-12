@@ -445,17 +445,24 @@ function initSearch() {
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
     const searchStatus = document.getElementById('searchStatus');
+    const searchContainer = searchInput?.closest('.search-container');
 
-    if (!searchInput || !searchResults) return;
+    if (!searchInput || !searchResults || !searchContainer) return;
 
     let activeIndex = -1;
     let lastResults = [];
     let isComposing = false;
 
+    const setSearchOpenState = (isOpen) => {
+        searchContainer.classList.toggle('is-open', isOpen);
+        document.body.classList.toggle('search-open', isOpen);
+    };
+
     const closeResults = ({ clearMarkup = false } = {}) => {
         activeIndex = -1;
         setActiveSearchResult(searchResults, activeIndex);
         setSearchResultsVisibility(searchInput, searchResults, false);
+        setSearchOpenState(false);
 
         if (clearMarkup) {
             searchResults.innerHTML = '';
@@ -477,6 +484,7 @@ function initSearch() {
         activeIndex = -1;
         setActiveSearchResult(searchResults, activeIndex);
         setSearchResultsVisibility(searchInput, searchResults, true);
+        setSearchOpenState(true);
 
         updateSearchStatus(
             searchStatus,
@@ -595,6 +603,12 @@ function initSearch() {
             closeResults();
         }
     });
+
+    window.addEventListener('resize', debounce(() => {
+        if (!normalizeSearchText(searchInput.value)) {
+            closeResults();
+        }
+    }, 120));
 }
 
 
