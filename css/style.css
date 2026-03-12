@@ -1,4 +1,4 @@
-﻿:root {
+:root {
     /* Core Colors - Deep Luxury */
     --bg-primary: #0a0a0a;
     --bg-secondary: #141414;
@@ -363,7 +363,7 @@ header.scrolled {
 }
 
 .scroll-indicator::after {
-    content: '↓';
+    content: '鈫?;
     display: block;
     margin-top: 0.5rem;
     font-size: 1.1rem;
@@ -1173,7 +1173,7 @@ main {
 }
 
 /* Technical rating */
-.rating-card div[style*="TradingView 技术指标"] {
+.rating-card div[style*="TradingView 鎶€鏈寚鏍?] {
     margin-top: var(--space-sm);
     padding-top: var(--space-sm);
     border-top: 1px solid rgba(255,255,255,0.08);
@@ -1800,6 +1800,109 @@ header .nav-links a:focus-visible {
     line-height: 1.7;
 }
 
+.decision-pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin: 1rem 0 1.15rem;
+}
+
+.decision-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.42rem 0.92rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    letter-spacing: 0.07em;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.decision-pill-market {
+    background: rgba(212,175,55,0.16);
+    color: var(--accent-gold-light);
+    border: 1px solid rgba(212,175,55,0.28);
+}
+
+.decision-pill-buy {
+    background: rgba(16,185,129,0.18);
+    color: #a7f3d0;
+    border: 1px solid rgba(16,185,129,0.28);
+}
+
+.decision-pill-hold {
+    background: rgba(59,130,246,0.18);
+    color: #bfdbfe;
+    border: 1px solid rgba(96,165,250,0.26);
+}
+
+.decision-pill-watch {
+    background: rgba(245,158,11,0.18);
+    color: #ffd489;
+    border: 1px solid rgba(245,158,11,0.28);
+}
+
+.decision-pill-trim {
+    background: rgba(239,68,68,0.16);
+    color: #fecaca;
+    border: 1px solid rgba(239,68,68,0.24);
+}
+
+.decision-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 0.95rem;
+    margin-bottom: 1.2rem;
+}
+
+.decision-detail-card {
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 1rem;
+    transition: var(--transition-medium);
+}
+
+.decision-detail-card:hover {
+    border-color: rgba(212,175,55,0.24);
+    background: rgba(255,255,255,0.055);
+    transform: translateY(-2px);
+}
+
+.decision-detail-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    color: var(--text-muted);
+    margin-bottom: 0.55rem;
+    font-weight: 700;
+}
+
+.decision-detail-value {
+    font-size: 0.96rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+}
+
+.decision-detail-value strong {
+    color: var(--text-primary);
+}
+
+.decision-action-note {
+    margin-top: 1rem;
+    padding: 1rem 1.05rem;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(212,175,55,0.14) 0%, rgba(212,175,55,0.07) 100%);
+    border: 1px solid rgba(212,175,55,0.2);
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.decision-action-note strong {
+    color: var(--accent-gold);
+}
+
 .portfolio-alert {
     background: linear-gradient(135deg, rgba(201,162,39,0.14) 0%, rgba(201,162,39,0.08) 48%, rgba(255,255,255,0.04) 100%);
     border: 1px solid rgba(201,162,39,0.28);
@@ -2159,6 +2262,51 @@ body.light-mode .rating-metric-box {
     background: rgba(255,255,255,0.86);
     border-color: rgba(122,91,10,0.14);
     box-shadow: 0 10px 22px rgba(103, 74, 18, 0.08);
+}
+
+body.light-mode .decision-pill-market {
+    background: rgba(122,91,10,0.12);
+    color: #7a5b0a;
+    border-color: rgba(122,91,10,0.2);
+}
+
+body.light-mode .decision-pill-buy {
+    background: rgba(15,138,98,0.12);
+    color: #0f8a62;
+    border-color: rgba(15,138,98,0.2);
+}
+
+body.light-mode .decision-pill-hold {
+    background: rgba(37,99,235,0.1);
+    color: #1d4ed8;
+    border-color: rgba(37,99,235,0.18);
+}
+
+body.light-mode .decision-pill-watch {
+    background: rgba(201,127,16,0.12);
+    color: #a3640a;
+    border-color: rgba(201,127,16,0.2);
+}
+
+body.light-mode .decision-pill-trim {
+    background: rgba(171,52,45,0.12);
+    color: #ab342d;
+    border-color: rgba(171,52,45,0.18);
+}
+
+body.light-mode .decision-detail-card {
+    background: rgba(255,255,255,0.72);
+    border-color: rgba(156,116,16,0.12);
+}
+
+body.light-mode .decision-detail-card:hover {
+    background: rgba(255,255,255,0.9);
+    border-color: rgba(122,91,10,0.22);
+}
+
+body.light-mode .decision-action-note {
+    background: linear-gradient(135deg, rgba(122,91,10,0.12) 0%, rgba(122,91,10,0.05) 52%, rgba(255,255,255,0.66) 100%);
+    border-color: rgba(122,91,10,0.18);
 }
 
 body.light-mode .portfolio-alert {
