@@ -1,4 +1,4 @@
-:root {
+﻿:root {
     /* Core Colors - Deep Luxury */
     --bg-primary: #0a0a0a;
     --bg-secondary: #141414;
@@ -363,7 +363,7 @@ header.scrolled {
 }
 
 .scroll-indicator::after {
-    content: '鈫?;
+    content: '↓';
     display: block;
     margin-top: 0.5rem;
     font-size: 1.1rem;
@@ -1173,7 +1173,7 @@ main {
 }
 
 /* Technical rating */
-.rating-card div[style*="TradingView 鎶€鏈寚鏍?] {
+.rating-card div[style*="TradingView 技术指标"] {
     margin-top: var(--space-sm);
     padding-top: var(--space-sm);
     border-top: 1px solid rgba(255,255,255,0.08);
