@@ -292,6 +292,13 @@ console.log('%c Long-term Thinking, High-contrast Design ', 'color: #888; font-s
 // Article database (auto-generated from archive)
 const articles = [
     {
+        date: '2026-03-12',
+        title: '2026年3月12日美股分析：MSFT + 错杀判断',
+        desc: '今日焦点：MSFT 微软平台价值深度解析 + 错杀与逻辑破坏的判断框架',
+        url: 'posts/2026/03/12.html',
+        keywords: ['MSFT', 'Microsoft', '微软', '错杀', '逻辑破坏', 'Azure', 'Copilot']
+    },
+    {
         date: '2026-03-11',
         title: '2026年3月11日美股分析：LLY + 安全边际',
         desc: '今日焦点：LLY 礼来制药医疗健康分析 + 安全边际的本质',
@@ -589,4 +596,5 @@ function initSearch() {
         }
     });
 }
+
 
