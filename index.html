@@ -128,7 +128,7 @@
                 <input type="search" 
                        id="searchInput" 
                        class="search-input" 
-                       placeholder="搜索文章..."
+                       placeholder="搜索文章，按 / 快速唤起"
                        aria-label="搜索文章"
                        aria-controls="searchResults"
                        aria-expanded="false"
@@ -139,6 +139,7 @@
                        spellcheck="false"
                        inputmode="search"
                        enterkeyhint="search">
+                <div class="search-shortcut-hint" aria-hidden="true"><span>按</span><kbd>/</kbd></div>
                 <div id="searchStatus" class="sr-only" aria-live="polite" aria-atomic="true"></div>
                 <div id="searchResults" class="search-results" role="listbox" hidden></div>
             </div>
@@ -262,6 +263,7 @@
     </script>
 </body>
 </html>
+
 
 
 
