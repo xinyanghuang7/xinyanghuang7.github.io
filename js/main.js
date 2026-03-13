@@ -59,19 +59,45 @@ function initScrollReveal() {
 }
 
 // Smooth scroll for navigation links
-function getAnchorScrollOffset(target) {
+function getStickyHeaderHeight() {
     const header = document.getElementById('header');
-    const quickNav = document.querySelector('.article-quick-nav');
-    let offset = header ? header.getBoundingClientRect().height : 80;
+    return header ? header.getBoundingClientRect().height : 80;
+}
 
-    if (quickNav && target?.id) {
-        const quickNavLink = quickNav.querySelector(`[data-section-link="${target.id}"]`);
-        if (quickNavLink) {
-            offset += quickNav.getBoundingClientRect().height + 20;
-        }
+function getQuickNavHeight() {
+    const quickNav = document.querySelector('.article-quick-nav');
+    return quickNav ? quickNav.getBoundingClientRect().height : 0;
+}
+
+function targetUsesQuickNav(target) {
+    if (!target?.id) {
+        return false;
     }
 
-    return Math.max(80, Math.round(offset));
+    const quickNav = document.querySelector('.article-quick-nav');
+    return Boolean(quickNav?.querySelector(`[data-section-link="${target.id}"]`));
+}
+
+function syncStickyOffsets() {
+    const root = document.documentElement;
+    const headerHeight = Math.max(64, Math.ceil(getStickyHeaderHeight()));
+    const quickNavHeight = Math.max(0, Math.ceil(getQuickNavHeight()));
+    const quickNavGap = quickNavHeight > 0 ? 24 : 0;
+
+    root.style.setProperty('--oc-header-height', `${headerHeight}px`);
+    root.style.setProperty('--oc-quick-nav-height', `${quickNavHeight}px`);
+    root.style.setProperty('--oc-quick-nav-gap', `${quickNavGap}px`);
+    root.style.setProperty('--oc-anchor-offset', `${headerHeight + quickNavHeight + quickNavGap}px`);
+}
+
+function getAnchorScrollOffset(target) {
+    let offset = getStickyHeaderHeight();
+
+    if (targetUsesQuickNav(target)) {
+        offset += getQuickNavHeight() + 24;
+    }
+
+    return Math.max(88, Math.round(offset));
 }
 
 function scrollToAnchorTarget(target, { behavior = 'smooth', updateHash = true } = {}) {
@@ -521,6 +547,7 @@ function applyReducedMotionFallback() {
 
 function initPage() {
     decorateSectionsForReveal();
+    syncStickyOffsets();
     initScrollReveal();
     initSmoothScroll();
     initArticleQuickNav();
@@ -534,13 +561,25 @@ function initPage() {
     applyReducedMotionFallback();
     checkForSiteUpdate();
 
+    window.requestAnimationFrame(syncStickyOffsets);
+
+    if (document.fonts?.ready) {
+        document.fonts.ready.then(() => {
+            window.requestAnimationFrame(syncStickyOffsets);
+        }).catch(() => {
+            // ignore font readiness failures
+        });
+    }
+
     // Restore reading position after DOM ready
     setTimeout(restoreReadingProgress, 150);
 }
 
 document.addEventListener('DOMContentLoaded', initPage, { once: true });
+window.addEventListener('resize', debounce(syncStickyOffsets, 80));
 
 window.addEventListener('load', () => {
+    syncStickyOffsets();
     document.body.style.opacity = '1';
 });
 
