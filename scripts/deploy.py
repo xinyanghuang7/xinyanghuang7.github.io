@@ -18,9 +18,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SHARED_FILES = [
     "index.html",
+    "css/style.css",
     "js/main.js",
     "js/posts-data.js",
     "sitemap.xml",
+    "favicon.svg",
+    "robots.txt",
+    "CNAME",
+    "images/hero-bg.jpg",
+    "images/hero-pattern.svg",
+    "images/value-investing.jpg",
+    "images/tech-analysis.jpg",
 ]
 
 
