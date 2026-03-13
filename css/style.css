@@ -1413,15 +1413,15 @@ body.light-mode .tracking-row {
 }
 
 body.light-mode .tracking-badge-core {
-    background: rgba(15,138,98,0.12);
-    color: #0f8a62;
-    border-color: rgba(15,138,98,0.2);
+    background: rgba(15,138,98,0.18);
+    color: #0a5e43;
+    border-color: rgba(15,138,98,0.28);
 }
 
 body.light-mode .tracking-badge-flex {
-    background: rgba(201,127,16,0.12);
-    color: #a3640a;
-    border-color: rgba(201,127,16,0.2);
+    background: rgba(201,127,16,0.18);
+    color: #7c4a06;
+    border-color: rgba(201,127,16,0.28);
 }
 
 body.light-mode .tracking-value-core {
