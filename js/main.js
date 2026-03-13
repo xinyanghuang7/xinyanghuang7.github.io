@@ -292,6 +292,13 @@ console.log('%c Long-term Thinking, High-contrast Design ', 'color: #888; font-s
 // Article database (auto-generated from archive)
 const articles = [
     {
+        date: '2026-03-13',
+        title: '2026年3月13日美股分析：NVDA + 推理经济学',
+        desc: '今日焦点：NVDA 英伟达深度解析 + Blackwell 推理时代与组合动作地图',
+        url: 'posts/2026/03/13.html',
+        keywords: ['NVDA', 'NVIDIA', '英伟达', 'Blackwell', '推理', 'Agentic AI', '推理经济学']
+    },
+    {
         date: '2026-03-12',
         title: '2026年3月12日美股分析：MSFT + 错杀判断',
         desc: '今日焦点：MSFT 微软平台价值深度解析 + 错杀与逻辑破坏的判断框架',
@@ -610,5 +617,6 @@ function initSearch() {
         }
     }, 120));
 }
+
 
 
