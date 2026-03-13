@@ -17,16 +17,17 @@ PORTFOLIO_FILE = Path.home() / ".openclaw" / "skills" / "portfolio-tracker" / "d
 STOCK_RECOMMENDER_SCRIPT = Path.home() / ".openclaw" / "skills" / "stock-recommender" / "scripts" / "recommender.py"
 IMAGES_DIR = BASE_DIR / "images"
 POSTS_DIR = BASE_DIR / "posts"
-TEMPLATE_0305 = BASE_DIR / "posts" / "2026" / "03" / "05.html"
 GENERATE_IMAGE_SCRIPT = BASE_DIR / "skills" / "us-stock-blog" / "scripts" / "generate_image.py"
 DEPLOY_SCRIPT = BASE_DIR / "scripts" / "deploy.py"
+SYNC_SCRIPT = BASE_DIR / "scripts" / "sync-site-data.py"
+QA_SCRIPT = BASE_DIR / "scripts" / "qa-site.ps1"
 
 # ============ 工具函数 ============
 
 def run_cmd(cmd, timeout=30):
     """执行命令"""
     try:
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout, shell=True)
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout, shell=False)
         return result.returncode, result.stdout, result.stderr
     except Exception as e:
         return -1, "", str(e)
@@ -99,6 +100,37 @@ def generate_images(date_str, focus_stock):
     # 这里应该调用 generate_image.py
     # 简化：只检查是否存在
     return False
+
+def contains_placeholders(html):
+    placeholders = ["XXX.XX", "待填充", "最新动态...", "新闻分析...", "基于调研数据"]
+    return any(token in html for token in placeholders)
+
+
+def sync_site_data():
+    """同步首页目录与搜索数据"""
+    if not SYNC_SCRIPT.exists():
+        print(f"错误: 未找到站点同步脚本 {SYNC_SCRIPT}")
+        return False
+    code, out, err = run_cmd([sys.executable, str(SYNC_SCRIPT)], timeout=60)
+    if out:
+        print(out)
+    if err:
+        print(err)
+    return code == 0
+
+
+def run_qa():
+    """运行站点 QA"""
+    if not QA_SCRIPT.exists():
+        print(f"错误: 未找到 QA 脚本 {QA_SCRIPT}")
+        return False
+    code, out, err = run_cmd(["powershell", "-ExecutionPolicy", "Bypass", "-File", str(QA_SCRIPT)], timeout=120)
+    if out:
+        print(out)
+    if err:
+        print(err)
+    return code == 0
+
 
 def build_html(date_obj, focus_stock, portfolio):
     """构建 HTML (基于 0305 模板)"""
@@ -215,12 +247,12 @@ def build_html(date_obj, focus_stock, portfolio):
             </div>
         </section>
         
-        <!-- Module 3: 科技核心资讯 -->
+        <!-- Module 3: 持仓决策区 -->
         <section class="section" id="market">
             <div class="section-header">
                 <div class="section-number">03</div>
                 <div class="section-title-group">
-                    <h2 class="section-title">美股科技核心标的每日财经资讯早报</h2>
+                    <h2 class="section-title">持仓决策区</h2>
                 </div>
                 <div class="section-date">{date_short}</div>
             </div>
@@ -231,16 +263,15 @@ def build_html(date_obj, focus_stock, portfolio):
                 </div>
 """
     
-    # 添加持仓标的 + focus_stock 的卡片
-    all_tickers = set([focus_stock] + [h["code"] for h in holdings])
-    for ticker in all_tickers:
-        is_holding = any(h["code"] == ticker for h in holdings)
+    # Module 3 / 4 只能覆盖当前持仓，不能把非持仓 focus_stock 混进去
+    holding_tickers = [h["code"] for h in holdings]
+    for ticker in holding_tickers:
         portfolio_note = f"""
                 <div class="portfolio-viewpoint" style="background:rgba(212,175,55,0.1);padding:0.75rem;margin-top:0.5rem;border-left:3px solid #d4af37;">
                     <strong style="color:#d4af37;">【持仓视角】</strong>
                     你持有 {ticker}，此消息需结合持仓成本综合分析。
                 </div>
-""" if is_holding else ""
+"""
         
         html += f"""
                 <div class="stock-detail-card">
@@ -255,9 +286,17 @@ def build_html(date_obj, focus_stock, portfolio):
                         <div class="news-item">
                             <div class="news-title">最新动态...</div>
                             <div class="news-perspective"><strong>【长线视角】</strong>新闻分析...</div>
-                            {portfolio_note if is_holding else ''}
+                            {portfolio_note}
                         </div>
                     </div>
+                </div>
+"""
+
+    if not holding_tickers:
+        html += """
+                <div class=\"analysis-box\" style=\"grid-column: 1 / -1;\">
+                    <h3 class=\"analysis-title\">当前无持仓，第三部分不展示持仓决策卡</h3>
+                    <p>非持仓标的请放在 Module 1 或单独标注为“观察池 / 案例”，不要混写成持仓决策。</p>
                 </div>
 """
     
@@ -271,9 +310,8 @@ def build_html(date_obj, focus_stock, portfolio):
             <div class="stock-ratings-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;">
 """
     
-    for ticker in all_tickers:
-        is_holding = any(h["code"] == ticker for h in holdings)
-        compare_html = f"""
+    for ticker in holding_tickers:
+        compare_html = """
                 <div style="background:rgba(212,175,55,0.1);padding:0.75rem;margin-top:0.75rem;border-radius:6px;">
                     <div style="font-size:0.85rem;color:#d4af37;margin-bottom:0.25rem;">我的持仓对比</div>
                     <div style="display:flex;justify-content:space-between;font-size:0.9rem;">
@@ -281,7 +319,7 @@ def build_html(date_obj, focus_stock, portfolio):
                         <span style="color:#fff;">$XXX.XX</span>
                     </div>
                 </div>
-""" if is_holding else ""
+"""
         
         html += f"""
                 <div class="rating-card" style="background:rgba(255,255,255,0.05);padding:1.25rem;border-left:4px solid #22c55e;">
@@ -376,13 +414,27 @@ def main():
     # 4. 生成 HTML
     portfolio = load_portfolio()
     html = build_html(date_obj, focus, portfolio)
+
+    if contains_placeholders(html):
+        print("错误: 当前 generate_blog.py 生成的仍是占位草稿，已拒绝写入/部署。")
+        print("请先补齐真实内容，或改用手工正文 + build-search-index/qa-site/deploy.py 工作流。")
+        return
+
     save_html(html, args.date)
+
+    if not sync_site_data():
+        print("错误: 站点数据同步失败，停止后续流程")
+        return
+
+    if not run_qa():
+        print("错误: QA 未通过，停止部署")
+        return
     
     # 5. 部署
     if not args.skip_deploy:
         if deploy(args.date):
             print("部署成功!")
-            print(f"访问: https://xinyanghuang7.github.io/posts/{date_obj.year}/{date_obj.month:02d}/{date_obj.day:02d}.html")
+            print(f"访问: https://4fire.qzz.io/posts/{date_obj.year}/{date_obj.month:02d}/{date_obj.day:02d}.html")
     else:
         print("跳过部署")
     
