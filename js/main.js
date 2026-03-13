@@ -78,6 +78,45 @@ function initSmoothScroll() {
     });
 }
 
+function initArticleQuickNav() {
+    const quickNav = document.querySelector('.article-quick-nav');
+    if (!quickNav) {
+        return;
+    }
+
+    const links = Array.from(quickNav.querySelectorAll('[data-section-link]'));
+    const sections = links
+        .map(link => document.getElementById(link.dataset.sectionLink))
+        .filter(Boolean);
+
+    if (!links.length || !sections.length) {
+        return;
+    }
+
+    const setActiveLink = (id) => {
+        links.forEach(link => {
+            const isActive = link.dataset.sectionLink === id;
+            link.classList.toggle('is-active', isActive);
+            link.setAttribute('aria-current', isActive ? 'true' : 'false');
+        });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        const visible = entries
+            .filter(entry => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible?.target?.id) {
+            setActiveLink(visible.target.id);
+        }
+    }, {
+        rootMargin: '-24% 0px -58% 0px',
+        threshold: [0.2, 0.35, 0.55]
+    });
+
+    sections.forEach(section => observer.observe(section));
+}
+
 // Back to top and dark mode toggle visibility
 function updateFloatingButtons() {
     const backToTop = document.getElementById('backToTop');
@@ -263,6 +302,7 @@ function initPage() {
     decorateSectionsForReveal();
     initScrollReveal();
     initSmoothScroll();
+    initArticleQuickNav();
     initLazyLoading();
     initDarkMode();
     initSearch();
@@ -547,6 +587,17 @@ function initSearch() {
         }
     });
 
+    document.addEventListener('keydown', (event) => {
+        const activeTag = document.activeElement?.tagName;
+        const isTypingContext = document.activeElement?.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(activeTag);
+
+        if (event.key === '/' && !event.metaKey && !event.ctrlKey && !event.altKey && !isTypingContext) {
+            event.preventDefault();
+            searchInput.focus();
+            searchInput.select();
+        }
+    });
+
     searchInput.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
             closeResults();
@@ -617,6 +668,7 @@ function initSearch() {
         }
     }, 120));
 }
+
 
 
 
