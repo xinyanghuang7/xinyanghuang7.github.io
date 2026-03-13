@@ -59,6 +59,12 @@
     --z-overlay: 1000;
     --z-search-backdrop: 1150;
     --z-search-panel: 1200;
+
+    /* Sticky layout offsets */
+    --oc-header-height: 72px;
+    --oc-quick-nav-height: 62px;
+    --oc-quick-nav-gap: 24px;
+    --oc-anchor-offset: calc(var(--oc-header-height) + var(--oc-quick-nav-height) + var(--oc-quick-nav-gap));
 }
 
 body.dark-mode {
@@ -372,7 +378,7 @@ header.scrolled {
 
 .article-quick-nav {
     position: sticky;
-    top: calc(72px + env(safe-area-inset-top, 0px));
+    top: calc(var(--oc-header-height) + env(safe-area-inset-top, 0px) + 0.35rem);
     z-index: calc(var(--z-sticky) - 1);
     margin: calc(var(--space-lg) * -0.5) auto var(--space-xl);
     padding: 0.65rem;
@@ -422,7 +428,7 @@ header.scrolled {
 }
 
 main .section[id] {
-    scroll-margin-top: 10rem;
+    scroll-margin-top: calc(var(--oc-anchor-offset) + env(safe-area-inset-top, 0px));
 }
 
 .article-meta-bar {
@@ -2990,7 +2996,6 @@ footer .disclaimer {
     }
 
     .article-quick-nav {
-        top: calc(66px + env(safe-area-inset-top, 0px));
         width: calc(100% - 2rem);
         justify-content: flex-start;
         overflow-x: auto;
