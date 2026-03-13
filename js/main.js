@@ -93,16 +93,35 @@ function initArticleQuickNav() {
         return;
     }
 
+    const syncQuickNavScroll = (activeLink) => {
+        if (!activeLink || quickNav.scrollWidth <= quickNav.clientWidth + 4) {
+            return;
+        }
+
+        const targetLeft = activeLink.offsetLeft - Math.max(0, (quickNav.clientWidth - activeLink.offsetWidth) / 2);
+        const maxLeft = Math.max(0, quickNav.scrollWidth - quickNav.clientWidth);
+        const nextLeft = Math.min(maxLeft, Math.max(0, targetLeft));
+
+        quickNav.scrollTo({
+            left: nextLeft,
+            behavior: 'smooth'
+        });
+    };
+
     const setActiveLink = (id) => {
+        let activeLink = null;
+
         links.forEach(link => {
             const isActive = link.dataset.sectionLink === id;
             link.classList.toggle('is-active', isActive);
             link.setAttribute('aria-current', isActive ? 'true' : 'false');
 
             if (isActive) {
-                link.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+                activeLink = link;
             }
         });
+
+        syncQuickNavScroll(activeLink);
     };
 
     const observer = new IntersectionObserver((entries) => {
