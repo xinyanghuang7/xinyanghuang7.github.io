@@ -421,6 +421,10 @@ header.scrolled {
     box-shadow: 0 12px 26px rgba(212,175,55,0.18);
 }
 
+main .section[id] {
+    scroll-margin-top: 10rem;
+}
+
 .article-meta-bar {
     box-sizing: border-box;
     width: min(1080px, calc(100% - 2rem));
