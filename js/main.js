@@ -69,6 +69,10 @@ function getQuickNavHeight() {
     return quickNav ? quickNav.getBoundingClientRect().height : 0;
 }
 
+function isMobileQuickNavLayout() {
+    return window.matchMedia('(max-width: 768px)').matches;
+}
+
 function targetUsesQuickNav(target) {
     if (!target?.id) {
         return false;
@@ -80,21 +84,29 @@ function targetUsesQuickNav(target) {
 
 function syncStickyOffsets() {
     const root = document.documentElement;
+    const body = document.body;
     const headerHeight = Math.max(64, Math.ceil(getStickyHeaderHeight()));
     const quickNavHeight = Math.max(0, Math.ceil(getQuickNavHeight()));
-    const quickNavGap = quickNavHeight > 0 ? 24 : 0;
+    const topDockedQuickNav = quickNavHeight > 0 && !isMobileQuickNavLayout();
+    const quickNavGap = topDockedQuickNav ? 24 : 0;
+    const anchorOffset = headerHeight + 24 + (topDockedQuickNav ? quickNavHeight : 0);
 
     root.style.setProperty('--oc-header-height', `${headerHeight}px`);
     root.style.setProperty('--oc-quick-nav-height', `${quickNavHeight}px`);
     root.style.setProperty('--oc-quick-nav-gap', `${quickNavGap}px`);
-    root.style.setProperty('--oc-anchor-offset', `${headerHeight + quickNavHeight + quickNavGap}px`);
+    root.style.setProperty('--oc-anchor-offset', `${anchorOffset}px`);
+
+    if (body) {
+        body.classList.toggle('has-article-quick-nav', quickNavHeight > 0);
+        body.classList.toggle('has-mobile-quick-nav', quickNavHeight > 0 && isMobileQuickNavLayout());
+    }
 }
 
 function getAnchorScrollOffset(target) {
-    let offset = getStickyHeaderHeight();
+    let offset = getStickyHeaderHeight() + 24;
 
-    if (targetUsesQuickNav(target)) {
-        offset += getQuickNavHeight() + 24;
+    if (!isMobileQuickNavLayout() && targetUsesQuickNav(target)) {
+        offset += getQuickNavHeight();
     }
 
     return Math.max(88, Math.round(offset));
