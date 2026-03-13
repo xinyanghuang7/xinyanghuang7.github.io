@@ -33,12 +33,11 @@
 ### 默认执行：
 1. 生成当日文章 `posts/YYYY/MM/DD.html`
 2. 生成 / 复用配图资源
-3. 更新首页目录 `index.html`
-4. 更新搜索索引 `js/main.js`
-5. 跑本地 QA
-6. 推送 GitHub
-7. 验证正式域名 `https://4fire.qzz.io/`
-8. 再汇报“已完成”
+3. 运行 `python scripts/sync-site-data.py`，同步首页目录与 `js/posts-data.js`
+4. 跑本地 QA
+5. 推送 GitHub
+6. 验证正式域名 `https://4fire.qzz.io/`
+7. 再汇报“已完成”
 
 成功标准不是“本地改好了”，而是：
 - GitHub 远端已更新
@@ -89,16 +88,17 @@
 
 ### 2) 本地稳定工具（可属于博客仓库）
 - `scripts/build-all.ps1`
-- `scripts/build-search-index.ps1`
+- `scripts/sync-site-data.py`
+- `scripts/build-search-index.ps1`（兼容入口，内部转发到 sync-site-data）
 - `scripts/build-sitemap.ps1`
 - `scripts/deploy.py`
-- `scripts/generate_blog.py`
+- `scripts/generate_blog.py`（当前带占位保护，不允许把草稿直接部署）
 - `scripts/generate_images.py`
 - `scripts/new-post.ps1`
 - `scripts/portfolio_reader.py`
 - `scripts/qa-site.ps1`
 - `scripts/review-content.ps1`
-- `scripts/update-index.ps1`
+- `scripts/update-index.ps1`（兼容入口，内部转发到 sync-site-data）
 - `scripts/write-review-publish.ps1`
 
 ### 3) 不应混进博客仓库的内容
