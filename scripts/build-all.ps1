@@ -1,45 +1,37 @@
-# 完整构建流程
-# 1. 生成搜索索引
-# 2. 生成站点地图  
-# 3. 更新主页目录
-# 4. 部署到GitHub
-
 param(
     [switch]$Deploy,
-    [switch]$SkipIndex
+    [string]$Date
 )
 
 $ErrorActionPreference = "Stop"
 $scriptsDir = $PSScriptRoot
 
 Write-Host ""
-Write-Host "开始构建博客..." -ForegroundColor Cyan
+Write-Host "Start site build..." -ForegroundColor Cyan
 Write-Host ""
 
-# 1. 生成搜索索引
-if (!$SkipIndex) {
-    Write-Host "步骤 1/4: 生成搜索索引..." -ForegroundColor Yellow
-    & "$scriptsDir\build-search-index.ps1"
-    Write-Host ""
-}
+Write-Host "Step 1/4: Sync archive + search data..." -ForegroundColor Yellow
+& "$scriptsDir\build-search-index.ps1"
+Write-Host ""
 
-# 2. 生成站点地图
-Write-Host "步骤 2/4: 生成站点地图..." -ForegroundColor Yellow
+Write-Host "Step 2/4: Build sitemap..." -ForegroundColor Yellow
 & "$scriptsDir\build-sitemap.ps1"
 Write-Host ""
 
-# 3. 更新主页目录
-Write-Host "步骤 3/4: 更新主页目录..." -ForegroundColor Yellow
-& "$scriptsDir\update-index.ps1"
+Write-Host "Step 3/4: Run local QA..." -ForegroundColor Yellow
+& "$scriptsDir\qa-site.ps1"
 Write-Host ""
 
-# 4. 部署（如果指定了 -Deploy 参数）
 if ($Deploy) {
-    Write-Host "步骤 4/4: 部署到 GitHub..." -ForegroundColor Yellow
-    & "$scriptsDir\deploy.ps1"
+    Write-Host "Step 4/4: Deploy to GitHub..." -ForegroundColor Yellow
+    if ($Date) {
+        python "$scriptsDir\deploy.py" --date $Date
+    } else {
+        python "$scriptsDir\deploy.py"
+    }
 } else {
-    Write-Host "步骤 4/4: 部署已跳过（使用 -Deploy 参数进行部署）" -ForegroundColor Gray
+    Write-Host "Step 4/4: Deploy skipped (use -Deploy to publish)." -ForegroundColor Gray
 }
 
 Write-Host ""
-Write-Host "构建完成!" -ForegroundColor Green
+Write-Host "Build complete!" -ForegroundColor Green
