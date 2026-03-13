@@ -218,6 +218,151 @@ function initDarkMode() {
     });
 }
 
+// Build/version self-healing for GitHub Pages 10-minute cache windows
+const SITE_BUILD_QUERY_KEY = '__oc_build';
+const SITE_BUILD_RELOAD_KEY = 'valueinvest-last-build-reload';
+
+function getCurrentBuildId() {
+    const candidates = [
+        ...document.querySelectorAll('script[src]'),
+        ...document.querySelectorAll('link[rel="stylesheet"][href]')
+    ];
+
+    for (const el of candidates) {
+        const raw = el.getAttribute('src') || el.getAttribute('href');
+        if (!raw || !/[?&]v=/.test(raw)) {
+            continue;
+        }
+
+        try {
+            const resolved = new URL(raw, window.location.href);
+            const build = resolved.searchParams.get('v');
+            if (build) {
+                return build;
+            }
+        } catch (_) {
+            // ignore malformed URLs and keep scanning
+        }
+    }
+
+    return '';
+}
+
+function showBuildRefreshNotice(remoteBuild) {
+    if (document.getElementById('buildRefreshNotice')) {
+        return;
+    }
+
+    const notice = document.createElement('div');
+    notice.id = 'buildRefreshNotice';
+    notice.setAttribute('role', 'status');
+    notice.style.cssText = [
+        'position:fixed',
+        'right:16px',
+        'bottom:16px',
+        'z-index:9999',
+        'max-width:320px',
+        'padding:12px 14px',
+        'border-radius:14px',
+        'background:rgba(12,12,12,0.94)',
+        'border:1px solid rgba(212,175,55,0.45)',
+        'color:#fff',
+        'box-shadow:0 18px 40px rgba(0,0,0,0.35)',
+        'font-size:14px',
+        'line-height:1.5'
+    ].join(';');
+
+    const text = document.createElement('div');
+    text.textContent = '检测到站点有更新版本，点击即可刷新到最新内容。';
+
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = '刷新到最新版本';
+    button.style.cssText = [
+        'margin-top:10px',
+        'padding:8px 12px',
+        'border-radius:999px',
+        'border:none',
+        'background:#d4af37',
+        'color:#111',
+        'font-weight:700',
+        'cursor:pointer'
+    ].join(';');
+    button.addEventListener('click', () => redirectToBuild(remoteBuild));
+
+    notice.appendChild(text);
+    notice.appendChild(button);
+    document.body.appendChild(notice);
+}
+
+function redirectToBuild(remoteBuild) {
+    if (!remoteBuild) {
+        return;
+    }
+
+    try {
+        const url = new URL(window.location.href);
+        const key = `${url.pathname}|${remoteBuild}`;
+        sessionStorage.setItem(SITE_BUILD_RELOAD_KEY, key);
+        url.searchParams.set(SITE_BUILD_QUERY_KEY, remoteBuild);
+        window.location.replace(url.toString());
+    } catch (_) {
+        // no-op
+    }
+}
+
+function cleanupBuildQueryParam(currentBuild) {
+    try {
+        const url = new URL(window.location.href);
+        const activeBuild = url.searchParams.get(SITE_BUILD_QUERY_KEY);
+        if (activeBuild && activeBuild === currentBuild) {
+            url.searchParams.delete(SITE_BUILD_QUERY_KEY);
+            window.history.replaceState({}, document.title, url.toString());
+            sessionStorage.removeItem(SITE_BUILD_RELOAD_KEY);
+        }
+    } catch (_) {
+        // no-op
+    }
+}
+
+async function checkForSiteUpdate() {
+    const currentBuild = getCurrentBuildId();
+    cleanupBuildQueryParam(currentBuild);
+
+    if (!currentBuild || typeof fetch !== 'function') {
+        return;
+    }
+
+    try {
+        const response = await fetch(`/site-version.json?ts=${Date.now()}`, {
+            cache: 'no-store'
+        });
+
+        if (!response.ok) {
+            return;
+        }
+
+        const payload = await response.json();
+        const remoteBuild = String(payload?.build || '').trim();
+        if (!remoteBuild || remoteBuild === currentBuild) {
+            return;
+        }
+
+        const url = new URL(window.location.href);
+        const attemptedKey = `${url.pathname}|${remoteBuild}`;
+        const lastAttempt = sessionStorage.getItem(SITE_BUILD_RELOAD_KEY);
+
+        if (lastAttempt === attemptedKey) {
+            showBuildRefreshNotice(remoteBuild);
+            return;
+        }
+
+        redirectToBuild(remoteBuild);
+    } catch (error) {
+        console.warn('Site version check skipped:', error);
+    }
+}
+
 // Lazy load images with fade-in effect
 function initLazyLoading() {
     if ('IntersectionObserver' in window) {
@@ -329,6 +474,7 @@ function initPage() {
     updateHeader();
     updateFloatingButtons();
     applyReducedMotionFallback();
+    checkForSiteUpdate();
 
     // Restore reading position after DOM ready
     setTimeout(restoreReadingProgress, 150);
