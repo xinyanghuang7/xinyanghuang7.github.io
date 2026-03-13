@@ -422,6 +422,7 @@ header.scrolled {
 }
 
 .article-meta-bar {
+    box-sizing: border-box;
     width: min(1080px, calc(100% - 2rem));
     margin: calc(var(--space-lg) * -0.35) auto var(--space-xl);
     display: flex;
@@ -3009,9 +3010,13 @@ footer .disclaimer {
         width: calc(100% - 2rem);
         margin-top: calc(var(--space-md) * -0.35);
         gap: 0.55rem;
+        padding-right: 0;
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .article-meta-chip {
+        max-width: calc(100% - 4.75rem);
         font-size: 0.72rem;
         padding: 0.5rem 0.75rem;
     }
@@ -3075,5 +3080,7 @@ footer .disclaimer {
         scroll-behavior: auto !important;
     }
 }
+
+
 
 
