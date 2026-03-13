@@ -23,30 +23,33 @@
     <link rel="stylesheet" href="../../../css/style.css?v=20260313a">
 </head>
 <body>
-    <div class="progress-bar" id="progressBar"></div>
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
 
     <header id="header">
         <div class="nav-container">
-            <a href="../../../index.html" class="logo">Value<span>Invest</span></a>
-            <ul class="nav-links">
-                <li><a href="../../../index.html#about">关于</a></li>
-                <li><a href="../../../index.html#archive">文章目录</a></li>
-            </ul>
+            <a href="../../../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="文章页主导航">
+                <ul class="nav-links">
+                    <li><a href="../../../index.html#about">关于</a></li>
+                    <li><a href="../../../index.html#archive">文章目录</a></li>
+                </ul>
+            </nav>
             <div class="nav-date">2026年03月13日</div>
         </div>
     </header>
 
-    <section class="hero">
+    <section class="hero" role="banner">
         <div class="hero-bg-pattern" style="background-image: url('../../../images/hero-bg.jpg');"></div>
         <div class="hero-content">
             <div class="subtitle">美股每日财经分析</div>
             <h1>NVDA 英伟达：推理时代的护城河，和该有的克制</h1>
             <p class="tagline">"便宜十倍的 token，不一定自动变成十倍利润；真正要看的是，谁把系统价值吃下来。"</p>
         </div>
-        <a href="#stock-pick" class="scroll-indicator">向下滚动</a>
+        <a href="#stock-pick" class="scroll-indicator" aria-label="向下滚动到正文">向下滚动</a>
     </section>
 
-    <main>
+    <main id="main">
         <section class="section" id="stock-pick">
             <div class="section-header">
                 <div class="section-number">01</div>
@@ -658,5 +661,6 @@
     <script src="../../../js/main.js?v=20260313a"></script>
 </body>
 </html>
+
 
 
