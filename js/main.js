@@ -98,6 +98,10 @@ function initArticleQuickNav() {
             const isActive = link.dataset.sectionLink === id;
             link.classList.toggle('is-active', isActive);
             link.setAttribute('aria-current', isActive ? 'true' : 'false');
+
+            if (isActive) {
+                link.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+            }
         });
     };
 
@@ -115,6 +119,20 @@ function initArticleQuickNav() {
     });
 
     sections.forEach(section => observer.observe(section));
+}
+
+function initArticleMeta() {
+    const readTimeEl = document.getElementById('articleReadTime');
+    const main = document.getElementById('main');
+
+    if (!readTimeEl || !main) {
+        return;
+    }
+
+    const text = main.innerText || '';
+    const cleaned = text.replace(/\s+/g, '');
+    const estimatedMinutes = Math.max(4, Math.round(cleaned.length / 320));
+    readTimeEl.textContent = `阅读约 ${estimatedMinutes} 分钟`;
 }
 
 // Back to top and dark mode toggle visibility
@@ -303,6 +321,7 @@ function initPage() {
     initScrollReveal();
     initSmoothScroll();
     initArticleQuickNav();
+    initArticleMeta();
     initLazyLoading();
     initDarkMode();
     initSearch();
@@ -476,13 +495,20 @@ function displaySearchResults(results) {
         return;
     }
 
-    const html = results.map((article, index) => `
+    const html = results.map((article, index) => {
+        const keywordHtml = (article.keywords || []).slice(0, 3).map(keyword => `
+            <span class="search-result-keyword">${keyword}</span>
+        `).join('');
+
+        return `
         <a href="${article.url}" class="search-result-item" role="option" aria-selected="false" tabindex="-1" data-search-index="${index}">
             <div class="search-result-date">${article.date}</div>
             <div class="search-result-title">${article.title}</div>
             <div class="search-result-desc">${article.desc}</div>
+            <div class="search-result-keywords">${keywordHtml}</div>
         </a>
-    `).join('');
+    `;
+    }).join('');
 
     searchResults.innerHTML = html;
 }
@@ -492,6 +518,8 @@ function initSearch() {
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
     const searchStatus = document.getElementById('searchStatus');
+    const searchStatusText = document.getElementById('searchStatusText');
+    const searchLibraryCount = document.getElementById('searchLibraryCount');
     const searchContainer = searchInput?.closest('.search-container');
 
     if (!searchInput || !searchResults || !searchContainer) return;
@@ -499,6 +527,10 @@ function initSearch() {
     let activeIndex = -1;
     let lastResults = [];
     let isComposing = false;
+
+    if (searchLibraryCount) {
+        searchLibraryCount.textContent = String(articles.length);
+    }
 
     const setSearchOpenState = (isOpen) => {
         searchContainer.classList.toggle('is-open', isOpen);
@@ -510,6 +542,10 @@ function initSearch() {
         setActiveSearchResult(searchResults, activeIndex);
         setSearchResultsVisibility(searchInput, searchResults, false);
         setSearchOpenState(false);
+
+        if (searchStatusText) {
+            searchStatusText.textContent = '支持股票代码 / 日期 / 主题词';
+        }
 
         if (clearMarkup) {
             searchResults.innerHTML = '';
@@ -533,12 +569,17 @@ function initSearch() {
         setSearchResultsVisibility(searchInput, searchResults, true);
         setSearchOpenState(true);
 
-        updateSearchStatus(
-            searchStatus,
-            lastResults.length > 0
-                ? `找到 ${lastResults.length} 篇相关文章`
-                : '未找到相关文章'
-        );
+        const statusText = lastResults.length > 0
+            ? `找到 ${lastResults.length} 篇相关文章`
+            : '未找到相关文章';
+
+        updateSearchStatus(searchStatus, statusText);
+
+        if (searchStatusText) {
+            searchStatusText.textContent = lastResults.length > 0
+                ? `当前结果：${lastResults.length} 篇`
+                : '当前结果：0 篇';
+        }
     };
 
     const debouncedSearch = debounce(renderResults, 220);
@@ -668,6 +709,7 @@ function initSearch() {
         }
     }, 120));
 }
+
 
 
 
