@@ -59,23 +59,62 @@ function initScrollReveal() {
 }
 
 // Smooth scroll for navigation links
+function getAnchorScrollOffset(target) {
+    const header = document.getElementById('header');
+    const quickNav = document.querySelector('.article-quick-nav');
+    let offset = header ? header.getBoundingClientRect().height : 80;
+
+    if (quickNav && target?.id) {
+        const quickNavLink = quickNav.querySelector(`[data-section-link="${target.id}"]`);
+        if (quickNavLink) {
+            offset += quickNav.getBoundingClientRect().height + 20;
+        }
+    }
+
+    return Math.max(80, Math.round(offset));
+}
+
+function scrollToAnchorTarget(target, { behavior = 'smooth', updateHash = true } = {}) {
+    if (!target) {
+        return;
+    }
+
+    const elementPosition = target.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - getAnchorScrollOffset(target);
+
+    window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior
+    });
+
+    if (updateHash && target.id) {
+        history.replaceState(null, '', `#${target.id}`);
+    }
+}
+
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                const headerOffset = 80;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+            if (!target) {
+                return;
             }
+
+            e.preventDefault();
+            scrollToAnchorTarget(target);
         });
     });
+
+    if (window.location.hash) {
+        const initialTarget = document.querySelector(window.location.hash);
+        if (initialTarget) {
+            window.requestAnimationFrame(() => {
+                window.requestAnimationFrame(() => {
+                    scrollToAnchorTarget(initialTarget, { behavior: 'auto', updateHash: false });
+                });
+            });
+        }
+    }
 }
 
 function initArticleQuickNav() {
