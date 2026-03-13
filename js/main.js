@@ -348,65 +348,8 @@ console.log('%c Long-term Thinking, High-contrast Design ', 'color: #888; font-s
 // Search Functionality
 // ============================================
 
-// Article database (auto-generated from archive)
-const articles = [
-    {
-        date: '2026-03-13',
-        title: '2026年3月13日美股分析：NVDA + 推理经济学',
-        desc: '今日焦点：NVDA 英伟达深度解析 + Blackwell 推理时代与组合动作地图',
-        url: 'posts/2026/03/13.html',
-        keywords: ['NVDA', 'NVIDIA', '英伟达', 'Blackwell', '推理', 'Agentic AI', '推理经济学']
-    },
-    {
-        date: '2026-03-12',
-        title: '2026年3月12日美股分析：MSFT + 错杀判断',
-        desc: '今日焦点：MSFT 微软平台价值深度解析 + 错杀与逻辑破坏的判断框架',
-        url: 'posts/2026/03/12.html',
-        keywords: ['MSFT', 'Microsoft', '微软', '错杀', '逻辑破坏', 'Azure', 'Copilot']
-    },
-    {
-        date: '2026-03-11',
-        title: '2026年3月11日美股分析：LLY + 安全边际',
-        desc: '今日焦点：LLY 礼来制药医疗健康分析 + 安全边际的本质',
-        url: 'posts/2026/03/11.html',
-        keywords: ['LLY', '礼来', '制药', '医疗', '安全边际']
-    },
-    {
-        date: '2026-03-10',
-        title: '2026年3月10日美股分析：META + 长期持有',
-        desc: '今日焦点：META 深度研究 + 长期持有的艺术',
-        url: 'posts/2026/03/10.html',
-        keywords: ['META', 'Meta', '长期持有', '社交广告', 'AI']
-    },
-    {
-        date: '2026-03-09',
-        title: '2026年3月9日美股分析：VRT + 竞争优势',
-        desc: '今日焦点：VRT Vertiv 电力基础设施分析 + 理解企业的竞争优势',
-        url: 'posts/2026/03/09.html',
-        keywords: ['VRT', 'Vertiv', '电力基础设施', '竞争优势', '数据中心']
-    },
-    {
-        date: '2026-03-08',
-        title: '2026年3月8日美股分析：UNH + 长期持有心态',
-        desc: '今日焦点：UNH联合健康防御性分析 + 长期持有的心态修炼',
-        url: 'posts/2026/03/08.html',
-        keywords: ['UNH', '联合健康', '医疗', '长期持有']
-    },
-    {
-        date: '2026-03-07',
-        title: '2026年3月7日美股分析：GOOGL + 护城河识别',
-        desc: '今日焦点：GOOGL Alphabet AI护城河分析 + 识别真正护城河的投资原则',
-        url: 'posts/2026/03/07.html',
-        keywords: ['GOOGL', 'Alphabet', '谷歌', 'AI', '护城河']
-    },
-    {
-        date: '2026-03-05',
-        title: '2026年3月5日美股分析：VST + 安全边际',
-        desc: '今日焦点：VST 电力股深度分析 + 巴菲特安全边际原则解读',
-        url: 'posts/2026/03/05.html',
-        keywords: ['VST', 'Vistra', '电力', '安全边际', '巴菲特']
-    }
-];
+// Article database (auto-generated from posts/**/*.html via js/posts-data.js)
+const articles = Array.isArray(window.__POSTS__) ? window.__POSTS__ : [];
 
 function normalizeSearchText(value) {
     return String(value || '')
