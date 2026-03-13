@@ -30,7 +30,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="css/style.css?v=20260313e">
+    <link rel="stylesheet" href="css/style.css?v=20260313f">
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -140,6 +140,10 @@
                        inputmode="search"
                        enterkeyhint="search">
                 <div class="search-shortcut-hint" aria-hidden="true"><span>按</span><kbd>/</kbd></div>
+                <div class="search-meta-row" aria-hidden="true">
+                    <div class="search-meta-pill">已收录 <span id="searchLibraryCount">8</span> 篇文章</div>
+                    <div class="search-meta-text" id="searchStatusText">支持股票代码 / 日期 / 主题词</div>
+                </div>
                 <div id="searchStatus" class="sr-only" aria-live="polite" aria-atomic="true"></div>
                 <div id="searchResults" class="search-results" role="listbox" hidden></div>
             </div>
@@ -248,7 +252,7 @@
         ↑
     </button>
 
-    <script src="js/main.js?v=20260313e"></script>
+    <script src="js/main.js?v=20260313f"></script>
     <script>
         // Set current date with proper datetime attribute
         const now = new Date();
@@ -263,6 +267,8 @@
     </script>
 </body>
 </html>
+
+
 
 
 
