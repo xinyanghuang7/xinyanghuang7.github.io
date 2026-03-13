@@ -6,13 +6,16 @@ Set-Location $root
 $issues = New-Object System.Collections.Generic.List[string]
 $htmlFiles = Get-ChildItem -Recurse -File -Include *.html | Where-Object { $_.FullName -notmatch '\\.git\\' }
 $postFiles = $htmlFiles | Where-Object { $_.FullName -match '\\posts\\' }
+$indexPath = Join-Path $root 'index.html'
+$mainJsPath = Join-Path $root 'js\main.js'
+$postsDataPath = Join-Path $root 'js\posts-data.js'
 
 function Add-Issue([string]$msg) {
     $issues.Add($msg)
     Write-Output "FAIL $msg"
 }
 
-Write-Output '== OpenClaw Blog QA ==' 
+Write-Output '== OpenClaw Blog QA =='
 
 foreach ($file in $postFiles) {
     $content = Get-Content -Raw -Encoding UTF8 $file.FullName
@@ -22,12 +25,28 @@ foreach ($file in $postFiles) {
         Add-Issue "$rel missing main.js include"
     }
 
-    if ($content -match '(<section class="section"[^>]*>)(?s:.*)</body>' -and $content -notmatch 'id="progressBar"') {
+    if ($content -notmatch 'id="progressBar"') {
         Add-Issue "$rel missing progress bar"
     }
 
     if ($content -match 'XXX\.XX|待填充|最新动态\.\.\.|新闻分析\.\.\.|基于调研数据') {
         Add-Issue "$rel still contains placeholder content"
+    }
+
+    if ($content -match 'xinyanghuang7\.github\.io') {
+        Add-Issue "$rel still contains legacy xinyanghuang7.github.io domain"
+    }
+
+    foreach ($prop in @('og:url', 'og:title', 'og:description')) {
+        $pattern = '<meta\s+property="' + [regex]::Escape($prop) + '"'
+        $count = ([regex]::Matches($content, $pattern)).Count
+        if ($count -gt 1) {
+            Add-Issue "$rel has duplicate $prop meta tags"
+        }
+    }
+
+    if ($content -notmatch '<link rel="canonical" href="https://4fire\.qzz\.io/posts/') {
+        Add-Issue "$rel missing canonical on 4fire.qzz.io"
     }
 
     $matches = [regex]::Matches($content, '(?:\.\./\.\./\.\./)?images/[^"''\) ]+')
@@ -39,11 +58,34 @@ foreach ($file in $postFiles) {
     }
 }
 
-$indexPath = Join-Path $root 'index.html'
 if (Test-Path $indexPath) {
     $index = Get-Content -Raw -Encoding UTF8 $indexPath
+
     if ($index -match '<meta name="author" content="[^"]*"\s*<meta') {
         Add-Issue 'index.html has malformed meta tag'
+    }
+
+    if ($index -match 'xinyanghuang7\.github\.io') {
+        Add-Issue 'index.html still contains legacy xinyanghuang7.github.io domain'
+    }
+
+    if ($index -notmatch '<script src="js/posts-data\.js(?:\?v=[^"'']+)?"></script>') {
+        Add-Issue 'index.html missing js/posts-data.js include'
+    }
+
+    if ($index -notmatch '<!-- ARCHIVE_ITEMS_START -->' -or $index -notmatch '<!-- ARCHIVE_ITEMS_END -->') {
+        Add-Issue 'index.html missing archive sync markers'
+    }
+}
+
+if (-not (Test-Path $postsDataPath)) {
+    Add-Issue 'js/posts-data.js missing'
+}
+
+if (Test-Path $mainJsPath) {
+    $mainJs = Get-Content -Raw -Encoding UTF8 $mainJsPath
+    if ($mainJs -match 'const articles = \[') {
+        Add-Issue 'js/main.js still hardcodes article database instead of using js/posts-data.js'
     }
 }
 
