@@ -9,6 +9,8 @@ $postFiles = $htmlFiles | Where-Object { $_.FullName -match '\\posts\\' }
 $indexPath = Join-Path $root 'index.html'
 $mainJsPath = Join-Path $root 'js\main.js'
 $postsDataPath = Join-Path $root 'js\posts-data.js'
+$newPostPath = Join-Path $root 'scripts\new-post.ps1'
+$postTemplatePath = Join-Path $root 'template\post-template.html'
 
 function Add-Issue([string]$msg) {
     $issues.Add($msg)
@@ -80,6 +82,14 @@ if (Test-Path $indexPath) {
 
 if (-not (Test-Path $postsDataPath)) {
     Add-Issue 'js/posts-data.js missing'
+}
+
+if (-not (Test-Path $newPostPath)) {
+    Add-Issue 'scripts/new-post.ps1 missing'
+}
+
+if (-not (Test-Path $postTemplatePath)) {
+    Add-Issue 'template/post-template.html missing'
 }
 
 if (Test-Path $mainJsPath) {
