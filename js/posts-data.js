@@ -2,8 +2,8 @@
 window.__POSTS__ = [
   {
     "date": "2026-03-14",
-    "title": "2026骞?鏈?4鏃ョ編鑲″垎鏋愶細NBIS + 楠岃瘉寮忔垚闀?",
-    "desc": "2026骞?鏈?4鏃ョ編鑲″疂钘忔爣鐨勫垎鏋愶細NBIS Nebius 娣卞害瑙ｆ瀽锛岃仛鐒?NVIDIA 20 浜跨編鍏冨叆鑲°€丄I Factory 鎵╁紶涓庡己鑳屼功鍚庣殑鍏戠幇瀹℃煡銆?> <meta name=",
+    "title": "2026年3月14日美股分析：NBIS + 验证式成长",
+    "desc": "2026年3月14日美股宝藏标的分析：NBIS Nebius 深度解析，聚焦 NVIDIA 20 亿美元入股、AI Factory 扩张与强背书后的兑现审查。",
     "url": "posts/2026/03/14.html",
     "keywords": [
       "NBIS"
