@@ -22,6 +22,225 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../css/style.css?v=20260314c">
+    <style>
+        .post-0314-refined .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(212,175,55,0.18), transparent 34%),
+                radial-gradient(circle at 82% 24%, rgba(78,112,255,0.16), transparent 26%),
+                linear-gradient(180deg, rgba(7,7,7,0.12) 0%, rgba(7,7,7,0.52) 100%);
+            pointer-events: none;
+        }
+
+        .post-0314-refined .hero-content {
+            max-width: 1080px;
+        }
+
+        .post-0314-refined .hero h1 {
+            text-shadow: 0 10px 35px rgba(0,0,0,0.36);
+        }
+
+        .post-signal-grid {
+            margin-top: 1.8rem;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.95rem;
+        }
+
+        .post-signal-card {
+            padding: 1rem 1.05rem;
+            border-radius: 18px;
+            background: linear-gradient(180deg, rgba(15,15,18,0.62) 0%, rgba(15,15,18,0.82) 100%);
+            border: 1px solid rgba(255,255,255,0.10);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.22);
+        }
+
+        .post-signal-label {
+            font-size: 0.72rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.76);
+            margin-bottom: 0.45rem;
+        }
+
+        .post-signal-value {
+            font-family: var(--font-display);
+            font-size: 1.38rem;
+            color: #fff;
+            margin-bottom: 0.3rem;
+        }
+
+        .post-signal-note {
+            color: rgba(255,255,255,0.78);
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        .strategy-strip {
+            width: min(1080px, calc(100% - 2rem));
+            margin: -0.2rem auto 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.95rem;
+        }
+
+        .strategy-tile {
+            position: relative;
+            overflow: hidden;
+            padding: 1.15rem 1.1rem 1rem;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: linear-gradient(145deg, rgba(20,20,22,0.96), rgba(28,28,30,0.9));
+            box-shadow: 0 18px 38px rgba(0,0,0,0.16);
+        }
+
+        .strategy-tile::before {
+            content: '';
+            position: absolute;
+            inset: 0 auto auto 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, rgba(212,175,55,0.96), rgba(255,255,255,0));
+        }
+
+        .strategy-tile-label {
+            font-size: 0.72rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+        }
+
+        .strategy-tile-value {
+            font-size: 1.08rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.35rem;
+        }
+
+        .strategy-tile-note {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            line-height: 1.65;
+        }
+
+        .market-signal-board {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.95rem;
+            margin: 0 0 1.8rem;
+        }
+
+        .market-signal-card {
+            border-radius: 18px;
+            padding: 1rem 1rem 0.95rem;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+
+        .market-signal-card strong {
+            display: block;
+            color: var(--text-primary);
+            font-size: 1rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .market-signal-card span {
+            display: block;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            line-height: 1.65;
+        }
+
+        .stock-detail-card-meta::after { background: linear-gradient(90deg, rgba(16,185,129,0.96), rgba(167,243,208,0.18)); transform: scaleX(1); }
+        .stock-detail-card-nvda::after { background: linear-gradient(90deg, rgba(96,165,250,0.96), rgba(191,219,254,0.16)); transform: scaleX(1); }
+        .stock-detail-card-nbis::after { background: linear-gradient(90deg, rgba(239,68,68,0.92), rgba(254,202,202,0.12)); transform: scaleX(1); }
+
+        .stock-detail-card-meta,
+        .stock-detail-card-nvda,
+        .stock-detail-card-nbis {
+            background-image: radial-gradient(circle at top right, rgba(255,255,255,0.06), transparent 34%);
+        }
+
+        .tracking-card {
+            min-height: 100%;
+        }
+
+        .tracking-card-core {
+            background: linear-gradient(180deg, rgba(11,48,36,0.92) 0%, rgba(17,24,26,0.95) 100%);
+        }
+
+        .tracking-card-focus {
+            background: linear-gradient(180deg, rgba(14,28,48,0.9) 0%, rgba(17,24,26,0.95) 100%);
+        }
+
+        .tracking-card-guard {
+            background: linear-gradient(180deg, rgba(51,20,20,0.92) 0%, rgba(21,18,18,0.95) 100%);
+        }
+
+        .tracking-card .tracking-value {
+            max-width: 62%;
+            text-align: right;
+        }
+
+        .tracking-summary-band {
+            margin-top: 1.2rem;
+            padding: 1rem 1.1rem;
+            border-radius: 16px;
+            border: 1px solid rgba(212,175,55,0.22);
+            background: linear-gradient(135deg, rgba(212,175,55,0.12), rgba(255,255,255,0.03));
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .tracking-summary-band strong { color: var(--accent-gold-light); }
+
+        body.light-mode.post-0314-refined .post-signal-card,
+        body.light-mode.post-0314-refined .strategy-tile,
+        body.light-mode.post-0314-refined .market-signal-card {
+            background: linear-gradient(180deg, rgba(255,252,246,0.95), rgba(247,239,227,0.96));
+            border-color: rgba(122,91,10,0.14);
+            box-shadow: 0 18px 38px rgba(103,74,18,0.10);
+        }
+
+        body.light-mode.post-0314-refined .post-signal-label,
+        body.light-mode.post-0314-refined .post-signal-note {
+            color: rgba(31,27,20,0.78);
+        }
+
+        body.light-mode.post-0314-refined .post-signal-value {
+            color: #1f1b14;
+        }
+
+        body.light-mode.post-0314-refined .tracking-card-core {
+            background: linear-gradient(180deg, rgba(226,247,239,0.98), rgba(246,240,229,0.96) 100%);
+        }
+
+        body.light-mode.post-0314-refined .tracking-card-focus {
+            background: linear-gradient(180deg, rgba(230,239,251,0.98), rgba(246,240,229,0.96) 100%);
+        }
+
+        body.light-mode.post-0314-refined .tracking-card-guard {
+            background: linear-gradient(180deg, rgba(252,234,231,0.98), rgba(246,240,229,0.96) 100%);
+        }
+
+        @media (max-width: 900px) {
+            .post-signal-grid,
+            .strategy-strip,
+            .market-signal-board {
+                grid-template-columns: 1fr;
+            }
+
+            .tracking-card .tracking-value {
+                max-width: 100%;
+                text-align: left;
+            }
+        }
+    </style>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -37,7 +256,7 @@
     }
     </script>
 </head>
-<body>
+<body class="post-0314-refined">
     <a href="#main" class="skip-link">跳转到主内容</a>
     <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
 
@@ -60,6 +279,23 @@
             <div class="subtitle">美股每日财经分析</div>
             <h1>NBIS：强背书之后，更该盯兑现</h1>
             <p class="tagline">“真正决定高弹性仓位能不能拿住的，不是新闻有多大，而是交付、客户和现金流有没有跟上。”</p>
+            <div class="post-signal-grid" aria-label="文章核心信号">
+                <div class="post-signal-card">
+                    <div class="post-signal-label">Signal 01</div>
+                    <div class="post-signal-value">强背书</div>
+                    <div class="post-signal-note">NVIDIA 战略投资把平台可信度抬上了一个新台阶。</div>
+                </div>
+                <div class="post-signal-card">
+                    <div class="post-signal-label">Signal 02</div>
+                    <div class="post-signal-value">高弹性</div>
+                    <div class="post-signal-note">故事强、波动也强，天然更容易在情绪高点被市场提前交易。</div>
+                </div>
+                <div class="post-signal-card">
+                    <div class="post-signal-label">Signal 03</div>
+                    <div class="post-signal-value">盯兑现</div>
+                    <div class="post-signal-note">真正决定仓位质量的，不是 headline，而是客户、交付和报表。</div>
+                </div>
+            </div>
         </div>
         <a href="#stock-pick" class="scroll-indicator" aria-label="向下滚动到正文">向下滚动</a>
     </section>
@@ -76,6 +312,24 @@
         <div class="article-meta-chip">数据截点：2026-03-13 收盘</div>
         <div class="article-meta-chip">证据方式：事实优先 / 判断后置</div>
         <div class="article-meta-chip" id="articleReadTime">阅读约 -- 分钟</div>
+    </div>
+
+    <div class="strategy-strip" aria-label="文章策略总览">
+        <div class="strategy-tile">
+            <div class="strategy-tile-label">组合动作</div>
+            <div class="strategy-tile-value">META 先看新钱入口</div>
+            <div class="strategy-tile-note">它的赔率、证据硬度和平台底盘之间，目前最平衡。</div>
+        </div>
+        <div class="strategy-tile">
+            <div class="strategy-tile-label">核心持有</div>
+            <div class="strategy-tile-value">NVDA 继续拿住</div>
+            <div class="strategy-tile-note">长期核心逻辑仍强，但今天更像等待更硬验证，不是追价。</div>
+        </div>
+        <div class="strategy-tile">
+            <div class="strategy-tile-label">风险边界</div>
+            <div class="strategy-tile-value">NBIS 管盈利、看兑现</div>
+            <div class="strategy-tile-note">它最需要的是兑现审查，不是因为故事更热就自动升级仓位。</div>
+        </div>
     </div>
 
     <main id="main">
@@ -218,13 +472,28 @@
                 </div>
             </div>
 
+            <div class="market-signal-board" aria-label="持仓视觉总览">
+                <div class="market-signal-card">
+                    <strong>META：优先研究</strong>
+                    <span>更像回撤中的高质量平台，适合作为现有持仓里新钱优先研究对象。</span>
+                </div>
+                <div class="market-signal-card">
+                    <strong>NVDA：继续持有</strong>
+                    <span>核心生态位依旧强，但今天更适合维持核心仓角色，而不是急着抬权重。</span>
+                </div>
+                <div class="market-signal-card">
+                    <strong>NBIS：兑现审查</strong>
+                    <span>背书最强、弹性最大，也最需要把注意力放回客户、交付和报表质量。</span>
+                </div>
+            </div>
+
             <div class="wisdom-image article-figure article-figure-wide">
                 <img src="../../../images/posts/2026-03-14-tech.jpg" alt="持仓决策与兑现验证框架示意图" loading="lazy" decoding="async">
                 <p class="article-caption">第三部分真正该回答的，不是“今天谁新闻更热”，而是“这些公开线索会不会改变组合的下一步动作”</p>
             </div>
 
             <div class="market-grid">
-                <div class="stock-detail-card">
+                <div class="stock-detail-card stock-detail-card-meta">
                     <div class="stock-detail-header">
                         <div>
                             <div class="stock-detail-ticker">META</div>
@@ -258,7 +527,7 @@
                     <div class="decision-action-note"><strong>我的结论：</strong> META 仍然是今天组合里最值得优先研究新钱配置的位置，原因不是它更热，而是它的证据和赔率比更平衡。</div>
                 </div>
 
-                <div class="stock-detail-card">
+                <div class="stock-detail-card stock-detail-card-nvda">
                     <div class="stock-detail-header">
                         <div>
                             <div class="stock-detail-ticker">NVDA</div>
@@ -292,7 +561,7 @@
                     <div class="decision-action-note"><strong>我的结论：</strong> NVDA 还是该拿，但它今天在组合里的角色是“高质量核心仓”，不是“增量资金第一优先级”。</div>
                 </div>
 
-                <div class="stock-detail-card">
+                <div class="stock-detail-card stock-detail-card-nbis">
                     <div class="stock-detail-header">
                         <div>
                             <div class="stock-detail-ticker">NBIS</div>
@@ -346,13 +615,13 @@
                         <div class="tracking-row"><span class="tracking-label">下一动作</span><strong class="tracking-value tracking-value-core">回撤分批看</strong></div>
                         <div class="tracking-row"><span class="tracking-label">关键验证</span><strong class="tracking-value">AI 投入回报 / 广告底盘</strong></div>
                     </article>
-                    <article class="rating-card tracking-card tracking-card-flex">
+                    <article class="rating-card tracking-card tracking-card-flex tracking-card-focus">
                         <div class="tracking-card-header"><strong class="tracking-card-ticker">NVDA</strong><span class="tracking-badge tracking-badge-flex">继续持有</span></div>
                         <div class="tracking-row"><span class="tracking-label">阶段评级</span><strong class="tracking-value">高质量核心仓</strong></div>
                         <div class="tracking-row"><span class="tracking-label">下一动作</span><strong class="tracking-value tracking-value-flex">先等更硬验证</strong></div>
                         <div class="tracking-row"><span class="tracking-label">关键验证</span><strong class="tracking-value">大客户部署 / 推理兑现</strong></div>
                     </article>
-                    <article class="rating-card tracking-card tracking-card-flex">
+                    <article class="rating-card tracking-card tracking-card-flex tracking-card-guard">
                         <div class="tracking-card-header"><strong class="tracking-card-ticker">NBIS</strong><span class="tracking-badge tracking-badge-flex">持有偏谨慎</span></div>
                         <div class="tracking-row"><span class="tracking-label">阶段评级</span><strong class="tracking-value">高弹性兑现验证仓</strong></div>
                         <div class="tracking-row"><span class="tracking-label">下一动作</span><strong class="tracking-value tracking-value-flex">不追高 / 管盈利</strong></div>
@@ -366,6 +635,7 @@
                         <div><strong>可靠性边界</strong> <span>META 与 NVDA 的判断相对更稳；NBIS 的判断更强调风控和兑现审查，不伪装成高确定性乐观结论。</span></div>
                         <div><strong>使用方式</strong> <span>以后回看时，先看这三张卡片，再回头看第三部分依据审查；这样不会被新闻热度牵着走。</span></div>
                     </div>
+                    <div class="tracking-summary-band"><strong>一句话总结：</strong>这篇视觉上把“优先研究 / 核心持有 / 风险边界”拆成了三种不同气质的卡片，不让 META、NVDA、NBIS 再挤在同一种视觉语气里。</div>
                     <div class="rating-source-note">如果把今天浓缩成一句话，那就是：<strong>META 负责优先研究，NVDA 负责继续拿住，NBIS 负责提醒自己在赚钱时也要尊重验证和节奏。</strong></div>
                 </div>
             </section>
