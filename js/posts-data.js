@@ -1,6 +1,15 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-03-14",
+    "title": "2026骞?鏈?4鏃ョ編鑲″垎鏋愶細NBIS + 楠岃瘉寮忔垚闀?",
+    "desc": "2026骞?鏈?4鏃ョ編鑲″疂钘忔爣鐨勫垎鏋愶細NBIS Nebius 娣卞害瑙ｆ瀽锛岃仛鐒?NVIDIA 20 浜跨編鍏冨叆鑲°€丄I Factory 鎵╁紶涓庡己鑳屼功鍚庣殑鍏戠幇瀹℃煡銆?> <meta name=",
+    "url": "posts/2026/03/14.html",
+    "keywords": [
+      "NBIS"
+    ]
+  },
+  {
     "date": "2026-03-13",
     "title": "2026年3月13日美股分析：NVDA + 推理经济学",
     "desc": "2026年3月13日美股宝藏标的分析：NVDA 英伟达深度解析，聚焦 Blackwell 推理时代、Agent 需求扩张与组合下一步动作地图。",
