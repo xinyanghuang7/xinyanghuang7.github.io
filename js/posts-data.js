@@ -1,6 +1,15 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-03-15",
+    "title": "2026年3月15日美股分析：TSM + 制造底座",
+    "desc": "2026年3月15日美股宝藏标的分析：TSM 台积电深度解析，聚焦 2 月营收同比增长 22.2%、4Q25 高利润率与 1Q26 指引，评估其是否足够升档为高质量制造底座候选。",
+    "url": "posts/2026/03/15.html",
+    "keywords": [
+      "TSM"
+    ]
+  },
+  {
     "date": "2026-03-14",
     "title": "2026年3月14日美股分析：NBIS + 验证式成长",
     "desc": "2026年3月14日美股宝藏标的分析：NBIS Nebius 深度解析，聚焦 NVIDIA 20 亿美元入股、AI Factory 扩张与强背书后的兑现审查。",
