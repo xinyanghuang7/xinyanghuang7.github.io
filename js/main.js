@@ -445,6 +445,16 @@ function initSearch() {
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
     const searchStatus = document.getElementById('searchStatus');
+    const searchLibraryCount = document.getElementById('searchLibraryCount');
+    const searchStatusText = document.getElementById('searchStatusText');
+
+    if (searchLibraryCount) {
+        searchLibraryCount.textContent = String(articles.length);
+    }
+
+    if (searchStatusText) {
+        searchStatusText.textContent = '支持股票代码 / 日期 / 主题词';
+    }
 
     if (!searchInput || !searchResults) return;
 
