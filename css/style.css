@@ -2135,6 +2135,62 @@ header .nav-links a:focus-visible {
     gap: 0.9rem;
 }
 
+.holding-section-span {
+    grid-column: 1 / -1;
+}
+
+.holding-market-hero {
+    grid-column: 1 / -1;
+    margin-bottom: 1rem;
+}
+
+.holding-market-hero img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.holding-panel-block {
+    grid-column: 1 / -1;
+    margin-bottom: 1rem;
+}
+
+.holding-quick-grid {
+    margin-bottom: 1.1rem;
+}
+
+.news-interpretation-box {
+    margin-bottom: 1rem;
+}
+
+.news-interpretation-box h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.alert-strip {
+    position: relative;
+    overflow: hidden;
+}
+
+.alert-strip::after {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: linear-gradient(180deg, rgba(212,175,55,0.95), rgba(212,175,55,0.22));
+}
+
+.alert-strip-critical::after {
+    background: linear-gradient(180deg, rgba(239,68,68,0.95), rgba(239,68,68,0.22));
+}
+
+.alert-strip-critical h4 {
+    color: #ffb0b0;
+}
+
 .portfolio-holding-card {
     background: rgba(255,255,255,0.05);
     border-radius: 10px;
