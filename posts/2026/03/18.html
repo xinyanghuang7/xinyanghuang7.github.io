@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../../css/style.css?v=20260316f">
+    <link rel="stylesheet" href="../../../css/style.css?v=20260318g">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -282,16 +282,16 @@
             </div>
 
             <div class="market-grid">
-                <div style="grid-column: 1 / -1; margin-bottom: 1rem;">
-                    <img src="../../../images/tech-analysis.jpg" alt="市场与持仓分析配图" style="width:100%;height:300px;object-fit:cover;border-radius:10px;" loading="lazy" decoding="async">
+                <div class="holding-market-hero">
+                    <img src="../../../images/tech-analysis.jpg" alt="市场与持仓分析配图" loading="lazy" decoding="async">
                 </div>
 
-                <div class="highlight-box tip" style="grid-column: 1 / -1; margin-bottom: 1rem;">
+                <div class="highlight-box tip holding-panel-block">
                     <h4>📌 今天这块怎么读</h4>
                     <p>从今天起，持仓区默认不只写一句“当前观点”。我会把三只 holding 都拆成四层：<strong>最新可见收盘价、最新官方新闻流、今天异动最可能在交易什么、我接下来怎么处理</strong>。这样日更的是证据密度，不是情绪波动。</p>
                 </div>
 
-                <div class="portfolio-alert" style="grid-column: 1 / -1; margin-bottom: 1rem;">
+                <div class="portfolio-alert holding-panel-block alert-strip">
                     <h4 class="portfolio-alert-title">
                         <span>🗺️</span><span>今日持仓日更总览</span>
                     </h4>
@@ -316,7 +316,7 @@
                     <p class="portfolio-alert-note"><strong>日更纪律：</strong> 今天真正该更新的是这三张面板的解释密度，而不是为了显得勤快，就把评级和动作也一起频繁摇摆。</p>
                 </div>
 
-                <div class="highlight-box warning" style="grid-column: 1 / -1; margin-bottom: 1rem;">
+                <div class="highlight-box warning holding-panel-block alert-strip">
                     <h4>🔔 今日重要提醒</h4>
                     <ul>
                         <li><strong>META：</strong>最近新增主要还是产品层更新，<strong>还不是财务层硬验证</strong>；所以默认继续看，不因为 AI 工具上新就误判成该立刻加码。</li>
@@ -358,7 +358,7 @@
                         </div>
                     </div>
 
-                    <div class="portfolio-holdings-grid" style="margin-bottom: 1.1rem;">
+                    <div class="portfolio-holdings-grid holding-quick-grid">
                         <div class="portfolio-holding-card">
                             <div class="portfolio-holding-label">今天在交易什么</div>
                             <div class="portfolio-holding-value">等待</div>
@@ -376,7 +376,7 @@
                         </div>
                     </div>
 
-                    <div class="highlight-box tip" style="margin-bottom: 1rem;">
+                    <div class="highlight-box tip news-interpretation-box alert-strip">
                         <h4>🔎 META 这条新闻怎么读</h4>
                         <p><strong>解读：</strong>最近这几条更像“AI 正在继续往产品表面渗透”，说明 thesis 还在加粗；但它们还没硬到足以直接改变动作层。</p>
                         <p style="margin-top: 0.6rem;"><strong>提醒：</strong>默认别把产品上新直接等同于广告 ROI 已经验证。META 当前最值得等的，还是经营层的下一拍，而不是功能层的新鲜感。</p>
@@ -452,7 +452,7 @@
                         </div>
                     </div>
 
-                    <div class="portfolio-holdings-grid" style="margin-bottom: 1.1rem;">
+                    <div class="portfolio-holdings-grid holding-quick-grid">
                         <div class="portfolio-holding-card">
                             <div class="portfolio-holding-label">今天在交易什么</div>
                             <div class="portfolio-holding-value">分歧</div>
@@ -470,7 +470,7 @@
                         </div>
                     </div>
 
-                    <div class="highlight-box tip" style="margin-bottom: 1rem;">
+                    <div class="highlight-box tip news-interpretation-box alert-strip">
                         <h4>🔎 NVDA 这条新闻怎么读</h4>
                         <p><strong>解读：</strong>GTC 第二天继续有内容，说明 NVIDIA 的平台故事还在扩，不是大会首日喊完就没后续。</p>
                         <p style="margin-top: 0.6rem;"><strong>提醒：</strong>默认别把大会新闻流直接翻译成“该更积极加仓”。这批节点更像守住 thesis 宽度，真正要改动作，还得等客户 ROI、订单和经营兑现层更硬。</p>
@@ -546,7 +546,7 @@
                         </div>
                     </div>
 
-                    <div class="portfolio-holdings-grid" style="margin-bottom: 1.1rem;">
+                    <div class="portfolio-holdings-grid holding-quick-grid">
                         <div class="portfolio-holding-card">
                             <div class="portfolio-holding-label">今天在交易什么</div>
                             <div class="portfolio-holding-value">融资</div>
@@ -564,7 +564,7 @@
                         </div>
                     </div>
 
-                    <div class="highlight-box warning" style="margin-bottom: 1rem;">
+                    <div class="highlight-box warning news-interpretation-box alert-strip alert-strip-critical">
                         <h4>🚨 NBIS 重要提醒</h4>
                         <p><strong>解读：</strong>3/17 这根大阴线更像市场在先定价融资与潜在稀释，再回头衡量昨天那笔大合同到底能抵多少压力。</p>
                         <p style="margin-top: 0.6rem;"><strong>提醒：</strong>这类节点默认不能只看“需求还在不在”，还要同步看资本结构有没有恶化。NBIS 目前是三只 holding 里最需要提高警觉度、但又不该情绪化乱动的一只。</p>
