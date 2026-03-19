@@ -1,6 +1,23 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-03-19",
+    "title": "2026年3月19日美股分析：NBIS + 融资怎么读",
+    "desc": "2026年3月19日美股分析：围绕 NBIS 37.5 亿美元可转债到 40 亿美元 pricing 落地，按融资工具、股东影响、横向对比与历史对照重做新闻解读，同时更新 META / NVDA / NBIS 持仓动作地图。",
+    "url": "posts/2026/03/19.html",
+    "keywords": [
+      "NBIS",
+      "Nebius",
+      "可转债",
+      "META",
+      "NVDA",
+      "持仓决策",
+      "融资解读",
+      "美股分析",
+      "价值投资"
+    ]
+  },
+  {
     "date": "2026-03-18",
     "title": "2026年3月18日美股分析：NVDA + 持仓新闻日更",
     "desc": "2026年3月18日美股分析：围绕 NVDA 的 GTC 第二天官方更新，连同 META / NBIS 的最新官方节点与 3/17 收盘价，扩写持仓新闻日更与异动拆解区。",
