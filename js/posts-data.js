@@ -1,9 +1,9 @@
-﻿// Auto-generated from posts/**/*.html. Do not edit by hand.
+// Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
     "date": "2026-03-20",
     "title": "2026年3月20日美股分析：GOOGL 入口争夺 + MSFT 结构动作 + 持仓地图",
-    "desc": "2026年3月20日美股分析：用 GOOGL 做今日宝藏标的，用 MSFT rollover 讲经验故事，再按 META / NVDA / NBIS 逐股拆新闻解读与动作地图。",
+    "desc": "2026年3月20日美股分析：用 GOOGL 做今日宝藏标的，用 MSFT rollover 讲经验故事，再按 META / NVDA / NBIS 分层拆新闻解读与动作地图。",
     "url": "posts/2026/03/20.html",
     "keywords": [
       "GOOGL",
@@ -13,7 +13,8 @@ window.__POSTS__ = [
       "MSFT",
       "美股分析",
       "AI搜索",
-      "投资故事",
+      "经验分享",
+      "新闻解读",
       "动作地图"
     ]
   },
