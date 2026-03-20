@@ -1,5 +1,21 @@
-// Auto-generated from posts/**/*.html. Do not edit by hand.
+﻿// Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
+  {
+    "date": "2026-03-20",
+    "title": "2026年3月20日美股分析：GOOGL 入口重构 + 故事分享 + 动作地图",
+    "desc": "2026年3月20日美股分析：保障标的 GOOGL 的入口重构逻辑，配合新闻解读、故事分享与动作地图，继续把方法和组合动作接起来。",
+    "url": "posts/2026/03/20.html",
+    "keywords": [
+      "GOOGL",
+      "META",
+      "NVDA",
+      "NBIS",
+      "美股分析",
+      "AI搜索",
+      "投资故事",
+      "动作地图"
+    ]
+  },
   {
     "date": "2026-03-19",
     "title": "2026年3月19日美股分析：TSM 5+2 + 新闻怎么读",
