@@ -92,7 +92,7 @@
                 <div class="section-number" aria-hidden="true">01</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="stock-pick-title">今日宝藏标的</h2>
-                    <p class="section-subtitle">请把今天最值得放在第一部分的一只标的讲清楚，不要写成“保障标的”或空泛口号</p>
+                    <p class="section-subtitle">请把今天最值得放在第一部分的一只标的讲清楚，不要写成空泛口号</p>
                 </div>
                 <div class="section-date">{{DATE_SHORT}}</div>
             </div>
@@ -187,7 +187,7 @@
                 <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="market-title">新闻解读</h2>
-                    <p class="section-subtitle">按股票分层写清新闻内容、一句话总结、我的分析，再决定动作有没有变化</p>
+                    <p class="section-subtitle">按股票分层写清当日异动、触发新闻、内容摘要、我的分析，再决定动作有没有变化</p>
                 </div>
                 <div class="section-date">{{DATE_SHORT}}</div>
             </div>
@@ -195,6 +195,10 @@
             <div class="market-grid">
                 <div style="grid-column: 1 / -1; margin-bottom: 1rem;">
                     <img src="../../../images/posts/{{DATE_ISO}}-tech.jpg" alt="市场与持仓分析配图" style="width:100%;height:300px;object-fit:cover; border-radius: 10px;" loading="lazy" decoding="async">
+                </div>
+                <div class="analysis-box" style="grid-column: 1 / -1; margin-bottom: 0.5rem;">
+                    <h3 class="analysis-title">第三部分固定格式</h3>
+                    <p><strong>每只股票默认按同一套顺序写：</strong>当日异动幅度（若有明显波动必须写） → 触发新闻 / 事件 → 新闻具体内容 → 一句话总结 → 我的分析 → 动作含义。没有把涨跌原因解释清楚，就不算完成。</p>
                 </div>
 {{MARKET_STOCKS}}
             </div>
