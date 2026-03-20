@@ -175,12 +175,12 @@ def build_html(date_obj, focus_stock, portfolio):
     </section>
     
     <main>
-        <!-- Module 1: 每日宝藏标的 -->
+        <!-- Module 1: 今日宝藏标的 -->
         <section class="section" id="stock-pick">
             <div class="section-header">
                 <div class="section-number">01</div>
                 <div class="section-title-group">
-                    <h2 class="section-title">美股每日宝藏标的</h2>
+                    <h2 class="section-title">今日宝藏标的</h2>
                 </div>
                 <div class="section-date">{date_short}</div>
             </div>
@@ -217,12 +217,12 @@ def build_html(date_obj, focus_stock, portfolio):
             </div>
         </section>
         
-        <!-- Module 2: 投资认知 -->
+        <!-- Module 2: 故事 / 经验分享 -->
         <section class="section" id="wisdom">
             <div class="section-header">
                 <div class="section-number">02</div>
                 <div class="section-title-group">
-                    <h2 class="section-title">每日投资认知加餐</h2>
+                    <h2 class="section-title">故事 / 经验分享</h2>
                 </div>
                 <div class="section-date">{date_short}</div>
             </div>
@@ -247,12 +247,12 @@ def build_html(date_obj, focus_stock, portfolio):
             </div>
         </section>
         
-        <!-- Module 3: 持仓决策区 -->
+        <!-- Module 3: 新闻解读 -->
         <section class="section" id="market">
             <div class="section-header">
                 <div class="section-number">03</div>
                 <div class="section-title-group">
-                    <h2 class="section-title">持仓决策区</h2>
+                    <h2 class="section-title">新闻解读</h2>
                 </div>
                 <div class="section-date">{date_short}</div>
             </div>
