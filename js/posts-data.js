@@ -2,14 +2,15 @@
 window.__POSTS__ = [
   {
     "date": "2026-03-20",
-    "title": "2026年3月20日美股分析：GOOGL 入口重构 + 故事分享 + 动作地图",
-    "desc": "2026年3月20日美股分析：保障标的 GOOGL 的入口重构逻辑，配合新闻解读、故事分享与动作地图，继续把方法和组合动作接起来。",
+    "title": "2026年3月20日美股分析：GOOGL 入口争夺 + MSFT 结构动作 + 持仓地图",
+    "desc": "2026年3月20日美股分析：用 GOOGL 重看 AI 入口争夺，用 MSFT rollover 讲结构化动作，再把 META / NVDA / NBIS 压回组合动作地图。",
     "url": "posts/2026/03/20.html",
     "keywords": [
       "GOOGL",
       "META",
       "NVDA",
       "NBIS",
+      "MSFT",
       "美股分析",
       "AI搜索",
       "投资故事",
