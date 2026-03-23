@@ -31,9 +31,9 @@
             flex-wrap: wrap;
             gap: 0.75rem;
             background: var(--bg-card);
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 18px;
-            box-shadow: var(--shadow-soft);
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
             position: relative;
             z-index: 2;
         }
@@ -44,10 +44,19 @@
             gap: 0.35rem;
             padding: 0.4rem 0.85rem;
             border-radius: 999px;
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255,255,255,0.08);
             color: var(--text-secondary);
             background: rgba(201, 162, 39, 0.08);
             font-size: 0.95rem;
+        }
+
+        .chapter-meta-link {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .chapter-meta-link:hover {
+            color: var(--accent-gold);
         }
 
         .chapter-shell {
@@ -59,10 +68,10 @@
         .chapter-body-card,
         .chapter-nav-card {
             background: var(--bg-card);
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 18px;
             padding: 1.75rem;
-            box-shadow: var(--shadow-soft);
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
         }
 
         .chapter-summary-card p,
@@ -114,7 +123,7 @@
             min-height: 100%;
             padding: 1rem;
             border-radius: 16px;
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255,255,255,0.08);
             background: rgba(201, 162, 39, 0.06);
         }
 
@@ -208,7 +217,7 @@
         <div class="chapter-meta-pill">章节编号：{{CHAPTER_NUMBER_LABEL}}</div>
         <div class="chapter-meta-pill">Section：{{SECTION_LABEL}}</div>
         <div class="chapter-meta-pill">Batch：{{BATCH_LABEL}}</div>
-        <div class="chapter-meta-pill">所属课程：<a href="{{COURSE_RELATIVE_URL}}" style="color: inherit;">{{COURSE_TITLE}}</a></div>
+        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="{{COURSE_RELATIVE_URL}}">{{COURSE_TITLE}}</a></div>
     </div>
 
     <main id="main" class="chapter-shell">
