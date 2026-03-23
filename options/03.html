@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="对比买方与卖方在权利、义务、盈亏结构和风险暴露上的根本差异，建立正确站位。">
+    <meta name="author" content="ValueInvest">
+    <meta name="theme-color" content="#c9a227">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="canonical" href="https://4fire.qzz.io/options/03.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://4fire.qzz.io/options/03.html">
+    <meta property="og:title" content="期权的买方与卖方 | 美股期权教材">
+    <meta property="og:description" content="对比买方与卖方在权利、义务、盈亏结构和风险暴露上的根本差异，建立正确站位。">
+    <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="期权的买方与卖方 | 美股期权教材">
+    <meta name="twitter:description" content="对比买方与卖方在权利、义务、盈亏结构和风险暴露上的根本差异，建立正确站位。">
+    <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <title>期权的买方与卖方 | 美股期权教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css?v=20260314c">
+    <style>
+        .chapter-meta-bar {
+            width: min(1100px, calc(100% - 2rem));
+            margin: -2.25rem auto 0;
+            padding: 1rem 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+            position: relative;
+            z-index: 2;
+        }
+
+        .chapter-meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-secondary);
+            background: rgba(201, 162, 39, 0.08);
+            font-size: 0.95rem;
+        }
+
+        .chapter-meta-link {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .chapter-meta-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .chapter-shell {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .chapter-summary-card,
+        .chapter-body-card,
+        .chapter-nav-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+        }
+
+        .chapter-summary-card p,
+        .chapter-nav-card p {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card {
+            line-height: 1.9;
+            color: var(--text-primary);
+        }
+
+        .chapter-body-card h2,
+        .chapter-body-card h3,
+        .chapter-body-card h4 {
+            color: var(--text-primary);
+            margin-top: 1.6em;
+        }
+
+        .chapter-body-card p,
+        .chapter-body-card li,
+        .chapter-body-card blockquote {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card ul,
+        .chapter-body-card ol {
+            padding-left: 1.2rem;
+        }
+
+        .chapter-body-card blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.25rem;
+            border-left: 3px solid var(--accent-gold);
+            background: rgba(201, 162, 39, 0.08);
+            border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .chapter-nav-slot {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            min-height: 100%;
+            padding: 1rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(201, 162, 39, 0.06);
+        }
+
+        .chapter-nav-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .chapter-nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .chapter-nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        @media (max-width: 800px) {
+            .chapter-nav-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chapter-summary-card,
+            .chapter-body-card,
+            .chapter-nav-card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "期权的买方与卖方",
+        "description": "对比买方与卖方在权利、义务、盈亏结构和风险暴露上的根本差异，建立正确站位。",
+        "author": {
+            "@type": "Person",
+            "name": "ValueInvest"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ValueInvest",
+            "sameAs": "https://4fire.qzz.io/"
+        },
+        "mainEntityOfPage": "https://4fire.qzz.io/options/03.html",
+        "isPartOf": {
+            "@type": "Course",
+            "name": "美股期权教材",
+            "url": "https://4fire.qzz.io/options/"
+        },
+        "image": [
+            "https://4fire.qzz.io/images/hero-bg.jpg"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
+
+    <header id="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="期权章节页主导航">
+                <ul class="nav-links">
+                    <li><a href="../index.html">返回首页</a></li>
+                    <li><a href="./index.html">返回课程</a></li>
+                    <li><a href="#chapter-navigation">章节导航</a></li>
+                </ul>
+            </nav>
+            <div class="nav-date">第 03 章</div>
+        </div>
+    </header>
+
+    <section class="hero" role="banner">
+        <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
+        <div class="hero-content">
+            <div class="subtitle">基础认知篇</div>
+            <h1>第 03 章 · 期权的买方与卖方</h1>
+            <p class="tagline">基础认知篇 · Batch 1</p>
+            <p class="hero-description">对比买方与卖方在权利、义务、盈亏结构和风险暴露上的根本差异，建立正确站位。</p>
+        </div>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
+    </section>
+
+    <div class="chapter-meta-bar" aria-label="章节关键信息">
+        <div class="chapter-meta-pill">章节编号：第 03 章</div>
+        <div class="chapter-meta-pill">Section：基础认知篇</div>
+        <div class="chapter-meta-pill">Batch：Batch 1 · published</div>
+        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
+    </div>
+
+    <main id="main" class="chapter-shell">
+        <section class="section" id="chapter-summary" aria-labelledby="chapter-summary-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">01</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
+                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
+                </div>
+            </div>
+
+            <div class="chapter-summary-card">
+                <p>对比买方与卖方在权利、义务、盈亏结构和风险暴露上的根本差异，建立正确站位。</p>
+            </div>
+        </section>
+
+        <section class="section" id="chapter-content" aria-labelledby="chapter-content-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">02</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
+                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
+                </div>
+            </div>
+
+            <article class="chapter-body-card">
+<h1>《美股期权教材》</h1>
+<h2>第3章 期权的买方与卖方：同一份合同，两种完全不同的生意</h2>
+<blockquote><p>对照图片里的 3. 期权的买方和卖方分支： 1）权利金流向；2）对股价方向的要求；3）收益/风险结构完全对立。 这三条如果你真吃透了，后面学策略会轻松很多；如果没吃透，你很容易在操作上误入看起来胜率很高的坑。</p></blockquote>
+<hr>
+<h3>3.1 为什么要把买方 vs 卖方单独拎出来讲：你不是在同一个游戏里换边站</h3>
+<p>很多新手刚接触期权时，会把它想成更复杂的股票：我低买高卖，你低买高卖，大家只是同一件事的不同价格。</p>
+<p>但期权最有意思、也最危险的地方在于：它不是一件资产这么简单，它更像一份服务合同。你买入期权，等于花钱买了某种服务；你卖出期权，等于你在提供服务、收取费用，同时把一部分风险揽到自己身上。</p>
+<p>这就是图片里那句提醒的意义：<strong>不要把期权只当成一种资产去买卖，而要把它看成一种服务。</strong></p>
+<p>当你用服务合同来理解买方与卖方，很多现象就变得合理：</p>
+<ul><li>为什么买方常常亏得少、但需要行情走得很对很猛才赚得多；</li><li>为什么卖方常常看起来胜率高、收钱很快，但偶尔会遇到一次很难受的赔付；</li><li>为什么同样一张 Call，有人希望它涨上天，有人只求它别涨太多。</li></ul>
+<p>本章我们就把这三条逻辑讲透，并且用几个具体的美股场景把它落地。</p>
+<hr>
+<h3>3.2 先把角色说清楚：买方拿权利，卖方背义务</h3>
+<p>严格定义先给你一句话（后面反复用）：</p>
+<blockquote><p><strong>期权买方（Buyer / Holder / Long）拥有权利但没有义务；期权卖方（Seller / Writer / Short）收取权利金，但承担履约义务。</strong></p></blockquote>
+<p>你可以把它翻译成更直觉的中文：</p>
+<ul><li>买方：我先交钱，买一个将来可以用也可以不用的选择。</li><li>卖方：我先收钱，但我承诺：如果你要用这份选择，我必须配合。</li></ul>
+<p>这句话决定了后面所有对比的底层结构。你后面学到行权/被行权（assignment）保证金（margin）时，会发现它们都是这句话的延伸。</p>
+<hr>
+<h3>3.3 维度一：权利金（Premium）的流向——买方付钱，卖方收钱</h3>
+<p>图片把第一个维度放在权利金，非常正确。因为期权的世界里，最先发生的不是涨跌，而是钱先在两个人之间走了一次。</p>
+<p>#### 3.3.1 买方为什么要付钱</p>
+<p>买方付权利金，换来两样东西：</p>
+<p>1）一个如果行情走对，我能得到更大收益弹性的机会； 2）一个如果行情走错，我最多亏到这里就停住的上限（对买方来说，很多情况下最大亏损就是权利金）。</p>
+<p>所以买方买的不是必然赚钱，买的是风险结构。你愿意花多少钱来买这个结构，本质上就是你愿意交多少门票。</p>
+<p>#### 3.3.2 卖方为什么能收钱</p>
+<p>卖方收权利金，理由也很朴素：他不是白送服务。</p>
+<p>你可以把卖方理解成保险公司：你要买保护（或买某种未来权利），你就得交保费。卖方收的权利金，就是这份服务费/风险费。</p>
+<p>这里你先记住一个关键现实：</p>
+<blockquote><p><strong>卖方赚到的上限通常就是那笔权利金；而为了这笔权利金，卖方承担的是将来可能被要求履约的风险。</strong></p></blockquote>
+<p>这也是为什么卖方交易不能只看收了多少钱，更要看最坏情况可能赔多少。</p>
+<hr>
+<h3>3.4 维度二：对股价方向的要求——买方要发生，卖方要别发生得太离谱</h3>
+<p>图片第二个维度叫股票方向判断。它的精髓在于：买方和卖方看的是同一份合同，但他们对市场的要求完全不同。</p>
+<p>我们用最常见的例子讲：一张 Call。</p>
+<p>#### 3.4.1 买 Call 的人到底在期待什么</p>
+<p>买 Call 的人期待的是：标的上涨，而且最好涨得够快、够多。</p>
+<p>因为买方先付了权利金，时间又在流逝。假设你买了一张一个月到期的 Call，如果股票只是慢慢涨一点点，很可能还不够覆盖你的权利金成本（后面讲时间价值衰减你会更清楚）。</p>
+<p>所以对买方来说，经常是这种心态：</p>
+<ul><li>我希望它真的动起来。</li><li>我需要它在期限内动到足够程度。</li></ul>
+<p>#### 3.4.2 卖 Call 的人到底在期待什么</p>
+<p>卖 Call 的人经常不需要股票下跌才能赚钱。</p>
+<p>图片里写得很直白：卖 Call 的人只希望最后没有涨太多。更准确一点说：</p>
+<ul><li>股票跌：他常常赚钱（期权变便宜，甚至归零）；</li><li>股票横盘：他常常赚钱（时间过去，期权价值往下掉）；</li><li>股票小涨：也可能赚钱（只要别涨到让买方获得巨大权利价值）。</li></ul>
+<p>也就是说，卖方并不要求市场一定朝某个方向走，他更在意的是：市场别出现超出合同边界的极端走势。</p>
+<p>这种差异会让新手产生一个错觉：卖方好像更容易赢。</p>
+<p>但你要把那句话补全：卖方确实常常更容易赢小钱，可他同时承担的是偶尔会输很大的钱。胜率和风险不是一回事。</p>
+<hr>
+<h3>3.5 维度三：收益/风险极不对称——买方亏损有限，卖方亏损可能很大</h3>
+<p>这是图片第三个维度，也是你是否适合做卖方的分水岭。</p>
+<p>#### 3.5.1 买方：亏损有限，盈利可能很大（但不是容易）</p>
+<p>以买 Call 为例：</p>
+<ul><li>最坏情况：期权到期没价值，你亏掉权利金。</li><li>最好情况：股票大涨，期权涨很多，你赚得很大。</li></ul>
+<p>这个结构会吸引很多人，因为最大亏损看起来可控。</p>
+<p>但要注意：最大亏损可控，不等于容易赚钱。因为买方要赢，通常需要市场在方向 + 幅度 + 时间上都配合。</p>
+<p>#### 3.5.2 卖方：盈利有限，亏损可能很大（甚至理论上无限）</p>
+<p>以裸卖 Call（naked short call）为例：</p>
+<ul><li>你最多赚：收来的权利金。</li><li>你可能亏：如果股票暴涨，你亏损会越涨越大。</li></ul>
+<p>这就是为什么很多成熟交易者会说：裸卖 Call 是最危险的单腿之一。</p>
+<p>当然，现实里很多卖方不会用裸卖的方式，他们会用备兑（covered call）或价差等方式给风险上限上栅栏。但这已经是策略层面的事了。</p>
+<p>本章你只需要记住图片的结论：</p>
+<blockquote><p><strong>买方多是亏有限、赚可能很大；卖方多是赚有限、亏可能很大。</strong></p></blockquote>
+<p>这句话决定了你做卖方时必须要有风控意识：你不是在做稳赚，你是在做以小博大的反面——以小赚换承担大风险。</p>
+<hr>
+<h3>3.6 把这三维度落到几个具体的美股场景里</h3>
+<p>为了让你不是停留在听懂，我们用 3 个典型场景把买卖双方的差异变成具体画面。</p>
+<p>#### 例子 1：同一张 AAPL Call，买方和卖方心里想的是什么</p>
+<p>假设：</p>
+<ul><li>AAPL 现价 175</li><li>你看到一张 1 个月到期、行权价 180 的 Call</li><li>期权权利金（简化假设）是 2.30（每股），也就是 230 美元/张</li></ul>
+<p><strong>买方的想法</strong>往往是：</p>
+<p>我愿意花 230 美元，买一个月内 AAPL 冲上去的机会。最差我亏 230，但如果它冲得很快，这张合约可能涨到 5、8 甚至更多。</p>
+<p><strong>卖方的想法</strong>往往是：</p>
+<p>我愿意先收你 230 美元，但前提是我赌 AAPL 别在一个月内涨得太狠。它横盘、慢涨、甚至小跌，我大概率都舒服；但如果突然大涨，我要准备应对风险。</p>
+<p>同一份合同，两个人在赌的不是同一个命题。买方赌会发生；卖方赌别发生得太离谱。</p>
+<p>#### 例子 2：你持有 META，却不想卖——买 Put 的买方逻辑更像交保费</p>
+<p>假设你已经持有 100 股 META，你不想因为短期担心就卖掉它（可能因为你看长期，或者你不想来回折腾）。这时你买 Put，很多时候不是为了暴利，而是为了一个更具体的心理状态：</p>
+<ul><li>我愿意花一笔钱，换一个最坏情况别失控的保护。</li></ul>
+<p>这就是买方的另一个常见身份：买保险的人。</p>
+<p>你会发现，期权买方不一定是激进投机者；很多时候，他是在用钱买一个风险的上限。</p>
+<p>#### 例子 3：卖 Put 的卖方逻辑——我愿意承担接股义务，所以我先收一笔钱</p>
+<p>卖 Put 经常被老手当成一种愿意在某个价格接股票的表达方式。</p>
+<p>直觉上你可以这样理解：</p>
+<ul><li>如果你本来就愿意在某个价位买入 AAPL（比如你觉得 165 很香），那你可以考虑卖出对应行权价的 Put。</li><li>你在做的事不是白捡钱，而是：我愿意承担如果跌到了，我就按合同接货的义务，所以我先收一笔权利金。</li></ul>
+<p>当然，卖 Put 也不是无风险，它仍然是卖方生意：你赚的是权利金，但你承担的是下跌风险。只不过它的风险结构和裸卖 Call不同，后面策略章会细讲。</p>
+<hr>
+<h3>3.7 本章两条必须纠正的常见误解</h3>
+<p>#### 误解 1：卖方胜率高 = 卖方风险低</p>
+<p>这是最典型、也最容易把人带进坑的一句话。</p>
+<p>卖方很多时候确实胜率高，因为市场大量时间在横盘和温和波动里，期权价值会随时间衰减，这对卖方有利。但胜率高的代价是：你把极端情况的风险揽在自己身上。</p>
+<p>所以你应该把它换成更真实的表述：</p>
+<ul><li>卖方经常是赚小钱的概率大，但同时输大钱的概率小但存在。</li></ul>
+<p>如果你没有风控、没有仓位意识、没有应对极端行情的预案，那卖方的高胜率只是在等一次把你打回原形。</p>
+<p>#### 误解 2：卖期权 = 卖出我手里的东西</p>
+<p>这个误解在第 2 章我们已经碰过，但在第 3 章必须再强调一次，因为它是无意变成卖方的根源。</p>
+<p>你卖期权可能是：</p>
+<ul><li>Sell to Close：把你买到的合约卖掉平仓；</li><li>Sell to Open：开仓成为卖方，收权利金并承担义务。</li></ul>
+<p>这两者风险结构完全不同。新手阶段，如果你还没准备好承担卖方义务，你就要格外警惕Sell to Open这个按钮。</p>
+<hr>
+<h3>3.8 本章小结：用三句话检查你是否真正理解了买方与卖方</h3>
+<p>你可以用这三句话做自测：</p>
+<p>1）<strong>买方付权利金换权利；卖方收权利金承担义务。</strong></p>
+<p>2）<strong>买方要行情真的发生；卖方更希望行情别发生得太离谱。</strong></p>
+<p>3）<strong>买方多是亏损有限、盈利可能很大；卖方多是盈利有限、亏损可能很大。</strong></p>
+<p>如果你能把这三句话讲给别人听，而且别人能听懂，你就已经超过很多只会背 Call/Put 的人了。</p>
+<hr>
+<h3>3.9 自测题（把直觉固化）</h3>
+<p>1）为什么说卖方赚的上限通常就是权利金？</p>
+<p>2）请用一句话解释：买方和卖方对市场的要求有什么根本区别？</p>
+<p>3）下面哪句话更接近事实？</p>
+<p>A. 卖方胜率高，所以风险低 B. 卖方胜率往往高，但有尾部风险，需要风控</p>
+<hr>
+<h3>3.10 下一章预告：ITM / ATM / OTM——你到底在买哪一档</h3>
+<p>你现在已经知道：在期权世界里，买方和卖方像两种职业。</p>
+<p>下一章我们回到图片的第 4 个分支：<strong>ITM / ATM / OTM</strong>。它会直接决定你在期权链里选行权价时究竟在选什么，也会影响你的权利金构成、敏感度以及后面策略的手感。</p>
+<hr>
+<h3>本章参考口径（便于追溯）</h3>
+<ul><li>Investor.gov：期权是合约，买方拥有权利但没有义务的基础口径</li><li><a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/options">https://www.investor.gov/introduction-investing/investing-basics/glossary/options</a></li></ul>
+<ul><li>Fidelity Learning Center：强调期权更灵活但风险更高；学习策略应关注 max profit / max risk / payoff diagrams，并注意期权并不适合所有投资者</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li></ul>
+            </article>
+        </section>
+
+        <section class="section" id="chapter-navigation" aria-labelledby="chapter-navigation-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">03</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
+                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
+                </div>
+            </div>
+
+            <div class="chapter-nav-card">
+                <div class="chapter-nav-grid">
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">上一章</div>
+                        <a class="chapter-nav-link" href="./02.html">第 02 章 · 怎么操作</a>
+                        <p>用期权链、到期日、行权价与限价单四步法，建立从看盘到下单的基础操作框架。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">返回课程</div>
+                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
+                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">下一章</div>
+                        <a class="chapter-nav-link" href="./04.html">第 04 章 · ITM / ATM / OTM</a>
+                        <p>理解期权相对当前股价所处的位置，掌握实值、平值、虚值的判断方法与阅读期权链的直觉。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>期权教材 · 结构化学习 · HTML 优先</p>
+        <p class="disclaimer">
+            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
+        </p>
+    </footer>
+
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
+
+    <script src="../js/main.js?v=20260314c"></script>
+</body>
+</html>

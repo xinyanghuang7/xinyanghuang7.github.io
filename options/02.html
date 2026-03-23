@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="用期权链、到期日、行权价与限价单四步法，建立从看盘到下单的基础操作框架。">
+    <meta name="author" content="ValueInvest">
+    <meta name="theme-color" content="#c9a227">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="canonical" href="https://4fire.qzz.io/options/02.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://4fire.qzz.io/options/02.html">
+    <meta property="og:title" content="美股期权怎么操作 | 美股期权教材">
+    <meta property="og:description" content="用期权链、到期日、行权价与限价单四步法，建立从看盘到下单的基础操作框架。">
+    <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="美股期权怎么操作 | 美股期权教材">
+    <meta name="twitter:description" content="用期权链、到期日、行权价与限价单四步法，建立从看盘到下单的基础操作框架。">
+    <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <title>美股期权怎么操作 | 美股期权教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css?v=20260314c">
+    <style>
+        .chapter-meta-bar {
+            width: min(1100px, calc(100% - 2rem));
+            margin: -2.25rem auto 0;
+            padding: 1rem 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+            position: relative;
+            z-index: 2;
+        }
+
+        .chapter-meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-secondary);
+            background: rgba(201, 162, 39, 0.08);
+            font-size: 0.95rem;
+        }
+
+        .chapter-meta-link {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .chapter-meta-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .chapter-shell {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .chapter-summary-card,
+        .chapter-body-card,
+        .chapter-nav-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+        }
+
+        .chapter-summary-card p,
+        .chapter-nav-card p {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card {
+            line-height: 1.9;
+            color: var(--text-primary);
+        }
+
+        .chapter-body-card h2,
+        .chapter-body-card h3,
+        .chapter-body-card h4 {
+            color: var(--text-primary);
+            margin-top: 1.6em;
+        }
+
+        .chapter-body-card p,
+        .chapter-body-card li,
+        .chapter-body-card blockquote {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card ul,
+        .chapter-body-card ol {
+            padding-left: 1.2rem;
+        }
+
+        .chapter-body-card blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.25rem;
+            border-left: 3px solid var(--accent-gold);
+            background: rgba(201, 162, 39, 0.08);
+            border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .chapter-nav-slot {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            min-height: 100%;
+            padding: 1rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(201, 162, 39, 0.06);
+        }
+
+        .chapter-nav-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .chapter-nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .chapter-nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        @media (max-width: 800px) {
+            .chapter-nav-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chapter-summary-card,
+            .chapter-body-card,
+            .chapter-nav-card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "美股期权怎么操作",
+        "description": "用期权链、到期日、行权价与限价单四步法，建立从看盘到下单的基础操作框架。",
+        "author": {
+            "@type": "Person",
+            "name": "ValueInvest"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ValueInvest",
+            "sameAs": "https://4fire.qzz.io/"
+        },
+        "mainEntityOfPage": "https://4fire.qzz.io/options/02.html",
+        "isPartOf": {
+            "@type": "Course",
+            "name": "美股期权教材",
+            "url": "https://4fire.qzz.io/options/"
+        },
+        "image": [
+            "https://4fire.qzz.io/images/hero-bg.jpg"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
+
+    <header id="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="期权章节页主导航">
+                <ul class="nav-links">
+                    <li><a href="../index.html">返回首页</a></li>
+                    <li><a href="./index.html">返回课程</a></li>
+                    <li><a href="#chapter-navigation">章节导航</a></li>
+                </ul>
+            </nav>
+            <div class="nav-date">第 02 章</div>
+        </div>
+    </header>
+
+    <section class="hero" role="banner">
+        <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
+        <div class="hero-content">
+            <div class="subtitle">基础认知篇</div>
+            <h1>第 02 章 · 美股期权怎么操作</h1>
+            <p class="tagline">基础认知篇 · Batch 1</p>
+            <p class="hero-description">用期权链、到期日、行权价与限价单四步法，建立从看盘到下单的基础操作框架。</p>
+        </div>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
+    </section>
+
+    <div class="chapter-meta-bar" aria-label="章节关键信息">
+        <div class="chapter-meta-pill">章节编号：第 02 章</div>
+        <div class="chapter-meta-pill">Section：基础认知篇</div>
+        <div class="chapter-meta-pill">Batch：Batch 1 · published</div>
+        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
+    </div>
+
+    <main id="main" class="chapter-shell">
+        <section class="section" id="chapter-summary" aria-labelledby="chapter-summary-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">01</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
+                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
+                </div>
+            </div>
+
+            <div class="chapter-summary-card">
+                <p>用期权链、到期日、行权价与限价单四步法，建立从看盘到下单的基础操作框架。</p>
+            </div>
+        </section>
+
+        <section class="section" id="chapter-content" aria-labelledby="chapter-content-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">02</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
+                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
+                </div>
+            </div>
+
+            <article class="chapter-body-card">
+<h1>《美股期权教材》</h1>
+<h2>第2章 美股期权怎么操作：从期权链到下单的四步法</h2>
+<blockquote><p>本章对应图片里的“2. 操作”。我会按图片给的主线来写：<strong>下单四步法 + 新手 Tips + 两个思想误区</strong>。唯一的区别是：图片是提纲，本章把它展开成你能真正照着做的“操作手册”。</p></blockquote>
+<hr>
+<h3>2.1 为什么“操作”值得单独写一章：期权的坑，很多都不是方向错，而是“下单没下对”</h3>
+<p>买股票时，你输入代码、点买入、填数量，基本就结束了；期权则更像在签合同。你同样是在交易某个标的（AAPL、TSLA、SPY……），但你在真正按下“Submit”之前，要先回答两个更尖锐的问题：</p>
+<ul><li>我这份合同<strong>什么时候到期</strong>？（Expiration）</li><li>我这份合同里写的<strong>约定价格</strong>是多少？（Strike）</li></ul>
+<p>这两个选择决定了你买到的不是“看涨”或“看跌”这么简单，而是一个更具体的风险结构：你给市场多少时间兑现你的判断？你愿意把盈利/亏损的触发点放在哪个位置？</p>
+<p>新手第一笔期权亏钱，很多时候并不是你对公司毫无判断，而是操作层面踩了坑：比如把报价当总价、没理解 Bid/Ask、选了流动性很差的合约、甚至不小心点到了“卖出开仓”变成卖方。它们听起来都不高级，但是真实世界里，这些小坑足够让你在还没开始学习策略之前就先缴学费。</p>
+<p>所以本章的目标很朴素：</p>
+<blockquote><p>你读完以后，至少能在任何一款券商 App 上<strong>读懂期权链</strong>、<strong>算清成本</strong>、<strong>不走错开仓方向</strong>，并且能用“限价单”的方式把第一笔订单下得相对安全。</p></blockquote>
+<hr>
+<h3>2.2 先建立一个“期权链是菜单”的直觉：你在挑合同，不是在选号</h3>
+<p>打开某只股票（比如 AAPL）的期权链（Option Chain），你会看到一个典型结构：</p>
+<ul><li>上面是很多个到期日（Expiration）</li><li>中间是一列列行权价（Strike）</li><li>左边是 Calls（看涨）</li><li>右边是 Puts（看跌）</li></ul>
+<p>你可以把它当成一张菜单：</p>
+<ul><li>先选“保质期”——到期日</li><li>再选“触发门槛”——行权价</li><li>最后选“合同类型”——Call 还是 Put</li></ul>
+<p>这套菜单不是让你猜一个神秘数字，而是把所有可交易的合同摆出来，让你挑一份你愿意签的合同。</p>
+<p>为了避免你一进期权链就晕，我建议你每次都按同一个顺序扫一遍（这比背术语更有用）：</p>
+<p>1) 我现在看的标的是什么（AAPL/TSLA/SPY/QQQ）？ 2) 这个标的最近有没有重大事件（财报、发布会、监管节点）？ 3) 我现在看的到期日是哪天？它离现在有多远？ 4) 我现在看的行权价是哪档？它离现价远不远？ 5) Bid/Ask 价差大不大？成交活跃吗（Volume/OI）？ 6) 这份合同贵不贵（IV 是否偏高）？</p>
+<p>你把这 6 个问题变成习惯，期权链就不会再像一堆乱码，而更像“你在做一套有逻辑的选择”。</p>
+<hr>
+<h3>2.3 图片里的“下单四步法”：选正股 → 点期权 → 选到期日 → 选行权价</h3>
+<p>图片把操作拆成四步，我完全同意。下面我按每一步把“你在界面上究竟在选什么”讲透。</p>
+<p>#### 第一步：选择正股（Underlying）</p>
+<p>你要先确定你到底在交易谁：AAPL 还是 TSLA？是 SPY 还是 QQQ？</p>
+<p>这一步看起来简单，但它决定了后面很多“操作细节”的难度：有的标的波动大、期权链活跃、价差小；有的标的本身就冷门，期权价差会让你很难用“普通人的方式”进出。</p>
+<p>如果你只是练操作，我的建议非常直接：优先用流动性好的标的练（如 SPY、QQQ、AAPL、MSFT 等）。你要先把“流程跑通”，不要把“练操作”做成“同时研究冷门股 + 同时对抗超大价差”。</p>
+<p>#### 第二步：点击期权（Options / Option Chain）</p>
+<p>进入标的页面后找到 Options / Option Chain / 期权链。</p>
+<p>不同券商按钮名字不同，但你最终进入的都是同一个结构：到期日 + 行权价 + Call/Put + Bid/Ask/成交数据。</p>
+<p>#### 第三步：选择到期日（Expiration Date）</p>
+<p>到期日决定你的时间窗口。你可以把它理解成：你给这笔判断多少时间兑现。</p>
+<p>图片里提到“美股期权一般周五到期”。现实里确实很多周度/月度合约的到期日在周五，但你也要知道：现在不少热门标的（尤其是指数/ETF）到期日已经更密集，有时你会在链上看到周一/周三等到期。<strong>所以最靠谱的做法是：以期权链里列出的日期为准</strong>，不要先入为主只认周五。</p>
+<p>新手这里最常见的错误是：把到期日选得太近。</p>
+<ul><li>你选得太近，你不光要看对方向，还要在很短时间里“看对幅度”，否则时间损耗会很快把权利金磨掉。</li><li>你选得太远，权利金可能更贵，你买到的是更长的时间，成本也更高。</li></ul>
+<p>你现在先记一条很实用、很不花哨的建议：</p>
+<blockquote><p>如果你是买方（买 Call/买 Put）在练习阶段，先尽量别选特别近的到期日。你不需要在第一笔单上就把自己逼成短跑选手。</p></blockquote>
+<p>#### 第四步：选择行权价（Strike Price）</p>
+<p>行权价是合同里写死的约定价格。它决定了“这份合同什么时候开始变得有意义”。</p>
+<p>举个最贴近操作的例子：</p>
+<ul><li>AAPL 现价 175</li><li>期权链里你会看到 170、175、180、185、190……</li></ul>
+<p>行权价不是“号码”，它是风险结构。</p>
+<ul><li>你选 170 Call，通常更贵、更“跟手”（更像跟着正股动），但你付出更多权利金；</li><li>你选 190 Call，通常更便宜，但你在赌一个更大的上涨幅度，而且必须在到期前发生。</li></ul>
+<p>你现在还不需要在这一步就学会“哪档最优”，但你要意识到：你每次选行权价，其实是在选“我愿意把回本门槛放在哪里”。</p>
+<p>（下一章关于 ITM/ATM/OTM，会把这一步真正讲透。）</p>
+<hr>
+<h3>2.4 图片里的新手 Tips：Ask、100 股乘数、Volume、IV —— 这些字段你要怎么看</h3>
+<p>#### 2.4.1 Bid / Ask：你买的是 Ask，你卖的是 Bid（别被“Last”骗了）</p>
+<p>你会在期权链里看到类似：</p>
+<ul><li>Bid 2.10</li><li>Ask 2.30</li></ul>
+<p>你可以先用最生活化的方式理解：</p>
+<ul><li>Bid 是“别人愿意出多少钱从你手里买”（你卖出时参考它）</li><li>Ask 是“别人开价多少钱卖给你”（你买入时参考它）</li></ul>
+<p>图片里的那句话很关键：<strong>买入看 Ask</strong>。你买东西当然看卖方报价；你卖东西当然看买方出价。</p>
+<p>这也解释了很多新手的困惑：刚买进去就亏一点。通常不是你看错方向，而是你买在 Ask，系统估值可能按中间价或按 Bid 附近算，你先吃了一口价差。</p>
+<p>#### 2.4.2 一张合约=100 股：把报价乘以 100，才是你真实的“花钱”</p>
+<p>这是图片里的硬点：<strong>1 张=100 股</strong>。</p>
+<p>所以你看到 Ask=2.30，它往往不是“总价 2.30 美元”，而是“每股 2.30 美元”。你买 1 张合约，名义成本是：</p>
+<ul><li>2.30 × 100 = 230 美元（不含手续费）</li></ul>
+<p>这条建议你写在脑门上：在期权里，先把乘数算对，再谈别的。</p>
+<p>补充一个不常见但值得知道的现实：在拆股、合并、特别分红等公司行为后，有些合约的乘数可能会调整（并不总是 100）。新手阶段你大概率遇不到，但你至少要知道“通常是 100，并非宇宙永恒”。遇到异常时，以券商合约说明为准。</p>
+<p>#### 2.4.3 Volume / OI：流动性比你想象的重要，因为你要能“出来”</p>
+<p>图片说 Volume 大更容易有流动性，这在多数情况下是对的。你可以把流动性理解成两件事：</p>
+<ul><li>价差小（进出成本低）</li><li>能成交（你挂单有人接）</li></ul>
+<p>Volume（成交量）和 OI（未平仓量）通常能给你一个非常直观的提示：这档合约是不是大家常交易的主战场。</p>
+<p>这里我给你一个更接地气的判断：如果你打开某个行权价，Bid/Ask 差得很离谱（比如 Bid 0.80 / Ask 1.50），那你就算判断对了，最终也可能被价差吃得很难受。新手阶段先远离这种合约，不丢人，反而更像是“知道自己在保护什么”。</p>
+<p>#### 2.4.4 IV：先记一句就够用——IV 高，期权通常贵</p>
+<p>你现在不需要会算 IV，但你要知道它会让同一份“看涨/看跌”判断变得更贵或更便宜。</p>
+<p>图片的结论可以先照单全收：<strong>IV 越高，期权通常越贵。</strong></p>
+<p>它在操作层面的含义是：财报、重大事件前，期权常常会变贵；你如果在这时买期权，成本更高，你需要更大的波动才能“跑赢成本”。</p>
+<hr>
+<h3>2.5 订单页最容易出事的地方：Buy/Sell 之外，还有 Open/Close</h3>
+<p>期权的下单界面通常至少让你选两件事：</p>
+<ul><li>Buy 还是 Sell</li><li>Open（开仓）还是 Close（平仓）</li></ul>
+<p>新手最容易犯的错是：以为“Sell 就是把手里的东西卖掉”。在期权里，这句话只有在你明确是 Close 的时候才成立。</p>
+<p>为了让你一眼看懂，我把它写成一个最小表：</p>
+<div class="course-table-wrap"><table><thead><tr><th>你点的按钮</th><th>你在做什么</th><th>结果是什么</th></tr></thead><tbody><tr><td>Buy to Open</td><td>买入开仓</td><td>你成为买方（Long），先付权利金</td></tr><tr><td>Sell to Close</td><td>卖出平仓</td><td>你把之前买到的合约卖掉，结束仓位</td></tr><tr><td>Sell to Open</td><td>卖出开仓</td><td>你成为卖方（Short），先收权利金，但承担义务</td></tr><tr><td>Buy to Close</td><td>买入平仓</td><td>你买回来关掉之前卖出的合约，结束仓位</td></tr></tbody></table></div>
+<p>你现在只需要把前两行练熟：Buy to Open + Sell to Close。</p>
+<p>Sell to Open 当然不是禁区，但它属于“卖方世界”，涉及保证金、被行权、风险结构变化。你后面会专门学它。</p>
+<hr>
+<h3>2.6 一个完整实操演练：用 AAPL 走完“从期权链到限价单”的流程</h3>
+<p>下面这个例子不讨论你该不该交易，只用来训练你把界面读对、把钱算对、把单下对。</p>
+<p><strong>假设</strong>：</p>
+<ul><li>你关注 AAPL，想练一次买 Call</li><li>你只买 1 张</li></ul>
+<p><strong>Step 1：进入 AAPL → Options</strong></p>
+<p>确认标的没选错。</p>
+<p><strong>Step 2：选到期日</strong></p>
+<p>初学练习建议选择一个不那么贴脸的到期日（比如几周后），让你先练流程，别把练习变成“必须三天内大涨”。</p>
+<p><strong>Step 3：选行权价</strong></p>
+<p>比如你先看一个略高于现价的行权价（这种选择背后的 ITM/ATM/OTM 逻辑我们后面会讲）。</p>
+<p><strong>Step 4：看 Bid/Ask 并估算成本</strong></p>
+<p>看到类似：Bid 2.10 / Ask 2.30。你要立刻完成两件事：</p>
+<ul><li>明白你大概率要买在 Ask 附近</li><li>把 2.30 × 100 算成 230 美元</li></ul>
+<p><strong>Step 5：尽量用限价单（Limit），别用市价单（Market）</strong></p>
+<p>我对新手的建议非常明确：别用市价单买期权。原因不复杂：期权价差可能比股票大很多，你用市价单容易被滑点拍到一个很不舒服的成交价。</p>
+<p>更稳妥的做法是：</p>
+<ul><li>看 Bid/Ask</li><li>先把限价挂在中间价附近（比如 2.20）</li><li>不成交就小步调整</li></ul>
+<p>你第一次做可能会觉得“怎么不立刻成交”，这很正常。限价单不是拖延症，它是你在价差面前的一点尊严。</p>
+<hr>
+<h3>2.7 图片里的两大新手误区：不纠正它们，后面越学越乱</h3>
+<p>#### 误区 1：只有我先买了期权，才能卖期权</p>
+<p>这是把股票世界的经验硬套到期权上。</p>
+<p>你可以卖你买到的期权（Sell to Close），也可以一上来就卖出一张期权开仓（Sell to Open）。这两件事在风险结构上完全不同。</p>
+<p>新手阶段，请把“Sell”拆成两问：</p>
+<ul><li>我是在 Close（平仓）吗？</li><li>还是在 Open（开仓成为卖方）？</li></ul>
+<p>先把这个分清，你就避免了很多“莫名其妙怎么变成卖方了”的事故。</p>
+<p>#### 误区 2：卖期权 = 卖空股票</p>
+<p>卖空股票是借股票来卖；卖期权是签合同收权利金、承担履约义务。它们都可能表达看跌，但机制不同、风险不同、账户要求也不同。</p>
+<p>你在界面上看到 “Sell Short” 和 “Sell to Open” 时，务必停一下：这是两件事。</p>
+<hr>
+<h3>2.8 本章小结：你把这些做对，后面学策略才不会越学越乱</h3>
+<ul><li>期权操作主线：<strong>选标的 → 选到期日 → 选行权价 → 用合适的成交方式下单</strong>。</li><li>期权链像菜单：你在挑合同，不是在选号。</li><li>买入看 Ask，卖出看 Bid；价差越大，越需要谨慎。</li><li>记住乘数：通常 1 张=100 股，报价要乘 100。</li><li>新手优先练流动性好的标的；别在冷门合约上和价差较劲。</li><li>Open/Close 一定要看清楚：Sell to Close 和 Sell to Open 是两条不同的路。</li></ul>
+<hr>
+<h3>2.9 自测题（把“操作”这关过了）</h3>
+<p>1) 你看到某张合约 Ask=2.50（每股），你买 1 张合约，名义成本大约是多少？</p>
+<p>2) 为什么新手不建议用市价单买期权？请用一句话解释。</p>
+<p>3) Buy to Open、Sell to Close 分别是什么意思？各用一句话描述。</p>
+<hr>
+<h3>2.10 下一章预告：买方与卖方为什么像两种职业</h3>
+<p>你已经会在期权链里挑合同、会算钱、会避免误点开仓方向。下一章我们讲图片里的“3. 买方和卖方”。你会真正明白：同样是期权，为什么买方更像买保险/买彩票，卖方更像收保费/开保险公司；以及为什么卖方看起来胜率高，但风险常常藏在你看不见的地方。</p>
+<hr>
+<h3>本章参考口径（便于追溯）</h3>
+<ul><li>Investor.gov：期权作为合约、权利但非义务的基础定义</li><li><a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/options">https://www.investor.gov/introduction-investing/investing-basics/glossary/options</a></li></ul>
+<ul><li>Fidelity Learning Center：强调期权更灵活但风险更高、学习策略应包含 max profit / max risk / payoff diagrams 的教育框架</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li></ul>
+            </article>
+        </section>
+
+        <section class="section" id="chapter-navigation" aria-labelledby="chapter-navigation-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">03</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
+                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
+                </div>
+            </div>
+
+            <div class="chapter-nav-card">
+                <div class="chapter-nav-grid">
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">上一章</div>
+                        <a class="chapter-nav-link" href="./01.html">第 01 章 · 什么是期权</a>
+                        <p>从合同视角建立期权最基础的认知，理解权利而非义务、标的资产、看涨看跌与权利金这些核心概念。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">返回课程</div>
+                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
+                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">下一章</div>
+                        <a class="chapter-nav-link" href="./03.html">第 03 章 · 买方与卖方</a>
+                        <p>对比买方与卖方在权利、义务、盈亏结构和风险暴露上的根本差异，建立正确站位。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>期权教材 · 结构化学习 · HTML 优先</p>
+        <p class="disclaimer">
+            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
+        </p>
+    </footer>
+
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
+
+    <script src="../js/main.js?v=20260314c"></script>
+</body>
+</html>

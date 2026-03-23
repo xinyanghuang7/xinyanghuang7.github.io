@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="把期权教材的基础认知、操作、买卖双方与价内价外结构整理成可持续迭代的课程页。">
+    <meta name="author" content="ValueInvest">
+    <meta name="theme-color" content="#c9a227">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="canonical" href="https://4fire.qzz.io/options/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://4fire.qzz.io/options/">
+    <meta property="og:title" content="美股期权教材 | ValueInvest">
+    <meta property="og:description" content="把期权教材的基础认知、操作、买卖双方与价内价外结构整理成可持续迭代的课程页。">
+    <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="美股期权教材 | ValueInvest">
+    <meta name="twitter:description" content="把期权教材的基础认知、操作、买卖双方与价内价外结构整理成可持续迭代的课程页。">
+    <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <title>美股期权教材 | ValueInvest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css?v=20260314c">
+    <style>
+        .course-shell {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .course-intro-card,
+        .course-grid-card,
+        .course-update-card,
+        .course-note-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+        }
+
+        .course-summary-grid,
+        .learning-path-grid,
+        .chapter-directory-grid,
+        .sync-progress-grid,
+        .recent-updates-grid {
+            display: grid;
+            gap: 1.25rem;
+        }
+
+        .course-summary-grid {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+
+        .learning-path-grid,
+        .chapter-directory-grid {
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+
+        .sync-progress-grid,
+        .recent-updates-grid {
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+
+        .course-stat-label,
+        .course-card-kicker,
+        .course-update-date {
+            font-size: 0.82rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .course-stat-value,
+        .course-card-title,
+        .course-update-title {
+            margin-top: 0.4rem;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        .course-card-desc,
+        .course-update-desc,
+        .course-note-card p,
+        .course-intro-card p {
+            color: var(--text-secondary);
+        }
+
+        .course-card-list,
+        .course-update-list {
+            margin: 1rem 0 0;
+            padding-left: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        .course-card-actions {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .course-action-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .course-action-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .course-section-stack {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .course-directory-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 0.9rem;
+        }
+
+        .course-directory-pill {
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 999px;
+            padding: 0.35rem 0.8rem;
+            color: var(--text-secondary);
+            background: rgba(201, 162, 39, 0.08);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 720px) {
+            .course-intro-card,
+            .course-grid-card,
+            .course-update-card,
+            .course-note-card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "美股期权教材",
+        "description": "把期权教材的基础认知、操作、买卖双方与价内价外结构整理成可持续迭代的课程页。",
+        "provider": {
+            "@type": "Organization",
+            "name": "ValueInvest",
+            "sameAs": "https://4fire.qzz.io/"
+        },
+        "url": "https://4fire.qzz.io/options/"
+    }
+    </script>
+</head>
+<body>
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
+
+    <header id="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="期权教材主导航">
+                <ul class="nav-links">
+                    <li><a href="../index.html">返回首页</a></li>
+                    <li><a href="#learning-paths">学习路径</a></li>
+                    <li><a href="#chapter-directory">章节目录</a></li>
+                </ul>
+            </nav>
+            <div class="nav-date">2026-03-23</div>
+        </div>
+    </header>
+
+    <section class="hero" role="banner">
+        <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
+        <div class="hero-content">
+            <div class="subtitle">Options Course</div>
+            <h1>美股期权教材</h1>
+            <p class="tagline">从概念、操作到风险结构，把期权教材做成真正可回看、可扩展的课程区。</p>
+            <p class="hero-description">课程首页只负责课程，不混进博客流。学习路径、目录、同步进度和最近更新全部从 manifest 自动生成。</p>
+        </div>
+        <a href="#course-overview" class="scroll-indicator" aria-label="向下滚动到课程概览">向下滚动</a>
+    </section>
+
+    <main id="main" class="course-shell">
+        <section class="section" id="course-overview" aria-labelledby="course-overview-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">01</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="course-overview-title">课程总览</h2>
+                    <p class="section-subtitle">先讲清这套期权教材适合谁、覆盖什么，以及现在已经同步到哪一步</p>
+                </div>
+            </div>
+
+            <div class="course-intro-card">
+                <p>这套课程面向刚接触美股期权、但不想被术语和碎片知识劝退的读者。先把合同本质讲清楚，再往操作、定价和策略推进。</p>
+                <div class="course-directory-meta">
+                    <span class="course-directory-pill">适合对象：期权新手 / 想系统复习的人</span>
+                    <span class="course-directory-pill">学习节奏：先读 01-04，再按批次扩展</span>
+                    <span class="course-directory-pill">最后同步：已发布至第 04 章</span>
+                </div>
+            </div>
+
+            <div class="course-summary-grid">
+                <div class="course-grid-card"><div class="course-stat-label">总章节数</div><div class="course-stat-value">18</div></div>
+<div class="course-grid-card"><div class="course-stat-label">已发布</div><div class="course-stat-value">4</div></div>
+<div class="course-grid-card"><div class="course-stat-label">同步中</div><div class="course-stat-value">4</div></div>
+<div class="course-grid-card"><div class="course-stat-label">下一批次</div><div class="course-stat-value">Batch 1</div></div>
+            </div>
+        </section>
+
+        <section class="section" id="learning-paths" aria-labelledby="learning-paths-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">02</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="learning-paths-title">学习路径</h2>
+                    <p class="section-subtitle">按阶段拆开，方便新手循序进入，也方便复习时快速回到关键节点</p>
+                </div>
+            </div>
+
+            <div class="learning-path-grid">
+                <article class="course-grid-card"><div class="course-card-kicker">基础认知篇</div><h3 class="course-card-title">基础认知篇</h3><p class="course-card-desc">共 4 章，覆盖 Batch 1 至后续扩展。</p><ul class="course-card-list"><li>第 01 章 · 什么是期权 · 已发布</li><li>第 02 章 · 美股期权怎么操作 · 已发布</li><li>第 03 章 · 期权的买方与卖方 · 已发布</li><li>第 04 章 · ITM / ATM / OTM · 已发布</li></ul></article>
+<article class="course-grid-card"><div class="course-card-kicker">价值与时间篇</div><h3 class="course-card-title">价值与时间篇</h3><p class="course-card-desc">共 4 章，覆盖 Batch 2 至后续扩展。</p><ul class="course-card-list"><li>第 05 章 · 期权价格的解剖学 · 同步中</li><li>第 06 章 · 时间价值的两条铁律 · 同步中</li><li>第 07 章 · 时间的魔法与诅咒 · 同步中</li><li>第 08 章 · 行权与被行权 · 同步中</li></ul></article>
+<article class="course-grid-card"><div class="course-card-kicker">收益与策略篇</div><h3 class="course-card-title">收益与策略篇</h3><p class="course-card-desc">共 3 章，覆盖 Batch 3 至后续扩展。</p><ul class="course-card-list"><li>第 09 章 · 四大单腿策略的到期收益图 · 即将上线</li><li>第 10 章 · 期权的价格曲线 · 即将上线</li><li>第 11 章 · 期权的三大基本作用 · 即将上线</li></ul></article>
+<article class="course-grid-card"><div class="course-card-kicker">进阶结构与波动率篇</div><h3 class="course-card-title">进阶结构与波动率篇</h3><p class="course-card-desc">共 7 章，覆盖 Batch 4 至后续扩展。</p><ul class="course-card-list"><li>第 12 章 · 保证金与流动性 · 即将上线</li><li>第 13 章 · 经典组合与期权平价 · 即将上线</li><li>第 14 章 · BSM 与 IV · 即将上线</li><li>第 15 章 · 价差策略入门 · 即将上线</li><li>第 16 章 · 波动率策略入门 · 即将上线</li><li>第 17 章 · Collar 衣领策略 · 即将上线</li><li>第 18 章 · PMCC · 即将上线</li></ul></article>
+            </div>
+        </section>
+
+        <section class="section" id="chapter-directory" aria-labelledby="chapter-directory-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">03</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-directory-title">章节目录</h2>
+                    <p class="section-subtitle">课程首页是目录页，不是文章流。这里预留给生成器输出各章节卡片与跳转入口</p>
+                </div>
+            </div>
+
+            <div class="chapter-directory-grid">
+                <article class="course-grid-card"><div class="course-card-kicker">第 01 章 · 基础认知篇</div><h3 class="course-card-title">什么是期权</h3><p class="course-card-desc">从合同视角建立期权最基础的认知，理解权利而非义务、标的资产、看涨看跌与权利金这些核心概念。</p><div class="course-directory-meta"><span class="course-directory-pill">Batch 1</span><span class="course-directory-pill">状态：published</span></div><div class="course-card-actions"><a class="course-action-link" href="./01.html">阅读本章 →</a></div></article>
+<article class="course-grid-card"><div class="course-card-kicker">第 02 章 · 基础认知篇</div><h3 class="course-card-title">美股期权怎么操作</h3><p class="course-card-desc">用期权链、到期日、行权价与限价单四步法，建立从看盘到下单的基础操作框架。</p><div class="course-directory-meta"><span class="course-directory-pill">Batch 1</span><span class="course-directory-pill">状态：published</span></div><div class="course-card-actions"><a class="course-action-link" href="./02.html">阅读本章 →</a></div></article>
+<article class="course-grid-card"><div class="course-card-kicker">第 03 章 · 基础认知篇</div><h3 class="course-card-title">期权的买方与卖方</h3><p class="course-card-desc">对比买方与卖方在权利、义务、盈亏结构和风险暴露上的根本差异，建立正确站位。</p><div class="course-directory-meta"><span class="course-directory-pill">Batch 1</span><span class="course-directory-pill">状态：published</span></div><div class="course-card-actions"><a class="course-action-link" href="./03.html">阅读本章 →</a></div></article>
+<article class="course-grid-card"><div class="course-card-kicker">第 04 章 · 基础认知篇</div><h3 class="course-card-title">ITM / ATM / OTM</h3><p class="course-card-desc">理解期权相对当前股价所处的位置，掌握实值、平值、虚值的判断方法与阅读期权链的直觉。</p><div class="course-directory-meta"><span class="course-directory-pill">Batch 1</span><span class="course-directory-pill">状态：published</span></div><div class="course-card-actions"><a class="course-action-link" href="./04.html">阅读本章 →</a></div></article>
+<article class="course-grid-card"><div class="course-card-kicker">第 05 章 · 价值与时间篇</div><h3 class="course-card-title">期权价格的解剖学</h3><p class="course-card-desc">拆解期权报价的来源，区分内在价值与时间价值，建立理解权利金的底层框架。</p><div class="course-directory-meta"><span class="course-directory-pill">Batch 2</span><span class="course-directory-pill">状态：syncing</span></div><div class="course-card-actions"><span class="course-action-link" aria-disabled="true">syncing</span></div></article>
+<article class="course-grid-card"><div class="course-card-kicker">第 06 章 · 价值与时间篇</div><h3 class="course-card-title">时间价值的两条铁律</h3><p class="course-card-desc">理解时间价值如何随到期日和 ATM 距离分布，为读懂期权链上的价格差异打基础。</p><div class="course-directory-meta"><span class="course-directory-pill">Batch 2</span><span class="course-directory-pill">状态：syncing</span></div><div class="course-card-actions"><span class="course-action-link" aria-disabled="true">syncing</span></div></article>
+<article class="course-grid-card"><div class="course-card-kicker">第 07 章 · 价值与时间篇</div><h3 class="course-card-title">时间的魔法与诅咒</h3><p class="course-card-desc">聚焦时间衰减对买方与卖方的不同影响，建立期权持仓随时间变化的实战直觉。</p><div class="course-directory-meta"><span class="course-directory-pill">Batch 2</span><span class="course-directory-pill">状态：syncing</span></div><div class="course-card-actions"><span class="course-action-link" aria-disabled="true">syncing</span></div></article>
+<article class="course-grid-card"><div class="course-card-kicker">第 08 章 · 价值与时间篇</div><h3 class="course-card-title">行权与被行权</h3><p class="course-card-desc">说明买方如何行权、卖方如何被指派，以及到期和自动处理在真实账户中的落地方式。</p><div class="course-directory-meta"><span class="course-directory-pill">Batch 2</span><span class="course-directory-pill">状态：syncing</span></div><div class="course-card-actions"><span class="course-action-link" aria-disabled="true">syncing</span></div></article>
+<article class="course-grid-card"><div class="course-card-kicker">第 09 章 · 收益与策略篇</div><h3 class="course-card-title">四大单腿策略的到期收益图</h3><p class="course-card-desc">把四种单腿策略的到期盈亏结构变成可视化图形，建立策略风险边界与盈亏平衡点直觉。</p><div class="course-directory-meta"><span class="course-directory-pill">Batch 3</span><span class="course-directory-pill">状态：coming-soon</span></div><div class="course-card-actions"><span class="course-action-link" aria-disabled="true">coming-soon</span></div></article>
+<article class="course-grid-card"><div class="course-card-kicker">第 10 章 · 收益与策略篇</div><h3 class="course-card-title">期权的价格曲线</h3><p class="course-card-desc">解释未到期时期权价格为何呈现曲线而非硬折线，并建立时间价值与 Delta 的图形直觉。</p><div class="course-directory-meta"><span class="course-directory-pill">Batch 3</span><span class="course-directory-pill">状态：coming-soon</span></div><div class="course-card-actions"><span class="course-action-link" aria-disabled="true">coming-soon</span></div></article>
+<article class="course-grid-card"><div class="course-card-kicker">第 11 章 · 收益与策略篇</div><h3 class="course-card-title">期权的三大基本作用</h3><p class="course-card-desc">从对冲风险、提高弹性和获取现金流三个角度，建立使用期权的功能性视角。</p><div class="course-directory-meta"><span class="course-directory-pill">Batch 3</span><span class="course-directory-pill">状态：coming-soon</span></div><div class="course-card-actions"><span class="course-action-link" aria-disabled="true">coming-soon</span></div></article>
+<article class="course-grid-card"><div class="course-card-kicker">第 12 章 · 进阶结构与波动率篇</div><h3 class="course-card-title">保证金与流动性</h3><p class="course-card-desc">回到账户现实，理解保证金要求与流动性条件如何直接限制策略可执行性与盈亏体验。</p><div class="course-directory-meta"><span class="course-directory-pill">Batch 4</span><span class="course-directory-pill">状态：coming-soon</span></div><div class="course-card-actions"><span class="course-action-link" aria-disabled="true">coming-soon</span></div></article>
+<article class="course-grid-card"><div class="course-card-kicker">第 13 章 · 进阶结构与波动率篇</div><h3 class="course-card-title">经典组合与期权平价</h3><p class="course-card-desc">通过 Covered Call、Protective Put 等经典结构，理解不同策略为何会呈现相近的风险收益形状。</p><div class="course-directory-meta"><span class="course-directory-pill">Batch 4</span><span class="course-directory-pill">状态：coming-soon</span></div><div class="course-card-actions"><span class="course-action-link" aria-disabled="true">coming-soon</span></div></article>
+<article class="course-grid-card"><div class="course-card-kicker">第 14 章 · 进阶结构与波动率篇</div><h3 class="course-card-title">BSM 与 IV</h3><p class="course-card-desc">引入期权定价模型与隐含波动率，解释为什么方向看对时，期权盈亏仍可能不如预期。</p><div class="course-directory-meta"><span class="course-directory-pill">Batch 4</span><span class="course-directory-pill">状态：coming-soon</span></div><div class="course-card-actions"><span class="course-action-link" aria-disabled="true">coming-soon</span></div></article>
+<article class="course-grid-card"><div class="course-card-kicker">第 15 章 · 进阶结构与波动率篇</div><h3 class="course-card-title">价差策略入门</h3><p class="course-card-desc">从双腿结构出发，理解价差策略如何在控制成本、限制风险与管理收益之间做取舍。</p><div class="course-directory-meta"><span class="course-directory-pill">Batch 4</span><span class="course-directory-pill">状态：coming-soon</span></div><div class="course-card-actions"><span class="course-action-link" aria-disabled="true">coming-soon</span></div></article>
+<article class="course-grid-card"><div class="course-card-kicker">第 16 章 · 进阶结构与波动率篇</div><h3 class="course-card-title">波动率策略入门</h3><p class="course-card-desc">从方向交易转向波动幅度交易，理解 Straddle、Strangle 等波动率策略的核心逻辑。</p><div class="course-directory-meta"><span class="course-directory-pill">Batch 4</span><span class="course-directory-pill">状态：coming-soon</span></div><div class="course-card-actions"><span class="course-action-link" aria-disabled="true">coming-soon</span></div></article>
+<article class="course-grid-card"><div class="course-card-kicker">第 17 章 · 进阶结构与波动率篇</div><h3 class="course-card-title">Collar 衣领策略</h3><p class="course-card-desc">把 Protective Put 与 Covered Call 组合起来，理解在保留下行保护时如何交换上行空间。</p><div class="course-directory-meta"><span class="course-directory-pill">Batch 4</span><span class="course-directory-pill">状态：coming-soon</span></div><div class="course-card-actions"><span class="course-action-link" aria-disabled="true">coming-soon</span></div></article>
+<article class="course-grid-card"><div class="course-card-kicker">第 18 章 · 进阶结构与波动率篇</div><h3 class="course-card-title">PMCC</h3><p class="course-card-desc">理解贫民版 Covered Call 如何用长期深度实值 Call 替代正股，以及它节省资金背后的额外风险。</p><div class="course-directory-meta"><span class="course-directory-pill">Batch 4</span><span class="course-directory-pill">状态：coming-soon</span></div><div class="course-card-actions"><span class="course-action-link" aria-disabled="true">coming-soon</span></div></article>
+            </div>
+        </section>
+
+        <section class="section" id="sync-progress" aria-labelledby="sync-progress-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">04</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="sync-progress-title">同步进度</h2>
+                    <p class="section-subtitle">把远端课程、本站落地页和生成状态放在一张视图里，方便后续增量更新</p>
+                </div>
+            </div>
+
+            <div class="sync-progress-grid">
+                <article class="course-update-card"><div class="course-card-kicker">Batch 1</div><h3 class="course-card-title">已发布 4 / 4</h3><ul class="course-update-list"><li>第 01 章 · 什么是期权 · published</li><li>第 02 章 · 美股期权怎么操作 · published</li><li>第 03 章 · 期权的买方与卖方 · published</li><li>第 04 章 · ITM / ATM / OTM · published</li></ul></article>
+<article class="course-update-card"><div class="course-card-kicker">Batch 2</div><h3 class="course-card-title">已发布 0 / 4</h3><ul class="course-update-list"><li>第 05 章 · 期权价格的解剖学 · syncing</li><li>第 06 章 · 时间价值的两条铁律 · syncing</li><li>第 07 章 · 时间的魔法与诅咒 · syncing</li><li>第 08 章 · 行权与被行权 · syncing</li></ul></article>
+<article class="course-update-card"><div class="course-card-kicker">Batch 3</div><h3 class="course-card-title">已发布 0 / 3</h3><ul class="course-update-list"><li>第 09 章 · 四大单腿策略的到期收益图 · coming-soon</li><li>第 10 章 · 期权的价格曲线 · coming-soon</li><li>第 11 章 · 期权的三大基本作用 · coming-soon</li></ul></article>
+<article class="course-update-card"><div class="course-card-kicker">Batch 4</div><h3 class="course-card-title">已发布 0 / 7</h3><ul class="course-update-list"><li>第 12 章 · 保证金与流动性 · coming-soon</li><li>第 13 章 · 经典组合与期权平价 · coming-soon</li><li>第 14 章 · BSM 与 IV · coming-soon</li><li>第 15 章 · 价差策略入门 · coming-soon</li><li>第 16 章 · 波动率策略入门 · coming-soon</li><li>第 17 章 · Collar 衣领策略 · coming-soon</li><li>第 18 章 · PMCC · coming-soon</li></ul></article>
+            </div>
+        </section>
+
+        <section class="section" id="recent-updates" aria-labelledby="recent-updates-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">05</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="recent-updates-title">最近更新</h2>
+                    <p class="section-subtitle">给课程维护留出一个固定区域，用来展示最近新增章节、修订说明或同步日志</p>
+                </div>
+            </div>
+
+            <div class="recent-updates-grid">
+                <article class="course-update-card"><div class="course-update-date">更新序号 #4</div><h3 class="course-update-title">第 04 章 · ITM / ATM / OTM</h3><p class="course-update-desc">理解期权相对当前股价所处的位置，掌握实值、平值、虚值的判断方法与阅读期权链的直觉。</p><div class="course-card-actions"><a class="course-action-link" href="./04.html">打开章节 →</a></div></article>
+<article class="course-update-card"><div class="course-update-date">更新序号 #3</div><h3 class="course-update-title">第 03 章 · 期权的买方与卖方</h3><p class="course-update-desc">对比买方与卖方在权利、义务、盈亏结构和风险暴露上的根本差异，建立正确站位。</p><div class="course-card-actions"><a class="course-action-link" href="./03.html">打开章节 →</a></div></article>
+<article class="course-update-card"><div class="course-update-date">更新序号 #2</div><h3 class="course-update-title">第 02 章 · 美股期权怎么操作</h3><p class="course-update-desc">用期权链、到期日、行权价与限价单四步法，建立从看盘到下单的基础操作框架。</p><div class="course-card-actions"><a class="course-action-link" href="./02.html">打开章节 →</a></div></article>
+<article class="course-update-card"><div class="course-update-date">更新序号 #1</div><h3 class="course-update-title">第 01 章 · 什么是期权</h3><p class="course-update-desc">从合同视角建立期权最基础的认知，理解权利而非义务、标的资产、看涨看跌与权利金这些核心概念。</p><div class="course-card-actions"><a class="course-action-link" href="./01.html">打开章节 →</a></div></article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>期权教材 · 结构化学习 · HTML 优先</p>
+        <p class="disclaimer">
+            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权风险高于普通股票，涉及杠杆、时间价值与流动性等额外风险，请务必独立判断。
+        </p>
+    </footer>
+
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
+
+    <script src="../js/main.js?v=20260314c"></script>
+</body>
+</html>

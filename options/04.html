@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="理解期权相对当前股价所处的位置，掌握实值、平值、虚值的判断方法与阅读期权链的直觉。">
+    <meta name="author" content="ValueInvest">
+    <meta name="theme-color" content="#c9a227">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="canonical" href="https://4fire.qzz.io/options/04.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://4fire.qzz.io/options/04.html">
+    <meta property="og:title" content="ITM / ATM / OTM | 美股期权教材">
+    <meta property="og:description" content="理解期权相对当前股价所处的位置，掌握实值、平值、虚值的判断方法与阅读期权链的直觉。">
+    <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ITM / ATM / OTM | 美股期权教材">
+    <meta name="twitter:description" content="理解期权相对当前股价所处的位置，掌握实值、平值、虚值的判断方法与阅读期权链的直觉。">
+    <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <title>ITM / ATM / OTM | 美股期权教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css?v=20260314c">
+    <style>
+        .chapter-meta-bar {
+            width: min(1100px, calc(100% - 2rem));
+            margin: -2.25rem auto 0;
+            padding: 1rem 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+            position: relative;
+            z-index: 2;
+        }
+
+        .chapter-meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-secondary);
+            background: rgba(201, 162, 39, 0.08);
+            font-size: 0.95rem;
+        }
+
+        .chapter-meta-link {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .chapter-meta-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .chapter-shell {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .chapter-summary-card,
+        .chapter-body-card,
+        .chapter-nav-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+        }
+
+        .chapter-summary-card p,
+        .chapter-nav-card p {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card {
+            line-height: 1.9;
+            color: var(--text-primary);
+        }
+
+        .chapter-body-card h2,
+        .chapter-body-card h3,
+        .chapter-body-card h4 {
+            color: var(--text-primary);
+            margin-top: 1.6em;
+        }
+
+        .chapter-body-card p,
+        .chapter-body-card li,
+        .chapter-body-card blockquote {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card ul,
+        .chapter-body-card ol {
+            padding-left: 1.2rem;
+        }
+
+        .chapter-body-card blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.25rem;
+            border-left: 3px solid var(--accent-gold);
+            background: rgba(201, 162, 39, 0.08);
+            border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .chapter-nav-slot {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            min-height: 100%;
+            padding: 1rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(201, 162, 39, 0.06);
+        }
+
+        .chapter-nav-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .chapter-nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .chapter-nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        @media (max-width: 800px) {
+            .chapter-nav-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chapter-summary-card,
+            .chapter-body-card,
+            .chapter-nav-card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "ITM / ATM / OTM",
+        "description": "理解期权相对当前股价所处的位置，掌握实值、平值、虚值的判断方法与阅读期权链的直觉。",
+        "author": {
+            "@type": "Person",
+            "name": "ValueInvest"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ValueInvest",
+            "sameAs": "https://4fire.qzz.io/"
+        },
+        "mainEntityOfPage": "https://4fire.qzz.io/options/04.html",
+        "isPartOf": {
+            "@type": "Course",
+            "name": "美股期权教材",
+            "url": "https://4fire.qzz.io/options/"
+        },
+        "image": [
+            "https://4fire.qzz.io/images/hero-bg.jpg"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
+
+    <header id="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="期权章节页主导航">
+                <ul class="nav-links">
+                    <li><a href="../index.html">返回首页</a></li>
+                    <li><a href="./index.html">返回课程</a></li>
+                    <li><a href="#chapter-navigation">章节导航</a></li>
+                </ul>
+            </nav>
+            <div class="nav-date">第 04 章</div>
+        </div>
+    </header>
+
+    <section class="hero" role="banner">
+        <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
+        <div class="hero-content">
+            <div class="subtitle">基础认知篇</div>
+            <h1>第 04 章 · ITM / ATM / OTM</h1>
+            <p class="tagline">基础认知篇 · Batch 1</p>
+            <p class="hero-description">理解期权相对当前股价所处的位置，掌握实值、平值、虚值的判断方法与阅读期权链的直觉。</p>
+        </div>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
+    </section>
+
+    <div class="chapter-meta-bar" aria-label="章节关键信息">
+        <div class="chapter-meta-pill">章节编号：第 04 章</div>
+        <div class="chapter-meta-pill">Section：基础认知篇</div>
+        <div class="chapter-meta-pill">Batch：Batch 1 · published</div>
+        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
+    </div>
+
+    <main id="main" class="chapter-shell">
+        <section class="section" id="chapter-summary" aria-labelledby="chapter-summary-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">01</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
+                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
+                </div>
+            </div>
+
+            <div class="chapter-summary-card">
+                <p>理解期权相对当前股价所处的位置，掌握实值、平值、虚值的判断方法与阅读期权链的直觉。</p>
+            </div>
+        </section>
+
+        <section class="section" id="chapter-content" aria-labelledby="chapter-content-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">02</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
+                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
+                </div>
+            </div>
+
+            <article class="chapter-body-card">
+<h1>《美股期权教材》</h1>
+<h2>第4章 ITM / ATM / OTM：你在期权链里到底买的是哪一档</h2>
+<blockquote><p>对照图片里的 4. 根据股价对期权进行分类分支，本章要解决的不是一个缩写题，而是一个非常实际的问题：<strong>当你在期权链里看到一排行权价时，你到底是在挑哪一类合同？</strong>  图片给出的骨架很清楚： - ITM（价内） - OTM（价外） - ATM（平价）  但如果只记住字面定义，你在真实操作里还是会发懵。因为真正的问题不是哪三个缩写分别是什么意思，而是它们和我付出的权利金、我需要的涨跌幅、我这张合约的手感，到底有什么关系。</p></blockquote>
+<hr>
+<h3>4.1 为什么这章非常关键：你在期权链里选的不是号码，而是位置</h3>
+<p>上一章我们已经讲过，期权链像一张菜单。你点开 AAPL、TSLA、SPY 之后，会看到一排排行权价：170、175、180、185、190……看起来像号码，但它们本质上不是号码，而是你在不同位置上签的合同。</p>
+<p>这个位置怎么理解？最简单的方式就是把它和<strong>当前股价</strong>放在一起看。</p>
+<p>假设现在 AAPL 股价是 175：</p>
+<ul><li>170 Call</li><li>175 Call</li><li>180 Call</li><li>185 Call</li></ul>
+<p>这几份合同不是同一件事只是价钱不同，它们是完全不同的起跑线。你可以把它们想成：</p>
+<ul><li>有的合同已经站在更有现实价值的位置；</li><li>有的合同站在正卡在中间的位置；</li><li>有的合同则还停留在先买个希望的位置。</li></ul>
+<p>这就是 ITM、ATM、OTM 这三个词真正有用的地方。它们不是考试术语，而是你判断这张期权现在是更像资产、还是更像希望的起点。</p>
+<hr>
+<h3>4.2 先给最朴素的判断问题：如果现在立刻行权，这张期权有现实好处吗？</h3>
+<p>这是理解 ITM / ATM / OTM 最稳的一条线索，也是图片这部分的隐含核心。</p>
+<p>你每次遇到一张期权，都先问自己一句话：</p>
+<blockquote><p><strong>如果现在立刻行权，我会不会得到一个现实中的好处？</strong></p></blockquote>
+<ul><li>如果有，而且这个好处是明确的，那它大概率是 <strong>ITM（价内）</strong>；</li><li>如果几乎刚刚好，不明显赚也不明显亏，它通常靠近 <strong>ATM（平价）</strong>；</li><li>如果现在立刻行权一点意义都没有，那它大概率是 <strong>OTM（价外）</strong>。</li></ul>
+<p>这句话很重要，因为它让你不需要死背，而是能自己推。</p>
+<hr>
+<h3>4.3 先说 Call：对看涨期权来说，什么叫 ITM / ATM / OTM？</h3>
+<p>#### 4.3.1 Call 的基本逻辑先回顾一下</p>
+<p>一张 Call 给你的权利是：</p>
+<blockquote><p><strong>在到期前，以行权价买入标的资产。</strong></p></blockquote>
+<p>所以对 Call 来说，有没有现实好处的关键在于：</p>
+<ul><li>现在市场价是不是已经高于你的行权价？</li></ul>
+<p>如果市场价已经比行权价更高，那你手里这份按较低价格买的权利就有现实意义；反过来，如果市场价还低于行权价，那你现在根本没必要按更高价格去买。</p>
+<p>#### 4.3.2 ITM Call（价内看涨期权）</p>
+<p>对于 Call，<strong>当股价 &gt; 行权价</strong> 时，它就是 ITM。</p>
+<p>##### 例子：AAPL 现价 175，170 Call</p>
+<ul><li>当前股价：175</li><li>行权价：170</li></ul>
+<p>如果你现在就行使这张 Call，你可以按 170 买到市场上值 175 的股票。也就是说，这张合同里已经内含了现实中的好处。</p>
+<p>它像什么？像一张已经有一点折扣价值的优惠券。你拿着它，不是光在等未来，而是现在就已经比没有这张券更有利。</p>
+<p>##### 再举一个更直观的例子</p>
+<p>图片里用过类似的数字：</p>
+<ul><li>股价 146</li><li>Call 行权价 140</li></ul>
+<p>因为 146 &gt; 140，这张 Call 是 ITM。你可以理解为：你拥有一张140 买一个市场上值 146 的东西的合同，它当然已经有现实价值。</p>
+<p>#### 4.3.3 ATM Call（平价看涨期权）</p>
+<p>对于 Call，当<strong>股价 ≈ 行权价</strong> 时，它通常被看成 ATM。</p>
+<p>##### 例子：AAPL 现价 175，175 Call</p>
+<ul><li>当前股价：175</li><li>行权价：175</li></ul>
+<p>这时候你可以说，这张合同站在正中间。现在立刻行权，不会产生明显的白赚空间；但只要股价稍微往上走，这张期权就会迅速变得更有意义。</p>
+<p>所以 ATM 往往像一个转折点：它既不是已经很有现实价值的深价内，也不是离得很远的纯希望。它很敏感，也很关键。</p>
+<p>#### 4.3.4 OTM Call（价外看涨期权）</p>
+<p>对于 Call，当<strong>股价 &lt; 行权价</strong> 时，它就是 OTM。</p>
+<p>##### 例子：AAPL 现价 175，180 Call</p>
+<ul><li>当前股价：175</li><li>行权价：180</li></ul>
+<p>你如果现在立刻行使这张期权，就等于愿意按 180 去买一个市场价只有 175 的股票，这显然没有意义。所以这张合约当前没有立刻可兑现的现实价值。</p>
+<p>但注意，没现实价值，不等于没价格。它仍然会有市场报价，因为市场还在为未来可能涨上去这件事定价。</p>
+<p>这就是为什么很多 OTM Call 看起来像便宜票：你买到的更多是未来的希望，而不是现在已经存在的价值。</p>
+<hr>
+<h3>4.4 再说 Put：对看跌期权来说，方向完全反过来</h3>
+<p>#### 4.4.1 Put 的基本逻辑先回顾一下</p>
+<p>一张 Put 给你的权利是：</p>
+<blockquote><p><strong>在到期前，以行权价卖出标的资产。</strong></p></blockquote>
+<p>所以对 Put 来说，有没有现实好处的关键变成了：</p>
+<ul><li>现在市场价是不是已经低于你的行权价？</li></ul>
+<p>因为如果市场已经跌下去了，而你还能按更高价格卖，那这份合同当然有现实意义。</p>
+<p>#### 4.4.2 ITM Put（价内看跌期权）</p>
+<p>对于 Put，<strong>当股价 &lt; 行权价</strong> 时，它就是 ITM。</p>
+<p>##### 例子：AAPL 现价 140，146 Put</p>
+<ul><li>当前股价：140</li><li>行权价：146</li></ul>
+<p>如果你现在能按 146 卖出一个市场上只值 140 的东西，这份权利当然值钱。所以这张 Put 是 ITM。</p>
+<p>你可以把它理解成：你手里有一份高价卖出的合同，而市场价格已经比合同价格更低了，这就是现实好处。</p>
+<p>#### 4.4.3 ATM Put（平价看跌期权）</p>
+<p>对于 Put，当<strong>股价 ≈ 行权价</strong> 时，它通常被看成 ATM。</p>
+<p>##### 例子：SPY 现价 500，500 Put</p>
+<p>这时候它站在一个临界点上：现在不算明显赚，但如果标的再跌一点，这张 Put 的现实意义会快速增强。</p>
+<p>#### 4.4.4 OTM Put（价外看跌期权）</p>
+<p>对于 Put，<strong>当股价 &gt; 行权价</strong> 时，它就是 OTM。</p>
+<p>##### 例子：AAPL 现价 175，170 Put</p>
+<p>你如果现在就行使，相当于想按 170 卖出一个市场上明明能卖 175 的东西，这当然没意义。所以这张 Put 没有立刻行权的现实价值，它现在更多是一张如果未来跌下去就会变得有用的合同。</p>
+<hr>
+<h3>4.5 把 Call 和 Put 放在一起看：别把方向混掉</h3>
+<p>很多人第一次学 ITM / ATM / OTM 时，最大的混乱不是定义太难，而是<strong>Call 和 Put 的方向反过来</strong>。</p>
+<p>你可以用最简单的一张表先固定住：</p>
+<div class="course-table-wrap"><table><thead><tr><th>类型</th><th>ITM</th><th>ATM</th><th>OTM</th></tr></thead><tbody><tr><td>Call</td><td>股价 &gt; 行权价</td><td>股价 ≈ 行权价</td><td>股价 &lt; 行权价</td></tr><tr><td>Put</td><td>股价 &lt; 行权价</td><td>股价 ≈ 行权价</td><td>股价 &gt; 行权价</td></tr></tbody></table></div>
+<p>你如果怕记混，可以别硬背表，而是永远回到那句判断题：</p>
+<ul><li>Call：我是不是能按更低价买？</li><li>Put：我是不是能按更高价卖？</li></ul>
+<p>有现实好处，就是 ITM；没现实好处，就是 OTM；卡在中间，就是 ATM。</p>
+<hr>
+<h3>4.6 这三个分类到底有什么用：为什么你不该把它们当成纯术语</h3>
+<p>如果 ITM / ATM / OTM 只是定义题，那没必要专门一章讲它。之所以必须单独讲，是因为它们会直接影响你后面所有东西：</p>
+<ul><li>你买的到底更像现在就有一点现实价值的合同，还是纯粹赌未来的合同；</li><li>你的权利金里有多少已经是实的，多少是市场对未来的期待；</li><li>你的期权价格对正股涨跌到底敏不敏感；</li><li>你到底是在买一个更贵但更扎实的位置，还是买一个更便宜但更需要行情爆发的位置。</li></ul>
+<p>你可以先把它理解成一个非常粗但非常实用的判断：</p>
+<ul><li><strong>ITM 更像现在已经有点东西</strong></li><li><strong>ATM 更像站在分界线上</strong></li><li><strong>OTM 更像先买个未来可能性</strong></li></ul>
+<p>当然，这只是直觉层面的简化，后面到了价格构成那一章，我们会把现在已经有点东西具体拆成内在价值，把未来可能性拆成时间价值。</p>
+<hr>
+<h3>4.7 为什么很多新手会被 OTM 吸引：它看起来便宜，但便宜往往是有原因的</h3>
+<p>这部分非常重要，因为真实交易里最常见的错误之一，就是新手喜欢冲着便宜去买 OTM。</p>
+<p>比如你打开 AAPL 期权链，看到：</p>
+<ul><li>170 Call 很贵</li><li>175 Call 也不便宜</li><li>190 Call 好像只要一点点钱</li></ul>
+<p>于是你会想：</p>
+<ul><li>那我是不是买 190 Call 更划算？反正如果涨起来，涨得更多。</li></ul>
+<p>问题在于，190 Call 之所以便宜，往往是因为市场在说：</p>
+<ul><li>它要在这段时间里涨到那里，不容易。</li></ul>
+<p>也就是说，OTM 并不只是便宜版本，它常常也是更依赖行情爆发的版本。你买它，通常是在买一个更远、更窄、更需要速度的机会窗口。</p>
+<p>这不是说 OTM 不能碰，而是说：<strong>别因为便宜就误以为它更好。</strong> 很多便宜，只是在提前反映它实现起来更难。</p>
+<hr>
+<h3>4.8 ITM 一定更好吗？也不是。它更贵，也意味着你先付了更多钱</h3>
+<p>说完 OTM，再把话拉回来：既然 OTM 看起来更像在买希望，那是不是 ITM 就一定更好？</p>
+<p>也不是。</p>
+<p>ITM 的好处在于：</p>
+<ul><li>它已经带有现实价值</li><li>对正股变化往往更敏感</li><li>在很多情况下，它更不像纯彩票</li></ul>
+<p>但代价也很明确：</p>
+<ul><li>它通常更贵</li><li>你一开始要付出更多权利金</li></ul>
+<p>所以你选 ITM / ATM / OTM，不是在选哪种永远更优，而是在选：</p>
+<blockquote><p><strong>我是更想要扎实一点的位置，还是更想要更低成本的远期可能性？</strong></p></blockquote>
+<p>这也是为什么这三个分类一定要在策略之前弄懂。因为你后面每次选行权价，本质上都是在这三种位置之间做取舍。</p>
+<hr>
+<h3>4.9 几个容易混淆的点，必须提前纠正</h3>
+<p>#### 误区 1：OTM 就是没价值</p>
+<p>不对。OTM 的准确说法应该是：</p>
+<ul><li><strong>它没有立刻行权的内在价值</strong>，</li><li>但它仍然可以有市场价格，因为市场在给未来变得有价值的可能性定价。</li></ul>
+<p>也正因为如此，很多 OTM 期权在离到期还有一段时间时，仍然能卖出价格，不是废纸。</p>
+<p>#### 误区 2：ATM 就是完全没用</p>
+<p>也不对。ATM 恰恰经常是最关键的位置，因为它卡在分界线上，对后面一小段波动非常敏感。它不是没用，而是最靠近即将发生变化的地方。</p>
+<p>#### 误区 3：ITM 就等于稳赚</p>
+<p>更不对。ITM 只是说明这张合同当前已经有现实好处，不代表你买它就一定赚钱。你买的时候付了多少权利金、后面时间怎么流逝、股价有没有继续往有利方向走，这些都会影响最终盈亏。</p>
+<p>所以别把当前位置误当成最终结果。</p>
+<hr>
+<h3>4.10 用一个完整小场景，把三种位置放在同一条线上看</h3>
+<p>假设 AAPL 现价 175，我们只看 Call：</p>
+<ul><li>170 Call → ITM</li><li>175 Call → ATM</li><li>180 Call → OTM</li></ul>
+<p>这三张合约像什么？</p>
+<ul><li><strong>170 Call</strong>：你已经站在门里面一点了，所以更贵，也更像现在就有点货；</li><li><strong>175 Call</strong>：你站在门槛上，往里还是往外，很快会看出来；</li><li><strong>180 Call</strong>：你还站在门外，买的是希望门一会儿自己打开。</li></ul>
+<p>这个比喻不完美，但很有用，因为它把位置感建立起来了。以后你看到期权链，不会再只是看到几个数字，而会开始有画面：我现在是在买门里、门口，还是门外的那份合同？</p>
+<hr>
+<h3>4.11 本章小结：你以后每次看期权链，都应该先做这个判断</h3>
+<p>1. 先看它是 Call 还是 Put。 2. 再把当前股价和行权价放在一起。 3. 问自己：如果现在立刻行权，这份合同有没有现实好处？ 4. 然后再判断它是 ITM、ATM 还是 OTM。</p>
+<p>你只要把这 4 步练熟，后面学期权价格构成时就会轻松很多，因为你终于知道：你买的不是一个抽象代码，而是一份站在不同位置上的合同。</p>
+<hr>
+<h3>4.12 自测题（别只背缩写，要能自己推）</h3>
+<p>1）AAPL 现价 175：</p>
+<ul><li>170 Call 属于什么？</li><li>175 Call 属于什么？</li><li>180 Call 属于什么？</li></ul>
+<p>2）AAPL 现价 175：</p>
+<ul><li>180 Put 属于什么？</li><li>175 Put 属于什么？</li><li>170 Put 属于什么？</li></ul>
+<p>3）为什么说OTM 没有内在价值不等于OTM 完全没有价格？</p>
+<hr>
+<h3>4.13 下一章预告：期权价格由什么构成——内在价值和时间价值</h3>
+<p>这一章你已经知道了 ITM / ATM / OTM 本质上是在描述你这份合同现在站在哪个位置。下一章我们就把这个位置感进一步拆开：</p>
+<ul><li>什么叫内在价值？</li><li>什么叫时间价值？</li><li>为什么 ITM 更像已经有点东西，OTM 更像在买未来可能性？</li></ul>
+<p>到了那一步，你会第一次真正把分类和价格连在一起。</p>
+<hr>
+<h3>本章参考口径（便于追溯）</h3>
+<ul><li>图片骨架：ITM / OTM / ATM 的分类逻辑（Call 与 Put 的方向相反）</li><li>Investor.gov：期权作为有权利但无义务的合约定义，用于保证本章分类解释依然围绕行权是否有现实好处来讲</li><li><a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/options">https://www.investor.gov/introduction-investing/investing-basics/glossary/options</a></li></ul>
+<ul><li>Fidelity Learning Center：用于保持本章的风险表述边界——不要把 ITM/OTM 写成哪档一定更好，而要和后面的 max risk / pricing logic 连接起来</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li></ul>
+            </article>
+        </section>
+
+        <section class="section" id="chapter-navigation" aria-labelledby="chapter-navigation-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">03</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
+                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
+                </div>
+            </div>
+
+            <div class="chapter-nav-card">
+                <div class="chapter-nav-grid">
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">上一章</div>
+                        <a class="chapter-nav-link" href="./03.html">第 03 章 · 买方与卖方</a>
+                        <p>对比买方与卖方在权利、义务、盈亏结构和风险暴露上的根本差异，建立正确站位。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">返回课程</div>
+                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
+                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">下一章</div>
+                        <a class="chapter-nav-link" href="./index.html">更多章节同步中</a>
+                        <p>下一篇发布后会自动出现在这里。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>期权教材 · 结构化学习 · HTML 优先</p>
+        <p class="disclaimer">
+            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
+        </p>
+    </footer>
+
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
+
+    <script src="../js/main.js?v=20260314c"></script>
+</body>
+</html>

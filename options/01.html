@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="从合同视角建立期权最基础的认知，理解权利而非义务、标的资产、看涨看跌与权利金这些核心概念。">
+    <meta name="author" content="ValueInvest">
+    <meta name="theme-color" content="#c9a227">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="canonical" href="https://4fire.qzz.io/options/01.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://4fire.qzz.io/options/01.html">
+    <meta property="og:title" content="什么是期权 | 美股期权教材">
+    <meta property="og:description" content="从合同视角建立期权最基础的认知，理解权利而非义务、标的资产、看涨看跌与权利金这些核心概念。">
+    <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="什么是期权 | 美股期权教材">
+    <meta name="twitter:description" content="从合同视角建立期权最基础的认知，理解权利而非义务、标的资产、看涨看跌与权利金这些核心概念。">
+    <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <title>什么是期权 | 美股期权教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css?v=20260314c">
+    <style>
+        .chapter-meta-bar {
+            width: min(1100px, calc(100% - 2rem));
+            margin: -2.25rem auto 0;
+            padding: 1rem 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+            position: relative;
+            z-index: 2;
+        }
+
+        .chapter-meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-secondary);
+            background: rgba(201, 162, 39, 0.08);
+            font-size: 0.95rem;
+        }
+
+        .chapter-meta-link {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .chapter-meta-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .chapter-shell {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .chapter-summary-card,
+        .chapter-body-card,
+        .chapter-nav-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+        }
+
+        .chapter-summary-card p,
+        .chapter-nav-card p {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card {
+            line-height: 1.9;
+            color: var(--text-primary);
+        }
+
+        .chapter-body-card h2,
+        .chapter-body-card h3,
+        .chapter-body-card h4 {
+            color: var(--text-primary);
+            margin-top: 1.6em;
+        }
+
+        .chapter-body-card p,
+        .chapter-body-card li,
+        .chapter-body-card blockquote {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card ul,
+        .chapter-body-card ol {
+            padding-left: 1.2rem;
+        }
+
+        .chapter-body-card blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.25rem;
+            border-left: 3px solid var(--accent-gold);
+            background: rgba(201, 162, 39, 0.08);
+            border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .chapter-nav-slot {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            min-height: 100%;
+            padding: 1rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(201, 162, 39, 0.06);
+        }
+
+        .chapter-nav-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .chapter-nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .chapter-nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        @media (max-width: 800px) {
+            .chapter-nav-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chapter-summary-card,
+            .chapter-body-card,
+            .chapter-nav-card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "什么是期权",
+        "description": "从合同视角建立期权最基础的认知，理解权利而非义务、标的资产、看涨看跌与权利金这些核心概念。",
+        "author": {
+            "@type": "Person",
+            "name": "ValueInvest"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ValueInvest",
+            "sameAs": "https://4fire.qzz.io/"
+        },
+        "mainEntityOfPage": "https://4fire.qzz.io/options/01.html",
+        "isPartOf": {
+            "@type": "Course",
+            "name": "美股期权教材",
+            "url": "https://4fire.qzz.io/options/"
+        },
+        "image": [
+            "https://4fire.qzz.io/images/hero-bg.jpg"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
+
+    <header id="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="期权章节页主导航">
+                <ul class="nav-links">
+                    <li><a href="../index.html">返回首页</a></li>
+                    <li><a href="./index.html">返回课程</a></li>
+                    <li><a href="#chapter-navigation">章节导航</a></li>
+                </ul>
+            </nav>
+            <div class="nav-date">第 01 章</div>
+        </div>
+    </header>
+
+    <section class="hero" role="banner">
+        <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
+        <div class="hero-content">
+            <div class="subtitle">基础认知篇</div>
+            <h1>第 01 章 · 什么是期权</h1>
+            <p class="tagline">基础认知篇 · Batch 1</p>
+            <p class="hero-description">从合同视角建立期权最基础的认知，理解权利而非义务、标的资产、看涨看跌与权利金这些核心概念。</p>
+        </div>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
+    </section>
+
+    <div class="chapter-meta-bar" aria-label="章节关键信息">
+        <div class="chapter-meta-pill">章节编号：第 01 章</div>
+        <div class="chapter-meta-pill">Section：基础认知篇</div>
+        <div class="chapter-meta-pill">Batch：Batch 1 · published</div>
+        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
+    </div>
+
+    <main id="main" class="chapter-shell">
+        <section class="section" id="chapter-summary" aria-labelledby="chapter-summary-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">01</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
+                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
+                </div>
+            </div>
+
+            <div class="chapter-summary-card">
+                <p>从合同视角建立期权最基础的认知，理解权利而非义务、标的资产、看涨看跌与权利金这些核心概念。</p>
+            </div>
+        </section>
+
+        <section class="section" id="chapter-content" aria-labelledby="chapter-content-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">02</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
+                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
+                </div>
+            </div>
+
+            <article class="chapter-body-card">
+<h1>《美股期权教材》</h1>
+<h2>第1章 什么是期权：先把“选择权”这件事讲明白</h2>
+<blockquote><p>图片里的主线很清楚：期权的概念从 <strong>选择权（right, not obligation）</strong> 出发，接着再区分 Call / Put，并把 Premium（权利金）与 Underlying Asset（标的资产）这两个词先钉住。这个章节就按这个顺序来，但会把每个点讲到能真正用得上。</p></blockquote>
+<hr>
+<h3>1.1 为什么很多人一听期权就觉得难（其实难的不是概念，而是你没抓住它的骨架）</h3>
+<p>很多刚开始做美股的人，听到期权时心里会下意识紧一下：一方面是因为身边总有人把期权讲得很刺激——一张合约翻几倍一夜暴富/爆亏，另一方面是因为你点开券商里的期权链（Option Chain）会看到密密麻麻的到期日、行权价、Bid/Ask、IV、成交量……看着就像一门新语言，谁都不想从头学。</p>
+<p>但如果你把这件事倒过来看，会发现：期权的外表确实复杂，可它的核心骨架一点都不玄学。图片里第一条期权本质是一种选择权就抓到了要害。你只要抓住选择权这三个字，后面那些名词就不是背诵题，而是自然长出来的解释。</p>
+<p>这一章我们先不谈策略、不谈下单、不谈 Greeks，更不谈怎么赚钱。我们只做一件事：把期权到底是什么、你买到的到底是什么、为什么有人把它当保险、有人把它当杠杆——这些最基础的问题讲到你能用自己的话解释清楚。</p>
+<hr>
+<h3>1.2 用一句权威口径把期权钉死：它是一份合约，买方有权利但没义务</h3>
+<p>严格定义（先背这一句就够用）：</p>
+<blockquote><p><strong>期权是一种合约，赋予买方在特定期限内，以约定价格买入或卖出某种证券的权利，但不是义务。</strong></p></blockquote>
+<p>你会发现，这句话里没有任何花哨的金融词，核心就四件事：</p>
+<p>1) <strong>合约（contract）</strong>：期权不是股票本身，它是一张合同； 2) <strong>特定期限（within a specific period）</strong>：这张合同有保质期； 3) <strong>约定价格（fixed price）</strong>：未来买卖价格在合同里先写死； 4) <strong>权利但不是义务（right, not obligation）</strong>：你可以用它，但你可以选择不用。</p>
+<p>把它翻成更口语一点的句子就是：</p>
+<blockquote><p><strong>你花一笔钱，买到一个未来按某个价格买/卖的机会；到了那天如果不划算，你可以不执行。</strong></p></blockquote>
+<p>这也是为什么期权常常被拿来做两件事：</p>
+<ul><li><strong>做方向</strong>：我判断上涨/下跌，但我不想或者不方便用同样的方式买股票/卖空股票；</li><li><strong>做保险</strong>：我不想把持仓卖掉，但我想给它一个最坏情况的保护。</li></ul>
+<p>（参考口径：Investor.gov 对期权的描述明确强调 right — but not the obligation。）</p>
+<hr>
+<h3>1.3 重点把权利，但不是义务讲透：你买到的是可以用的选择，不是必须做的任务</h3>
+<p>很多新手第一次听到权利但不是义务，嘴上说懂了，但脑子里还是会出现一个老毛病：把期权想成买了就得做。</p>
+<p>这里我给你一个非常实用的判断方法：每次你搞不清期权到底是什么，就在心里问自己一句话——</p>
+<blockquote><p><strong>如果现在立刻执行这份合同，对我有好处吗？没有好处我可以不执行吗？</strong></p></blockquote>
+<p>如果答案是可以不执行，那你就抓住了买方没有义务的核心。</p>
+<p>#### 例子 A：演唱会预售资格（最像 Call 的直觉）</p>
+<p>你花 200 元买到一个资格：下个月开售时，你可以用 2000 元买到一张内场票。到那天如果这场演唱会突然不火了、票根本没人要，或者你那天有事不去了，你会怎么办？你当然不会硬着头皮去买那张票——你最多损失的是那 200 元的资格费。</p>
+<p>这就是权利但不义务：你买的是一个选择，值不值得用，到时候你可以再判断。</p>
+<p>#### 例子 B：用 AAPL 讲得更金融一点（把直觉落回美股）</p>
+<p>假设 AAPL 现价 175 美元，你买了一张 Call，合同写着：</p>
+<ul><li>到期日：一个月后</li><li>行权价：180</li></ul>
+<p>它给你的权利是：在有效期内，你可以按 180 买入 AAPL。一个月后如果 AAPL 跌到 160，你根本不会去按 180 买（因为市场上 160 就能买），你会选择放弃；如果 AAPL 涨到 200，你会发现按 180 买很划算，这份合同自然就值钱。</p>
+<p>先别担心值钱怎么体现，后面我们会讲你多数时候并不需要真的去行权，你也可以在到期前把合同卖掉（平仓）来实现盈亏。这里你只需要先把最底层逻辑钉住：<strong>买方永远可以选择不用。</strong></p>
+<hr>
+<h3>1.4 为什么选择权这个比喻特别好用：它能把 Call / Put、权利金、到期日一口气串起来</h3>
+<p>图片里用选择权做总抓手，我非常赞同，因为它天然带出三个关键概念：</p>
+<ul><li>你付出一笔成本（权利金 / Premium）</li><li>你锁定一个未来可能用得上的价格（行权价 / Strike）</li><li>你的选择有期限（到期日 / Expiration）</li></ul>
+<p>为了让你有更稳的直觉，我们用两个生活类比（对应图片里对 Call/Put 的基本理解），再加一个美股场景。</p>
+<p>#### 例子 1：买房定金（Call 的直觉很像）</p>
+<p>你看中一套房 100 万，担心后面涨价，于是付 2 万定金锁定未来三个月内以 100 万买房的权利。三个月后如果房价涨到 120 万，你会很庆幸这个选择权；如果房价跌到 90 万，你不会硬买，最多亏 2 万定金。</p>
+<p>你注意到没有：你的最大坏结果在一开始就很清楚——就是那 2 万。</p>
+<p>#### 例子 2：车险（Put 的直觉很像）</p>
+<p>你每年交保费，换来如果车出了大事故，能减少损失的保障。平安无事时保费像是白交了，但它买的是最坏情况时不至于太惨。</p>
+<p>这就是为什么图片里说 Put 像下跌保险：你在为最坏情况付费。</p>
+<p>#### 例子 3：持有股票 + 买 Put（把保险类比落回美股）</p>
+<p>你已经持有 100 股 TSLA，担心财报后大跌，但又不想卖出正股（比如你不想错过后续反弹，或者不想频繁操作）。你可以用 Put 给自己买保险：如果真暴跌，Put 价值上升，能抵消部分正股亏损；如果没跌，你损失的主要就是那笔保费（权利金）。</p>
+<p>这套结构非常像生活里的保险，所以很多长期持仓的投资者会认真学 Put，而不是只把期权当成投机工具。</p>
+<hr>
+<h3>1.5 期权最基本的两类：Call（看涨）与 Put（看跌/保险）</h3>
+<p>图片给的框架是对的：Call 看涨，Put 看跌，而且 Put 还能做下跌保险。教材里我们把它讲得更能用。</p>
+<p>#### 1.5.1 Call Option（看涨期权）：你买的是未来以某个价格买入的权利</p>
+<p>严格定义：</p>
+<blockquote><p><strong>Call 给买方在有效期内按行权价买入标的资产的权利。</strong></p></blockquote>
+<p>直觉理解：你花一笔钱，换取一个如果它涨上去了，我能用更低价格买的机会。</p>
+<p><strong>例子 1：AAPL 的 Call（带数字，帮助你形成判断）</strong></p>
+<ul><li>AAPL 现价：175</li><li>你买一张 Call：行权价 180，到期 1 个月</li></ul>
+<p>如果到期前 AAPL 涨到 200，这张 Call 的价值通常会上升，因为你拥有按 180 买入的权利；如果 AAPL 一直在 170～178 晃，甚至跌下去，这张 Call 就可能越来越不值钱。</p>
+<p>这里先记住一个现实：<strong>买 Call 不是涨一点就行，而是你需要在期限内涨到足够程度，才能覆盖你付出的成本（权利金）。</strong>后面讲时间价值时你会更直观地感受到这点。</p>
+<p><strong>例子 2：SPY 的 Call（更贴近很多人的实操）</strong></p>
+<p>如果你平时主要做指数 ETF（比如 SPY、QQQ），Call 的逻辑完全相同，只是标的从个股变成了 ETF。很多人用 SPY 期权来表达我预计大盘接下来一两周会冲一波的判断，这比直接加杠杆买 ETF 更可控，但代价是你需要面对到期日与时间损耗。</p>
+<p>#### 1.5.2 Put Option（看跌期权）：你买的是未来以某个价格卖出的权利</p>
+<p>严格定义：</p>
+<blockquote><p><strong>Put 给买方在有效期内按行权价卖出标的资产的权利。</strong></p></blockquote>
+<p>直觉理解：你花一笔钱，换取一个如果它跌下去，我能按更高价格卖的保护。</p>
+<p><strong>例子 1：单纯看跌（方向型）</strong></p>
+<ul><li>NVDA 现价 900（假设）</li><li>你判断未来两周会回调</li><li>你买 Put：行权价 860，到期两周</li></ul>
+<p>如果 NVDA 很快跌到 820，这张 Put 往往会明显升值。</p>
+<p><strong>例子 2：持股 + Put（保险型）</strong></p>
+<p>你已经持有 100 股 META，担心财报波动，于是买 Put 做保护。你的心态不是靠 Put 暴富，而是我愿意花一笔保费，换一个最坏情况不至于失控。</p>
+<p>这和图片里Put 是下跌保险的思路完全一致，而且是很多成熟投资者更常用的用法。</p>
+<hr>
+<h3>1.6 权利金（Premium）是什么：它既是门票钱，也是你作为买方的已知最大损失</h3>
+<p>图片在概念里把 Premium 单独拎出来非常正确，因为新手最容易在这里产生错觉：看着报价几块钱，以为风险不大。</p>
+<p>权利金就是你为了获得这份期权合约而支付的价格，你可以把它理解成：定金、保费、门票钱——无论最后你用不用这份权利，这笔钱买入时就已经付出去了。</p>
+<p><strong>关键现实 1：美股标准期权一张合约通常对应 100 股</strong></p>
+<p>所以你在期权链上看到的报价（比如 2.30），通常不是总共 2.30 美元，而是每股 2.30 美元。一张合约对应 100 股时，你实际支付的是：</p>
+<ul><li>2.30 × 100 = 230 美元</li></ul>
+<p>这就是为什么很多人第一次买期权会惊讶：怎么扣了这么多？——因为他把报价当成了总价。</p>
+<p><strong>关键现实 2：对买方来说，权利金常常就是最大亏损（直觉层面先这么记）</strong></p>
+<p>如果你买 Call 或买 Put，最坏情况通常是：到期时它不值钱，你损失掉你支付的权利金。这个特点让很多人觉得买方风险可控，但你要注意：风险可控不等于容易赚钱，它只是把最坏情况提前写死了。</p>
+<p>（后面学到卖方保证金被行权时，你会看到另一套完全不同的风险结构。）</p>
+<hr>
+<h3>1.7 标的资产（Underlying Asset）是什么：期权永远围绕一个具体资产，不会凭空漂在那儿</h3>
+<p>标的资产就是这份合约背后绑定的那个东西。美股里最常见的标的是：</p>
+<ul><li>个股：AAPL、MSFT、TSLA、NVDA、META</li><li>ETF：SPY、QQQ、IWM</li></ul>
+<p>你买 AAPL 的期权，本质上是在交易关于 AAPL 的选择权；你买 SPY 的期权，本质上是在交易关于 SPY 的选择权。期权的价格再怎么波动，它也脱离不开标的资产的价格走势、波动幅度以及时间。</p>
+<p>你后面会越来越清楚：期权不是独立宇宙，它是贴着标的资产运行的一套合同定价系统。</p>
+<hr>
+<h3>1.8 为什么说期权不是股票，但又离不开股票：它更像搭在股票之上的一层合同结构</h3>
+<p>你可以买股票，然后长期持有，哪怕短期跌了，只要公司没完蛋，你还有时间等；而期权不一样，期权从一开始就把期限写进合同里了。你用一句更直白的话理解就是：</p>
+<blockquote><p><strong>股票像买房，期权更像买一份未来买房/卖房的合同，合同有截止日期。</strong></p></blockquote>
+<p>这也解释了为什么很多人会出现一种非常常见的体验：</p>
+<ul><li>我方向明明没错，股票后来也涨了，为什么我那张期权还亏？</li></ul>
+<p>原因往往不是你看错方向，而是你买的那份合同在时间和定价上对你不友好。这里先埋个伏笔：这就是后面要学的时间价值与时间衰减。</p>
+<hr>
+<h3>1.9 新手最常见的误区：把期权当成便宜版股票</h3>
+<p>很多人第一次打开期权链，会被价格诱惑到：</p>
+<ul><li>AAPL 一股 175，100 股要 17500 美元</li><li>可某张期权看起来只要 2～3 美元</li></ul>
+<p>于是产生一个非常自然、也非常危险的想法：</p>
+<p>那我用更少的钱买期权，不就相当于用小钱买大仓位了吗？</p>
+<p>你可以这么说，但必须把后半句补上：</p>
+<blockquote><p><strong>你用小钱买到的不是股票本身，而是一份有期限、会被时间消耗的权利。</strong></p></blockquote>
+<p>股票可以等，期权很多时候不能随便等。你越往后学越会知道，期权买方常常不是输在方向，而是输在涨得不够多或者来得不够快。</p>
+<p>举个更贴近真实的场景：你买了一张只剩一周到期的 OTM Call，它的确很便宜，可它便宜的原因往往也很现实——市场认为它在这一周内变成有价值的概率很低。你买它，本质上是在买一个很短、很窄的机会窗口。</p>
+<p>这不是说短期期权一定不能碰，而是说：<strong>你要清楚你买到的到底是什么。</strong></p>
+<hr>
+<h3>1.10 为什么市场需要期权：它不是为了复杂而复杂，它是把风险拆开卖</h3>
+<p>如果你只用股票交易，市场表达观点的方式很有限：看涨就买、看跌就卖/做空、想降低风险就减仓。期权出现以后，市场能把未来不同情况下的权利与义务拆开来交易，所以玩法才会丰富。</p>
+<p>你可以先把它理解成三类需求（也对应图片后续会讲到的期权基本作用）：</p>
+<p>1) <strong>杠杆/弹性需求</strong>：有人愿意花一笔权利金，去买更大的上涨或下跌弹性； 2) <strong>保险需求</strong>：有人愿意花钱锁住最坏情况； 3) <strong>现金流需求</strong>：有人愿意承担某些义务，收取权利金作为收入（这属于卖方世界，后面才讲）。</p>
+<p>把它说得更本质一点：</p>
+<blockquote><p><strong>期权最大的价值，是把未来以什么价格买/卖这件事变成可交易的合同。</strong></p></blockquote>
+<p>所以期权不是单纯放大涨跌，它更像把未来世界分成很多格子，然后你挑自己想要的格子参与。</p>
+<hr>
+<h3>1.11 把本章关键词先钉住：你看到这些词，脑子里要有画面</h3>
+<div class="course-table-wrap"><table><thead><tr><th>词</th><th>直觉画面</th><th>严格含义</th></tr></thead><tbody><tr><td>期权 Option</td><td>一张有期限的选择合同</td><td>在期限内以约定价格买/卖证券的权利（非义务）的合约</td></tr><tr><td>Call</td><td>预定未来按某价格买入的权利</td><td>在期限内按行权价买入标的资产的权利</td></tr><tr><td>Put</td><td>买一份下跌保护或看跌机会</td><td>在期限内按行权价卖出标的资产的权利</td></tr><tr><td>Premium 权利金</td><td>定金/保费/门票钱</td><td>获得期权合约所支付的价格</td></tr><tr><td>Underlying 标的资产</td><td>合同背后的那只股票/ETF</td><td>期权所对应的股票、ETF、指数等</td></tr><tr><td>Strike 行权价</td><td>合同里写死的价格</td><td>未来买入或卖出标的资产的约定价格</td></tr><tr><td>Expiration 到期日</td><td>权利的截止日期</td><td>合约失效前的最后期限</td></tr></tbody></table></div>
+<hr>
+<h3>1.12 本章小结（你能用自己的话讲出来，就算过关）</h3>
+<p>这一章的目标不是让你会交易，而是让你把期权是什么讲清楚。你可以用下面几句来检查自己是否真的懂了：</p>
+<ul><li><strong>期权是一份合约，不是股票本身。</strong></li><li><strong>期权买方拿到的是权利，不是义务；不划算时可以选择不用。</strong></li><li><strong>Call 是未来按某价格买的权利，Put 是未来按某价格卖的权利；Put 也常被用来当下跌保险。</strong></li><li><strong>权利金是你为这份选择权付的成本；美股通常一张合约对应 100 股，所以报价要乘 100 理解真实成本。</strong></li></ul>
+<p>如果你能把这几句用更口语的方式说出来（甚至讲给一个不懂投资的朋友听），第一章就算打通了。</p>
+<hr>
+<h3>1.13 自测题（不难，但能检验你有没有把权利 vs 义务混掉）</h3>
+<p><strong>题 1</strong>：你买了一张 AAPL 的 Call，你买到的到底是什么？</p>
+<p>A. 100 股 AAPL 股票本身 B. 在未来某段时间内按约定价格买入 AAPL 的权利 C. 必须买入 AAPL 的义务 D. 一份固定利息收入</p>
+<p><strong>答案</strong>：B</p>
+<p><strong>题 2</strong>：为什么说期权买方有权利但无义务？请你用如果……我就……如果不……我就不……这种句式解释一遍。</p>
+<p><strong>题 3</strong>：你持有 100 股 TSLA，担心财报大跌，你买 Put 更像是在做哪件事？</p>
+<p>A. 加杠杆赌上涨 B. 交一笔保费换保护 C. 必须在到期日卖出 TSLA D. 借股票卖空</p>
+<p><strong>答案</strong>：B</p>
+<p><strong>题 4</strong>：某张期权报价 3.20（每股），标准合约对应 100 股。你买 1 张合约的名义成本大约是多少？</p>
+<p><strong>答案</strong>：3.20 × 100 = 320 美元</p>
+<hr>
+<h3>1.14 下一章预告：从懂概念到会看界面</h3>
+<p>第一章我们把期权是一种选择权讲透了。下一章我们就要把这件事落到你每天会用的券商界面上：</p>
+<ul><li>期权链到底怎么读</li><li>到期日怎么选</li><li>行权价怎么选</li><li>Bid/Ask/成交量/IV 分别意味着什么</li></ul>
+<p>只要第 2 章打通，你就会从概念上理解期权，迈到能在软件里看懂它的阶段。</p>
+<hr>
+<h3>本章参考口径（便于你以后追溯）</h3>
+<ul><li>Investor.gov（美国投资者教育）：Options are contracts giving the purchaser the right — but not the obligation — to buy or sell a security at a fixed price within a specific period of time.</li><li><a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/options">https://www.investor.gov/introduction-investing/investing-basics/glossary/options</a></li></ul>
+<ul><li>Fidelity Learning Center（教育框架提醒）：策略学习应包含 max profit、max risk 与收益图；同时强调期权更灵活但风险更高。</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li></ul>
+            </article>
+        </section>
+
+        <section class="section" id="chapter-navigation" aria-labelledby="chapter-navigation-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">03</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
+                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
+                </div>
+            </div>
+
+            <div class="chapter-nav-card">
+                <div class="chapter-nav-grid">
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">上一章</div>
+                        <a class="chapter-nav-link" href="./index.html">回到课程首页</a>
+                        <p>这是第一篇已发布章节。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">返回课程</div>
+                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
+                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">下一章</div>
+                        <a class="chapter-nav-link" href="./02.html">第 02 章 · 怎么操作</a>
+                        <p>用期权链、到期日、行权价与限价单四步法，建立从看盘到下单的基础操作框架。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>期权教材 · 结构化学习 · HTML 优先</p>
+        <p class="disclaimer">
+            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
+        </p>
+    </footer>
+
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
+
+    <script src="../js/main.js?v=20260314c"></script>
+</body>
+</html>
