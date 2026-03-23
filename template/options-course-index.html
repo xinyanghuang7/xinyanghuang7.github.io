@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{PAGE_DESCRIPTION}}">
+    <meta name="author" content="ValueInvest">
+    <meta name="theme-color" content="#c9a227">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="canonical" href="{{CANONICAL_URL}}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{CANONICAL_URL}}">
+    <meta property="og:title" content="{{PAGE_TITLE}} | ValueInvest">
+    <meta property="og:description" content="{{PAGE_DESCRIPTION}}">
+    <meta property="og:image" content="{{OG_IMAGE_URL}}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{PAGE_TITLE}} | ValueInvest">
+    <meta name="twitter:description" content="{{PAGE_DESCRIPTION}}">
+    <meta name="twitter:image" content="{{OG_IMAGE_URL}}">
+    <title>{{PAGE_TITLE}} | ValueInvest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css?v=20260314c">
+    <style>
+        .course-shell {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .course-intro-card,
+        .course-grid-card,
+        .course-update-card,
+        .course-note-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .course-summary-grid,
+        .learning-path-grid,
+        .chapter-directory-grid,
+        .sync-progress-grid,
+        .recent-updates-grid {
+            display: grid;
+            gap: 1.25rem;
+        }
+
+        .course-summary-grid {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+
+        .learning-path-grid,
+        .chapter-directory-grid {
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+
+        .sync-progress-grid,
+        .recent-updates-grid {
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+
+        .course-stat-label,
+        .course-card-kicker,
+        .course-update-date {
+            font-size: 0.82rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .course-stat-value,
+        .course-card-title,
+        .course-update-title {
+            margin-top: 0.4rem;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        .course-card-desc,
+        .course-update-desc,
+        .course-note-card p,
+        .course-intro-card p {
+            color: var(--text-secondary);
+        }
+
+        .course-card-list,
+        .course-update-list {
+            margin: 1rem 0 0;
+            padding-left: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        .course-card-actions {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .course-action-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .course-action-link:hover {
+            color: var(--accent-gold-soft);
+        }
+
+        .course-section-stack {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .course-directory-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 0.9rem;
+        }
+
+        .course-directory-pill {
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 0.35rem 0.8rem;
+            color: var(--text-secondary);
+            background: rgba(201, 162, 39, 0.08);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 720px) {
+            .course-intro-card,
+            .course-grid-card,
+            .course-update-card,
+            .course-note-card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "{{PAGE_TITLE}}",
+        "description": "{{PAGE_DESCRIPTION}}",
+        "provider": {
+            "@type": "Organization",
+            "name": "ValueInvest",
+            "sameAs": "https://4fire.qzz.io/"
+        },
+        "url": "{{CANONICAL_URL}}"
+    }
+    </script>
+</head>
+<body>
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
+
+    <header id="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="期权教材主导航">
+                <ul class="nav-links">
+                    <li><a href="../index.html">返回首页</a></li>
+                    <li><a href="#learning-paths">学习路径</a></li>
+                    <li><a href="#chapter-directory">章节目录</a></li>
+                </ul>
+            </nav>
+            <div class="nav-date">{{NAV_DATE}}</div>
+        </div>
+    </header>
+
+    <section class="hero" role="banner">
+        <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
+        <div class="hero-content">
+            <div class="subtitle">{{HERO_EYEBROW}}</div>
+            <h1>{{HERO_TITLE}}</h1>
+            <p class="tagline">{{HERO_TAGLINE}}</p>
+            <p class="hero-description">{{HERO_DESCRIPTION}}</p>
+        </div>
+        <a href="#course-overview" class="scroll-indicator" aria-label="向下滚动到课程概览">向下滚动</a>
+    </section>
+
+    <main id="main" class="course-shell">
+        <section class="section" id="course-overview" aria-labelledby="course-overview-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">01</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="course-overview-title">课程总览</h2>
+                    <p class="section-subtitle">先讲清这套期权教材适合谁、覆盖什么，以及现在已经同步到哪一步</p>
+                </div>
+            </div>
+
+            <div class="course-intro-card">
+                <p>{{COURSE_INTRO}}</p>
+                <div class="course-directory-meta">
+                    <span class="course-directory-pill">适合对象：{{TARGET_AUDIENCE}}</span>
+                    <span class="course-directory-pill">学习节奏：{{LEARNING_CADENCE}}</span>
+                    <span class="course-directory-pill">最后同步：{{LAST_SYNC_LABEL}}</span>
+                </div>
+            </div>
+
+            <div class="course-summary-grid">
+                {{COURSE_SUMMARY_STATS}}
+            </div>
+        </section>
+
+        <section class="section" id="learning-paths" aria-labelledby="learning-paths-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">02</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="learning-paths-title">学习路径</h2>
+                    <p class="section-subtitle">按阶段拆开，方便新手循序进入，也方便复习时快速回到关键节点</p>
+                </div>
+            </div>
+
+            <div class="learning-path-grid">
+                {{LEARNING_PATH_BLOCKS}}
+            </div>
+        </section>
+
+        <section class="section" id="chapter-directory" aria-labelledby="chapter-directory-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">03</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-directory-title">章节目录</h2>
+                    <p class="section-subtitle">课程首页是目录页，不是文章流。这里预留给生成器输出各章节卡片与跳转入口</p>
+                </div>
+            </div>
+
+            <div class="chapter-directory-grid">
+                {{CHAPTER_DIRECTORY_CARDS}}
+            </div>
+        </section>
+
+        <section class="section" id="sync-progress" aria-labelledby="sync-progress-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">04</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="sync-progress-title">同步进度</h2>
+                    <p class="section-subtitle">把远端课程、本站落地页和生成状态放在一张视图里，方便后续增量更新</p>
+                </div>
+            </div>
+
+            <div class="sync-progress-grid">
+                {{SYNC_PROGRESS_BLOCKS}}
+            </div>
+        </section>
+
+        <section class="section" id="recent-updates" aria-labelledby="recent-updates-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">05</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="recent-updates-title">最近更新</h2>
+                    <p class="section-subtitle">给课程维护留出一个固定区域，用来展示最近新增章节、修订说明或同步日志</p>
+                </div>
+            </div>
+
+            <div class="recent-updates-grid">
+                {{RECENT_UPDATES_BLOCK}}
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>期权教材 · 结构化学习 · HTML 优先</p>
+        <p class="disclaimer">
+            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权风险高于普通股票，涉及杠杆、时间价值与流动性等额外风险，请务必独立判断。
+        </p>
+    </footer>
+
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
+
+    <script src="../js/main.js?v=20260314c"></script>
+</body>
+</html>
