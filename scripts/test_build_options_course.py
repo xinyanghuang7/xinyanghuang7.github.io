@@ -59,6 +59,26 @@ class BuildOptionsCourseTests(unittest.TestCase):
         self.assertEqual(nav["02"]["next"].id, "03")
         self.assertIsNone(nav["03"]["next"])
 
+    def test_render_markdown_promotes_h4_to_real_heading(self) -> None:
+        html = mod.render_markdown("#### 例子 A\n\n正文")
+        self.assertIn("<h4>例子 A</h4>", html)
+        self.assertNotIn("<p>#### 例子 A</p>", html)
+
+    def test_render_stats_uses_next_unpublished_batch(self) -> None:
+        chapters = [
+            mod.Chapter("01", "一", "s1", "A", "Batch 1", "published", "a.md", "options/01.html", "一", 1),
+            mod.Chapter("02", "二", "s2", "A", "Batch 1", "published", "b.md", "options/02.html", "二", 2),
+            mod.Chapter("05", "五", "s5", "B", "Batch 2", "syncing", "e.md", "options/05.html", "五", 5),
+            mod.Chapter("09", "九", "s9", "C", "Batch 3", "coming-soon", "i.md", "options/09.html", "九", 9),
+        ]
+        published = [chapter for chapter in chapters if chapter.status == "published"]
+
+        html = mod.render_stats(chapters, published)
+
+        self.assertIn("下一批次", html)
+        self.assertIn("Batch 2", html)
+        self.assertNotIn("<div class=\"course-stat-value\">Batch 1</div>", html)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -146,6 +146,13 @@ def detect_callout(paragraph: str) -> tuple[str, str] | None:
     return None
 
 
+def next_unpublished_batch(chapters: list[Chapter]) -> str:
+    for chapter in chapters:
+        if chapter.status != "published":
+            return chapter.batch
+    return "待定"
+
+
 def render_markdown(markdown_text: str) -> str:
     text = markdown_text.replace("\r\n", "\n").replace("\ufeff", "")
     lines = text.split("\n")
@@ -225,7 +232,7 @@ def render_markdown(markdown_text: str) -> str:
             )
             continue
 
-        heading_match = re.match(r"^(#{1,3})\s+(.*)$", stripped)
+        heading_match = re.match(r"^(#{1,4})\s+(.*)$", stripped)
         if heading_match:
             flush_paragraph(); flush_bullets(); flush_blockquote()
             level = len(heading_match.group(1))
@@ -276,7 +283,7 @@ def render_stats(chapters: list[Chapter], published: list[Chapter]) -> str:
         ("总章节数", str(len(chapters))),
         ("已发布", str(len(published))),
         ("同步中", str(sum(ch.status == "syncing" for ch in chapters))),
-        ("下一批次", published[-1].batch if published else "待定"),
+        ("下一批次", next_unpublished_batch(chapters)),
     ]
     blocks = []
     for label, value in stats:
