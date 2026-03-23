@@ -1,6 +1,40 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-03-22",
+    "title": "2026年3月22日美股分析：COIN 观察位 + 持仓动作地图",
+    "desc": "2026年3月22日美股分析：补上 3/23 前的周末一篇。先看 COIN 为什么值得进入前排观察，再把 META、NVDA、NBIS 的最新已核对节点压回动作地图。",
+    "url": "posts/2026/03/22.html",
+    "keywords": [
+      "COIN",
+      "META",
+      "NVDA",
+      "NBIS",
+      "美股分析",
+      "周末复核",
+      "持仓解读",
+      "动作地图",
+      "组合分散"
+    ]
+  },
+  {
+    "date": "2026-03-21",
+    "title": "2026年3月21日美股分析：TSM观察 + 持仓新闻深度解读",
+    "desc": "2026年3月21日美股分析：TSM revisit观察市场回调下的高质量制造底座，META/NVDA/NBIS持仓新闻深度解读与动作地图。",
+    "url": "posts/2026/03/21.html",
+    "keywords": [
+      "TSM",
+      "META",
+      "NVDA",
+      "NBIS",
+      "美股分析",
+      "宝藏标的",
+      "持仓解读",
+      "动作地图",
+      "AI基础设施"
+    ]
+  },
+  {
     "date": "2026-03-20",
     "title": "2026年3月20日美股分析：GOOGL 入口争夺 + MSFT 结构动作 + 持仓地图",
     "desc": "2026年3月20日美股分析：用 GOOGL 做今日宝藏标的，用 MSFT rollover 讲经验故事，再按 META / NVDA / NBIS 分层拆新闻解读与动作地图。",
