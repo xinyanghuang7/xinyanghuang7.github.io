@@ -146,6 +146,14 @@ def detect_callout(paragraph: str) -> tuple[str, str] | None:
     return None
 
 
+def status_label(status: str) -> str:
+    return {
+        "published": "已发布",
+        "syncing": "同步中",
+        "coming-soon": "即将上线",
+    }.get(status, status)
+
+
 def next_unpublished_batch(chapters: list[Chapter]) -> str:
     for chapter in chapters:
         if chapter.status != "published":
@@ -303,8 +311,7 @@ def render_learning_paths(chapters: list[Chapter]) -> str:
     for section, section_chapters in group_by(chapters, "section_label").items():
         items = []
         for chapter in section_chapters:
-            status = "已发布" if chapter.status == "published" else ("同步中" if chapter.status == "syncing" else "即将上线")
-            items.append(f"<li>第 {chapter.id} 章 · {render_inline(chapter.title)} · {status}</li>")
+            items.append(f"<li>第 {chapter.id} 章 · {render_inline(chapter.title)} · {status_label(chapter.status)}</li>")
         blocks.append(
             f'<article class="course-grid-card"><div class="course-card-kicker">{html.escape(section)}</div>'
             f'<h3 class="course-card-title">{html.escape(section)}</h3>'
@@ -320,13 +327,13 @@ def render_directory_cards(chapters: list[Chapter]) -> str:
         if chapter.status == "published":
             action = f'<a class="course-action-link" href="./{Path(chapter.output_path).name}">阅读本章 →</a>'
         else:
-            action = f'<span class="course-action-link" aria-disabled="true">{html.escape(chapter.status)}</span>'
+            action = f'<span class="course-action-link" aria-disabled="true">{html.escape(status_label(chapter.status))}</span>'
         cards.append(
             f'<article class="course-grid-card"><div class="course-card-kicker">第 {chapter.id} 章 · {html.escape(chapter.section_label)}</div>'
             f'<h3 class="course-card-title">{html.escape(chapter.title)}</h3>'
             f'<p class="course-card-desc">{html.escape(chapter.summary)}</p>'
             f'<div class="course-directory-meta"><span class="course-directory-pill">{html.escape(chapter.batch)}</span>'
-            f'<span class="course-directory-pill">状态：{html.escape(chapter.status)}</span></div>'
+            f'<span class="course-directory-pill">状态：{html.escape(status_label(chapter.status))}</span></div>'
             f'<div class="course-card-actions">{action}</div></article>'
         )
     return "\n".join(cards)
@@ -336,7 +343,7 @@ def render_sync_progress(chapters: list[Chapter]) -> str:
     cards = []
     for batch, batch_chapters in group_by(chapters, "batch").items():
         published_count = sum(ch.status == "published" for ch in batch_chapters)
-        items = "".join(f"<li>第 {ch.id} 章 · {html.escape(ch.title)} · {html.escape(ch.status)}</li>" for ch in batch_chapters)
+        items = "".join(f"<li>第 {ch.id} 章 · {html.escape(ch.title)} · {html.escape(status_label(ch.status))}</li>" for ch in batch_chapters)
         cards.append(
             f'<article class="course-update-card"><div class="course-card-kicker">{html.escape(batch)}</div>'
             f'<h3 class="course-card-title">已发布 {published_count} / {len(batch_chapters)}</h3>'
@@ -413,7 +420,7 @@ def build_chapter_page(chapter: Chapter, body_html: str, nav: dict[str, Chapter 
         "CHAPTER_NUMBER": chapter.id,
         "CHAPTER_TAGLINE": f"{chapter.section_label} · {chapter.batch}",
         "CHAPTER_SUMMARY": chapter.summary,
-        "BATCH_LABEL": f"{chapter.batch} · {chapter.status}",
+        "BATCH_LABEL": f"{chapter.batch} · {status_label(chapter.status)}",
         "CHAPTER_BODY_HTML": body_html,
         "PREV_CHAPTER_URL": prev_url,
         "PREV_CHAPTER_LABEL": prev_label,
