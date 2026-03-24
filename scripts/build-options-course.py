@@ -18,7 +18,7 @@ SITE_BASE_URL = "https://4fire.qzz.io"
 COURSE_TITLE = "美股期权教材"
 COURSE_URL = f"{SITE_BASE_URL}/options/"
 OG_IMAGE_URL = f"{SITE_BASE_URL}/images/hero-bg.jpg"
-NAV_DATE = "2026-03-23"
+NAV_DATE = "2026-03-24"
 REQUIRED_PUBLISHED_FIELDS = ("section_label", "summary", "source_path", "output_path")
 CALL_OUT_LABELS = {
     "定义": "definition",

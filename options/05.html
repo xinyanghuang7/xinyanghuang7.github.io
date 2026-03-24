@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="拆解期权报价的来源，区分内在价值与时间价值，建立理解权利金的底层框架。">
+    <meta name="author" content="ValueInvest">
+    <meta name="theme-color" content="#c9a227">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="canonical" href="https://4fire.qzz.io/options/05.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://4fire.qzz.io/options/05.html">
+    <meta property="og:title" content="期权价格的解剖学 | 美股期权教材">
+    <meta property="og:description" content="拆解期权报价的来源，区分内在价值与时间价值，建立理解权利金的底层框架。">
+    <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="期权价格的解剖学 | 美股期权教材">
+    <meta name="twitter:description" content="拆解期权报价的来源，区分内在价值与时间价值，建立理解权利金的底层框架。">
+    <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <title>期权价格的解剖学 | 美股期权教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css?v=20260324a">
+    <style>
+        .chapter-meta-bar {
+            width: min(1100px, calc(100% - 2rem));
+            margin: -2.25rem auto 0;
+            padding: 1rem 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+            position: relative;
+            z-index: 2;
+        }
+
+        .chapter-meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-secondary);
+            background: rgba(201, 162, 39, 0.08);
+            font-size: 0.95rem;
+        }
+
+        .chapter-meta-link {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .chapter-meta-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .chapter-shell {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .chapter-summary-card,
+        .chapter-body-card,
+        .chapter-nav-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+        }
+
+        .chapter-summary-card p,
+        .chapter-nav-card p {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card {
+            line-height: 1.9;
+            color: var(--text-primary);
+        }
+
+        .chapter-body-card h2,
+        .chapter-body-card h3,
+        .chapter-body-card h4 {
+            color: var(--text-primary);
+            margin-top: 1.6em;
+        }
+
+        .chapter-body-card p,
+        .chapter-body-card li,
+        .chapter-body-card blockquote {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card ul,
+        .chapter-body-card ol {
+            padding-left: 1.2rem;
+        }
+
+        .chapter-body-card blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.25rem;
+            border-left: 3px solid var(--accent-gold);
+            background: rgba(201, 162, 39, 0.08);
+            border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .chapter-nav-slot {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            min-height: 100%;
+            padding: 1rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(201, 162, 39, 0.06);
+        }
+
+        .chapter-nav-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .chapter-nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .chapter-nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        @media (max-width: 800px) {
+            .chapter-nav-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chapter-summary-card,
+            .chapter-body-card,
+            .chapter-nav-card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "期权价格的解剖学",
+        "description": "拆解期权报价的来源，区分内在价值与时间价值，建立理解权利金的底层框架。",
+        "author": {
+            "@type": "Person",
+            "name": "ValueInvest"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ValueInvest",
+            "sameAs": "https://4fire.qzz.io/"
+        },
+        "mainEntityOfPage": "https://4fire.qzz.io/options/05.html",
+        "isPartOf": {
+            "@type": "Course",
+            "name": "美股期权教材",
+            "url": "https://4fire.qzz.io/options/"
+        },
+        "image": [
+            "https://4fire.qzz.io/images/hero-bg.jpg"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
+
+    <header id="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="期权章节页主导航">
+                <ul class="nav-links">
+                    <li><a href="../index.html">返回首页</a></li>
+                    <li><a href="./index.html">返回课程</a></li>
+                    <li><a href="#chapter-navigation">章节导航</a></li>
+                </ul>
+            </nav>
+            <div class="nav-date">第 05 章</div>
+        </div>
+    </header>
+
+    <section class="hero" role="banner">
+        <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
+        <div class="hero-content">
+            <div class="subtitle">价值与时间篇</div>
+            <h1>第 05 章 · 期权价格的解剖学</h1>
+            <p class="tagline">价值与时间篇 · Batch 2</p>
+            <p class="hero-description">拆解期权报价的来源，区分内在价值与时间价值，建立理解权利金的底层框架。</p>
+        </div>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
+    </section>
+
+    <div class="chapter-meta-bar" aria-label="章节关键信息">
+        <div class="chapter-meta-pill">章节编号：第 05 章</div>
+        <div class="chapter-meta-pill">Section：价值与时间篇</div>
+        <div class="chapter-meta-pill">Batch：Batch 2 · 已发布</div>
+        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
+    </div>
+
+    <main id="main" class="chapter-shell">
+        <section class="section" id="chapter-summary" aria-labelledby="chapter-summary-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">01</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
+                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
+                </div>
+            </div>
+
+            <div class="chapter-summary-card">
+                <p>拆解期权报价的来源，区分内在价值与时间价值，建立理解权利金的底层框架。</p>
+            </div>
+        </section>
+
+        <section class="section" id="chapter-content" aria-labelledby="chapter-content-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">02</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
+                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
+                </div>
+            </div>
+
+            <article class="chapter-body-card">
+<h1>《美股期权教材》</h1>
+<h2>第5章 期权价格的解剖学：内在价值与时间价值</h2>
+<blockquote><p>上一章我们已经把期权分成了 ITM、ATM、OTM。那一章解决的是“这张合约站在哪个位置”。  这一章要进一步解决另一个更关键的问题：<strong>你在软件里看到的期权价格，到底是怎么来的？</strong>  很多人第一次买期权时，最容易犯的错误就是把报价当成一个黑盒子： - AAPL 某张 Call 报 4.80 - TSLA 某张 Put 报 7.20 - SPY 某张合约报 1.35  看起来都只是一个数字，但如果你不知道这个数字里哪部分是“已经有的价值”，哪部分是“市场对未来的期待”，后面很多现象你都会看不懂：  - 为什么股价明明朝我预期方向走了，我的期权却没赚多少？ - 为什么有些期权明明 OTM，却还能卖出价格？ - 为什么离到期越近，有些合约掉价越来越快？  这一章我们就把期权价格拆开来看。</p></blockquote>
+<hr>
+<h3>5.1 先记住本章最核心的一条公式</h3>
+<p>无论是 Call 还是 Put，只要是普通期权，我们都可以先用一个非常重要的框架去理解它的价格：</p>
+<blockquote><p><strong>期权价格 = 内在价值（Intrinsic Value）+ 时间价值（Time Value）</strong></p></blockquote>
+<p>你可以把这条公式看成期权价格的“拆机图”。</p>
+<ul><li><strong>内在价值</strong>：如果现在立刻行权，这张合约本身已经带来的现实好处。</li><li><strong>时间价值</strong>：市场愿意为“在剩余时间里，事情也许会往更有利方向发展”所支付的那部分溢价。</li></ul>
+<p>这两部分加在一起，才构成你在券商软件里看到的权利金报价。</p>
+<p>如果只用一句最通俗的话概括：</p>
+<ul><li><strong>内在价值 = 已经发生的有利部分</strong></li><li><strong>时间价值 = 对未来可能性的付费</strong></li></ul>
+<hr>
+<h3>5.2 为什么必须把价格拆开：不然你会把“价格高”误以为“更值得买”</h3>
+<p>很多新手会本能地这样看期权链：</p>
+<ul><li>170 Call 报价 8.20</li><li>175 Call 报价 4.50</li><li>180 Call 报价 2.10</li></ul>
+<p>然后下意识认为：</p>
+<ul><li>贵的那张是不是更好？</li><li>便宜的那张是不是更划算？</li></ul>
+<p>其实这两个判断都不一定成立。因为它们的价格来源不一样。</p>
+<p>有的期权贵，是因为它已经带着比较多的内在价值； 有的期权便宜，是因为它几乎全靠未来去兑现； 有的期权看起来不便宜，但其中很大一部分只是时间价值，一旦时间流逝，这部分会不断蒸发。</p>
+<p>所以你不能只看总价，必须学会问第二层问题：</p>
+<blockquote><p><strong>这个报价里，多少是“现在就有”的，多少是“未来可能有”的？</strong></p></blockquote>
+<p>只有把这层拆出来，期权价格才会开始变得有逻辑。</p>
+<hr>
+<h3>5.3 什么叫内在价值：它是“现在立刻行权能拿到的好处”</h3>
+<p>内在价值的定义并不复杂，但一定要真正吃透。</p>
+<blockquote><p><strong>内在价值 = 如果现在立刻行权，这张期权能带来的现实收益。</strong></p></blockquote>
+<p>注意几个关键词：</p>
+<ul><li><strong>现在</strong>：不是到期时，不是明天，不是你脑补的未来走势；</li><li><strong>立刻行权</strong>：不是把期权卖给别人，而是直接使用这份权利；</li><li><strong>现实收益</strong>：是真实已经能兑现的好处，而不是希望。</li></ul>
+<p>所以内在价值和上一章的 ITM / ATM / OTM 是直接连着的：</p>
+<ul><li>ITM 往往有内在价值；</li><li>ATM 通常接近没有内在价值；</li><li>OTM 没有内在价值。</li></ul>
+<p>但为了不只停留在“往往”，我们要把 Call 和 Put 分开写清楚。</p>
+<hr>
+<h3>5.4 Call 的内在价值怎么判断</h3>
+<p>一张 Call 给你的权利是：</p>
+<blockquote><p><strong>按行权价买入标的资产。</strong></p></blockquote>
+<p>所以只有当市场价格已经高于行权价时，这个权利才有现实好处。</p>
+<h4>5.4.1 Call 内在价值公式</h4>
+<blockquote><p><strong>Call 的内在价值 = max（股价 - 行权价，0）</strong></p></blockquote>
+<p>意思很简单：</p>
+<ul><li>如果股价比行权价高，那差额就是内在价值；</li><li>如果股价没高过行权价，那内在价值就是 0；</li><li>绝不会出现负的内在价值，因为没意义时你完全可以不行权。</li></ul>
+<h4>5.4.2 例子 1：AAPL 现价 175，170 Call</h4>
+<ul><li>股价 = 175</li><li>行权价 = 170</li></ul>
+<p>这张 Call 的内在价值 = 175 - 170 = <strong>5</strong>。</p>
+<p>意思是：你现在就拥有了一个可以用 170 买到市场上值 175 东西的权利，这 5 块的差额是真实存在的。</p>
+<h4>5.4.3 例子 2：AAPL 现价 175，180 Call</h4>
+<ul><li>股价 = 175</li><li>行权价 = 180</li></ul>
+<p>这张 Call 的内在价值 = max(175 - 180, 0) = <strong>0</strong>。</p>
+<p>因为你不会傻到用 180 去买市场上只值 175 的股票。既然现在立刻行权没有现实好处，它的内在价值就是 0。</p>
+<hr>
+<h3>5.5 Put 的内在价值怎么判断</h3>
+<p>一张 Put 给你的权利是：</p>
+<blockquote><p><strong>按行权价卖出标的资产。</strong></p></blockquote>
+<p>所以只有当市场价格已经低于行权价时，这个权利才有现实好处。</p>
+<h4>5.5.1 Put 内在价值公式</h4>
+<blockquote><p><strong>Put 的内在价值 = max（行权价 - 股价，0）</strong></p></blockquote>
+<p>也就是：</p>
+<ul><li>如果行权价高于当前股价，那差额就是现实好处；</li><li>如果当前股价并不低于行权价，那内在价值就是 0。</li></ul>
+<h4>5.5.2 例子 1：AAPL 现价 140，146 Put</h4>
+<ul><li>行权价 = 146</li><li>股价 = 140</li></ul>
+<p>内在价值 = 146 - 140 = <strong>6</strong>。</p>
+<p>因为你拥有一张可以按 146 卖出一只市场上只值 140 股票的合同，这 6 块就是已经存在的价值。</p>
+<h4>5.5.3 例子 2：AAPL 现价 175，170 Put</h4>
+<ul><li>行权价 = 170</li><li>股价 = 175</li></ul>
+<p>内在价值 = max(170 - 175, 0) = <strong>0</strong>。</p>
+<p>因为现在市场上明明能卖到 175，你当然不会选择按 170 卖。</p>
+<hr>
+<h3>5.6 一个极其重要的底线：内在价值永远不会是负数</h3>
+<p>很多刚接触期权的人会说：</p>
+<ul><li>那 OTM Call 的内在价值是不是 -5？</li><li>那 OTM Put 的内在价值是不是 -3？</li></ul>
+<p>都不是。</p>
+<p>这是一个很常见但必须立刻纠正的错误。</p>
+<p>原因很简单：期权是“有权利、没义务”的合同。你有权决定行不行权。既然没有意义，你完全可以不做。所以最差不是负数，而是<strong>0</strong>。</p>
+<p>这个细节看起来小，但它很关键。因为它提醒你：</p>
+<blockquote><p><strong>期权价格里的“未来可能性”不会把现在的内在价值拖成负数。</strong></p></blockquote>
+<p>OTM 没有内在价值，不等于它在现实收益上欠你钱；它只是现在没有可兑现的好处。</p>
+<hr>
+<h3>5.7 什么叫时间价值：你花的钱里，有一部分是在为“还没发生的可能性”买单</h3>
+<p>如果说内在价值是已经落地的部分，那么时间价值就是还没落地、但市场愿意付费的那部分。</p>
+<blockquote><p><strong>时间价值 = 期权价格 - 内在价值</strong></p></blockquote>
+<p>这条公式其实就是上一条总公式移项而来，但它非常重要，因为它告诉你：</p>
+<ul><li>期权价格里并不全是“真材实料”；</li><li>其中有一部分，是对未来的预期、概率、弹性、博弈的综合定价；</li><li>这部分随着时间流逝，会逐渐衰减。</li></ul>
+<p>你可以把时间价值理解成三层意思叠在一起：</p>
+<p>1. <strong>剩余时间</strong>：离到期还早不早； 2. <strong>未来可能性</strong>：标的还有没有机会走到更有利位置； 3. <strong>市场情绪与博弈</strong>：大家愿不愿意为这份不确定性付钱。</p>
+<p>虽然我们现在先用“时间价值”这个词，但你要知道，它背后不仅仅是时间本身，还包含未来波动空间带来的定价。到后面讲 IV 时，你会把这件事看得更透。</p>
+<hr>
+<h3>5.8 直接上例子：同样是 Call，不同位置下价格构成完全不一样</h3>
+<p>假设现在某只股票股价是 <strong>153</strong>。</p>
+<h4>例子 1：150 Call 报价 4.55</h4>
+<ul><li>股价 = 153</li><li>行权价 = 150</li><li>期权价格 = 4.55</li></ul>
+<p>先算内在价值：</p>
+<ul><li>153 - 150 = <strong>3</strong></li></ul>
+<p>再算时间价值：</p>
+<ul><li>4.55 - 3 = <strong>1.55</strong></li></ul>
+<p>这说明什么？</p>
+<p>说明你花的 4.55 里：</p>
+<ul><li>有 <strong>3</strong> 是已经存在的现实价值；</li><li>有 <strong>1.55</strong> 是为剩余时间和未来空间支付的溢价。</li></ul>
+<p>换句话说，这张 ITM Call 不是纯希望，它里面已经有一块比较扎实的部分。</p>
+<h4>例子 2：155 Call 报价 1.90</h4>
+<ul><li>股价 = 153</li><li>行权价 = 155</li><li>期权价格 = 1.90</li></ul>
+<p>先算内在价值：</p>
+<ul><li>max(153 - 155, 0) = <strong>0</strong></li></ul>
+<p>再算时间价值：</p>
+<ul><li>1.90 - 0 = <strong>1.90</strong></li></ul>
+<p>这说明：这张 OTM Call 的全部价格，100% 都是时间价值。</p>
+<p>你买它，不是在买现在已经值钱的东西，而是在买：</p>
+<blockquote><p>“也许在到期前，股价能涨上去。”</p></blockquote>
+<p>所以它便宜，但也更依赖后续行情。</p>
+<hr>
+<h3>5.9 再看 Put：同样的拆法，一样成立</h3>
+<p>假设当前股价还是 <strong>153</strong>。</p>
+<h4>例子 1：160 Put 报价 8.20</h4>
+<ul><li>行权价 = 160</li><li>股价 = 153</li></ul>
+<p>内在价值：</p>
+<ul><li>160 - 153 = <strong>7</strong></li></ul>
+<p>时间价值：</p>
+<ul><li>8.20 - 7 = <strong>1.20</strong></li></ul>
+<p>也就是说，这张 Put 的价格大部分已经是现实价值，小部分是时间溢价。</p>
+<h4>例子 2：150 Put 报价 2.10</h4>
+<ul><li>行权价 = 150</li><li>股价 = 153</li></ul>
+<p>内在价值：</p>
+<ul><li>max(150 - 153, 0) = <strong>0</strong></li></ul>
+<p>时间价值：</p>
+<ul><li>2.10 - 0 = <strong>2.10</strong></li></ul>
+<p>这就是一张典型的 OTM Put：它现在没有内在价值，但市场愿意为未来可能跌破 150 这件事给它定价。</p>
+<hr>
+<h3>5.10 你现在应该真正明白：OTM 期权为什么“没有内在价值但仍然有价格”</h3>
+<p>这是许多新手一开始最困惑的地方。</p>
+<p>逻辑其实并不复杂：</p>
+<ul><li><strong>内在价值</strong>只看“现在立刻行权有没有好处”；</li><li><strong>市场价格</strong>看的是“到到期前，这份合同还有没有机会变得更值钱”。</li></ul>
+<p>所以一张 OTM 期权现在虽然没有现实价值，但只要还有剩余时间，只要市场认为它未来还有变成 ITM 的概率，它就不会是零。</p>
+<p>你可以把它理解成：</p>
+<ul><li>ITM 更像“已经带点货”；</li><li>OTM 更像“现在没货，但保留了未来上货的可能”；</li><li>而这个“未来可能上货”的权利，本身就值钱。</li></ul>
+<p>这就是为什么不能把 OTM 简单理解成废纸。真正快变成废纸的，是<strong>临近到期且仍然 OTM 的期权</strong>。因为那时候“未来可能性”已经被时间压缩得很薄了。</p>
+<hr>
+<h3>5.11 同样一张合约，随着时间流逝，哪部分会被吃掉？</h3>
+<p>这也是期权和股票最本质的区别之一。</p>
+<p>股票没有到期日。你买了腾讯、苹果、英伟达，只要公司不退市，你可以一直拿着。</p>
+<p>但期权不同。期权是有有效期的。于是它价格里的两部分，命运就不一样：</p>
+<ul><li><strong>内在价值</strong>：取决于股价和行权价的相对关系；</li><li><strong>时间价值</strong>：会随着到期临近不断缩水，最后归零。</li></ul>
+<p>这意味着：</p>
+<blockquote><p><strong>时间真正会吃掉的，不是内在价值，而是时间价值。</strong></p></blockquote>
+<p>这句话非常关键。因为很多人以为期权亏钱是一种笼统的“掉价”，实际上更准确地说，很多时候你是在眼睁睁看着自己买来的那部分“未来可能性”一天天贬值。</p>
+<p>这就是下一章“时间价值的规律”和后面“时间衰减”的基础。</p>
+<hr>
+<h3>5.12 为什么很多新手方向看对了，期权却还是不赚钱</h3>
+<p>因为他只看对了方向，却没理解价格结构。</p>
+<p>举个典型场景：</p>
+<ul><li>你买了一张 OTM Call，花了 2.00；</li><li>几天后股价确实涨了，但只涨了一点；</li><li>你发现期权只涨到 2.10，甚至还掉回去了。</li></ul>
+<p>为什么？</p>
+<p>因为你原来付的 2.00 里，几乎全是时间价值。股价确实朝你想要的方向走了一点，但这点有利变化还不足以抵消：</p>
+<ul><li>时间在流逝；</li><li>合约离到期更近；</li><li>市场对后续爆发的预期可能在下降。</li></ul>
+<p>结果就是：</p>
+<ul><li>方向没错；</li><li>但幅度不够、速度不够；</li><li>时间价值还在流失；</li><li>所以期权不一定马上体现出你想象中的盈利。</li></ul>
+<p>这也是为什么期权不是“只要看对涨跌方向就行”的东西。你还要看：</p>
+<ul><li>涨跌有没有快到足够改变内在价值；</li><li>你买的是 ITM、ATM 还是 OTM；</li><li>你花的钱里有多少本来就是时间溢价。</li></ul>
+<hr>
+<h3>5.13 为什么 ITM、ATM、OTM 在价格结构上会呈现不同气质</h3>
+<p>这部分不是严格数学推导，而是你做交易时很有用的直觉。</p>
+<h4>5.13.1 ITM：更像“已经有一部分实的东西”</h4>
+<p>ITM 期权往往带有明显的内在价值，所以它的价格里“实的部分”更多。你买它时，通常不是纯粹在赌一个未来大爆发，而是在买一张已经站得更靠里的合同。</p>
+<p>这也是为什么 ITM 通常更贵。</p>
+<h4>5.13.2 ATM：更像“站在分界线上的合同”</h4>
+<p>ATM 常常是市场最敏感的位置之一。它现在没有多少内在价值，但距离变成 ITM 也不远，所以市场会给它较强的时间价值定价。</p>
+<p>换句话说，ATM 往往不是最实，也不是最空，而是最卡在关键位置。</p>
+<h4>5.13.3 OTM：更像“当前没货，但保留了可能性”</h4>
+<p>OTM 当前没有内在价值，所以价格里几乎全是时间价值。它便宜，但更脆弱。因为一旦时间快速流逝，而价格又迟迟没有朝有利方向走，这部分价值就会被不断抽干。</p>
+<p>所以 OTM 并不是“低配版便宜好货”，而是“更依赖未来行情兑现的合同”。</p>
+<hr>
+<h3>5.14 一个真实交易里非常有用的习惯：别只看总价，要看价格结构</h3>
+<p>以后你打开期权链，别再只盯着哪个价格便宜，哪个价格贵。你应该训练自己多问两句：</p>
+<p>1. 这张期权是 ITM、ATM 还是 OTM？ 2. 它现在的内在价值大概是多少？ 3. 它报价里有多少是在为时间和未来概率付钱？</p>
+<p>你只要开始这样看，很多东西会突然变清楚：</p>
+<ul><li>为什么有些期权很贵但没那么“虚”；</li><li>为什么有些期权很便宜却很容易归零；</li><li>为什么时间一过去，有些合约掉价特别狠。</li></ul>
+<p>这会直接改变你挑行权价的方式。你不再是在选一个数字，而是在选一种价格结构。</p>
+<hr>
+<h3>5.15 本章最容易踩的几个误区</h3>
+<h4>误区 1：价格高 = 更值得买</h4>
+<p>不对。它可能只是因为内在价值本来就多，也可能只是时间价值很贵。总价本身不说明值不值得。</p>
+<h4>误区 2：OTM 没有内在价值 = 它不值钱</h4>
+<p>不对。只要还有剩余时间，OTM 就可能仍然有显著的时间价值。</p>
+<h4>误区 3：时间价值是虚的，所以不重要</h4>
+<p>恰恰相反。很多期权之所以贵、之所以敏感、之所以容易亏，关键就在时间价值。它虽然不是“已经兑现”的价值，但它是真正花钱买来的东西。</p>
+<h4>误区 4：只要股价朝预期方向走，期权就一定会赚钱</h4>
+<p>不对。你还得看你买入时付出的时间价值有多少，以及行情来的幅度和速度够不够。</p>
+<hr>
+<h3>5.16 本章小结：以后看到一张期权报价，你脑子里要自动拆成两半</h3>
+<p>这一章你最需要带走的，不是几条公式本身，而是一种看价格的方式。</p>
+<p>以后看到一张期权报价，比如 4.80，你脑子里要自然冒出两个问题：</p>
+<ul><li>这里面有多少是已经存在的现实价值？</li><li>这里面有多少是在为未来可能性付费？</li></ul>
+<p>只要你开始这样看，期权价格就不再神秘。你会逐渐理解：</p>
+<ul><li>ITM 为什么更像带点现货；</li><li>OTM 为什么更像在买希望；</li><li>时间为什么会成为买方最大的压力来源。</li></ul>
+<p>而这，正好通往下一章。</p>
+<hr>
+<h3>5.17 自测题</h3>
+<p>1）某股票现价 153：</p>
+<ul><li>150 Call 报价 4.55，它的内在价值和时间价值分别是多少？</li><li>155 Call 报价 1.90，它的内在价值和时间价值分别是多少？</li></ul>
+<p>2）某股票现价 153：</p>
+<ul><li>160 Put 报价 8.20，它的内在价值和时间价值分别是多少？</li><li>150 Put 报价 2.10，它的内在价值和时间价值分别是多少？</li></ul>
+<p>3）为什么说 OTM 期权没有内在价值，但仍然可能有价格？</p>
+<p>4）为什么很多人方向看对了，期权却没有按预期赚钱？</p>
+<hr>
+<h3>5.18 下一章预告：时间价值不是静止的，它会被时间一点点吃掉</h3>
+<p>这一章我们只是先把价格拆开，知道了：</p>
+<ul><li>哪部分是内在价值；</li><li>哪部分是时间价值。</li></ul>
+<p>但真正残酷的地方在于，时间价值不是固定待在那里，它会随着到期临近不断流失，而且不是匀速流失。</p>
+<p>下一章，我们就正式进入：</p>
+<ul><li>时间价值受什么影响；</li><li>为什么 ATM 附近的时间价值最敏感；</li><li>为什么临近到期的期权会越来越像一块融化的冰。</li></ul>
+<p>这部分一旦吃透，你对期权买方和卖方的理解会直接上一个层级。</p>
+<hr>
+<h3>本章参考口径（便于追溯）</h3>
+<ul><li>OCC / Investor.gov 关于期权基本定义：用于保持“期权价格拆分”依然围绕权利本身，不把概念讲偏成只剩数学公式</li><li><a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/options">https://www.investor.gov/introduction-investing/investing-basics/glossary/options</a></li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li></ul>
+<ul><li>Fidelity Options Strategy Guide：用于校准 intrinsic value / time value 的基础表达与术语边界</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li></ul>
+<ul><li>CBOE Options Institute 学习材料：用于保持术语与市场通行表达一致</li><li><a href="https://www.cboe.com/optionsinstitute/">https://www.cboe.com/optionsinstitute/</a></li></ul>
+            </article>
+        </section>
+
+        <section class="section" id="chapter-navigation" aria-labelledby="chapter-navigation-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">03</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
+                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
+                </div>
+            </div>
+
+            <div class="chapter-nav-card">
+                <div class="chapter-nav-grid">
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">上一章</div>
+                        <a class="chapter-nav-link" href="./04.html">第 04 章 · ITM / ATM / OTM</a>
+                        <p>理解期权相对当前股价所处的位置，掌握实值、平值、虚值的判断方法与阅读期权链的直觉。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">返回课程</div>
+                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
+                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">下一章</div>
+                        <a class="chapter-nav-link" href="./06.html">第 06 章 · 时间价值铁律</a>
+                        <p>理解时间价值如何随到期日和 ATM 距离分布，为读懂期权链上的价格差异打基础。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>期权教材 · 结构化学习 · HTML 优先</p>
+        <p class="disclaimer">
+            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
+        </p>
+    </footer>
+
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
+
+    <script src="../js/main.js?v=20260324a"></script>
+</body>
+</html>

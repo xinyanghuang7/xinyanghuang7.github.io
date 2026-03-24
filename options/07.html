@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="聚焦时间衰减对买方与卖方的不同影响，建立期权持仓随时间变化的实战直觉。">
+    <meta name="author" content="ValueInvest">
+    <meta name="theme-color" content="#c9a227">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="canonical" href="https://4fire.qzz.io/options/07.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://4fire.qzz.io/options/07.html">
+    <meta property="og:title" content="时间的魔法与诅咒 | 美股期权教材">
+    <meta property="og:description" content="聚焦时间衰减对买方与卖方的不同影响，建立期权持仓随时间变化的实战直觉。">
+    <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="时间的魔法与诅咒 | 美股期权教材">
+    <meta name="twitter:description" content="聚焦时间衰减对买方与卖方的不同影响，建立期权持仓随时间变化的实战直觉。">
+    <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <title>时间的魔法与诅咒 | 美股期权教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css?v=20260324a">
+    <style>
+        .chapter-meta-bar {
+            width: min(1100px, calc(100% - 2rem));
+            margin: -2.25rem auto 0;
+            padding: 1rem 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+            position: relative;
+            z-index: 2;
+        }
+
+        .chapter-meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-secondary);
+            background: rgba(201, 162, 39, 0.08);
+            font-size: 0.95rem;
+        }
+
+        .chapter-meta-link {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .chapter-meta-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .chapter-shell {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .chapter-summary-card,
+        .chapter-body-card,
+        .chapter-nav-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+        }
+
+        .chapter-summary-card p,
+        .chapter-nav-card p {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card {
+            line-height: 1.9;
+            color: var(--text-primary);
+        }
+
+        .chapter-body-card h2,
+        .chapter-body-card h3,
+        .chapter-body-card h4 {
+            color: var(--text-primary);
+            margin-top: 1.6em;
+        }
+
+        .chapter-body-card p,
+        .chapter-body-card li,
+        .chapter-body-card blockquote {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card ul,
+        .chapter-body-card ol {
+            padding-left: 1.2rem;
+        }
+
+        .chapter-body-card blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.25rem;
+            border-left: 3px solid var(--accent-gold);
+            background: rgba(201, 162, 39, 0.08);
+            border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .chapter-nav-slot {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            min-height: 100%;
+            padding: 1rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(201, 162, 39, 0.06);
+        }
+
+        .chapter-nav-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .chapter-nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .chapter-nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        @media (max-width: 800px) {
+            .chapter-nav-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chapter-summary-card,
+            .chapter-body-card,
+            .chapter-nav-card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "时间的魔法与诅咒",
+        "description": "聚焦时间衰减对买方与卖方的不同影响，建立期权持仓随时间变化的实战直觉。",
+        "author": {
+            "@type": "Person",
+            "name": "ValueInvest"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ValueInvest",
+            "sameAs": "https://4fire.qzz.io/"
+        },
+        "mainEntityOfPage": "https://4fire.qzz.io/options/07.html",
+        "isPartOf": {
+            "@type": "Course",
+            "name": "美股期权教材",
+            "url": "https://4fire.qzz.io/options/"
+        },
+        "image": [
+            "https://4fire.qzz.io/images/hero-bg.jpg"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
+
+    <header id="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="期权章节页主导航">
+                <ul class="nav-links">
+                    <li><a href="../index.html">返回首页</a></li>
+                    <li><a href="./index.html">返回课程</a></li>
+                    <li><a href="#chapter-navigation">章节导航</a></li>
+                </ul>
+            </nav>
+            <div class="nav-date">第 07 章</div>
+        </div>
+    </header>
+
+    <section class="hero" role="banner">
+        <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
+        <div class="hero-content">
+            <div class="subtitle">价值与时间篇</div>
+            <h1>第 07 章 · 时间的魔法与诅咒</h1>
+            <p class="tagline">价值与时间篇 · Batch 2</p>
+            <p class="hero-description">聚焦时间衰减对买方与卖方的不同影响，建立期权持仓随时间变化的实战直觉。</p>
+        </div>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
+    </section>
+
+    <div class="chapter-meta-bar" aria-label="章节关键信息">
+        <div class="chapter-meta-pill">章节编号：第 07 章</div>
+        <div class="chapter-meta-pill">Section：价值与时间篇</div>
+        <div class="chapter-meta-pill">Batch：Batch 2 · 已发布</div>
+        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
+    </div>
+
+    <main id="main" class="chapter-shell">
+        <section class="section" id="chapter-summary" aria-labelledby="chapter-summary-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">01</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
+                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
+                </div>
+            </div>
+
+            <div class="chapter-summary-card">
+                <p>聚焦时间衰减对买方与卖方的不同影响，建立期权持仓随时间变化的实战直觉。</p>
+            </div>
+        </section>
+
+        <section class="section" id="chapter-content" aria-labelledby="chapter-content-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">02</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
+                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
+                </div>
+            </div>
+
+            <article class="chapter-body-card">
+<h1>《美股期权教材》</h1>
+<h2>第7章 时间的魔法与诅咒：时间衰减为什么会吞掉买方</h2>
+<blockquote><p>上一章我们讲了两条铁律：  1. <strong>到期时间越长，时间价值通常越高</strong> 2. <strong>同一到期日下，越靠近 ATM，时间价值通常越高</strong>  但知道“时间价值会存在在哪里”，还不够。真正让无数新手吃大亏的，是下一层现实：  <strong>时间价值不会安安静静地待在那里，它会随着时间流逝不断减少。</strong>  这就是期权和股票最大的体验差异之一。  - 股票可以横着不动很久； - 期权却不能无成本地等很久。  你如果买了期权，就等于买了一块会慢慢融化的冰； 你如果卖了期权，很多时候就像站在旁边，等别人那块冰自己变小。  这一章我们要讲的，就是期权里最残酷、最实战、也最容易被低估的一件事：  <strong>时间衰减（Time Decay）</strong>。</p></blockquote>
+<hr>
+<h3>7.1 先说结论：时间真正吃掉的，主要不是内在价值，而是时间价值</h3>
+<p>上一章我们已经知道：</p>
+<blockquote><p><strong>期权价格 = 内在价值 + 时间价值</strong></p></blockquote>
+<p>所以当时间流逝时，到底是哪一部分在减少？</p>
+<p>答案是：</p>
+<ul><li><strong>会被时间不断侵蚀的，主要是时间价值</strong>；</li><li><strong>内在价值</strong>是否变化，取决于股价和行权价的关系；</li><li><strong>时间价值</strong>则会在到期日逼近时，天然往 0 靠拢。</li></ul>
+<p>这句话非常关键，因为它让你把“期权掉价”这件事看清楚。</p>
+<p>很多人以为期权亏钱是一种模糊的、整体的、难以分析的“价格乱跳”。其实很多时候，背后最简单的解释就是：</p>
+<blockquote><p><strong>你买来的那部分未来可能性，正在被时间一点点抽走。</strong></p></blockquote>
+<p>所以时间衰减不是一个附属概念，它是期权世界的底层摩擦力。</p>
+<hr>
+<h3>7.2 为什么时间衰减是必然的：因为到期日一到，未来就没了</h3>
+<p>如果你愿意，你可以把时间价值理解成一句话：</p>
+<blockquote><p>“只要还没到期，就还保留着未来发生有利变化的机会。”</p></blockquote>
+<p>那反过来，一旦到期日来了，会发生什么？</p>
+<ul><li>所有“还没发生但也许会发生”的可能性，都会立刻清零；</li><li>到期那一刻，期权只剩两种结局：</li><li>要么有内在价值；</li><li>要么没有内在价值。</li></ul>
+<p>换句话说：</p>
+<ul><li><strong>到期前</strong>，市场还会为未来付钱；</li><li><strong>到期后</strong>，未来已经不存在了，时间价值自然必须归零。</li></ul>
+<p>这就是时间衰减为什么不是“有时候会发生”，而是<strong>一定会发生</strong>。</p>
+<p>只要期权还有时间价值，它就注定会被时间慢慢削掉，直到到期那天彻底消失。</p>
+<hr>
+<h3>7.3 用一个最直观的例子：同一张 OTM 期权，什么都不发生，它也会变便宜</h3>
+<p>假设某只股票当前价格是 <strong>100</strong>，你买了一张：</p>
+<ul><li>105 Call</li><li>距离到期还有 30 天</li><li>你买入时花了 2.00</li></ul>
+<p>注意，这张期权是 OTM。它现在没有内在价值，所以这 2.00 基本上就是时间价值。</p>
+<p>现在假设接下来几天里，股票几乎没动，还是在 100 附近。</p>
+<p>那会怎样？</p>
+<p>通常你会看到这张期权变成：</p>
+<ul><li>1.80</li><li>1.60</li><li>1.40……</li></ul>
+<p>为什么？</p>
+<p>不是因为你看错了方向，也不是因为市场故意针对你，而是因为：</p>
+<ul><li>它仍然没进价内；</li><li>剩余时间却更少了；</li><li>于是“未来涨到 105 以上”的机会窗口缩小了。</li></ul>
+<p>所以它会自然掉价。</p>
+<p>这就是时间衰减最纯粹的样子：</p>
+<blockquote><p><strong>哪怕标的没怎么动，期权也可能自己掉钱。</strong></p></blockquote>
+<p>这件事对股票投资者来说很反直觉，但对期权来说，它就是日常。</p>
+<hr>
+<h3>7.4 这也是为什么很多人“方向没错，却还是亏钱”</h3>
+<p>这是必须单独拿出来讲的一点。</p>
+<p>假设你判断一只股票会涨，于是买了 Call。后来股票确实涨了，但你一看账户，期权没涨多少，甚至还亏。</p>
+<p>为什么会这样？</p>
+<p>因为在期权里，“方向对”只是条件之一，不是全部。</p>
+<p>你至少还要满足这些问题：</p>
+<ul><li>你买的时候离到期还有多久？</li><li>你买的是 ITM、ATM 还是 OTM？</li><li>这段上涨是不是来得足够快？</li><li>涨幅有没有大到足以抵消时间价值流失？</li></ul>
+<p>换句话说，期权买方不是在回答一道“涨还是跌”的单选题，而是在回答一道复合题：</p>
+<blockquote><p><strong>方向对不对？幅度够不够？速度快不快？</strong></p></blockquote>
+<p>如果方向虽然对，但来得太慢、涨得不够猛，时间衰减仍然可能把你的利润吃掉。</p>
+<p>这也是为什么期权买方经常会有一种特别沮丧的体验：</p>
+<ul><li>明明大方向没看错；</li><li>但仓位就是不赚钱；</li><li>因为市场不是不给你对，而是不给你慢慢对。</li></ul>
+<hr>
+<h2>7.5 时间衰减不是匀速的：越临近到期，通常越快</h2>
+<p>这是本章的核心中的核心。</p>
+<p>很多人第一次听到时间衰减，会自动想成：</p>
+<ul><li>今天掉一点；</li><li>明天再掉一点；</li><li>每天差不多平均掉。</li></ul>
+<p>现实里通常不是这样。</p>
+<p>时间衰减更像什么？</p>
+<p>更像一块冰在室温下融化：</p>
+<ul><li>刚开始好像还挺稳；</li><li>越到后面越薄、越脆、越容易快速消失。</li></ul>
+<p>也就是说：</p>
+<blockquote><p><strong>时间价值的流失，通常不是线性的，而是越接近到期越明显。</strong></p></blockquote>
+<p>这也是为什么很多交易者会特别警惕临近到期的合约：</p>
+<ul><li>你以为自己还有几天时间；</li><li>实际上价格衰减已经明显加速。</li></ul>
+<hr>
+<h3>7.6 用一个“相同方向，不同剩余时间”的对比来理解</h3>
+<p>假设还是同一只股票，都是买 Call，方向判断也一样：看涨。</p>
+<h4>方案 A：买一个 90 天到期的 ATM Call</h4>
+<p>如果股价短期没怎么动，这张期权当然也会损失一些时间价值，但通常不会像悬崖一样立刻崩。</p>
+<p>原因很简单：</p>
+<ul><li>还有很多时间；</li><li>未来可能性还没被迅速压缩；</li><li>市场依然愿意给它保留较多期待。</li></ul>
+<h4>方案 B：买一个 7 天到期的 ATM Call</h4>
+<p>如果股价几天不动，这张期权就很可能掉得明显得多。</p>
+<p>原因也一样简单：</p>
+<ul><li>时间窗口本来就短；</li><li>每过去一天，都像是从一个很小的容器里又倒掉一大部分水；</li><li>未来“翻盘”的空间被快速压缩。</li></ul>
+<p>所以你会看到一个非常典型的现象：</p>
+<blockquote><p><strong>临近到期的期权，对“再等一等”这件事越来越不友好。</strong></p></blockquote>
+<hr>
+<h3>7.7 交易里常见的经验口径：越到后段，衰减感受越强</h3>
+<p>在很多交易教学里，你会经常看到类似这样的经验表达：</p>
+<ul><li>距离到期还很远时，衰减相对没那么剧烈；</li><li>越进入后半段，尤其接近最后几周时，衰减体感会明显增强；</li><li>越接近到期日，尤其是短期期权，时间价值的“流失速度感”会越来越强。</li></ul>
+<p>这里我特意用“经验口径”“体感增强”来表述，而不是把它说成某个绝对固定的数学日历点。因为真实市场会受波动率和事件影响，不该被教成死板口号。</p>
+<p>但有一件事你完全可以牢牢记住：</p>
+<blockquote><p><strong>离到期越近，买方对时间的容忍空间通常越小。</strong></p></blockquote>
+<p>这对做交易已经足够实用了。</p>
+<hr>
+<h2>7.8 为什么说“时间是买方的敌人”</h2>
+<p>这句话你以后会反复听到，但不能只会复述，必须知道它为什么成立。</p>
+<p>如果你是期权买方，你在买什么？</p>
+<ul><li>你在买一个未来有利变化的机会；</li><li>你付的钱里，往往包含不少时间价值；</li><li>而时间每过去一天，这个机会本身就在贬值。</li></ul>
+<p>所以即使标的不反着你走，只要它不朝有利方向<strong>足够快地</strong>走，你也可能亏。</p>
+<p>这和股票太不一样了。</p>
+<p>买股票时，只要公司还在、逻辑没坏，你大不了等一等； 买期权时，时间本身就在计费，甚至是在倒计时收费。</p>
+<p>所以对买方来说：</p>
+<ul><li>横盘，不一定安全；</li><li>慢涨，不一定够；</li><li>迟到的正确，常常没有想象中值钱。</li></ul>
+<p>这就是“时间是买方的敌人”的真正含义。</p>
+<p>不是说买方一定不能赚钱，而是说：</p>
+<blockquote><p><strong>买方必须和时间赛跑。</strong></p></blockquote>
+<hr>
+<h2>7.9 为什么说“时间是卖方的朋友”</h2>
+<p>如果你站到卖方那边，画面几乎反过来。</p>
+<p>卖方本质上是在做什么？</p>
+<ul><li>卖出一份合同；</li><li>先把权利金收进来；</li><li>希望未来事情别朝最坏方向发展。</li></ul>
+<p>只要时间在过去，而标的没有发生足够大的不利波动，卖方通常会看到：</p>
+<ul><li>期权价格慢慢往下掉；</li><li>自己有机会以更低价格买回平仓；</li><li>或者干脆等到期，让它自然归零。</li></ul>
+<p>所以很多卖方策略的底层逻辑并不是“我一定强烈看对方向”，而是：</p>
+<blockquote><p><strong>只要事情没有剧烈偏离，我就靠时间流逝慢慢赚。</strong></p></blockquote>
+<p>这也是为什么很多人第一次接触卖方策略时，会觉得它“胜率高得离谱”。因为很多卖方确实是在利用这条市场天然规律：</p>
+<ul><li>买方在和时间赛跑；</li><li>卖方在等时间帮自己工作。</li></ul>
+<p>当然，这不代表卖方轻松无风险。卖方的问题从来不是“经常小亏”，而是“可能偶尔大亏”。这一点后面讲保证金和风险控制时会展开。</p>
+<hr>
+<h2>7.10 最容易被低估的现实：横盘对买方不友好，却常常对卖方友好</h2>
+<p>这点必须单独强调一下。</p>
+<p>很多新手脑子里只有两种状态：</p>
+<ul><li>涨 = Call 赚钱；</li><li>跌 = Put 赚钱。</li></ul>
+<p>但真实市场里，第三种状态很常见，也很折磨人：</p>
+<blockquote><p><strong>不怎么动。</strong></p></blockquote>
+<p>如果股价一直在原地附近来回：</p>
+<ul><li>买 Call 的人会发现，涨幅不够、时间却在流失；</li><li>买 Put 的人也一样，跌幅不够、时间却在流失；</li><li>反而是卖出这些期权的人，往往更舒服。</li></ul>
+<p>所以期权世界里，横盘并不是“什么都没发生”。</p>
+<p>对于买方来说，横盘常常意味着：</p>
+<ul><li>市场没有给你足够的方向利润；</li><li>但却照样从你身上收走了时间成本。</li></ul>
+<p>这一点如果不真正接受，很容易在实战里不停犯同样的错：</p>
+<ul><li>老觉得“再等等就好了”；</li><li>结果等来的只是时间价值进一步缩水。</li></ul>
+<hr>
+<h2>7.11 哪些位置最容易感受到时间衰减的杀伤力</h2>
+<p>虽然所有有时间价值的期权都会受时间衰减影响，但受影响的“体感强度”并不一样。</p>
+<h3>7.11.1 纯时间价值仓位：最容易感受到被抽血</h3>
+<p>例如：</p>
+<ul><li>短期 OTM Call</li><li>短期 OTM Put</li><li>临近到期的 ATM 期权</li></ul>
+<p>这些仓位的共同点是：</p>
+<ul><li>价格里时间价值占比很高；</li><li>内在价值不够厚，甚至没有；</li><li>所以一旦时间走掉，价格很容易直接变轻。</li></ul>
+<p>你买这种仓位时，必须格外清楚：</p>
+<blockquote><p><strong>你买的本来就是时间本身很重的东西。</strong></p></blockquote>
+<h3>7.11.2 深 ITM 的感受通常没那么“纯粹是时间杀”</h3>
+<p>深 ITM 期权也有时间衰减，但因为它价格里常常已经有不少内在价值，所以它不像纯 OTM 那样那么像“整块都在被融化”。</p>
+<p>这不代表它不受影响，而是说：</p>
+<ul><li>它的价格结构更厚实；</li><li>你感受到的，往往不是纯时间价值突然塌掉，而是更复杂的股价变化 + 剩余时间变化的叠加。</li></ul>
+<hr>
+<h2>7.12 为什么财报前后，很多人会把“时间衰减”和“波动率变化”混在一起</h2>
+<p>这一点先提前打个底。</p>
+<p>你在实战中经常会碰到这种情况：</p>
+<ul><li>财报前，某张短期期权很贵；</li><li>财报后，即使股价动了，期权价格还是迅速掉下去。</li></ul>
+<p>这时候很多人会简单说：</p>
+<ul><li>啊，时间衰减太可怕了。</li></ul>
+<p>这句话有时只说对了一部分。</p>
+<p>因为财报前后，除了时间流逝之外，还常常会有：</p>
+<ul><li>事件不确定性消失；</li><li>隐含波动率回落；</li><li>时间价值和 IV 溢价一起被压缩。</li></ul>
+<p>但在你还没学到 IV 之前，先把一件事抓牢：</p>
+<blockquote><p><strong>时间衰减是底层一直存在的，IV 是会叠加放大这种效果的。</strong></p></blockquote>
+<p>这能帮助你不把所有掉价都粗暴地归因成一个东西。</p>
+<hr>
+<h2>7.13 对买方来说，最重要的不是“能不能等”，而是“值不值得等”</h2>
+<p>很多人买了期权之后，最爱说的一句话是：</p>
+<ul><li>先拿着，再等等。</li></ul>
+<p>问题在于，期权不是股票。你等，是有成本的。</p>
+<p>所以买方应该学会问的不是：</p>
+<ul><li>我能不能继续等？</li></ul>
+<p>而是：</p>
+<ul><li><strong>我每多等一天，时间价值会被吃掉多少？</strong></li><li><strong>我期待的行情，是否足以在合理时间里补回来？</strong></li><li><strong>如果只是横盘或缓慢移动，这张期权还值得我继续抱吗？</strong></li></ul>
+<p>这其实是在把“时间”重新变成一个交易变量。</p>
+<p>很多失败的期权交易，并不是起点判断完全错误，而是中途没有意识到：</p>
+<blockquote><p><strong>时间已经从中性变量，变成了明确的对手。</strong></p></blockquote>
+<hr>
+<h2>7.14 对卖方来说，最危险的不是时间衰减不存在，而是你以为它会永远帮你</h2>
+<p>讲到这里，也要顺手把卖方的误区拆掉。</p>
+<p>卖方确实通常更受益于时间流逝，但这不意味着：</p>
+<ul><li>只要卖期权就稳赢；</li><li>只要时间在走，风险就不重要。</li></ul>
+<p>卖方的真实世界是：</p>
+<ul><li>大多数时候，时间会帮你；</li><li>但少数时候，一次剧烈波动会把你前面很多次慢慢赚的钱，一次吐回去。</li></ul>
+<p>所以卖方最大的问题不是不懂时间衰减，而是<strong>高估时间衰减、低估尾部风险</strong>。</p>
+<p>这是后面保证金和风险管理必须补上的一课。</p>
+<hr>
+<h2>7.15 用一个完整对照，真正理解买方和卖方站在时间面前的位置</h2>
+<p>假设一只股票现价 100，市场接下来一周基本横盘。</p>
+<h3>买方视角：买一张 105 Call</h3>
+<ul><li>买入时：花掉权利金；</li><li>接下来几天：股价没涨到位；</li><li>结果：期权因为时间流逝而掉价。</li></ul>
+<p>你会觉得：</p>
+<ul><li>我也没错得很离谱；</li><li>但市场就是不给我赚钱。</li></ul>
+<h3>卖方视角：卖一张 105 Call</h3>
+<ul><li>开仓时：先收到权利金；</li><li>接下来几天：股价没涨到位；</li><li>结果：期权价格因为时间流逝而变便宜。</li></ul>
+<p>你会觉得：</p>
+<ul><li>我甚至不需要股价大跌；</li><li>只要它别冲上去，我就自然占优。</li></ul>
+<p>这就是同一份时间流逝，对两个方向带来的完全不同体验。</p>
+<p>所以时间衰减不是一个中性的市场现象，它会天然地重新分配优势：</p>
+<ul><li>对买方更苛刻；</li><li>对卖方更友好。</li></ul>
+<hr>
+<h2>7.16 本章几个必须拆掉的误区</h2>
+<h3>误区 1：只要股价不跌，买 Call 就还行</h3>
+<p>不对。就算不跌，只要涨得不够快，时间衰减也可能让你亏钱。</p>
+<h3>误区 2：横盘就是安全期</h3>
+<p>对买方不一定。横盘常常意味着你没拿到方向利润，却照样在支付时间成本。</p>
+<h3>误区 3：时间衰减每天都差不多</h3>
+<p>通常不是。越接近到期，时间价值的流失感通常越强。</p>
+<h3>误区 4：卖方靠时间衰减赚钱，所以风险不大</h3>
+<p>大错特错。卖方很多时候是“小赚靠时间，大亏靠波动”。</p>
+<h3>误区 5：期权买方只要看对方向就够了</h3>
+<p>不够。你还要看：</p>
+<ul><li>行情有没有来得快；</li><li>幅度够不够；</li><li>时间价值是不是正在比你预想中掉得更快。</li></ul>
+<hr>
+<h2>7.17 本章小结：时间不是背景板，而是期权交易里的主动角色</h2>
+<p>这一章你最需要真正记住的，不是“Time Decay”这个英文词，而是下面这层现实：</p>
+<ul><li>期权的时间价值一定会衰减；</li><li>衰减主要影响的是买方付出去的那部分未来可能性；</li><li>越接近到期，衰减通常越明显；</li><li>横盘对买方不友好，却常常对卖方友好；</li><li>所以期权买方不是在单纯猜方向，而是在和时间赛跑。</li></ul>
+<p>如果你把这层吃透了，你以后再看期权，就不会再把它当成“便宜版股票”。</p>
+<p>你会知道：</p>
+<blockquote><p><strong>股票可以慢慢对，期权很多时候必须及时对。</strong></p></blockquote>
+<p>这就是时间的魔法与诅咒。</p>
+<ul><li>对卖方，它经常像顺风；</li><li>对买方，它经常像漏斗。</li></ul>
+<hr>
+<h2>自测题</h2>
+<p>1）为什么说时间衰减主要吃掉的是时间价值，而不是内在价值？</p>
+<p>2）为什么一张 OTM 期权在标的几乎不动的情况下，也可能持续掉价？</p>
+<p>3）为什么“方向没错”并不等于期权一定会赚钱？</p>
+<p>4）为什么说横盘往往对期权买方不友好？</p>
+<p>5）“时间是买方的敌人，时间是卖方的朋友”这句话，分别应该怎么理解？</p>
+<hr>
+<h2>下一章预告：行权与被行权——买方的权利，卖方的义务</h2>
+<p>到这里，我们已经把价格、时间价值、时间衰减讲通了。接下来就该进入一个非常实务、也很容易让新手出事故的话题：</p>
+<ul><li>什么叫行权？</li><li>什么叫被行权？</li><li>美式期权和欧式期权差在哪？</li><li>为什么很多人其实不应该把期权拿到最后一天？</li></ul>
+<p>这一章会把“合同最后怎么落地”这件事讲清楚。</p>
+<hr>
+<h2>本章参考口径（便于追溯）</h2>
+<ul><li>OCC / OIC 关于 time decay、extrinsic value 的基础教学口径</li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li></ul>
+<ul><li>Fidelity Options Learning Center：用于校准“买方受时间衰减不利、卖方受时间流逝相对有利”的教学表达</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li></ul>
+<ul><li>CBOE Options Institute：用于保持 time value / theta / expiration dynamics 的教学术语一致</li><li><a href="https://www.cboe.com/optionsinstitute/">https://www.cboe.com/optionsinstitute/</a></li></ul>
+            </article>
+        </section>
+
+        <section class="section" id="chapter-navigation" aria-labelledby="chapter-navigation-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">03</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
+                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
+                </div>
+            </div>
+
+            <div class="chapter-nav-card">
+                <div class="chapter-nav-grid">
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">上一章</div>
+                        <a class="chapter-nav-link" href="./06.html">第 06 章 · 时间价值铁律</a>
+                        <p>理解时间价值如何随到期日和 ATM 距离分布，为读懂期权链上的价格差异打基础。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">返回课程</div>
+                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
+                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">下一章</div>
+                        <a class="chapter-nav-link" href="./08.html">第 08 章 · 行权与被行权</a>
+                        <p>说明买方如何行权、卖方如何被指派，以及到期和自动处理在真实账户中的落地方式。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>期权教材 · 结构化学习 · HTML 优先</p>
+        <p class="disclaimer">
+            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
+        </p>
+    </footer>
+
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
+
+    <script src="../js/main.js?v=20260324a"></script>
+</body>
+</html>

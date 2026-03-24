@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="说明买方如何行权、卖方如何被指派，以及到期和自动处理在真实账户中的落地方式。">
+    <meta name="author" content="ValueInvest">
+    <meta name="theme-color" content="#c9a227">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="canonical" href="https://4fire.qzz.io/options/08.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://4fire.qzz.io/options/08.html">
+    <meta property="og:title" content="行权与被行权 | 美股期权教材">
+    <meta property="og:description" content="说明买方如何行权、卖方如何被指派，以及到期和自动处理在真实账户中的落地方式。">
+    <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="行权与被行权 | 美股期权教材">
+    <meta name="twitter:description" content="说明买方如何行权、卖方如何被指派，以及到期和自动处理在真实账户中的落地方式。">
+    <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <title>行权与被行权 | 美股期权教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css?v=20260324a">
+    <style>
+        .chapter-meta-bar {
+            width: min(1100px, calc(100% - 2rem));
+            margin: -2.25rem auto 0;
+            padding: 1rem 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+            position: relative;
+            z-index: 2;
+        }
+
+        .chapter-meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-secondary);
+            background: rgba(201, 162, 39, 0.08);
+            font-size: 0.95rem;
+        }
+
+        .chapter-meta-link {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .chapter-meta-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .chapter-shell {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .chapter-summary-card,
+        .chapter-body-card,
+        .chapter-nav-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+        }
+
+        .chapter-summary-card p,
+        .chapter-nav-card p {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card {
+            line-height: 1.9;
+            color: var(--text-primary);
+        }
+
+        .chapter-body-card h2,
+        .chapter-body-card h3,
+        .chapter-body-card h4 {
+            color: var(--text-primary);
+            margin-top: 1.6em;
+        }
+
+        .chapter-body-card p,
+        .chapter-body-card li,
+        .chapter-body-card blockquote {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card ul,
+        .chapter-body-card ol {
+            padding-left: 1.2rem;
+        }
+
+        .chapter-body-card blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.25rem;
+            border-left: 3px solid var(--accent-gold);
+            background: rgba(201, 162, 39, 0.08);
+            border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .chapter-nav-slot {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            min-height: 100%;
+            padding: 1rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(201, 162, 39, 0.06);
+        }
+
+        .chapter-nav-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .chapter-nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .chapter-nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        @media (max-width: 800px) {
+            .chapter-nav-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chapter-summary-card,
+            .chapter-body-card,
+            .chapter-nav-card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "行权与被行权",
+        "description": "说明买方如何行权、卖方如何被指派，以及到期和自动处理在真实账户中的落地方式。",
+        "author": {
+            "@type": "Person",
+            "name": "ValueInvest"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ValueInvest",
+            "sameAs": "https://4fire.qzz.io/"
+        },
+        "mainEntityOfPage": "https://4fire.qzz.io/options/08.html",
+        "isPartOf": {
+            "@type": "Course",
+            "name": "美股期权教材",
+            "url": "https://4fire.qzz.io/options/"
+        },
+        "image": [
+            "https://4fire.qzz.io/images/hero-bg.jpg"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
+
+    <header id="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="期权章节页主导航">
+                <ul class="nav-links">
+                    <li><a href="../index.html">返回首页</a></li>
+                    <li><a href="./index.html">返回课程</a></li>
+                    <li><a href="#chapter-navigation">章节导航</a></li>
+                </ul>
+            </nav>
+            <div class="nav-date">第 08 章</div>
+        </div>
+    </header>
+
+    <section class="hero" role="banner">
+        <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
+        <div class="hero-content">
+            <div class="subtitle">价值与时间篇</div>
+            <h1>第 08 章 · 行权与被行权</h1>
+            <p class="tagline">价值与时间篇 · Batch 2</p>
+            <p class="hero-description">说明买方如何行权、卖方如何被指派，以及到期和自动处理在真实账户中的落地方式。</p>
+        </div>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
+    </section>
+
+    <div class="chapter-meta-bar" aria-label="章节关键信息">
+        <div class="chapter-meta-pill">章节编号：第 08 章</div>
+        <div class="chapter-meta-pill">Section：价值与时间篇</div>
+        <div class="chapter-meta-pill">Batch：Batch 2 · 已发布</div>
+        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
+    </div>
+
+    <main id="main" class="chapter-shell">
+        <section class="section" id="chapter-summary" aria-labelledby="chapter-summary-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">01</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
+                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
+                </div>
+            </div>
+
+            <div class="chapter-summary-card">
+                <p>说明买方如何行权、卖方如何被指派，以及到期和自动处理在真实账户中的落地方式。</p>
+            </div>
+        </section>
+
+        <section class="section" id="chapter-content" aria-labelledby="chapter-content-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">02</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
+                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
+                </div>
+            </div>
+
+            <article class="chapter-body-card">
+<h1>《美股期权教材》</h1>
+<h2>第8章 行权与被行权：买方的权利，卖方的义务</h2>
+<blockquote><p>前面几章，我们已经把期权最容易让人亏钱、也最容易让人误判的部分讲了个大概：  - 你知道了期权不是股票，而是一份合同； - 你知道了价格由内在价值和时间价值组成； - 你知道了时间价值会衰减，而且对买方尤其残酷。  但如果只学到这里，你对期权仍然缺最后一块非常关键的拼图：  <strong>这份合同到了该兑现的时候，到底是怎么落地的？</strong>  很多新手对期权最大的误解之一，就是把期权想成一种“买了以后总有一天自然卖掉”的东西。实际上，期权背后还藏着一个更原始、更合同化的动作：  - <strong>行权（Exercise）</strong> - <strong>被行权（Assignment）</strong>  这两个词一旦理解不清，很容易在实战里出问题。常见灾难包括：  - 以为自己只是买了一张期权，结果账户突然多出 100 股正股； - 以为卖方只是赚权利金，结果一夜之间被要求交割； - 以为拿到到期日再看也行，结果因为自动行权或资金不足被券商强行处理。  所以这一章我们不只讲定义，而是把“合同最后会发生什么”这件事彻底讲透。</p></blockquote>
+<hr>
+<h2>8.1 先把最核心的一句话背下来</h2>
+<p>如果这一章你最后只记住一句话，那就记这个：</p>
+<blockquote><p><strong>买方拥有权利，卖方承担义务。</strong></p></blockquote>
+<p>这句话是理解行权与被行权的一切起点。</p>
+<ul><li><strong>买方</strong>：花了权利金，所以买到的是一种“我可以决定要不要用这份合同”的权利；</li><li><strong>卖方</strong>：收了权利金，所以卖出去的是一种“如果对方要求兑现，我必须配合”的义务。</li></ul>
+<p>注意这个结构非常不对称：</p>
+<ul><li>买方可以选择；</li><li>卖方不能任性拒绝。</li></ul>
+<p>所以你一旦记住“买方有选择权，卖方有履约义务”，后面很多问题都会变简单。</p>
+<hr>
+<h2>8.2 什么叫行权（Exercise）</h2>
+<h3>8.2.1 最朴素的定义</h3>
+<p>所谓<strong>行权</strong>，就是：</p>
+<blockquote><p><strong>期权买方决定正式使用这份合同赋予自己的权利。</strong></p></blockquote>
+<p>如果是 Call，行权意味着：</p>
+<ul><li>你决定按行权价买入标的资产。</li></ul>
+<p>如果是 Put，行权意味着：</p>
+<ul><li>你决定按行权价卖出标的资产。</li></ul>
+<p>所以行权不是“卖出期权”，也不是“平仓”。</p>
+<p>它更像什么？</p>
+<p>更像你真的把这张合同拿出来说：</p>
+<ul><li>好，我现在要按合同办事了。</li></ul>
+<p>这点非常重要，因为很多新手会把“卖掉手里的期权”和“行使这张期权”混成一件事。其实它们完全不是一回事。</p>
+<hr>
+<h3>8.2.2 行权不等于平仓</h3>
+<p>这一定要单独讲。</p>
+<p>很多买方在软件里看到自己那张期权已经盈利，就会本能地想：</p>
+<ul><li>我是不是该行权了？</li></ul>
+<p>其实绝大多数情况下，大家做的不是“行权”，而是：</p>
+<blockquote><p><strong>把手里的期权合约直接卖掉，完成平仓。</strong></p></blockquote>
+<p>这和行权的区别非常大：</p>
+<h4>平仓（卖出你手里的期权）</h4>
+<ul><li>你只是把这张合同转卖给市场里的另一个人；</li><li>你赚的是权利金差价；</li><li>通常不会直接变成股票持仓或现金交割问题。</li></ul>
+<h4>行权（真正使用合同）</h4>
+<ul><li>你不再只是转卖合同；</li><li>你开始真正按行权价去买入或卖出标的；</li><li>这往往会把你从“期权世界”直接带进“正股交割世界”。</li></ul>
+<p>所以买方千万不要把“有利润了”自动理解成“该行权了”。</p>
+<p>很多时候，<strong>平仓</strong>才是更常见、更直接、更省事的处理方式。</p>
+<hr>
+<h2>8.3 什么叫被行权（Assignment）</h2>
+<h3>8.3.1 最朴素的定义</h3>
+<p>所谓<strong>被行权</strong>，就是：</p>
+<blockquote><p><strong>期权卖方因为买方行使权利，而被要求履行合同义务。</strong></p></blockquote>
+<p>换句话说：</p>
+<ul><li>买方说：“我要按合同办。”</li><li>卖方不能说：“我今天不想配合。”</li></ul>
+<p>这就叫被行权。</p>
+<p>所以“被行权”不是卖方主动想不想的问题，而是卖方既然收了权利金、签了合同，就必须接受对方在合法范围内要求兑现。</p>
+<hr>
+<h3>8.3.2 被行权在 Call 和 Put 里分别意味着什么</h3>
+<h4>你卖的是 Call</h4>
+<p>如果买方行权，你作为卖方通常意味着：</p>
+<ul><li>你必须按行权价把股票交出去。</li></ul>
+<p>如果你本来就持有这 100 股，那这通常是 Covered Call 的正常结果； 如果你根本没持有股票，那就可能演变成裸卖 Call 的麻烦局面。</p>
+<h4>你卖的是 Put</h4>
+<p>如果买方行权，你作为卖方通常意味着：</p>
+<ul><li>你必须按行权价买入股票。</li></ul>
+<p>也就是说，对方把股票按合同价格“卖给你”，你得接。</p>
+<p>这就是为什么很多卖 Put 的本质心态应该是：</p>
+<blockquote><p><strong>如果真被打到，我是否愿意用这个价格接货？</strong></p></blockquote>
+<p>如果答案是否定的，那你从一开始可能就不该卖那张 Put。</p>
+<hr>
+<h2>8.4 用例子彻底讲清楚：Call 的行权与被行权</h2>
+<h3>8.4.1 例子一：你买了一张 Call，并决定行权</h3>
+<p>假设：</p>
+<ul><li>AAPL 当前股价 = 180</li><li>你手里有一张 170 Call</li><li>一张期权 = 100 股</li></ul>
+<p>这张 Call 已经明显 ITM。</p>
+<p>如果你决定<strong>行权</strong>，意思就是：</p>
+<ul><li>你要求按 170 的价格买入 100 股 AAPL。</li></ul>
+<p>那会发生什么？</p>
+<ul><li>你需要支付：170 × 100 = 17,000 美元</li><li>你会得到：100 股 AAPL</li><li>这些股票按当前市场看值：180 × 100 = 18,000 美元</li></ul>
+<p>所以这份合同的现实好处，就是你用合同价买到了更贵的市场资产。</p>
+<p>但请注意，行权不是免费获得利润，而是：</p>
+<ul><li>你要真的掏出资金；</li><li>你要真的接股票；</li><li>你的账户结构会发生变化。</li></ul>
+<p>这也是为什么很多人虽然买的是盈利 Call，但并不会真的去行权，而是直接把期权卖掉锁利润。</p>
+<hr>
+<h3>8.4.2 例子二：你卖了一张 Call，并被对方行权</h3>
+<p>假设：</p>
+<ul><li>你卖出一张 170 Call，收了权利金；</li><li>到期前或到期时，股价涨到了 180；</li><li>对方选择行权。</li></ul>
+<p>如果你是这张 Call 的卖方，你就会被行权。</p>
+<p>这意味着：</p>
+<ul><li>你必须按 170 的价格交出 100 股。</li></ul>
+<p>如果你本来就持有 100 股 AAPL，这件事会比较直观：</p>
+<ul><li>你相当于把股票按 170 卖掉；</li><li>再加上你原先收到的权利金；</li><li>你赚没赚，要看你的持仓成本和收取的权利金。</li></ul>
+<p>如果你本来没有这 100 股，那事情就危险得多。因为你可能必须：</p>
+<ul><li>以更高市场价买入股票；</li><li>再按更低的行权价交出去；</li><li>中间差额就是你的亏损。</li></ul>
+<p>这也是为什么裸卖 Call 理论上风险很大：</p>
+<blockquote><p><strong>股价往上没有天花板，但你的履约义务是实打实的。</strong></p></blockquote>
+<hr>
+<h2>8.5 再用例子讲清楚：Put 的行权与被行权</h2>
+<h3>8.5.1 例子三：你买了一张 Put，并决定行权</h3>
+<p>假设：</p>
+<ul><li>某股票当前价格 = 90</li><li>你手里有一张 100 Put</li><li>一张合约对应 100 股</li></ul>
+<p>如果你作为 Put 买方选择<strong>行权</strong>，意思是：</p>
+<ul><li>你要求按 100 的价格卖出 100 股。</li></ul>
+<p>那这件事的现实好处是什么？</p>
+<ul><li>市场上现在只值 90 的股票，</li><li>你却能按 100 卖掉，</li><li>每股差 10，乘以 100 股，就是 1,000 的合同优势。</li></ul>
+<p>这就像你给自己买了一份下跌保险。市场跌得越深，这份高价卖出的权利就越有现实意义。</p>
+<p>但这里同样要注意：</p>
+<ul><li>真正行权时，背后涉及的是标的交割；</li><li>不是简单按软件里一个浮盈数字就自动结束。</li></ul>
+<hr>
+<h3>8.5.2 例子四：你卖了一张 Put，并被对方行权</h3>
+<p>假设：</p>
+<ul><li>你卖出一张 100 Put，收了权利金；</li><li>后来股价跌到 90；</li><li>买方决定行权。</li></ul>
+<p>这时候你作为 Put 卖方，会发生什么？</p>
+<ul><li>你必须按 100 的价格买入 100 股。</li></ul>
+<p>也就是说：</p>
+<ul><li>别人把市场上只值 90 的东西，按 100 卖给你；</li><li>你得接住。</li></ul>
+<p>从交易语言上，这也是很多人说“卖 Put 本质上是在承诺接盘”的原因。</p>
+<p>所以卖 Put 千万不要只是看到权利金香，而要先问：</p>
+<blockquote><p><strong>如果这只股票真的跌下来，我愿不愿意按这个价格买？</strong></p></blockquote>
+<p>如果不愿意，那这笔单子可能从出发点上就不适合你。</p>
+<hr>
+<h2>8.6 一张期权为什么对应 100 股：这件事在行权时不是细节，而是重量级现实</h2>
+<p>平时你在看期权链时，软件报价经常显示成：</p>
+<ul><li>2.30</li><li>5.80</li><li>11.20</li></ul>
+<p>很多人久而久之就容易把期权看成一个“轻飘飘的小数字”。</p>
+<p>但到了行权这一步，你必须立刻重新想起一个铁律：</p>
+<blockquote><p><strong>美股标准期权，1 张合约通常对应 100 股标的。</strong></p></blockquote>
+<p>这意味着什么？</p>
+<h4>对 Call 行权而言</h4>
+<p>你不是在“按 170 买 1 股”，而是在：</p>
+<ul><li>按 170 买 <strong>100 股</strong></li><li>需要拿出 <strong>17,000 美元</strong></li></ul>
+<h4>对 Put 被行权而言</h4>
+<p>你不是在“随便接点货”，而是在：</p>
+<ul><li>按 100 买 <strong>100 股</strong></li><li>需要准备 <strong>10,000 美元</strong> 的接货能力</li></ul>
+<p>所以很多期权事故，不是因为逻辑多复杂，而是因为交易者忘了：</p>
+<blockquote><p><strong>合同一旦兑现，数字会从期权小报价直接跳回 100 股级别的资金现实。</strong></p></blockquote>
+<hr>
+<h2>8.7 美式期权 vs 欧式期权：它们最大的区别不是名字，而是“什么时候能行权”</h2>
+<p>这是这一章必须讲清楚的另一个基础。</p>
+<h3>8.7.1 美式期权（American Style）</h3>
+<p>美式期权的意思是：</p>
+<blockquote><p><strong>在到期前的任何一个可行权时点，买方都可以选择行权。</strong></p></blockquote>
+<p>注意，这里的“美式”不是说它只在美国交易，也不是说它一定比欧式更高级，而是它的规则允许买方提前行权。</p>
+<p>很多美股个股期权都属于这类逻辑框架，所以你在讨论正股期权时，通常要有一个意识：</p>
+<ul><li>买方不一定非要等到最后一天；</li><li>卖方也不一定只在最后一天才有被行权风险。</li></ul>
+<hr>
+<h3>8.7.2 欧式期权（European Style）</h3>
+<p>欧式期权的意思是：</p>
+<blockquote><p><strong>只能在到期日那一刻（或到期结算时）行权。</strong></p></blockquote>
+<p>也就是说，中途不能因为你今天心情好就提前执行合同。</p>
+<p>这类结构在某些指数产品中很常见。它最大的特点就是：</p>
+<ul><li>你不用担心“提前被行权”这种路径；</li><li>但你也失去了提前行使权利的灵活性。</li></ul>
+<hr>
+<h3>8.7.3 对新手而言，最重要的不是背术语，而是理解风险边界不同</h3>
+<p>如果你只是背定义，很快还是会混。</p>
+<p>真正有用的理解方式是：</p>
+<ul><li><strong>美式</strong>：买方更灵活，卖方需要面对“提前被行权”的可能；</li><li><strong>欧式</strong>：买方没那么灵活，但路径更单纯，大家都知道主要在最后结算。</li></ul>
+<p>所以当你交易某个具体标的时，最好不要偷懒默认一切都一样，而要知道自己手里那个品种到底是什么规则。</p>
+<hr>
+<h2>8.8 买方是不是应该一有盈利就行权？绝大多数时候，不是</h2>
+<p>这部分必须写透，因为这是新手非常常见的误解。</p>
+<p>很多人第一次接触 Call / Put，脑子里想的是：</p>
+<ul><li>我买了看涨期权；</li><li>如果涨了，我就行权；</li><li>这样不就是把利润拿到了吗？</li></ul>
+<p>表面上听起来合理，实际上在多数普通交易情境里，买方更常做的是：</p>
+<blockquote><p><strong>直接卖出期权平仓，而不是去行权。</strong></p></blockquote>
+<p>为什么？</p>
+<p>因为一张期权在到期前，往往不只有内在价值，还带着一部分<strong>剩余时间价值</strong>。</p>
+<p>如果你直接行权，相当于：</p>
+<ul><li>你只把它当成“合同兑现工具”；</li><li>但你可能放弃了这张合约在市场上还能卖出的那部分额外价值。</li></ul>
+<p>而如果你把期权卖掉：</p>
+<ul><li>你拿到的是这张合约当前的完整市场价格；</li><li>这通常比单纯行权后只实现内在价值更直接。</li></ul>
+<p>所以从交易效率上讲：</p>
+<ul><li><strong>行权</strong>更像合同落地；</li><li><strong>卖出平仓</strong>更像交易性退出。</li></ul>
+<p>对多数短线、中线期权买方来说，后者更常见。</p>
+<hr>
+<h2>8.9 为什么很多人不应该把期权拿到最后一天</h2>
+<p>这一段几乎可以当作实战安全守则。</p>
+<p>很多新手的想法是：</p>
+<ul><li>反正离到期也没几天了；</li><li>我就放着，看看最后怎么收。</li></ul>
+<p>听起来像是“省事”，但现实里这往往是事故高发区。</p>
+<p>原因主要有四层。</p>
+<h3>8.9.1 第一层：临近到期时，价格和风险都更敏感</h3>
+<p>我们前面已经讲过，时间衰减越接近到期通常越明显。所以最后几天、尤其最后一天，期权价格会变得：</p>
+<ul><li>更脆；</li><li>更跳；</li><li>对标的变化极其敏感。</li></ul>
+<p>这意味着你原本以为“反正快结束了”，结果很可能是：</p>
+<ul><li>一点点价格变化，仓位就剧烈波动；</li><li>一点点临界位置变化，结果完全不同。</li></ul>
+<hr>
+<h3>8.9.2 第二层：ITM / OTM 的命运在最后阶段会非常二元化</h3>
+<p>到期前后，很多期权不再像中间阶段那样还有“未来可能性溢价”，而会越来越接近一个残酷判断：</p>
+<ul><li>有内在价值，就保留下来；</li><li>没有内在价值，就迅速归零。</li></ul>
+<p>所以很多原本看起来“还可以再等等”的仓位，到最后会突然变得非常极端。</p>
+<hr>
+<h3>8.9.3 第三层：你可能会触发行权或被行权，而你自己没准备好</h3>
+<p>这才是最危险的一层。</p>
+<p>如果你是买方，临近到期的 ITM 期权可能触发：</p>
+<ul><li>自动行权；</li><li>从而让你突然进入 100 股正股头寸。</li></ul>
+<p>如果你是卖方，临近到期的 ITM 期权可能触发：</p>
+<ul><li>被行权；</li><li>从而让你被要求交股或接股。</li></ul>
+<p>很多人不是亏在方向，而是亏在根本没准备好面对“合同真的被执行”这件事。</p>
+<hr>
+<h3>8.9.4 第四层：账户资金和券商处理规则会变成现实问题</h3>
+<p>一旦进入最后结算阶段，问题不再只是图表上的浮盈浮亏，还包括：</p>
+<ul><li>你有没有足够资金支持行权后的持仓；</li><li>你账户权限是否允许相关处理；</li><li>券商是否会因为风险控制提前帮你平仓；</li><li>自动行权/不自动行权的门槛和规则是什么。</li></ul>
+<p>这时候你会发现，期权最后一天已经不只是“行情判断题”，而是：</p>
+<blockquote><p><strong>行情 + 资金 + 券商规则 + 风险控制</strong> 的综合题。</p></blockquote>
+<p>所以很多成熟交易者会有一个非常朴素的原则：</p>
+<blockquote><p><strong>如果不是明确有交割计划，就不要把期权硬拿到最后。</strong></p></blockquote>
+<hr>
+<h2>8.10 券商为什么会自动处理你的期权：因为它也不想陪你玩失控交割</h2>
+<p>很多人对券商有一个误解，觉得券商只是中性通道。实际上在到期附近，券商会非常重视风险控制。</p>
+<p>原因很简单：</p>
+<ul><li>行权和被行权会牵涉真实交割；</li><li>真实交割会牵涉 100 股级别的资金和持仓变化；</li><li>如果客户没准备好，风险会迅速外溢。</li></ul>
+<p>所以到期时，券商往往会根据规则对你的仓位进行处理。</p>
+<p>在常见实践里，你需要特别警惕两类情形：</p>
+<h3>买方的风险</h3>
+<ul><li>你持有 ITM 期权；</li><li>券商可能按规则对其进行自动行权处理；</li><li>结果你账户突然需要承担正股买入或卖出后的持仓。</li></ul>
+<h3>卖方的风险</h3>
+<ul><li>你卖出的期权进入 ITM；</li><li>对手方行权后，你可能被指派履约；</li><li>你需要准备好交割或接股。</li></ul>
+<p>具体规则不同券商会有差异，但对你来说，真正重要的不是死记某家券商的细则，而是建立一个成熟心态：</p>
+<blockquote><p><strong>不要把最后处理完全交给系统和运气。</strong></p></blockquote>
+<p>你越提前决定怎么收尾，越不容易出意外。</p>
+<hr>
+<h2>8.11 一个非常重要的实战观念：临近到期时，你处理的不是“观点”，而是“仓位后果”</h2>
+<p>这是很多人最缺的一层意识。</p>
+<p>在仓位刚开的时候，你想的是：</p>
+<ul><li>我看涨；</li><li>我看跌；</li><li>我觉得波动会变大；</li><li>我觉得这周不会跌破某个位置。</li></ul>
+<p>但越接近到期，你真正该想的就不是抽象观点，而是非常具体的问题：</p>
+<ul><li>如果它最后 ITM，我是要行权、平仓，还是放着？</li><li>如果我是卖方，我愿不愿意被交股或接股？</li><li>我的账户有没有能力承受这件事？</li><li>我现在不处理，是因为有清晰计划，还是只是拖延？</li></ul>
+<p>这一步非常像考试最后交卷前的检查。</p>
+<p>有些人前面题做得都不错，最后却因为没检查答题卡而出事故。期权到期处理也是这样。</p>
+<hr>
+<h2>8.12 什么时候“主动平仓”通常比“等着行权”更像成熟做法</h2>
+<p>这里我不把话说绝对，因为不同策略确实可能有不同安排。但对于大多数普通交易者来说，下面这些情形里，主动平仓通常更像成熟操作：</p>
+<h3>情形 1：你只是做方向交易，不是真的想拿正股</h3>
+<p>你买 Call 或 Put，只是为了赚合约价格变化，而不是为了最终去交割股票。</p>
+<p>那这时候：</p>
+<ul><li>平仓往往比行权更自然；</li><li>因为你的目标本来就不是把合同变成正股头寸。</li></ul>
+<h3>情形 2：你没有足够资金承接行权后果</h3>
+<p>比如你持有一张 ITM Call，但并没有准备 1 万多、2 万多美元去真正买 100 股。</p>
+<p>那你继续拿到最后，风险就不是“还能不能多赚一点”，而是“会不会出资金与结算事故”。</p>
+<h3>情形 3：你是卖方，但并不希望真的接股或交股</h3>
+<p>那就不要把自己拖到最后一刻，把命运交给系统分配和对手方决定。</p>
+<h3>情形 4：你的收益已经主要体现在权利金变化里</h3>
+<p>如果仓位的大部分交易目的已经实现，那临近到期继续拖，很多时候并不是“再榨一点利润”，而是在用更大的尾部处理风险换一点小好处。</p>
+<hr>
+<h2>8.13 一个完整的 Call / Put / 买方 / 卖方对照表</h2>
+<p>为了防止你学完还是混，我把逻辑压成一张最实用的口袋表。</p>
+<h3>Call</h3>
+<ul><li><strong>买方行权</strong>：按行权价买入 100 股</li><li><strong>卖方被行权</strong>：按行权价交出 100 股</li></ul>
+<h3>Put</h3>
+<ul><li><strong>买方行权</strong>：按行权价卖出 100 股</li><li><strong>卖方被行权</strong>：按行权价买入 100 股</li></ul>
+<h3>权利义务关系</h3>
+<ul><li><strong>买方</strong>：有权决定是否使用合同</li><li><strong>卖方</strong>：若对方要求兑现，则必须履约</li></ul>
+<h3>临近到期时要问自己的问题</h3>
+<ul><li>我想要的是合约利润，还是正股交割？</li><li>我有足够资金和权限承接结果吗？</li><li>我现在不平仓，是有计划，还是只是拖？</li></ul>
+<p>这张表你如果真的记住了，到期处理就已经比很多人清楚了。</p>
+<hr>
+<h2>8.14 本章几个最常见、也最致命的误区</h2>
+<h3>误区 1：行权就是把期权卖掉</h3>
+<p>不是。卖掉期权是平仓，行权是实际使用合同。</p>
+<h3>误区 2：只要期权盈利，就应该行权</h3>
+<p>多数普通交易场景里，不一定。很多时候直接卖出平仓更常见、更高效。</p>
+<h3>误区 3：卖方只是赚权利金，最后不一定真要履约</h3>
+<p>错。卖方收钱的代价，就是对方要兑现时你必须配合。</p>
+<h3>误区 4：到期日再看也不迟</h3>
+<p>非常危险。越靠近最后一天，价格、处理规则、交割风险、资金要求都会突然变得非常现实。</p>
+<h3>误区 5：期权报价看着不大，所以行权后果也不大</h3>
+<p>也错。你看到的可能只是 3.20、5.80 这样的报价，但合同一旦执行，背后是 <strong>100 股级别</strong> 的真实持仓和资金变化。</p>
+<hr>
+<h2>8.15 本章小结：期权最后不是“消失”，而是按照合同逻辑落地</h2>
+<p>这一章最重要的，不是你背了多少术语，而是你终于建立了一个成熟的合同视角：</p>
+<ul><li>期权不是只有买进卖出两个动作；</li><li>它背后还有行权和被行权；</li><li>买方的本质是有权决定是否兑现；</li><li>卖方的本质是收钱以后承担履约义务；</li><li>越接近到期，风险就越从“观点判断”转向“仓位后果”。</li></ul>
+<p>如果你把这层吃透了，你以后看期权就不会再停留在图表和报价上。</p>
+<p>你会真正意识到：</p>
+<blockquote><p><strong>期权本质上是一份最终可能被执行的合同。</strong></p></blockquote>
+<p>而成熟交易者和新手最大的区别之一，就是前者在开仓那一刻，就已经想过：</p>
+<ul><li>如果最后被执行，会发生什么；</li><li>我的账户能不能承受；</li><li>我是不是愿意走到那一步。</li></ul>
+<p>这才是对期权真正负责的态度。</p>
+<hr>
+<h2>自测题</h2>
+<p>1）为什么说“买方拥有权利，卖方承担义务”是理解行权与被行权的核心？</p>
+<p>2）买入一张 ITM Call 后，为什么多数普通交易者更常选择卖出平仓，而不是直接行权？</p>
+<p>3）卖出一张 Put 后，如果被行权，卖方会发生什么？</p>
+<p>4）为什么很多人不应该把期权硬拿到最后一天？请至少写出三个原因。</p>
+<p>5）美式期权和欧式期权最大的区别是什么？这个区别对卖方意味着什么？</p>
+<hr>
+<h2>下一章预告：一图胜千言——四大单腿策略的到期收益图</h2>
+<p>到这里，我们已经把：</p>
+<ul><li>概念</li><li>价格结构</li><li>时间价值分布</li><li>时间衰减</li><li>行权与被行权</li></ul>
+<p>这几个最关键的底层逻辑打牢了。</p>
+<p>下一章我们就正式进入一个非常关键的视觉化阶段：</p>
+<ul><li>Long Call</li><li>Short Call</li><li>Long Put</li><li>Short Put</li></ul>
+<p>四种最基础单腿策略的到期收益图。</p>
+<p>到了那一章，你会开始真正把期权从“会背概念”推进到“脑子里能自动长出图形”。这一步，是建立交易直觉的关键。</p>
+<hr>
+<h2>本章参考口径（便于追溯）</h2>
+<ul><li>OCC / OIC：用于校准 exercise、assignment、American / European style 的基础定义和合约逻辑</li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li></ul>
+<ul><li>Investor.gov：用于保持“期权是权利而非义务”的基础法则表述准确</li><li><a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/options">https://www.investor.gov/introduction-investing/investing-basics/glossary/options</a></li></ul>
+<ul><li>Fidelity Options Learning Center：用于保持行权、平仓、到期处理相关教学表述与券商教育口径一致</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li></ul>
+            </article>
+        </section>
+
+        <section class="section" id="chapter-navigation" aria-labelledby="chapter-navigation-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">03</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
+                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
+                </div>
+            </div>
+
+            <div class="chapter-nav-card">
+                <div class="chapter-nav-grid">
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">上一章</div>
+                        <a class="chapter-nav-link" href="./07.html">第 07 章 · 时间衰减</a>
+                        <p>聚焦时间衰减对买方与卖方的不同影响，建立期权持仓随时间变化的实战直觉。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">返回课程</div>
+                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
+                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">下一章</div>
+                        <a class="chapter-nav-link" href="./index.html">更多章节同步中</a>
+                        <p>下一篇发布后会自动出现在这里。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>期权教材 · 结构化学习 · HTML 优先</p>
+        <p class="disclaimer">
+            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
+        </p>
+    </footer>
+
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
+
+    <script src="../js/main.js?v=20260324a"></script>
+</body>
+</html>

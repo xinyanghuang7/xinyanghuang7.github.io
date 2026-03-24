@@ -127,7 +127,7 @@ def sync_index(posts: list[dict]) -> None:
     if not pattern.search(content):
         raise SystemExit("index.html missing ARCHIVE_ITEMS markers")
     replaced = pattern.sub(rf"\1\n{archive_html}\n                            \3", content)
-    INDEX_FILE.write_text(replaced, encoding="utf-8-sig")
+    INDEX_FILE.write_text(replaced, encoding="utf-8")
 
 
 def sync_posts_data(posts: list[dict]) -> None:
