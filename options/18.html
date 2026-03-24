@@ -249,7 +249,13 @@
             <article class="chapter-body-card">
 <h1>《美股期权教材》</h1>
 <h2>第18章 PMCC：为什么它被叫做“穷人版 Covered Call”，以及它到底便宜在什么地方、危险又藏在哪里</h2>
-<blockquote><p>这一章也一定要贴着图片看，因为图里已经把 PMCC 的核心讲得很清楚：  - <strong>PMCC = LEAP Call + 卖短期 Call</strong> - 它本质上是在用一张长期、深度 ITM 的 Call，去替代本来需要的 100 股正股； - 然后再像 Covered Call 那样，卖出近月 Call 去收租。  图片里还给了几个非常关键的提醒：  - PMCC 和 Covered Call 的投资逻辑很像； - 它的优点是<strong>大幅降低前置资金成本</strong>； - 但它不是白送的，因为长期 Call 自己也会有： - 时间损耗； - Vega / IV 敏感度； - 对 long leg 选择质量的高度依赖； - 实操上，long leg 要尽量选： - <strong>一年以上的 LEAP</strong>； - <strong>deep ITM</strong>； - <strong>delta 尽量高（图里建议 &gt; 0.85）</strong>； - <strong>流动性要好</strong>； - 短腿的管理则和 Covered Call 很像： - 平仓； - Roll； - 遇到暴涨不要装死。  所以这一章最重要的，不是把 PMCC 当成一个新奇名字，而是把它翻成人话：  &gt; <strong>PMCC 就是‘我没那么多钱先买 100 股，但我想用一张足够像正股的长期 Call，当作正股替身，再拿它去做 Covered Call。’</strong>  只要这句话你真的懂了，后面的风险和细节就能顺着走。</p></blockquote>
+<blockquote><p>这一章也一定要贴着图片看，因为图里已经把 PMCC 的核心讲得很清楚：</p>
+<ul><li><strong>PMCC = LEAP Call + 卖短期 Call</strong></li><li>它本质上是在用一张长期、深度 ITM 的 Call，去替代本来需要的 100 股正股；</li><li>然后再像 Covered Call 那样，卖出近月 Call 去收租。</li></ul>
+<p>图片里还给了几个非常关键的提醒：</p>
+<ul><li>PMCC 和 Covered Call 的投资逻辑很像；</li><li>它的优点是<strong>大幅降低前置资金成本</strong>；</li><li>但它不是白送的，因为长期 Call 自己也会有：</li><li>时间损耗；</li><li>Vega / IV 敏感度；</li><li>对 long leg 选择质量的高度依赖；</li><li>实操上，long leg 要尽量选：</li><li><strong>一年以上的 LEAP</strong>；</li><li><strong>deep ITM</strong>；</li><li><strong>delta 尽量高（图里建议 &gt; 0.85）</strong>；</li><li><strong>流动性要好</strong>；</li><li>短腿的管理则和 Covered Call 很像：</li><li>平仓；</li><li>Roll；</li><li>遇到暴涨不要装死。</li></ul>
+<p>所以这一章最重要的，不是把 PMCC 当成一个新奇名字，而是把它翻成人话：</p>
+<blockquote><p><strong>PMCC 就是‘我没那么多钱先买 100 股，但我想用一张足够像正股的长期 Call，当作正股替身，再拿它去做 Covered Call。’</strong></p></blockquote>
+<p>只要这句话你真的懂了，后面的风险和细节就能顺着走。</p></blockquote>
 <hr>
 <h1>一、先把 PMCC 讲成人话：它本质上是在找一个“便宜版正股替身”</h1>
 <h2>18.1 为什么会有人发明 PMCC</h2>

@@ -64,6 +64,13 @@ class BuildOptionsCourseTests(unittest.TestCase):
         self.assertIn("<h5>例子 A</h5>", html)
         self.assertNotIn("<p>##### 例子 A</p>", html)
 
+    def test_render_markdown_preserves_blockquote_lists(self) -> None:
+        markdown = "> 引用前言\n> - 第一条\n> - 第二条"
+        html = mod.render_markdown(markdown)
+        self.assertIn("<blockquote>", html)
+        self.assertIn("<p>引用前言</p>", html)
+        self.assertIn("<ul><li>第一条</li><li>第二条</li></ul>", html)
+
     def test_render_stats_uses_next_unpublished_batch(self) -> None:
         chapters = [
             mod.Chapter("01", "一", "s1", "A", "Batch 1", "published", "a.md", "options/01.html", "一", 1),

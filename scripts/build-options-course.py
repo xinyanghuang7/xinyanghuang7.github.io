@@ -198,6 +198,7 @@ def render_markdown(markdown_text: str) -> str:
         nonlocal blockquote_lines
         if not blockquote_lines:
             return
+        quote_markdown = "\n".join(line.rstrip() for line in blockquote_lines).strip()
         quote_text = " ".join(line.strip() for line in blockquote_lines).strip()
         callout = detect_callout(quote_text)
         if callout:
@@ -208,7 +209,8 @@ def render_markdown(markdown_text: str) -> str:
                 f'<p>{render_inline(body)}</p></aside>'
             )
         else:
-            out.append(f"<blockquote><p>{render_inline(quote_text)}</p></blockquote>")
+            quote_html = render_markdown(quote_markdown)
+            out.append(f"<blockquote>{quote_html}</blockquote>")
         blockquote_lines = []
 
     while i < len(lines):
