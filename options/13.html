@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="通过 Covered Call、Protective Put 等经典结构，理解不同策略为何会呈现相近的风险收益形状。">
+    <meta name="author" content="ValueInvest">
+    <meta name="theme-color" content="#c9a227">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="canonical" href="https://4fire.qzz.io/options/13.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://4fire.qzz.io/options/13.html">
+    <meta property="og:title" content="经典组合与期权平价 | 美股期权教材">
+    <meta property="og:description" content="通过 Covered Call、Protective Put 等经典结构，理解不同策略为何会呈现相近的风险收益形状。">
+    <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="经典组合与期权平价 | 美股期权教材">
+    <meta name="twitter:description" content="通过 Covered Call、Protective Put 等经典结构，理解不同策略为何会呈现相近的风险收益形状。">
+    <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <title>经典组合与期权平价 | 美股期权教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css?v=20260324b">
+    <style>
+        .chapter-meta-bar {
+            width: min(1100px, calc(100% - 2rem));
+            margin: -2.25rem auto 0;
+            padding: 1rem 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+            position: relative;
+            z-index: 2;
+        }
+
+        .chapter-meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-secondary);
+            background: rgba(201, 162, 39, 0.08);
+            font-size: 0.95rem;
+        }
+
+        .chapter-meta-link {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .chapter-meta-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .chapter-shell {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .chapter-summary-card,
+        .chapter-body-card,
+        .chapter-nav-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+        }
+
+        .chapter-summary-card p,
+        .chapter-nav-card p {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card {
+            line-height: 1.9;
+            color: var(--text-primary);
+        }
+
+        .chapter-body-card h2,
+        .chapter-body-card h3,
+        .chapter-body-card h4 {
+            color: var(--text-primary);
+            margin-top: 1.6em;
+        }
+
+        .chapter-body-card p,
+        .chapter-body-card li,
+        .chapter-body-card blockquote {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card ul,
+        .chapter-body-card ol {
+            padding-left: 1.2rem;
+        }
+
+        .chapter-body-card blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.25rem;
+            border-left: 3px solid var(--accent-gold);
+            background: rgba(201, 162, 39, 0.08);
+            border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .chapter-nav-slot {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            min-height: 100%;
+            padding: 1rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(201, 162, 39, 0.06);
+        }
+
+        .chapter-nav-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .chapter-nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .chapter-nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        @media (max-width: 800px) {
+            .chapter-nav-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chapter-summary-card,
+            .chapter-body-card,
+            .chapter-nav-card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "经典组合与期权平价",
+        "description": "通过 Covered Call、Protective Put 等经典结构，理解不同策略为何会呈现相近的风险收益形状。",
+        "author": {
+            "@type": "Person",
+            "name": "ValueInvest"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ValueInvest",
+            "sameAs": "https://4fire.qzz.io/"
+        },
+        "mainEntityOfPage": "https://4fire.qzz.io/options/13.html",
+        "isPartOf": {
+            "@type": "Course",
+            "name": "美股期权教材",
+            "url": "https://4fire.qzz.io/options/"
+        },
+        "image": [
+            "https://4fire.qzz.io/images/hero-bg.jpg"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
+
+    <header id="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="期权章节页主导航">
+                <ul class="nav-links">
+                    <li><a href="../index.html">返回首页</a></li>
+                    <li><a href="./index.html">返回课程</a></li>
+                    <li><a href="#chapter-navigation">章节导航</a></li>
+                </ul>
+            </nav>
+            <div class="nav-date">第 13 章</div>
+        </div>
+    </header>
+
+    <section class="hero" role="banner">
+        <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
+        <div class="hero-content">
+            <div class="subtitle">进阶结构与波动率篇</div>
+            <h1>第 13 章 · 经典组合与期权平价</h1>
+            <p class="tagline">进阶结构与波动率篇 · Batch 4</p>
+            <p class="hero-description">通过 Covered Call、Protective Put 等经典结构，理解不同策略为何会呈现相近的风险收益形状。</p>
+        </div>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
+    </section>
+
+    <div class="chapter-meta-bar" aria-label="章节关键信息">
+        <div class="chapter-meta-pill">章节编号：第 13 章</div>
+        <div class="chapter-meta-pill">Section：进阶结构与波动率篇</div>
+        <div class="chapter-meta-pill">Batch：Batch 4 · 已发布</div>
+        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
+    </div>
+
+    <main id="main" class="chapter-shell">
+        <section class="section" id="chapter-summary" aria-labelledby="chapter-summary-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">01</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
+                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
+                </div>
+            </div>
+
+            <div class="chapter-summary-card">
+                <p>通过 Covered Call、Protective Put 等经典结构，理解不同策略为何会呈现相近的风险收益形状。</p>
+            </div>
+        </section>
+
+        <section class="section" id="chapter-content" aria-labelledby="chapter-content-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">02</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
+                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
+                </div>
+            </div>
+
+            <article class="chapter-body-card">
+<h1>《美股期权教材》</h1>
+<h2>第13章 经典组合与期权平价：为什么 Covered Call、Protective Put、Short Put、Long Call 会互相“长得像”</h2>
+<blockquote><p>这一章一定要贴着图片看。  因为你这组图其实给了一个非常好的学习顺序：  1. 先看 <strong>Covered Call</strong> 到底是什么； 2. 再看它在真实账户里的几种常见用法； 3. 再看 <strong>Protective Put</strong> 是怎么给持仓上保险的； 4. 最后再回到一个更高阶的结论： - 为什么 Covered Call 很像 Short Put； - 为什么 Protective Put 很像 Long Call； - 为什么买 Call + 卖 Put 又会像直接持股。  也就是说，这章最重要的不是背公式，而是建立一种新的视角：  &gt; <strong>表面上动作不同、名字不同的策略，最后的风险收益结构，可能非常接近。</strong>  一旦你把这一点看明白，期权在你眼里就不再是一堆零散招式，而会开始变成一种“拼风险形状”的系统。</p></blockquote>
+<hr>
+<h1>一、先从最接地气的两个组合开始：Covered Call 和 Protective Put</h1>
+<h2>13.1 为什么这两个最适合当高阶入口</h2>
+<p>如果一上来就讲 Put-Call Parity 的公式，很多人会被吓跑。</p>
+<p>因为公式看起来像数学，不像交易。</p>
+<p>但你这组图的顺序很好，它没有先用公式吓人，而是先从两个非常接近真实账户的结构切进去：</p>
+<ul><li><strong>Covered Call</strong></li><li><strong>Protective Put</strong></li></ul>
+<p>为什么从它们开始特别好？</p>
+<p>因为它们都有一个共同点：</p>
+<blockquote><p><strong>你不是空手玩期权，而是在“本来就有正股仓位”的基础上，用期权去改造原来的仓位。</strong></p></blockquote>
+<p>这就比纯期权更贴近普通投资者真实的世界。</p>
+<p>很多人本来就有：</p>
+<ul><li>长期持有的股票；</li><li>已经盈利的核心仓位；</li><li>不想轻易卖掉的持仓；</li><li>想降低成本、增加收入、或者防一波大跌的现实需求。</li></ul>
+<p>这时候，Covered Call 和 Protective Put 就特别像两种“给现有持仓装配件”的方式：</p>
+<ul><li>一个是给持仓加租金；</li><li>一个是给持仓加保险。</li></ul>
+<p>这两个比喻非常重要，因为它们会让后面的高阶内容一直停留在人话层面：</p>
+<ul><li><strong>Covered Call = 收租</strong></li><li><strong>Protective Put = 买保险</strong></li></ul>
+<p>只要这两句一直抓住，后面再进公式也不会飘。</p>
+<hr>
+<h1>二、Covered Call：持股收租，但要接受上方利润被盖住</h1>
+<h2>13.2 最人话的定义：我手里先有 100 股，再把未来一段上涨空间租出去</h2>
+<p>图片里对 Covered Call 的定义非常清楚：</p>
+<ul><li>持有 100 股正股；</li><li>卖出 1 张对应的 Call。</li></ul>
+<p>把它翻成人话就是：</p>
+<blockquote><p><strong>我手里已经有货了，我愿意把未来一段上涨空间的一部分租出去，换一笔现在先到手的权利金。</strong></p></blockquote>
+<p>这里最关键的词就是：</p>
+<ul><li><strong>Covered（备兑）</strong></li></ul>
+<p>它不是普通的 Sell Call，而是：</p>
+<ul><li>你不是裸着卖；</li><li>你手里已经有现货；</li><li>所以后面真被行权，你至少有股票可以交。</li></ul>
+<p>这和裸卖 Call 是完全不同的动物。</p>
+<p>所以 Covered Call 的本质不是：</p>
+<ul><li>我在瞎赌上涨不会发生；</li></ul>
+<p>而更像：</p>
+<ul><li>我本来就持有股票；</li><li>我愿意在某个价格附近，把更高处那一截上涨让出去；</li><li>作为交换，我现在先收一笔钱。</li></ul>
+<hr>
+<h2>13.3 一个最具体的例子：苹果 150 成本，卖 160 Call 收 3 块，到底发生了什么</h2>
+<p>我们用图片里最适合新手理解的那种例子来讲。</p>
+<p>假设你手里有：</p>
+<ul><li>100 股苹果；</li><li>成本价 150。</li></ul>
+<p>你现在卖出：</p>
+<ul><li>1 张 160 的 Call；</li><li>收到 3 美元权利金。</li></ul>
+<p>这笔操作最人话的翻译是：</p>
+<ul><li>我仍然持有苹果；</li><li>但我愿意把“160 以上那段未来上涨”的一部分让出去；</li><li>作为交换，我今天先拿到 3 块钱。</li></ul>
+<p>现在分三种情况看。</p>
+<h3>情况 1：到期时股价在 155</h3>
+<p>这通常是 Covered Call 很舒服的结果。</p>
+<ul><li>正股从 150 涨到 155，你赚 5；</li><li>160 Call 没有真正打进价内，最后大概率作废；</li><li>你把 3 的权利金也全部留下。</li></ul>
+<p>所以你总体赚的是：</p>
+<ul><li>股票上涨这 5；</li><li>加上期权权利金这 3。</li></ul>
+<h3>情况 2：到期时股价在 160 附近</h3>
+<p>也很不错。</p>
+<ul><li>股票上涨 10；</li><li>Call 大概率贴近行权；</li><li>权利金 3 你也已经收到。</li></ul>
+<p>整体依然是漂亮结果。</p>
+<h3>情况 3：到期时股价冲到 175</h3>
+<p>这时候你不会亏，但你会开始感受到 Covered Call 的代价。</p>
+<p>因为：</p>
+<ul><li>你不是没赚钱；</li><li>但你会明显感觉到 160 以上那一大段上涨，你没全吃到。</li></ul>
+<p>也就是说，Covered Call 的核心交换是：</p>
+<blockquote><p><strong>少一点未来想象空间，换一笔现在就能落袋的真钱。</strong></p></blockquote>
+<p>这句话非常重要。</p>
+<hr>
+<h2>13.4 Covered Call 的收益图到底在表达什么</h2>
+<p>图片里收益图给得很直观：</p>
+<ul><li>下方不是完全没风险；</li><li>上涨前半段能赚钱；</li><li>但涨过某个位置后，上方会被压平。</li></ul>
+<p>如果把它翻成人话，你就能直接记住：</p>
+<blockquote><p><strong>Covered Call 很像持股那条上涨线，但上面被天花板盖住了一块。</strong></p></blockquote>
+<p>为什么？</p>
+<p>因为它本来就是两部分叠出来的：</p>
+<h3>部分 1：你持有正股</h3>
+<p>正股本来的图形是：</p>
+<ul><li>股价涨，一直赚；</li><li>股价跌，一直亏。</li></ul>
+<h3>部分 2：你卖出一张 Call</h3>
+<p>卖 Call 的效果是：</p>
+<ul><li>不大涨时，你舒服地拿权利金；</li><li>一旦涨太多，上方开始拖住你。</li></ul>
+<p>两者叠在一起就变成：</p>
+<ul><li>下跌时，你仍然有持股风险；</li><li>但因为先收了权利金，下跌初期会比纯持股稍微好一点；</li><li>上涨时，前半段还能跟着赚钱；</li><li>涨过行权价之后，上方利润开始封顶。</li></ul>
+<p>所以你以后看到 Covered Call，不要只想到“收租”，也要马上想到：</p>
+<ul><li>它不是防跌神器；</li><li>它只是给你一点点缓冲；</li><li>它真正改掉的，是<strong>上方收益结构</strong>。</li></ul>
+<hr>
+<h1>三、图片里 Covered Call 的四种常见用法，要讲得特别实</h1>
+<h2>13.5 用法一：收租——这是最常见、也最容易理解的场景</h2>
+<p>图片里第一种用法，讲得很直接：</p>
+<ul><li>赚取期权费；</li><li>常用词就叫“收租金”。</li></ul>
+<p>这个比喻非常贴切。</p>
+<p>适合什么情况？</p>
+<ul><li>你本来就长期持有这只股票；</li><li>你短期不指望它暴涨；</li><li>你更在意给现有持仓加一点额外收入。</li></ul>
+<p>这个场景特别像什么？</p>
+<ul><li>我有一套房，我先把它租出去，收一笔租金；</li><li>但作为交换，某些灵活性我让掉了一部分。</li></ul>
+<p>图片里还强调了几点实操上的判断：</p>
+<h3>1）适合拿来做 Covered Call 的股票</h3>
+<p>不是所有股票都适合。</p>
+<p>更适合的是：</p>
+<ul><li>你愿意长期持有的；</li><li>流动性好的；</li><li>不至于天天像妖股一样剧烈乱飞的。</li></ul>
+<p>为什么？</p>
+<p>因为如果你拿一只你本来就不想长期拿、而且特别容易暴涨暴跌的票去做 Covered Call，你会很难受：</p>
+<ul><li>跌的时候照样疼；</li><li>涨得太猛时又会后悔把上方卖掉。</li></ul>
+<h3>2）到期日怎么选</h3>
+<p>图片里给了一个很实在的提醒：</p>
+<ul><li>太短：时间价值多，但你盯盘和处理的频率也高，Gamma 风险更重；</li><li>太长：灵活性下降，拖得久，效率未必最好。</li></ul>
+<p>翻成人话：</p>
+<ul><li>短租，租金密，但你更累；</li><li>长租，省事一点，但机会成本更大。</li></ul>
+<h3>3）行权价怎么选</h3>
+<p>本质是在问：</p>
+<ul><li>我愿意让出去多少上涨空间；</li><li>我想多收多少租金；</li><li>我到底更怕踏空，还是更想先多收一点钱。</li></ul>
+<p>所以 Covered Call 不是死规则，而是一道偏好题。</p>
+<hr>
+<h2>13.6 用法二：被动止盈——我计划好未来上限，涨到那里就接受卖出</h2>
+<p>图片里第二种用法特别值得讲。</p>
+<p>很多人把 Covered Call 只理解成“收租”，其实它还有一个很实用的作用：</p>
+<blockquote><p><strong>被动止盈。</strong></p></blockquote>
+<p>什么意思？</p>
+<p>就是你本来心里就有一个大概的想法：</p>
+<ul><li>这只股票涨到某个位置，我也差不多愿意卖了；</li><li>那不如提前把那个位置附近的 Call 卖掉；</li><li>如果最后真涨到那儿，我就顺势被行权，同时先把权利金也拿了。</li></ul>
+<p>这和普通“挂一个卖出价”最大的区别在于：</p>
+<ul><li>你不是白等；</li><li>你在等待的过程中先收了一笔钱。</li></ul>
+<p>这就是为什么它特别适合那种：</p>
+<ul><li>本来就不看坏；</li><li>但也不指望无限上涨；</li><li>对未来有一个大概止盈预期的人。</li></ul>
+<p>这个用法很适合新手理解，因为它把 Covered Call 从“技术策略”重新讲回了“账户操作习惯”。</p>
+<hr>
+<h2>13.7 用法三：主动止盈 / 锁定已有利润——这时它更像“我不想把到手利润全吐回去”</h2>
+<p>图片里第三种用法也很实战：</p>
+<ul><li>主动止盈；</li><li>锁定正股已有盈利。</li></ul>
+<p>这个场景通常是这样：</p>
+<ul><li>你手里的股票已经涨了不少；</li><li>你心里开始担心：再不处理，万一回调把利润吐回去怎么办；</li><li>但你又不是特别想今天就立刻卖掉正股。</li></ul>
+<p>这时候，卖一个更贴近的 Call，确实会有“锁定一部分结果”的作用。</p>
+<p>但这里要讲得很诚实：</p>
+<ul><li>这不是万能锁盈；</li><li>这是一种带取舍的锁盈。</li></ul>
+<p>因为你锁住的同时，也是在把未来进一步上涨的弹性切掉一部分。</p>
+<p>所以这个动作特别适合：</p>
+<ul><li>你已经有不错利润；</li><li>你对短期继续大涨没有特别强信心；</li><li>你愿意用一点上方空间去换更确定的落袋感。</li></ul>
+<hr>
+<h2>13.8 用法四：降低开仓成本——不是神仙省钱，而是用未来上方空间换今天的成本补贴</h2>
+<p>图片里第四种用法也特别重要：</p>
+<ul><li>降低开仓成本。</li></ul>
+<p>这句话很容易被讲玄乎，我直接把它讲成人话：</p>
+<blockquote><p><strong>你不是把成本凭空变没，而是在说：我愿意让出一点未来上涨空间，换现在先收一笔权利金来补贴成本。</strong></p></blockquote>
+<p>比如你本来在 150 买的股票，卖出一个 Call 收到 3 块。</p>
+<p>从会计角度看，你的净成本确实像从 150 被“补贴”到 147 了。</p>
+<p>但这个“补贴”不是白送的，它的来源是：</p>
+<ul><li>你把未来某个区间的上行弹性让出去了。</li></ul>
+<p>所以所有“Covered Call 可以降低成本”这种说法，都要配这句一起理解：</p>
+<blockquote><p><strong>它不是白省钱，而是在拿未来空间换现在补贴。</strong></p></blockquote>
+<p>这样才不虚。</p>
+<hr>
+<h2>13.9 图片里还有一个很容易被忽略但很实用的点：Covered Call 也可以拿来做“弱对冲”</h2>
+<p>这一点很多教材一带而过，但你图片里专门点出来了，我觉得值得讲透。</p>
+<p>Covered Call 也可以拿来做一点点对冲，但它是：</p>
+<ul><li><strong>弱对冲</strong>；</li><li>不是完整保险。</li></ul>
+<p>为什么？</p>
+<p>因为你卖出 Call 收到的权利金，确实能在股票下跌时提供一点缓冲。</p>
+<p>但这个缓冲很有限：</p>
+<ul><li>股票小跌时，它像一个小垫子；</li><li>真遇到大跌，它根本不是 Protective Put 那种保险级别的保护。</li></ul>
+<p>所以你图片里把两者放在一起对比非常好：</p>
+<h3>Protective Put</h3>
+<ul><li>对冲更强；</li><li>下跌越多，保护越明显；</li><li>但成本高。</li></ul>
+<h3>Covered Call</h3>
+<ul><li>对冲更弱；</li><li>主要靠收到的权利金提供一点缓冲；</li><li>不会亏钱这话绝不能说，它只是稍微减震。</li></ul>
+<p>所以 Covered Call 做对冲时，最成熟的理解是：</p>
+<blockquote><p><strong>它不是拿来防大灾难的，它更像给持仓垫一层薄薄的缓冲垫。</strong></p></blockquote>
+<hr>
+<h1>四、Protective Put：继续拿股票，但给下跌买一份保险</h1>
+<h2>13.10 最人话的定义：我不想卖股票，但我也不想裸着扛大跌</h2>
+<p>Protective Put 的标准结构是：</p>
+<ul><li>持有 100 股正股；</li><li>再买入 1 张 Put。</li></ul>
+<p>翻成人话特别简单：</p>
+<blockquote><p><strong>我继续拿着股票，但我再花一笔钱，买一份下跌保险。</strong></p></blockquote>
+<p>这就是它最核心的逻辑。</p>
+<p>它和 Covered Call 很像一组镜子：</p>
+<ul><li>Covered Call：给持仓加租金；</li><li>Protective Put：给持仓加保险。</li></ul>
+<p>这两个比喻如果记牢，后面所有高阶内容都会容易很多。</p>
+<hr>
+<h2>13.11 Protective Put 适合什么样的人</h2>
+<p>它最适合的，不是那种本来就准备马上走人的仓位，而是下面这种心态：</p>
+<ul><li>我长期还想拿；</li><li>我不想因为短期担忧把股票卖掉；</li><li>但我也不想完全裸着扛大跌。</li></ul>
+<p>最典型的几个场景：</p>
+<h3>场景 1：财报前，不想卖掉核心仓位</h3>
+<p>长期逻辑没变，但财报节点不确定性太高。</p>
+<p>这时候：</p>
+<ul><li>直接卖股，可能太激进；</li><li>继续硬扛，又太裸；</li><li>买一张 Put，刚好把短期保护和长期持有拆开处理。</li></ul>
+<h3>场景 2：已经有较大盈利，不想全吐回去</h3>
+<p>股票涨了不少，你不想现在就卖，但也不想一波回撤把已得利润砸回去。</p>
+<p>这时候 Protective Put 会让你更心安。</p>
+<h3>场景 3：短期不确定，但长期没变</h3>
+<p>这其实是最常见、也最适合新手理解的场景。</p>
+<ul><li>我不是不看好；</li><li>我只是怕这段时间市场突然发疯；</li><li>我愿意花钱，换这段时间别裸奔。</li></ul>
+<hr>
+<h2>13.12 Protective Put 的好处和坏处，必须一起看</h2>
+<p>图片里讲得很清楚，我这里直接翻成人话。</p>
+<h3>好处：保留上涨，限制下跌</h3>
+<p>你持有正股，所以：</p>
+<ul><li>如果股价继续涨，你依然能继续参与上涨。</li></ul>
+<p>你又持有 Put，所以：</p>
+<ul><li>如果股价大跌，Put 会增值，帮你对冲掉一部分甚至很大一部分伤害。</li></ul>
+<p>所以 Protective Put 最漂亮的地方就是：</p>
+<blockquote><p><strong>上面还开着，下面开始有护栏。</strong></p></blockquote>
+<h3>坏处：贵</h3>
+<p>这也是它最真实的问题。</p>
+<p>保险从来都不是免费的。</p>
+<p>尤其在下面这些情况下，Protective Put 会显得更贵：</p>
+<ul><li>你买得比较靠近 ATM；</li><li>市场本来就很恐慌，IV 很高；</li><li>你买的是比较近、比较厚的保护。</li></ul>
+<p>所以 Protective Put 最大的现实矛盾是：</p>
+<blockquote><p><strong>我愿不愿意花这笔保费，换一段时间的心安？</strong></p></blockquote>
+<p>这不是数学题，是偏好题。</p>
+<hr>
+<h2>13.13 ATM Put 和 OTM Put，到底是在选什么</h2>
+<p>图片里这一点讲得特别实，我觉得必须保留。</p>
+<p>它说：</p>
+<ul><li>ATM Put：保护更强，但更贵；</li><li>OTM Put：更便宜，但保护来得更晚。</li></ul>
+<p>翻成人话就是：</p>
+<h3>买 ATM Put</h3>
+<p>像买一份很厚的保险。</p>
+<ul><li>一跌就开始保护；</li><li>保护很直接；</li><li>但保费更高。</li></ul>
+<h3>买 OTM Put</h3>
+<p>像买一份灾难险。</p>
+<ul><li>平时更便宜；</li><li>小跌时它帮不上那么多；</li><li>但真碰到大跌，它才会越来越有存在感。</li></ul>
+<p>所以这里真正的问题不是：</p>
+<ul><li>ATM 好还是 OTM 好？</li></ul>
+<p>而是：</p>
+<ul><li>我是想防“小跌就很难受”；</li><li>还是主要防“大跌别出事”？</li></ul>
+<p>这个差别特别重要。</p>
+<p>因为很多人嘴上说“我买了 Put 保护”，但如果买得太远 OTM，最后常常会遇到一种尴尬：</p>
+<ul><li>市场是跌了；</li><li>但还没跌到它真正开始大幅保护的位置；</li><li>结果看起来像白买了一样。</li></ul>
+<p>所以选择行权价，不是点一下那么简单，而是在选：</p>
+<blockquote><p><strong>我要多早开始保护，以及我要为这个保护付多少钱。</strong></p></blockquote>
+<hr>
+<h2>13.14 Protective Put 什么时候更值得买？图片里那个提醒非常实用：看 IV，不是只看股价线</h2>
+<p>这一点特别值钱。</p>
+<p>图片里直接提醒：</p>
+<ul><li>买 Protective Put 时，选开仓时机的关键，不是只看股价 K 线，<strong>更要看期权的 IV。</strong></li></ul>
+<p>这句话非常重要，因为很多人买保险只看“我怕不怕跌”，但不看“现在保险贵不贵”。</p>
+<p>如果你在极度恐慌、IV 很高的时候去买 Put，常常会遇到：</p>
+<ul><li>保护是有了；</li><li>但保费特别贵；</li><li>后面就算没出事，或只是普通回调，你也会很心疼。</li></ul>
+<p>所以更成熟的思路应该是：</p>
+<ul><li>不是我害怕，就立刻无脑买；</li><li>而是我也要看：</li><li>现在 Put 是不是已经被恐慌抬得特别贵；</li><li>有没有更合适的时机去买这份保护。</li></ul>
+<p>这就是为什么图片里会写：</p>
+<ul><li>IV 低：long put 性价比更高；</li><li>IV 高：要想办法考虑怎么降低保护成本。</li></ul>
+<p>这个提醒非常实战，不是书面话。</p>
+<hr>
+<h2>13.15 图片里“降低 Protective Put 成本”的三种思路，要讲得诚实一点</h2>
+<p>这是这一章最容易被写虚的地方，我直接讲透。</p>
+<p>图片里给了三种降低 Protective Put 成本的思路：</p>
+<h3>方法 1：Long Put + 卖更低行权价 Put</h3>
+<p>这本质上是在说：</p>
+<ul><li>我还是要买保护；</li><li>但更深那一段极端下跌，我不想全部都保；</li><li>所以我卖一个更低行权价的 Put 来补贴成本。</li></ul>
+<p>这样确实能省钱。</p>
+<p>但你省下的钱，不是白送的，而是在说：</p>
+<ul><li>最深那一截风险，我重新承接了一部分。</li></ul>
+<h3>方法 2：Protective Put + 再卖一个更深 OTM Put</h3>
+<p>它本质上和上面类似，都是在拿“更极端的下方承接义务”来换保费补贴。</p>
+<h3>方法 3：Protective Put + 卖 Call = Collar</h3>
+<p>这是图片里明确推荐的一条路。</p>
+<p>什么意思？</p>
+<ul><li>我继续买 Put 保护下方；</li><li>同时卖一个 Call，收一点权利金来补贴 Put 成本；</li><li>代价是我把上方一部分收益也封起来。</li></ul>
+<p>所以这三种“降成本”方式，归根结底都在说同一句话：</p>
+<blockquote><p><strong>我想少花点保费，但我必须同时让出一点别的东西。</strong></p></blockquote>
+<p>这才是诚实的讲法。</p>
+<p>市场里没有白省下来的保险费。</p>
+<hr>
+<h1>五、把 Covered Call 和 Protective Put 放在一起看：你会看见两种完全相反的持仓改造方式</h1>
+<h2>13.16 一个拿上涨空间换现金流，一个拿现金流换下跌保护</h2>
+<p>现在我们把这两者放在一起看，效果会特别清楚。</p>
+<h3>Covered Call 在改什么？</h3>
+<ul><li>你本来持有正股；</li><li>你把未来一部分上涨空间卖出去；</li><li>换来现在的权利金收入。</li></ul>
+<p>所以它在做的是：</p>
+<ul><li><strong>拿上方弹性，换现金流。</strong></li></ul>
+<h3>Protective Put 在改什么？</h3>
+<ul><li>你本来持有正股；</li><li>你再买一份下跌保险；</li><li>用保费换更清楚的下方保护。</li></ul>
+<p>所以它在做的是：</p>
+<ul><li><strong>拿现金流（成本），换下方护栏。</strong></li></ul>
+<p>一个偏“收租”，一个偏“买保险”。</p>
+<p>这两个动作方向正好相反，所以特别适合用来建立组合策略直觉。</p>
+<hr>
+<h1>六、现在才轮到 Put-Call Parity：真正值钱的不是公式，而是“结构等价”</h1>
+<h2>13.17 先把最重要的结论放前面：不同零件，可能拼出同一张风险图</h2>
+<p>Put-Call Parity 真正值钱的地方，不是让你显得懂公式，而是它在提醒你：</p>
+<blockquote><p><strong>不同的零件组合，最后可能拼出非常接近的收益风险结构。</strong></p></blockquote>
+<p>这句话很重要。</p>
+<p>因为很多人学策略时，最容易被名字骗：</p>
+<ul><li>这个叫 Covered Call；</li><li>那个叫 Short Put；</li><li>那个又叫 Protective Put；</li><li>那个叫 Long Call。</li></ul>
+<p>名字一多，就容易觉得它们彼此毫无关系。</p>
+<p>但真正把图拿出来一比，你会发现：</p>
+<ul><li>很多结构虽然部件不同；</li><li>但它们的骨架很像；</li><li>所以它们在风险收益上会给你差不多的体验。</li></ul>
+<p>这就是期权平价最该先学到的，不是公式，而是：</p>
+<blockquote><p><strong>不要只记名字，要看它最后长得像什么。</strong></p></blockquote>
+<hr>
+<h2>13.18 为什么 Protective Put 很像 Long Call</h2>
+<p>我们先看最容易懂的一组。</p>
+<h3>Protective Put = 持股 + 买 Put</h3>
+<p>它的效果是：</p>
+<ul><li>上涨时，你继续跟着股票赚钱；</li><li>下跌时，Put 会帮你兜底；</li><li>所以下方开始被托住，上方仍然打开。</li></ul>
+<p>你把这个结构在脑中画一下，会不会觉得很熟？</p>
+<p>很像什么？</p>
+<h3>Long Call</h3>
+<p>为什么像？</p>
+<p>因为 Long Call 的气质本来就是：</p>
+<ul><li>下方亏损有限；</li><li>上方盈利打开。</li></ul>
+<p>所以尽管它们表面动作完全不同：</p>
+<ul><li>一个是“持股 + 买 Put”；</li><li>一个是“单独买 Call”；</li></ul>
+<p>但最后呈现出来的图形和风险直觉会非常接近。</p>
+<p>这就是为什么很多教材都会说：</p>
+<blockquote><p><strong>Protective Put ≈ Long Call</strong></p></blockquote>
+<p>这里的“≈”不是说它们细节一模一样，而是说：</p>
+<ul><li><strong>风险结构非常像。</strong></li></ul>
+<hr>
+<h2>13.19 为什么 Covered Call 很像 Short Put</h2>
+<p>同样的思路再来一遍。</p>
+<h3>Covered Call = 持股 + 卖 Call</h3>
+<p>它的气质是：</p>
+<ul><li>先收权利金；</li><li>不大涨时比较舒服；</li><li>上方封顶；</li><li>下方仍然有风险，只是稍微有一点权利金缓冲。</li></ul>
+<p>这个图形，像不像你前面学过的另一个东西？</p>
+<p>很像：</p>
+<h3>Short Put</h3>
+<p>为什么？</p>
+<p>因为 Short Put 也是：</p>
+<ul><li>先收权利金；</li><li>只要不大跌，通常都舒服；</li><li>一旦往下掉很多，风险逐渐打开。</li></ul>
+<p>所以你会发现一件非常有意思的事：</p>
+<ul><li>表面上，一个是“持股 + 卖 Call”；</li><li>另一个是“单独卖 Put”；</li></ul>
+<p>听起来像两件完全不同的事。</p>
+<p>但把收益图拿出来对照时，你会发现：</p>
+<blockquote><p><strong>它们在风险收益结构上非常接近。</strong></p></blockquote>
+<p>这就是为什么教材和图片总爱把它们配对讲。</p>
+<p>不是为了凑对子，而是因为它们骨子里真的很像。</p>
+<hr>
+<h2>13.20 现在才上公式：你不用先背，只要先懂它在说什么</h2>
+<p>更完整的金融学版本里，Put-Call Parity 会考虑：</p>
+<ul><li>行权价现值；</li><li>利率；</li><li>有些标的还要考虑股息。</li></ul>
+<p>但在我们这本教材的阶段，你先抓住“教学版骨架”就够了。</p>
+<p>最常见的简化表达是：</p>
+<blockquote><p><strong>S + P = C + K（或 K 的现值）</strong></p></blockquote>
+<p>你现在先不要被字母吓到。它在说的人话其实是：</p>
+<ul><li>持有股票，再加一张 Put；</li><li>在风险结构上，会很像一张 Call，再加一笔确定性的现金垫子。</li></ul>
+<p>这说明什么？</p>
+<p>说明公式不是在耍魔法，而是在说：</p>
+<blockquote><p><strong>这些零件拼起来，最后的风险形状是对应得上的。</strong></p></blockquote>
+<p>所以目前阶段，你最实用的两个“结构翻译”就够了：</p>
+<h3>结构翻译 1</h3>
+<p><strong>Protective Put ≈ Long Call</strong></p>
+<h3>结构翻译 2</h3>
+<p><strong>Covered Call ≈ Short Put</strong></p>
+<p>先把这两句消化透，比背一串字母更值钱。</p>
+<hr>
+<h1>七、Synthetic Long（合成多头）：为什么买 Call + 卖 Put 会越来越像持股</h1>
+<h2>13.21 最通俗的人话：上方跟着涨，下方也开始承担跌，那就越来越像股票</h2>
+<p>Synthetic Long 最经典的教学表达是：</p>
+<blockquote><p><strong>买 Call + 卖 Put ≈ 持有正股</strong></p></blockquote>
+<p>为什么？</p>
+<p>你把这两部分拆开看：</p>
+<h3>买 Call</h3>
+<ul><li>上涨时你有弹性；</li><li>下跌时亏损有限在权利金。</li></ul>
+<h3>卖 Put</h3>
+<ul><li>不跌时你舒服地收权利金；</li><li>大跌时你开始承担下方风险。</li></ul>
+<p>两者叠起来会发生什么？</p>
+<ul><li>上方，你越来越像在跟着正股一起涨；</li><li>下方，你也会像持股一样开始承担下跌；</li><li>整体形状越来越接近“直接持股”。</li></ul>
+<p>所以它叫“合成多头”，不是空话。</p>
+<p>它的意思就是：</p>
+<ul><li>我没有真的去买股票；</li><li>但我用期权部件，拼出了一个很像股票多头的骨架。</li></ul>
+<hr>
+<h2>13.22 这个概念值钱，不是因为你明天就一定要用，而是因为它会改变你看策略的方式</h2>
+<p>很多人第一次看到 Synthetic Long，会忍不住想：</p>
+<ul><li>那我以后是不是都不用直接买股票了？</li></ul>
+<p>这不是当前最重要的问题。</p>
+<p>当前最重要的是，它会训练你一种更高级的眼光：</p>
+<ul><li>你以后不会只看策略名字；</li><li>你会开始看：这个结构最后更像什么？</li></ul>
+<p>这比死记“这叫策略 A，那叫策略 B”高一个维度。</p>
+<p>因为随着你越往后学，策略名字会越来越多，但底层风险形状并没有无限多。</p>
+<p>所以 Synthetic Long 这件事最值钱的，不是让你今天立刻上手，而是让你建立一个观念：</p>
+<blockquote><p><strong>期权世界里，很多东西都可以被合成。</strong></p></blockquote>
+<p>一旦能被合成，就意味着：</p>
+<ul><li>你可以比较不同路径的成本；</li><li>你可以比较不同路径的流动性；</li><li>你可以比较不同路径的保证金压力；</li><li>你可以发现，有些看起来完全不同的东西，其实只是换了一套零件。</li></ul>
+<p>这就是这章真正高级的地方。</p>
+<hr>
+<h1>八、本章最该带走的一句话：不要只记名字，要看风险结构</h1>
+<h2>13.23 这章真正想让你学会的，是“看穿骨架”</h2>
+<p>如果把这一章压成一句最值钱的话，我希望是：</p>
+<blockquote><p><strong>不要只记策略名字，要看它的风险结构。</strong></p></blockquote>
+<p>因为这章所有内容，最后都指向同一个地方：</p>
+<ul><li>Covered Call 和 Short Put 很像；</li><li>Protective Put 和 Long Call 很像；</li><li>Buy Call + Sell Put 很像持股。</li></ul>
+<p>也就是说：</p>
+<ul><li>表面动作可以不同；</li><li>但只要最后收益图像，风险结构就接近。</li></ul>
+<p>你一旦建立这种思维，期权就会从“背招式”变成“拼图形”。</p>
+<p>而这，才是高阶内容真正值钱的地方。</p>
+<p>不是术语多，而是你开始看穿它们背后的骨架。</p>
+<hr>
+<h1>九、本章小结：从这一章开始，期权不再是一招一式，而开始变成“风险工程”</h1>
+<p>这一章你真正学到的，可以压成下面几层：</p>
+<h3>第一层：Covered Call</h3>
+<ul><li>持股 + 卖 Call；</li><li>像收租；</li><li>代价是上方利润被封住一部分。</li></ul>
+<h3>第二层：Protective Put</h3>
+<ul><li>持股 + 买 Put；</li><li>像买保险；</li><li>代价是要付保费。</li></ul>
+<h3>第三层：结构等价</h3>
+<ul><li>Covered Call ≈ Short Put；</li><li>Protective Put ≈ Long Call。</li></ul>
+<h3>第四层：合成思维</h3>
+<ul><li>买 Call + 卖 Put ≈ 持股；</li><li>很多策略可以用不同零件拼出来。</li></ul>
+<p>所以这章真正想让你看到的是：</p>
+<blockquote><p><strong>期权的高阶，不是更花哨，而是更会重组风险。</strong></p></blockquote>
+<p>你以后越往后学，越会发现：</p>
+<ul><li>市场上很多所谓复杂策略，本质上只是把这几种风险结构重新拼装；</li><li>真正成熟的人，不是名字背得多，而是看一眼就知道：这个结构到底更像什么。</li></ul>
+<p>这就是第 13 章的意义。</p>
+<hr>
+<h2>自测题</h2>
+<p>1）为什么说 Covered Call 更像“持股收租”，而不是单纯看空？</p>
+<p>2）Protective Put 为什么像“给持仓买保险”？它最主要的好处和代价分别是什么？</p>
+<p>3）为什么说 ATM Put 和 OTM Put 的差别，本质上是在“保护强度”和“保费成本”之间做选择？</p>
+<p>4）为什么说 Covered Call 和 Short Put 虽然部件不同，但风险结构很像？</p>
+<p>5）为什么说这章最重要的不是记公式，而是学会“结构等价”这件事？</p>
+<hr>
+<h2>下一章预告：BSM 与 IV——为什么你方向看对了，期权也不一定按你想的赚钱</h2>
+<p>前面我们已经把：</p>
+<ul><li>基础概念；</li><li>时间价值；</li><li>时间衰减；</li><li>单腿策略；</li><li>组合策略；</li><li>结构等价；</li></ul>
+<p>这些骨架搭得差不多了。</p>
+<p>下一章，我们就进入最容易让人“方向对了也不爽”的那块核心：</p>
+<ul><li>BSM 定价模型里到底哪些变量在动；</li><li>为什么 IV 会让 Call 和 Put 一起变贵；</li><li>为什么财报前后期权价格会出现很夸张的变化；</li><li>什么叫 IV Crush。</li></ul>
+<hr>
+<h2>本章参考口径（便于追溯）</h2>
+<ul><li>图片关联重点：<code>Covered Call</code>、<code>Covered Call 四种应用场景</code>、<code>Protective Put</code>、<code>ATM vs OTM Put</code>、<code>IV 时机</code>、<code>降低成本的 Collar 思路</code>、<code>Put-Call Parity</code>、<code>Synthetic Long</code></li><li>OCC / OIC：用于校准 covered call、protective put、synthetic long、put-call parity 的基础教育口径</li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li><li>Fidelity Options Strategy Guide：用于保持 Covered Call、Protective Put 的收益风险描述与主流券商口径一致</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li><li>CBOE Options Institute：用于保持组合策略与 parity / synthetic exposure 的教学术语一致</li><li><a href="https://www.cboe.com/optionsinstitute/">https://www.cboe.com/optionsinstitute/</a></li></ul>
+            </article>
+        </section>
+
+        <section class="section" id="chapter-navigation" aria-labelledby="chapter-navigation-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">03</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
+                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
+                </div>
+            </div>
+
+            <div class="chapter-nav-card">
+                <div class="chapter-nav-grid">
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">上一章</div>
+                        <a class="chapter-nav-link" href="./12.html">第 12 章 · 保证金与流动性</a>
+                        <p>回到账户现实，理解保证金要求与流动性条件如何直接限制策略可执行性与盈亏体验。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">返回课程</div>
+                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
+                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">下一章</div>
+                        <a class="chapter-nav-link" href="./14.html">第 14 章 · BSM 与 IV</a>
+                        <p>引入期权定价模型与隐含波动率，解释为什么方向看对时，期权盈亏仍可能不如预期。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>期权教材 · 结构化学习 · HTML 优先</p>
+        <p class="disclaimer">
+            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
+        </p>
+    </footer>
+
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
+
+    <script src="../js/main.js?v=20260324b"></script>
+</body>
+</html>
