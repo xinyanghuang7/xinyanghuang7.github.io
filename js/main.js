@@ -411,10 +411,23 @@ function cleanupBuildQueryParam(currentBuild) {
     try {
         const url = new URL(window.location.href);
         const activeBuild = url.searchParams.get(SITE_BUILD_QUERY_KEY);
-        if (activeBuild && activeBuild === currentBuild) {
+        if (!activeBuild) {
+            return;
+        }
+
+        if (activeBuild === currentBuild) {
             url.searchParams.delete(SITE_BUILD_QUERY_KEY);
             window.history.replaceState({}, document.title, url.toString());
             sessionStorage.removeItem(SITE_BUILD_RELOAD_KEY);
+            return;
+        }
+
+        const mismatchKey = `${url.pathname}|mismatch|${currentBuild}`;
+        const lastAttempt = sessionStorage.getItem(SITE_BUILD_RELOAD_KEY);
+        if (currentBuild && lastAttempt !== mismatchKey) {
+            sessionStorage.setItem(SITE_BUILD_RELOAD_KEY, mismatchKey);
+            url.searchParams.set(SITE_BUILD_QUERY_KEY, currentBuild);
+            window.location.replace(url.toString());
         }
     } catch (_) {
         // no-op
