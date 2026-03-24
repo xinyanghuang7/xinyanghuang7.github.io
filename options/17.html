@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="把 Protective Put 与 Covered Call 组合起来，理解在保留下行保护时如何交换上行空间。">
+    <meta name="author" content="ValueInvest">
+    <meta name="theme-color" content="#c9a227">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="canonical" href="https://4fire.qzz.io/options/17.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://4fire.qzz.io/options/17.html">
+    <meta property="og:title" content="Collar 衣领策略 | 美股期权教材">
+    <meta property="og:description" content="把 Protective Put 与 Covered Call 组合起来，理解在保留下行保护时如何交换上行空间。">
+    <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Collar 衣领策略 | 美股期权教材">
+    <meta name="twitter:description" content="把 Protective Put 与 Covered Call 组合起来，理解在保留下行保护时如何交换上行空间。">
+    <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <title>Collar 衣领策略 | 美股期权教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css?v=20260324b">
+    <style>
+        .chapter-meta-bar {
+            width: min(1100px, calc(100% - 2rem));
+            margin: -2.25rem auto 0;
+            padding: 1rem 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+            position: relative;
+            z-index: 2;
+        }
+
+        .chapter-meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-secondary);
+            background: rgba(201, 162, 39, 0.08);
+            font-size: 0.95rem;
+        }
+
+        .chapter-meta-link {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .chapter-meta-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .chapter-shell {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .chapter-summary-card,
+        .chapter-body-card,
+        .chapter-nav-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+        }
+
+        .chapter-summary-card p,
+        .chapter-nav-card p {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card {
+            line-height: 1.9;
+            color: var(--text-primary);
+        }
+
+        .chapter-body-card h2,
+        .chapter-body-card h3,
+        .chapter-body-card h4,
+        .chapter-body-card h5,
+        .chapter-body-card h6 {
+            color: var(--text-primary);
+            margin-top: 1.6em;
+        }
+
+        .chapter-body-card p,
+        .chapter-body-card li,
+        .chapter-body-card blockquote {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card ul,
+        .chapter-body-card ol {
+            padding-left: 1.2rem;
+        }
+
+        .chapter-body-card blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.25rem;
+            border-left: 3px solid var(--accent-gold);
+            background: rgba(201, 162, 39, 0.08);
+            border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .chapter-nav-slot {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            min-height: 100%;
+            padding: 1rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(201, 162, 39, 0.06);
+        }
+
+        .chapter-nav-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .chapter-nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .chapter-nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        @media (max-width: 800px) {
+            .chapter-nav-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chapter-summary-card,
+            .chapter-body-card,
+            .chapter-nav-card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Collar 衣领策略",
+        "description": "把 Protective Put 与 Covered Call 组合起来，理解在保留下行保护时如何交换上行空间。",
+        "author": {
+            "@type": "Person",
+            "name": "ValueInvest"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ValueInvest",
+            "sameAs": "https://4fire.qzz.io/"
+        },
+        "mainEntityOfPage": "https://4fire.qzz.io/options/17.html",
+        "isPartOf": {
+            "@type": "Course",
+            "name": "美股期权教材",
+            "url": "https://4fire.qzz.io/options/"
+        },
+        "image": [
+            "https://4fire.qzz.io/images/hero-bg.jpg"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
+
+    <header id="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="期权章节页主导航">
+                <ul class="nav-links">
+                    <li><a href="../index.html">返回首页</a></li>
+                    <li><a href="./index.html">返回课程</a></li>
+                    <li><a href="#chapter-navigation">章节导航</a></li>
+                </ul>
+            </nav>
+            <div class="nav-date">第 17 章</div>
+        </div>
+    </header>
+
+    <section class="hero" role="banner">
+        <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
+        <div class="hero-content">
+            <div class="subtitle">进阶结构与波动率篇</div>
+            <h1>第 17 章 · Collar 衣领策略</h1>
+            <p class="tagline">进阶结构与波动率篇 · Batch 5</p>
+            <p class="hero-description">把 Protective Put 与 Covered Call 组合起来，理解在保留下行保护时如何交换上行空间。</p>
+        </div>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
+    </section>
+
+    <div class="chapter-meta-bar" aria-label="章节关键信息">
+        <div class="chapter-meta-pill">章节编号：第 17 章</div>
+        <div class="chapter-meta-pill">Section：进阶结构与波动率篇</div>
+        <div class="chapter-meta-pill">Batch：Batch 5 · 已发布</div>
+        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
+    </div>
+
+    <main id="main" class="chapter-shell">
+        <section class="section" id="chapter-summary" aria-labelledby="chapter-summary-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">01</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
+                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
+                </div>
+            </div>
+
+            <div class="chapter-summary-card">
+                <p>把 Protective Put 与 Covered Call 组合起来，理解在保留下行保护时如何交换上行空间。</p>
+            </div>
+        </section>
+
+        <section class="section" id="chapter-content" aria-labelledby="chapter-content-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">02</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
+                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
+                </div>
+            </div>
+
+            <article class="chapter-body-card">
+<h1>《美股期权教材》</h1>
+<h2>第17章 Collar 衣领策略：我不想卖掉股票，但也不想再裸着扛</h2>
+<blockquote><p>这一章一定要和你刚才那两张 Collar 图一起看。  因为那两张图其实把 Collar 讲得很清楚了：  - 它的核心不是一个很新奇的东西； - 它本质上就是： - <strong>持有 100 股正股</strong> - <strong>买一张 Put</strong> - <strong>再卖一张 Call</strong> - 也就是： - <strong>Protective Put + Covered Call</strong>  所以 Collar 的真正逻辑，不是凭空创造了一个新动物，而是：  &gt; <strong>我想保留这只股票，但我觉得单独买 Put 太贵，于是我愿意牺牲一部分上方空间，来换更便宜、更可承受的下方保护。</strong>  这就是 Collar 最人话的定义。  前一章我们已经讲过：  - Covered Call 像收租； - Protective Put 像买保险。  而 Collar，其实就是把这两个动作绑在一起：  - 我一边买保险； - 一边把一部分上涨空间租出去； - 用租金去补保险费。  所以这章最值钱的理解不是术语，而是这句话：  <strong>Collar = 用上方收益的一部分，换下方保护。</strong></p></blockquote>
+<hr>
+<h1>一、先把 Collar 讲透：它不是“更高级”，而是更现实</h1>
+<h2>17.1 为什么会有人发明 Collar</h2>
+<p>如果你回想上一章，会发现：</p>
+<ul><li><strong>Protective Put</strong> 很美；</li><li>因为它能让你继续拿股票，同时给下跌装护栏。</li></ul>
+<p>但它也有一个现实问题：</p>
+<ul><li><strong>贵。</strong></li></ul>
+<p>尤其在：</p>
+<ul><li>市场本来就很慌；</li><li>IV 已经被抬高；</li><li>你又想买得比较厚、比较近的保护；</li></ul>
+<p>这时你会发现，单独买 Put 很容易变成一件“逻辑上很美，钱包上很疼”的事。</p>
+<p>于是市场就出现了一个特别现实的妥协版本：</p>
+<blockquote><p><strong>既然单独买 Put 太贵，那我能不能卖一个 Call，把收到的钱拿来补 Put 的成本？</strong></p></blockquote>
+<p>这就是 Collar 的诞生逻辑。</p>
+<p>所以 Collar 本质上不是在追求：</p>
+<ul><li>最猛的收益；</li><li>最性感的图形；</li></ul>
+<p>它更像在追求：</p>
+<ul><li>成本别太高；</li><li>下方别太疼；</li><li>我还能继续拿着这只股票。</li></ul>
+<p>这也是为什么它特别像“真实账户会用的东西”，而不是纯课堂策略。</p>
+<hr>
+<h2>17.2 最人话的定义：给股票戴个“安全帽”，但帽檐会挡掉一部分天空</h2>
+<p>图片里给的标准结构是：</p>
+<ul><li><strong>持有 100 股正股</strong></li><li><strong>买 OTM Put</strong></li><li><strong>卖 OTM Call</strong></li></ul>
+<p>如果你想把它一下子记住，我建议就用这个比喻：</p>
+<blockquote><p><strong>Collar 像给你的股票戴了一个安全帽。它能保护你别摔得太惨，但帽檐也会挡掉一部分你继续往上看的空间。</strong></p></blockquote>
+<p>为什么这个比喻好？</p>
+<p>因为它同时把 Collar 的两面都讲到了：</p>
+<h3>好处</h3>
+<ul><li>下方更安全；</li><li>你不用再完全裸着扛大跌；</li><li>Put 给你下方保护。</li></ul>
+<h3>代价</h3>
+<ul><li>你不是无限向上打开；</li><li>Call 会把上方收益封住一部分；</li><li>所以如果后面真的疯涨，你会赚少一点。</li></ul>
+<p>所以你以后看到 Collar，不要只记一句“低成本对冲”，还要同时记住：</p>
+<blockquote><p><strong>它永远是一笔交换。</strong></p></blockquote>
+<p>不是白得保护，而是：</p>
+<ul><li>让掉一点上方；</li><li>换来更便宜的下方护栏。</li></ul>
+<hr>
+<h1>二、Collar 的结构到底是什么：它其实就是“Covered Call + Protective Put”</h1>
+<h2>17.3 为什么我说这章和上一章是连着的</h2>
+<p>你刚学完第 13 章，所以这章其实很好接。</p>
+<p>因为我们前面已经知道：</p>
+<ul><li><strong>Covered Call = 持股 + 卖 Call</strong></li><li><strong>Protective Put = 持股 + 买 Put</strong></li></ul>
+<p>那么 Collar 呢？</p>
+<p>其实就是：</p>
+<ul><li>你先持有正股；</li><li>再买一个 Put；</li><li>再卖一个 Call。</li></ul>
+<p>所以它本质上就是：</p>
+<blockquote><p><strong>Protective Put + Covered Call</strong></p></blockquote>
+<p>只是这次，它们不是分开讲，而是组合成一个更现实的“持仓保护方案”。</p>
+<p>图片里专门把这件事点了出来，这一点特别好。因为它能帮你把 Collar 从“新策略”翻回“旧积木拼法”：</p>
+<ul><li>Put 这条腿，负责保护；</li><li>Call 这条腿，负责补贴成本；</li><li>正股本体，仍然是核心仓位。</li></ul>
+<p>所以这章不是突然跳出一个新世界，而是在告诉你：</p>
+<blockquote><p><strong>高阶策略很多时候并不是新动物，而是旧部件重新拼装。</strong></p></blockquote>
+<hr>
+<h2>17.4 一个标准例子：145 / 155 Collar，到底在干什么</h2>
+<p>图片里给了一个非常好的标准例子，我们就按它来讲。</p>
+<p>假设你手里有：</p>
+<ul><li>100 股苹果；</li><li>当前股价 150。</li></ul>
+<p>你现在做一个 Collar：</p>
+<ul><li>买 145 Put；</li><li>卖 155 Call；</li><li>两边期权费刚好差不多，比如都在 3 左右。</li></ul>
+<p>这时候会发生什么？</p>
+<h3>145 Put 在做什么</h3>
+<p>它是在说：</p>
+<ul><li>如果苹果往下跌得比较厉害，</li><li>到了 145 以下，你开始有明显保护。</li></ul>
+<p>换句话说，它在给你下方画一条“不要再太惨”的线。</p>
+<h3>155 Call 在做什么</h3>
+<p>它是在说：</p>
+<ul><li>如果苹果往上涨到 155 以上，</li><li>你后面更高的收益就不会完整保留了；</li><li>因为你把那一段上涨的一部分让出去了。</li></ul>
+<p>所以这个 Collar 整体上表达的意思就是：</p>
+<blockquote><p><strong>145 以下，我不想再太惨；155 以上，我也接受不再无限赚。中间这块区间，我继续正常持股。</strong></p></blockquote>
+<p>这就是 Collar 最核心的风险改造。</p>
+<hr>
+<h1>三、Collar 的收益图到底在表达什么</h1>
+<h2>17.5 先把图翻成人话：中间像持股，两头被修掉</h2>
+<p>如果你看图片里的收益图，会发现它很像一条被修剪过的持股收益线。</p>
+<p>为什么这么说？</p>
+<p>因为：</p>
+<h3>中间区间</h3>
+<p>也就是 Put 行权价和 Call 行权价之间的那一段。</p>
+<p>在这段区间里：</p>
+<ul><li>你整体上还是很像在持有股票；</li><li>股价涨一点，你账户也会跟着涨；</li><li>股价跌一点，你账户也会跟着跌；</li><li>只是期权费会让整体位置略微上移或下移一点。</li></ul>
+<h3>下方区间</h3>
+<p>也就是跌破 Put 行权价之后。</p>
+<p>这时候 Put 开始真正发挥保护作用：</p>
+<ul><li>股价继续往下掉；</li><li>Put 的价值上来；</li><li>你的总损失不会再像纯持股那样无限扩大。</li></ul>
+<p>所以图片里才会表现成：</p>
+<ul><li>左边那条线不再一直往下掉，</li><li>而是开始“变平”。</li></ul>
+<h3>上方区间</h3>
+<p>也就是涨过 Call 行权价之后。</p>
+<p>这时候卖出的 Call 开始真正拖住你：</p>
+<ul><li>股价继续往上冲；</li><li>你正股当然还在涨；</li><li>但卖出去的 Call 会把那部分额外上涨吃掉一部分。</li></ul>
+<p>所以图片右边也会出现：</p>
+<ul><li>上方不再无限打开，</li><li>而是开始“变平”。</li></ul>
+<p>如果把这张图压成一句最简单的人话，就是：</p>
+<blockquote><p><strong>Collar 像把一条本来无限上下打开的持股曲线，左右各修掉一截。</strong></p></blockquote>
+<p>这句话一定要记住。</p>
+<hr>
+<h2>17.6 Collar 的最大好处：把“最难看的结果”先画出来</h2>
+<p>很多人喜欢 Collar，不是因为它最赚钱，而是因为：</p>
+<ul><li>它让账户变得更可预期。</li></ul>
+<p>纯持股最难受的地方在于：</p>
+<ul><li>向上当然很好；</li><li>但向下理论上你得一路吃。</li></ul>
+<p>Protective Put 虽然也能解决这个问题，但它有时太贵。</p>
+<p>Collar 的好处在于：</p>
+<ul><li>你不一定零成本；</li><li>但至少能把下方最难看的结果先框住；</li><li>同时保费压力比单独买 Put 小很多。</li></ul>
+<p>所以它最适合的不是那种想赚极限利润的人，而是那种：</p>
+<ul><li>我已经有仓位；</li><li>我不想卖；</li><li>但我也不想继续无限裸露在下跌里；</li><li>我愿意拿一部分未来上涨空间换安全感。</li></ul>
+<p>这就是 Collar 的真正用户画像。</p>
+<hr>
+<h1>四、No Cost Collar 听起来很香，但你要知道“免费”到底是怎么来的</h1>
+<h2>17.7 所谓 No Cost，不是没有代价，而是“现金净支出接近 0”</h2>
+<p>图片里专门提到一个很容易让人误会的词：</p>
+<ul><li><strong>No Cost Collar</strong></li></ul>
+<p>很多人第一次听会误以为：</p>
+<ul><li>哦，这不就是免费保护吗？</li></ul>
+<p>不是。</p>
+<p>更准确的理解是：</p>
+<blockquote><p><strong>你卖 Call 收到的钱，差不多把你买 Put 花的钱抵掉了，所以从现金流上看，净支出接近 0。</strong></p></blockquote>
+<p>也就是说：</p>
+<ul><li>不是没有代价；</li><li>而是代价没有以“现金再掏出去”的形式出现。</li></ul>
+<p>真正的代价是什么？</p>
+<p>当然还是：</p>
+<ul><li>你把上方空间让出去了。</li></ul>
+<p>所以 No Cost Collar 应该这样理解：</p>
+<h3>它“免费”的地方</h3>
+<ul><li>你买 Put 的现金成本被卖 Call 的收入冲掉了。</li></ul>
+<h3>它“不免费”的地方</h3>
+<ul><li>你牺牲了未来继续上涨的那部分想象空间。</li></ul>
+<p>所以它不是魔法，而只是把成本从：</p>
+<ul><li>“直接花钱买保护”</li></ul>
+<p>改成了：</p>
+<ul><li>“让掉一部分未来收益，换保护”。</li></ul>
+<p>这才是诚实的讲法。</p>
+<hr>
+<h1>五、什么时候特别适合用 Collar</h1>
+<h2>17.8 场景一：我本来想用 Protective Put 对冲，但我嫌它太贵</h2>
+<p>图片里第一个使用场景写得很清楚，这也是最常见的场景。</p>
+<p>你心里可能是这样想的：</p>
+<ul><li>我确实想保护一下；</li><li>我也不想卖掉正股；</li><li>但单独买 Put 太肉疼了。</li></ul>
+<p>这时候 Collar 就特别合理。</p>
+<p>因为它让你做到：</p>
+<ul><li>下方保护还在；</li><li>只是没那么“奢侈”；</li><li>上方收益封掉一部分，拿来补贴 Put 成本。</li></ul>
+<p>所以对这种人来说，Collar 的价值不是：</p>
+<ul><li>最猛；</li><li>最赚；</li></ul>
+<p>而是：</p>
+<blockquote><p><strong>终于能买得起这份保护。</strong></p></blockquote>
+<p>很多真实账户用 Collar，就是在做这件事。</p>
+<hr>
+<h2>17.9 场景二：不是只对冲一只股票，而是做 Beta Hedging</h2>
+<p>图片里第二个使用场景特别有意思，而且比普通教材讲得更接近真实账户。</p>
+<p>它提到：</p>
+<ul><li><strong>Beta Hedging</strong></li></ul>
+<p>什么意思？</p>
+<p>人话讲就是：</p>
+<blockquote><p><strong>我不一定是怕某只个股暴雷，我更怕整个市场系统性回撤，所以我要给组合整体装一个对冲。</strong></p></blockquote>
+<p>比如：</p>
+<ul><li>你手里持有很多科技股；</li><li>你怕的是大盘或者科技板块整体回撤；</li><li>这时你不一定要一只一只股票分别去做 Collar；</li><li>你也可以考虑用更代表系统风险的标的来做。</li></ul>
+<p>图片里给得很具体：</p>
+<ul><li>想对冲大盘系统性风险，可以看 <strong>SPY</strong>；</li><li>科技股仓位特别重，可以看 <strong>QQQ</strong>。</li></ul>
+<p>这说明什么？</p>
+<p>说明 Collar 不一定只是一只股票级别的操作，它也可以是组合层面的动作。</p>
+<p>这一下，策略就从“单票技巧”升级成“组合管理工具”了。</p>
+<p>这点非常值钱。</p>
+<hr>
+<h1>六、OTM Collar 和 ATM Collar，到底在选什么</h1>
+<h2>17.10 同样都是 Collar，但对冲强度可以完全不同</h2>
+<p>图片里有一块非常重要：</p>
+<ul><li><strong>OTM Collar vs ATM Collar</strong></li></ul>
+<p>这块如果讲虚了，读者就只会记名字。我们把它讲成人话。</p>
+<h3>OTM Collar</h3>
+<p>意思通常是：</p>
+<ul><li>Put 买得没那么近；</li><li>Call 卖得也没那么近；</li><li>两条腿离当前股价稍微远一点。</li></ul>
+<p>这会带来什么效果？</p>
+<ul><li>下方保护没有那么激进；</li><li>上方空间也保留得更多；</li><li>中间可活动空间更宽。</li></ul>
+<p>所以 OTM Collar 更像：</p>
+<blockquote><p><strong>我想保护，但我又不想一下把自己绑得太死。</strong></p></blockquote>
+<h3>ATM Collar</h3>
+<p>意思通常是：</p>
+<ul><li>Put 很贴近当前股价；</li><li>Call 也很贴近当前股价；</li><li>两条腿更靠近现在的位置。</li></ul>
+<p>这会带来什么效果？</p>
+<ul><li>下方保护更强；</li><li>上方空间也会被压得更狠；</li><li>整体更像“强对冲模式”。</li></ul>
+<p>所以 ATM Collar 更像：</p>
+<blockquote><p><strong>我这次主要目标不是继续赚大钱，而是把系统性风险先压住。</strong></p></blockquote>
+<p>这就是图片里那句很值钱的话：</p>
+<ul><li>同一个策略，对冲强度可以完全不同。</li></ul>
+<p>不是 Collar 只有一种，而是你在用两条腿的位置，决定你到底想多强的保护、保留多少上涨空间。</p>
+<hr>
+<h2>17.11 图片里还有一个特别实用的提醒：真正核心往往是 Put 行权价的选择，而不只是 Call</h2>
+<p>这一点很容易被忽略。</p>
+<p>很多人做 Collar 时，注意力全放在：</p>
+<ul><li>我要卖多远的 Call？</li></ul>
+<p>当然这个也重要。</p>
+<p>但图片里强调得很对：</p>
+<blockquote><p><strong>核心往往是 Put 行权价的选择。</strong></p></blockquote>
+<p>为什么？</p>
+<p>因为 Put 决定的是：</p>
+<ul><li>你从哪里开始真正得到保护；</li><li>你到底在防小跌、中跌，还是只防大跌；</li><li>你愿意为这个保护付出多大代价。</li></ul>
+<p>而 Call 更多是在调节：</p>
+<ul><li>我拿什么去补这份成本；</li><li>我愿意让出多少上方空间。</li></ul>
+<p>所以成熟做 Collar 的思路不是：</p>
+<ul><li>先想卖哪个 Call 最划算；</li></ul>
+<p>而是：</p>
+<ul><li>我到底想把哪一段下方风险切掉；</li><li>然后再看卖哪个 Call 来平衡成本。</li></ul>
+<p>这才是主次顺序。</p>
+<hr>
+<h1>七、Collar 的实操注意事项，这里必须讲得非常具体</h1>
+<h2>17.12 注意事项一：先确认你真的值得保护这只股票</h2>
+<p>图片里提到：</p>
+<ul><li>正股：重要标的（至少 100 股）</li></ul>
+<p>这句话特别朴素，但很重要。</p>
+<p>不要拿一只：</p>
+<ul><li>你本来就不想长期持有；</li><li>只是短线摸一把；</li><li>或者流动性很差的小票；</li></ul>
+<p>去做特别完整的 Collar。</p>
+<p>因为 Collar 的前提是：</p>
+<ul><li>你手里这个仓位值得保护；</li><li>你不是打算马上扔掉它；</li><li>你是想继续保留，但想把风险改造一下。</li></ul>
+<p>所以它更适合：</p>
+<ul><li>核心仓位；</li><li>长期看好的正股；</li><li>或者需要阶段性保护的大仓位。</li></ul>
+<hr>
+<h2>17.13 注意事项二：到期日不是随便选，而是在选你想保护多久</h2>
+<p>图片里把这一点写得很清楚：</p>
+<ul><li>到期日 = 想要的对冲时间。</li></ul>
+<p>这句话翻成人话非常简单：</p>
+<ul><li>你不是在“选一个好看的日期”；</li><li>你是在选：我到底想保护这段风险多久。</li></ul>
+<p>比如：</p>
+<h3>只怕一个很近的事件</h3>
+<ul><li>比如财报、会议、政策节点；</li><li>那就不需要买很长的到期。</li></ul>
+<h3>你怕的是更持续的一段市场不稳</h3>
+<ul><li>那就要考虑更长一点的时间覆盖。</li></ul>
+<p>所以 Collar 的到期日，本质上不是技术参数，而是你的风险窗口。</p>
+<hr>
+<h2>17.14 注意事项三：两条腿离当前股价越近，对冲越强，但上方就越少</h2>
+<p>图片里给了一句特别适合直接记忆的话：</p>
+<ul><li>越近 = 对冲越强，上涨越少</li><li>越远 = 对冲越弱，上涨越多</li></ul>
+<p>这是 Collar 最好记、也最实用的一条规律。</p>
+<p>你以后只要记住：</p>
+<blockquote><p><strong>腿收得越紧，保护越强，自由越少；腿放得越宽，保护越弱，自由越多。</strong></p></blockquote>
+<p>这句话一记住，OTM / ATM 那些具体搭法就都容易理解了。</p>
+<hr>
+<h2>17.15 注意事项四：Collar 不是拿来永久持有的</h2>
+<p>图片里直接写了一句很硬的话：</p>
+<ul><li><strong>不可长持，因为限制收益。</strong></li></ul>
+<p>这句话我觉得特别值得保留。</p>
+<p>为什么？</p>
+<p>因为很多人一看到“有保护”，就容易本能地觉得：</p>
+<ul><li>那我一直套着不就行了吗？</li></ul>
+<p>不行。</p>
+<p>Collar 的本质是阶段性风险管理工具，不是永久形态。</p>
+<p>因为你一旦长期套着：</p>
+<ul><li>每次市场真正大涨，你都会被卡住一部分上方；</li><li>你的长期复利能力会被反复打折；</li><li>你会逐渐发现自己好像既没完全享受股权上涨，又一直在做限制收益的动作。</li></ul>
+<p>所以它更像：</p>
+<blockquote><p><strong>阶段性穿雨衣</strong></p></blockquote>
+<p>而不是：</p>
+<blockquote><p><strong>永远穿着厚盔甲生活。</strong></p></blockquote>
+<p>这比喻很土，但很准。</p>
+<hr>
+<h2>17.16 注意事项五：后续处理特别重要——平仓、继续保护、还是 Roll</h2>
+<p>图片最后这部分非常实战，我直接翻成人话。</p>
+<p>如果你做了 Collar，后面通常会面临几种处理：</p>
+<h3>情况 1：对冲目的已经达到</h3>
+<p>比如：</p>
+<ul><li>财报过了；</li><li>风险窗口过去了；</li><li>你不再需要这么强保护。</li></ul>
+<p>这时候比较常见的动作是：</p>
+<ul><li>把两条期权腿一起平掉；</li><li>只保留正股。</li></ul>
+<h3>情况 2：风险还没结束，但快到期了</h3>
+<p>这时候你可能需要：</p>
+<ul><li><strong>Roll</strong> 两条腿；</li><li>把保护时间往后延。</li></ul>
+<h3>情况 3：行情已经大幅变化，原来的腿位置不合适了</h3>
+<p>这时候也可能需要调整：</p>
+<ul><li>重新设定 Put 位置；</li><li>重新设定 Call 位置；</li><li>让保护强度重新匹配你现在的风险判断。</li></ul>
+<p>所以 Collar 不是“套上就不管”，而是：</p>
+<blockquote><p><strong>它是一个阶段性风险工程，需要后续处理。</strong></p></blockquote>
+<p>这点非常重要。</p>
+<hr>
+<h1>八、本章小结：Collar 不是为了更赚，而是为了让“拿着股票”这件事更可承受</h1>
+<p>这一章如果要压成最重要的几句话，我希望你记住这些：</p>
+<ul><li>Collar = 持股 + 买 Put + 卖 Call；</li><li>它本质上就是：<strong>Protective Put + Covered Call</strong>；</li><li>它最核心的逻辑是：</li><li><strong>让出一部分上方收益，换更便宜的下方保护</strong>；</li><li>No Cost Collar 不是免费，只是现金净支出接近 0，真实代价是上方空间；</li><li>OTM Collar 更宽松，保留更多上涨，但保护弱一点；</li><li>ATM Collar 对冲最强，但几乎把上涨空间压得很紧；</li><li>真正的核心往往是：</li><li>我想从哪一段开始保护；</li><li>我愿意让掉多少上方空间来换这份保护；</li><li>Collar 不是永久盔甲，更像阶段性雨衣；</li><li>做完之后，后续平仓、继续保护、还是 Roll，同样重要。</li></ul>
+<p>如果把这章压成一句真正值钱的话，那就是：</p>
+<blockquote><p><strong>Collar 不是为了更赚，而是为了让“继续持有这只股票”这件事变得更有边界、更可承受。</strong></p></blockquote>
+<p>这就是它最真实的价值。</p>
+<hr>
+<h2>自测题</h2>
+<p>1）为什么说 Collar 本质上不是新动物，而是 Protective Put 和 Covered Call 的组合？</p>
+<p>2）145 / 155 Collar 里，145 Put 和 155 Call 分别在改造哪一边的风险？</p>
+<p>3）为什么 No Cost Collar 不能理解成“免费保护”？</p>
+<p>4）OTM Collar 和 ATM Collar 的核心差别，本质上是在取舍什么？</p>
+<p>5）为什么说 Collar 更适合阶段性风险管理，而不适合长期一直套着不动？</p>
+<hr>
+<h2>下一章预告：PMCC——为什么有人用一张长期深实值 Call 来“替代”正股</h2>
+<p>你刚刚看到的是：</p>
+<ul><li>我已经有正股，怎么给它加保险、加边界；</li></ul>
+<p>下一章我们要看的，是另一种很有意思的思路：</p>
+<ul><li>我能不能不直接拿正股，</li><li>而是用一张长期深实值 Call 去尽量模拟正股，</li><li>再在上面卖短期 Call 收租？</li></ul>
+<p>这就是 PMCC（Poor Man&#x27;s Covered Call）要解决的问题。</p>
+<hr>
+<h2>本章参考口径（便于追溯）</h2>
+<ul><li>图片关联重点：<code>Collar = 100 正股 + 买 OTM Put + 卖 OTM Call</code>、<code>No Cost Collar</code>、<code>145/155 示例</code>、<code>什么情况下使用 Collar</code>、<code>Beta Hedging</code>、<code>OTM vs ATM Collar</code>、<code>实操与后续处理</code></li><li>OCC / OIC：用于校准 collar strategy 的基础教育口径</li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li><li>Fidelity Options Strategy Guide：用于保持 collar / protective strategies 的收益风险表述与主流券商口径一致</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li><li>CBOE Options Institute：用于保持 collar、portfolio hedging、covered strategies 的教学术语一致</li><li><a href="https://www.cboe.com/optionsinstitute/">https://www.cboe.com/optionsinstitute/</a></li></ul>
+            </article>
+        </section>
+
+        <section class="section" id="chapter-navigation" aria-labelledby="chapter-navigation-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">03</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
+                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
+                </div>
+            </div>
+
+            <div class="chapter-nav-card">
+                <div class="chapter-nav-grid">
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">上一章</div>
+                        <a class="chapter-nav-link" href="./16.html">第 16 章 · 波动率策略</a>
+                        <p>从方向交易转向波动幅度交易，理解 Straddle、Strangle 等波动率策略的核心逻辑。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">返回课程</div>
+                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
+                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">下一章</div>
+                        <a class="chapter-nav-link" href="./18.html">第 18 章 · PMCC</a>
+                        <p>理解贫民版 Covered Call 如何用长期深度实值 Call 替代正股，以及它节省资金背后的额外风险。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>期权教材 · 结构化学习 · HTML 优先</p>
+        <p class="disclaimer">
+            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
+        </p>
+    </footer>
+
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
+
+    <script src="../js/main.js?v=20260324b"></script>
+</body>
+</html>

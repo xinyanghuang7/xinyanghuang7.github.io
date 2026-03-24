@@ -240,7 +240,7 @@ def render_markdown(markdown_text: str) -> str:
             )
             continue
 
-        heading_match = re.match(r"^(#{1,4})\s+(.*)$", stripped)
+        heading_match = re.match(r"^(#{1,6})\s+(.*)$", stripped)
         if heading_match:
             flush_paragraph(); flush_bullets(); flush_blockquote()
             level = len(heading_match.group(1))
@@ -312,10 +312,25 @@ def render_learning_paths(chapters: list[Chapter]) -> str:
         items = []
         for chapter in section_chapters:
             items.append(f"<li>第 {chapter.id} 章 · {render_inline(chapter.title)} · {status_label(chapter.status)}</li>")
+
+        batches = []
+        for chapter in section_chapters:
+            if chapter.batch not in batches:
+                batches.append(chapter.batch)
+        if len(batches) == 1:
+            coverage_label = batches[0]
+        else:
+            coverage_label = f"{batches[0]} 至 {batches[-1]}"
+
+        if all(chapter.status == "published" for chapter in section_chapters):
+            desc = f"共 {len(section_chapters)} 章，覆盖 {coverage_label}，现已全部发布。"
+        else:
+            desc = f"共 {len(section_chapters)} 章，覆盖 {coverage_label}，按批次持续扩展。"
+
         blocks.append(
             f'<article class="course-grid-card"><div class="course-card-kicker">{html.escape(section)}</div>'
             f'<h3 class="course-card-title">{html.escape(section)}</h3>'
-            f'<p class="course-card-desc">共 {len(section_chapters)} 章，覆盖 {html.escape(section_chapters[0].batch)} 至后续扩展。</p>'
+            f'<p class="course-card-desc">{html.escape(desc)}</p>'
             f'<ul class="course-card-list">{"".join(items)}</ul></article>'
         )
     return "\n".join(blocks)
@@ -406,7 +421,9 @@ def chapter_nav_slot(chapter: Chapter | None, fallback_label: str, helper: str) 
 def build_chapter_page(chapter: Chapter, body_html: str, nav: dict[str, Chapter | None]) -> str:
     template = CHAPTER_TEMPLATE_PATH.read_text(encoding="utf-8")
     prev_url, prev_label, prev_helper = chapter_nav_slot(nav.get("previous"), "回到课程首页", "这是第一篇已发布章节。")
-    next_url, next_label, next_helper = chapter_nav_slot(nav.get("next"), "更多章节同步中", "下一篇发布后会自动出现在这里。")
+    next_fallback_label = "回到课程首页" if nav.get("next") is None else "更多章节同步中"
+    next_fallback_helper = "这是当前最后一篇已发布章节。" if nav.get("next") is None else "下一篇发布后会自动出现在这里。"
+    next_url, next_label, next_helper = chapter_nav_slot(nav.get("next"), next_fallback_label, next_fallback_helper)
     replacements = {
         "CHAPTER_TITLE": chapter.title,
         "COURSE_TITLE": COURSE_TITLE,

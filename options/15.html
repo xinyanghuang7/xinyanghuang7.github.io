@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="从双腿结构出发，理解价差策略如何在控制成本、限制风险与管理收益之间做取舍。">
+    <meta name="author" content="ValueInvest">
+    <meta name="theme-color" content="#c9a227">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="canonical" href="https://4fire.qzz.io/options/15.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://4fire.qzz.io/options/15.html">
+    <meta property="og:title" content="价差策略入门 | 美股期权教材">
+    <meta property="og:description" content="从双腿结构出发，理解价差策略如何在控制成本、限制风险与管理收益之间做取舍。">
+    <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="价差策略入门 | 美股期权教材">
+    <meta name="twitter:description" content="从双腿结构出发，理解价差策略如何在控制成本、限制风险与管理收益之间做取舍。">
+    <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <title>价差策略入门 | 美股期权教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css?v=20260324b">
+    <style>
+        .chapter-meta-bar {
+            width: min(1100px, calc(100% - 2rem));
+            margin: -2.25rem auto 0;
+            padding: 1rem 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+            position: relative;
+            z-index: 2;
+        }
+
+        .chapter-meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-secondary);
+            background: rgba(201, 162, 39, 0.08);
+            font-size: 0.95rem;
+        }
+
+        .chapter-meta-link {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .chapter-meta-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .chapter-shell {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .chapter-summary-card,
+        .chapter-body-card,
+        .chapter-nav-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+        }
+
+        .chapter-summary-card p,
+        .chapter-nav-card p {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card {
+            line-height: 1.9;
+            color: var(--text-primary);
+        }
+
+        .chapter-body-card h2,
+        .chapter-body-card h3,
+        .chapter-body-card h4,
+        .chapter-body-card h5,
+        .chapter-body-card h6 {
+            color: var(--text-primary);
+            margin-top: 1.6em;
+        }
+
+        .chapter-body-card p,
+        .chapter-body-card li,
+        .chapter-body-card blockquote {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card ul,
+        .chapter-body-card ol {
+            padding-left: 1.2rem;
+        }
+
+        .chapter-body-card blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.25rem;
+            border-left: 3px solid var(--accent-gold);
+            background: rgba(201, 162, 39, 0.08);
+            border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .chapter-nav-slot {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            min-height: 100%;
+            padding: 1rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(201, 162, 39, 0.06);
+        }
+
+        .chapter-nav-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .chapter-nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .chapter-nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        @media (max-width: 800px) {
+            .chapter-nav-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chapter-summary-card,
+            .chapter-body-card,
+            .chapter-nav-card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "价差策略入门",
+        "description": "从双腿结构出发，理解价差策略如何在控制成本、限制风险与管理收益之间做取舍。",
+        "author": {
+            "@type": "Person",
+            "name": "ValueInvest"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ValueInvest",
+            "sameAs": "https://4fire.qzz.io/"
+        },
+        "mainEntityOfPage": "https://4fire.qzz.io/options/15.html",
+        "isPartOf": {
+            "@type": "Course",
+            "name": "美股期权教材",
+            "url": "https://4fire.qzz.io/options/"
+        },
+        "image": [
+            "https://4fire.qzz.io/images/hero-bg.jpg"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
+
+    <header id="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="期权章节页主导航">
+                <ul class="nav-links">
+                    <li><a href="../index.html">返回首页</a></li>
+                    <li><a href="./index.html">返回课程</a></li>
+                    <li><a href="#chapter-navigation">章节导航</a></li>
+                </ul>
+            </nav>
+            <div class="nav-date">第 15 章</div>
+        </div>
+    </header>
+
+    <section class="hero" role="banner">
+        <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
+        <div class="hero-content">
+            <div class="subtitle">进阶结构与波动率篇</div>
+            <h1>第 15 章 · 价差策略入门</h1>
+            <p class="tagline">进阶结构与波动率篇 · Batch 5</p>
+            <p class="hero-description">从双腿结构出发，理解价差策略如何在控制成本、限制风险与管理收益之间做取舍。</p>
+        </div>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
+    </section>
+
+    <div class="chapter-meta-bar" aria-label="章节关键信息">
+        <div class="chapter-meta-pill">章节编号：第 15 章</div>
+        <div class="chapter-meta-pill">Section：进阶结构与波动率篇</div>
+        <div class="chapter-meta-pill">Batch：Batch 5 · 已发布</div>
+        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
+    </div>
+
+    <main id="main" class="chapter-shell">
+        <section class="section" id="chapter-summary" aria-labelledby="chapter-summary-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">01</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
+                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
+                </div>
+            </div>
+
+            <div class="chapter-summary-card">
+                <p>从双腿结构出发，理解价差策略如何在控制成本、限制风险与管理收益之间做取舍。</p>
+            </div>
+        </section>
+
+        <section class="section" id="chapter-content" aria-labelledby="chapter-content-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">02</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
+                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
+                </div>
+            </div>
+
+            <article class="chapter-body-card">
+<h1>《美股期权教材》</h1>
+<h2>第15章 价差策略（Spread）入门：为什么高手不总是单腿硬冲</h2>
+<blockquote><p>到这里，你已经把单腿期权、组合策略、保证金、IV 这些最核心的骨架搭起来了。  接下来，顺着你图片里的内容，最自然的下一步就是：  <strong>双腿策略，也就是 Spread（价差策略）。</strong>  这部分一上来最容易把人讲晕，因为名字很多：  - Bull Call Spread - Bear Put Spread - Bull Put Spread - Bear Call Spread - Debit Spread - Credit Spread  但如果你只记名字，几乎一定会乱。  所以这一章，我不会一上来扔术语，而是先把图片里的主线讲成人话：  - 为什么要在单腿上再加一条腿； - 第二条腿到底是在帮你干什么； - 看涨、看跌和 Call / Put 到底该怎么搭配； - Debit 和 Credit 到底不是在讲方向，而是在讲“开仓先付钱还是先收钱”； - 为什么两条腿行权价离得远和离得近，策略手感完全不一样。  你如果把这一章吃透了，后面看到各种 Spread，就不会觉得它们像一堆新招式，而会更像：  <strong>我在一个单腿观点上，给自己加了一条辅助腿，去降成本、降风险，或者让收益更可控。</strong></p></blockquote>
+<hr>
+<h1>一、先讲最核心的人话：Spread 就是“单腿 + 一条辅助腿”</h1>
+<h2>15.1 图片里这一句最重要：Spread 出现的目的，是为了弥补单腿的劣势</h2>
+<p>你图片里有一句非常值得抓住的话：</p>
+<blockquote><p><strong>Spread 出现的目的：做双腿是为了弥补单腿的劣势</strong></p></blockquote>
+<p>这句话几乎就是整章的总纲。</p>
+<p>因为单腿虽然好理解，但缺点也很明显：</p>
+<h3>单腿买方的问题</h3>
+<p>比如买一张 Call、买一张 Put：</p>
+<ul><li>方向要对；</li><li>时间也要对；</li><li>还得承受比较高的时间价值成本；</li><li>很容易出现“方向没大错，但买贵了 / 时间先耗掉了”的情况。</li></ul>
+<h3>单腿卖方的问题</h3>
+<p>比如裸卖 Call、卖 Put：</p>
+<ul><li>虽然可以先收权利金；</li><li>但风险一侧可能很难看；</li><li>保证金压力也更重；</li><li>真走坏时很难受。</li></ul>
+<p>所以市场里就自然长出一种更“折中”的思路：</p>
+<blockquote><p><strong>我保留第一条腿最想要的那个方向性优点，但再加一条腿，帮我把它最难受的地方削一削。</strong></p></blockquote>
+<p>这就是 Spread。</p>
+<p>所以如果你要用一句最好记的人话理解 Spread，可以这样记：</p>
+<blockquote><p><strong>Spread = 一个主观点 + 一条辅助腿</strong></p></blockquote>
+<p>或者更像图片里的意思：</p>
+<blockquote><p><strong>第一条腿是主菜，第二条腿是用来修口味的。</strong></p></blockquote>
+<p>这个比喻特别重要，因为它能让你少走很多“死记名字”的弯路。</p>
+<hr>
+<h2>15.2 为什么第二条腿不是“多此一举”，而是拿别的东西来换稳定性</h2>
+<p>很多人刚看到双腿策略会想：</p>
+<ul><li>我本来买一张 Call 就完了，干嘛还要多加一条腿？</li><li>我本来卖一张 Put 就行，为什么还要再买一张别的？</li></ul>
+<p>这个问题问得很好。</p>
+<p>答案是：</p>
+<ul><li>第二条腿不是来让你更炫；</li><li>它是来<strong>换东西</strong>的。</li></ul>
+<p>你图片里写得很清楚：</p>
+<ul><li><strong>单腿买期权 + 第二条腿卖期权，是为了减少成本</strong></li><li><strong>单腿卖期权 + 第二条腿买期权，是为了降低风险</strong></li></ul>
+<p>翻成人话非常好懂：</p>
+<h3>如果你的第一条腿是买方腿</h3>
+<p>比如你买 Call 或买 Put，本来最难受的是：</p>
+<ul><li>权利金贵；</li><li>时间价值压力大；</li><li>需要比较大的行情才能值回票价。</li></ul>
+<p>这时候你再卖出一条更远执行价的同类期权，就像在说：</p>
+<ul><li>我愿意把最远那一段极端利润让出去；</li><li>换来现在少付一点钱。</li></ul>
+<p>所以这是：</p>
+<blockquote><p><strong>拿“最远的一段梦想”，去换“更低的入场成本”。</strong></p></blockquote>
+<h3>如果你的第一条腿是卖方腿</h3>
+<p>比如你卖 Call 或卖 Put，本来最难受的是：</p>
+<ul><li>一侧风险很大；</li><li>保证金压力重；</li><li>尾部不好看。</li></ul>
+<p>这时候你再买一条更远执行价的同类期权，就像在说：</p>
+<ul><li>如果事情真的坏到那一步，后面那条腿能帮我挡一部分；</li><li>我少赚一点，但至少别无限难看。</li></ul>
+<p>所以这是：</p>
+<blockquote><p><strong>拿“少赚一点点”，去换“风险别太难看”。</strong></p></blockquote>
+<p>这就是双腿的交易哲学。</p>
+<p>不是凭空变好，而是重新做取舍。</p>
+<hr>
+<h1>二、图片里的第一层主线：Spread 先分方向，再分腿法</h1>
+<h2>15.3 先别管 Call 还是 Put，第一步永远先问：我到底看涨还是看跌</h2>
+<p>你图片里对设计 Spread 的步骤写得很直接：</p>
+<p>1. <strong>第一步：看涨或看跌（方向最重要）</strong> 2. 第二步：单腿是 Call 或 Put 3. 第三步：选第二条腿</p>
+<p>这顺序非常对。</p>
+<p>很多新手最容易犯的错，是一上来就问：</p>
+<ul><li>我该用 Bull Call Spread 还是 Bull Put Spread？</li><li>我该用 Bear Put 还是 Bear Call？</li></ul>
+<p>这问法太早了。</p>
+<p>真正成熟的顺序应该是：</p>
+<blockquote><p><strong>先决定方向，再决定你更想用“买方型组合”还是“卖方型组合”去表达这个方向。</strong></p></blockquote>
+<p>所以请先把最底层分类记住：</p>
+<h3>看涨的 Spread</h3>
+<ul><li>Bull Call Spread</li><li>Bull Put Spread</li></ul>
+<h3>看跌的 Spread</h3>
+<ul><li>Bear Put Spread</li><li>Bear Call Spread</li></ul>
+<p>先只记这个就够：</p>
+<ul><li><strong>Bull = 看涨</strong></li><li><strong>Bear = 看跌</strong></li></ul>
+<p>不要一开始就试图把所有名字一口气背完。</p>
+<hr>
+<h2>15.4 图片里为什么说“看涨策略两种、看跌策略两种，但同一个收益曲线图”</h2>
+<p>这是图片里非常关键的一句，也是最容易让人突然开窍的一句。</p>
+<p>图片说：</p>
+<ul><li>看跌策略有两种：</li><li>买 Put + 卖更低执行价 Put = Bear Put Spread</li><li>卖 Call + 买更高执行价 Call = Bear Call Spread</li><li>但它们是 <strong>同一个收益曲线图</strong></li></ul>
+<p>看涨策略也是一样：</p>
+<ul><li>买 Call + 卖更高执行价 Call = Bull Call Spread</li><li>卖 Put + 买更低执行价 Put = Bull Put Spread</li><li>它们也是 <strong>同一个收益曲线图</strong></li></ul>
+<p>这句话翻成人话是什么意思？</p>
+<p>意思是：</p>
+<blockquote><p><strong>Call 版本和 Put 版本，虽然搭法不一样，但只要方向一致、行权价逻辑一致，它们最后在风险图上可以非常像。</strong></p></blockquote>
+<p>这和上一章学的“结构等价”其实是同一套思想。</p>
+<p>所以你以后看到：</p>
+<ul><li>Bull Call Spread</li><li>Bull Put Spread</li></ul>
+<p>不要先觉得它们是两个完全不同宇宙。</p>
+<p>更应该先想：</p>
+<ul><li>它们都是在表达“有限风险、有限收益的看涨结构”；</li><li>差别更多在于：</li><li>你是先付钱进去，还是先收钱进来；</li><li>你的账户感受、保证金体验、成功率手感，可能不同。</li></ul>
+<p>这一下，整个世界就清楚很多。</p>
+<hr>
+<h1>三、先讲看跌 Spread：Bear Put Spread 和 Bear Call Spread</h1>
+<h2>15.5 Bear Put Spread：买一个更靠近市场的 Put，再卖一个更远的 Put</h2>
+<p>我们先讲图片里最容易理解的一种：</p>
+<blockquote><p><strong>买 Put + 卖更低执行价 Put = Bear Put Spread</strong></p></blockquote>
+<p>这套结构的人话是什么？</p>
+<blockquote><p><strong>我看跌，但我不想像单独买 Put 那样把全部成本都自己扛，所以我愿意把更深那一段利润让出去，换来现在便宜一点。</strong></p></blockquote>
+<p>举个最具体的例子：</p>
+<p>假设某股票现在 100 美元，你看跌，想做 Put。</p>
+<h3>单独买 Put 的想法</h3>
+<p>你可以买一张：</p>
+<ul><li>100 Put</li></ul>
+<p>这样当然最直接。</p>
+<p>但它的问题是：</p>
+<ul><li>你得把整张期权权利金都付出去；</li><li>如果期权本身不便宜，成本压力不小；</li><li>你买的是完整下跌弹性。</li></ul>
+<h3>Bear Put Spread 的想法</h3>
+<p>你改成：</p>
+<ul><li>买 100 Put</li><li>再卖 90 Put</li></ul>
+<p>这时发生了什么？</p>
+<ul><li>100 到 90 这段下跌，你仍然能明显受益；</li><li>但 90 以下那一段更深的暴跌利润，你让了一部分出去；</li><li>作为交换，你现在开仓会便宜一些。</li></ul>
+<p>这就是 Bear Put Spread 最应该记住的人话：</p>
+<blockquote><p><strong>保留主要看跌收益，卖掉最深一段利润，换便宜入场。</strong></p></blockquote>
+<p>所以它特别适合这样的人：</p>
+<ul><li>我确实看跌；</li><li>但我不是在赌世界末日；</li><li>我更想做一个“成本更合理”的看跌表达。</li></ul>
+<hr>
+<h2>15.6 Bear Call Spread：先卖一个 Call，再买更高执行价 Call 给自己封顶</h2>
+<p>图片里另一种看跌结构是：</p>
+<blockquote><p><strong>卖 Call + 买更高执行价 Call = Bear Call Spread</strong></p></blockquote>
+<p>这套人话是什么？</p>
+<blockquote><p><strong>我觉得股价不会涨太多，甚至可能偏弱，所以我先收一笔钱；但我不想像裸卖 Call 那样把上方风险完全敞开，于是再买一条更高执行价的 Call，把最坏情况封顶。</strong></p></blockquote>
+<p>举个例子：</p>
+<p>股票当前 100 美元，你偏看跌或至少不看涨。</p>
+<p>你做：</p>
+<ul><li>卖 100 Call</li><li>买 110 Call</li></ul>
+<p>这是什么意思？</p>
+<ul><li>如果股价不涨太多，卖出的 100 Call 会对你有利，你先收进来的权利金有机会留下；</li><li>但如果股价真的一路涨穿 110，你买入的 110 Call 会开始帮你挡一部分风险；</li><li>所以上方最糟的损失不再像裸卖 Call 那样无限难看。</li></ul>
+<p>所以 Bear Call Spread 的人话精髓是：</p>
+<blockquote><p><strong>我想收“别涨太多”的钱，但我又不想裸着卖 Call。</strong></p></blockquote>
+<p>它更像一种：</p>
+<ul><li>偏保守的看跌 / 偏不看涨表达；</li><li>同时又是一个卖方型的、先收钱的策略。</li></ul>
+<hr>
+<h2>15.7 为什么 Bear Put 和 Bear Call 图形会很像，但手感不一样</h2>
+<p>这就是图片里最值得你建立的“图像思维”。</p>
+<p>虽然：</p>
+<ul><li>Bear Put Spread 用的是 Put</li><li>Bear Call Spread 用的是 Call</li></ul>
+<p>但它们最后都在表达：</p>
+<ul><li>我偏看跌；</li><li>我不想无限裸奔；</li><li>我接受收益被封顶；</li><li>我用第二条腿让整个结构更可控。</li></ul>
+<p>所以图形上它们会很像。</p>
+<p>但账户感受上，会有明显区别：</p>
+<h3>Bear Put Spread 的手感</h3>
+<ul><li>通常是 <strong>先付钱</strong> 进去；</li><li>更像“买方型看跌组合”；</li><li>你是花钱买一个有限范围内的下跌收益。</li></ul>
+<h3>Bear Call Spread 的手感</h3>
+<ul><li>通常是 <strong>先收钱</strong> 进来；</li><li>更像“卖方型看跌组合”；</li><li>你是在收“别涨太多”的钱，同时把风险盖住。</li></ul>
+<p>所以图像虽然像，但体感不同。</p>
+<p>这也是为什么你图片里后面要专门单独讲 Debit / Credit。</p>
+<hr>
+<h1>四、再讲看涨 Spread：Bull Call Spread 和 Bull Put Spread</h1>
+<h2>15.8 Bull Call Spread：买一个更靠近市场的 Call，再卖一个更高执行价 Call</h2>
+<p>图片里对应的第一种看涨结构是：</p>
+<blockquote><p><strong>买 Call + 卖更高执行价 Call = Bull Call Spread</strong></p></blockquote>
+<p>人话翻译非常简单：</p>
+<blockquote><p><strong>我看涨，但我不想像单独买 Call 那样把全部成本都自己扛，所以我愿意把最远那段上涨利润让出去，换来现在便宜一些。</strong></p></blockquote>
+<p>举个例子：</p>
+<p>股票当前 100 美元，你看涨。</p>
+<h3>单独买 Call</h3>
+<p>你可以买：</p>
+<ul><li>100 Call</li></ul>
+<p>这样当然最直接，但可能不便宜。</p>
+<h3>Bull Call Spread</h3>
+<p>你改成：</p>
+<ul><li>买 100 Call</li><li>卖 110 Call</li></ul>
+<p>这时意味着：</p>
+<ul><li>100 到 110 这段上涨，你仍然能明显吃到；</li><li>110 以上更远那一段极端上涨，你让了一部分出去；</li><li>所以你现在开仓成本会更低一些。</li></ul>
+<p>Bull Call Spread 最应该记住的人话是：</p>
+<blockquote><p><strong>保留主要上涨收益，卖掉最远一段利润，换更便宜入场。</strong></p></blockquote>
+<p>这和 Bear Put Spread 完全是一组镜像思维。</p>
+<hr>
+<h2>15.9 Bull Put Spread：先卖 Put，再买更低执行价 Put 把下方风险封住</h2>
+<p>图片里另一种看涨结构是：</p>
+<blockquote><p><strong>卖 Put + 买更低执行价 Put = Bull Put Spread</strong></p></blockquote>
+<p>这套结构的人话是：</p>
+<blockquote><p><strong>我觉得股价不会跌太多，甚至偏看涨，所以我先收一笔钱；但我不想像裸卖 Put 那样下方风险太大，于是再买一条更低执行价的 Put，把最坏情况封住。</strong></p></blockquote>
+<p>举个例子：</p>
+<p>股票当前 100 美元，你偏看涨。</p>
+<p>你做：</p>
+<ul><li>卖 100 Put</li><li>买 90 Put</li></ul>
+<p>这意味着：</p>
+<ul><li>如果股价不怎么跌，甚至上涨，你先收的权利金更容易留下；</li><li>如果股价跌破 100，你开始受伤；</li><li>但如果继续大跌，90 Put 会帮你挡一部分，让最糟结果封顶。</li></ul>
+<p>所以 Bull Put Spread 的精髓是：</p>
+<blockquote><p><strong>我想收“别跌太多”的钱，但我不想裸卖 Put。</strong></p></blockquote>
+<p>这和 Bear Call Spread 也是一组镜像关系。</p>
+<hr>
+<h2>15.10 为什么图片里给了一个“简易版本”口诀：看跌高价买入、低价卖出；看涨低价买入、高价卖出</h2>
+<p>你图片里有一句非常适合用来压缩记忆：</p>
+<ul><li><strong>看跌：高价买入，低价卖出</strong></li><li><strong>看涨：低价买入，高价卖出</strong></li></ul>
+<p>这句话一开始看可能有点绕，其实它是在帮你抓住方向腿的结构。</p>
+<p>更人话一点可以这样理解：</p>
+<h3>看涨 Spread</h3>
+<p>你主要想要的是靠近市场那一条更有力的看涨腿； 同时把更远那条上涨空间卖掉一点，换来成本下降。</p>
+<p>所以通常会呈现出：</p>
+<ul><li>买低一点的 Call，卖高一点的 Call；</li><li>或者卖高一点的 Put 区，再买更低一点的 Put 封尾。</li></ul>
+<h3>看跌 Spread</h3>
+<p>同理，你主要想要的是更靠近市场的看跌腿； 同时把更深那条极端利润或风险让出去一点，换更稳定的结构。</p>
+<p>如果你实在容易记混，可以直接记最根本的版本：</p>
+<blockquote><p><strong>先定方向，再记住第二条腿是拿来让结构更保守的。</strong></p></blockquote>
+<p>这个比死背口诀更稳。</p>
+<hr>
+<h1>五、图片里的第二层主线：Debit Spread 和 Credit Spread 到底是什么</h1>
+<h2>15.11 先讲最重要的一句：Debit / Credit 不是方向分类，而是“开仓先付钱还是先收钱”</h2>
+<p>很多人最开始以为：</p>
+<ul><li>Debit Spread 是看涨的；</li><li>Credit Spread 是看跌的；</li></ul>
+<p>这不对。</p>
+<p>你图片里说得很清楚：</p>
+<ul><li>Spread 的分类还可以按开仓方式分：</li><li><strong>开仓付钱（买） = Debit Spread</strong></li><li><strong>开仓收钱（卖） = Credit Spread</strong></li></ul>
+<p>也就是说，Debit / Credit 不是在说你看涨看跌，而是在说：</p>
+<blockquote><p><strong>你这套组合刚开出来时，账户是先掏钱，还是先收钱。</strong></p></blockquote>
+<p>这非常重要。</p>
+<p>因为它决定的是你的交易体验：</p>
+<ul><li>你是像买方一样先付成本；</li><li>还是像卖方一样先收权利金。</li></ul>
+<p>所以你应该这样记：</p>
+<h3>Debit Spread</h3>
+<ul><li>开仓先付钱</li><li>更像“买方型组合”</li><li>典型代表：Bull Call Spread、Bear Put Spread</li></ul>
+<h3>Credit Spread</h3>
+<ul><li>开仓先收钱</li><li>更像“卖方型组合”</li><li>典型代表：Bull Put Spread、Bear Call Spread</li></ul>
+<p>这个分类一旦理顺，你很多迷糊会一下子少很多。</p>
+<hr>
+<h2>15.12 图片里说“Call 还是 Put 没区别，方向最重要”，这句话怎么理解</h2>
+<p>你图片里有一句特别好：</p>
+<ul><li><strong>何时用 Call？何时用 Put？有什么区别？——没有任何区别，效果完全一样，方向最重要</strong></li></ul>
+<p>这句话如果直接看字面，容易被误读。它不是说：</p>
+<ul><li>Call 和 Put 完全没差别；</li></ul>
+<p>而是说：</p>
+<blockquote><p><strong>在构建某一类 Spread 时，决定最终收益图形的核心，是方向和腿之间的关系，而不是你表面上用了 Call 还是 Put。</strong></p></blockquote>
+<p>举个更直接的说法：</p>
+<ul><li>Bull Call Spread 和 Bull Put Spread</li><li>一个用 Call，一个用 Put</li></ul>
+<p>但如果执行价关系、到期日关系搭得对应，它们在<strong>最终骨架上</strong>会很像。</p>
+<p>真正不一样的，更多是：</p>
+<ul><li>开仓是付钱还是收钱；</li><li>时间衰减体感；</li><li>账户和保证金感受；</li><li>成功率和收益率手感。</li></ul>
+<p>所以图片里那句“方向最重要”，其实是在帮你先抓大方向，不要被名字绕进去。</p>
+<hr>
+<h2>15.13 图片里关于 Debit / Credit 的成功率对比，翻成人话是什么</h2>
+<p>你图片里提到：</p>
+<ul><li>在价差相同的情况下：</li><li>Debit Spread：付出权利金越少，成功率越低；付出权利金越高，成功率越高</li><li>Credit Spread：收权利金越多，成功率越低；收权利金越少，成功率越高</li></ul>
+<p>这句话看着有点技术味，但翻成人话很好懂。</p>
+<h3>对 Debit Spread 来说</h3>
+<p>如果你开仓付的钱越少，通常意味着什么？</p>
+<ul><li>你的结构做得更“远”、更激进；</li><li>市场要走出更明显的行情，你才能把它做漂亮；</li><li>所以虽然便宜，但成功条件更苛刻。</li></ul>
+<p>相反，如果你愿意多付一点钱，通常意味着：</p>
+<ul><li>你的主观点更靠近市场；</li><li>你更容易吃到主要那一段行情；</li><li>成功率体感会更高一些。</li></ul>
+<h3>对 Credit Spread 来说</h3>
+<p>如果你一开仓就想多收很多钱，通常意味着：</p>
+<ul><li>你的短腿离现价更近；</li><li>也就是市场更容易碰到你的危险区；</li><li>所以虽然收得多，但也更容易出事。</li></ul>
+<p>相反，如果你收得少一点，往往意味着：</p>
+<ul><li>你的短腿离得更远；</li><li>市场更不容易碰到它；</li><li>成功率通常会更舒服一些。</li></ul>
+<p>所以这条规律最实用的人话版其实就是：</p>
+<blockquote><p><strong>你想收得更肥，通常就得接受成功率没那么高；你想更稳，往往就得接受收得少一点。</strong></p></blockquote>
+<p>这几乎是所有卖方 / 收权利金结构都适用的一个基本交换。</p>
+<hr>
+<h1>六、图片里的第三层主线：两条腿不是一样重要，第一条腿是主菜，第二条腿是辅助</h1>
+<h2>15.14 这句特别重要：第一条腿是主逻辑，第二条腿不是来抢戏的</h2>
+<p>你图片里专门写了：</p>
+<ul><li><strong>第一条腿是主腿：开仓的主要原因，思路 = 单腿开仓</strong></li><li><strong>第二条腿是辅助：如何选择</strong></li></ul>
+<p>这句话非常值得单独展开，因为它能让你避免一个特别常见的错误：</p>
+<ul><li>先记复杂结构，再忘了自己到底在看涨还是看跌。</li></ul>
+<p>正确思路应该永远是：</p>
+<h3>第一步：先有单腿观点</h3>
+<p>比如：</p>
+<ul><li>我本来想买一张 Call</li><li>或者我本来想卖一张 Put</li><li>或者我本来想买一张 Put</li><li>或者我本来想卖一张 Call</li></ul>
+<p>这叫主观点。</p>
+<h3>第二步：再问自己，这个单腿哪里让我不舒服</h3>
+<p>比如：</p>
+<ul><li>太贵</li><li>风险太大</li><li>保证金太重</li><li>太像纯彩票</li><li>不想吃最远那段极端利润 / 风险</li></ul>
+<h3>第三步：再加第二条腿去修它</h3>
+<p>这时第二条腿才有意义。</p>
+<p>也就是说：</p>
+<blockquote><p><strong>第二条腿不是主角，它是拿来修主角缺点的。</strong></p></blockquote>
+<p>这个理解一旦有了，Spread 的设计就会非常清楚。</p>
+<hr>
+<h2>15.15 图片里说“行权价离得越远 / 越近”，到底在改变什么</h2>
+<p>这也是图片里非常核心的一段。</p>
+<p>它写得很清楚：</p>
+<ul><li>行权价离得越远：</li><li>被弥补的劣势越少，被保留的优势更多</li><li>第一条腿期权特性保留得越多</li><li>组合表现更像单腿</li></ul>
+<ul><li>行权价离得越近：</li><li>被弥补的劣势越多，被保留的优势更少</li><li>第一条腿期权特性保留得越少</li><li>组合表现更像某价格区间内的正股</li></ul>
+<p>翻成人话，这段特别好懂。</p>
+<h3>两条腿离得很远</h3>
+<p>比如你做 Bull Call Spread：</p>
+<ul><li>买 100 Call</li><li>卖 130 Call</li></ul>
+<p>这时第二条腿离得很远。</p>
+<p>意味着什么？</p>
+<ul><li>你卖掉的那一段远期利润很远才开始影响你；</li><li>所以前半段大部分时间，这个组合还是很像单独买 Call；</li><li>只是比单独买 Call 便宜一点。</li></ul>
+<p>所以：</p>
+<blockquote><p><strong>腿拉得越开，越像“单腿稍微修饰版”。</strong></p></blockquote>
+<h3>两条腿离得很近</h3>
+<p>比如：</p>
+<ul><li>买 100 Call</li><li>卖 105 Call</li></ul>
+<p>这时候第二条腿靠得很近。</p>
+<p>意味着什么？</p>
+<ul><li>你很快就把上涨空间封住了；</li><li>组合没那么像“纯 Call”，更像一个特定区间里的有限方向押注；</li><li>收益和风险都更紧、更保守。</li></ul>
+<p>所以：</p>
+<blockquote><p><strong>腿靠得越近，越不像单腿，越像一个被压缩过的区间型策略。</strong></p></blockquote>
+<p>这个理解非常关键，因为它直接决定你以后怎么选执行价宽度。</p>
+<hr>
+<h1>七、图片里讲的后续处理，翻成人话很实用</h1>
+<h2>15.16 为什么图片说“rollover 不是很好的处理方式”</h2>
+<p>你图片里写到：</p>
+<ul><li>无法系统性交易，因此 rollover 不是好的处理方式。</li></ul>
+<p>这句话的意思，不是说永远不能 roll，而是在提醒你：</p>
+<blockquote><p><strong>不要把不断往后拖、不断展期，当成自己策略本来的一部分。</strong></p></blockquote>
+<p>为什么？</p>
+<p>因为很多人做 Spread，最容易犯的一个心理错误是：</p>
+<ul><li>这次没做好，我先往后 roll 一下；</li><li>再不行再 roll 一下；</li><li>结果最后越滚越乱，根本分不清自己是在执行策略，还是在逃避承认原来那笔单子不顺。</li></ul>
+<p>所以图片这里想提醒你的其实是：</p>
+<ul><li>Spread 更适合有明确边界、明确到期处理的打法；</li><li>而不是无限拖延，希望市场某天自己救你。</li></ul>
+<p>这和前面我们讲期权到期处理时的思路是一致的。</p>
+<hr>
+<h2>15.17 为什么图片说“不可轻易拆腿”</h2>
+<p>这点也非常实战。</p>
+<p>Spread 之所以叫 Spread，就是因为两条腿本来是配套设计的。</p>
+<p>如果你随便拆掉一条，会发生什么？</p>
+<ul><li>你原本用来降成本的那条腿没了；</li><li>或者你原本用来封风险的那条腿没了；</li><li>结构就突然从“受控组合”变回“裸露单腿”。</li></ul>
+<p>举个最直白的例子：</p>
+<p>你本来做的是 Bear Call Spread：</p>
+<ul><li>卖 100 Call</li><li>买 110 Call</li></ul>
+<p>如果你中途把 110 Call 随手平掉，只留下卖出的 100 Call，那你瞬间就不再是 Spread，而是在裸卖 Call。</p>
+<p>这不是小变化，是风险结构完全变脸。</p>
+<p>所以图片里那句“不可轻易拆腿”，本质是在说：</p>
+<blockquote><p><strong>不要随便拆掉你原本用来保护自己的那一半。</strong></p></blockquote>
+<hr>
+<h2>15.18 图片里“股价在两条腿之间时要提前关仓，很多人喜欢 80% 收益就走”是什么意思</h2>
+<p>这句特别实用，也很像交易桌上的经验话。</p>
+<p>图片里意思大概是：</p>
+<ul><li>如果已经达到最大亏损 / 最大盈利边界，而且两腿都 OTM / ITM，可能不需要多操作，等自动到期也行；</li><li>但如果股价还卡在两条腿之间，很多人会倾向提前关仓；</li><li>比如收权利金策略，常有人在赚到 80% 左右时就提前了结。</li></ul>
+<p>翻成人话：</p>
+<h3>为什么卡在两腿之间会麻烦</h3>
+<p>因为这时：</p>
+<ul><li>组合还没完全“死透”；</li><li>它还会继续受股价变化影响；</li><li>也会继续受临近到期时希腊字母放大的影响。</li></ul>
+<p>所以如果你已经赚了大部分该赚的，但还把仓位留在一个“没必要再冒尾巴风险”的位置上，很多人会觉得不划算。</p>
+<h3>为什么 80% 收益就走是常见口径</h3>
+<p>因为对很多 credit spread 来说：</p>
+<ul><li>后面那最后一点利润，往往要用不成比例的尾部风险去换；</li><li>你已经把大头拿到了，再硬等到一分不差全吃，性价比未必高。</li></ul>
+<p>所以这不是数学定理，而是一种很有现实感的风险管理思路：</p>
+<blockquote><p><strong>能拿到大部分，就别为了最后一点，把整个组合重新暴露在不必要的风险里。</strong></p></blockquote>
+<p>这句话，很多期权策略都适用。</p>
+<hr>
+<h1>八、图片最后一层：希腊字母怎么理解 Spread</h1>
+<h2>15.19 图片里最重要的一句：Spread 其实是在“用第二条腿抵消第一条腿的大部分希腊字母，只留下方向”</h2>
+<p>你图片最后一张非常有价值，因为它不是在讲名字，而是在讲本质。</p>
+<p>核心意思可以压成这句：</p>
+<blockquote><p><strong>Spread 的第二条腿，是在部分抵消第一条腿的希腊字母影响，让组合更专注于方向本身。</strong></p></blockquote>
+<p>图片里写得很清楚：</p>
+<ul><li>除了 Delta 相同外，组合其他希腊字母大幅下降</li><li>Spread：忽略其他因素，只专注方向（delta）</li><li>两条腿行权价越近，希腊字母抵消越多；越远，越接近单腿</li></ul>
+<p>翻成人话就是：</p>
+<ul><li>单腿像一匹很野的马；</li><li>Spread 像给它套了缰绳；</li><li>你仍然保留它往某个方向跑的能力；</li><li>但它没那么狂躁、没那么受 Vega / Theta / Gamma 摆布了。</li></ul>
+<p>所以 Spread 的高级价值，不只是“看涨看跌也能做”，而是：</p>
+<blockquote><p><strong>它让你的观点表达更纯一点，不用把太多别的情绪因素一起买进来。</strong></p></blockquote>
+<p>这就是为什么很多人喜欢用 Spread 来替代过于昂贵或过于暴露的单腿。</p>
+<hr>
+<h2>15.20 用一句最该记住的人话总结 Spread</h2>
+<p>如果这一章最后你只记住一句话，我希望是：</p>
+<blockquote><p><strong>Spread = 第一条腿表达方向，第二条腿负责把它修得更便宜、更稳、更可控。</strong></p></blockquote>
+<p>这句话几乎能覆盖整章。</p>
+<p>因为无论你以后遇到：</p>
+<ul><li>Bull Call Spread</li><li>Bear Put Spread</li><li>Bull Put Spread</li><li>Bear Call Spread</li></ul>
+<p>你都可以先不被名字吓到，先问：</p>
+<p>1. 我到底看涨还是看跌？ 2. 第一条腿原本是什么单腿观点？ 3. 第二条腿是在帮我降成本，还是帮我封风险？ 4. 这套结构是先付钱，还是先收钱？ 5. 两条腿离得远还是近，它更像单腿还是更像保守区间仓位？</p>
+<p>你如果这样看，Spread 就不再难了。</p>
+<hr>
+<h1>九、本章小结：双腿策略不是更复杂，而是更会做取舍</h1>
+<p>这一章你真正学到的，可以压成下面几层：</p>
+<h3>第一层：Spread 的本质</h3>
+<ul><li>不是花哨组合</li><li>而是“主腿 + 辅助腿”</li><li>第二条腿用来弥补单腿的劣势</li></ul>
+<h3>第二层：方向先于术语</h3>
+<ul><li>先分 Bull / Bear</li><li>再分 Call 版本 / Put 版本</li><li>最后再看是 Debit 还是 Credit</li></ul>
+<h3>第三层：四个基础方向 Spread</h3>
+<ul><li>Bear Put Spread：看跌、买方型、降成本</li><li>Bear Call Spread：看跌、卖方型、降风险</li><li>Bull Call Spread：看涨、买方型、降成本</li><li>Bull Put Spread：看涨、卖方型、降风险</li></ul>
+<h3>第四层：Debit / Credit 的核心</h3>
+<ul><li>Debit = 开仓先付钱</li><li>Credit = 开仓先收钱</li><li>这不是方向分类，而是账户体验分类</li></ul>
+<h3>第五层：腿的远近会改变策略性格</h3>
+<ul><li>行权价越远，越像单腿稍微修饰版</li><li>行权价越近，越像保守的区间型组合</li></ul>
+<h3>第六层：管理逻辑</h3>
+<ul><li>不轻易拆腿</li><li>不把不停 roll 当成救命绳</li><li>大部分收益拿到后，很多人会倾向提前落袋</li></ul>
+<p>所以这章最值得带走的，不是名字，而是思维方式：</p>
+<blockquote><p><strong>双腿策略不是让你变复杂，而是让你学会做取舍。</strong></p></blockquote>
+<p>你不再是“全拿或全不要”，而是在说：</p>
+<ul><li>我愿意少赚一点，换更低成本；</li><li>我愿意少赚一点，换风险封顶；</li><li>我愿意少一点单腿的刺激，换更可控的体验。</li></ul>
+<p>这就是 Spread 真正的美感。</p>
+<hr>
+<h2>自测题</h2>
+<p>1）为什么说 Spread 的第二条腿不是主角，而是“用来修正第一条腿缺点”的辅助腿？</p>
+<p>2）Bear Put Spread 和 Bear Call Spread 虽然一个用 Put、一个用 Call，但为什么最终收益图会很像？</p>
+<p>3）Bull Call Spread 和 Bull Put Spread 的共同点是什么？最大的体感差异又是什么？</p>
+<p>4）Debit Spread 和 Credit Spread 的本质区别到底是什么？为什么说它不是方向区别？</p>
+<p>5）为什么说两条腿的执行价离得越近，策略越不像单腿、越像一个更保守的区间型结构？</p>
+<p>6）为什么很多人会在 Credit Spread 赚到 80% 左右时就考虑提前关仓？</p>
+<hr>
+<h2>下一章预告：PMCC、Collar 以及更像“仓位工程”的中高级组合</h2>
+<p>你图片里除了双腿策略之外，后面还延伸到了更多“不是纯投机，而是更像仓位工程”的组合思路。</p>
+<p>如果继续往下写，最自然的下一步会是：</p>
+<ul><li>PMCC（Poor Man&#x27;s Covered Call）</li><li>Collar</li><li>以及这些结构和 Covered Call / Protective Put 的关系</li></ul>
+<p>到那一层时，你会更清楚地看到：</p>
+<blockquote><p><strong>很多所谓高级策略，本质上仍然是在反复做那几件事——收租、买保险、降成本、封风险。</strong></p></blockquote>
+<hr>
+<h2>本章参考口径（便于追溯）</h2>
+<ul><li>图片关联重点：<code>Spread 的目的</code>、<code>Bull/Bear Spread</code>、<code>Debit/Credit Spread</code>、<code>两条腿行权价远近的影响</code>、<code>不要轻易拆腿</code>、<code>80% 提前关仓</code>、<code>Spread 对希腊字母的抵消</code></li><li>OCC / OIC：用于校准 vertical spreads、debit spread、credit spread 的基础教育口径</li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li></ul>
+<ul><li>Fidelity Options Strategy Guide：用于保持 Bull Call / Bear Put / Bull Put / Bear Call Spread 的收益与风险描述和主流券商口径一致</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li></ul>
+<ul><li>CBOE Options Institute：用于保持 vertical spread、Greek exposure、risk-defined spread 等术语一致</li><li><a href="https://www.cboe.com/optionsinstitute/">https://www.cboe.com/optionsinstitute/</a></li></ul>
+            </article>
+        </section>
+
+        <section class="section" id="chapter-navigation" aria-labelledby="chapter-navigation-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">03</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
+                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
+                </div>
+            </div>
+
+            <div class="chapter-nav-card">
+                <div class="chapter-nav-grid">
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">上一章</div>
+                        <a class="chapter-nav-link" href="./14.html">第 14 章 · BSM 与 IV</a>
+                        <p>引入期权定价模型与隐含波动率，解释为什么方向看对时，期权盈亏仍可能不如预期。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">返回课程</div>
+                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
+                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">下一章</div>
+                        <a class="chapter-nav-link" href="./16.html">第 16 章 · 波动率策略</a>
+                        <p>从方向交易转向波动幅度交易，理解 Straddle、Strangle 等波动率策略的核心逻辑。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>期权教材 · 结构化学习 · HTML 优先</p>
+        <p class="disclaimer">
+            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
+        </p>
+    </footer>
+
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
+
+    <script src="../js/main.js?v=20260324b"></script>
+</body>
+</html>

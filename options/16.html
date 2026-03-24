@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="从方向交易转向波动幅度交易，理解 Straddle、Strangle 等波动率策略的核心逻辑。">
+    <meta name="author" content="ValueInvest">
+    <meta name="theme-color" content="#c9a227">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="canonical" href="https://4fire.qzz.io/options/16.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://4fire.qzz.io/options/16.html">
+    <meta property="og:title" content="波动率策略入门 | 美股期权教材">
+    <meta property="og:description" content="从方向交易转向波动幅度交易，理解 Straddle、Strangle 等波动率策略的核心逻辑。">
+    <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="波动率策略入门 | 美股期权教材">
+    <meta name="twitter:description" content="从方向交易转向波动幅度交易，理解 Straddle、Strangle 等波动率策略的核心逻辑。">
+    <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <title>波动率策略入门 | 美股期权教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css?v=20260324b">
+    <style>
+        .chapter-meta-bar {
+            width: min(1100px, calc(100% - 2rem));
+            margin: -2.25rem auto 0;
+            padding: 1rem 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+            position: relative;
+            z-index: 2;
+        }
+
+        .chapter-meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-secondary);
+            background: rgba(201, 162, 39, 0.08);
+            font-size: 0.95rem;
+        }
+
+        .chapter-meta-link {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .chapter-meta-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .chapter-shell {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .chapter-summary-card,
+        .chapter-body-card,
+        .chapter-nav-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+        }
+
+        .chapter-summary-card p,
+        .chapter-nav-card p {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card {
+            line-height: 1.9;
+            color: var(--text-primary);
+        }
+
+        .chapter-body-card h2,
+        .chapter-body-card h3,
+        .chapter-body-card h4,
+        .chapter-body-card h5,
+        .chapter-body-card h6 {
+            color: var(--text-primary);
+            margin-top: 1.6em;
+        }
+
+        .chapter-body-card p,
+        .chapter-body-card li,
+        .chapter-body-card blockquote {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card ul,
+        .chapter-body-card ol {
+            padding-left: 1.2rem;
+        }
+
+        .chapter-body-card blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.25rem;
+            border-left: 3px solid var(--accent-gold);
+            background: rgba(201, 162, 39, 0.08);
+            border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .chapter-nav-slot {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            min-height: 100%;
+            padding: 1rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(201, 162, 39, 0.06);
+        }
+
+        .chapter-nav-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .chapter-nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .chapter-nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        @media (max-width: 800px) {
+            .chapter-nav-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chapter-summary-card,
+            .chapter-body-card,
+            .chapter-nav-card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "波动率策略入门",
+        "description": "从方向交易转向波动幅度交易，理解 Straddle、Strangle 等波动率策略的核心逻辑。",
+        "author": {
+            "@type": "Person",
+            "name": "ValueInvest"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ValueInvest",
+            "sameAs": "https://4fire.qzz.io/"
+        },
+        "mainEntityOfPage": "https://4fire.qzz.io/options/16.html",
+        "isPartOf": {
+            "@type": "Course",
+            "name": "美股期权教材",
+            "url": "https://4fire.qzz.io/options/"
+        },
+        "image": [
+            "https://4fire.qzz.io/images/hero-bg.jpg"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
+
+    <header id="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="期权章节页主导航">
+                <ul class="nav-links">
+                    <li><a href="../index.html">返回首页</a></li>
+                    <li><a href="./index.html">返回课程</a></li>
+                    <li><a href="#chapter-navigation">章节导航</a></li>
+                </ul>
+            </nav>
+            <div class="nav-date">第 16 章</div>
+        </div>
+    </header>
+
+    <section class="hero" role="banner">
+        <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
+        <div class="hero-content">
+            <div class="subtitle">进阶结构与波动率篇</div>
+            <h1>第 16 章 · 波动率策略入门</h1>
+            <p class="tagline">进阶结构与波动率篇 · Batch 5</p>
+            <p class="hero-description">从方向交易转向波动幅度交易，理解 Straddle、Strangle 等波动率策略的核心逻辑。</p>
+        </div>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
+    </section>
+
+    <div class="chapter-meta-bar" aria-label="章节关键信息">
+        <div class="chapter-meta-pill">章节编号：第 16 章</div>
+        <div class="chapter-meta-pill">Section：进阶结构与波动率篇</div>
+        <div class="chapter-meta-pill">Batch：Batch 5 · 已发布</div>
+        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
+    </div>
+
+    <main id="main" class="chapter-shell">
+        <section class="section" id="chapter-summary" aria-labelledby="chapter-summary-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">01</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
+                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
+                </div>
+            </div>
+
+            <div class="chapter-summary-card">
+                <p>从方向交易转向波动幅度交易，理解 Straddle、Strangle 等波动率策略的核心逻辑。</p>
+            </div>
+        </section>
+
+        <section class="section" id="chapter-content" aria-labelledby="chapter-content-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">02</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
+                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
+                </div>
+            </div>
+
+            <article class="chapter-body-card">
+<h1>《美股期权教材》</h1>
+<h2>第16章 波动率策略入门：当你赌的不是涨跌，而是“到底会不会闹大”</h2>
+<blockquote><p>这一章一定要配着你图片里的那组 <code>Straddle / Strangle / Iron Butterfly / Iron Condor</code> 一起看。  因为图片在讲的，其实不是一堆陌生名词，而是一条非常清楚的主线：  - 有的人赌市场会出大动静； - 有的人赌市场不会像大家想得那么夸张； - 如果直接裸着赌太危险，就再往外加两条腿，把风险封起来； - 如果你手里本来有正股，还可以把某些 short 结构做得更像“持仓上的收租改造”。  这章最容易被讲复杂，所以我先把它全部压成两句最好懂的话：  &gt; <strong>Long 系列：我赌会出大动静。</strong> &gt; &gt; <strong>Short 系列：我赌别出那么大动静，或者至少别超出市场原本的夸张预期。</strong>  你先把这两句抓住，后面的名字就都只是细分版本而已。</p></blockquote>
+<hr>
+<h1>一、先把这章最底层讲清楚：这类策略赌的不是方向，而是“幅度够不够大”</h1>
+<h2>16.1 前面的策略像在赌“往哪边走”，这一章更像在赌“会不会闹大”</h2>
+<p>前面很多策略都很好理解：</p>
+<ul><li>Long Call：看涨</li><li>Long Put：看跌</li><li>Bull Call Spread：偏看涨</li><li>Bear Put Spread：偏看跌</li></ul>
+<p>你脑子里想的主要是方向。</p>
+<p>但这一章不是这样。</p>
+<p>这一章你最先要习惯的新问题是：</p>
+<ul><li>我不一定知道它往上还是往下；</li><li>但我判断它会不会大动。</li></ul>
+<p>或者反过来：</p>
+<ul><li>我也许不在乎它轻微涨跌；</li><li>我真正想赌的是，它最后不会走得太夸张。</li></ul>
+<p>这就是波动率策略和方向策略最大的区别。</p>
+<p>你可以这样理解：</p>
+<h3>方向策略</h3>
+<p>像在赌：</p>
+<ul><li>这场比赛哪一队会赢。</li></ul>
+<h3>波动率策略</h3>
+<p>更像在赌：</p>
+<ul><li>这场比赛会不会踢成大比分；</li><li>还是最后只是闷闷的小比分。</li></ul>
+<p>这个比喻非常适合这一章。</p>
+<p>因为这里最重要的，不是“多空股价”，而是：</p>
+<blockquote><p><strong>市场最后的真实波动，到底是大于、等于，还是小于大家原本预想的波动。</strong></p></blockquote>
+<hr>
+<h1>二、Long Straddle：我不知道方向，但我赌一定会出大事</h1>
+<h2>16.2 最人话的定义：Long Straddle = 在当前价格正中间，两边一起埋伏</h2>
+<p>图片里写得很清楚：</p>
+<ul><li><strong>Long Straddle = 买 ATM Call + 买 ATM Put</strong></li></ul>
+<p>翻成人话非常简单：</p>
+<blockquote><p><strong>我在当前价格两边都埋一手。不管最后往上爆还是往下崩，只要动得足够猛，我总有一边会大赚。</strong></p></blockquote>
+<p>注意，这不是“同时看涨又看跌”。</p>
+<p>更准确的理解是：</p>
+<ul><li>我不押方向；</li><li>我押的是：<strong>别平淡，最好出大事。</strong></li></ul>
+<p>所以 Long Straddle 特别适合什么场景？</p>
+<p>比如：</p>
+<ul><li>财报前，你确定市场会大反应，但不知道方向；</li><li>重大会议前，你觉得股价会大跳，但不知道往哪跳；</li><li>某只股票已经压缩很久，你感觉快憋不住了。</li></ul>
+<p>这时候，Long Straddle 的逻辑就很顺：</p>
+<ul><li>不是押左边；</li><li>也不是押右边；</li><li>而是押“别停在中间”。</li></ul>
+<hr>
+<h2>16.3 为什么 Long Straddle 要买 ATM</h2>
+<p>图片里强调得非常清楚：</p>
+<ul><li>Long Straddle 买的是 <strong>ATM Call + ATM Put</strong></li></ul>
+<p>为什么要买 ATM？</p>
+<p>因为 ATM 最像什么？</p>
+<ul><li>最像站在正中间；</li><li>一旦市场开始大动，它是最先有明显反应的区域；</li><li>两边无论往哪边跑，它都最容易马上被激活。</li></ul>
+<p>所以如果你赌的是：</p>
+<ul><li>未来会有明显大波动；</li></ul>
+<p>那最直接的做法，就是在当前价位正中间两边一起埋伏。</p>
+<p>缺点是什么？</p>
+<p>也很明显：</p>
+<ul><li>因为你买的是最敏感的 Call 和最敏感的 Put；</li><li>所以它通常不便宜。</li></ul>
+<p>这就是 Long Straddle 的第一层交换：</p>
+<blockquote><p><strong>反应最快，但成本也最重。</strong></p></blockquote>
+<hr>
+<h2>16.4 用图片里的例子讲：150/150 Straddle 为什么最大亏损就是总权利金</h2>
+<p>图片里有一个特别好的例子：</p>
+<ul><li>买 150 ATM Call</li><li>买 150 ATM Put</li><li>各花 5</li><li>总权利金 = 10</li></ul>
+<p>这组数字非常适合讲透。</p>
+<p>你做的事其实是：</p>
+<ul><li>左手花 5 买“往上爆”的可能；</li><li>右手花 5 买“往下崩”的可能；</li><li>一共先付出 10。</li></ul>
+<p>现在看三种情况。</p>
+<h3>情况 1：最后股价停在 150 附近</h3>
+<p>这是 Long Straddle 最不想看到的。</p>
+<p>因为：</p>
+<ul><li>Call 没跑出来；</li><li>Put 也没跑出来；</li><li>两边都不怎么值钱。</li></ul>
+<p>所以最差结果就是：</p>
+<ul><li>你付出去的那 10 基本亏掉。</li></ul>
+<p>这就是为什么图片里说：</p>
+<ul><li><strong>最大亏损 = 股价等于行权价附近时，损失总权利金</strong></li></ul>
+<p>翻成人话就是：</p>
+<blockquote><p><strong>你最怕的不是方向错，而是市场最后根本没闹起来。</strong></p></blockquote>
+<h3>情况 2：最后大涨</h3>
+<p>比如涨到 165 或 170。</p>
+<p>这时：</p>
+<ul><li>Call 那边会很爽；</li><li>Put 那边虽然亏光，但最多就是那 5；</li><li>只要上涨够猛，Call 的盈利会覆盖两边总成本。</li></ul>
+<h3>情况 3：最后大跌</h3>
+<p>逻辑完全对称：</p>
+<ul><li>Put 那边大赚；</li><li>Call 那边最多亏光；</li><li>只要跌得够猛，总体仍然能赚钱。</li></ul>
+<p>所以 Long Straddle 最重要的一句人话总结就是：</p>
+<blockquote><p><strong>我不怕走错边，我只怕它最后不动。</strong></p></blockquote>
+<hr>
+<h2>16.5 Long Straddle 的盈亏平衡点怎么记</h2>
+<p>图片里给得很直白：</p>
+<ul><li><strong>盈亏平衡点 = 当前股价上下推移总权利金</strong></li></ul>
+<p>用刚才例子：</p>
+<ul><li>中心在 150</li><li>总权利金是 10</li></ul>
+<p>那大致平衡点就是：</p>
+<ul><li>向上 160</li><li>向下 140</li></ul>
+<p>这句话翻成人话就是：</p>
+<ul><li>你总共先花了 10；</li><li>所以市场至少要从中间跑出 10 的幅度；</li><li>你才开始从“光是把成本赚回来”进入真正净盈利。</li></ul>
+<p>所以 Long Straddle 不是：</p>
+<ul><li>只要动就赚钱；</li></ul>
+<p>而是：</p>
+<blockquote><p><strong>要动得够猛，才能把你买两边花出去的钱值回来。</strong></p></blockquote>
+<p>这点一定要想透，不然后面很容易误判。</p>
+<hr>
+<h1>三、Long Strangle：更便宜，但也更挑行情</h1>
+<h2>16.6 最人话的定义：Long Strangle = 把埋伏点往两边退一点，门票更便宜，但要求行情更大</h2>
+<p>图片里对应的是：</p>
+<ul><li><strong>Long Strangle = 买 OTM Call + 买 OTM Put</strong></li></ul>
+<p>翻成人话很好记：</p>
+<blockquote><p><strong>我还是赌会出大动静，但我不想像 Long Straddle 那样站在最中心买最贵的票，所以我往两边退一步，换便宜一点的门票。</strong></p></blockquote>
+<p>这就是 Long Strangle 最核心的交换。</p>
+<p>你可以把它和 Long Straddle 直接对比：</p>
+<h3>Long Straddle</h3>
+<ul><li>更靠中心</li><li>更贵</li><li>反应更快</li></ul>
+<h3>Long Strangle</h3>
+<ul><li>更往两边退</li><li>更便宜</li><li>但必须更大波动才真正有威力</li></ul>
+<p>所以一句话概括：</p>
+<blockquote><p><strong>Long Strangle = 便宜版 Long Straddle，但更挑行情。</strong></p></blockquote>
+<hr>
+<h2>16.7 用图片里的例子讲：155 Call + 145 Put，为什么总成本更低，但要求更高</h2>
+<p>图片里给了一个很典型的例子：</p>
+<ul><li>买 155 OTM Call</li><li>买 145 OTM Put</li><li>各花 3</li><li>总成本 = 6</li></ul>
+<p>和前面的 Straddle 对比一下，你立刻会看懂：</p>
+<h3>Straddle</h3>
+<ul><li>花 10</li><li>站中间</li><li>反应更快</li></ul>
+<h3>Strangle</h3>
+<ul><li>花 6</li><li>往两边退开</li><li>便宜不少</li></ul>
+<p>但代价是：</p>
+<ul><li>市场必须冲破 155，或者跌破 145，</li><li>才会让某一边真正开始发力。</li></ul>
+<p>所以图片里才会说：</p>
+<ul><li>Long Straddle 更激进；</li><li>Long Strangle 相对更省成本，但也更需要大行情。</li></ul>
+<p>这不是谁更高级的问题，而是偏好问题：</p>
+<ul><li>你愿不愿意多花钱，换更快反应？</li><li>还是你愿意少花钱，但接受“如果只是中等波动，我可能还是白忙”。</li></ul>
+<hr>
+<h1>四、Short Straddle：我赌别乱动，最好最后停在正中间</h1>
+<h2>16.8 最人话的定义：Short Straddle = 把中间两边最贵的保险都卖出去</h2>
+<p>图片里写得很清楚：</p>
+<ul><li><strong>Short Straddle = 卖 ATM Call + 卖 ATM Put</strong></li></ul>
+<p>翻成人话就是：</p>
+<blockquote><p><strong>我站在当前价格正中央，把往上和往下两边最敏感的保险都卖掉。我赌的是：市场最后别走太远。</strong></p></blockquote>
+<p>这句话是整章非常关键的一句。</p>
+<p>Short Straddle 不是在赌：</p>
+<ul><li>它一定涨；</li><li>或一定跌；</li></ul>
+<p>它是在赌：</p>
+<ul><li><strong>别大涨，也别大跌，最好就留在中间附近。</strong></li></ul>
+<p>所以它赚的是什么钱？</p>
+<ul><li>赚的是“市场最后没你想的那么夸张”的钱；</li><li>赚的是时间流逝的钱；</li><li>也常常赚的是 IV 从高往回掉的钱。</li></ul>
+<hr>
+<h2>16.9 为什么图片里说 Short Straddle 最大收益在“股价等于行权价附近”</h2>
+<p>用图片里的例子最容易懂：</p>
+<ul><li>卖 150 Call</li><li>卖 150 Put</li><li>各收 5</li><li>总共收 10</li></ul>
+<p>你最希望发生什么？</p>
+<p>当然是：</p>
+<ul><li>最后股价还在 150 附近；</li><li>这两张期权都没真正值钱；</li><li>你一开始收到的 10 全部留下。</li></ul>
+<p>所以图片里说：</p>
+<ul><li><strong>最大收益 = 股价等于行权价附近</strong></li></ul>
+<p>完全合理。</p>
+<p>图感上，它像什么？</p>
+<ul><li>像一个倒过来的尖顶小帐篷；</li><li>中间最高；</li><li>往两边一走，利润越来越少，最后变成亏损。</li></ul>
+<p>所以一句最该记住的人话是：</p>
+<blockquote><p><strong>Short Straddle 赚的是最中间、最平静的那一小块钱。</strong></p></blockquote>
+<hr>
+<h2>16.10 为什么 Short Straddle 很诱人，但也很吓人</h2>
+<p>它诱人的地方非常明显：</p>
+<ul><li>卖的是两边最敏感、通常也最贵的期权；</li><li>所以一开始收的钱通常比较肥；</li><li>只要最后别大动，体验就很好。</li></ul>
+<p>但它吓人的地方也同样明显：</p>
+<ul><li>你是两边一起卖；</li><li>往上大涨，你受伤；</li><li>往下大跌，你也受伤；</li><li>中间只有一小块舒适区。</li></ul>
+<p>所以 Short Straddle 最应该记住的人话，不是“高胜率”，而是：</p>
+<blockquote><p><strong>它赚的是市场别闹事的钱，扛的是两边突然失控的风险。</strong></p></blockquote>
+<p>这也是为什么这种策略绝不能只看收了多少权利金。</p>
+<hr>
+<h1>五、Short Strangle：我也赌不会大动，但我把危险区往外推了一步</h1>
+<h2>16.11 最人话的定义：Short Strangle = 少收一点，但把舒适区放宽一点</h2>
+<p>图片里对应的是：</p>
+<ul><li><strong>Short Strangle = 卖 OTM Call + 卖 OTM Put</strong></li></ul>
+<p>翻成人话：</p>
+<blockquote><p><strong>我还是赌不会大动，但我不想像 Short Straddle 那样站得那么近，所以我把卖出的两条腿都往两边挪远一点。</strong></p></blockquote>
+<p>这时会发生什么？</p>
+<ul><li>你收的钱会少一点；</li><li>但市场也必须跑得更远，才真正打到你的危险区。</li></ul>
+<p>所以它最应该记住的一句人话就是：</p>
+<blockquote><p><strong>少收一点，换更宽的舒服区。</strong></p></blockquote>
+<p>这比死背定义更有用。</p>
+<hr>
+<h2>16.12 用图片里的例子讲：卖 155 Call + 卖 145 Put，为什么比 Short Straddle 更保守</h2>
+<p>图片里的例子非常直观：</p>
+<ul><li>卖 155 OTM Call</li><li>卖 145 OTM Put</li><li>各收 3.5</li><li>总共收 7</li></ul>
+<p>和前面的 Short Straddle 对比：</p>
+<h3>Short Straddle</h3>
+<ul><li>收 10</li><li>但危险区离得近</li><li>更容易被触发</li></ul>
+<h3>Short Strangle</h3>
+<ul><li>只收 7</li><li>但危险区在 145 以下和 155 以上</li><li>需要更大的波动才真正打到</li></ul>
+<p>所以图片里才会写：</p>
+<ul><li><strong>最大收益下降，但最大收益成功率提高</strong></li></ul>
+<p>翻成人话就是：</p>
+<blockquote><p><strong>你少收了一点租金，但租客要把房子闹出事来也得更费劲。</strong></p></blockquote>
+<p>这就是 Short Strangle 的直觉。</p>
+<hr>
+<h1>六、Long 和 Short 两大组的最简对照</h1>
+<h2>16.13 如果你只想记一页纸，就记这四句话</h2>
+<h3>Long Straddle</h3>
+<ul><li>最贵</li><li>最靠中心</li><li>最快吃到大波动</li><li>最怕市场最后不动</li></ul>
+<h3>Long Strangle</h3>
+<ul><li>更便宜</li><li>更往两边退</li><li>需要更大波动</li><li>最怕波动不够大</li></ul>
+<h3>Short Straddle</h3>
+<ul><li>收钱最多</li><li>站得最近</li><li>最激进</li><li>最怕两边突然大幅失控</li></ul>
+<h3>Short Strangle</h3>
+<ul><li>收钱少一点</li><li>危险区更远</li><li>更保守一点</li><li>更像“放宽后的 short straddle”</li></ul>
+<p>这四句，比一口气背全部定义更有用。</p>
+<hr>
+<h1>七、为什么图片里把 IV Crush 和 Short 系列放在一起讲</h1>
+<h2>16.14 最人话的一句：Short 系列最喜欢“原本大家都很紧张，后来发现其实没那么夸张”</h2>
+<p>这就是 IV Crush 的主场之一。</p>
+<p>图片里写得很清楚：</p>
+<ul><li>IV 陡增时，Short Strangle 和 Short Straddle 是很典型的思路；</li><li>因为：</li></ul>
+<p>1. 期权费更贵； 2. IV 后面可能回归； 3. 无方向性，只赚 IV 回落的钱； 4. 资金使用率高。</p>
+<p>翻成人话非常简单：</p>
+<blockquote><p><strong>当市场很紧张、期权很贵时，Short 系列在卖的是一份被市场夸张定价的恐慌。</strong></p></blockquote>
+<p>如果后面发生什么？</p>
+<ul><li>事情虽然落地；</li><li>但没市场原本想得那么夸张；</li><li>IV 开始掉；</li><li>你卖出去的那些期权价格就会更快瘦下来。</li></ul>
+<p>这就是为什么财报前后，很多交易者会特别关注 short straddle / short strangle。</p>
+<p>不是因为它们更神秘，而是因为：</p>
+<blockquote><p><strong>它们最适合拿来赌“市场原本把波动定价得太高了”。</strong></p></blockquote>
+<hr>
+<h1>八、如果你觉得 Short 系列太危险，图片后面给的答案就是：再加两条保护腿</h1>
+<h2>16.15 Iron Butterfly = 给 Short Straddle 左右两边各装一个保险杠</h2>
+<p>图片里这部分其实非常好懂。</p>
+<p>原本 Short Straddle 是：</p>
+<ul><li>中间最赚钱；</li><li>两边风险很大。</li></ul>
+<p>如果你不想裸着扛两边风险，就怎么办？</p>
+<p>很简单：</p>
+<ul><li>再在更外面买一个 Call；</li><li>再在更外面买一个 Put；</li><li>给它左右各装一个保险杠。</li></ul>
+<p>这就是 Iron Butterfly。</p>
+<p>所以我建议你最人话地记：</p>
+<blockquote><p><strong>Iron Butterfly = Short Straddle + 左右两边再买两条护栏。</strong></p></blockquote>
+<p>它本质上不是全新动物，而是给原来的结构加了风险保护壳。</p>
+<hr>
+<h2>16.16 Iron Condor = 给 Short Strangle 左右两边各装一个保险杠</h2>
+<p>同理：</p>
+<ul><li>原本 Short Strangle 就已经比 Short Straddle 站得远一点；</li><li>如果你还想更稳，那就在两边更外面再各买一条；</li><li>这样最极端的风险就不会无限难看。</li></ul>
+<p>这就是 Iron Condor。</p>
+<p>最人话的记法就是：</p>
+<blockquote><p><strong>Iron Condor = Short Strangle + 左右两边再买两条护栏。</strong></p></blockquote>
+<p>所以：</p>
+<ul><li>Butterfly 对应的是 Straddle 的护栏版；</li><li>Condor 对应的是 Strangle 的护栏版。</li></ul>
+<p>这组关系一定要看懂，因为它比死背定义强太多。</p>
+<hr>
+<h1>九、图片最后那点也很有意思：Covered Straddle / Covered Strangle 其实是在说“如果你有现货，上边就没那么吓人”</h1>
+<h2>16.17 最人话的理解：手里有股票，相当于把上方一部分风险盖住了</h2>
+<p>图片最后讲到：</p>
+<ul><li>Covered Straddle</li><li>Covered Strangle</li></ul>
+<p>它的意思其实和前面 Covered Call 一脉相承。</p>
+<p>如果你手里本来就有正股，那么：</p>
+<ul><li>上涨时，你并不是完全裸着面对 short call 那一边；</li><li>因为你手里的股票会帮你覆盖一部分上方风险；</li><li>所以整体会更像“现货仓位上做收租改造”。</li></ul>
+<p>这也提醒你一件很重要的事：</p>
+<blockquote><p><strong>很多看起来很高级的期权结构，本质上还是在重复那几件老事：收租、买保险、降成本、封风险。</strong></p></blockquote>
+<p>只是拼法越来越灵活而已。</p>
+<hr>
+<h1>十、本章小结：波动率策略真正赌的，是“市场预期”和“真实结果”谁更夸张</h1>
+<p>这一章如果只压成最重要的几句话，我希望你记住这些：</p>
+<ul><li>波动率策略赌的不是方向，而是“会不会闹大”；</li><li>Long 系列是在买大波动；</li><li>Short 系列是在卖大波动；</li><li>Straddle 更靠中心、更激进；</li><li>Strangle 更往外退、更便宜 / 更保守；</li><li>Short 系列特别适合和高 IV、IV Crush 场景放在一起看；</li><li>如果 short 结构太危险，就加外侧保护腿，变成 Iron Butterfly / Iron Condor。</li></ul>
+<p>而本章最值钱的一句收束，我会写成：</p>
+<blockquote><p><strong>波动率策略真正赌的，不只是动不动，而是市场原本把“会怎么动”这件事，定得有没有太夸张。</strong></p></blockquote>
+<p>这句话理解了，你这章就真的进去了。</p>
+<hr>
+<h2>自测题</h2>
+<p>1）为什么说 Long Straddle 和 Long Strangle 赌的不是方向，而是“幅度”？</p>
+<p>2）Long Straddle 和 Long Strangle 最核心的区别是什么？</p>
+<p>3）为什么 Short Straddle 最大收益出现在股价停在最中间时？</p>
+<p>4）为什么说 Short Strangle 是“少收一点钱，换更宽的舒服区”？</p>
+<p>5）IV Crush 为什么特别适合和 Short 系列放在一起理解？</p>
+<p>6）Iron Butterfly 和 Iron Condor，本质上分别是在什么基础上加了保护腿？</p>
+<hr>
+<h2>本章参考口径（便于追溯）</h2>
+<ul><li>图片关联重点：<code>Long/Short Straddle</code>、<code>Long/Short Strangle</code>、<code>Short Straddle vs Short Strangle</code>、<code>IV Crush</code>、<code>Iron Butterfly</code>、<code>Iron Condor</code>、<code>Covered Straddle / Covered Strangle</code></li><li>OCC / OIC：用于校准 straddle/strangle、iron butterfly、iron condor 的基础教育口径</li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li></ul>
+<ul><li>Fidelity Options Strategy Guide：用于保持波动率策略与 Iron 系列的收益风险表述和主流券商口径一致</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li></ul>
+<ul><li>CBOE Options Institute：用于保持 volatility strategy、IV crush、risk-defined premium selling 等术语一致</li><li><a href="https://www.cboe.com/optionsinstitute/">https://www.cboe.com/optionsinstitute/</a></li></ul>
+            </article>
+        </section>
+
+        <section class="section" id="chapter-navigation" aria-labelledby="chapter-navigation-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">03</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
+                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
+                </div>
+            </div>
+
+            <div class="chapter-nav-card">
+                <div class="chapter-nav-grid">
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">上一章</div>
+                        <a class="chapter-nav-link" href="./15.html">第 15 章 · 价差策略</a>
+                        <p>从双腿结构出发，理解价差策略如何在控制成本、限制风险与管理收益之间做取舍。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">返回课程</div>
+                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
+                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">下一章</div>
+                        <a class="chapter-nav-link" href="./17.html">第 17 章 · Collar</a>
+                        <p>把 Protective Put 与 Covered Call 组合起来，理解在保留下行保护时如何交换上行空间。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>期权教材 · 结构化学习 · HTML 优先</p>
+        <p class="disclaimer">
+            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
+        </p>
+    </footer>
+
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
+
+    <script src="../js/main.js?v=20260324b"></script>
+</body>
+</html>

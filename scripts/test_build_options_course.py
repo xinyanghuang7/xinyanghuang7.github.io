@@ -59,10 +59,10 @@ class BuildOptionsCourseTests(unittest.TestCase):
         self.assertEqual(nav["02"]["next"].id, "03")
         self.assertIsNone(nav["03"]["next"])
 
-    def test_render_markdown_promotes_h4_to_real_heading(self) -> None:
-        html = mod.render_markdown("#### 例子 A\n\n正文")
-        self.assertIn("<h4>例子 A</h4>", html)
-        self.assertNotIn("<p>#### 例子 A</p>", html)
+    def test_render_markdown_promotes_h5_to_real_heading(self) -> None:
+        html = mod.render_markdown("##### 例子 A\n\n正文")
+        self.assertIn("<h5>例子 A</h5>", html)
+        self.assertNotIn("<p>##### 例子 A</p>", html)
 
     def test_render_stats_uses_next_unpublished_batch(self) -> None:
         chapters = [
