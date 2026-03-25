@@ -2,12 +2,14 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import re
 import sys
 import tempfile
 import unittest
 from pathlib import Path
 
 MODULE_PATH = Path(__file__).with_name("build-options-course.py")
+MANIFEST_PATH = MODULE_PATH.parent.parent / "options" / "course-manifest.json"
 spec = importlib.util.spec_from_file_location("build_options_course", MODULE_PATH)
 mod = importlib.util.module_from_spec(spec)
 sys.modules[spec.name] = mod
@@ -16,6 +18,28 @@ spec.loader.exec_module(mod)
 
 
 class BuildOptionsCourseTests(unittest.TestCase):
+    def build_site_in_temp(self) -> tuple[list[Path], Path]:
+        temp_dir_ctx = tempfile.TemporaryDirectory()
+        self.addCleanup(temp_dir_ctx.cleanup)
+        temp_root = Path(temp_dir_ctx.name)
+        (temp_root / "options").mkdir()
+
+        original_site_root = mod.SITE_ROOT
+        original_manifest_path = mod.MANIFEST_PATH
+        original_index_template_path = mod.INDEX_TEMPLATE_PATH
+        original_chapter_template_path = mod.CHAPTER_TEMPLATE_PATH
+
+        mod.SITE_ROOT = temp_root
+        mod.MANIFEST_PATH = MANIFEST_PATH
+        mod.INDEX_TEMPLATE_PATH = original_index_template_path
+        mod.CHAPTER_TEMPLATE_PATH = original_chapter_template_path
+        self.addCleanup(setattr, mod, "SITE_ROOT", original_site_root)
+        self.addCleanup(setattr, mod, "MANIFEST_PATH", original_manifest_path)
+        self.addCleanup(setattr, mod, "INDEX_TEMPLATE_PATH", original_index_template_path)
+        self.addCleanup(setattr, mod, "CHAPTER_TEMPLATE_PATH", original_chapter_template_path)
+
+        return mod.build_site(), temp_root
+
     def test_published_chapter_missing_required_fields_raises(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             manifest_path = Path(temp_dir) / "manifest.json"
@@ -85,6 +109,53 @@ class BuildOptionsCourseTests(unittest.TestCase):
         self.assertIn("下一批次", html)
         self.assertIn("Batch 2", html)
         self.assertNotIn("<div class=\"course-stat-value\">Batch 1</div>", html)
+
+    def test_published_manifest_entries_resolve_to_real_workspace_chapters(self) -> None:
+        chapters = mod.load_manifest(MANIFEST_PATH)
+        workspace_root = mod.resolve_workspace_root()
+
+        missing = [
+            chapter.source_path
+            for chapter in chapters
+            if chapter.status == "published" and not (workspace_root / chapter.source_path).exists()
+        ]
+
+        self.assertEqual(missing, [])
+
+    def test_generated_pages_use_official_canonical_links_and_leave_no_placeholders(self) -> None:
+        _, temp_root = self.build_site_in_temp()
+        index_html = (temp_root / "options" / "index.html").read_text(encoding="utf-8")
+        chapter_html = (temp_root / "options" / "01.html").read_text(encoding="utf-8")
+
+        self.assertIn('<link rel="canonical" href="https://4fire.qzz.io/options/">', index_html)
+        self.assertIn('<meta property="og:url" content="https://4fire.qzz.io/options/">', index_html)
+        self.assertIn('<link rel="canonical" href="https://4fire.qzz.io/options/01.html">', chapter_html)
+        self.assertIn('<meta property="og:url" content="https://4fire.qzz.io/options/01.html">', chapter_html)
+        self.assertIn('sameAs": "https://4fire.qzz.io/"', index_html)
+        self.assertIn('sameAs": "https://4fire.qzz.io/"', chapter_html)
+        self.assertNotRegex(index_html, r"\{\{[^}]+\}\}")
+        self.assertNotRegex(chapter_html, r"\{\{[^}]+\}\}")
+        self.assertNotIn("课程首页只负责课程", index_html)
+
+    def test_generated_chapters_keep_navigation_slots_and_index_published_count_in_sync(self) -> None:
+        _, temp_root = self.build_site_in_temp()
+        chapters = mod.load_manifest(MANIFEST_PATH)
+        published = [chapter for chapter in chapters if chapter.status == "published"]
+        index_html = (temp_root / "options" / "index.html").read_text(encoding="utf-8")
+
+        published_count_match = re.search(
+            r'<div class="course-stat-label">已发布</div><div class="course-stat-value">(\d+)</div>',
+            index_html,
+        )
+        self.assertIsNotNone(published_count_match)
+        self.assertEqual(int(published_count_match.group(1)), len(published))
+
+        for chapter in published:
+            chapter_html = (temp_root / chapter.output_path).read_text(encoding="utf-8")
+            self.assertIn('<div class="chapter-nav-label">上一章</div>', chapter_html)
+            self.assertIn('<div class="chapter-nav-label">返回课程</div>', chapter_html)
+            self.assertIn('<div class="chapter-nav-label">下一章</div>', chapter_html)
+            self.assertEqual(chapter_html.count('class="chapter-nav-slot"'), 3)
 
 
 if __name__ == "__main__":
