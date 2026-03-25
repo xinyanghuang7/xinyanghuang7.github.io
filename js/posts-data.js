@@ -1,9 +1,26 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-03-25",
+    "title": "2026年3月25日美股分析：SHOP 新主角 + 持仓决策区",
+    "desc": "2026年3月25日美股分析：在 Module 1 新去重规则下，用 SHOP 作为全新主角，围绕高质量平台成长、AI 只是加速器这条主线，继续压实 META、NVDA、NBIS 的持仓决策区。",
+    "url": "posts/2026/03/25.html",
+    "keywords": [
+      "SHOP",
+      "META",
+      "NVDA",
+      "NBIS",
+      "美股分析",
+      "Shopify",
+      "平台成长",
+      "持仓决策",
+      "动作地图"
+    ]
+  },
+  {
     "date": "2026-03-24",
-    "title": "2026年3月24日美股分析：TEM 资格审查 + 持仓动作地图",
-    "desc": "2026年3月24日美股分析：把 TEM 放进医疗AI资格审查，而不是把高增长故事直接写成动作信号；同时继续压实 META、NVDA、NBIS 的持仓动作地图。",
+    "title": "2026年3月24日美股分析：TEM 观察位 + 持仓动作地图",
+    "desc": "2026年3月24日美股分析：用 TEM 作为不重复的新观察位，围绕医疗AI/检测数据飞轮补组合缺口，并继续压实 META、NVDA、NBIS 的持仓动作地图。",
     "url": "posts/2026/03/24.html",
     "keywords": [
       "TEM",
@@ -12,15 +29,15 @@ window.__POSTS__ = [
       "NBIS",
       "美股分析",
       "医疗AI",
-      "资格审查",
       "持仓解读",
-      "动作地图"
+      "动作地图",
+      "组合分散"
     ]
   },
   {
     "date": "2026-03-23",
-    "title": "2026年3月23日美股分析：COIN thesis update + 持仓动作地图",
-    "desc": "2026年3月23日美股分析：把 COIN 明确写成 thesis update，而不是假装成第二天的全新发现；同时把 META、NVDA、NBIS 的判断重新压回动作地图。",
+    "title": "2026年3月23日美股分析：COIN 继续前排观察 + 持仓动作地图",
+    "desc": "2026年3月23日美股分析：继续用 COIN 做非 AI 补位观察，同时把 META、NVDA、NBIS 在 3 月下旬的最新已核对节点压回动作地图。",
     "url": "posts/2026/03/23.html",
     "keywords": [
       "COIN",
@@ -29,9 +46,9 @@ window.__POSTS__ = [
       "NBIS",
       "美股分析",
       "合规加密",
-      "thesis update",
       "持仓解读",
-      "动作地图"
+      "动作地图",
+      "组合分散"
     ]
   },
   {
