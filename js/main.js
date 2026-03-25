@@ -412,33 +412,33 @@ function cleanupBuildQueryParam(currentBuild) {
         const url = new URL(window.location.href);
         const activeBuild = url.searchParams.get(SITE_BUILD_QUERY_KEY);
         if (!activeBuild) {
-            return;
+            return false;
         }
 
         if (activeBuild === currentBuild) {
             url.searchParams.delete(SITE_BUILD_QUERY_KEY);
             window.history.replaceState({}, document.title, url.toString());
             sessionStorage.removeItem(SITE_BUILD_RELOAD_KEY);
-            return;
+            return false;
         }
 
-        const mismatchKey = `${url.pathname}|mismatch|${currentBuild}`;
-        const lastAttempt = sessionStorage.getItem(SITE_BUILD_RELOAD_KEY);
-        if (currentBuild && lastAttempt !== mismatchKey) {
-            sessionStorage.setItem(SITE_BUILD_RELOAD_KEY, mismatchKey);
-            url.searchParams.set(SITE_BUILD_QUERY_KEY, currentBuild);
-            window.location.replace(url.toString());
-        }
+        url.searchParams.delete(SITE_BUILD_QUERY_KEY);
+        window.history.replaceState({}, document.title, url.toString());
+
+        const mismatchKey = `${url.pathname}|mismatch|${activeBuild}|${currentBuild}`;
+        sessionStorage.setItem(SITE_BUILD_RELOAD_KEY, mismatchKey);
+        showBuildRefreshNotice(activeBuild);
+        return true;
     } catch (_) {
-        // no-op
+        return false;
     }
 }
 
 async function checkForSiteUpdate() {
     const currentBuild = getCurrentBuildId();
-    cleanupBuildQueryParam(currentBuild);
+    const handledMismatch = cleanupBuildQueryParam(currentBuild);
 
-    if (!currentBuild || typeof fetch !== 'function') {
+    if (handledMismatch || !currentBuild || typeof fetch !== 'function') {
         return;
     }
 
