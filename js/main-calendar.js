@@ -169,7 +169,14 @@ const CalendarArchive = {
     }
 };
 
-// Initialize calendar when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
+// Expose for debugging / downstream hooks
+window.CalendarArchive = CalendarArchive;
+
+// Initialize calendar safely whether DOMContentLoaded already fired or not
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        CalendarArchive.init();
+    });
+} else {
     CalendarArchive.init();
-});
+}
