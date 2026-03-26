@@ -1,27 +1,27 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="鐞嗚В PMCC 濡備綍鐢ㄩ暱鏈熸繁搴﹀疄鍊?Call 鏇夸唬姝ｈ偂锛屽苟鍦ㄨ妭鐪佸墠缃祫閲戠殑鍚屾椂鎵垮彈鏇磋绌剁殑 long leg 绾︽潫銆?>
+    <meta name="description" content="理解 PMCC 如何用长期深度实值 Call 替代正股，并在节省前置资金的同时承受更讲究的 long leg 约束。">
     <meta name="author" content="ValueInvest">
     <meta name="theme-color" content="#c9a227">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="canonical" href="https://4fire.qzz.io/options/27.html">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://4fire.qzz.io/options/27.html">
-    <meta property="og:title" content="PMCC | 缇庤偂鏈熸潈鏁欐潗">
-    <meta property="og:description" content="鐞嗚В PMCC 濡備綍鐢ㄩ暱鏈熸繁搴﹀疄鍊?Call 鏇夸唬姝ｈ偂锛屽苟鍦ㄨ妭鐪佸墠缃祫閲戠殑鍚屾椂鎵垮彈鏇磋绌剁殑 long leg 绾︽潫銆?>
+    <meta property="og:title" content="PMCC | 美股期权教材">
+    <meta property="og:description" content="理解 PMCC 如何用长期深度实值 Call 替代正股，并在节省前置资金的同时承受更讲究的 long leg 约束。">
     <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PMCC | 缇庤偂鏈熸潈鏁欐潗">
-    <meta name="twitter:description" content="鐞嗚В PMCC 濡備綍鐢ㄩ暱鏈熸繁搴﹀疄鍊?Call 鏇夸唬姝ｈ偂锛屽苟鍦ㄨ妭鐪佸墠缃祫閲戠殑鍚屾椂鎵垮彈鏇磋绌剁殑 long leg 绾︽潫銆?>
+    <meta name="twitter:title" content="PMCC | 美股期权教材">
+    <meta name="twitter:description" content="理解 PMCC 如何用长期深度实值 Call 替代正股，并在节省前置资金的同时承受更讲究的 long leg 约束。">
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
-    <title>PMCC | 缇庤偂鏈熸潈鏁欐潗</title>
+    <title>PMCC | 美股期权教材</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260326review1">
+    <link rel="stylesheet" href="../css/style.css?v=20260326review2">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -192,7 +192,7 @@
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "PMCC",
-        "description": "鐞嗚В PMCC 濡備綍鐢ㄩ暱鏈熸繁搴﹀疄鍊?Call 鏇夸唬姝ｈ偂锛屽苟鍦ㄨ妭鐪佸墠缃祫閲戠殑鍚屾椂鎵垮彈鏇磋绌剁殑 long leg 绾︽潫銆?,
+        "description": "理解 PMCC 如何用长期深度实值 Call 替代正股，并在节省前置资金的同时承受更讲究的 long leg 约束。",
         "author": {
             "@type": "Person",
             "name": "ValueInvest"
@@ -205,7 +205,7 @@
         "mainEntityOfPage": "https://4fire.qzz.io/options/27.html",
         "isPartOf": {
             "@type": "Course",
-            "name": "缇庤偂鏈熸潈鏁欐潗",
+            "name": "美股期权教材",
             "url": "https://4fire.qzz.io/options/"
         },
         "image": [
@@ -215,39 +215,39 @@
     </script>
 </head>
 <body>
-    <a href="#main" class="skip-link">璺宠浆鍒颁富鍐呭</a>
-    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="椤甸潰闃呰杩涘害"></div>
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
 
     <header id="header">
         <div class="nav-container">
-            <a href="../index.html" class="logo" aria-label="ValueInvest 棣栭〉">Value<span>Invest</span></a>
-            <nav aria-label="鏈熸潈绔犺妭椤典富瀵艰埅">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="期权章节页主导航">
                 <ul class="nav-links">
-                    <li><a href="../index.html">杩斿洖棣栭〉</a></li>
-                    <li><a href="./index.html">杩斿洖璇剧▼</a></li>
-                    <li><a href="#chapter-navigation">绔犺妭瀵艰埅</a></li>
+                    <li><a href="../index.html">返回首页</a></li>
+                    <li><a href="./index.html">返回课程</a></li>
+                    <li><a href="#chapter-navigation">章节导航</a></li>
                 </ul>
             </nav>
-            <div class="nav-date">绗?27 绔?/div>
+            <div class="nav-date">第 27 章</div>
         </div>
     </header>
 
     <section class="hero" role="banner">
         <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
         <div class="hero-content">
-            <div class="subtitle">瀹炴垬搴旂敤绡?/div>
-            <h1>绗?27 绔?路 PMCC</h1>
-            <p class="tagline">瀹炴垬搴旂敤绡?路 Batch 7</p>
-            <p class="hero-description">鐞嗚В PMCC 濡備綍鐢ㄩ暱鏈熸繁搴﹀疄鍊?Call 鏇夸唬姝ｈ偂锛屽苟鍦ㄨ妭鐪佸墠缃祫閲戠殑鍚屾椂鎵垮彈鏇磋绌剁殑 long leg 绾︽潫銆?/p>
+            <div class="subtitle">实战应用篇</div>
+            <h1>第 27 章 · PMCC</h1>
+            <p class="tagline">实战应用篇 · Batch 7</p>
+            <p class="hero-description">理解 PMCC 如何用长期深度实值 Call 替代正股，并在节省前置资金的同时承受更讲究的 long leg 约束。</p>
         </div>
-        <a href="#chapter-summary" class="scroll-indicator" aria-label="鍚戜笅婊氬姩鍒扮珷鑺傛憳瑕?>鍚戜笅婊氬姩</a>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
     </section>
 
-    <div class="chapter-meta-bar" aria-label="绔犺妭鍏抽敭淇℃伅">
-        <div class="chapter-meta-pill">绔犺妭缂栧彿锛氱 27 绔?/div>
-        <div class="chapter-meta-pill">Section锛氬疄鎴樺簲鐢ㄧ瘒</div>
-        <div class="chapter-meta-pill">Batch锛欱atch 7 路 宸插彂甯?/div>
-        <div class="chapter-meta-pill">鎵€灞炶绋嬶細<a class="chapter-meta-link" href="./index.html">缇庤偂鏈熸潈鏁欐潗</a></div>
+    <div class="chapter-meta-bar" aria-label="章节关键信息">
+        <div class="chapter-meta-pill">章节编号：第 27 章</div>
+        <div class="chapter-meta-pill">Section：实战应用篇</div>
+        <div class="chapter-meta-pill">Batch：Batch 7 · 已发布</div>
+        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
     </div>
 
     <main id="main" class="chapter-shell">
@@ -255,13 +255,13 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">01</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-summary-title">绔犺妭鎽樿</h2>
-                    <p class="section-subtitle">缁欒鑰呬竴涓厛璇绘噦妗嗘灦銆佸啀娣卞叆姝ｆ枃鐨勮惤鐐?/p>
+                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
+                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
                 </div>
             </div>
 
             <div class="chapter-summary-card">
-                <p>鐞嗚В PMCC 濡備綍鐢ㄩ暱鏈熸繁搴﹀疄鍊?Call 鏇夸唬姝ｈ偂锛屽苟鍦ㄨ妭鐪佸墠缃祫閲戠殑鍚屾椂鎵垮彈鏇磋绌剁殑 long leg 绾︽潫銆?/p>
+                <p>理解 PMCC 如何用长期深度实值 Call 替代正股，并在节省前置资金的同时承受更讲究的 long leg 约束。</p>
             </div>
         </section>
 
@@ -269,243 +269,243 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">02</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-content-title">绔犺妭姝ｆ枃</h2>
-                    <p class="section-subtitle">姝ｆ枃鍐呭鐢辩敓鎴愬櫒鐩存帴鍐欏叆 HTML锛岄粯璁ゆ棤鑴氭湰涔熷簲瀹屾暣鍙</p>
+                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
+                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
                 </div>
             </div>
 
             <article class="chapter-body-card">
-<h1>銆婄編鑲℃湡鏉冩暀鏉愩€?/h1>
-<h2>绗?7绔?PMCC锛氫负浠€涔堝畠琚彨鍋氣€滅┓浜虹増 Covered Call鈥濓紝浠ュ強瀹冨埌搴曚究瀹滃湪浠€涔堝湴鏂广€佸嵄闄╁張钘忓湪鍝噷</h2>
-<blockquote><p>杩欎竴绔犱篃涓€瀹氳璐寸潃鍥剧墖鐪嬶紝鍥犱负鍥鹃噷宸茬粡鎶?PMCC 鐨勬牳蹇冭寰楀緢娓呮锛?/p>
-<ul><li><strong>PMCC = LEAP Call + 鍗栫煭鏈?Call</strong></li><li>瀹冩湰璐ㄤ笂鏄湪鐢ㄤ竴寮犻暱鏈熴€佹繁搴?ITM 鐨?Call锛屽幓鏇夸唬鏈潵闇€瑕佺殑 100 鑲℃鑲★紱</li><li>鐒跺悗鍐嶅儚 Covered Call 閭ｆ牱锛屽崠鍑鸿繎鏈?Call 鍘绘敹绉熴€?/li></ul>
-<p>鍥剧墖閲岃繕缁欎簡鍑犱釜闈炲父鍏抽敭鐨勬彁閱掞細</p>
-<ul><li>PMCC 鍜?Covered Call 鐨勬姇璧勯€昏緫寰堝儚锛?/li><li>瀹冪殑浼樼偣鏄?strong>澶у箙闄嶄綆鍓嶇疆璧勯噾鎴愭湰</strong>锛?/li><li>浣嗗畠涓嶆槸鐧介€佺殑锛屽洜涓洪暱鏈?Call 鑷繁涔熶細鏈夛細</li><li>鏃堕棿鎹熻€楋紱</li><li>Vega / IV 鏁忔劅搴︼紱</li><li>瀵?long leg 閫夋嫨璐ㄩ噺鐨勯珮搴︿緷璧栵紱</li><li>瀹炴搷涓婏紝long leg 瑕佸敖閲忛€夛細</li><li><strong>涓€骞翠互涓婄殑 LEAP</strong>锛?/li><li><strong>deep ITM</strong>锛?/li><li><strong>delta 灏介噺楂橈紙鍥鹃噷寤鸿 &gt; 0.85锛?/strong>锛?/li><li><strong>娴佸姩鎬ц濂?/strong>锛?/li><li>鐭吙鐨勭鐞嗗垯鍜?Covered Call 寰堝儚锛?/li><li>骞充粨锛?/li><li>Roll锛?/li><li>閬囧埌鏆存定涓嶈瑁呮銆?/li></ul>
-<p>鎵€浠ヨ繖涓€绔犳渶閲嶈鐨勶紝涓嶆槸鎶?PMCC 褰撴垚涓€涓柊濂囧悕瀛楋紝鑰屾槸鎶婂畠缈绘垚浜鸿瘽锛?/p>
-<blockquote><p><strong>PMCC 灏辨槸鈥樻垜娌￠偅涔堝閽卞厛涔?100 鑲★紝浣嗘垜鎯崇敤涓€寮犺冻澶熷儚姝ｈ偂鐨勯暱鏈?Call锛屽綋浣滄鑲℃浛韬紝鍐嶆嬁瀹冨幓鍋?Covered Call銆傗€?/strong></p></blockquote>
-<p>鍙杩欏彞璇濅綘鐪熺殑鎳備簡锛屽悗闈㈢殑椋庨櫓鍜岀粏鑺傚氨鑳介『鐫€璧般€?/p>
-<p>鐜板湪鎶婂畠鏀惧埌 Greeks 涔嬪悗鍐嶈锛岄『搴忎細鑷劧寰堝锛?/p>
-<ul><li>浣犲凡缁忓杩?Delta銆丟amma銆乀heta銆乂ega锛?/li><li>鍐嶆潵鐪?long leg 涓轰粈涔堣 deep ITM銆乭igh delta銆乴ong-dated锛?/li><li>涔熸洿瀹规槗鏄庣櫧 PMCC 涓嶆槸鈥滅渷閽辩増绁炴妧鈥濓紝鑰屾槸涓€绉嶅 long leg 璐ㄩ噺瑕佹眰寰堥珮鐨勬浛浠ｆ寔鑲＄粨鏋勩€?/li></ul></blockquote>
+<h1>《美股期权教材》</h1>
+<h2>第27章 PMCC：为什么它被叫做“穷人版 Covered Call”，以及它到底便宜在什么地方、危险又藏在哪里</h2>
+<blockquote><p>这一章也一定要贴着图片看，因为图里已经把 PMCC 的核心讲得很清楚：</p>
+<ul><li><strong>PMCC = LEAP Call + 卖短期 Call</strong></li><li>它本质上是在用一张长期、深度 ITM 的 Call，去替代本来需要的 100 股正股；</li><li>然后再像 Covered Call 那样，卖出近月 Call 去收租。</li></ul>
+<p>图片里还给了几个非常关键的提醒：</p>
+<ul><li>PMCC 和 Covered Call 的投资逻辑很像；</li><li>它的优点是<strong>大幅降低前置资金成本</strong>；</li><li>但它不是白送的，因为长期 Call 自己也会有：</li><li>时间损耗；</li><li>Vega / IV 敏感度；</li><li>对 long leg 选择质量的高度依赖；</li><li>实操上，long leg 要尽量选：</li><li><strong>一年以上的 LEAP</strong>；</li><li><strong>deep ITM</strong>；</li><li><strong>delta 尽量高（图里建议 &gt; 0.85）</strong>；</li><li><strong>流动性要好</strong>；</li><li>短腿的管理则和 Covered Call 很像：</li><li>平仓；</li><li>Roll；</li><li>遇到暴涨不要装死。</li></ul>
+<p>所以这一章最重要的，不是把 PMCC 当成一个新奇名字，而是把它翻成人话：</p>
+<blockquote><p><strong>PMCC 就是‘我没那么多钱先买 100 股，但我想用一张足够像正股的长期 Call，当作正股替身，再拿它去做 Covered Call。’</strong></p></blockquote>
+<p>只要这句话你真的懂了，后面的风险和细节就能顺着走。</p>
+<p>现在把它放到 Greeks 之后再讲，顺序会自然很多：</p>
+<ul><li>你已经学过 Delta、Gamma、Theta、Vega；</li><li>再来看 long leg 为什么要 deep ITM、high delta、long-dated；</li><li>也更容易明白 PMCC 不是“省钱版神技”，而是一种对 long leg 质量要求很高的替代持股结构。</li></ul></blockquote>
 <hr>
-<h2>闃呰瀵艰埅锛氱涓€娆¤鍏堟姄鈥滃畠鏄浛浠ｆ寔鑲★紝涓嶆槸鐪侀挶绁炴妧鈥濓紝绗簩娆¤鍐嶈ˉ long leg 璐ㄩ噺</h2>
-<p>杩欎竴绔犵涓€娆¤锛屾渶瀹规槗琚悕瀛楀甫鍋忥細濂藉儚 PMCC 鍙槸鐢ㄦ洿灏戠殑閽卞仛 Covered Call銆?/p>
-<p>鍏跺疄浣犵涓€閬嶆渶璇ユ姄鐨勬槸锛?/p>
-<p>1. <strong>瀹冩湰璐ㄤ笂鏄湪鎵句竴涓冻澶熷儚姝ｈ偂鐨勯暱鏈?Call 鏇胯韩銆?/strong> 2. <strong>瀹冪渷鐨勬槸鍓嶇疆璧勯噾锛屼笉鏄妸椋庨櫓鍜岃姹備竴璧风渷鎺夈€?/strong> 3. <strong>long leg 鐨勮川閲忥紝鍐冲畾杩欏缁撴瀯鍒板簳鍍忎笉鍍忔寔鑲°€?/strong></p>
-<p>绗簩閬嶅啀鍘昏ˉ锛?/p>
-<ul><li>涓轰粈涔堣 deep ITM銆乭igh delta銆乴ong-dated锛?/li><li>涓轰粈涔?Theta / Vega 浠嶇劧浼氭寔缁綔鐢紱</li><li>涓轰粈涔?short leg 绠＄悊鍜?Covered Call 寰堝儚锛屼絾搴曞眰浣撻獙涓嶄竴鏍枫€?/li></ul>
+<h2>阅读导航：第一次读先抓“它是替代持股，不是省钱神技”，第二次读再补 long leg 质量</h2>
+<p>这一章第一次读，最容易被名字带偏：好像 PMCC 只是用更少的钱做 Covered Call。</p>
+<p>其实你第一遍最该抓的是：</p>
+<p>1. <strong>它本质上是在找一个足够像正股的长期 Call 替身。</strong> 2. <strong>它省的是前置资金，不是把风险和要求一起省掉。</strong> 3. <strong>long leg 的质量，决定这套结构到底像不像持股。</strong></p>
+<p>第二遍再去补：</p>
+<ul><li>为什么要 deep ITM、high delta、long-dated；</li><li>为什么 Theta / Vega 仍然会持续作用；</li><li>为什么 short leg 管理和 Covered Call 很像，但底层体验不一样。</li></ul>
 <hr>
-<h1>涓€銆佸厛鎶?PMCC 璁叉垚浜鸿瘽锛氬畠鏈川涓婃槸鍦ㄦ壘涓€涓€滀究瀹滅増姝ｈ偂鏇胯韩鈥?/h1>
-<h2>27.1 涓轰粈涔堜細鏈変汉鍙戞槑 PMCC</h2>
-<p>Covered Call 鐨勯€昏緫鎴戜滑鍓嶉潰宸茬粡寰堢啛浜嗭細</p>
-<ul><li>鎸佹湁 100 鑲℃鑲★紱</li><li>鍗?1 寮犺繎鏈?Call锛?/li><li>鏀舵潈鍒╅噾锛?/li><li>鐢ㄤ竴閮ㄥ垎鏈潵涓婃柟绌洪棿锛屾崲涓€鐐圭幇鍦ㄧ殑鐜伴噾娴併€?/li></ul>
-<p>瀹冨緢濂界悊瑙ｏ紝涔熷緢甯哥敤銆?/p>
-<p>浣嗗畠鏈変竴涓潪甯哥幇瀹炵殑闂锛?/p>
-<blockquote><p><strong>浣犲緱鍏堟嬁寰楀嚭涔?100 鑲℃鑲＄殑閽便€?/strong></p></blockquote>
-<p>濡傛灉鑲＄エ渚垮疁锛岃繖杩樺ソ璇淬€?/p>
-<p>浣嗗鏋滀綘闈㈠鐨勬槸锛?/p>
-<ul><li>SPY锛?/li><li>QQQ锛?/li><li>NVDA锛?/li><li>META锛?/li><li>鎴栬€呬换浣曚环鏍兼瘮杈冮珮鐨勬爣鐨勶紱</li></ul>
-<p>閭ｄ箞浣犺鍏堜拱婊?100 鑲★紝璧勯噾鍘嬪姏浼氶潪甯哥湡瀹炪€?/p>
-<p>杩欐椂灏变細鏈変汉鎯筹細</p>
-<ul><li>鎴戝叾瀹炰笉鏄潪寰楁嬁鈥滅湡鐨?100 鑲♀€濅笉鍙紱</li><li>鎴戠湡姝ｆ兂瑕佺殑鏄€滀竴涓緢鍍忔寔鏈?100 鑲＄殑澶氬ご鏆撮湶鈥濓紱</li><li>鏈夋病鏈変竴绉嶄笢瑗匡紝鍙互鐢ㄦ洿灏戠殑閽憋紝鍏堝鍒跺嚭澶ч儴鍒嗘鑲℃劅瑙夛紵</li></ul>
-<p>浜庢槸 PMCC 杩欏鎬濊矾灏卞嚭鐜颁簡銆?/p>
-<h2>27.2 PMCC 鐨勬渶浜鸿瘽瀹氫箟锛氱敤闀挎湡娣卞疄鍊?Call 浠ｆ浛姝ｈ偂锛屽啀鍗栫煭鏈?Call 鏀剁</h2>
-<p>PMCC 鍏ㄧО鏄細</p>
-<ul><li><strong>Poor Man鈥檚 Covered Call</strong></li></ul>
-<p>鐩磋瘧杩囨潵灏辨槸锛?/p>
-<ul><li><strong>绌蜂汉鐗?Covered Call</strong></li></ul>
-<p>杩欎釜鍚嶅瓧铏界劧鏈夌偣鎴忚皯锛屼絾瀹冪偣寰楀緢鍑嗐€?/p>
-<p>鍥犱负瀹冩湰璐ㄤ笂灏辨槸锛?/p>
-<blockquote><p><strong>鎴戝厛涓嶆嬁鐪熷疄 100 鑲★紝鑰屾槸鎷夸竴寮犲緢鍍?100 鑲＄殑闀挎湡 deep ITM Call 鏉ュ綋鏇胯韩锛岀劧鍚庡啀鍗栫煭鏈?Call 鍘绘敹绉熴€?/strong></p></blockquote>
-<p>鎵€浠ュ畠鐨勬爣鍑嗙粨鏋勬槸锛?/p>
-<ul><li><strong>Long leg锛氫拱涓€寮?LEAP Call</strong>锛堥暱鏈熴€佹繁瀹炲€硷級</li><li><strong>Short leg锛氬崠涓€寮犵煭鏈?Call</strong></li></ul>
-<p>杩欏拰 Covered Call 鐨勫尯鍒湪鍝紵</p>
+<h1>一、先把 PMCC 讲成人话：它本质上是在找一个“便宜版正股替身”</h1>
+<h2>27.1 为什么会有人发明 PMCC</h2>
+<p>Covered Call 的逻辑我们前面已经很熟了：</p>
+<ul><li>持有 100 股正股；</li><li>卖 1 张近月 Call；</li><li>收权利金；</li><li>用一部分未来上方空间，换一点现在的现金流。</li></ul>
+<p>它很好理解，也很常用。</p>
+<p>但它有一个非常现实的问题：</p>
+<blockquote><p><strong>你得先拿得出买 100 股正股的钱。</strong></p></blockquote>
+<p>如果股票便宜，这还好说。</p>
+<p>但如果你面对的是：</p>
+<ul><li>SPY；</li><li>QQQ；</li><li>NVDA；</li><li>META；</li><li>或者任何价格比较高的标的；</li></ul>
+<p>那么你要先买满 100 股，资金压力会非常真实。</p>
+<p>这时就会有人想：</p>
+<ul><li>我其实不是非得拿“真的 100 股”不可；</li><li>我真正想要的是“一个很像持有 100 股的多头暴露”；</li><li>有没有一种东西，可以用更少的钱，先复制出大部分正股感觉？</li></ul>
+<p>于是 PMCC 这套思路就出现了。</p>
+<h2>27.2 PMCC 的最人话定义：用长期深实值 Call 代替正股，再卖短期 Call 收租</h2>
+<p>PMCC 全称是：</p>
+<ul><li><strong>Poor Man’s Covered Call</strong></li></ul>
+<p>直译过来就是：</p>
+<ul><li><strong>穷人版 Covered Call</strong></li></ul>
+<p>这个名字虽然有点戏谑，但它点得很准。</p>
+<p>因为它本质上就是：</p>
+<blockquote><p><strong>我先不拿真实 100 股，而是拿一张很像 100 股的长期 deep ITM Call 来当替身，然后再卖短期 Call 去收租。</strong></p></blockquote>
+<p>所以它的标准结构是：</p>
+<ul><li><strong>Long leg：买一张 LEAP Call</strong>（长期、深实值）</li><li><strong>Short leg：卖一张短期 Call</strong></li></ul>
+<p>这和 Covered Call 的区别在哪？</p>
 <h3>Covered Call</h3>
-<ul><li>搴曚粨鏄細100 鑲℃鑲?/li><li>涓婂眰绉熼噾鑵挎槸锛氬崠杩戞湀 Call</li></ul>
+<ul><li>底仓是：100 股正股</li><li>上层租金腿是：卖近月 Call</li></ul>
 <h3>PMCC</h3>
-<ul><li>搴曚粨鏇胯韩鏄細涓€寮犻暱鏈熴€乨eep ITM 鐨?LEAP Call</li><li>涓婂眰绉熼噾鑵夸粛鐒舵槸锛氬崠杩戞湀 Call</li></ul>
-<p>鎵€浠?PMCC 鏈€璇ヨ浣忕殑涓€鍙ヨ瘽锛屽氨鏄細</p>
-<blockquote><p><strong>瀹冧笉鏄竴涓叏鏂扮瓥鐣ワ紝鑰屾槸鎶?Covered Call 閲岀殑鈥滄鑲″簳浠撯€濇崲鎴愪簡鈥滈暱鏈?Call 搴曚粨鈥濄€?/strong></p></blockquote>
-<h1>浜屻€佷负浠€涔堥暱鏈?deep ITM Call 鍙互琚嬁鏉ュ綋鈥滄鑲℃浛韬€?/h1>
-<h2>27.3 涓嶆槸鎵€鏈?Call 閮借兘褰撴浛韬紝鍏抽敭鏄瓒冲鍍忚偂绁?/h2>
-<p>杩欓噷鐗瑰埆閲嶈銆?/p>
-<p>寰堝鏂版墜涓€鍚?PMCC锛屼細鐩存帴璇細鎴愶細</p>
-<ul><li>閭ｆ垜闅忎究涔板紶 Call锛屼笉灏辫浜嗗悧锛?/li></ul>
-<p>瀹屽叏涓嶆槸銆?/p>
-<p>PMCC 涔嬫墍浠ユ垚绔嬶紝鍓嶆彁鏄繖寮?long leg 蹇呴』灏介噺鈥滃儚姝ｈ偂鈥濄€?/p>
-<p>鑰屽浘鐗囬噷缁欏緱寰堟槑纭紝瀹冮€氬父瑕佹弧瓒冲嚑涓潯浠讹細</p>
-<ul><li><strong>鍒版湡瓒冲杩?/strong>锛氫竴骞翠互涓婏紱</li><li><strong>浣嶇疆瓒冲娣?ITM</strong>锛?/li><li><strong>Delta 灏介噺楂?/strong>锛氬浘閲岀洿鎺ュ缓璁€?delta &gt; 0.85锛?/li><li><strong>娴佸姩鎬ц濂?/strong>銆?/li></ul>
-<p>涓轰粈涔堣杩欐牱锛?/p>
-<p>鍥犱负浣犱笉鏄湪涔颁竴涓函姊︽兂鍨嬪僵绁?Call锛岃€屾槸鍦ㄤ拱涓€涓細</p>
-<ul><li>浠锋牸琛屼负灏介噺鍍忚偂绁紱</li><li>鏃堕棿鎹熻€楃浉瀵规病閭ｄ箞澶稿紶锛?/li><li>Delta 灏介噺鎺ヨ繎 1锛?/li><li>鏇撮€傚悎鎷挎潵鍋氬簳浠撴浛韬殑闀挎湡鍚堢害銆?/li></ul>
-<p>濡傛灉杩欐潯 long leg 閫夋浜嗭紝鏁村 PMCC 浼氬彉鍛炽€?/p>
-<h2>27.4 涓轰粈涔堣閫変竴骞翠互涓婄殑 LEAP</h2>
-<p>杩欑偣鐪嬭捣鏉ョ畝鍗曪紝鍏跺疄鐗瑰埆鍏抽敭銆?/p>
-<p>濡傛灉浣犵殑 long leg 澶煭锛屼細鍙戠敓浠€涔堬紵</p>
-<ul><li>鏃堕棿鎹熻€椾細鏄庢樉鍙樺揩锛?/li><li>瀹冨氨涓嶅啀鍍忊€滃簳浠撯€濓紝鏇村儚鈥滀竴涓湁鏈熼檺鐨勬柟鍚戣祵鍗曗€濓紱</li><li>浣犲簳涓嬪湴鍩烘湰韬兘鍦ㄦ槑鏄炬祦琛€锛屽氨寰堥毦绋崇ǔ鍦板幓鍋氫笂闈㈢殑鏀剁鍔ㄤ綔銆?/li></ul>
-<p>鎵€浠ュ浘鐗囬噷鐩存帴寤鸿锛?/p>
-<ul><li><strong>涓€骞翠互涓娿€?/strong></li></ul>
-<p>杩欒儗鍚庣殑閫昏緫闈炲父绠€鍗曪細</p>
-<blockquote><p><strong>浣犳槸鎯虫壘涓€涓暱鏈熸浛韬紝涓嶆槸鎵句竴涓┈涓婅杩囨湡鐨勪复鏃舵紨鍛樸€?/strong></p></blockquote>
-<p>瓒婇暱鐨?LEAP锛?/p>
-<ul><li>鏃堕棿鎹熻€楁洿鎱紱</li><li>鏇村儚涓€涓彲浠ユ嬁鐫€璧颁竴娈垫椂闂寸殑鈥滄浛浠ｅ簳浠撯€濓紱</li><li>涔熸洿閫傚悎涓婇潰鎸佺画鍘诲崠杩戞湀 Call銆?/li></ul>
-<h2>27.5 涓轰粈涔堣閫?deep ITM锛屾渶濂借繕瑕侀珮 Delta</h2>
-<p>杩欐槸 PMCC 鏈€瀹规槗鍋氶敊鐨勫湴鏂广€?/p>
-<p>寰堝浜轰竴鐪嬧€滈檷浣庢垚鏈€濓紝灏变細蹇嶄笉浣忓線渚垮疁鐨?OTM 鎴栨祬 ITM Call 鍘婚潬銆?/p>
-<p>杩欎細鎶婄瓥鐣ョ洿鎺ュ仛姝€?/p>
-<p>鍥犱负浣犵湡姝ｉ渶瑕佺殑鏄細</p>
-<ul><li>杩欏紶 long leg 瑕佽冻澶熷儚鑲＄エ锛?/li><li>瀹冧笉鑳藉彧鏄€滃鏋滄定寰堝鎵嶆湁鎴忊€濓紱</li><li>瀹冭鍦ㄦ甯镐笂娑ㄦ椂锛屽氨宸茬粡鑳芥彁渚涙瘮杈冪ǔ瀹氱殑澶氬ご鏆撮湶銆?/li></ul>
-<p>鎵€浠ュ浘鐗囬噷鎵嶄細寮鸿皟锛?/p>
-<ul><li><strong>deep ITM</strong>锛?/li><li><strong>delta &gt; 0.85 鏇村ソ</strong>銆?/li></ul>
-<p>涓轰粈涔堬紵</p>
-<p>鍥犱负杩欐牱瀹冩洿鍍忎粈涔堬紵</p>
-<ul><li>鍍忎竴涓甫鏉犳潌鐨勮偂绁ㄦ浛韬紱</li><li>鑰屼笉鏄竴寮犺繙鏈熷僵绁ㄣ€?/li></ul>
-<p>濡傛灉浣犱拱寰楀お娴咃紝Delta 涓嶅楂橈紝long leg 灏变細鍑洪棶棰橈細</p>
-<ul><li>涓婃定鏃跺畠璺熷緱娌￠偅涔堝儚鑲＄エ锛?/li><li>鏃堕棿鎹熻€椾細鏇存槑鏄撅紱</li><li>浣犱笂闈㈠啀鍗栫煭 Call锛屽氨瀹规槗鍙樻垚鈥滃簳浠撲笉绋炽€佺煭鑵垮厛寰堟椿璺冣€濄€?/li></ul>
-<p>閭ｆ牱 PMCC 灏变細瓒婃潵瓒婂埆鎵€?/p>
-<h1>涓夈€佺敤鍥剧墖閲岀殑 SPY 渚嬪瓙锛岀洿鎺ョ湅鍑?PMCC 涓轰粈涔堜細璁╀汉瑙夊緱鈥滅湡棣欌€?/h1>
-<h2>27.6 Covered Call 瑕佸厛鎺?100 鑲＄殑閽憋紝PMCC 鍏堟帍鐨勬槸 LEAP 鐨勯挶</h2>
-<p>鍥剧墖閲岀粰浜嗕竴涓緢濂界殑 SPY 瀵规瘮渚嬪瓙銆?/p>
-<p>铏界劧鍏蜂綋鏁板瓧浼氶殢鐫€甯傚満鍙橈紝浣嗗畠琛ㄨ揪鐨勬牳蹇冮潪甯告竻妤氾細</p>
+<ul><li>底仓替身是：一张长期、deep ITM 的 LEAP Call</li><li>上层租金腿仍然是：卖近月 Call</li></ul>
+<p>所以 PMCC 最该记住的一句话，就是：</p>
+<blockquote><p><strong>它不是一个全新策略，而是把 Covered Call 里的“正股底仓”换成了“长期 Call 底仓”。</strong></p></blockquote>
+<h1>二、为什么长期 deep ITM Call 可以被拿来当“正股替身”</h1>
+<h2>27.3 不是所有 Call 都能当替身，关键是要足够像股票</h2>
+<p>这里特别重要。</p>
+<p>很多新手一听 PMCC，会直接误会成：</p>
+<ul><li>那我随便买张 Call，不就行了吗？</li></ul>
+<p>完全不是。</p>
+<p>PMCC 之所以成立，前提是这张 long leg 必须尽量“像正股”。</p>
+<p>而图片里给得很明确，它通常要满足几个条件：</p>
+<ul><li><strong>到期足够远</strong>：一年以上；</li><li><strong>位置足够深 ITM</strong>；</li><li><strong>Delta 尽量高</strong>：图里直接建议选 delta &gt; 0.85；</li><li><strong>流动性要好</strong>。</li></ul>
+<p>为什么要这样？</p>
+<p>因为你不是在买一个纯梦想型彩票 Call，而是在买一个：</p>
+<ul><li>价格行为尽量像股票；</li><li>时间损耗相对没那么夸张；</li><li>Delta 尽量接近 1；</li><li>更适合拿来做底仓替身的长期合约。</li></ul>
+<p>如果这条 long leg 选歪了，整套 PMCC 会变味。</p>
+<h2>27.4 为什么要选一年以上的 LEAP</h2>
+<p>这点看起来简单，其实特别关键。</p>
+<p>如果你的 long leg 太短，会发生什么？</p>
+<ul><li>时间损耗会明显变快；</li><li>它就不再像“底仓”，更像“一个有期限的方向赌单”；</li><li>你底下地基本身都在明显流血，就很难稳稳地去做上面的收租动作。</li></ul>
+<p>所以图片里直接建议：</p>
+<ul><li><strong>一年以上。</strong></li></ul>
+<p>这背后的逻辑非常简单：</p>
+<blockquote><p><strong>你是想找一个长期替身，不是找一个马上要过期的临时演员。</strong></p></blockquote>
+<p>越长的 LEAP：</p>
+<ul><li>时间损耗更慢；</li><li>更像一个可以拿着走一段时间的“替代底仓”；</li><li>也更适合上面持续去卖近月 Call。</li></ul>
+<h2>27.5 为什么要选 deep ITM，最好还要高 Delta</h2>
+<p>这是 PMCC 最容易做错的地方。</p>
+<p>很多人一看“降低成本”，就会忍不住往便宜的 OTM 或浅 ITM Call 去靠。</p>
+<p>这会把策略直接做歪。</p>
+<p>因为你真正需要的是：</p>
+<ul><li>这张 long leg 要足够像股票；</li><li>它不能只是“如果涨很多才有戏”；</li><li>它要在正常上涨时，就已经能提供比较稳定的多头暴露。</li></ul>
+<p>所以图片里才会强调：</p>
+<ul><li><strong>deep ITM</strong>；</li><li><strong>delta &gt; 0.85 更好</strong>。</li></ul>
+<p>为什么？</p>
+<p>因为这样它更像什么？</p>
+<ul><li>像一个带杠杆的股票替身；</li><li>而不是一张远期彩票。</li></ul>
+<p>如果你买得太浅，Delta 不够高，long leg 就会出问题：</p>
+<ul><li>上涨时它跟得没那么像股票；</li><li>时间损耗会更明显；</li><li>你上面再卖短 Call，就容易变成“底仓不稳、短腿先很活跃”。</li></ul>
+<p>那样 PMCC 就会越来越别扭。</p>
+<h1>三、用图片里的 SPY 例子，直接看出 PMCC 为什么会让人觉得“真香”</h1>
+<h2>27.6 Covered Call 要先掏 100 股的钱，PMCC 先掏的是 LEAP 的钱</h2>
+<p>图片里给了一个很好的 SPY 对比例子。</p>
+<p>虽然具体数字会随着市场变，但它表达的核心非常清楚：</p>
 <h3>Covered Call</h3>
-<ul><li>浣犺鍏堜拱 100 鑲?SPY锛?/li><li>鍋囪鑲′环 465锛?/li><li>閭ｄ綘搴曚粨澶ф灏辫 46,500 缇庡厓绾у埆锛?/li><li>鐒跺悗浣犲啀鍗?1 寮犺繎鏈?Call 鍘绘敹绉熴€?/li></ul>
+<ul><li>你要先买 100 股 SPY；</li><li>假设股价 465；</li><li>那你底仓大概就要 46,500 美元级别；</li><li>然后你再卖 1 张近月 Call 去收租。</li></ul>
 <h3>PMCC</h3>
-<ul><li>浣犱笉鐢ㄥ厛鎺?46,500锛?/li><li>浣犲彲浠ヤ拱涓€寮犱竴骞翠互涓婄殑 deep ITM LEAP Call锛?/li><li>姣斿鎴愭湰鍙渶瑕佷竴涓囧缇庡厓閲忕骇锛?/li><li>鐒跺悗鍚屾牱鍗?1 寮犺繎鏈?Call銆?/li></ul>
-<p>浣犵珛鍒诲氨浼氭劅鍙楀埌瀹冩渶鐩磋鐨勫惛寮曞姏锛?/p>
-<blockquote><p><strong>鎴戞病閭ｄ箞澶氳祫閲戯紝浣嗘垜灞呯劧涔熻兘鍋氬嚭涓€涓€滃緢鍍?Covered Call鈥濈殑缁撴瀯銆?/strong></p></blockquote>
-<p>杩欏氨鏄?PMCC 鏈€澶х殑榄呭姏鏉ユ簮銆?/p>
-<h2>27.7 鎵€浠?PMCC 鐪熸鈥滀究瀹溾€濈殑鍦版柟锛屼笉鏄闄╁彉灏忥紝鑰屾槸鍓嶇疆璧勯噾闂ㄦ鍙樹綆浜?/h2>
-<p>杩欓噷蹇呴』璁插噯銆?/p>
-<p>寰堝浜轰竴鐪嬪埌 PMCC 鎴愭湰浣庯紝灏变細鑷姩鑴戣ˉ鎴愶細</p>
-<ul><li>閭ｆ槸涓嶆槸椋庨櫓涔熸洿浣庯紵</li></ul>
-<p>涓嶅畬鍏ㄦ槸銆?/p>
-<p>鏇村噯纭殑璇存硶搴旇鏄細</p>
-<blockquote><p><strong>PMCC 闄嶄綆鐨勬槸鍓嶇疆璧勯噾闂ㄦ锛屼笉鏄妸鎵€鏈夐闄╅兘鍙樻病銆?/strong></p></blockquote>
-<p>浣犲皯浠樼殑閽憋紝鏄粠鍝噷鐪佷笅鏉ョ殑锛?/p>
-<ul><li>浣犳病鏈夌湡鐨勪拱 100 鑲℃鑲★紱</li><li>浣犱拱鐨勬槸涓€寮犻暱鏈?Call锛?/li><li>鎵€浠ヤ綘鐪佹帀鐨勬槸鈥滅洿鎺ユ寔鑲￠渶瑕佺殑閭ｇ瑪瀹屾暣璧勬湰鈥濄€?/li></ul>
-<p>浣嗕笌姝ゅ悓鏃讹紝浣犱篃寮曞叆浜嗘柊鐨勪笢瑗匡細</p>
-<ul><li>long leg 鏈韩浼氭湁鏃堕棿鎹熻€楋紱</li><li>瀹冨 IV 鏈夋晱鎰熷害锛?/li><li>瀹冧笉鏄偂绁ㄦ湰韬紱</li><li>浣犵殑搴曚粨绋冲畾鎬у彇鍐充簬杩欏紶 long leg 閫夊緱濂戒笉濂姐€?/li></ul>
-<p>鎵€浠?PMCC 鏈€鎴愮啛鐨勭悊瑙ｅ簲璇ユ槸锛?/p>
-<blockquote><p><strong>瀹冧笉鏄€樻洿杞绘澗鐨?Covered Call鈥欙紝鑰屾槸鈥樻洿鐪侀挶銆佷絾缁撴瀯鏇磋剢涓€浜涚殑 Covered Call 鍙樹綋鈥欍€?/strong></p></blockquote>
-<p>杩欏彞璇濆緢閲嶈銆?/p>
-<h1>鍥涖€丳MCC 鍜?Covered Call 鍒板簳鍍忓湪鍝紝鍙堜笉鍍忓湪鍝?/h1>
-<h2>27.8 瀹冧滑鐨勬姇璧勯€昏緫纭疄寰堝儚锛氬簳涓嬫嬁澶氬ご锛屼笂闈㈡嬁绉熼噾</h2>
-<p>鍥剧墖閲岀洿鎺ヨ锛?/p>
-<ul><li><strong>PMCC 鍜?CC锛圕overed Call锛夋姇璧勯€昏緫鐩稿悓銆?/strong></li></ul>
-<p>杩欏彞璇濇槸瀵圭殑銆?/p>
-<p>鍥犱负瀹冧滑涓よ€呴兘鍦ㄥ仛鍚屼竴浠朵簨锛?/p>
-<ul><li>搴曚笅鎷跨潃涓€涓澶存毚闇诧紱</li><li>涓婇潰鍗栫煭鏈?Call 鏀剁锛?/li><li>鐢ㄤ竴閮ㄥ垎鏈潵涓婃定绌洪棿锛屾崲鐜板湪涓€绗旀潈鍒╅噾銆?/li></ul>
-<p>浠庤繖涓搴︾湅锛屽畠浠‘瀹炴槸鍚屼竴瀹舵棌銆?/p>
-<p>浣嗗畠浠張缁濅笉鏄畬鍏ㄤ竴鏍枫€?/p>
-<p>鍥犱负搴曚粨瀹屽叏涓嶅悓锛?/p>
-<h3>Covered Call 鐨勫簳浠?/h3>
-<p>鏄湡鑲＄エ銆?/p>
-<h3>PMCC 鐨勫簳浠?/h3>
-<p>鏄竴寮犻暱鏈?deep ITM Call銆?/p>
-<p>杩欏氨瀵艰嚧瀹冧滑鍦ㄥ嚑涓叧閿偣涓婁細鏄庢樉涓嶅悓銆?/p>
-<h2>27.9 涓嶅悓鐐逛竴锛氭渶澶т簭鎹熺粨鏋勪笉涓€鏍?/h2>
-<p>鍥剧墖閲岀涓€鏉″姣旂壒鍒噸瑕侊細</p>
-<ul><li>Covered Call 鏈€澶ф崯澶辨洿澶э紝鍥犱负浣犲簳涓嬫槸鐪?100 鑲℃鑲★紱</li><li>PMCC 鏈€澶ф崯澶辨洿浣庯紝鍥犱负浣犲簳涓嬫渶澶氫簭鎺夌殑鏄?LEAP Call 鐨勬垚鏈€?/li></ul>
-<p>杩欏彞璇濈炕鎴愪汉璇濆氨鏄細</p>
-<blockquote><p><strong>Covered Call 鍍忔嬁鐪熸埧瀛愭敹绉燂紝PMCC 鍍忓厛绉熶簡涓€涓暱绉熶唬鐞嗘潈鍐嶈浆绉熴€?/strong></p></blockquote>
-<p>鎵€浠ワ細</p>
+<ul><li>你不用先掏 46,500；</li><li>你可以买一张一年以上的 deep ITM LEAP Call；</li><li>比如成本只需要一万多美元量级；</li><li>然后同样卖 1 张近月 Call。</li></ul>
+<p>你立刻就会感受到它最直观的吸引力：</p>
+<blockquote><p><strong>我没那么多资金，但我居然也能做出一个“很像 Covered Call”的结构。</strong></p></blockquote>
+<p>这就是 PMCC 最大的魅力来源。</p>
+<h2>27.7 所以 PMCC 真正“便宜”的地方，不是风险变小，而是前置资金门槛变低了</h2>
+<p>这里必须讲准。</p>
+<p>很多人一看到 PMCC 成本低，就会自动脑补成：</p>
+<ul><li>那是不是风险也更低？</li></ul>
+<p>不完全是。</p>
+<p>更准确的说法应该是：</p>
+<blockquote><p><strong>PMCC 降低的是前置资金门槛，不是把所有风险都变没。</strong></p></blockquote>
+<p>你少付的钱，是从哪里省下来的？</p>
+<ul><li>你没有真的买 100 股正股；</li><li>你买的是一张长期 Call；</li><li>所以你省掉的是“直接持股需要的那笔完整资本”。</li></ul>
+<p>但与此同时，你也引入了新的东西：</p>
+<ul><li>long leg 本身会有时间损耗；</li><li>它对 IV 有敏感度；</li><li>它不是股票本身；</li><li>你的底仓稳定性取决于这张 long leg 选得好不好。</li></ul>
+<p>所以 PMCC 最成熟的理解应该是：</p>
+<blockquote><p><strong>它不是‘更轻松的 Covered Call’，而是‘更省钱、但结构更脆一些的 Covered Call 变体’。</strong></p></blockquote>
+<p>这句话很重要。</p>
+<h1>四、PMCC 和 Covered Call 到底像在哪，又不像在哪</h1>
+<h2>27.8 它们的投资逻辑确实很像：底下拿多头，上面拿租金</h2>
+<p>图片里直接说：</p>
+<ul><li><strong>PMCC 和 CC（Covered Call）投资逻辑相同。</strong></li></ul>
+<p>这句话是对的。</p>
+<p>因为它们两者都在做同一件事：</p>
+<ul><li>底下拿着一个多头暴露；</li><li>上面卖短期 Call 收租；</li><li>用一部分未来上涨空间，换现在一笔权利金。</li></ul>
+<p>从这个角度看，它们确实是同一家族。</p>
+<p>但它们又绝不是完全一样。</p>
+<p>因为底仓完全不同：</p>
+<h3>Covered Call 的底仓</h3>
+<p>是真股票。</p>
+<h3>PMCC 的底仓</h3>
+<p>是一张长期 deep ITM Call。</p>
+<p>这就导致它们在几个关键点上会明显不同。</p>
+<h2>27.9 不同点一：最大亏损结构不一样</h2>
+<p>图片里第一条对比特别重要：</p>
+<ul><li>Covered Call 最大损失更大，因为你底下是真 100 股正股；</li><li>PMCC 最大损失更低，因为你底下最多亏掉的是 LEAP Call 的成本。</li></ul>
+<p>这句话翻成人话就是：</p>
+<blockquote><p><strong>Covered Call 像拿真房子收租，PMCC 像先租了一个长租代理权再转租。</strong></p></blockquote>
+<p>所以：</p>
 <h3>Covered Call</h3>
-<ul><li>濡傛灉鑲＄エ涓€璺ぇ璺岋紱</li><li>浣犳寔鏈夌殑鏄畬鏁存鑲℃毚闇诧紱</li><li>鏈€澶т激瀹冲拰 100 鑲℃鑲″己鐩稿叧銆?/li></ul>
+<ul><li>如果股票一路大跌；</li><li>你持有的是完整正股暴露；</li><li>最大伤害和 100 股正股强相关。</li></ul>
 <h3>PMCC</h3>
-<ul><li>濡傛灉 long leg 鏈€鍚庡交搴曞け鏁堬紱</li><li>浣犳渶澶氫簭鐨勬槸閭ｅ紶 LEAP Call 鏈韩鎶曞叆鐨勬垚鏈€?/li></ul>
-<p>鎵€浠ヤ粠鈥滄渶澶х悊璁烘崯澶扁€濊繖浠朵簨涓婄湅锛孭MCC 鐨勭‘鏇磋交銆?/p>
-<p>浣嗚灏忓績锛岃繖涓嶇瓑浜庡畠灏辨洿鑸掓湇銆?/p>
-<p>鍥犱负瀹冪殑鑸掓湇鍜屼笉鑸掓湇锛屼笉鍙彇鍐充簬鏈€澶ф崯澶辨暟瀛楋紝杩樺彇鍐充簬 long leg 鑷繁鍦ㄨ繃绋嬩腑浼氭€庝箞鍙樺寲銆?/p>
-<h2>27.10 涓嶅悓鐐逛簩锛欳overed Call 鐨勫簳浠撴病鏈?Theta锛孭MCC 鐨勫簳浠撴湁</h2>
-<p>杩欎篃鏄浘鐗囬噷鐗瑰埆鎯虫彁閱掍綘鐨勭偣銆?/p>
-<h3>Covered Call 鐨勬鑲″簳浠?/h3>
-<ul><li>娌℃湁鏃堕棿鎹熻€楋紱</li><li>鑲＄エ涓嶄細鍥犱负鈥滄椂闂磋繃鍘讳簡鈥濊嚜宸卞彉鐑傘€?/li></ul>
-<h3>PMCC 鐨?LEAP Call 搴曚粨</h3>
-<ul><li>铏界劧鏃堕棿鎹熻€楃浉瀵硅緝鎱紱</li><li>浣嗗畠渚濈劧鏈?Theta锛?/li><li>瀹冧笉鏄偂绁ㄣ€?/li></ul>
-<p>鎵€浠?PMCC 涓€涓粡甯歌蹇界暐鐨勭幇瀹炴槸锛?/p>
-<blockquote><p><strong>浣犲簳涓嬮偅灞傗€滄鑲℃浛韬€濓紝鑷繁鍏跺疄涔熸槸浼氳€併€佷細鑰楃殑銆?/strong></p></blockquote>
-<p>杩欏氨鏄负浠€涔堝浘鐗囬噷鐩存帴鎻愰啋锛?/p>
-<ul><li>Long leg 涓嶈棰戠箒鎶樿吘锛?/li><li>瑕佹墦绠楅暱鏈熸寔鏈夛紱</li><li>浣嗕篃涓嶈兘鐪熸嬁鍒板揩鍒版湡鍐嶈鐪嬩笉瑙併€?/li></ul>
-<p>杩欎釜鈥滃畠浼氳€佲€濈殑灞炴€э紝鏄?PMCC 鍜岀湡姝?Covered Call 鏈€澶х殑姘旇川宸埆涔嬩竴銆?/p>
-<h2>27.11 涓嶅悓鐐逛笁锛歅MCC 瀵?IV 鏇存晱鎰燂紝鎵€浠ュ紑浠撴椂鏈轰篃鏇磋绌?/h2>
-<p>鍥剧墖閲岃繖鏉＄壒鍒€奸挶锛?/p>
-<ul><li>Covered Call 鏇村儚鍦?IV 楂樼殑鏃跺€欏紑浠擄紝绛?IV 鍥炶惤锛?/li><li>PMCC 鍒欐洿閫傚悎鍦?IV 鐩稿杈冧綆鐨勬椂鍊欏紑浠撱€?/li></ul>
-<p>涓轰粈涔堬紵</p>
-<p>鍥犱负 PMCC 搴曚笅閭ｆ潯 long leg 鏄竴寮?LEAP Call銆?/p>
-<p>鑰岄暱鏈?Call 瀵逛粈涔堟洿鏁忔劅锛?/p>
-<ul><li>瀵?IV 鏇存晱鎰燂紱</li><li>瀵?Vega 鏇存湁鎰熻銆?/li></ul>
-<p>涔熷氨鏄锛?/p>
-<ul><li>濡傛灉浣犲湪 IV 寰堥珮鐨勬椂鍊欏幓涔?long LEAP锛?/li><li>浣犲彲鑳戒竴寮€濮嬪氨鎶娾€滃簳浠撴浛韬€濅拱璐典簡锛?/li><li>鍚庨潰鍝€曟柟鍚戞病閿欙紝IV 鍥炶惤涔熷彲鑳芥嫋浣犱竴涓嬨€?/li></ul>
-<p>鎵€浠?PMCC 鏈€鎴愮啛鐨勫紑浠撶洿瑙夋槸锛?/p>
-<blockquote><p><strong>瀹冧笉鍍?Covered Call 閭ｆ牱涓昏鐩笂闈㈤偅寮犵煭 Call 鐨勫崠浠凤紝瀹冭繕瑕佽鐪熺湅搴曚笅閭ｅ紶 LEAP Call 鏈夋病鏈変拱璐点€?/strong></p></blockquote>
-<p>杩欎竴姝ュ緢鍏抽敭銆?/p>
-<h1>浜斻€丳MCC 鐨勫嚑涓渶瀹炵敤瀹炴搷瑙勫垯锛屽浘鐗囬噷缁欏緱寰堢粏锛屾垜鐩存帴缈绘垚浜鸿瘽</h1>
-<h2>27.12 瑙勫垯涓€锛歭ong leg 瑕侀€夋祦鍔ㄦ€уソ鐨勫ぇ鏍囩殑</h2>
-<p>鍥剧墖閲屾槑纭锛?/p>
-<ul><li>LEAP Call 瀵瑰簲鐨勬鑲￠€夋嫨锛岃娴佸姩鎬ч珮锛?/li><li>寤鸿鐭ュ悕搴﹂珮銆佷氦鏄撻噺楂樸€?/li></ul>
-<p>杩欓潪甯稿悎鐞嗐€?/p>
-<p>鍥犱负锛?/p>
-<ul><li>浣?long leg 鏄暣濂楃瓥鐣ョ殑鍦板熀锛?/li><li>濡傛灉瀹冩湰韬祦鍔ㄦ€у樊銆佺偣宸锛?/li><li>浣犲悗闈㈡瘡娆¤皟鏁撮兘浼氬緢闅惧彈銆?/li></ul>
-<p>鎵€浠?PMCC 鐗瑰埆涓嶉€傚悎鎷垮喎闂ㄥ皬绁ㄤ贡璇曘€?/p>
-<p>鏇撮€傚悎鐨勬槸锛?/p>
-<ul><li>澶х洏 ETF锛?/li><li>鐑棬澶х洏鑲★紱</li><li>鏈熸潈閾炬垚鐔熴€侀暱鏈?LEAP 娲昏穬鐨勬爣鐨勩€?/li></ul>
-<h2>27.13 瑙勫垯浜岋細long leg 灏介噺鍒姩锛屾妸瀹冨綋搴曚粨锛岃€屼笉鏄嬁鏉ョ煭鐐?/h2>
-<p>鍥剧墖閲岃繖涓€鐐硅寰楀緢鏄庣櫧锛?/p>
-<ul><li>Long leg锛氫笉瑕佸姩锛?/li><li>蹇呴』鏄墦绠楅暱鏈熸寔鏈夛紱</li><li>娴佸姩鎹熻€楅珮锛屼笉閫傚悎棰戠箒浜ゆ槗銆?/li></ul>
-<p>涓轰粈涔堬紵</p>
-<p>鍥犱负杩欐潯鑵垮湪鏁村缁撴瀯閲岀殑鑱岃矗锛屼笉鏄敤鏉ユ姌鑵撅紝鑰屾槸锛?/p>
-<ul><li>鍏呭綋姝ｈ偂鏇胯韩锛?/li><li>鎻愪緵绋冲畾鐨勫澶撮鏋讹紱</li><li>璁╀綘涓婇潰鍙互鎸佺画鍗栫煭鏈?Call銆?/li></ul>
-<p>濡傛灉浣犲簳涓嬭繖鏉¤吙鑷繁鑰佹崲鏉ユ崲鍘伙紝鏁翠釜 PMCC 灏变細瓒婃潵瓒婁笉鍍忊€滄寔浠撴敹绉熲€濓紝鏇村儚鈥滅粍鍚堜贡璺斥€濄€?/p>
-<p>鎵€浠ヨ鎶?long leg 褰撴垚鍦板熀锛岃€屼笉鏄綋鎴愬彟澶栦竴寮犵煭鐐掔エ銆?/p>
-<h2>27.14 瑙勫垯涓夛細short leg 鐨勭鐞嗘柟寮忥紝鍩烘湰鍜?Covered Call 涓€鏍?/h2>
-<p>鍥剧墖閲岀洿鎺ュ啓浜嗭細</p>
-<ul><li>Short leg锛氬拰 CC 涓€鏍封€斺€斿钩甯?or Rollover銆?/li></ul>
-<p>杩欏彞璇濈炕鎴愪汉璇濆氨鏄細</p>
-<ul><li>涓婇潰閭ｅ紶杩戞湀 Call锛屾湰璐ㄤ笂杩樻槸鍦ㄦ敹绉燂紱</li><li>瀹冩€庝箞绠＄悊锛屽拰 Covered Call 鐨勭煭鑵块€昏緫宸笉澶氾紱</li><li>浣犲彲浠ワ細</li><li>骞虫帀锛?/li><li>鍒版湡澶勭悊锛?/li><li>瑙夊緱杩樻兂缁х画鏀剁灏?roll 涓嬪幓銆?/li></ul>
-<p>鎵€浠ュ PMCC 鏉ヨ锛岀湡姝ｇ殑闅剧偣寰€寰€涓嶅湪 short leg锛岃€屽湪锛?/p>
-<ul><li>浣犳湁娌℃湁鎶?long leg 閫夊锛?/li><li>浣犳湁娌℃湁鎶?short leg 鍗栧緱澶縺杩涳紱</li><li>浣犳湁娌℃湁鍦ㄦ毚娑ㄦ椂鍙婃椂澶勭悊銆?/li></ul>
-<h2>27.15 瑙勫垯鍥涳細鑲′环鏆存定鏃讹紝涓嶈鍌绘墰鐭吙</h2>
-<p>鍥剧墖閲岀粰浜嗕竴涓緢閲嶈鐨勬彁閱掞細</p>
-<ul><li>鑲′环鏆存定鏃讹紝short leg 浼氬彉寰楄秺鏉ヨ秺楹荤儲锛?/li><li>闇€瑕佹彁鍓嶅鐞?PMCC銆?/li></ul>
-<p>杩欑壒鍒噸瑕併€?/p>
-<p>鍥犱负寰堝浜轰互涓猴細</p>
-<ul><li>鎴戝簳涓嬩笉鏄湁 long LEAP 鍚楋紱</li><li>閭ｄ笂闈㈢煭鑵胯鎵撹繘鏉ヤ篃娌′簨鍚э紵</li></ul>
-<p>涓嶅畬鍏ㄦ槸銆?/p>
-<p>濡傛灉鑲′环蹇€熸毚娑紝鐭吙杩戞湀 Call 浼氬彉寰楅潪甯告晱鎰燂細</p>
-<ul><li>瀹冭秺鏉ヨ秺娣?ITM锛?/li><li>浣犱笂鏂圭┖闂翠細琚攣寰楅潪甯告锛?/li><li>缁勫悎浼氳秺鏉ヨ秺鍒壄锛?/li><li>浣犲鏋滀笉澶勭悊锛屼細浠庘€滃紑蹇冩敹绉熲€濆彉鎴愨€滆秺娑ㄨ秺闅惧彈鈥濄€?/li></ul>
-<p>鎵€浠ュ綋鏍囩殑澶у箙鍐蹭笂鍘绘椂锛屾洿鎴愮啛鐨勫仛娉曢€氬父鏄細</p>
-<ul><li>鎻愬墠骞虫帀鐭吙锛?/li><li>鎴栬€呮妸鐭吙 roll 鍒版洿杩滄洿楂樼殑浣嶇疆锛?/li><li>蹇呰鏃剁敋鑷虫妸鏁村 PMCC 鍏堟媶鎺夐噸鏉ャ€?/li></ul>
-<p>杩欎竴姝ヤ笉鑳借姝汇€?/p>
-<h2>27.16 瑙勫垯浜旓細LEAP 鍓╀綑鏃堕棿涓嶈鎷栧埌澶煭锛屾渶濂芥彁鍓嶆粴鍔?/h2>
-<p>鍥剧墖閲屾渶鍚庝竴涓彁閱掍篃闈炲父瀹炵敤锛?/p>
-<ul><li>LEAP Call 蹇埌鏈熸椂锛屾浛浠ｆ鑲℃晥鏋滀細瓒婃潵瓒婂樊锛?/li><li>灏介噺涓嶈浣庝簬 6 涓湀锛?/li><li>瑕佹彁鍓嶅钩浠撴垨 roll 鍒版洿杩滄湀銆?/li></ul>
-<p>杩欒儗鍚庣殑閫昏緫寰堟竻妤氾細</p>
-<ul><li>浣犱箣鎵€浠ョ敤 LEAP锛屾槸涓轰簡璁╁畠瓒冲鍍忛暱鏈熷簳浠擄紱</li><li>鍙竴鏃﹀畠寮€濮嬭繘鍏ヤ腑鍚庢湡锛屾椂闂存崯鑰楀拰缁撴瀯鐗规€ч兘鍦ㄥ彉鍖栵紱</li><li>瀹冨氨浼氳秺鏉ヨ秺涓嶅儚鈥滄鑲℃浛韬€濄€?/li></ul>
-<p>鎵€浠?PMCC 鐨?long leg 涓嶆槸涔颁簡灏卞繕銆?/p>
-<p>鏇存垚鐔熺殑鎬濊矾鏄細</p>
-<blockquote><p><strong>鎶婂畠涓€鐩寸淮鎸佸湪鈥滀粛鐒跺儚姝ｈ偂鏇胯韩鈥濈殑鐘舵€侊紝鑰屼笉鏄‖鎷栧埌瀹冭€佸緱涓嶅儚鏍枫€?/strong></p></blockquote>
-<p>杩欏氨鏄负浠€涔堝浘鐗囬噷缁欎簡鈥滃敖閲忎笉瑕佷綆浜?6 涓湀鈥濊繖涓緢瀹炵敤鐨勭粡楠岀嚎銆?/p>
-<h1>鍏€佹湰绔犲皬缁擄細PMCC 涓嶆槸 Covered Call 鐨勯潚鏄ョ増锛岃€屾槸瀹冪殑鈥滀綆璧勯噾闂ㄦ鍙樹綋鈥?/h1>
-<p>杩欎竴绔犲鏋滃彧鍘嬫垚鏈€閲嶈鐨勫嚑鍙ヨ瘽锛屾垜甯屾湜浣犺浣忥細</p>
-<ul><li><strong>PMCC = LEAP Call + 鍗栫煭鏈?Call</strong>锛?/li><li>瀹冩湰璐ㄤ笂鏄湪鐢ㄩ暱鏈?deep ITM Call 鏇夸唬姝ｈ偂锛屽啀鍋?Covered Call锛?/li><li>瀹冩渶澶х殑鍚稿紩鍔涳紝鏄墠缃祫閲戦棬妲涗綆寰楀锛?/li><li>浣嗗畠涓嶆槸鐧介€佺殑锛屽洜涓?long leg 鑷繁浼氭湁锛?/li><li>Theta锛?/li><li>Vega / IV 椋庨櫓锛?/li><li>瀵归€夎偂銆侀€夋湡闄愩€侀€?Delta 鐨勬洿楂樿姹傦紱</li><li>long leg 瑕佸敖閲忥細</li><li>涓€骞翠互涓婏紱</li><li>deep ITM锛?/li><li>delta 灏介噺楂橈紱</li><li>娴佸姩鎬ц濂斤紱</li><li>short leg 鐨勭鐞嗗拰 Covered Call 寰堝儚锛屼絾鏆存定鏃朵竴瀹氳涓诲姩澶勭悊锛?/li><li>LEAP 涓嶈鎷栧埌澶€侊紝鏈€濂芥彁鍓?roll銆?/li></ul>
-<p>濡傛灉鎶婂畠鍘嬫垚涓€鍙ユ渶浜鸿瘽鐨勮瘽锛屽氨鏄細</p>
-<blockquote><p><strong>PMCC 涓嶆槸璁╀綘鐢ㄦ洿灏戠殑閽扁€滅櫧瀚栤€?Covered Call锛岃€屾槸璁╀綘鐢ㄤ竴涓洿鐪侀挶銆佷絾涔熸洿璁茬┒ long leg 璐ㄩ噺鐨勬柟寮忥紝鍘诲仛涓€濂楃被浼?Covered Call 鐨勭粨鏋勩€?/strong></p></blockquote>
-<p>杩欏氨鏄畠鐪熸鐨勪环鍊煎拰杈圭晫銆?/p>
-<h2>鏈珷涓€鍙ヨ瘽鎬荤粨</h2>
-<blockquote><p><strong>PMCC 涓嶆槸鐢ㄦ洿灏戠殑閽辩櫧瀚?Covered Call锛岃€屾槸鐢ㄤ竴寮犺冻澶熷儚姝ｈ偂銆佷絾鑷繁涔熶細鍙?Delta銆乀heta銆乂ega 绾︽潫鐨勯暱鏈?Call锛屽幓鎼竴涓洿鐪佽祫閲戜篃鏇磋绌惰川閲忕殑鏇夸唬鎸佽偂缁撴瀯銆?/strong></p></blockquote>
-<h2>鑷祴棰?/h2>
-<p>1锛変负浠€涔堣 PMCC 鏈川涓婃槸鎶?Covered Call 閲岀殑姝ｈ偂搴曚粨鎹㈡垚浜嗕竴寮犻暱鏈?deep ITM Call锛?/p>
-<p>2锛変负浠€涔?PMCC 鐨?long leg 涓嶈兘闅忎究涔颁竴寮犱究瀹?Call 浠ｆ浛锛岃€岃灏介噺閫変竴骞翠互涓娿€乨eep ITM銆乨elta 杈冮珮鐨?LEAP锛?/p>
-<p>3锛変负浠€涔堣 PMCC 闄嶄綆鐨勬槸鍓嶇疆璧勯噾闂ㄦ锛岃€屼笉鏄妸鎵€鏈夐闄╅兘鍙樻病浜嗭紵</p>
-<p>4锛塒MCC 鍜?Covered Call 鏈€澶х殑鍑犱釜涓嶅悓鐐瑰垎鍒槸浠€涔堬紵</p>
-<p>5锛変负浠€涔?long leg 鍓╀綑鏃堕棿澶煭鏃讹紝瑕佽€冭檻鎻愬墠骞充粨鎴?roll 鍒版洿杩滄湀锛?/p>
-<h2>涓嬩竴姝ュ缓璁細鎶?PMCC 鏀惧洖鏁村搴旂敤妗嗘灦閲岄噸鐪嬩竴娆?/h2>
-<p>瀛﹀畬 PMCC 涔嬪悗锛屾渶鍊煎緱鍋氱殑锛屼笉鏄珛鍒绘壘涓€鍙吹鑲＄エ鍘讳笂鎵嬶紝鑰屾槸鍏堟妸瀹冩斁鍥炴暣濂楀簲鐢ㄦ鏋堕噷閲嶇湅涓€閬嶏細</p>
-<ul><li>绗?3绔犮€婂崟鑵夸拱鏂圭瓥鐣ュ簲鐢ㄣ€嬶細鐪?LEAP Call 涓轰粈涔堣兘鎵挎媴闀挎湡鏂瑰悜宸ュ叿鐨勮鑹诧紱</li><li>绗?5绔犮€奀overed Call 娣卞寲搴旂敤銆嬶細鐪?PMCC 鍜?Covered Call 鍦ㄧ鐞嗛€昏緫涓婂摢閲岀浉鍍忋€佸摢閲屼笉涓€鏍凤紱</li><li>绗?9绔犮€佺21绔犮€佺22绔狅細鍥炵湅 Delta銆乀heta銆乂ega锛岀悊瑙?long leg 涓轰粈涔堟棦璁茬┒锛屽張涓嶇櫧閫併€?/li></ul>
-<p>濡傛灉鍚庣画缁х画鎵╁啓锛屾渶鑷劧鐨勪笅涓€姝ヤ細鏄細</p>
-<ul><li>妗堜緥绡囷紱</li><li>缁勫悎绠＄悊锛?/li><li>瀹炴垬澶嶇洏銆?/li></ul>
-<p>鍒伴偅涓€姝ユ椂锛孭MCC 鎵嶄細鐪熸浠庘€滀竴涓瓥鐣ュ悕瀛椻€濓紝鍙樻垚鈥滀綘鐭ラ亾璇ュ湪浠€涔堣处鎴枫€佷粈涔堟爣鐨勩€佷粈涔堟尝鍔ㄧ巼鐜閲岀敤瀹冣€濈殑缁撴瀯宸ュ叿銆?/p>
-<h2>鏈珷鍙傝€冨彛寰勶紙渚夸簬杩芥函锛?/h2>
-<ul><li>鍥剧墖鍏宠仈閲嶇偣锛?code>PMCC = LEAP Call + 鍗?Call</code>銆?code>PMCC vs Covered Call</code>銆?code>deep ITM / high delta / long-dated LEAP</code>銆?code>IV 鏃舵満</code>銆?code>short leg 绠＄悊</code>銆?code>LEAP 涓嶈鎷栧埌澶煭</code></li><li>OCC / OIC锛氱敤浜庢牎鍑?covered call銆乴ong call replacement銆丳MCC 绫荤粨鏋勭殑鍩虹鏁欒偛鍙ｅ緞</li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li><li>Fidelity Options Strategy Guide锛氱敤浜庝繚鎸?LEAP銆乧overed call銆乨iagonal / replacement-style logic 鐨勬敹鐩婇闄╄〃杩颁笌涓绘祦鍒稿晢鍙ｅ緞涓€鑷?/li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li><li>CBOE Options Institute锛氱敤浜庝繚鎸?LEAPS銆乧overed call variants銆乧apital efficiency 涓?option replacement 鎬濊矾鐨勪竴鑷存湳璇?/li><li><a href="https://www.cboe.com/optionsinstitute/">https://www.cboe.com/optionsinstitute/</a></li></ul>
+<ul><li>如果 long leg 最后彻底失效；</li><li>你最多亏的是那张 LEAP Call 本身投入的成本。</li></ul>
+<p>所以从“最大理论损失”这件事上看，PMCC 的确更轻。</p>
+<p>但要小心，这不等于它就更舒服。</p>
+<p>因为它的舒服和不舒服，不只取决于最大损失数字，还取决于 long leg 自己在过程中会怎么变化。</p>
+<h2>27.10 不同点二：Covered Call 的底仓没有 Theta，PMCC 的底仓有</h2>
+<p>这也是图片里特别想提醒你的点。</p>
+<h3>Covered Call 的正股底仓</h3>
+<ul><li>没有时间损耗；</li><li>股票不会因为“时间过去了”自己变烂。</li></ul>
+<h3>PMCC 的 LEAP Call 底仓</h3>
+<ul><li>虽然时间损耗相对较慢；</li><li>但它依然有 Theta；</li><li>它不是股票。</li></ul>
+<p>所以 PMCC 一个经常被忽略的现实是：</p>
+<blockquote><p><strong>你底下那层“正股替身”，自己其实也是会老、会耗的。</strong></p></blockquote>
+<p>这就是为什么图片里直接提醒：</p>
+<ul><li>Long leg 不要频繁折腾；</li><li>要打算长期持有；</li><li>但也不能真拿到快到期再装看不见。</li></ul>
+<p>这个“它会老”的属性，是 PMCC 和真正 Covered Call 最大的气质差别之一。</p>
+<h2>27.11 不同点三：PMCC 对 IV 更敏感，所以开仓时机也更讲究</h2>
+<p>图片里这条特别值钱：</p>
+<ul><li>Covered Call 更像在 IV 高的时候开仓，等 IV 回落；</li><li>PMCC 则更适合在 IV 相对较低的时候开仓。</li></ul>
+<p>为什么？</p>
+<p>因为 PMCC 底下那条 long leg 是一张 LEAP Call。</p>
+<p>而长期 Call 对什么更敏感？</p>
+<ul><li>对 IV 更敏感；</li><li>对 Vega 更有感觉。</li></ul>
+<p>也就是说：</p>
+<ul><li>如果你在 IV 很高的时候去买 long LEAP；</li><li>你可能一开始就把“底仓替身”买贵了；</li><li>后面哪怕方向没错，IV 回落也可能拖你一下。</li></ul>
+<p>所以 PMCC 最成熟的开仓直觉是：</p>
+<blockquote><p><strong>它不像 Covered Call 那样主要盯上面那张短 Call 的卖价，它还要认真看底下那张 LEAP Call 有没有买贵。</strong></p></blockquote>
+<p>这一步很关键。</p>
+<h1>五、PMCC 的几个最实用实操规则，图片里给得很细，我直接翻成人话</h1>
+<h2>27.12 规则一：long leg 要选流动性好的大标的</h2>
+<p>图片里明确说：</p>
+<ul><li>LEAP Call 对应的正股选择，要流动性高；</li><li>建议知名度高、交易量高。</li></ul>
+<p>这非常合理。</p>
+<p>因为：</p>
+<ul><li>你 long leg 是整套策略的地基；</li><li>如果它本身流动性差、点差宽；</li><li>你后面每次调整都会很难受。</li></ul>
+<p>所以 PMCC 特别不适合拿冷门小票乱试。</p>
+<p>更适合的是：</p>
+<ul><li>大盘 ETF；</li><li>热门大盘股；</li><li>期权链成熟、长期 LEAP 活跃的标的。</li></ul>
+<h2>27.13 规则二：long leg 尽量别动，把它当底仓，而不是拿来短炒</h2>
+<p>图片里这一点说得很明白：</p>
+<ul><li>Long leg：不要动；</li><li>必须是打算长期持有；</li><li>流动损耗高，不适合频繁交易。</li></ul>
+<p>为什么？</p>
+<p>因为这条腿在整套结构里的职责，不是用来折腾，而是：</p>
+<ul><li>充当正股替身；</li><li>提供稳定的多头骨架；</li><li>让你上面可以持续卖短期 Call。</li></ul>
+<p>如果你底下这条腿自己老换来换去，整个 PMCC 就会越来越不像“持仓收租”，更像“组合乱跳”。</p>
+<p>所以要把 long leg 当成地基，而不是当成另外一张短炒票。</p>
+<h2>27.14 规则三：short leg 的管理方式，基本和 Covered Call 一样</h2>
+<p>图片里直接写了：</p>
+<ul><li>Short leg：和 CC 一样——平常 or Rollover。</li></ul>
+<p>这句话翻成人话就是：</p>
+<ul><li>上面那张近月 Call，本质上还是在收租；</li><li>它怎么管理，和 Covered Call 的短腿逻辑差不多；</li><li>你可以：</li><li>平掉；</li><li>到期处理；</li><li>觉得还想继续收租就 roll 下去。</li></ul>
+<p>所以对 PMCC 来说，真正的难点往往不在 short leg，而在：</p>
+<ul><li>你有没有把 long leg 选对；</li><li>你有没有把 short leg 卖得太激进；</li><li>你有没有在暴涨时及时处理。</li></ul>
+<h2>27.15 规则四：股价暴涨时，不要傻扛短腿</h2>
+<p>图片里给了一个很重要的提醒：</p>
+<ul><li>股价暴涨时，short leg 会变得越来越麻烦；</li><li>需要提前处理 PMCC。</li></ul>
+<p>这特别重要。</p>
+<p>因为很多人以为：</p>
+<ul><li>我底下不是有 long LEAP 吗；</li><li>那上面短腿被打进来也没事吧？</li></ul>
+<p>不完全是。</p>
+<p>如果股价快速暴涨，短腿近月 Call 会变得非常敏感：</p>
+<ul><li>它越来越深 ITM；</li><li>你上方空间会被锁得非常死；</li><li>组合会越来越别扭；</li><li>你如果不处理，会从“开心收租”变成“越涨越难受”。</li></ul>
+<p>所以当标的大幅冲上去时，更成熟的做法通常是：</p>
+<ul><li>提前平掉短腿；</li><li>或者把短腿 roll 到更远更高的位置；</li><li>必要时甚至把整套 PMCC 先拆掉重来。</li></ul>
+<p>这一步不能装死。</p>
+<h2>27.16 规则五：LEAP 剩余时间不要拖到太短，最好提前滚动</h2>
+<p>图片里最后一个提醒也非常实用：</p>
+<ul><li>LEAP Call 快到期时，替代正股效果会越来越差；</li><li>尽量不要低于 6 个月；</li><li>要提前平仓或 roll 到更远月。</li></ul>
+<p>这背后的逻辑很清楚：</p>
+<ul><li>你之所以用 LEAP，是为了让它足够像长期底仓；</li><li>可一旦它开始进入中后期，时间损耗和结构特性都在变化；</li><li>它就会越来越不像“正股替身”。</li></ul>
+<p>所以 PMCC 的 long leg 不是买了就忘。</p>
+<p>更成熟的思路是：</p>
+<blockquote><p><strong>把它一直维持在“仍然像正股替身”的状态，而不是硬拖到它老得不像样。</strong></p></blockquote>
+<p>这就是为什么图片里给了“尽量不要低于 6 个月”这个很实用的经验线。</p>
+<h1>六、本章小结：PMCC 不是 Covered Call 的青春版，而是它的“低资金门槛变体”</h1>
+<p>这一章如果只压成最重要的几句话，我希望你记住：</p>
+<ul><li><strong>PMCC = LEAP Call + 卖短期 Call</strong>；</li><li>它本质上是在用长期 deep ITM Call 替代正股，再做 Covered Call；</li><li>它最大的吸引力，是前置资金门槛低得多；</li><li>但它不是白送的，因为 long leg 自己会有：</li><li>Theta；</li><li>Vega / IV 风险；</li><li>对选股、选期限、选 Delta 的更高要求；</li><li>long leg 要尽量：</li><li>一年以上；</li><li>deep ITM；</li><li>delta 尽量高；</li><li>流动性要好；</li><li>short leg 的管理和 Covered Call 很像，但暴涨时一定要主动处理；</li><li>LEAP 不要拖到太老，最好提前 roll。</li></ul>
+<p>如果把它压成一句最人话的话，就是：</p>
+<blockquote><p><strong>PMCC 不是让你用更少的钱“白嫖” Covered Call，而是让你用一个更省钱、但也更讲究 long leg 质量的方式，去做一套类似 Covered Call 的结构。</strong></p></blockquote>
+<p>这就是它真正的价值和边界。</p>
+<h2>本章一句话总结</h2>
+<blockquote><p><strong>PMCC 不是用更少的钱白嫖 Covered Call，而是用一张足够像正股、但自己也会受 Delta、Theta、Vega 约束的长期 Call，去搭一个更省资金也更讲究质量的替代持股结构。</strong></p></blockquote>
+<h2>自测题</h2>
+<p>1）为什么说 PMCC 本质上是把 Covered Call 里的正股底仓换成了一张长期 deep ITM Call？</p>
+<p>2）为什么 PMCC 的 long leg 不能随便买一张便宜 Call 代替，而要尽量选一年以上、deep ITM、delta 较高的 LEAP？</p>
+<p>3）为什么说 PMCC 降低的是前置资金门槛，而不是把所有风险都变没了？</p>
+<p>4）PMCC 和 Covered Call 最大的几个不同点分别是什么？</p>
+<p>5）为什么 long leg 剩余时间太短时，要考虑提前平仓或 roll 到更远月？</p>
+<h2>下一步建议：把 PMCC 放回整套应用框架里重看一次</h2>
+<p>学完 PMCC 之后，最值得做的，不是立刻找一只贵股票去上手，而是先把它放回整套应用框架里重看一遍：</p>
+<ul><li>第23章《单腿买方策略应用》：看 LEAP Call 为什么能承担长期方向工具的角色；</li><li>第25章《Covered Call 深化应用》：看 PMCC 和 Covered Call 在管理逻辑上哪里相像、哪里不一样；</li><li>第19章、第21章、第22章：回看 Delta、Theta、Vega，理解 long leg 为什么既讲究，又不白送。</li></ul>
+<p>如果后续继续扩写，最自然的下一步会是：</p>
+<ul><li>案例篇；</li><li>组合管理；</li><li>实战复盘。</li></ul>
+<p>到那一步时，PMCC 才会真正从“一个策略名字”，变成“你知道该在什么账户、什么标的、什么波动率环境里用它”的结构工具。</p>
+<h2>本章参考口径（便于追溯）</h2>
+<ul><li>图片关联重点：<code>PMCC = LEAP Call + 卖 Call</code>、<code>PMCC vs Covered Call</code>、<code>deep ITM / high delta / long-dated LEAP</code>、<code>IV 时机</code>、<code>short leg 管理</code>、<code>LEAP 不要拖到太短</code></li><li>OCC / OIC：用于校准 covered call、long call replacement、PMCC 类结构的基础教育口径</li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li><li>Fidelity Options Strategy Guide：用于保持 LEAP、covered call、diagonal / replacement-style logic 的收益风险表述与主流券商口径一致</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li><li>CBOE Options Institute：用于保持 LEAPS、covered call variants、capital efficiency 与 option replacement 思路的一致术语</li><li><a href="https://www.cboe.com/optionsinstitute/">https://www.cboe.com/optionsinstitute/</a></li></ul>
             </article>
         </section>
 
@@ -513,27 +513,27 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-navigation-title">绔犺妭瀵艰埅</h2>
-                    <p class="section-subtitle">鏄惧紡淇濈暀涓婁竴绔?/ 杩斿洖璇剧▼ / 涓嬩竴绔犱笁涓彲瑙佹Ы浣嶏紝渚夸簬鐢熸垚鍣ㄧǔ瀹氬～鍏?/p>
+                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
+                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
                 </div>
             </div>
 
             <div class="chapter-nav-card">
                 <div class="chapter-nav-grid">
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">涓婁竴绔?/div>
-                        <a class="chapter-nav-link" href="./26.html">绗?26 绔?路 Sell Put</a>
-                        <p>鎶婂崠 Put 璁叉垚浠锋牸鍨嬪缓浠撴壙璇猴紝璁叉竻鎺ヨ偂绾緥銆佺泩浜忓钩琛＄偣涓庣幇閲戞媴淇濈殑鍋ュ悍鎵撳紑鏂瑰紡銆?/p>
+                        <div class="chapter-nav-label">上一章</div>
+                        <a class="chapter-nav-link" href="./26.html">第 26 章 · Sell Put</a>
+                        <p>把卖 Put 讲成价格型建仓承诺，讲清接股纪律、盈亏平衡点与现金担保的健康打开方式。</p>
                     </div>
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">杩斿洖璇剧▼</div>
-                        <a class="chapter-nav-link" href="./index.html">缇庤偂鏈熸潈鏁欐潗 鐩綍</a>
-                        <p>杩斿洖璇剧▼鐩綍锛屾寜 section 鍜?batch 鏌ョ湅鍏ㄥ眬杩涘害銆?/p>
+                        <div class="chapter-nav-label">返回课程</div>
+                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
+                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
                     </div>
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">涓嬩竴绔?/div>
-                        <a class="chapter-nav-link" href="./index.html">鍥炲埌璇剧▼棣栭〉</a>
-                        <p>杩欐槸褰撳墠鏈€鍚庝竴绡囧凡鍙戝竷绔犺妭銆?/p>
+                        <div class="chapter-nav-label">下一章</div>
+                        <a class="chapter-nav-link" href="./index.html">回到课程首页</a>
+                        <p>这是当前最后一篇已发布章节。</p>
                     </div>
                 </div>
             </div>
@@ -541,15 +541,15 @@
     </main>
 
     <footer>
-        <p>鏈熸潈鏁欐潗 路 缁撴瀯鍖栧涔?路 HTML 浼樺厛</p>
+        <p>期权教材 · 结构化学习 · HTML 优先</p>
         <p class="disclaimer">
-            鍏嶈矗澹版槑锛氭湰鏁欐潗椤甸潰浠呬緵瀛︿範浜ゆ祦浣跨敤锛屼笉鏋勬垚浠讳綍鎶曡祫寤鸿銆傛湡鏉冧氦鏄撴秹鍙婃潬鏉嗐€佹椂闂存崯鑰椾笌娴佸姩鎬ч闄╋紝鍔″繀缁撳悎鑷韩鎯呭喌鐙珛鍒ゆ柇銆?
+            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
         </p>
     </footer>
 
-    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="鍒囨崲娣辫壊妯″紡" title="鍒囨崲娣辫壊妯″紡">馃寭</button>
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="杩斿洖椤堕儴">鈫?/button>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260326review1"></script>
+    <script src="../js/main.js?v=20260326review2"></script>
 </body>
 </html>
