@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="理解隐含波动率变化如何重新定价期权，以及事件前后 Vega 暴露为何会显著影响盈亏。">
+    <meta name="description" content="鐞嗚В闅愬惈娉㈠姩鐜囧彉鍖栧浣曢噸鏂板畾浠锋湡鏉冿紝浠ュ強浜嬩欢鍓嶅悗 Vega 鏆撮湶涓轰綍浼氭樉钁楀奖鍝嶇泩浜忋€?>
     <meta name="author" content="ValueInvest">
     <meta name="theme-color" content="#c9a227">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="canonical" href="https://4fire.qzz.io/options/22.html">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://4fire.qzz.io/options/22.html">
-    <meta property="og:title" content="Vega | 美股期权教材">
-    <meta property="og:description" content="理解隐含波动率变化如何重新定价期权，以及事件前后 Vega 暴露为何会显著影响盈亏。">
+    <meta property="og:title" content="Vega | 缇庤偂鏈熸潈鏁欐潗">
+    <meta property="og:description" content="鐞嗚В闅愬惈娉㈠姩鐜囧彉鍖栧浣曢噸鏂板畾浠锋湡鏉冿紝浠ュ強浜嬩欢鍓嶅悗 Vega 鏆撮湶涓轰綍浼氭樉钁楀奖鍝嶇泩浜忋€?>
     <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Vega | 美股期权教材">
-    <meta name="twitter:description" content="理解隐含波动率变化如何重新定价期权，以及事件前后 Vega 暴露为何会显著影响盈亏。">
+    <meta name="twitter:title" content="Vega | 缇庤偂鏈熸潈鏁欐潗">
+    <meta name="twitter:description" content="鐞嗚В闅愬惈娉㈠姩鐜囧彉鍖栧浣曢噸鏂板畾浠锋湡鏉冿紝浠ュ強浜嬩欢鍓嶅悗 Vega 鏆撮湶涓轰綍浼氭樉钁楀奖鍝嶇泩浜忋€?>
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
-    <title>Vega | 美股期权教材</title>
+    <title>Vega | 缇庤偂鏈熸潈鏁欐潗</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260326site4">
+    <link rel="stylesheet" href="../css/style.css?v=20260326review1">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -192,7 +192,7 @@
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "Vega",
-        "description": "理解隐含波动率变化如何重新定价期权，以及事件前后 Vega 暴露为何会显著影响盈亏。",
+        "description": "鐞嗚В闅愬惈娉㈠姩鐜囧彉鍖栧浣曢噸鏂板畾浠锋湡鏉冿紝浠ュ強浜嬩欢鍓嶅悗 Vega 鏆撮湶涓轰綍浼氭樉钁楀奖鍝嶇泩浜忋€?,
         "author": {
             "@type": "Person",
             "name": "ValueInvest"
@@ -205,7 +205,7 @@
         "mainEntityOfPage": "https://4fire.qzz.io/options/22.html",
         "isPartOf": {
             "@type": "Course",
-            "name": "美股期权教材",
+            "name": "缇庤偂鏈熸潈鏁欐潗",
             "url": "https://4fire.qzz.io/options/"
         },
         "image": [
@@ -215,39 +215,39 @@
     </script>
 </head>
 <body>
-    <a href="#main" class="skip-link">跳转到主内容</a>
-    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
+    <a href="#main" class="skip-link">璺宠浆鍒颁富鍐呭</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="椤甸潰闃呰杩涘害"></div>
 
     <header id="header">
         <div class="nav-container">
-            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
-            <nav aria-label="期权章节页主导航">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 棣栭〉">Value<span>Invest</span></a>
+            <nav aria-label="鏈熸潈绔犺妭椤典富瀵艰埅">
                 <ul class="nav-links">
-                    <li><a href="../index.html">返回首页</a></li>
-                    <li><a href="./index.html">返回课程</a></li>
-                    <li><a href="#chapter-navigation">章节导航</a></li>
+                    <li><a href="../index.html">杩斿洖棣栭〉</a></li>
+                    <li><a href="./index.html">杩斿洖璇剧▼</a></li>
+                    <li><a href="#chapter-navigation">绔犺妭瀵艰埅</a></li>
                 </ul>
             </nav>
-            <div class="nav-date">第 22 章</div>
+            <div class="nav-date">绗?22 绔?/div>
         </div>
     </header>
 
     <section class="hero" role="banner">
         <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
         <div class="hero-content">
-            <div class="subtitle">Greeks 与仓位行为篇</div>
-            <h1>第 22 章 · Vega</h1>
-            <p class="tagline">Greeks 与仓位行为篇 · Batch 6</p>
-            <p class="hero-description">理解隐含波动率变化如何重新定价期权，以及事件前后 Vega 暴露为何会显著影响盈亏。</p>
+            <div class="subtitle">Greeks 涓庝粨浣嶈涓虹瘒</div>
+            <h1>绗?22 绔?路 Vega</h1>
+            <p class="tagline">Greeks 涓庝粨浣嶈涓虹瘒 路 Batch 6</p>
+            <p class="hero-description">鐞嗚В闅愬惈娉㈠姩鐜囧彉鍖栧浣曢噸鏂板畾浠锋湡鏉冿紝浠ュ強浜嬩欢鍓嶅悗 Vega 鏆撮湶涓轰綍浼氭樉钁楀奖鍝嶇泩浜忋€?/p>
         </div>
-        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="鍚戜笅婊氬姩鍒扮珷鑺傛憳瑕?>鍚戜笅婊氬姩</a>
     </section>
 
-    <div class="chapter-meta-bar" aria-label="章节关键信息">
-        <div class="chapter-meta-pill">章节编号：第 22 章</div>
-        <div class="chapter-meta-pill">Section：Greeks 与仓位行为篇</div>
-        <div class="chapter-meta-pill">Batch：Batch 6 · 已发布</div>
-        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
+    <div class="chapter-meta-bar" aria-label="绔犺妭鍏抽敭淇℃伅">
+        <div class="chapter-meta-pill">绔犺妭缂栧彿锛氱 22 绔?/div>
+        <div class="chapter-meta-pill">Section锛欸reeks 涓庝粨浣嶈涓虹瘒</div>
+        <div class="chapter-meta-pill">Batch锛欱atch 6 路 宸插彂甯?/div>
+        <div class="chapter-meta-pill">鎵€灞炶绋嬶細<a class="chapter-meta-link" href="./index.html">缇庤偂鏈熸潈鏁欐潗</a></div>
     </div>
 
     <main id="main" class="chapter-shell">
@@ -255,13 +255,13 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">01</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
-                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
+                    <h2 class="section-title" id="chapter-summary-title">绔犺妭鎽樿</h2>
+                    <p class="section-subtitle">缁欒鑰呬竴涓厛璇绘噦妗嗘灦銆佸啀娣卞叆姝ｆ枃鐨勮惤鐐?/p>
                 </div>
             </div>
 
             <div class="chapter-summary-card">
-                <p>理解隐含波动率变化如何重新定价期权，以及事件前后 Vega 暴露为何会显著影响盈亏。</p>
+                <p>鐞嗚В闅愬惈娉㈠姩鐜囧彉鍖栧浣曢噸鏂板畾浠锋湡鏉冿紝浠ュ強浜嬩欢鍓嶅悗 Vega 鏆撮湶涓轰綍浼氭樉钁楀奖鍝嶇泩浜忋€?/p>
             </div>
         </section>
 
@@ -269,192 +269,192 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">02</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
-                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
+                    <h2 class="section-title" id="chapter-content-title">绔犺妭姝ｆ枃</h2>
+                    <p class="section-subtitle">姝ｆ枃鍐呭鐢辩敓鎴愬櫒鐩存帴鍐欏叆 HTML锛岄粯璁ゆ棤鑴氭湰涔熷簲瀹屾暣鍙</p>
                 </div>
             </div>
 
             <article class="chapter-body-card">
-<h1>《美股期权教材》</h1>
-<h2>第22章 Vega：IV 变化与波动率冲击</h2>
-<blockquote><p>本章主要基于以下图片材料整理并扩写：</p>
-<ul><li><code>renamed/img11.jpg</code>：Greeks 总纲，说明 Vega 是理解期权价格波动来源的关键变量之一；</li><li><code>renamed/img15.jpg</code>：Vega 主图，强调“IV 每变化 1 个百分点，期权价格会如何变化”、Vega 在 ATM 附近更大、到期越近 Vega 往往越小，以及财报后的 IV Crush。</li></ul>
-<p>如果你只记一句话，那就是：</p>
-<blockquote><p><strong>Vega 讲的不是股价涨跌，而是“市场对未来波动的预期一变，期权价格会不会跟着被重新定价”。</strong></p></blockquote>
-<p>很多人第一次做财报前期权，都会有一种非常挫败的体验：</p>
-<ul><li>我明明判断了公司要大涨；</li><li>财报出来后，股价也真的涨了；</li><li>可我的 Call 却没有想象中赚那么多，甚至还可能不怎么赚钱。</li></ul>
-<p>这种时候，背后最常见的解释不是 Delta 不见了，而是 Vega 开始说话了。</p>
-<p>因为期权价格里，除了方向和时间，还有一个特别重要的变量：</p>
-<p><strong>市场对未来波动会有多大，原本是怎么想的；事件落地后，又改成怎么想。</strong></p>
-<p>这层变化，Vega 专门负责量它。</p></blockquote>
+<h1>銆婄編鑲℃湡鏉冩暀鏉愩€?/h1>
+<h2>绗?2绔?Vega锛欼V 鍙樺寲涓庢尝鍔ㄧ巼鍐插嚮</h2>
+<blockquote><p>鏈珷涓昏鍩轰簬浠ヤ笅鍥剧墖鏉愭枡鏁寸悊骞舵墿鍐欙細</p>
+<ul><li><code>renamed/img11.jpg</code>锛欸reeks 鎬荤翰锛岃鏄?Vega 鏄悊瑙ｆ湡鏉冧环鏍兼尝鍔ㄦ潵婧愮殑鍏抽敭鍙橀噺涔嬩竴锛?/li><li><code>renamed/img15.jpg</code>锛歏ega 涓诲浘锛屽己璋冣€淚V 姣忓彉鍖?1 涓櫨鍒嗙偣锛屾湡鏉冧环鏍间細濡備綍鍙樺寲鈥濄€乂ega 鍦?ATM 闄勮繎鏇村ぇ銆佸埌鏈熻秺杩?Vega 寰€寰€瓒婂皬锛屼互鍙婅储鎶ュ悗鐨?IV Crush銆?/li></ul>
+<p>濡傛灉浣犲彧璁颁竴鍙ヨ瘽锛岄偅灏辨槸锛?/p>
+<blockquote><p><strong>Vega 璁茬殑涓嶆槸鑲′环娑ㄨ穼锛岃€屾槸鈥滃競鍦哄鏈潵娉㈠姩鐨勯鏈熶竴鍙橈紝鏈熸潈浠锋牸浼氫笉浼氳窡鐫€琚噸鏂板畾浠封€濄€?/strong></p></blockquote>
+<p>寰堝浜虹涓€娆″仛璐㈡姤鍓嶆湡鏉冿紝閮戒細鏈変竴绉嶉潪甯告尗璐ョ殑浣撻獙锛?/p>
+<ul><li>鎴戞槑鏄庡垽鏂簡鍏徃瑕佸ぇ娑紱</li><li>璐㈡姤鍑烘潵鍚庯紝鑲′环涔熺湡鐨勬定浜嗭紱</li><li>鍙垜鐨?Call 鍗存病鏈夋兂璞′腑璧氶偅涔堝锛岀敋鑷宠繕鍙兘涓嶆€庝箞璧氶挶銆?/li></ul>
+<p>杩欑鏃跺€欙紝鑳屽悗鏈€甯歌鐨勮В閲婁笉鏄?Delta 涓嶈浜嗭紝鑰屾槸 Vega 寮€濮嬭璇濅簡銆?/p>
+<p>鍥犱负鏈熸潈浠锋牸閲岋紝闄や簡鏂瑰悜鍜屾椂闂达紝杩樻湁涓€涓壒鍒噸瑕佺殑鍙橀噺锛?/p>
+<p><strong>甯傚満瀵规湭鏉ユ尝鍔ㄤ細鏈夊澶э紝鍘熸湰鏄€庝箞鎯崇殑锛涗簨浠惰惤鍦板悗锛屽張鏀规垚鎬庝箞鎯炽€?/strong></p>
+<p>杩欏眰鍙樺寲锛孷ega 涓撻棬璐熻矗閲忓畠銆?/p></blockquote>
 <hr>
-<h2>阅读导航：第一次读先抓“IV 改价”，第二次读再补事件场景</h2>
-<p>这一章第一次读，最容易误会的是：Vega 好像只属于波动率高手。</p>
-<p>其实你第一遍只要先抓两句：</p>
-<p>1. <strong>Vega 衡量的是 IV 变化，会把期权价格推多远。</strong> 2. <strong>方向对，不代表一定赚钱，因为 IV 也会重新定价。</strong></p>
-<p>这两句先站稳，很多财报前后的困惑就有解释了。</p>
-<p>第二遍再去补：</p>
-<ul><li>为什么 ATM、长天期往往 Vega 更重；</li><li>为什么财报后常见 IV Crush；</li><li>为什么很多人其实在“不知不觉地承受 Vega”。</li></ul>
+<h2>闃呰瀵艰埅锛氱涓€娆¤鍏堟姄鈥淚V 鏀逛环鈥濓紝绗簩娆¤鍐嶈ˉ浜嬩欢鍦烘櫙</h2>
+<p>杩欎竴绔犵涓€娆¤锛屾渶瀹规槗璇細鐨勬槸锛歏ega 濂藉儚鍙睘浜庢尝鍔ㄧ巼楂樻墜銆?/p>
+<p>鍏跺疄浣犵涓€閬嶅彧瑕佸厛鎶撲袱鍙ワ細</p>
+<p>1. <strong>Vega 琛￠噺鐨勬槸 IV 鍙樺寲锛屼細鎶婃湡鏉冧环鏍兼帹澶氳繙銆?/strong> 2. <strong>鏂瑰悜瀵癸紝涓嶄唬琛ㄤ竴瀹氳禋閽憋紝鍥犱负 IV 涔熶細閲嶆柊瀹氫环銆?/strong></p>
+<p>杩欎袱鍙ュ厛绔欑ǔ锛屽緢澶氳储鎶ュ墠鍚庣殑鍥版儜灏辨湁瑙ｉ噴浜嗐€?/p>
+<p>绗簩閬嶅啀鍘昏ˉ锛?/p>
+<ul><li>涓轰粈涔?ATM銆侀暱澶╂湡寰€寰€ Vega 鏇撮噸锛?/li><li>涓轰粈涔堣储鎶ュ悗甯歌 IV Crush锛?/li><li>涓轰粈涔堝緢澶氫汉鍏跺疄鍦ㄢ€滀笉鐭ヤ笉瑙夊湴鎵垮彈 Vega鈥濄€?/li></ul>
 <hr>
-<h1>一、先把 Vega 讲成人话：它衡量的是“IV 变化，会把期权价格推多远”</h1>
-<h2>22.1 Vega 不是在量股价本身，而是在量“波动预期”的价格影响</h2>
-<p>前面几章里，你已经接触过一个关键词：</p>
-<ul><li><strong>IV（隐含波动率）</strong>。</li></ul>
-<p>最朴素地理解，IV 不是股票已经怎么动了，而是市场正在给“未来可能怎么动”标价。</p>
-<p>如果大家都觉得：</p>
-<ul><li>接下来会很刺激；</li><li>上下波动可能很大；</li><li>财报、政策、消息面都会让价格剧烈摆动；</li></ul>
-<p>那期权往往会被定得更贵。</p>
-<p>相反，如果市场觉得：</p>
-<ul><li>接下来事情没那么多；</li><li>波动不会太激烈；</li><li>不确定性在下降；</li></ul>
-<p>那期权价格往往就会被压低。</p>
-<p>而 Vega，要量的就是：</p>
-<blockquote><p><strong>当 IV 本身升高或下降时，期权价格理论上会被拉动多少。</strong></p></blockquote>
-<h2>22.2 一个更正式但仍然好用的定义</h2>
-<p>Vega 最常见的读法可以写成：</p>
-<blockquote><p><strong>在其他条件暂时不变的前提下，IV 每变化 1 个百分点，期权价格理论上会变化多少。</strong></p></blockquote>
-<p>如果一张期权的 Vega 是：</p>
+<h1>涓€銆佸厛鎶?Vega 璁叉垚浜鸿瘽锛氬畠琛￠噺鐨勬槸鈥淚V 鍙樺寲锛屼細鎶婃湡鏉冧环鏍兼帹澶氳繙鈥?/h1>
+<h2>22.1 Vega 涓嶆槸鍦ㄩ噺鑲′环鏈韩锛岃€屾槸鍦ㄩ噺鈥滄尝鍔ㄩ鏈熲€濈殑浠锋牸褰卞搷</h2>
+<p>鍓嶉潰鍑犵珷閲岋紝浣犲凡缁忔帴瑙﹁繃涓€涓叧閿瘝锛?/p>
+<ul><li><strong>IV锛堥殣鍚尝鍔ㄧ巼锛?/strong>銆?/li></ul>
+<p>鏈€鏈寸礌鍦扮悊瑙ｏ紝IV 涓嶆槸鑲＄エ宸茬粡鎬庝箞鍔ㄤ簡锛岃€屾槸甯傚満姝ｅ湪缁欌€滄湭鏉ュ彲鑳芥€庝箞鍔ㄢ€濇爣浠枫€?/p>
+<p>濡傛灉澶у閮借寰楋細</p>
+<ul><li>鎺ヤ笅鏉ヤ細寰堝埡婵€锛?/li><li>涓婁笅娉㈠姩鍙兘寰堝ぇ锛?/li><li>璐㈡姤銆佹斂绛栥€佹秷鎭潰閮戒細璁╀环鏍煎墽鐑堟憜鍔紱</li></ul>
+<p>閭ｆ湡鏉冨線寰€浼氳瀹氬緱鏇磋吹銆?/p>
+<p>鐩稿弽锛屽鏋滃競鍦鸿寰楋細</p>
+<ul><li>鎺ヤ笅鏉ヤ簨鎯呮病閭ｄ箞澶氾紱</li><li>娉㈠姩涓嶄細澶縺鐑堬紱</li><li>涓嶇‘瀹氭€у湪涓嬮檷锛?/li></ul>
+<p>閭ｆ湡鏉冧环鏍煎線寰€灏变細琚帇浣庛€?/p>
+<p>鑰?Vega锛岃閲忕殑灏辨槸锛?/p>
+<blockquote><p><strong>褰?IV 鏈韩鍗囬珮鎴栦笅闄嶆椂锛屾湡鏉冧环鏍肩悊璁轰笂浼氳鎷夊姩澶氬皯銆?/strong></p></blockquote>
+<h2>22.2 涓€涓洿姝ｅ紡浣嗕粛鐒跺ソ鐢ㄧ殑瀹氫箟</h2>
+<p>Vega 鏈€甯歌鐨勮娉曞彲浠ュ啓鎴愶細</p>
+<blockquote><p><strong>鍦ㄥ叾浠栨潯浠舵殏鏃朵笉鍙樼殑鍓嶆彁涓嬶紝IV 姣忓彉鍖?1 涓櫨鍒嗙偣锛屾湡鏉冧环鏍肩悊璁轰笂浼氬彉鍖栧灏戙€?/strong></p></blockquote>
+<p>濡傛灉涓€寮犳湡鏉冪殑 Vega 鏄細</p>
 <ul><li><strong>0.12</strong></li></ul>
-<p>那最直观的意思就是：</p>
-<ul><li>如果 IV 从 30% 升到 31%；</li><li>在其他变量变化不大的情况下；</li><li>这张期权的理论价格大约会上升 0.12 美元。</li></ul>
-<p>对应一张标准合约，就是：</p>
-<ul><li>0.12 × 100 = <strong>12 美元</strong></li></ul>
-<p>同样要记住，这还是一个近似、瞬时的读法。</p>
-<p>真实市场里，Vega 不会脱离：</p>
-<ul><li>Delta；</li><li>Theta；</li><li>到期时间；</li><li>行权价位置；</li><li>事件本身是否已经落地。</li></ul>
-<p>但只要你先抓住这句话，已经够你避开很多坑：</p>
-<blockquote><p><strong>IV 不是背景音，它会直接改变期权价格。</strong></p></blockquote>
-<h1>二、为什么买方通常是正 Vega，卖方通常是负 Vega</h1>
-<h2>22.3 对买方来说，IV 上升往往是顺风</h2>
-<p>大多数 long option 仓位，通常都是正 Vega。</p>
-<p>这意味着：</p>
-<ul><li>当 IV 上升；</li><li>市场愿意为未来不确定性支付更高价格；</li><li>你手里那张期权，通常也会跟着变贵。</li></ul>
-<p>这对买方很重要，因为它意味着：</p>
-<ul><li>你不一定非要等股价大幅兑现；</li><li>有时只要市场先开始紧张，期权本身就可能涨价。</li></ul>
-<p>比如财报前：</p>
-<ul><li>股价也许还没怎么动；</li><li>但市场已经越来越担心财报会带来大波动；</li><li>这时很多期权价格会因为 IV 抬升而被提前推高。</li></ul>
-<p>这就是 Vega 给买方带来的那一层“预期溢价”。</p>
-<h2>22.4 对卖方来说，IV 回落往往是顺风</h2>
-<p>如果买方通常是正 Vega，那卖方通常就是负 Vega。</p>
-<p>这意味着：</p>
-<ul><li>IV 上升时，卖方仓位通常会更难受；</li><li>IV 回落时，卖方往往更舒服。</li></ul>
-<p>你可以把它理解成：</p>
-<ul><li>买方更像是在持有一份“不确定性可能升值”的合约；</li><li>卖方更像是在收一笔“我愿意接下这份不确定性”的保费。</li></ul>
-<p>所以很多卖方策略看起来舒服的时段，往往也是：</p>
-<ul><li>市场越来越平静；</li><li>IV 慢慢往下掉；</li><li>期权价格自然回落。</li></ul>
-<p>但和 Theta 一样，这也不是免费午餐。</p>
-<p>卖方如果碰上：</p>
-<ul><li>事件突然升级；</li><li>市场恐慌抬升；</li><li>IV 暴涨；</li></ul>
-<p>那负 Vega 就会开始给你压力。</p>
-<h1>三、为什么 Vega 往往在 ATM 更大、在长天期更明显</h1>
-<h2>22.5 ATM 附近，Vega 常常最有存在感</h2>
-<p>图片里有一个非常关键的提醒：</p>
-<ul><li><strong>ATM 附近，Vega 往往最大。</strong></li></ul>
-<p>这背后可以这样理解：</p>
-<p>ATM 期权最像一张“结果还没定”的合同。</p>
-<ul><li>它离实值、虚值的分界最敏感；</li><li>市场对未来波动大小的判断，最容易影响它值多少钱；</li><li>一旦 IV 改变，这种“未来可能性”的标价也最容易被放大。</li></ul>
-<p>所以：</p>
-<ul><li>Deep ITM 的期权，价格更大一部分已经贴近内在价值；</li><li>Deep OTM 的期权，本来就离兑现很远；</li><li><strong>真正最容易被波动预期重新定价的，往往是 ATM 一带。</strong></li></ul>
-<p>这和前面 Theta、Gamma 在 ATM 附近更敏感，有一种内在呼应。</p>
-<p>ATM 常常就是期权世界最“贵”、也最“敏感”的中间地带。</p>
-<h2>22.6 时间越长，Vega 往往越明显；越临近到期，Vega 往往越弱</h2>
-<p>另一条很重要的规律是：</p>
-<ul><li><strong>同等条件下，到期时间越长，Vega 往往越大；</strong></li><li><strong>越接近到期，Vega 往往越小。</strong></li></ul>
-<p>为什么？</p>
-<p>因为 Vega 量的是“未来波动预期的变化”值多少钱。</p>
-<p>如果一张期权离到期还有很久：</p>
-<ul><li>未来能发生的事很多；</li><li>IV 的上升或下降，对整个持有期间的影响更大；</li><li>市场也更愿意为这种不确定性重新标价。</li></ul>
-<p>反过来，如果一张期权明天就到期：</p>
-<ul><li>未来只剩一点点时间；</li><li>再大的“波动预期变化”，也很难支撑太多额外价值；</li><li>Vega 的存在感自然会下降。</li></ul>
-<p>所以你以后如果同时看两张期权：</p>
-<ul><li>一张 7 天到期；</li><li>一张 180 天到期；</li></ul>
-<p>你应该立刻想到：</p>
-<ul><li>后者对 IV 的变化，通常更敏感。</li></ul>
-<h1>四、为什么财报前后，Vega 最容易被新手低估</h1>
-<h2>22.7 财报前，很多人买到的其实不只是方向，还有“昂贵的波动预期”</h2>
-<p>期权新手特别容易在财报前犯一个错误：</p>
-<ul><li>只看方向；</li><li>不看 IV 已经被抬多高。</li></ul>
-<p>比如财报前一天，你看多某只股票，买了一张 ATM Call。</p>
-<p>你以为自己买的是：</p>
-<ul><li>“如果它涨，我就赚。”</li></ul>
-<p>但真实情况常常是：</p>
-<ul><li>你同时也买进了市场对财报波动的高预期；</li><li>这部分高预期，已经提前被算进权利金里；</li><li>也就是说，你买的不只是方向，还买了一份昂贵的不确定性。</li></ul>
-<p>如果财报结果一出来：</p>
-<ul><li>最大的不确定事件已经落地；</li><li>市场对未来波动的担心迅速下降；</li><li>IV 往往就会掉下来。</li></ul>
-<p>这时候，就算你方向没完全错，你的 Vega 这一侧也可能遭到打击。</p>
-<h2>22.8 这就是很多人第一次遇到的 IV Crush</h2>
-<p>所谓 <strong>IV Crush</strong>，最朴素的理解就是：</p>
-<blockquote><p><strong>重大事件落地后，IV 快速回落，原本被高预期撑起来的期权价格也跟着被压下去。</strong></p></blockquote>
-<p>举个最常见的例子：</p>
-<p>假设 AAPL 财报前：</p>
-<ul><li>市场非常紧张；</li><li>ATM 期权的 IV 被抬得很高；</li><li>你此时买入 Call。</li></ul>
-<p>财报公布后：</p>
-<ul><li>AAPL 确实涨了；</li><li>但涨幅没有大到足以完全覆盖：</li><li>一夜少掉的时间价值；</li><li>以及 IV 下落造成的 Vega 冲击。</li></ul>
-<p>结果就是：</p>
-<ul><li>你方向是对的；</li><li>仓位体感却没有你想象中爽。</li></ul>
-<p>这不是期权“失灵”了，而是你之前低估了 Vega。</p>
-<p>所以财报前做方向单时，一定要问自己：</p>
-<ul><li>我现在买进的权利金里，有多少已经是在为高 IV 付钱？</li><li>财报后只要 IV 一回落，我要靠多大的股价波动才补得回来？</li></ul>
-<h1>五、方向交易者为什么也必须关心 Vega</h1>
-<h2>22.9 因为你买的不是股票，而是一个会被 IV 重新定价的合约</h2>
-<p>很多人会把 Vega 误以为是“只属于波动率交易者”的概念。</p>
-<p>其实不是。</p>
-<p>只要你买卖的是期权，你几乎都在暴露给 Vega。</p>
-<p>你买一张 Call，不只是看多股价。</p>
-<p>你同时还在持有一张：</p>
-<ul><li>对时间敏感；</li><li>对 IV 敏感；</li><li>对行权价位置敏感；</li><li>对事件预期敏感；</li></ul>
-<p>的合约。</p>
-<p>所以方向交易者如果只看 Delta，不看 Vega，就特别容易在这些时刻被打脸：</p>
-<ul><li>财报前后；</li><li>宏观数据前后；</li><li>突发消息前后；</li><li>市场恐慌或迅速平静的时候。</li></ul>
-<p>你会觉得：</p>
-<ul><li>“我方向没大错，怎么结果不对劲？”</li></ul>
-<p>因为这笔交易从来就不只有方向。</p>
-<h2>22.10 例子：长天期 LEAP Call 为什么常常也要看 Vega</h2>
-<p>如果你买的是较长期限的 LEAP Call：</p>
-<ul><li>它给你更长的时间窗口；</li><li>Theta 压力相对没那么急；</li><li>但与此同时，它对 IV 变化的敏感度，往往也更强。</li></ul>
-<p>这意味着：</p>
-<ul><li>在市场从极度恐慌转向平静时；</li><li>即便你依然长期看多；</li><li>你的 LEAP Call 也可能因为 IV 回落而被重新定价。</li></ul>
-<p>所以期限更长，不代表你可以完全不管 Vega。</p>
-<p>它只是意味着：</p>
-<ul><li>你在 Theta 这一侧更从容一点；</li><li>但在 Vega 这一侧，往往需要更有意识地观察定价环境。</li></ul>
-<h1>六、新手最容易犯的四个 Vega 误会</h1>
-<h2>22.11 误会一：IV 高，说明股票一定会大涨大跌</h2>
-<p>不对。</p>
-<p>IV 更准确地说，是市场当前给“未来可能波动”定出来的价格。</p>
-<p>它反映的是预期，不是承诺。</p>
-<p>IV 高不代表结果一定大幅波动； IV 低也不代表结果一定风平浪静。</p>
-<p>它只是告诉你：</p>
-<ul><li>市场现在愿意为不确定性付多少钱。</li></ul>
-<h2>22.12 误会二：只要方向对，Vega 就不重要</h2>
-<p>这恰恰是很多人第一次做财报期权会踩的坑。</p>
-<p>因为方向对，只解决了 Delta 那一侧的问题。</p>
-<p>如果：</p>
-<ul><li>IV 已经很高；</li><li>事件后 IV 快速回落；</li><li>股价涨跌幅度又不够大；</li></ul>
-<p>那 Vega 完全可能把你原本以为的利润吃掉一大块。</p>
-<h2>22.13 误会三：越接近到期，Vega 越厉害</h2>
-<p>通常正好相反。</p>
-<p>越接近到期，未来剩余时间越短，IV 再怎么变化，对整张合约还能产生的影响也更有限。</p>
-<p>所以一般来说：</p>
-<ul><li>长天期更看 Vega；</li><li>近天期更容易被 Theta、Gamma 搞得更有体感。</li></ul>
-<h2>22.14 误会四：Vega 只属于波动率策略，不属于普通单腿期权</h2>
-<p>也不对。</p>
-<p>只要你买的是期权，不管是：</p>
-<ul><li>Long Call；</li><li>Long Put；</li><li>LEAP Call；</li><li>财报前的方向单；</li></ul>
-<p>你都在和 Vega 打交道。</p>
-<p>区别只是：</p>
-<ul><li>有些仓位 Vega 暴露大；</li><li>有些仓位 Vega 暴露小；</li><li>有些人有意识地在做波动率；</li><li>更多人则是在“不知不觉地承受波动率变化”。</li></ul>
-<h1>七、把这一章收住：Vega 是你理解“为什么方向没错，结果却不如预期”的关键补丁</h1>
-<h2>22.15 本章你最该带走的五句话</h2>
-<p>1. <strong>Vega 衡量的是 IV 每变化 1 个百分点，期权价格理论上会变化多少。</strong> 2. <strong>买方通常是正 Vega，卖方通常是负 Vega。</strong> 3. <strong>ATM 附近、期限更长的期权，Vega 往往更明显。</strong> 4. <strong>越接近到期，Vega 一般越弱；但财报等事件前后，它依然可能很关键。</strong> 5. <strong>方向对不代表一定赚钱，因为期权价格还会被 IV 的重新定价影响。</strong></p>
-<p>如果 Theta 让你意识到“时间会不会先把你磨掉”， 那 Vega 就是在提醒你：</p>
-<ul><li>市场对未来波动的想法一变；</li><li>你的期权也会被重新估值；</li><li>这件事有时和方向本身一样重要。</li></ul>
-<h1>八、自测题</h1>
-<p>1. 一张期权 Vega 是 0.12，IV 从 30% 升到 31% 时，这个数字该怎么直觉理解？ 2. 为什么很多 ATM 期权的 Vega 比深 ITM、深 OTM 更显眼？ 3. 为什么长天期合约通常比短天期合约更需要关心 Vega？ 4. 什么是 IV Crush？为什么它常在财报后让买方感到很挫败？ 5. 如果你做的是方向性 Call，而不是波动率策略，为什么仍然不能忽略 Vega？</p>
-<h1>本章一句话总结</h1>
-<blockquote><p><strong>Vega 真正教你的，是别把期权只当成“方向押注”，因为市场对未来波动的定价一变，整张合约的价格就可能跟着换一套逻辑。</strong></p></blockquote>
-<h2>下一章预告：单腿买方策略应用——Long Call / Long Put / LEAP Call 什么时候值得用</h2>
-<p>到这里，Greeks 这套语言系统你已经有了。</p>
-<p>下一章开始，我们把这些语言重新落回最常见的真实应用：</p>
-<ul><li>什么时候该直接买 Call；</li><li>什么时候该买 Put，而不是去做空股票；</li><li>什么时候 LEAP Call 更像长期配置工具，而不是长周期彩票。</li></ul>
+<p>閭ｆ渶鐩磋鐨勬剰鎬濆氨鏄細</p>
+<ul><li>濡傛灉 IV 浠?30% 鍗囧埌 31%锛?/li><li>鍦ㄥ叾浠栧彉閲忓彉鍖栦笉澶х殑鎯呭喌涓嬶紱</li><li>杩欏紶鏈熸潈鐨勭悊璁轰环鏍煎ぇ绾︿細涓婂崌 0.12 缇庡厓銆?/li></ul>
+<p>瀵瑰簲涓€寮犳爣鍑嗗悎绾︼紝灏辨槸锛?/p>
+<ul><li>0.12 脳 100 = <strong>12 缇庡厓</strong></li></ul>
+<p>鍚屾牱瑕佽浣忥紝杩欒繕鏄竴涓繎浼笺€佺灛鏃剁殑璇绘硶銆?/p>
+<p>鐪熷疄甯傚満閲岋紝Vega 涓嶄細鑴辩锛?/p>
+<ul><li>Delta锛?/li><li>Theta锛?/li><li>鍒版湡鏃堕棿锛?/li><li>琛屾潈浠蜂綅缃紱</li><li>浜嬩欢鏈韩鏄惁宸茬粡钀藉湴銆?/li></ul>
+<p>浣嗗彧瑕佷綘鍏堟姄浣忚繖鍙ヨ瘽锛屽凡缁忓浣犻伩寮€寰堝鍧戯細</p>
+<blockquote><p><strong>IV 涓嶆槸鑳屾櫙闊筹紝瀹冧細鐩存帴鏀瑰彉鏈熸潈浠锋牸銆?/strong></p></blockquote>
+<h1>浜屻€佷负浠€涔堜拱鏂归€氬父鏄 Vega锛屽崠鏂归€氬父鏄礋 Vega</h1>
+<h2>22.3 瀵逛拱鏂规潵璇达紝IV 涓婂崌寰€寰€鏄『椋?/h2>
+<p>澶у鏁?long option 浠撲綅锛岄€氬父閮芥槸姝?Vega銆?/p>
+<p>杩欐剰鍛崇潃锛?/p>
+<ul><li>褰?IV 涓婂崌锛?/li><li>甯傚満鎰挎剰涓烘湭鏉ヤ笉纭畾鎬ф敮浠樻洿楂樹环鏍硷紱</li><li>浣犳墜閲岄偅寮犳湡鏉冿紝閫氬父涔熶細璺熺潃鍙樿吹銆?/li></ul>
+<p>杩欏涔版柟寰堥噸瑕侊紝鍥犱负瀹冩剰鍛崇潃锛?/p>
+<ul><li>浣犱笉涓€瀹氶潪瑕佺瓑鑲′环澶у箙鍏戠幇锛?/li><li>鏈夋椂鍙甯傚満鍏堝紑濮嬬揣寮狅紝鏈熸潈鏈韩灏卞彲鑳芥定浠枫€?/li></ul>
+<p>姣斿璐㈡姤鍓嶏細</p>
+<ul><li>鑲′环涔熻杩樻病鎬庝箞鍔紱</li><li>浣嗗競鍦哄凡缁忚秺鏉ヨ秺鎷呭績璐㈡姤浼氬甫鏉ュぇ娉㈠姩锛?/li><li>杩欐椂寰堝鏈熸潈浠锋牸浼氬洜涓?IV 鎶崌鑰岃鎻愬墠鎺ㄩ珮銆?/li></ul>
+<p>杩欏氨鏄?Vega 缁欎拱鏂瑰甫鏉ョ殑閭ｄ竴灞傗€滈鏈熸孩浠封€濄€?/p>
+<h2>22.4 瀵瑰崠鏂规潵璇达紝IV 鍥炶惤寰€寰€鏄『椋?/h2>
+<p>濡傛灉涔版柟閫氬父鏄 Vega锛岄偅鍗栨柟閫氬父灏辨槸璐?Vega銆?/p>
+<p>杩欐剰鍛崇潃锛?/p>
+<ul><li>IV 涓婂崌鏃讹紝鍗栨柟浠撲綅閫氬父浼氭洿闅惧彈锛?/li><li>IV 鍥炶惤鏃讹紝鍗栨柟寰€寰€鏇磋垝鏈嶃€?/li></ul>
+<p>浣犲彲浠ユ妸瀹冪悊瑙ｆ垚锛?/p>
+<ul><li>涔版柟鏇村儚鏄湪鎸佹湁涓€浠解€滀笉纭畾鎬у彲鑳藉崌鍊尖€濈殑鍚堢害锛?/li><li>鍗栨柟鏇村儚鏄湪鏀朵竴绗斺€滄垜鎰挎剰鎺ヤ笅杩欎唤涓嶇‘瀹氭€р€濈殑淇濊垂銆?/li></ul>
+<p>鎵€浠ュ緢澶氬崠鏂圭瓥鐣ョ湅璧锋潵鑸掓湇鐨勬椂娈碉紝寰€寰€涔熸槸锛?/p>
+<ul><li>甯傚満瓒婃潵瓒婂钩闈欙紱</li><li>IV 鎱㈡參寰€涓嬫帀锛?/li><li>鏈熸潈浠锋牸鑷劧鍥炶惤銆?/li></ul>
+<p>浣嗗拰 Theta 涓€鏍凤紝杩欎篃涓嶆槸鍏嶈垂鍗堥銆?/p>
+<p>鍗栨柟濡傛灉纰颁笂锛?/p>
+<ul><li>浜嬩欢绐佺劧鍗囩骇锛?/li><li>甯傚満鎭愭厡鎶崌锛?/li><li>IV 鏆存定锛?/li></ul>
+<p>閭ｈ礋 Vega 灏变細寮€濮嬬粰浣犲帇鍔涖€?/p>
+<h1>涓夈€佷负浠€涔?Vega 寰€寰€鍦?ATM 鏇村ぇ銆佸湪闀垮ぉ鏈熸洿鏄庢樉</h1>
+<h2>22.5 ATM 闄勮繎锛孷ega 甯稿父鏈€鏈夊瓨鍦ㄦ劅</h2>
+<p>鍥剧墖閲屾湁涓€涓潪甯稿叧閿殑鎻愰啋锛?/p>
+<ul><li><strong>ATM 闄勮繎锛孷ega 寰€寰€鏈€澶с€?/strong></li></ul>
+<p>杩欒儗鍚庡彲浠ヨ繖鏍风悊瑙ｏ細</p>
+<p>ATM 鏈熸潈鏈€鍍忎竴寮犫€滅粨鏋滆繕娌″畾鈥濈殑鍚堝悓銆?/p>
+<ul><li>瀹冪瀹炲€笺€佽櫄鍊肩殑鍒嗙晫鏈€鏁忔劅锛?/li><li>甯傚満瀵规湭鏉ユ尝鍔ㄥぇ灏忕殑鍒ゆ柇锛屾渶瀹规槗褰卞搷瀹冨€煎灏戦挶锛?/li><li>涓€鏃?IV 鏀瑰彉锛岃繖绉嶁€滄湭鏉ュ彲鑳芥€р€濈殑鏍囦环涔熸渶瀹规槗琚斁澶с€?/li></ul>
+<p>鎵€浠ワ細</p>
+<ul><li>Deep ITM 鐨勬湡鏉冿紝浠锋牸鏇村ぇ涓€閮ㄥ垎宸茬粡璐磋繎鍐呭湪浠峰€硷紱</li><li>Deep OTM 鐨勬湡鏉冿紝鏈潵灏辩鍏戠幇寰堣繙锛?/li><li><strong>鐪熸鏈€瀹规槗琚尝鍔ㄩ鏈熼噸鏂板畾浠风殑锛屽線寰€鏄?ATM 涓€甯︺€?/strong></li></ul>
+<p>杩欏拰鍓嶉潰 Theta銆丟amma 鍦?ATM 闄勮繎鏇存晱鎰燂紝鏈変竴绉嶅唴鍦ㄥ懠搴斻€?/p>
+<p>ATM 甯稿父灏辨槸鏈熸潈涓栫晫鏈€鈥滆吹鈥濄€佷篃鏈€鈥滄晱鎰熲€濈殑涓棿鍦板甫銆?/p>
+<h2>22.6 鏃堕棿瓒婇暱锛孷ega 寰€寰€瓒婃槑鏄撅紱瓒婁复杩戝埌鏈燂紝Vega 寰€寰€瓒婂急</h2>
+<p>鍙︿竴鏉″緢閲嶈鐨勮寰嬫槸锛?/p>
+<ul><li><strong>鍚岀瓑鏉′欢涓嬶紝鍒版湡鏃堕棿瓒婇暱锛孷ega 寰€寰€瓒婂ぇ锛?/strong></li><li><strong>瓒婃帴杩戝埌鏈燂紝Vega 寰€寰€瓒婂皬銆?/strong></li></ul>
+<p>涓轰粈涔堬紵</p>
+<p>鍥犱负 Vega 閲忕殑鏄€滄湭鏉ユ尝鍔ㄩ鏈熺殑鍙樺寲鈥濆€煎灏戦挶銆?/p>
+<p>濡傛灉涓€寮犳湡鏉冪鍒版湡杩樻湁寰堜箙锛?/p>
+<ul><li>鏈潵鑳藉彂鐢熺殑浜嬪緢澶氾紱</li><li>IV 鐨勪笂鍗囨垨涓嬮檷锛屽鏁翠釜鎸佹湁鏈熼棿鐨勫奖鍝嶆洿澶э紱</li><li>甯傚満涔熸洿鎰挎剰涓鸿繖绉嶄笉纭畾鎬ч噸鏂版爣浠枫€?/li></ul>
+<p>鍙嶈繃鏉ワ紝濡傛灉涓€寮犳湡鏉冩槑澶╁氨鍒版湡锛?/p>
+<ul><li>鏈潵鍙墿涓€鐐圭偣鏃堕棿锛?/li><li>鍐嶅ぇ鐨勨€滄尝鍔ㄩ鏈熷彉鍖栤€濓紝涔熷緢闅炬敮鎾戝お澶氶澶栦环鍊硷紱</li><li>Vega 鐨勫瓨鍦ㄦ劅鑷劧浼氫笅闄嶃€?/li></ul>
+<p>鎵€浠ヤ綘浠ュ悗濡傛灉鍚屾椂鐪嬩袱寮犳湡鏉冿細</p>
+<ul><li>涓€寮?7 澶╁埌鏈燂紱</li><li>涓€寮?180 澶╁埌鏈燂紱</li></ul>
+<p>浣犲簲璇ョ珛鍒绘兂鍒帮細</p>
+<ul><li>鍚庤€呭 IV 鐨勫彉鍖栵紝閫氬父鏇存晱鎰熴€?/li></ul>
+<h1>鍥涖€佷负浠€涔堣储鎶ュ墠鍚庯紝Vega 鏈€瀹规槗琚柊鎵嬩綆浼?/h1>
+<h2>22.7 璐㈡姤鍓嶏紝寰堝浜轰拱鍒扮殑鍏跺疄涓嶅彧鏄柟鍚戯紝杩樻湁鈥滄槀璐电殑娉㈠姩棰勬湡鈥?/h2>
+<p>鏈熸潈鏂版墜鐗瑰埆瀹规槗鍦ㄨ储鎶ュ墠鐘竴涓敊璇細</p>
+<ul><li>鍙湅鏂瑰悜锛?/li><li>涓嶇湅 IV 宸茬粡琚姮澶氶珮銆?/li></ul>
+<p>姣斿璐㈡姤鍓嶄竴澶╋紝浣犵湅澶氭煇鍙偂绁紝涔颁簡涓€寮?ATM Call銆?/p>
+<p>浣犱互涓鸿嚜宸变拱鐨勬槸锛?/p>
+<ul><li>鈥滃鏋滃畠娑紝鎴戝氨璧氥€傗€?/li></ul>
+<p>浣嗙湡瀹炴儏鍐靛父甯告槸锛?/p>
+<ul><li>浣犲悓鏃朵篃涔拌繘浜嗗競鍦哄璐㈡姤娉㈠姩鐨勯珮棰勬湡锛?/li><li>杩欓儴鍒嗛珮棰勬湡锛屽凡缁忔彁鍓嶈绠楄繘鏉冨埄閲戦噷锛?/li><li>涔熷氨鏄锛屼綘涔扮殑涓嶅彧鏄柟鍚戯紝杩樹拱浜嗕竴浠芥槀璐电殑涓嶇‘瀹氭€с€?/li></ul>
+<p>濡傛灉璐㈡姤缁撴灉涓€鍑烘潵锛?/p>
+<ul><li>鏈€澶х殑涓嶇‘瀹氫簨浠跺凡缁忚惤鍦帮紱</li><li>甯傚満瀵规湭鏉ユ尝鍔ㄧ殑鎷呭績杩呴€熶笅闄嶏紱</li><li>IV 寰€寰€灏变細鎺変笅鏉ャ€?/li></ul>
+<p>杩欐椂鍊欙紝灏辩畻浣犳柟鍚戞病瀹屽叏閿欙紝浣犵殑 Vega 杩欎竴渚т篃鍙兘閬埌鎵撳嚮銆?/p>
+<h2>22.8 杩欏氨鏄緢澶氫汉绗竴娆￠亣鍒扮殑 IV Crush</h2>
+<p>鎵€璋?<strong>IV Crush</strong>锛屾渶鏈寸礌鐨勭悊瑙ｅ氨鏄細</p>
+<blockquote><p><strong>閲嶅ぇ浜嬩欢钀藉湴鍚庯紝IV 蹇€熷洖钀斤紝鍘熸湰琚珮棰勬湡鎾戣捣鏉ョ殑鏈熸潈浠锋牸涔熻窡鐫€琚帇涓嬪幓銆?/strong></p></blockquote>
+<p>涓句釜鏈€甯歌鐨勪緥瀛愶細</p>
+<p>鍋囪 AAPL 璐㈡姤鍓嶏細</p>
+<ul><li>甯傚満闈炲父绱у紶锛?/li><li>ATM 鏈熸潈鐨?IV 琚姮寰楀緢楂橈紱</li><li>浣犳鏃朵拱鍏?Call銆?/li></ul>
+<p>璐㈡姤鍏竷鍚庯細</p>
+<ul><li>AAPL 纭疄娑ㄤ簡锛?/li><li>浣嗘定骞呮病鏈夊ぇ鍒拌冻浠ュ畬鍏ㄨ鐩栵細</li><li>涓€澶滃皯鎺夌殑鏃堕棿浠峰€硷紱</li><li>浠ュ強 IV 涓嬭惤閫犳垚鐨?Vega 鍐插嚮銆?/li></ul>
+<p>缁撴灉灏辨槸锛?/p>
+<ul><li>浣犳柟鍚戞槸瀵圭殑锛?/li><li>浠撲綅浣撴劅鍗存病鏈変綘鎯宠薄涓埥銆?/li></ul>
+<p>杩欎笉鏄湡鏉冣€滃け鐏碘€濅簡锛岃€屾槸浣犱箣鍓嶄綆浼颁簡 Vega銆?/p>
+<p>鎵€浠ヨ储鎶ュ墠鍋氭柟鍚戝崟鏃讹紝涓€瀹氳闂嚜宸憋細</p>
+<ul><li>鎴戠幇鍦ㄤ拱杩涚殑鏉冨埄閲戦噷锛屾湁澶氬皯宸茬粡鏄湪涓洪珮 IV 浠橀挶锛?/li><li>璐㈡姤鍚庡彧瑕?IV 涓€鍥炶惤锛屾垜瑕侀潬澶氬ぇ鐨勮偂浠锋尝鍔ㄦ墠琛ュ緱鍥炴潵锛?/li></ul>
+<h1>浜斻€佹柟鍚戜氦鏄撹€呬负浠€涔堜篃蹇呴』鍏冲績 Vega</h1>
+<h2>22.9 鍥犱负浣犱拱鐨勪笉鏄偂绁紝鑰屾槸涓€涓細琚?IV 閲嶆柊瀹氫环鐨勫悎绾?/h2>
+<p>寰堝浜轰細鎶?Vega 璇互涓烘槸鈥滃彧灞炰簬娉㈠姩鐜囦氦鏄撹€呪€濈殑姒傚康銆?/p>
+<p>鍏跺疄涓嶆槸銆?/p>
+<p>鍙浣犱拱鍗栫殑鏄湡鏉冿紝浣犲嚑涔庨兘鍦ㄦ毚闇茬粰 Vega銆?/p>
+<p>浣犱拱涓€寮?Call锛屼笉鍙槸鐪嬪鑲′环銆?/p>
+<p>浣犲悓鏃惰繕鍦ㄦ寔鏈変竴寮狅細</p>
+<ul><li>瀵规椂闂存晱鎰燂紱</li><li>瀵?IV 鏁忔劅锛?/li><li>瀵硅鏉冧环浣嶇疆鏁忔劅锛?/li><li>瀵逛簨浠堕鏈熸晱鎰燂紱</li></ul>
+<p>鐨勫悎绾︺€?/p>
+<p>鎵€浠ユ柟鍚戜氦鏄撹€呭鏋滃彧鐪?Delta锛屼笉鐪?Vega锛屽氨鐗瑰埆瀹规槗鍦ㄨ繖浜涙椂鍒昏鎵撹劯锛?/p>
+<ul><li>璐㈡姤鍓嶅悗锛?/li><li>瀹忚鏁版嵁鍓嶅悗锛?/li><li>绐佸彂娑堟伅鍓嶅悗锛?/li><li>甯傚満鎭愭厡鎴栬繀閫熷钩闈欑殑鏃跺€欍€?/li></ul>
+<p>浣犱細瑙夊緱锛?/p>
+<ul><li>鈥滄垜鏂瑰悜娌″ぇ閿欙紝鎬庝箞缁撴灉涓嶅鍔诧紵鈥?/li></ul>
+<p>鍥犱负杩欑瑪浜ゆ槗浠庢潵灏变笉鍙湁鏂瑰悜銆?/p>
+<h2>22.10 渚嬪瓙锛氶暱澶╂湡 LEAP Call 涓轰粈涔堝父甯镐篃瑕佺湅 Vega</h2>
+<p>濡傛灉浣犱拱鐨勬槸杈冮暱鏈熼檺鐨?LEAP Call锛?/p>
+<ul><li>瀹冪粰浣犳洿闀跨殑鏃堕棿绐楀彛锛?/li><li>Theta 鍘嬪姏鐩稿娌￠偅涔堟€ワ紱</li><li>浣嗕笌姝ゅ悓鏃讹紝瀹冨 IV 鍙樺寲鐨勬晱鎰熷害锛屽線寰€涔熸洿寮恒€?/li></ul>
+<p>杩欐剰鍛崇潃锛?/p>
+<ul><li>鍦ㄥ競鍦轰粠鏋佸害鎭愭厡杞悜骞抽潤鏃讹紱</li><li>鍗充究浣犱緷鐒堕暱鏈熺湅澶氾紱</li><li>浣犵殑 LEAP Call 涔熷彲鑳藉洜涓?IV 鍥炶惤鑰岃閲嶆柊瀹氫环銆?/li></ul>
+<p>鎵€浠ユ湡闄愭洿闀匡紝涓嶄唬琛ㄤ綘鍙互瀹屽叏涓嶇 Vega銆?/p>
+<p>瀹冨彧鏄剰鍛崇潃锛?/p>
+<ul><li>浣犲湪 Theta 杩欎竴渚ф洿浠庡涓€鐐癸紱</li><li>浣嗗湪 Vega 杩欎竴渚э紝寰€寰€闇€瑕佹洿鏈夋剰璇嗗湴瑙傚療瀹氫环鐜銆?/li></ul>
+<h1>鍏€佹柊鎵嬫渶瀹规槗鐘殑鍥涗釜 Vega 璇細</h1>
+<h2>22.11 璇細涓€锛欼V 楂橈紝璇存槑鑲＄エ涓€瀹氫細澶ф定澶ц穼</h2>
+<p>涓嶅銆?/p>
+<p>IV 鏇村噯纭湴璇达紝鏄競鍦哄綋鍓嶇粰鈥滄湭鏉ュ彲鑳芥尝鍔ㄢ€濆畾鍑烘潵鐨勪环鏍笺€?/p>
+<p>瀹冨弽鏄犵殑鏄鏈燂紝涓嶆槸鎵胯銆?/p>
+<p>IV 楂樹笉浠ｈ〃缁撴灉涓€瀹氬ぇ骞呮尝鍔紱 IV 浣庝篃涓嶄唬琛ㄧ粨鏋滀竴瀹氶骞虫氮闈欍€?/p>
+<p>瀹冨彧鏄憡璇変綘锛?/p>
+<ul><li>甯傚満鐜板湪鎰挎剰涓轰笉纭畾鎬т粯澶氬皯閽便€?/li></ul>
+<h2>22.12 璇細浜岋細鍙鏂瑰悜瀵癸紝Vega 灏变笉閲嶈</h2>
+<p>杩欐伆鎭版槸寰堝浜虹涓€娆″仛璐㈡姤鏈熸潈浼氳俯鐨勫潙銆?/p>
+<p>鍥犱负鏂瑰悜瀵癸紝鍙В鍐充簡 Delta 閭ｄ竴渚х殑闂銆?/p>
+<p>濡傛灉锛?/p>
+<ul><li>IV 宸茬粡寰堥珮锛?/li><li>浜嬩欢鍚?IV 蹇€熷洖钀斤紱</li><li>鑲′环娑ㄨ穼骞呭害鍙堜笉澶熷ぇ锛?/li></ul>
+<p>閭?Vega 瀹屽叏鍙兘鎶婁綘鍘熸湰浠ヤ负鐨勫埄娑﹀悆鎺変竴澶у潡銆?/p>
+<h2>22.13 璇細涓夛細瓒婃帴杩戝埌鏈燂紝Vega 瓒婂帀瀹?/h2>
+<p>閫氬父姝ｅソ鐩稿弽銆?/p>
+<p>瓒婃帴杩戝埌鏈燂紝鏈潵鍓╀綑鏃堕棿瓒婄煭锛孖V 鍐嶆€庝箞鍙樺寲锛屽鏁村紶鍚堢害杩樿兘浜х敓鐨勫奖鍝嶄篃鏇存湁闄愩€?/p>
+<p>鎵€浠ヤ竴鑸潵璇达細</p>
+<ul><li>闀垮ぉ鏈熸洿鐪?Vega锛?/li><li>杩戝ぉ鏈熸洿瀹规槗琚?Theta銆丟amma 鎼炲緱鏇存湁浣撴劅銆?/li></ul>
+<h2>22.14 璇細鍥涳細Vega 鍙睘浜庢尝鍔ㄧ巼绛栫暐锛屼笉灞炰簬鏅€氬崟鑵挎湡鏉?/h2>
+<p>涔熶笉瀵广€?/p>
+<p>鍙浣犱拱鐨勬槸鏈熸潈锛屼笉绠℃槸锛?/p>
+<ul><li>Long Call锛?/li><li>Long Put锛?/li><li>LEAP Call锛?/li><li>璐㈡姤鍓嶇殑鏂瑰悜鍗曪紱</li></ul>
+<p>浣犻兘鍦ㄥ拰 Vega 鎵撲氦閬撱€?/p>
+<p>鍖哄埆鍙槸锛?/p>
+<ul><li>鏈変簺浠撲綅 Vega 鏆撮湶澶э紱</li><li>鏈変簺浠撲綅 Vega 鏆撮湶灏忥紱</li><li>鏈変簺浜烘湁鎰忚瘑鍦板湪鍋氭尝鍔ㄧ巼锛?/li><li>鏇村浜哄垯鏄湪鈥滀笉鐭ヤ笉瑙夊湴鎵垮彈娉㈠姩鐜囧彉鍖栤€濄€?/li></ul>
+<h1>涓冦€佹妸杩欎竴绔犳敹浣忥細Vega 鏄綘鐞嗚В鈥滀负浠€涔堟柟鍚戞病閿欙紝缁撴灉鍗翠笉濡傞鏈熲€濈殑鍏抽敭琛ヤ竵</h1>
+<h2>22.15 鏈珷浣犳渶璇ュ甫璧扮殑浜斿彞璇?/h2>
+<p>1. <strong>Vega 琛￠噺鐨勬槸 IV 姣忓彉鍖?1 涓櫨鍒嗙偣锛屾湡鏉冧环鏍肩悊璁轰笂浼氬彉鍖栧灏戙€?/strong> 2. <strong>涔版柟閫氬父鏄 Vega锛屽崠鏂归€氬父鏄礋 Vega銆?/strong> 3. <strong>ATM 闄勮繎銆佹湡闄愭洿闀跨殑鏈熸潈锛孷ega 寰€寰€鏇存槑鏄俱€?/strong> 4. <strong>瓒婃帴杩戝埌鏈燂紝Vega 涓€鑸秺寮憋紱浣嗚储鎶ョ瓑浜嬩欢鍓嶅悗锛屽畠渚濈劧鍙兘寰堝叧閿€?/strong> 5. <strong>鏂瑰悜瀵逛笉浠ｈ〃涓€瀹氳禋閽憋紝鍥犱负鏈熸潈浠锋牸杩樹細琚?IV 鐨勯噸鏂板畾浠峰奖鍝嶃€?/strong></p>
+<p>濡傛灉 Theta 璁╀綘鎰忚瘑鍒扳€滄椂闂翠細涓嶄細鍏堟妸浣犵（鎺夆€濓紝 閭?Vega 灏辨槸鍦ㄦ彁閱掍綘锛?/p>
+<ul><li>甯傚満瀵规湭鏉ユ尝鍔ㄧ殑鎯虫硶涓€鍙橈紱</li><li>浣犵殑鏈熸潈涔熶細琚噸鏂颁及鍊硷紱</li><li>杩欎欢浜嬫湁鏃跺拰鏂瑰悜鏈韩涓€鏍烽噸瑕併€?/li></ul>
+<h1>鍏€佽嚜娴嬮</h1>
+<p>1. 涓€寮犳湡鏉?Vega 鏄?0.12锛孖V 浠?30% 鍗囧埌 31% 鏃讹紝杩欎釜鏁板瓧璇ユ€庝箞鐩磋鐞嗚В锛?2. 涓轰粈涔堝緢澶?ATM 鏈熸潈鐨?Vega 姣旀繁 ITM銆佹繁 OTM 鏇存樉鐪硷紵 3. 涓轰粈涔堥暱澶╂湡鍚堢害閫氬父姣旂煭澶╂湡鍚堢害鏇撮渶瑕佸叧蹇?Vega锛?4. 浠€涔堟槸 IV Crush锛熶负浠€涔堝畠甯稿湪璐㈡姤鍚庤涔版柟鎰熷埌寰堟尗璐ワ紵 5. 濡傛灉浣犲仛鐨勬槸鏂瑰悜鎬?Call锛岃€屼笉鏄尝鍔ㄧ巼绛栫暐锛屼负浠€涔堜粛鐒朵笉鑳藉拷鐣?Vega锛?/p>
+<h1>鏈珷涓€鍙ヨ瘽鎬荤粨</h1>
+<blockquote><p><strong>Vega 鐪熸鏁欎綘鐨勶紝鏄埆鎶婃湡鏉冨彧褰撴垚鈥滄柟鍚戞娂娉ㄢ€濓紝鍥犱负甯傚満瀵规湭鏉ユ尝鍔ㄧ殑瀹氫环涓€鍙橈紝鏁村紶鍚堢害鐨勪环鏍煎氨鍙兘璺熺潃鎹竴濂楅€昏緫銆?/strong></p></blockquote>
+<h2>涓嬩竴绔犻鍛婏細鍗曡吙涔版柟绛栫暐搴旂敤鈥斺€擫ong Call / Long Put / LEAP Call 浠€涔堟椂鍊欏€煎緱鐢?/h2>
+<p>鍒拌繖閲岋紝Greeks 杩欏璇█绯荤粺浣犲凡缁忔湁浜嗐€?/p>
+<p>涓嬩竴绔犲紑濮嬶紝鎴戜滑鎶婅繖浜涜瑷€閲嶆柊钀藉洖鏈€甯歌鐨勭湡瀹炲簲鐢細</p>
+<ul><li>浠€涔堟椂鍊欒鐩存帴涔?Call锛?/li><li>浠€涔堟椂鍊欒涔?Put锛岃€屼笉鏄幓鍋氱┖鑲＄エ锛?/li><li>浠€涔堟椂鍊?LEAP Call 鏇村儚闀挎湡閰嶇疆宸ュ叿锛岃€屼笉鏄暱鍛ㄦ湡褰╃エ銆?/li></ul>
             </article>
         </section>
 
@@ -462,27 +462,27 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
-                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
+                    <h2 class="section-title" id="chapter-navigation-title">绔犺妭瀵艰埅</h2>
+                    <p class="section-subtitle">鏄惧紡淇濈暀涓婁竴绔?/ 杩斿洖璇剧▼ / 涓嬩竴绔犱笁涓彲瑙佹Ы浣嶏紝渚夸簬鐢熸垚鍣ㄧǔ瀹氬～鍏?/p>
                 </div>
             </div>
 
             <div class="chapter-nav-card">
                 <div class="chapter-nav-grid">
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">上一章</div>
-                        <a class="chapter-nav-link" href="./21.html">第 21 章 · Theta</a>
-                        <p>理解时间损耗如何持续侵蚀期权价值，并把买方与卖方放在不同的时间压力下观察。</p>
+                        <div class="chapter-nav-label">涓婁竴绔?/div>
+                        <a class="chapter-nav-link" href="./21.html">绗?21 绔?路 Theta</a>
+                        <p>鐞嗚В鏃堕棿鎹熻€楀浣曟寔缁镜铓€鏈熸潈浠峰€硷紝骞舵妸涔版柟涓庡崠鏂规斁鍦ㄤ笉鍚岀殑鏃堕棿鍘嬪姏涓嬭瀵熴€?/p>
                     </div>
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">返回课程</div>
-                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
-                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
+                        <div class="chapter-nav-label">杩斿洖璇剧▼</div>
+                        <a class="chapter-nav-link" href="./index.html">缇庤偂鏈熸潈鏁欐潗 鐩綍</a>
+                        <p>杩斿洖璇剧▼鐩綍锛屾寜 section 鍜?batch 鏌ョ湅鍏ㄥ眬杩涘害銆?/p>
                     </div>
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">下一章</div>
-                        <a class="chapter-nav-link" href="./23.html">第 23 章 · 单腿买方应用</a>
-                        <p>把 Long Call、Long Put 与 LEAP Call 放回真实账户，讲清买方仓位什么时候值得花这笔钱。</p>
+                        <div class="chapter-nav-label">涓嬩竴绔?/div>
+                        <a class="chapter-nav-link" href="./23.html">绗?23 绔?路 鍗曡吙涔版柟搴旂敤</a>
+                        <p>鎶?Long Call銆丩ong Put 涓?LEAP Call 鏀惧洖鐪熷疄璐︽埛锛岃娓呬拱鏂逛粨浣嶄粈涔堟椂鍊欏€煎緱鑺辫繖绗旈挶銆?/p>
                     </div>
                 </div>
             </div>
@@ -490,15 +490,15 @@
     </main>
 
     <footer>
-        <p>期权教材 · 结构化学习 · HTML 优先</p>
+        <p>鏈熸潈鏁欐潗 路 缁撴瀯鍖栧涔?路 HTML 浼樺厛</p>
         <p class="disclaimer">
-            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
+            鍏嶈矗澹版槑锛氭湰鏁欐潗椤甸潰浠呬緵瀛︿範浜ゆ祦浣跨敤锛屼笉鏋勬垚浠讳綍鎶曡祫寤鸿銆傛湡鏉冧氦鏄撴秹鍙婃潬鏉嗐€佹椂闂存崯鑰椾笌娴佸姩鎬ч闄╋紝鍔″繀缁撳悎鑷韩鎯呭喌鐙珛鍒ゆ柇銆?
         </p>
     </footer>
 
-    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="鍒囨崲娣辫壊妯″紡" title="鍒囨崲娣辫壊妯″紡">馃寭</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="杩斿洖椤堕儴">鈫?/button>
 
-    <script src="../js/main.js?v=20260326site4"></script>
+    <script src="../js/main.js?v=20260326review1"></script>
 </body>
 </html>
