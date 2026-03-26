@@ -11,8 +11,8 @@ const CalendarArchive = {
         const calendarGrid = document.getElementById('calendarGrid');
         if (!calendarGrid) return;
         
-        // Get posts data from global POSTS_DATABASE if available
-        this.postsData = window.POSTS_DATABASE || [];
+        // Get posts data from global __POSTS__ if available
+        this.postsData = window.__POSTS__ || window.POSTS_DATABASE || [];
         
         // Find latest post date
         if (this.postsData.length > 0) {
