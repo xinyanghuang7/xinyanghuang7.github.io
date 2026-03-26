@@ -179,9 +179,13 @@
             <div class="calendar-section" id="calendarSection">
                 <div class="calendar-header">
                     <button class="calendar-nav" id="calendarPrev" aria-label="上一个月">←</button>
-                    <div class="calendar-title">
-                        <span class="calendar-year" id="calendarYear">2026</span>年
-                        <span class="calendar-month" id="calendarMonth">3</span>月
+                    <div class="calendar-title-wrap">
+                        <div class="calendar-title">
+                            <span class="calendar-year" id="calendarYear">2026</span>年
+                            <span class="calendar-month" id="calendarMonth">3</span>月
+                        </div>
+                        <label class="sr-only" for="calendarMonthSelect">选择归档月份</label>
+                        <select id="calendarMonthSelect" class="calendar-month-select" aria-label="选择归档月份"></select>
                     </div>
                     <button class="calendar-nav" id="calendarNext" aria-label="下一个月">→</button>
                     <button class="calendar-today" id="calendarToday" title="返回最新文章月份" aria-label="返回最新文章">📅</button>
@@ -194,7 +198,27 @@
                 </div>
                 <noscript>
                     <div class="archive-list-fallback">
-                        <p>请启用 JavaScript 以使用日历视图，或查看 <a href="posts/">文章列表</a></p>
+                        <p>你当前看到的是兼容模式列表视图。启用 JavaScript 后会自动切换到日历归档。</p>
+                    </div>
+                    <div class="archive-list archive-list-noscript">
+                        <!-- ARCHIVE_ITEMS_START -->
+                        <div class="archive-year">
+                            <h3 class="archive-year-title">2026年</h3>
+                            <div class="archive-month">
+                                <div class="archive-month-title">3月</div>
+                                <div class="archive-items">
+                                    <a href="posts/2026/03/26.html" class="archive-item">
+                                        <div class="archive-item-date">26</div>
+                                        <div class="archive-item-content">
+                                            <div class="archive-item-title">2026年3月26日美股分析</div>
+                                            <div class="archive-item-desc">2026年3月26日美股分析：Module 1 主角 ORCL，Oracle AI 数据库智能体与 Fusion Ag…</div>
+                                        </div>
+                                        <div class="archive-item-arrow">→</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ARCHIVE_ITEMS_END -->
                     </div>
                 </noscript>
             </div>
