@@ -1,27 +1,27 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="鐢ㄦ湡鏉冮摼銆佸埌鏈熸棩銆佽鏉冧环涓庨檺浠峰崟鍥涙娉曪紝寤虹珛浠庣湅鐩樺埌涓嬪崟鐨勫熀纭€鎿嶄綔妗嗘灦銆?>
+    <meta name="description" content="用期权链、到期日、行权价与限价单四步法，建立从看盘到下单的基础操作框架。">
     <meta name="author" content="ValueInvest">
     <meta name="theme-color" content="#c9a227">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="canonical" href="https://4fire.qzz.io/options/02.html">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://4fire.qzz.io/options/02.html">
-    <meta property="og:title" content="缇庤偂鏈熸潈鎬庝箞鎿嶄綔 | 缇庤偂鏈熸潈鏁欐潗">
-    <meta property="og:description" content="鐢ㄦ湡鏉冮摼銆佸埌鏈熸棩銆佽鏉冧环涓庨檺浠峰崟鍥涙娉曪紝寤虹珛浠庣湅鐩樺埌涓嬪崟鐨勫熀纭€鎿嶄綔妗嗘灦銆?>
+    <meta property="og:title" content="美股期权怎么操作 | 美股期权教材">
+    <meta property="og:description" content="用期权链、到期日、行权价与限价单四步法，建立从看盘到下单的基础操作框架。">
     <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="缇庤偂鏈熸潈鎬庝箞鎿嶄綔 | 缇庤偂鏈熸潈鏁欐潗">
-    <meta name="twitter:description" content="鐢ㄦ湡鏉冮摼銆佸埌鏈熸棩銆佽鏉冧环涓庨檺浠峰崟鍥涙娉曪紝寤虹珛浠庣湅鐩樺埌涓嬪崟鐨勫熀纭€鎿嶄綔妗嗘灦銆?>
+    <meta name="twitter:title" content="美股期权怎么操作 | 美股期权教材">
+    <meta name="twitter:description" content="用期权链、到期日、行权价与限价单四步法，建立从看盘到下单的基础操作框架。">
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
-    <title>缇庤偂鏈熸潈鎬庝箞鎿嶄綔 | 缇庤偂鏈熸潈鏁欐潗</title>
+    <title>美股期权怎么操作 | 美股期权教材</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260326review1">
+    <link rel="stylesheet" href="../css/style.css?v=20260326review2">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -191,8 +191,8 @@
     {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": "缇庤偂鏈熸潈鎬庝箞鎿嶄綔",
-        "description": "鐢ㄦ湡鏉冮摼銆佸埌鏈熸棩銆佽鏉冧环涓庨檺浠峰崟鍥涙娉曪紝寤虹珛浠庣湅鐩樺埌涓嬪崟鐨勫熀纭€鎿嶄綔妗嗘灦銆?,
+        "headline": "美股期权怎么操作",
+        "description": "用期权链、到期日、行权价与限价单四步法，建立从看盘到下单的基础操作框架。",
         "author": {
             "@type": "Person",
             "name": "ValueInvest"
@@ -205,7 +205,7 @@
         "mainEntityOfPage": "https://4fire.qzz.io/options/02.html",
         "isPartOf": {
             "@type": "Course",
-            "name": "缇庤偂鏈熸潈鏁欐潗",
+            "name": "美股期权教材",
             "url": "https://4fire.qzz.io/options/"
         },
         "image": [
@@ -215,39 +215,39 @@
     </script>
 </head>
 <body>
-    <a href="#main" class="skip-link">璺宠浆鍒颁富鍐呭</a>
-    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="椤甸潰闃呰杩涘害"></div>
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
 
     <header id="header">
         <div class="nav-container">
-            <a href="../index.html" class="logo" aria-label="ValueInvest 棣栭〉">Value<span>Invest</span></a>
-            <nav aria-label="鏈熸潈绔犺妭椤典富瀵艰埅">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="期权章节页主导航">
                 <ul class="nav-links">
-                    <li><a href="../index.html">杩斿洖棣栭〉</a></li>
-                    <li><a href="./index.html">杩斿洖璇剧▼</a></li>
-                    <li><a href="#chapter-navigation">绔犺妭瀵艰埅</a></li>
+                    <li><a href="../index.html">返回首页</a></li>
+                    <li><a href="./index.html">返回课程</a></li>
+                    <li><a href="#chapter-navigation">章节导航</a></li>
                 </ul>
             </nav>
-            <div class="nav-date">绗?02 绔?/div>
+            <div class="nav-date">第 02 章</div>
         </div>
     </header>
 
     <section class="hero" role="banner">
         <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
         <div class="hero-content">
-            <div class="subtitle">鍩虹璁ょ煡绡?/div>
-            <h1>绗?02 绔?路 缇庤偂鏈熸潈鎬庝箞鎿嶄綔</h1>
-            <p class="tagline">鍩虹璁ょ煡绡?路 Batch 1</p>
-            <p class="hero-description">鐢ㄦ湡鏉冮摼銆佸埌鏈熸棩銆佽鏉冧环涓庨檺浠峰崟鍥涙娉曪紝寤虹珛浠庣湅鐩樺埌涓嬪崟鐨勫熀纭€鎿嶄綔妗嗘灦銆?/p>
+            <div class="subtitle">基础认知篇</div>
+            <h1>第 02 章 · 美股期权怎么操作</h1>
+            <p class="tagline">基础认知篇 · Batch 1</p>
+            <p class="hero-description">用期权链、到期日、行权价与限价单四步法，建立从看盘到下单的基础操作框架。</p>
         </div>
-        <a href="#chapter-summary" class="scroll-indicator" aria-label="鍚戜笅婊氬姩鍒扮珷鑺傛憳瑕?>鍚戜笅婊氬姩</a>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
     </section>
 
-    <div class="chapter-meta-bar" aria-label="绔犺妭鍏抽敭淇℃伅">
-        <div class="chapter-meta-pill">绔犺妭缂栧彿锛氱 02 绔?/div>
-        <div class="chapter-meta-pill">Section锛氬熀纭€璁ょ煡绡?/div>
-        <div class="chapter-meta-pill">Batch锛欱atch 1 路 宸插彂甯?/div>
-        <div class="chapter-meta-pill">鎵€灞炶绋嬶細<a class="chapter-meta-link" href="./index.html">缇庤偂鏈熸潈鏁欐潗</a></div>
+    <div class="chapter-meta-bar" aria-label="章节关键信息">
+        <div class="chapter-meta-pill">章节编号：第 02 章</div>
+        <div class="chapter-meta-pill">Section：基础认知篇</div>
+        <div class="chapter-meta-pill">Batch：Batch 1 · 已发布</div>
+        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
     </div>
 
     <main id="main" class="chapter-shell">
@@ -255,13 +255,13 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">01</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-summary-title">绔犺妭鎽樿</h2>
-                    <p class="section-subtitle">缁欒鑰呬竴涓厛璇绘噦妗嗘灦銆佸啀娣卞叆姝ｆ枃鐨勮惤鐐?/p>
+                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
+                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
                 </div>
             </div>
 
             <div class="chapter-summary-card">
-                <p>鐢ㄦ湡鏉冮摼銆佸埌鏈熸棩銆佽鏉冧环涓庨檺浠峰崟鍥涙娉曪紝寤虹珛浠庣湅鐩樺埌涓嬪崟鐨勫熀纭€鎿嶄綔妗嗘灦銆?/p>
+                <p>用期权链、到期日、行权价与限价单四步法，建立从看盘到下单的基础操作框架。</p>
             </div>
         </section>
 
@@ -269,148 +269,148 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">02</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-content-title">绔犺妭姝ｆ枃</h2>
-                    <p class="section-subtitle">姝ｆ枃鍐呭鐢辩敓鎴愬櫒鐩存帴鍐欏叆 HTML锛岄粯璁ゆ棤鑴氭湰涔熷簲瀹屾暣鍙</p>
+                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
+                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
                 </div>
             </div>
 
             <article class="chapter-body-card">
-<h1>銆婄編鑲℃湡鏉冩暀鏉愩€?/h1>
-<h2>绗?绔?缇庤偂鏈熸潈鎬庝箞鎿嶄綔锛氫粠鏈熸潈閾惧埌涓嬪崟鐨勫洓姝ユ硶</h2>
-<blockquote><p>鏈珷瀵瑰簲鍥剧墖閲岀殑鈥?. 鎿嶄綔鈥濄€傛垜浼氭寜鍥剧墖缁欑殑涓荤嚎鏉ュ啓锛?strong>涓嬪崟鍥涙娉?+ 鏂版墜 Tips + 涓や釜鎬濇兂璇尯</strong>銆傚敮涓€鐨勫尯鍒槸锛氬浘鐗囨槸鎻愮翰锛屾湰绔犳妸瀹冨睍寮€鎴愪綘鑳界湡姝ｇ収鐫€鍋氱殑鈥滄搷浣滄墜鍐屸€濄€?/p></blockquote>
+<h1>《美股期权教材》</h1>
+<h2>第2章 美股期权怎么操作：从期权链到下单的四步法</h2>
+<blockquote><p>本章对应图片里的“2. 操作”。我会按图片给的主线来写：<strong>下单四步法 + 新手 Tips + 两个思想误区</strong>。唯一的区别是：图片是提纲，本章把它展开成你能真正照着做的“操作手册”。</p></blockquote>
 <hr>
-<h3>2.1 涓轰粈涔堚€滄搷浣溾€濆€煎緱鍗曠嫭鍐欎竴绔狅細鏈熸潈鐨勫潙锛屽緢澶氶兘涓嶆槸鏂瑰悜閿欙紝鑰屾槸鈥滀笅鍗曟病涓嬪鈥?/h3>
-<p>涔拌偂绁ㄦ椂锛屼綘杈撳叆浠ｇ爜銆佺偣涔板叆銆佸～鏁伴噺锛屽熀鏈氨缁撴潫浜嗭紱鏈熸潈鍒欐洿鍍忓湪绛惧悎鍚屻€備綘鍚屾牱鏄湪浜ゆ槗鏌愪釜鏍囩殑锛圓APL銆乀SLA銆丼PY鈥︹€︼級锛屼絾浣犲湪鐪熸鎸変笅鈥淪ubmit鈥濅箣鍓嶏紝瑕佸厛鍥炵瓟涓や釜鏇村皷閿愮殑闂锛?/p>
-<ul><li>鎴戣繖浠藉悎鍚?strong>浠€涔堟椂鍊欏埌鏈?/strong>锛燂紙Expiration锛?/li><li>鎴戣繖浠藉悎鍚岄噷鍐欑殑<strong>绾﹀畾浠锋牸</strong>鏄灏戯紵锛圫trike锛?/li></ul>
-<p>杩欎袱涓€夋嫨鍐冲畾浜嗕綘涔板埌鐨勪笉鏄€滅湅娑ㄢ€濇垨鈥滅湅璺屸€濊繖涔堢畝鍗曪紝鑰屾槸涓€涓洿鍏蜂綋鐨勯闄╃粨鏋勶細浣犵粰甯傚満澶氬皯鏃堕棿鍏戠幇浣犵殑鍒ゆ柇锛熶綘鎰挎剰鎶婄泩鍒?浜忔崯鐨勮Е鍙戠偣鏀惧湪鍝釜浣嶇疆锛?/p>
-<p>鏂版墜绗竴绗旀湡鏉冧簭閽憋紝寰堝鏃跺€欏苟涓嶆槸浣犲鍏徃姣棤鍒ゆ柇锛岃€屾槸鎿嶄綔灞傞潰韪╀簡鍧戯細姣斿鎶婃姤浠峰綋鎬讳环銆佹病鐞嗚В Bid/Ask銆侀€変簡娴佸姩鎬у緢宸殑鍚堢害銆佺敋鑷充笉灏忓績鐐瑰埌浜嗏€滃崠鍑哄紑浠撯€濆彉鎴愬崠鏂广€傚畠浠惉璧锋潵閮戒笉楂樼骇锛屼絾鏄湡瀹炰笘鐣岄噷锛岃繖浜涘皬鍧戣冻澶熻浣犲湪杩樻病寮€濮嬪涔犵瓥鐣ヤ箣鍓嶅氨鍏堢即瀛﹁垂銆?/p>
-<p>鎵€浠ユ湰绔犵殑鐩爣寰堟湸绱狅細</p>
-<blockquote><p>浣犺瀹屼互鍚庯紝鑷冲皯鑳藉湪浠讳綍涓€娆惧埜鍟?App 涓?strong>璇绘噦鏈熸潈閾?/strong>銆?strong>绠楁竻鎴愭湰</strong>銆?strong>涓嶈蛋閿欏紑浠撴柟鍚?/strong>锛屽苟涓旇兘鐢ㄢ€滈檺浠峰崟鈥濈殑鏂瑰紡鎶婄涓€绗旇鍗曚笅寰楃浉瀵瑰畨鍏ㄣ€?/p></blockquote>
+<h3>2.1 为什么“操作”值得单独写一章：期权的坑，很多都不是方向错，而是“下单没下对”</h3>
+<p>买股票时，你输入代码、点买入、填数量，基本就结束了；期权则更像在签合同。你同样是在交易某个标的（AAPL、TSLA、SPY……），但你在真正按下“Submit”之前，要先回答两个更尖锐的问题：</p>
+<ul><li>我这份合同<strong>什么时候到期</strong>？（Expiration）</li><li>我这份合同里写的<strong>约定价格</strong>是多少？（Strike）</li></ul>
+<p>这两个选择决定了你买到的不是“看涨”或“看跌”这么简单，而是一个更具体的风险结构：你给市场多少时间兑现你的判断？你愿意把盈利/亏损的触发点放在哪个位置？</p>
+<p>新手第一笔期权亏钱，很多时候并不是你对公司毫无判断，而是操作层面踩了坑：比如把报价当总价、没理解 Bid/Ask、选了流动性很差的合约、甚至不小心点到了“卖出开仓”变成卖方。它们听起来都不高级，但是真实世界里，这些小坑足够让你在还没开始学习策略之前就先缴学费。</p>
+<p>所以本章的目标很朴素：</p>
+<blockquote><p>你读完以后，至少能在任何一款券商 App 上<strong>读懂期权链</strong>、<strong>算清成本</strong>、<strong>不走错开仓方向</strong>，并且能用“限价单”的方式把第一笔订单下得相对安全。</p></blockquote>
 <hr>
-<h2>闃呰瀵艰埅锛氱涓€娆¤鍏堟妸娴佺▼璺戦『锛岀浜屾璇诲啀鎶犳姤浠风粏鑺?/h2>
-<p>杩欎竴绔犵涓€娆¤锛屼笉寤鸿浣犱竴涓婃潵灏辨妸鎵€鏈夌晫闈㈠瓧娈甸兘璁颁綇銆?/p>
-<p>浣犲厛鎶撲綇鍥涙涓荤嚎锛?/p>
-<p>1. <strong>鍏堥€夋爣鐨勩€?/strong> 2. <strong>鍐嶉€夊埌鏈熸棩銆?/strong> 3. <strong>鍐嶉€夎鏉冧环銆?/strong> 4. <strong>鏈€鍚庣‘璁ゆ垚浜ゆ柟寮忓拰寮€浠撴柟鍚戙€?/strong></p>
-<p>鍙杩欏洓姝ュ厛璺戦『锛屼綘灏卞凡缁忔瘮寰堝绗竴娆℃懜鏈熸潈閾剧殑浜虹ǔ寰堝銆?/p>
-<p>绗簩閬嶅啀鍘昏ˉ锛?/p>
-<ul><li>Bid / Ask / Mid 涓轰粈涔堜細鐩存帴褰卞搷浣犵殑鐪熷疄鎴愭湰锛?/li><li>涓轰粈涔堟祦鍔ㄦ€у樊鐨勫悎绾︿細璁╀綘涓€杩涗竴鍑洪兘鏇寸棝锛?/li><li>涓轰粈涔?Sell to Close 鍜?Sell to Open 缁濆涓嶈兘鐐归敊銆?/li></ul>
-<p>杩欐牱璇伙紝浼氭瘮涓€涓婃潵琚暣寮犳湡鏉冮摼鐨勪俊鎭噺鍘嬩綇鏇撮『銆?/p>
+<h2>阅读导航：第一次读先把流程跑顺，第二次读再抠报价细节</h2>
+<p>这一章第一次读，不建议你一上来就把所有界面字段都记住。</p>
+<p>你先抓住四步主线：</p>
+<p>1. <strong>先选标的。</strong> 2. <strong>再选到期日。</strong> 3. <strong>再选行权价。</strong> 4. <strong>最后确认成交方式和开仓方向。</strong></p>
+<p>只要这四步先跑顺，你就已经比很多第一次摸期权链的人稳很多。</p>
+<p>第二遍再去补：</p>
+<ul><li>Bid / Ask / Mid 为什么会直接影响你的真实成本；</li><li>为什么流动性差的合约会让你一进一出都更痛；</li><li>为什么 Sell to Close 和 Sell to Open 绝对不能点错。</li></ul>
+<p>这样读，会比一上来被整张期权链的信息量压住更顺。</p>
 <hr>
-<h3>2.2 鍏堝缓绔嬩竴涓€滄湡鏉冮摼鏄彍鍗曗€濈殑鐩磋锛氫綘鍦ㄦ寫鍚堝悓锛屼笉鏄湪閫夊彿</h3>
-<p>鎵撳紑鏌愬彧鑲＄エ锛堟瘮濡?AAPL锛夌殑鏈熸潈閾撅紙Option Chain锛夛紝浣犱細鐪嬪埌涓€涓吀鍨嬬粨鏋勶細</p>
-<ul><li>涓婇潰鏄緢澶氫釜鍒版湡鏃ワ紙Expiration锛?/li><li>涓棿鏄竴鍒楀垪琛屾潈浠凤紙Strike锛?/li><li>宸﹁竟鏄?Calls锛堢湅娑級</li><li>鍙宠竟鏄?Puts锛堢湅璺岋級</li></ul>
-<p>浣犲彲浠ユ妸瀹冨綋鎴愪竴寮犺彍鍗曪細</p>
-<ul><li>鍏堥€夆€滀繚璐ㄦ湡鈥濃€斺€斿埌鏈熸棩</li><li>鍐嶉€夆€滆Е鍙戦棬妲涒€濃€斺€旇鏉冧环</li><li>鏈€鍚庨€夆€滃悎鍚岀被鍨嬧€濃€斺€擟all 杩樻槸 Put</li></ul>
-<p>杩欏鑿滃崟涓嶆槸璁╀綘鐚滀竴涓绉樻暟瀛楋紝鑰屾槸鎶婃墍鏈夊彲浜ゆ槗鐨勫悎鍚屾憜鍑烘潵锛岃浣犳寫涓€浠戒綘鎰挎剰绛剧殑鍚堝悓銆?/p>
-<p>涓轰簡閬垮厤浣犱竴杩涙湡鏉冮摼灏辨檿锛屾垜寤鸿浣犳瘡娆￠兘鎸夊悓涓€涓『搴忔壂涓€閬嶏紙杩欐瘮鑳屾湳璇洿鏈夌敤锛夛細</p>
-<p>1) 鎴戠幇鍦ㄧ湅鐨勬爣鐨勬槸浠€涔堬紙AAPL/TSLA/SPY/QQQ锛夛紵 2) 杩欎釜鏍囩殑鏈€杩戞湁娌℃湁閲嶅ぇ浜嬩欢锛堣储鎶ャ€佸彂甯冧細銆佺洃绠¤妭鐐癸級锛?3) 鎴戠幇鍦ㄧ湅鐨勫埌鏈熸棩鏄摢澶╋紵瀹冪鐜板湪鏈夊杩滐紵 4) 鎴戠幇鍦ㄧ湅鐨勮鏉冧环鏄摢妗ｏ紵瀹冪鐜颁环杩滀笉杩滐紵 5) Bid/Ask 浠峰樊澶т笉澶э紵鎴愪氦娲昏穬鍚楋紙Volume/OI锛夛紵 6) 杩欎唤鍚堝悓璐典笉璐碉紙IV 鏄惁鍋忛珮锛夛紵</p>
-<p>浣犳妸杩?6 涓棶棰樺彉鎴愪範鎯紝鏈熸潈閾惧氨涓嶄細鍐嶅儚涓€鍫嗕贡鐮侊紝鑰屾洿鍍忊€滀綘鍦ㄥ仛涓€濂楁湁閫昏緫鐨勯€夋嫨鈥濄€?/p>
+<h3>2.2 先建立一个“期权链是菜单”的直觉：你在挑合同，不是在选号</h3>
+<p>打开某只股票（比如 AAPL）的期权链（Option Chain），你会看到一个典型结构：</p>
+<ul><li>上面是很多个到期日（Expiration）</li><li>中间是一列列行权价（Strike）</li><li>左边是 Calls（看涨）</li><li>右边是 Puts（看跌）</li></ul>
+<p>你可以把它当成一张菜单：</p>
+<ul><li>先选“保质期”——到期日</li><li>再选“触发门槛”——行权价</li><li>最后选“合同类型”——Call 还是 Put</li></ul>
+<p>这套菜单不是让你猜一个神秘数字，而是把所有可交易的合同摆出来，让你挑一份你愿意签的合同。</p>
+<p>为了避免你一进期权链就晕，我建议你每次都按同一个顺序扫一遍（这比背术语更有用）：</p>
+<p>1) 我现在看的标的是什么（AAPL/TSLA/SPY/QQQ）？ 2) 这个标的最近有没有重大事件（财报、发布会、监管节点）？ 3) 我现在看的到期日是哪天？它离现在有多远？ 4) 我现在看的行权价是哪档？它离现价远不远？ 5) Bid/Ask 价差大不大？成交活跃吗（Volume/OI）？ 6) 这份合同贵不贵（IV 是否偏高）？</p>
+<p>你把这 6 个问题变成习惯，期权链就不会再像一堆乱码，而更像“你在做一套有逻辑的选择”。</p>
 <hr>
-<h3>2.3 鍥剧墖閲岀殑鈥滀笅鍗曞洓姝ユ硶鈥濓細閫夋鑲?鈫?鐐规湡鏉?鈫?閫夊埌鏈熸棩 鈫?閫夎鏉冧环</h3>
-<p>鍥剧墖鎶婃搷浣滄媶鎴愬洓姝ワ紝鎴戝畬鍏ㄥ悓鎰忋€備笅闈㈡垜鎸夋瘡涓€姝ユ妸鈥滀綘鍦ㄧ晫闈笂绌剁珶鍦ㄩ€変粈涔堚€濊閫忋€?/p>
-<h4>绗竴姝ワ細閫夋嫨姝ｈ偂锛圲nderlying锛?/h4>
-<p>浣犺鍏堢‘瀹氫綘鍒板簳鍦ㄤ氦鏄撹皝锛欰APL 杩樻槸 TSLA锛熸槸 SPY 杩樻槸 QQQ锛?/p>
-<p>杩欎竴姝ョ湅璧锋潵绠€鍗曪紝浣嗗畠鍐冲畾浜嗗悗闈㈠緢澶氣€滄搷浣滅粏鑺傗€濈殑闅惧害锛氭湁鐨勬爣鐨勬尝鍔ㄥぇ銆佹湡鏉冮摼娲昏穬銆佷环宸皬锛涙湁鐨勬爣鐨勬湰韬氨鍐烽棬锛屾湡鏉冧环宸細璁╀綘寰堥毦鐢ㄢ€滄櫘閫氫汉鐨勬柟寮忊€濊繘鍑恒€?/p>
-<p>濡傛灉浣犲彧鏄粌鎿嶄綔锛屾垜鐨勫缓璁潪甯哥洿鎺ワ細浼樺厛鐢ㄦ祦鍔ㄦ€уソ鐨勬爣鐨勭粌锛堝 SPY銆丵QQ銆丄APL銆丮SFT 绛夛級銆備綘瑕佸厛鎶娾€滄祦绋嬭窇閫氣€濓紝涓嶈鎶娾€滅粌鎿嶄綔鈥濆仛鎴愨€滃悓鏃剁爺绌跺喎闂ㄨ偂 + 鍚屾椂瀵规姉瓒呭ぇ浠峰樊鈥濄€?/p>
-<h4>绗簩姝ワ細鐐瑰嚮鏈熸潈锛圤ptions / Option Chain锛?/h4>
-<p>杩涘叆鏍囩殑椤甸潰鍚庢壘鍒?Options / Option Chain / 鏈熸潈閾俱€?/p>
-<p>涓嶅悓鍒稿晢鎸夐挳鍚嶅瓧涓嶅悓锛屼絾浣犳渶缁堣繘鍏ョ殑閮芥槸鍚屼竴涓粨鏋勶細鍒版湡鏃?+ 琛屾潈浠?+ Call/Put + Bid/Ask/鎴愪氦鏁版嵁銆?/p>
-<h4>绗笁姝ワ細閫夋嫨鍒版湡鏃ワ紙Expiration Date锛?/h4>
-<p>鍒版湡鏃ュ喅瀹氫綘鐨勬椂闂寸獥鍙ｃ€備綘鍙互鎶婂畠鐞嗚В鎴愶細浣犵粰杩欑瑪鍒ゆ柇澶氬皯鏃堕棿鍏戠幇銆?/p>
-<p>鍥剧墖閲屾彁鍒扳€滅編鑲℃湡鏉冧竴鑸懆浜斿埌鏈熲€濄€傜幇瀹為噷纭疄寰堝鍛ㄥ害/鏈堝害鍚堢害鐨勫埌鏈熸棩鍦ㄥ懆浜旓紝浣嗕綘涔熻鐭ラ亾锛氱幇鍦ㄤ笉灏戠儹闂ㄦ爣鐨勶紙灏ゅ叾鏄寚鏁?ETF锛夊埌鏈熸棩宸茬粡鏇村瘑闆嗭紝鏈夋椂浣犱細鍦ㄩ摼涓婄湅鍒板懆涓€/鍛ㄤ笁绛夊埌鏈熴€?strong>鎵€浠ユ渶闈犺氨鐨勫仛娉曟槸锛氫互鏈熸潈閾鹃噷鍒楀嚭鐨勬棩鏈熶负鍑?/strong>锛屼笉瑕佸厛鍏ヤ负涓诲彧璁ゅ懆浜斻€?/p>
-<p>鏂版墜杩欓噷鏈€甯歌鐨勯敊璇槸锛氭妸鍒版湡鏃ラ€夊緱澶繎銆?/p>
-<ul><li>浣犻€夊緱澶繎锛屼綘涓嶅厜瑕佺湅瀵规柟鍚戯紝杩樿鍦ㄥ緢鐭椂闂撮噷鈥滅湅瀵瑰箙搴︹€濓紝鍚﹀垯鏃堕棿鎹熻€椾細寰堝揩鎶婃潈鍒╅噾纾ㄦ帀銆?/li><li>浣犻€夊緱澶繙锛屾潈鍒╅噾鍙兘鏇磋吹锛屼綘涔板埌鐨勬槸鏇撮暱鐨勬椂闂达紝鎴愭湰涔熸洿楂樸€?/li></ul>
-<p>浣犵幇鍦ㄥ厛璁颁竴鏉″緢瀹炵敤銆佸緢涓嶈姳鍝ㄧ殑寤鸿锛?/p>
-<blockquote><p>濡傛灉浣犳槸涔版柟锛堜拱 Call/涔?Put锛夊湪缁冧範闃舵锛屽厛灏介噺鍒€夌壒鍒繎鐨勫埌鏈熸棩銆備綘涓嶉渶瑕佸湪绗竴绗斿崟涓婂氨鎶婅嚜宸遍€兼垚鐭窇閫夋墜銆?/p></blockquote>
-<h4>绗洓姝ワ細閫夋嫨琛屾潈浠凤紙Strike Price锛?/h4>
-<p>琛屾潈浠锋槸鍚堝悓閲屽啓姝荤殑绾﹀畾浠锋牸銆傚畠鍐冲畾浜嗏€滆繖浠藉悎鍚屼粈涔堟椂鍊欏紑濮嬪彉寰楁湁鎰忎箟鈥濄€?/p>
-<p>涓句釜鏈€璐磋繎鎿嶄綔鐨勪緥瀛愶細</p>
-<ul><li>AAPL 鐜颁环 175</li><li>鏈熸潈閾鹃噷浣犱細鐪嬪埌 170銆?75銆?80銆?85銆?90鈥︹€?/li></ul>
-<p>琛屾潈浠蜂笉鏄€滃彿鐮佲€濓紝瀹冩槸椋庨櫓缁撴瀯銆?/p>
-<ul><li>浣犻€?170 Call锛岄€氬父鏇磋吹銆佹洿鈥滆窡鎵嬧€濓紙鏇村儚璺熺潃姝ｈ偂鍔級锛屼絾浣犱粯鍑烘洿澶氭潈鍒╅噾锛?/li><li>浣犻€?190 Call锛岄€氬父鏇翠究瀹滐紝浣嗕綘鍦ㄨ祵涓€涓洿澶х殑涓婃定骞呭害锛岃€屼笖蹇呴』鍦ㄥ埌鏈熷墠鍙戠敓銆?/li></ul>
-<p>浣犵幇鍦ㄨ繕涓嶉渶瑕佸湪杩欎竴姝ュ氨瀛︿細鈥滃摢妗ｆ渶浼樷€濓紝浣嗕綘瑕佹剰璇嗗埌锛氫綘姣忔閫夎鏉冧环锛屽叾瀹炴槸鍦ㄩ€夆€滄垜鎰挎剰鎶婂洖鏈棬妲涙斁鍦ㄥ摢閲屸€濄€?/p>
-<p>锛堜笅涓€绔犲叧浜?ITM/ATM/OTM锛屼細鎶婅繖涓€姝ョ湡姝ｈ閫忋€傦級</p>
+<h3>2.3 图片里的“下单四步法”：选正股 → 点期权 → 选到期日 → 选行权价</h3>
+<p>图片把操作拆成四步，我完全同意。下面我按每一步把“你在界面上究竟在选什么”讲透。</p>
+<h4>第一步：选择正股（Underlying）</h4>
+<p>你要先确定你到底在交易谁：AAPL 还是 TSLA？是 SPY 还是 QQQ？</p>
+<p>这一步看起来简单，但它决定了后面很多“操作细节”的难度：有的标的波动大、期权链活跃、价差小；有的标的本身就冷门，期权价差会让你很难用“普通人的方式”进出。</p>
+<p>如果你只是练操作，我的建议非常直接：优先用流动性好的标的练（如 SPY、QQQ、AAPL、MSFT 等）。你要先把“流程跑通”，不要把“练操作”做成“同时研究冷门股 + 同时对抗超大价差”。</p>
+<h4>第二步：点击期权（Options / Option Chain）</h4>
+<p>进入标的页面后找到 Options / Option Chain / 期权链。</p>
+<p>不同券商按钮名字不同，但你最终进入的都是同一个结构：到期日 + 行权价 + Call/Put + Bid/Ask/成交数据。</p>
+<h4>第三步：选择到期日（Expiration Date）</h4>
+<p>到期日决定你的时间窗口。你可以把它理解成：你给这笔判断多少时间兑现。</p>
+<p>图片里提到“美股期权一般周五到期”。现实里确实很多周度/月度合约的到期日在周五，但你也要知道：现在不少热门标的（尤其是指数/ETF）到期日已经更密集，有时你会在链上看到周一/周三等到期。<strong>所以最靠谱的做法是：以期权链里列出的日期为准</strong>，不要先入为主只认周五。</p>
+<p>新手这里最常见的错误是：把到期日选得太近。</p>
+<ul><li>你选得太近，你不光要看对方向，还要在很短时间里“看对幅度”，否则时间损耗会很快把权利金磨掉。</li><li>你选得太远，权利金可能更贵，你买到的是更长的时间，成本也更高。</li></ul>
+<p>你现在先记一条很实用、很不花哨的建议：</p>
+<blockquote><p>如果你是买方（买 Call/买 Put）在练习阶段，先尽量别选特别近的到期日。你不需要在第一笔单上就把自己逼成短跑选手。</p></blockquote>
+<h4>第四步：选择行权价（Strike Price）</h4>
+<p>行权价是合同里写死的约定价格。它决定了“这份合同什么时候开始变得有意义”。</p>
+<p>举个最贴近操作的例子：</p>
+<ul><li>AAPL 现价 175</li><li>期权链里你会看到 170、175、180、185、190……</li></ul>
+<p>行权价不是“号码”，它是风险结构。</p>
+<ul><li>你选 170 Call，通常更贵、更“跟手”（更像跟着正股动），但你付出更多权利金；</li><li>你选 190 Call，通常更便宜，但你在赌一个更大的上涨幅度，而且必须在到期前发生。</li></ul>
+<p>你现在还不需要在这一步就学会“哪档最优”，但你要意识到：你每次选行权价，其实是在选“我愿意把回本门槛放在哪里”。</p>
+<p>（下一章关于 ITM/ATM/OTM，会把这一步真正讲透。）</p>
 <hr>
-<h3>2.4 鍥剧墖閲岀殑鏂版墜 Tips锛欰sk銆?00 鑲′箻鏁般€乂olume銆両V 鈥斺€?杩欎簺瀛楁浣犺鎬庝箞鐪?/h3>
-<h4>2.4.1 Bid / Ask锛氫綘涔扮殑鏄?Ask锛屼綘鍗栫殑鏄?Bid锛堝埆琚€淟ast鈥濋獥浜嗭級</h4>
-<p>浣犱細鍦ㄦ湡鏉冮摼閲岀湅鍒扮被浼硷細</p>
+<h3>2.4 图片里的新手 Tips：Ask、100 股乘数、Volume、IV —— 这些字段你要怎么看</h3>
+<h4>2.4.1 Bid / Ask：你买的是 Ask，你卖的是 Bid（别被“Last”骗了）</h4>
+<p>你会在期权链里看到类似：</p>
 <ul><li>Bid 2.10</li><li>Ask 2.30</li></ul>
-<p>浣犲彲浠ュ厛鐢ㄦ渶鐢熸椿鍖栫殑鏂瑰紡鐞嗚В锛?/p>
-<ul><li>Bid 鏄€滃埆浜烘効鎰忓嚭澶氬皯閽变粠浣犳墜閲屼拱鈥濓紙浣犲崠鍑烘椂鍙傝€冨畠锛?/li><li>Ask 鏄€滃埆浜哄紑浠峰灏戦挶鍗栫粰浣犫€濓紙浣犱拱鍏ユ椂鍙傝€冨畠锛?/li></ul>
-<p>鍥剧墖閲岀殑閭ｅ彞璇濆緢鍏抽敭锛?strong>涔板叆鐪?Ask</strong>銆備綘涔颁笢瑗垮綋鐒剁湅鍗栨柟鎶ヤ环锛涗綘鍗栦笢瑗垮綋鐒剁湅涔版柟鍑轰环銆?/p>
-<p>杩欎篃瑙ｉ噴浜嗗緢澶氭柊鎵嬬殑鍥版儜锛氬垰涔拌繘鍘诲氨浜忎竴鐐广€傞€氬父涓嶆槸浣犵湅閿欐柟鍚戯紝鑰屾槸浣犱拱鍦?Ask锛岀郴缁熶及鍊煎彲鑳芥寜涓棿浠锋垨鎸?Bid 闄勮繎绠楋紝浣犲厛鍚冧簡涓€鍙ｄ环宸€?/p>
-<h4>2.4.2 涓€寮犲悎绾?100 鑲★細鎶婃姤浠蜂箻浠?100锛屾墠鏄綘鐪熷疄鐨勨€滆姳閽扁€?/h4>
-<p>杩欐槸鍥剧墖閲岀殑纭偣锛?strong>1 寮?100 鑲?/strong>銆?/p>
-<p>鎵€浠ヤ綘鐪嬪埌 Ask=2.30锛屽畠寰€寰€涓嶆槸鈥滄€讳环 2.30 缇庡厓鈥濓紝鑰屾槸鈥滄瘡鑲?2.30 缇庡厓鈥濄€備綘涔?1 寮犲悎绾︼紝鍚嶄箟鎴愭湰鏄細</p>
-<ul><li>2.30 脳 100 = 230 缇庡厓锛堜笉鍚墜缁垂锛?/li></ul>
-<p>杩欐潯寤鸿浣犲啓鍦ㄨ剳闂ㄤ笂锛氬湪鏈熸潈閲岋紝鍏堟妸涔樻暟绠楀锛屽啀璋堝埆鐨勩€?/p>
-<p>琛ュ厖涓€涓笉甯歌浣嗗€煎緱鐭ラ亾鐨勭幇瀹烇細鍦ㄦ媶鑲°€佸悎骞躲€佺壒鍒垎绾㈢瓑鍏徃琛屼负鍚庯紝鏈変簺鍚堢害鐨勪箻鏁板彲鑳戒細璋冩暣锛堝苟涓嶆€绘槸 100锛夈€傛柊鎵嬮樁娈典綘澶ф鐜囬亣涓嶅埌锛屼絾浣犺嚦灏戣鐭ラ亾鈥滈€氬父鏄?100锛屽苟闈炲畤瀹欐案鎭掆€濄€傞亣鍒板紓甯告椂锛屼互鍒稿晢鍚堢害璇存槑涓哄噯銆?/p>
-<h4>2.4.3 Volume / OI锛氭祦鍔ㄦ€ф瘮浣犳兂璞＄殑閲嶈锛屽洜涓轰綘瑕佽兘鈥滃嚭鏉モ€?/h4>
-<p>鍥剧墖璇?Volume 澶ф洿瀹规槗鏈夋祦鍔ㄦ€э紝杩欏湪澶氭暟鎯呭喌涓嬫槸瀵圭殑銆備綘鍙互鎶婃祦鍔ㄦ€х悊瑙ｆ垚涓や欢浜嬶細</p>
-<ul><li>浠峰樊灏忥紙杩涘嚭鎴愭湰浣庯級</li><li>鑳芥垚浜わ紙浣犳寕鍗曟湁浜烘帴锛?/li></ul>
-<p>Volume锛堟垚浜ら噺锛夊拰 OI锛堟湭骞充粨閲忥級閫氬父鑳界粰浣犱竴涓潪甯哥洿瑙傜殑鎻愮ず锛氳繖妗ｅ悎绾︽槸涓嶆槸澶у甯镐氦鏄撶殑涓绘垬鍦恒€?/p>
-<p>杩欓噷鎴戠粰浣犱竴涓洿鎺ュ湴姘旂殑鍒ゆ柇锛氬鏋滀綘鎵撳紑鏌愪釜琛屾潈浠凤紝Bid/Ask 宸緱寰堢璋憋紙姣斿 Bid 0.80 / Ask 1.50锛夛紝閭ｄ綘灏辩畻鍒ゆ柇瀵逛簡锛屾渶缁堜篃鍙兘琚环宸悆寰楀緢闅惧彈銆傛柊鎵嬮樁娈靛厛杩滅杩欑鍚堢害锛屼笉涓汉锛屽弽鑰屾洿鍍忔槸鈥滅煡閬撹嚜宸卞湪淇濇姢浠€涔堚€濄€?/p>
-<h4>2.4.4 IV锛氬厛璁颁竴鍙ュ氨澶熺敤鈥斺€擨V 楂橈紝鏈熸潈閫氬父璐?/h4>
-<p>浣犵幇鍦ㄤ笉闇€瑕佷細绠?IV锛屼絾浣犺鐭ラ亾瀹冧細璁╁悓涓€浠解€滅湅娑?鐪嬭穼鈥濆垽鏂彉寰楁洿璐垫垨鏇翠究瀹溿€?/p>
-<p>鍥剧墖鐨勭粨璁哄彲浠ュ厛鐓у崟鍏ㄦ敹锛?strong>IV 瓒婇珮锛屾湡鏉冮€氬父瓒婅吹銆?/strong></p>
-<p>瀹冨湪鎿嶄綔灞傞潰鐨勫惈涔夋槸锛氳储鎶ャ€侀噸澶т簨浠跺墠锛屾湡鏉冨父甯镐細鍙樿吹锛涗綘濡傛灉鍦ㄨ繖鏃朵拱鏈熸潈锛屾垚鏈洿楂橈紝浣犻渶瑕佹洿澶х殑娉㈠姩鎵嶈兘鈥滆窇璧㈡垚鏈€濄€?/p>
+<p>你可以先用最生活化的方式理解：</p>
+<ul><li>Bid 是“别人愿意出多少钱从你手里买”（你卖出时参考它）</li><li>Ask 是“别人开价多少钱卖给你”（你买入时参考它）</li></ul>
+<p>图片里的那句话很关键：<strong>买入看 Ask</strong>。你买东西当然看卖方报价；你卖东西当然看买方出价。</p>
+<p>这也解释了很多新手的困惑：刚买进去就亏一点。通常不是你看错方向，而是你买在 Ask，系统估值可能按中间价或按 Bid 附近算，你先吃了一口价差。</p>
+<h4>2.4.2 一张合约=100 股：把报价乘以 100，才是你真实的“花钱”</h4>
+<p>这是图片里的硬点：<strong>1 张=100 股</strong>。</p>
+<p>所以你看到 Ask=2.30，它往往不是“总价 2.30 美元”，而是“每股 2.30 美元”。你买 1 张合约，名义成本是：</p>
+<ul><li>2.30 × 100 = 230 美元（不含手续费）</li></ul>
+<p>这条建议你写在脑门上：在期权里，先把乘数算对，再谈别的。</p>
+<p>补充一个不常见但值得知道的现实：在拆股、合并、特别分红等公司行为后，有些合约的乘数可能会调整（并不总是 100）。新手阶段你大概率遇不到，但你至少要知道“通常是 100，并非宇宙永恒”。遇到异常时，以券商合约说明为准。</p>
+<h4>2.4.3 Volume / OI：流动性比你想象的重要，因为你要能“出来”</h4>
+<p>图片说 Volume 大更容易有流动性，这在多数情况下是对的。你可以把流动性理解成两件事：</p>
+<ul><li>价差小（进出成本低）</li><li>能成交（你挂单有人接）</li></ul>
+<p>Volume（成交量）和 OI（未平仓量）通常能给你一个非常直观的提示：这档合约是不是大家常交易的主战场。</p>
+<p>这里我给你一个更接地气的判断：如果你打开某个行权价，Bid/Ask 差得很离谱（比如 Bid 0.80 / Ask 1.50），那你就算判断对了，最终也可能被价差吃得很难受。新手阶段先远离这种合约，不丢人，反而更像是“知道自己在保护什么”。</p>
+<h4>2.4.4 IV：先记一句就够用——IV 高，期权通常贵</h4>
+<p>你现在不需要会算 IV，但你要知道它会让同一份“看涨/看跌”判断变得更贵或更便宜。</p>
+<p>图片的结论可以先照单全收：<strong>IV 越高，期权通常越贵。</strong></p>
+<p>它在操作层面的含义是：财报、重大事件前，期权常常会变贵；你如果在这时买期权，成本更高，你需要更大的波动才能“跑赢成本”。</p>
 <hr>
-<h3>2.5 璁㈠崟椤垫渶瀹规槗鍑轰簨鐨勫湴鏂癸細Buy/Sell 涔嬪锛岃繕鏈?Open/Close</h3>
-<p>鏈熸潈鐨勪笅鍗曠晫闈㈤€氬父鑷冲皯璁╀綘閫変袱浠朵簨锛?/p>
-<ul><li>Buy 杩樻槸 Sell</li><li>Open锛堝紑浠擄級杩樻槸 Close锛堝钩浠擄級</li></ul>
-<p>鏂版墜鏈€瀹规槗鐘殑閿欐槸锛氫互涓衡€淪ell 灏辨槸鎶婃墜閲岀殑涓滆タ鍗栨帀鈥濄€傚湪鏈熸潈閲岋紝杩欏彞璇濆彧鏈夊湪浣犳槑纭槸 Close 鐨勬椂鍊欐墠鎴愮珛銆?/p>
-<p>涓轰簡璁╀綘涓€鐪肩湅鎳傦紝鎴戞妸瀹冨啓鎴愪竴涓渶灏忚〃锛?/p>
-<div class="course-table-wrap"><table><thead><tr><th>浣犵偣鐨勬寜閽?/th><th>浣犲湪鍋氫粈涔?/th><th>缁撴灉鏄粈涔?/th></tr></thead><tbody><tr><td>Buy to Open</td><td>涔板叆寮€浠?/td><td>浣犳垚涓轰拱鏂癸紙Long锛夛紝鍏堜粯鏉冨埄閲?/td></tr><tr><td>Sell to Close</td><td>鍗栧嚭骞充粨</td><td>浣犳妸涔嬪墠涔板埌鐨勫悎绾﹀崠鎺夛紝缁撴潫浠撲綅</td></tr><tr><td>Sell to Open</td><td>鍗栧嚭寮€浠?/td><td>浣犳垚涓哄崠鏂癸紙Short锛夛紝鍏堟敹鏉冨埄閲戯紝浣嗘壙鎷呬箟鍔?/td></tr><tr><td>Buy to Close</td><td>涔板叆骞充粨</td><td>浣犱拱鍥炴潵鍏虫帀涔嬪墠鍗栧嚭鐨勫悎绾︼紝缁撴潫浠撲綅</td></tr></tbody></table></div>
-<p>浣犵幇鍦ㄥ彧闇€瑕佹妸鍓嶄袱琛岀粌鐔燂細Buy to Open + Sell to Close銆?/p>
-<p>Sell to Open 褰撶劧涓嶆槸绂佸尯锛屼絾瀹冨睘浜庘€滃崠鏂逛笘鐣屸€濓紝娑夊強淇濊瘉閲戙€佽琛屾潈銆侀闄╃粨鏋勫彉鍖栥€備綘鍚庨潰浼氫笓闂ㄥ瀹冦€?/p>
+<h3>2.5 订单页最容易出事的地方：Buy/Sell 之外，还有 Open/Close</h3>
+<p>期权的下单界面通常至少让你选两件事：</p>
+<ul><li>Buy 还是 Sell</li><li>Open（开仓）还是 Close（平仓）</li></ul>
+<p>新手最容易犯的错是：以为“Sell 就是把手里的东西卖掉”。在期权里，这句话只有在你明确是 Close 的时候才成立。</p>
+<p>为了让你一眼看懂，我把它写成一个最小表：</p>
+<div class="course-table-wrap"><table><thead><tr><th>你点的按钮</th><th>你在做什么</th><th>结果是什么</th></tr></thead><tbody><tr><td>Buy to Open</td><td>买入开仓</td><td>你成为买方（Long），先付权利金</td></tr><tr><td>Sell to Close</td><td>卖出平仓</td><td>你把之前买到的合约卖掉，结束仓位</td></tr><tr><td>Sell to Open</td><td>卖出开仓</td><td>你成为卖方（Short），先收权利金，但承担义务</td></tr><tr><td>Buy to Close</td><td>买入平仓</td><td>你买回来关掉之前卖出的合约，结束仓位</td></tr></tbody></table></div>
+<p>你现在只需要把前两行练熟：Buy to Open + Sell to Close。</p>
+<p>Sell to Open 当然不是禁区，但它属于“卖方世界”，涉及保证金、被行权、风险结构变化。你后面会专门学它。</p>
 <hr>
-<h3>2.6 涓€涓畬鏁村疄鎿嶆紨缁冿細鐢?AAPL 璧板畬鈥滀粠鏈熸潈閾惧埌闄愪环鍗曗€濈殑娴佺▼</h3>
-<p>涓嬮潰杩欎釜渚嬪瓙涓嶈璁轰綘璇ヤ笉璇ヤ氦鏄擄紝鍙敤鏉ヨ缁冧綘鎶婄晫闈㈣瀵广€佹妸閽辩畻瀵广€佹妸鍗曚笅瀵广€?/p>
-<p><strong>鍋囪</strong>锛?/p>
-<ul><li>浣犲叧娉?AAPL锛屾兂缁冧竴娆′拱 Call</li><li>浣犲彧涔?1 寮?/li></ul>
-<p><strong>Step 1锛氳繘鍏?AAPL 鈫?Options</strong></p>
-<p>纭鏍囩殑娌￠€夐敊銆?/p>
-<p><strong>Step 2锛氶€夊埌鏈熸棩</strong></p>
-<p>鍒濆缁冧範寤鸿閫夋嫨涓€涓笉閭ｄ箞璐磋劯鐨勫埌鏈熸棩锛堟瘮濡傚嚑鍛ㄥ悗锛夛紝璁╀綘鍏堢粌娴佺▼锛屽埆鎶婄粌涔犲彉鎴愨€滃繀椤讳笁澶╁唴澶ф定鈥濄€?/p>
-<p><strong>Step 3锛氶€夎鏉冧环</strong></p>
-<p>姣斿浣犲厛鐪嬩竴涓暐楂樹簬鐜颁环鐨勮鏉冧环锛堣繖绉嶉€夋嫨鑳屽悗鐨?ITM/ATM/OTM 閫昏緫鎴戜滑鍚庨潰浼氳锛夈€?/p>
-<p><strong>Step 4锛氱湅 Bid/Ask 骞朵及绠楁垚鏈?/strong></p>
-<p>鐪嬪埌绫讳技锛欱id 2.10 / Ask 2.30銆備綘瑕佺珛鍒诲畬鎴愪袱浠朵簨锛?/p>
-<ul><li>鏄庣櫧浣犲ぇ姒傜巼瑕佷拱鍦?Ask 闄勮繎</li><li>鎶?2.30 脳 100 绠楁垚 230 缇庡厓</li></ul>
-<p><strong>Step 5锛氬敖閲忕敤闄愪环鍗曪紙Limit锛夛紝鍒敤甯備环鍗曪紙Market锛?/strong></p>
-<p>鎴戝鏂版墜鐨勫缓璁潪甯告槑纭細鍒敤甯備环鍗曚拱鏈熸潈銆傚師鍥犱笉澶嶆潅锛氭湡鏉冧环宸彲鑳芥瘮鑲＄エ澶у緢澶氾紝浣犵敤甯備环鍗曞鏄撹婊戠偣鎷嶅埌涓€涓緢涓嶈垝鏈嶇殑鎴愪氦浠枫€?/p>
-<p>鏇寸ǔ濡ョ殑鍋氭硶鏄細</p>
-<ul><li>鐪?Bid/Ask</li><li>鍏堟妸闄愪环鎸傚湪涓棿浠烽檮杩戯紙姣斿 2.20锛?/li><li>涓嶆垚浜ゅ氨灏忔璋冩暣</li></ul>
-<p>浣犵涓€娆″仛鍙兘浼氳寰椻€滄€庝箞涓嶇珛鍒绘垚浜も€濓紝杩欏緢姝ｅ父銆傞檺浠峰崟涓嶆槸鎷栧欢鐥囷紝瀹冩槸浣犲湪浠峰樊闈㈠墠鐨勪竴鐐瑰皧涓ャ€?/p>
+<h3>2.6 一个完整实操演练：用 AAPL 走完“从期权链到限价单”的流程</h3>
+<p>下面这个例子不讨论你该不该交易，只用来训练你把界面读对、把钱算对、把单下对。</p>
+<p><strong>假设</strong>：</p>
+<ul><li>你关注 AAPL，想练一次买 Call</li><li>你只买 1 张</li></ul>
+<p><strong>Step 1：进入 AAPL → Options</strong></p>
+<p>确认标的没选错。</p>
+<p><strong>Step 2：选到期日</strong></p>
+<p>初学练习建议选择一个不那么贴脸的到期日（比如几周后），让你先练流程，别把练习变成“必须三天内大涨”。</p>
+<p><strong>Step 3：选行权价</strong></p>
+<p>比如你先看一个略高于现价的行权价（这种选择背后的 ITM/ATM/OTM 逻辑我们后面会讲）。</p>
+<p><strong>Step 4：看 Bid/Ask 并估算成本</strong></p>
+<p>看到类似：Bid 2.10 / Ask 2.30。你要立刻完成两件事：</p>
+<ul><li>明白你大概率要买在 Ask 附近</li><li>把 2.30 × 100 算成 230 美元</li></ul>
+<p><strong>Step 5：尽量用限价单（Limit），别用市价单（Market）</strong></p>
+<p>我对新手的建议非常明确：别用市价单买期权。原因不复杂：期权价差可能比股票大很多，你用市价单容易被滑点拍到一个很不舒服的成交价。</p>
+<p>更稳妥的做法是：</p>
+<ul><li>看 Bid/Ask</li><li>先把限价挂在中间价附近（比如 2.20）</li><li>不成交就小步调整</li></ul>
+<p>你第一次做可能会觉得“怎么不立刻成交”，这很正常。限价单不是拖延症，它是你在价差面前的一点尊严。</p>
 <hr>
-<h3>2.7 鍥剧墖閲岀殑涓ゅぇ鏂版墜璇尯锛氫笉绾犳瀹冧滑锛屽悗闈㈣秺瀛﹁秺涔?/h3>
-<h4>璇尯 1锛氬彧鏈夋垜鍏堜拱浜嗘湡鏉冿紝鎵嶈兘鍗栨湡鏉?/h4>
-<p>杩欐槸鎶婅偂绁ㄤ笘鐣岀殑缁忛獙纭鍒版湡鏉冧笂銆?/p>
-<p>浣犲彲浠ュ崠浣犱拱鍒扮殑鏈熸潈锛圫ell to Close锛夛紝涔熷彲浠ヤ竴涓婃潵灏卞崠鍑轰竴寮犳湡鏉冨紑浠擄紙Sell to Open锛夈€傝繖涓や欢浜嬪湪椋庨櫓缁撴瀯涓婂畬鍏ㄤ笉鍚屻€?/p>
-<p>鏂版墜闃舵锛岃鎶娾€淪ell鈥濇媶鎴愪袱闂細</p>
-<ul><li>鎴戞槸鍦?Close锛堝钩浠擄級鍚楋紵</li><li>杩樻槸鍦?Open锛堝紑浠撴垚涓哄崠鏂癸級锛?/li></ul>
-<p>鍏堟妸杩欎釜鍒嗘竻锛屼綘灏遍伩鍏嶄簡寰堝鈥滆帿鍚嶅叾濡欐€庝箞鍙樻垚鍗栨柟浜嗏€濈殑浜嬫晠銆?/p>
-<h4>璇尯 2锛氬崠鏈熸潈 = 鍗栫┖鑲＄エ</h4>
-<p>鍗栫┖鑲＄エ鏄€熻偂绁ㄦ潵鍗栵紱鍗栨湡鏉冩槸绛惧悎鍚屾敹鏉冨埄閲戙€佹壙鎷呭饱绾︿箟鍔°€傚畠浠兘鍙兘琛ㄨ揪鐪嬭穼锛屼絾鏈哄埗涓嶅悓銆侀闄╀笉鍚屻€佽处鎴疯姹備篃涓嶅悓銆?/p>
-<p>浣犲湪鐣岄潰涓婄湅鍒?鈥淪ell Short鈥?鍜?鈥淪ell to Open鈥?鏃讹紝鍔″繀鍋滀竴涓嬶細杩欐槸涓や欢浜嬨€?/p>
+<h3>2.7 图片里的两大新手误区：不纠正它们，后面越学越乱</h3>
+<h4>误区 1：只有我先买了期权，才能卖期权</h4>
+<p>这是把股票世界的经验硬套到期权上。</p>
+<p>你可以卖你买到的期权（Sell to Close），也可以一上来就卖出一张期权开仓（Sell to Open）。这两件事在风险结构上完全不同。</p>
+<p>新手阶段，请把“Sell”拆成两问：</p>
+<ul><li>我是在 Close（平仓）吗？</li><li>还是在 Open（开仓成为卖方）？</li></ul>
+<p>先把这个分清，你就避免了很多“莫名其妙怎么变成卖方了”的事故。</p>
+<h4>误区 2：卖期权 = 卖空股票</h4>
+<p>卖空股票是借股票来卖；卖期权是签合同收权利金、承担履约义务。它们都可能表达看跌，但机制不同、风险不同、账户要求也不同。</p>
+<p>你在界面上看到 “Sell Short” 和 “Sell to Open” 时，务必停一下：这是两件事。</p>
 <hr>
-<h3>2.8 鏈珷灏忕粨锛氫綘鎶婅繖浜涘仛瀵癸紝鍚庨潰瀛︾瓥鐣ユ墠涓嶄細瓒婂瓒婁贡</h3>
-<ul><li>鏈熸潈鎿嶄綔涓荤嚎锛?strong>閫夋爣鐨?鈫?閫夊埌鏈熸棩 鈫?閫夎鏉冧环 鈫?鐢ㄥ悎閫傜殑鎴愪氦鏂瑰紡涓嬪崟</strong>銆?/li><li>鏈熸潈閾惧儚鑿滃崟锛氫綘鍦ㄦ寫鍚堝悓锛屼笉鏄湪閫夊彿銆?/li><li>涔板叆鐪?Ask锛屽崠鍑虹湅 Bid锛涗环宸秺澶э紝瓒婇渶瑕佽皑鎱庛€?/li><li>璁颁綇涔樻暟锛氶€氬父 1 寮?100 鑲★紝鎶ヤ环瑕佷箻 100銆?/li><li>鏂版墜浼樺厛缁冩祦鍔ㄦ€уソ鐨勬爣鐨勶紱鍒湪鍐烽棬鍚堢害涓婂拰浠峰樊杈冨姴銆?/li><li>Open/Close 涓€瀹氳鐪嬫竻妤氾細Sell to Close 鍜?Sell to Open 鏄袱鏉′笉鍚岀殑璺€?/li></ul>
+<h3>2.8 本章小结：你把这些做对，后面学策略才不会越学越乱</h3>
+<ul><li>期权操作主线：<strong>选标的 → 选到期日 → 选行权价 → 用合适的成交方式下单</strong>。</li><li>期权链像菜单：你在挑合同，不是在选号。</li><li>买入看 Ask，卖出看 Bid；价差越大，越需要谨慎。</li><li>记住乘数：通常 1 张=100 股，报价要乘 100。</li><li>新手优先练流动性好的标的；别在冷门合约上和价差较劲。</li><li>Open/Close 一定要看清楚：Sell to Close 和 Sell to Open 是两条不同的路。</li></ul>
 <hr>
 <hr>
-<h3>涓€鍙ヨ瘽鎬荤粨</h3>
-<blockquote><p><strong>浼氱湅鏈熸潈閾俱€佷細绠椾竴寮犲悎绾︾殑鐪熷疄鎴愭湰銆佷細鍒嗘竻 Open 鍜?Close锛屼綘鎵嶇畻鐪熸浠庘€滄噦姒傚康鈥濊蛋鍒颁簡鈥滀細鎿嶄綔鈥濄€?/strong></p></blockquote>
-<h3>2.9 鑷祴棰橈紙鎶娾€滄搷浣溾€濊繖鍏宠繃浜嗭級</h3>
-<p>1) 浣犵湅鍒版煇寮犲悎绾?Ask=2.50锛堟瘡鑲★級锛屼綘涔?1 寮犲悎绾︼紝鍚嶄箟鎴愭湰澶х害鏄灏戯紵</p>
-<p>2) 涓轰粈涔堟柊鎵嬩笉寤鸿鐢ㄥ競浠峰崟涔版湡鏉冿紵璇风敤涓€鍙ヨ瘽瑙ｉ噴銆?/p>
-<p>3) Buy to Open銆丼ell to Close 鍒嗗埆鏄粈涔堟剰鎬濓紵鍚勭敤涓€鍙ヨ瘽鎻忚堪銆?/p>
+<h3>一句话总结</h3>
+<blockquote><p><strong>会看期权链、会算一张合约的真实成本、会分清 Open 和 Close，你才算真正从“懂概念”走到了“会操作”。</strong></p></blockquote>
+<h3>2.9 自测题（把“操作”这关过了）</h3>
+<p>1) 你看到某张合约 Ask=2.50（每股），你买 1 张合约，名义成本大约是多少？</p>
+<p>2) 为什么新手不建议用市价单买期权？请用一句话解释。</p>
+<p>3) Buy to Open、Sell to Close 分别是什么意思？各用一句话描述。</p>
 <hr>
-<h3>2.10 涓嬩竴绔犻鍛婏細涔版柟涓庡崠鏂逛负浠€涔堝儚涓ょ鑱屼笟</h3>
-<p>浣犲凡缁忎細鍦ㄦ湡鏉冮摼閲屾寫鍚堝悓銆佷細绠楅挶銆佷細閬垮厤璇偣寮€浠撴柟鍚戙€備笅涓€绔犳垜浠鍥剧墖閲岀殑鈥?. 涔版柟鍜屽崠鏂光€濄€備綘浼氱湡姝ｆ槑鐧斤細鍚屾牱鏄湡鏉冿紝涓轰粈涔堜拱鏂规洿鍍忎拱淇濋櫓/涔板僵绁紝鍗栨柟鏇村儚鏀朵繚璐?寮€淇濋櫓鍏徃锛涗互鍙婁负浠€涔堝崠鏂圭湅璧锋潵鑳滅巼楂橈紝浣嗛闄╁父甯歌棌鍦ㄤ綘鐪嬩笉瑙佺殑鍦版柟銆?/p>
+<h3>2.10 下一章预告：买方与卖方为什么像两种职业</h3>
+<p>你已经会在期权链里挑合同、会算钱、会避免误点开仓方向。下一章我们讲图片里的“3. 买方和卖方”。你会真正明白：同样是期权，为什么买方更像买保险/买彩票，卖方更像收保费/开保险公司；以及为什么卖方看起来胜率高，但风险常常藏在你看不见的地方。</p>
 <hr>
-<h3>鏈珷鍙傝€冨彛寰勶紙渚夸簬杩芥函锛?/h3>
-<ul><li>Investor.gov锛氭湡鏉冧綔涓哄悎绾︺€佹潈鍒╀絾闈炰箟鍔＄殑鍩虹瀹氫箟</li><li><a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/options">https://www.investor.gov/introduction-investing/investing-basics/glossary/options</a></li></ul>
-<ul><li>Fidelity Learning Center锛氬己璋冩湡鏉冩洿鐏垫椿浣嗛闄╂洿楂樸€佸涔犵瓥鐣ュ簲鍖呭惈 max profit / max risk / payoff diagrams 鐨勬暀鑲叉鏋?/li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li></ul>
+<h3>本章参考口径（便于追溯）</h3>
+<ul><li>Investor.gov：期权作为合约、权利但非义务的基础定义</li><li><a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/options">https://www.investor.gov/introduction-investing/investing-basics/glossary/options</a></li></ul>
+<ul><li>Fidelity Learning Center：强调期权更灵活但风险更高、学习策略应包含 max profit / max risk / payoff diagrams 的教育框架</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li></ul>
             </article>
         </section>
 
@@ -418,27 +418,27 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-navigation-title">绔犺妭瀵艰埅</h2>
-                    <p class="section-subtitle">鏄惧紡淇濈暀涓婁竴绔?/ 杩斿洖璇剧▼ / 涓嬩竴绔犱笁涓彲瑙佹Ы浣嶏紝渚夸簬鐢熸垚鍣ㄧǔ瀹氬～鍏?/p>
+                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
+                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
                 </div>
             </div>
 
             <div class="chapter-nav-card">
                 <div class="chapter-nav-grid">
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">涓婁竴绔?/div>
-                        <a class="chapter-nav-link" href="./01.html">绗?01 绔?路 浠€涔堟槸鏈熸潈</a>
-                        <p>浠庡悎鍚岃瑙掑缓绔嬫湡鏉冩渶鍩虹鐨勮鐭ワ紝鐞嗚В鏉冨埄鑰岄潪涔夊姟銆佹爣鐨勮祫浜с€佺湅娑ㄧ湅璺屼笌鏉冨埄閲戣繖浜涙牳蹇冩蹇点€?/p>
+                        <div class="chapter-nav-label">上一章</div>
+                        <a class="chapter-nav-link" href="./01.html">第 01 章 · 什么是期权</a>
+                        <p>从合同视角建立期权最基础的认知，理解权利而非义务、标的资产、看涨看跌与权利金这些核心概念。</p>
                     </div>
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">杩斿洖璇剧▼</div>
-                        <a class="chapter-nav-link" href="./index.html">缇庤偂鏈熸潈鏁欐潗 鐩綍</a>
-                        <p>杩斿洖璇剧▼鐩綍锛屾寜 section 鍜?batch 鏌ョ湅鍏ㄥ眬杩涘害銆?/p>
+                        <div class="chapter-nav-label">返回课程</div>
+                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
+                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
                     </div>
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">涓嬩竴绔?/div>
-                        <a class="chapter-nav-link" href="./03.html">绗?03 绔?路 涔版柟涓庡崠鏂?/a>
-                        <p>瀵规瘮涔版柟涓庡崠鏂瑰湪鏉冨埄銆佷箟鍔°€佺泩浜忕粨鏋勫拰椋庨櫓鏆撮湶涓婄殑鏍规湰宸紓锛屽缓绔嬫纭珯浣嶃€?/p>
+                        <div class="chapter-nav-label">下一章</div>
+                        <a class="chapter-nav-link" href="./03.html">第 03 章 · 买方与卖方</a>
+                        <p>对比买方与卖方在权利、义务、盈亏结构和风险暴露上的根本差异，建立正确站位。</p>
                     </div>
                 </div>
             </div>
@@ -446,15 +446,15 @@
     </main>
 
     <footer>
-        <p>鏈熸潈鏁欐潗 路 缁撴瀯鍖栧涔?路 HTML 浼樺厛</p>
+        <p>期权教材 · 结构化学习 · HTML 优先</p>
         <p class="disclaimer">
-            鍏嶈矗澹版槑锛氭湰鏁欐潗椤甸潰浠呬緵瀛︿範浜ゆ祦浣跨敤锛屼笉鏋勬垚浠讳綍鎶曡祫寤鸿銆傛湡鏉冧氦鏄撴秹鍙婃潬鏉嗐€佹椂闂存崯鑰椾笌娴佸姩鎬ч闄╋紝鍔″繀缁撳悎鑷韩鎯呭喌鐙珛鍒ゆ柇銆?
+            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
         </p>
     </footer>
 
-    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="鍒囨崲娣辫壊妯″紡" title="鍒囨崲娣辫壊妯″紡">馃寭</button>
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="杩斿洖椤堕儴">鈫?/button>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260326review1"></script>
+    <script src="../js/main.js?v=20260326review2"></script>
 </body>
 </html>
