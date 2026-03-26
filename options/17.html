@@ -1,27 +1,27 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="鎶?Protective Put 涓?Covered Call 缁勫悎璧锋潵锛岀悊瑙ｅ湪淇濈暀涓嬭淇濇姢鏃跺浣曚氦鎹笂琛岀┖闂淬€?>
+    <meta name="description" content="把 Protective Put 与 Covered Call 组合起来，理解在保留下行保护时如何交换上行空间。">
     <meta name="author" content="ValueInvest">
     <meta name="theme-color" content="#c9a227">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="canonical" href="https://4fire.qzz.io/options/17.html">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://4fire.qzz.io/options/17.html">
-    <meta property="og:title" content="Collar 琛ｉ绛栫暐 | 缇庤偂鏈熸潈鏁欐潗">
-    <meta property="og:description" content="鎶?Protective Put 涓?Covered Call 缁勫悎璧锋潵锛岀悊瑙ｅ湪淇濈暀涓嬭淇濇姢鏃跺浣曚氦鎹笂琛岀┖闂淬€?>
+    <meta property="og:title" content="Collar 衣领策略 | 美股期权教材">
+    <meta property="og:description" content="把 Protective Put 与 Covered Call 组合起来，理解在保留下行保护时如何交换上行空间。">
     <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Collar 琛ｉ绛栫暐 | 缇庤偂鏈熸潈鏁欐潗">
-    <meta name="twitter:description" content="鎶?Protective Put 涓?Covered Call 缁勫悎璧锋潵锛岀悊瑙ｅ湪淇濈暀涓嬭淇濇姢鏃跺浣曚氦鎹笂琛岀┖闂淬€?>
+    <meta name="twitter:title" content="Collar 衣领策略 | 美股期权教材">
+    <meta name="twitter:description" content="把 Protective Put 与 Covered Call 组合起来，理解在保留下行保护时如何交换上行空间。">
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
-    <title>Collar 琛ｉ绛栫暐 | 缇庤偂鏈熸潈鏁欐潗</title>
+    <title>Collar 衣领策略 | 美股期权教材</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260326review1">
+    <link rel="stylesheet" href="../css/style.css?v=20260326review2">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -191,8 +191,8 @@
     {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": "Collar 琛ｉ绛栫暐",
-        "description": "鎶?Protective Put 涓?Covered Call 缁勫悎璧锋潵锛岀悊瑙ｅ湪淇濈暀涓嬭淇濇姢鏃跺浣曚氦鎹笂琛岀┖闂淬€?,
+        "headline": "Collar 衣领策略",
+        "description": "把 Protective Put 与 Covered Call 组合起来，理解在保留下行保护时如何交换上行空间。",
         "author": {
             "@type": "Person",
             "name": "ValueInvest"
@@ -205,7 +205,7 @@
         "mainEntityOfPage": "https://4fire.qzz.io/options/17.html",
         "isPartOf": {
             "@type": "Course",
-            "name": "缇庤偂鏈熸潈鏁欐潗",
+            "name": "美股期权教材",
             "url": "https://4fire.qzz.io/options/"
         },
         "image": [
@@ -215,39 +215,39 @@
     </script>
 </head>
 <body>
-    <a href="#main" class="skip-link">璺宠浆鍒颁富鍐呭</a>
-    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="椤甸潰闃呰杩涘害"></div>
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
 
     <header id="header">
         <div class="nav-container">
-            <a href="../index.html" class="logo" aria-label="ValueInvest 棣栭〉">Value<span>Invest</span></a>
-            <nav aria-label="鏈熸潈绔犺妭椤典富瀵艰埅">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="期权章节页主导航">
                 <ul class="nav-links">
-                    <li><a href="../index.html">杩斿洖棣栭〉</a></li>
-                    <li><a href="./index.html">杩斿洖璇剧▼</a></li>
-                    <li><a href="#chapter-navigation">绔犺妭瀵艰埅</a></li>
+                    <li><a href="../index.html">返回首页</a></li>
+                    <li><a href="./index.html">返回课程</a></li>
+                    <li><a href="#chapter-navigation">章节导航</a></li>
                 </ul>
             </nav>
-            <div class="nav-date">绗?17 绔?/div>
+            <div class="nav-date">第 17 章</div>
         </div>
     </header>
 
     <section class="hero" role="banner">
         <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
         <div class="hero-content">
-            <div class="subtitle">杩涢樁缁撴瀯涓庢尝鍔ㄧ巼绡?/div>
-            <h1>绗?17 绔?路 Collar 琛ｉ绛栫暐</h1>
-            <p class="tagline">杩涢樁缁撴瀯涓庢尝鍔ㄧ巼绡?路 Batch 5</p>
-            <p class="hero-description">鎶?Protective Put 涓?Covered Call 缁勫悎璧锋潵锛岀悊瑙ｅ湪淇濈暀涓嬭淇濇姢鏃跺浣曚氦鎹笂琛岀┖闂淬€?/p>
+            <div class="subtitle">进阶结构与波动率篇</div>
+            <h1>第 17 章 · Collar 衣领策略</h1>
+            <p class="tagline">进阶结构与波动率篇 · Batch 5</p>
+            <p class="hero-description">把 Protective Put 与 Covered Call 组合起来，理解在保留下行保护时如何交换上行空间。</p>
         </div>
-        <a href="#chapter-summary" class="scroll-indicator" aria-label="鍚戜笅婊氬姩鍒扮珷鑺傛憳瑕?>鍚戜笅婊氬姩</a>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
     </section>
 
-    <div class="chapter-meta-bar" aria-label="绔犺妭鍏抽敭淇℃伅">
-        <div class="chapter-meta-pill">绔犺妭缂栧彿锛氱 17 绔?/div>
-        <div class="chapter-meta-pill">Section锛氳繘闃剁粨鏋勪笌娉㈠姩鐜囩瘒</div>
-        <div class="chapter-meta-pill">Batch锛欱atch 5 路 宸插彂甯?/div>
-        <div class="chapter-meta-pill">鎵€灞炶绋嬶細<a class="chapter-meta-link" href="./index.html">缇庤偂鏈熸潈鏁欐潗</a></div>
+    <div class="chapter-meta-bar" aria-label="章节关键信息">
+        <div class="chapter-meta-pill">章节编号：第 17 章</div>
+        <div class="chapter-meta-pill">Section：进阶结构与波动率篇</div>
+        <div class="chapter-meta-pill">Batch：Batch 5 · 已发布</div>
+        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
     </div>
 
     <main id="main" class="chapter-shell">
@@ -255,13 +255,13 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">01</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-summary-title">绔犺妭鎽樿</h2>
-                    <p class="section-subtitle">缁欒鑰呬竴涓厛璇绘噦妗嗘灦銆佸啀娣卞叆姝ｆ枃鐨勮惤鐐?/p>
+                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
+                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
                 </div>
             </div>
 
             <div class="chapter-summary-card">
-                <p>鎶?Protective Put 涓?Covered Call 缁勫悎璧锋潵锛岀悊瑙ｅ湪淇濈暀涓嬭淇濇姢鏃跺浣曚氦鎹笂琛岀┖闂淬€?/p>
+                <p>把 Protective Put 与 Covered Call 组合起来，理解在保留下行保护时如何交换上行空间。</p>
             </div>
         </section>
 
@@ -269,312 +269,312 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">02</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-content-title">绔犺妭姝ｆ枃</h2>
-                    <p class="section-subtitle">姝ｆ枃鍐呭鐢辩敓鎴愬櫒鐩存帴鍐欏叆 HTML锛岄粯璁ゆ棤鑴氭湰涔熷簲瀹屾暣鍙</p>
+                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
+                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
                 </div>
             </div>
 
             <article class="chapter-body-card">
-<h1>銆婄編鑲℃湡鏉冩暀鏉愩€?/h1>
-<h2>绗?7绔?Collar 琛ｉ绛栫暐锛氭垜涓嶆兂鍗栨帀鑲＄エ锛屼絾涔熶笉鎯冲啀瑁哥潃鎵?/h2>
-<blockquote><p>杩欎竴绔犱竴瀹氳鍜屼綘鍒氭墠閭ｄ袱寮?Collar 鍥句竴璧风湅銆?/p>
-<p>鍥犱负閭ｄ袱寮犲浘鍏跺疄鎶?Collar 璁插緱寰堟竻妤氫簡锛?/p>
-<ul><li>瀹冪殑鏍稿績涓嶆槸涓€涓緢鏂板鐨勪笢瑗匡紱</li><li>瀹冩湰璐ㄤ笂灏辨槸锛?/li><li><strong>鎸佹湁 100 鑲℃鑲?/strong></li><li><strong>涔颁竴寮?Put</strong></li><li><strong>鍐嶅崠涓€寮?Call</strong></li><li>涔熷氨鏄細</li><li><strong>Protective Put + Covered Call</strong></li></ul>
-<p>鎵€浠?Collar 鐨勭湡姝ｉ€昏緫锛屼笉鏄嚟绌哄垱閫犱簡涓€涓柊鍔ㄧ墿锛岃€屾槸锛?/p>
-<blockquote><p><strong>鎴戞兂淇濈暀杩欏彧鑲＄エ锛屼絾鎴戣寰楀崟鐙拱 Put 澶吹锛屼簬鏄垜鎰挎剰鐗虹壊涓€閮ㄥ垎涓婃柟绌洪棿锛屾潵鎹㈡洿渚垮疁銆佹洿鍙壙鍙楃殑涓嬫柟淇濇姢銆?/strong></p></blockquote>
-<p>杩欏氨鏄?Collar 鏈€浜鸿瘽鐨勫畾涔夈€?/p>
-<p>鍓嶄竴绔犳垜浠凡缁忚杩囷細</p>
-<ul><li>Covered Call 鍍忔敹绉燂紱</li><li>Protective Put 鍍忎拱淇濋櫓銆?/li></ul>
-<p>鑰?Collar锛屽叾瀹炲氨鏄妸杩欎袱涓姩浣滅粦鍦ㄤ竴璧凤細</p>
-<ul><li>鎴戜竴杈逛拱淇濋櫓锛?/li><li>涓€杈规妸涓€閮ㄥ垎涓婃定绌洪棿绉熷嚭鍘伙紱</li><li>鐢ㄧ閲戝幓琛ヤ繚闄╄垂銆?/li></ul>
-<p>鎵€浠ヨ繖绔犳渶鍊奸挶鐨勭悊瑙ｄ笉鏄湳璇紝鑰屾槸杩欏彞璇濓細</p>
-<p><strong>Collar = 鐢ㄤ笂鏂规敹鐩婄殑涓€閮ㄥ垎锛屾崲涓嬫柟淇濇姢銆?/strong></p></blockquote>
+<h1>《美股期权教材》</h1>
+<h2>第17章 Collar 衣领策略：我不想卖掉股票，但也不想再裸着扛</h2>
+<blockquote><p>这一章一定要和你刚才那两张 Collar 图一起看。</p>
+<p>因为那两张图其实把 Collar 讲得很清楚了：</p>
+<ul><li>它的核心不是一个很新奇的东西；</li><li>它本质上就是：</li><li><strong>持有 100 股正股</strong></li><li><strong>买一张 Put</strong></li><li><strong>再卖一张 Call</strong></li><li>也就是：</li><li><strong>Protective Put + Covered Call</strong></li></ul>
+<p>所以 Collar 的真正逻辑，不是凭空创造了一个新动物，而是：</p>
+<blockquote><p><strong>我想保留这只股票，但我觉得单独买 Put 太贵，于是我愿意牺牲一部分上方空间，来换更便宜、更可承受的下方保护。</strong></p></blockquote>
+<p>这就是 Collar 最人话的定义。</p>
+<p>前一章我们已经讲过：</p>
+<ul><li>Covered Call 像收租；</li><li>Protective Put 像买保险。</li></ul>
+<p>而 Collar，其实就是把这两个动作绑在一起：</p>
+<ul><li>我一边买保险；</li><li>一边把一部分上涨空间租出去；</li><li>用租金去补保险费。</li></ul>
+<p>所以这章最值钱的理解不是术语，而是这句话：</p>
+<p><strong>Collar = 用上方收益的一部分，换下方保护。</strong></p></blockquote>
 <hr>
-<h2>闃呰瀵艰埅锛氱涓€娆¤鍏堟姄鈥滄垜鎷夸粈涔堟崲淇濇姢鈥濓紝绗簩娆¤鍐嶈ˉ缁撴瀯缁嗚妭</h2>
-<p>杩欎竴绔犵涓€娆¤鏃讹紝涓嶈鍏堟妸 Collar 褰撴垚涓€涓柊濂囩粍鍚堝幓鑳屻€?/p>
-<p>浣犲厛鎶撲竴鍙ユ渶鍊奸挶鐨勮瘽锛?/p>
-<blockquote><p><strong>Collar = 璁╂帀涓€閮ㄥ垎涓婃柟绌洪棿锛屾崲涓€灞傛洿渚垮疁銆佹洿鍙壙鍙楃殑涓嬫柟淇濇姢銆?/strong></p></blockquote>
-<p>绗竴閬嶄綘鍙鍏堢湅鎳傦細</p>
-<ul><li>瀹冧负浠€涔堜笉鍍忕函 Protective Put 閭ｄ箞璐碉紱</li><li>鍙堜负浠€涔堜笉鍍?Covered Call 閭ｆ牱鍑犱箮娌′繚鎶わ紱</li><li>瀹冨埌搴曟槸鍦ㄦ嬁浠€涔堟崲浠€涔堛€?/li></ul>
-<p>绗簩閬嶅啀鍘昏ˉ锛?/p>
-<ul><li>No Cost Collar 涓轰粈涔堜笉绛変簬鈥滃厤璐逛繚鎶も€濓紱</li><li>ATM / OTM Collar 鐨勮竟鐣屽樊鍒紱</li><li>涓轰粈涔堝畠鏇村儚闃舵鎬ч闄╁伐绋嬶紝鑰屼笉鏄案涔呯洈鐢层€?/li></ul>
+<h2>阅读导航：第一次读先抓“我拿什么换保护”，第二次读再补结构细节</h2>
+<p>这一章第一次读时，不要先把 Collar 当成一个新奇组合去背。</p>
+<p>你先抓一句最值钱的话：</p>
+<blockquote><p><strong>Collar = 让掉一部分上方空间，换一层更便宜、更可承受的下方保护。</strong></p></blockquote>
+<p>第一遍你只要先看懂：</p>
+<ul><li>它为什么不像纯 Protective Put 那么贵；</li><li>又为什么不像 Covered Call 那样几乎没保护；</li><li>它到底是在拿什么换什么。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>No Cost Collar 为什么不等于“免费保护”；</li><li>ATM / OTM Collar 的边界差别；</li><li>为什么它更像阶段性风险工程，而不是永久盔甲。</li></ul>
 <hr>
-<h1>涓€銆佸厛鎶?Collar 璁查€忥細瀹冧笉鏄€滄洿楂樼骇鈥濓紝鑰屾槸鏇寸幇瀹?/h1>
-<h2>17.1 涓轰粈涔堜細鏈変汉鍙戞槑 Collar</h2>
-<p>濡傛灉浣犲洖鎯充笂涓€绔狅紝浼氬彂鐜帮細</p>
-<ul><li><strong>Protective Put</strong> 寰堢編锛?/li><li>鍥犱负瀹冭兘璁╀綘缁х画鎷胯偂绁紝鍚屾椂缁欎笅璺岃鎶ゆ爮銆?/li></ul>
-<p>浣嗗畠涔熸湁涓€涓幇瀹為棶棰橈細</p>
-<ul><li><strong>璐点€?/strong></li></ul>
-<p>灏ゅ叾鍦細</p>
-<ul><li>甯傚満鏈潵灏卞緢鎱岋紱</li><li>IV 宸茬粡琚姮楂橈紱</li><li>浣犲張鎯充拱寰楁瘮杈冨帤銆佹瘮杈冭繎鐨勪繚鎶わ紱</li></ul>
-<p>杩欐椂浣犱細鍙戠幇锛屽崟鐙拱 Put 寰堝鏄撳彉鎴愪竴浠垛€滈€昏緫涓婂緢缇庯紝閽卞寘涓婂緢鐤尖€濈殑浜嬨€?/p>
-<p>浜庢槸甯傚満灏卞嚭鐜颁簡涓€涓壒鍒幇瀹炵殑濡ュ崗鐗堟湰锛?/p>
-<blockquote><p><strong>鏃㈢劧鍗曠嫭涔?Put 澶吹锛岄偅鎴戣兘涓嶈兘鍗栦竴涓?Call锛屾妸鏀跺埌鐨勯挶鎷挎潵琛?Put 鐨勬垚鏈紵</strong></p></blockquote>
-<p>杩欏氨鏄?Collar 鐨勮癁鐢熼€昏緫銆?/p>
-<p>鎵€浠?Collar 鏈川涓婁笉鏄湪杩芥眰锛?/p>
-<ul><li>鏈€鐚涚殑鏀剁泭锛?/li><li>鏈€鎬ф劅鐨勫浘褰紱</li></ul>
-<p>瀹冩洿鍍忓湪杩芥眰锛?/p>
-<ul><li>鎴愭湰鍒お楂橈紱</li><li>涓嬫柟鍒お鐤硷紱</li><li>鎴戣繕鑳界户缁嬁鐫€杩欏彧鑲＄エ銆?/li></ul>
-<p>杩欎篃鏄负浠€涔堝畠鐗瑰埆鍍忊€滅湡瀹炶处鎴蜂細鐢ㄧ殑涓滆タ鈥濓紝鑰屼笉鏄函璇惧爞绛栫暐銆?/p>
-<h2>17.2 鏈€浜鸿瘽鐨勫畾涔夛細缁欒偂绁ㄦ埓涓€滃畨鍏ㄥ附鈥濓紝浣嗗附妾愪細鎸℃帀涓€閮ㄥ垎澶╃┖</h2>
-<p>鍥剧墖閲岀粰鐨勬爣鍑嗙粨鏋勬槸锛?/p>
-<ul><li><strong>鎸佹湁 100 鑲℃鑲?/strong></li><li><strong>涔?OTM Put</strong></li><li><strong>鍗?OTM Call</strong></li></ul>
-<p>濡傛灉浣犳兂鎶婂畠涓€涓嬪瓙璁颁綇锛屾垜寤鸿灏辩敤杩欎釜姣斿柣锛?/p>
-<blockquote><p><strong>Collar 鍍忕粰浣犵殑鑲＄エ鎴翠簡涓€涓畨鍏ㄥ附銆傚畠鑳戒繚鎶や綘鍒憯寰楀お鎯紝浣嗗附妾愪篃浼氭尅鎺変竴閮ㄥ垎浣犵户缁線涓婄湅鐨勭┖闂淬€?/strong></p></blockquote>
-<p>涓轰粈涔堣繖涓瘮鍠诲ソ锛?/p>
-<p>鍥犱负瀹冨悓鏃舵妸 Collar 鐨勪袱闈㈤兘璁插埌浜嗭細</p>
-<h3>濂藉</h3>
-<ul><li>涓嬫柟鏇村畨鍏紱</li><li>浣犱笉鐢ㄥ啀瀹屽叏瑁哥潃鎵涘ぇ璺岋紱</li><li>Put 缁欎綘涓嬫柟淇濇姢銆?/li></ul>
-<h3>浠ｄ环</h3>
-<ul><li>浣犱笉鏄棤闄愬悜涓婃墦寮€锛?/li><li>Call 浼氭妸涓婃柟鏀剁泭灏佷綇涓€閮ㄥ垎锛?/li><li>鎵€浠ュ鏋滃悗闈㈢湡鐨勭柉娑紝浣犱細璧氬皯涓€鐐广€?/li></ul>
-<p>鎵€浠ヤ綘浠ュ悗鐪嬪埌 Collar锛屼笉瑕佸彧璁颁竴鍙モ€滀綆鎴愭湰瀵瑰啿鈥濓紝杩樿鍚屾椂璁颁綇锛?/p>
-<blockquote><p><strong>瀹冩案杩滄槸涓€绗斾氦鎹€?/strong></p></blockquote>
-<p>涓嶆槸鐧藉緱淇濇姢锛岃€屾槸锛?/p>
-<ul><li>璁╂帀涓€鐐逛笂鏂癸紱</li><li>鎹㈡潵鏇翠究瀹滅殑涓嬫柟鎶ゆ爮銆?/li></ul>
-<h1>浜屻€丆ollar 鐨勭粨鏋勫埌搴曟槸浠€涔堬細瀹冨叾瀹炲氨鏄€淐overed Call + Protective Put鈥?/h1>
-<h2>17.3 涓轰粈涔堟垜璇磋繖绔犲拰涓婁竴绔犳槸杩炵潃鐨?/h2>
-<p>浣犲垰瀛﹀畬绗?13 绔狅紝鎵€浠ヨ繖绔犲叾瀹炲緢濂芥帴銆?/p>
-<p>鍥犱负鎴戜滑鍓嶉潰宸茬粡鐭ラ亾锛?/p>
-<ul><li><strong>Covered Call = 鎸佽偂 + 鍗?Call</strong></li><li><strong>Protective Put = 鎸佽偂 + 涔?Put</strong></li></ul>
-<p>閭ｄ箞 Collar 鍛紵</p>
-<p>鍏跺疄灏辨槸锛?/p>
-<ul><li>浣犲厛鎸佹湁姝ｈ偂锛?/li><li>鍐嶄拱涓€涓?Put锛?/li><li>鍐嶅崠涓€涓?Call銆?/li></ul>
-<p>鎵€浠ュ畠鏈川涓婂氨鏄細</p>
+<h1>一、先把 Collar 讲透：它不是“更高级”，而是更现实</h1>
+<h2>17.1 为什么会有人发明 Collar</h2>
+<p>如果你回想上一章，会发现：</p>
+<ul><li><strong>Protective Put</strong> 很美；</li><li>因为它能让你继续拿股票，同时给下跌装护栏。</li></ul>
+<p>但它也有一个现实问题：</p>
+<ul><li><strong>贵。</strong></li></ul>
+<p>尤其在：</p>
+<ul><li>市场本来就很慌；</li><li>IV 已经被抬高；</li><li>你又想买得比较厚、比较近的保护；</li></ul>
+<p>这时你会发现，单独买 Put 很容易变成一件“逻辑上很美，钱包上很疼”的事。</p>
+<p>于是市场就出现了一个特别现实的妥协版本：</p>
+<blockquote><p><strong>既然单独买 Put 太贵，那我能不能卖一个 Call，把收到的钱拿来补 Put 的成本？</strong></p></blockquote>
+<p>这就是 Collar 的诞生逻辑。</p>
+<p>所以 Collar 本质上不是在追求：</p>
+<ul><li>最猛的收益；</li><li>最性感的图形；</li></ul>
+<p>它更像在追求：</p>
+<ul><li>成本别太高；</li><li>下方别太疼；</li><li>我还能继续拿着这只股票。</li></ul>
+<p>这也是为什么它特别像“真实账户会用的东西”，而不是纯课堂策略。</p>
+<h2>17.2 最人话的定义：给股票戴个“安全帽”，但帽檐会挡掉一部分天空</h2>
+<p>图片里给的标准结构是：</p>
+<ul><li><strong>持有 100 股正股</strong></li><li><strong>买 OTM Put</strong></li><li><strong>卖 OTM Call</strong></li></ul>
+<p>如果你想把它一下子记住，我建议就用这个比喻：</p>
+<blockquote><p><strong>Collar 像给你的股票戴了一个安全帽。它能保护你别摔得太惨，但帽檐也会挡掉一部分你继续往上看的空间。</strong></p></blockquote>
+<p>为什么这个比喻好？</p>
+<p>因为它同时把 Collar 的两面都讲到了：</p>
+<h3>好处</h3>
+<ul><li>下方更安全；</li><li>你不用再完全裸着扛大跌；</li><li>Put 给你下方保护。</li></ul>
+<h3>代价</h3>
+<ul><li>你不是无限向上打开；</li><li>Call 会把上方收益封住一部分；</li><li>所以如果后面真的疯涨，你会赚少一点。</li></ul>
+<p>所以你以后看到 Collar，不要只记一句“低成本对冲”，还要同时记住：</p>
+<blockquote><p><strong>它永远是一笔交换。</strong></p></blockquote>
+<p>不是白得保护，而是：</p>
+<ul><li>让掉一点上方；</li><li>换来更便宜的下方护栏。</li></ul>
+<h1>二、Collar 的结构到底是什么：它其实就是“Covered Call + Protective Put”</h1>
+<h2>17.3 为什么我说这章和上一章是连着的</h2>
+<p>你刚学完第 13 章，所以这章其实很好接。</p>
+<p>因为我们前面已经知道：</p>
+<ul><li><strong>Covered Call = 持股 + 卖 Call</strong></li><li><strong>Protective Put = 持股 + 买 Put</strong></li></ul>
+<p>那么 Collar 呢？</p>
+<p>其实就是：</p>
+<ul><li>你先持有正股；</li><li>再买一个 Put；</li><li>再卖一个 Call。</li></ul>
+<p>所以它本质上就是：</p>
 <blockquote><p><strong>Protective Put + Covered Call</strong></p></blockquote>
-<p>鍙槸杩欐锛屽畠浠笉鏄垎寮€璁诧紝鑰屾槸缁勫悎鎴愪竴涓洿鐜板疄鐨勨€滄寔浠撲繚鎶ゆ柟妗堚€濄€?/p>
-<p>鍥剧墖閲屼笓闂ㄦ妸杩欎欢浜嬬偣浜嗗嚭鏉ワ紝杩欎竴鐐圭壒鍒ソ銆傚洜涓哄畠鑳藉府浣犳妸 Collar 浠庘€滄柊绛栫暐鈥濈炕鍥炩€滄棫绉湪鎷兼硶鈥濓細</p>
-<ul><li>Put 杩欐潯鑵匡紝璐熻矗淇濇姢锛?/li><li>Call 杩欐潯鑵匡紝璐熻矗琛ヨ创鎴愭湰锛?/li><li>姝ｈ偂鏈綋锛屼粛鐒舵槸鏍稿績浠撲綅銆?/li></ul>
-<p>鎵€浠ヨ繖绔犱笉鏄獊鐒惰烦鍑轰竴涓柊涓栫晫锛岃€屾槸鍦ㄥ憡璇変綘锛?/p>
-<blockquote><p><strong>楂橀樁绛栫暐寰堝鏃跺€欏苟涓嶆槸鏂板姩鐗╋紝鑰屾槸鏃ч儴浠堕噸鏂版嫾瑁呫€?/strong></p></blockquote>
-<h2>17.4 涓€涓爣鍑嗕緥瀛愶細145 / 155 Collar锛屽埌搴曞湪骞蹭粈涔?/h2>
-<p>鍥剧墖閲岀粰浜嗕竴涓潪甯稿ソ鐨勬爣鍑嗕緥瀛愶紝鎴戜滑灏辨寜瀹冩潵璁层€?/p>
-<p>鍋囪浣犳墜閲屾湁锛?/p>
-<ul><li>100 鑲¤嫻鏋滐紱</li><li>褰撳墠鑲′环 150銆?/li></ul>
-<p>浣犵幇鍦ㄥ仛涓€涓?Collar锛?/p>
-<ul><li>涔?145 Put锛?/li><li>鍗?155 Call锛?/li><li>涓よ竟鏈熸潈璐瑰垰濂藉樊涓嶅锛屾瘮濡傞兘鍦?3 宸﹀彸銆?/li></ul>
-<p>杩欐椂鍊欎細鍙戠敓浠€涔堬紵</p>
-<h3>145 Put 鍦ㄥ仛浠€涔?/h3>
-<p>瀹冩槸鍦ㄨ锛?/p>
-<ul><li>濡傛灉鑻规灉寰€涓嬭穼寰楁瘮杈冨帀瀹筹紝</li><li>鍒颁簡 145 浠ヤ笅锛屼綘寮€濮嬫湁鏄庢樉淇濇姢銆?/li></ul>
-<p>鎹㈠彞璇濊锛屽畠鍦ㄧ粰浣犱笅鏂圭敾涓€鏉♀€滀笉瑕佸啀澶儴鈥濈殑绾裤€?/p>
-<h3>155 Call 鍦ㄥ仛浠€涔?/h3>
-<p>瀹冩槸鍦ㄨ锛?/p>
-<ul><li>濡傛灉鑻规灉寰€涓婃定鍒?155 浠ヤ笂锛?/li><li>浣犲悗闈㈡洿楂樼殑鏀剁泭灏变笉浼氬畬鏁翠繚鐣欎簡锛?/li><li>鍥犱负浣犳妸閭ｄ竴娈典笂娑ㄧ殑涓€閮ㄥ垎璁╁嚭鍘讳簡銆?/li></ul>
-<p>鎵€浠ヨ繖涓?Collar 鏁翠綋涓婅〃杈剧殑鎰忔€濆氨鏄細</p>
-<blockquote><p><strong>145 浠ヤ笅锛屾垜涓嶆兂鍐嶅お鎯紱155 浠ヤ笂锛屾垜涔熸帴鍙椾笉鍐嶆棤闄愯禋銆備腑闂磋繖鍧楀尯闂达紝鎴戠户缁甯告寔鑲°€?/strong></p></blockquote>
-<p>杩欏氨鏄?Collar 鏈€鏍稿績鐨勯闄╂敼閫犮€?/p>
-<h1>涓夈€丆ollar 鐨勬敹鐩婂浘鍒板簳鍦ㄨ〃杈句粈涔?/h1>
-<h2>17.5 鍏堟妸鍥剧炕鎴愪汉璇濓細涓棿鍍忔寔鑲★紝涓ゅご琚慨鎺?/h2>
-<p>濡傛灉浣犵湅鍥剧墖閲岀殑鏀剁泭鍥撅紝浼氬彂鐜板畠寰堝儚涓€鏉¤淇壀杩囩殑鎸佽偂鏀剁泭绾裤€?/p>
-<p>涓轰粈涔堣繖涔堣锛?/p>
-<p>鍥犱负锛?/p>
-<h3>涓棿鍖洪棿</h3>
-<p>涔熷氨鏄?Put 琛屾潈浠峰拰 Call 琛屾潈浠蜂箣闂寸殑閭ｄ竴娈点€?/p>
-<p>鍦ㄨ繖娈靛尯闂撮噷锛?/p>
-<ul><li>浣犳暣浣撲笂杩樻槸寰堝儚鍦ㄦ寔鏈夎偂绁紱</li><li>鑲′环娑ㄤ竴鐐癸紝浣犺处鎴蜂篃浼氳窡鐫€娑紱</li><li>鑲′环璺屼竴鐐癸紝浣犺处鎴蜂篃浼氳窡鐫€璺岋紱</li><li>鍙槸鏈熸潈璐逛細璁╂暣浣撲綅缃暐寰笂绉绘垨涓嬬Щ涓€鐐广€?/li></ul>
-<h3>涓嬫柟鍖洪棿</h3>
-<p>涔熷氨鏄穼鐮?Put 琛屾潈浠蜂箣鍚庛€?/p>
-<p>杩欐椂鍊?Put 寮€濮嬬湡姝ｅ彂鎸ヤ繚鎶や綔鐢細</p>
-<ul><li>鑲′环缁х画寰€涓嬫帀锛?/li><li>Put 鐨勪环鍊间笂鏉ワ紱</li><li>浣犵殑鎬绘崯澶变笉浼氬啀鍍忕函鎸佽偂閭ｆ牱鏃犻檺鎵╁ぇ銆?/li></ul>
-<p>鎵€浠ュ浘鐗囬噷鎵嶄細琛ㄧ幇鎴愶細</p>
-<ul><li>宸﹁竟閭ｆ潯绾夸笉鍐嶄竴鐩村線涓嬫帀锛?/li><li>鑰屾槸寮€濮嬧€滃彉骞斥€濄€?/li></ul>
-<h3>涓婃柟鍖洪棿</h3>
-<p>涔熷氨鏄定杩?Call 琛屾潈浠蜂箣鍚庛€?/p>
-<p>杩欐椂鍊欏崠鍑虹殑 Call 寮€濮嬬湡姝ｆ嫋浣忎綘锛?/p>
-<ul><li>鑲′环缁х画寰€涓婂啿锛?/li><li>浣犳鑲″綋鐒惰繕鍦ㄦ定锛?/li><li>浣嗗崠鍑哄幓鐨?Call 浼氭妸閭ｉ儴鍒嗛澶栦笂娑ㄥ悆鎺変竴閮ㄥ垎銆?/li></ul>
-<p>鎵€浠ュ浘鐗囧彸杈逛篃浼氬嚭鐜帮細</p>
-<ul><li>涓婃柟涓嶅啀鏃犻檺鎵撳紑锛?/li><li>鑰屾槸寮€濮嬧€滃彉骞斥€濄€?/li></ul>
-<p>濡傛灉鎶婅繖寮犲浘鍘嬫垚涓€鍙ユ渶绠€鍗曠殑浜鸿瘽锛屽氨鏄細</p>
-<blockquote><p><strong>Collar 鍍忔妸涓€鏉℃湰鏉ユ棤闄愪笂涓嬫墦寮€鐨勬寔鑲℃洸绾匡紝宸﹀彸鍚勪慨鎺変竴鎴€?/strong></p></blockquote>
-<p>杩欏彞璇濅竴瀹氳璁颁綇銆?/p>
-<h2>17.6 Collar 鐨勬渶澶уソ澶勶細鎶娾€滄渶闅剧湅鐨勭粨鏋溾€濆厛鐢诲嚭鏉?/h2>
-<p>寰堝浜哄枩娆?Collar锛屼笉鏄洜涓哄畠鏈€璧氶挶锛岃€屾槸鍥犱负锛?/p>
-<ul><li>瀹冭璐︽埛鍙樺緱鏇村彲棰勬湡銆?/li></ul>
-<p>绾寔鑲℃渶闅惧彈鐨勫湴鏂瑰湪浜庯細</p>
-<ul><li>鍚戜笂褰撶劧寰堝ソ锛?/li><li>浣嗗悜涓嬬悊璁轰笂浣犲緱涓€璺悆銆?/li></ul>
-<p>Protective Put 铏界劧涔熻兘瑙ｅ喅杩欎釜闂锛屼絾瀹冩湁鏃跺お璐点€?/p>
-<p>Collar 鐨勫ソ澶勫湪浜庯細</p>
-<ul><li>浣犱笉涓€瀹氶浂鎴愭湰锛?/li><li>浣嗚嚦灏戣兘鎶婁笅鏂规渶闅剧湅鐨勭粨鏋滃厛妗嗕綇锛?/li><li>鍚屾椂淇濊垂鍘嬪姏姣斿崟鐙拱 Put 灏忓緢澶氥€?/li></ul>
-<p>鎵€浠ュ畠鏈€閫傚悎鐨勪笉鏄偅绉嶆兂璧氭瀬闄愬埄娑︾殑浜猴紝鑰屾槸閭ｇ锛?/p>
-<ul><li>鎴戝凡缁忔湁浠撲綅锛?/li><li>鎴戜笉鎯冲崠锛?/li><li>浣嗘垜涔熶笉鎯崇户缁棤闄愯８闇插湪涓嬭穼閲岋紱</li><li>鎴戞効鎰忔嬁涓€閮ㄥ垎鏈潵涓婃定绌洪棿鎹㈠畨鍏ㄦ劅銆?/li></ul>
-<p>杩欏氨鏄?Collar 鐨勭湡姝ｇ敤鎴风敾鍍忋€?/p>
-<h1>鍥涖€丯o Cost Collar 鍚捣鏉ュ緢棣欙紝浣嗕綘瑕佺煡閬撯€滃厤璐光€濆埌搴曟槸鎬庝箞鏉ョ殑</h1>
-<h2>17.7 鎵€璋?No Cost锛屼笉鏄病鏈変唬浠凤紝鑰屾槸鈥滅幇閲戝噣鏀嚭鎺ヨ繎 0鈥?/h2>
-<p>鍥剧墖閲屼笓闂ㄦ彁鍒颁竴涓緢瀹规槗璁╀汉璇細鐨勮瘝锛?/p>
+<p>只是这次，它们不是分开讲，而是组合成一个更现实的“持仓保护方案”。</p>
+<p>图片里专门把这件事点了出来，这一点特别好。因为它能帮你把 Collar 从“新策略”翻回“旧积木拼法”：</p>
+<ul><li>Put 这条腿，负责保护；</li><li>Call 这条腿，负责补贴成本；</li><li>正股本体，仍然是核心仓位。</li></ul>
+<p>所以这章不是突然跳出一个新世界，而是在告诉你：</p>
+<blockquote><p><strong>高阶策略很多时候并不是新动物，而是旧部件重新拼装。</strong></p></blockquote>
+<h2>17.4 一个标准例子：145 / 155 Collar，到底在干什么</h2>
+<p>图片里给了一个非常好的标准例子，我们就按它来讲。</p>
+<p>假设你手里有：</p>
+<ul><li>100 股苹果；</li><li>当前股价 150。</li></ul>
+<p>你现在做一个 Collar：</p>
+<ul><li>买 145 Put；</li><li>卖 155 Call；</li><li>两边期权费刚好差不多，比如都在 3 左右。</li></ul>
+<p>这时候会发生什么？</p>
+<h3>145 Put 在做什么</h3>
+<p>它是在说：</p>
+<ul><li>如果苹果往下跌得比较厉害，</li><li>到了 145 以下，你开始有明显保护。</li></ul>
+<p>换句话说，它在给你下方画一条“不要再太惨”的线。</p>
+<h3>155 Call 在做什么</h3>
+<p>它是在说：</p>
+<ul><li>如果苹果往上涨到 155 以上，</li><li>你后面更高的收益就不会完整保留了；</li><li>因为你把那一段上涨的一部分让出去了。</li></ul>
+<p>所以这个 Collar 整体上表达的意思就是：</p>
+<blockquote><p><strong>145 以下，我不想再太惨；155 以上，我也接受不再无限赚。中间这块区间，我继续正常持股。</strong></p></blockquote>
+<p>这就是 Collar 最核心的风险改造。</p>
+<h1>三、Collar 的收益图到底在表达什么</h1>
+<h2>17.5 先把图翻成人话：中间像持股，两头被修掉</h2>
+<p>如果你看图片里的收益图，会发现它很像一条被修剪过的持股收益线。</p>
+<p>为什么这么说？</p>
+<p>因为：</p>
+<h3>中间区间</h3>
+<p>也就是 Put 行权价和 Call 行权价之间的那一段。</p>
+<p>在这段区间里：</p>
+<ul><li>你整体上还是很像在持有股票；</li><li>股价涨一点，你账户也会跟着涨；</li><li>股价跌一点，你账户也会跟着跌；</li><li>只是期权费会让整体位置略微上移或下移一点。</li></ul>
+<h3>下方区间</h3>
+<p>也就是跌破 Put 行权价之后。</p>
+<p>这时候 Put 开始真正发挥保护作用：</p>
+<ul><li>股价继续往下掉；</li><li>Put 的价值上来；</li><li>你的总损失不会再像纯持股那样无限扩大。</li></ul>
+<p>所以图片里才会表现成：</p>
+<ul><li>左边那条线不再一直往下掉，</li><li>而是开始“变平”。</li></ul>
+<h3>上方区间</h3>
+<p>也就是涨过 Call 行权价之后。</p>
+<p>这时候卖出的 Call 开始真正拖住你：</p>
+<ul><li>股价继续往上冲；</li><li>你正股当然还在涨；</li><li>但卖出去的 Call 会把那部分额外上涨吃掉一部分。</li></ul>
+<p>所以图片右边也会出现：</p>
+<ul><li>上方不再无限打开，</li><li>而是开始“变平”。</li></ul>
+<p>如果把这张图压成一句最简单的人话，就是：</p>
+<blockquote><p><strong>Collar 像把一条本来无限上下打开的持股曲线，左右各修掉一截。</strong></p></blockquote>
+<p>这句话一定要记住。</p>
+<h2>17.6 Collar 的最大好处：把“最难看的结果”先画出来</h2>
+<p>很多人喜欢 Collar，不是因为它最赚钱，而是因为：</p>
+<ul><li>它让账户变得更可预期。</li></ul>
+<p>纯持股最难受的地方在于：</p>
+<ul><li>向上当然很好；</li><li>但向下理论上你得一路吃。</li></ul>
+<p>Protective Put 虽然也能解决这个问题，但它有时太贵。</p>
+<p>Collar 的好处在于：</p>
+<ul><li>你不一定零成本；</li><li>但至少能把下方最难看的结果先框住；</li><li>同时保费压力比单独买 Put 小很多。</li></ul>
+<p>所以它最适合的不是那种想赚极限利润的人，而是那种：</p>
+<ul><li>我已经有仓位；</li><li>我不想卖；</li><li>但我也不想继续无限裸露在下跌里；</li><li>我愿意拿一部分未来上涨空间换安全感。</li></ul>
+<p>这就是 Collar 的真正用户画像。</p>
+<h1>四、No Cost Collar 听起来很香，但你要知道“免费”到底是怎么来的</h1>
+<h2>17.7 所谓 No Cost，不是没有代价，而是“现金净支出接近 0”</h2>
+<p>图片里专门提到一个很容易让人误会的词：</p>
 <ul><li><strong>No Cost Collar</strong></li></ul>
-<p>寰堝浜虹涓€娆″惉浼氳浠ヤ负锛?/p>
-<ul><li>鍝︼紝杩欎笉灏辨槸鍏嶈垂淇濇姢鍚楋紵</li></ul>
-<p>涓嶆槸銆?/p>
-<p>鏇村噯纭殑鐞嗚В鏄細</p>
-<blockquote><p><strong>浣犲崠 Call 鏀跺埌鐨勯挶锛屽樊涓嶅鎶婁綘涔?Put 鑺辩殑閽辨姷鎺変簡锛屾墍浠ヤ粠鐜伴噾娴佷笂鐪嬶紝鍑€鏀嚭鎺ヨ繎 0銆?/strong></p></blockquote>
-<p>涔熷氨鏄锛?/p>
-<ul><li>涓嶆槸娌℃湁浠ｄ环锛?/li><li>鑰屾槸浠ｄ环娌℃湁浠モ€滅幇閲戝啀鎺忓嚭鍘烩€濈殑褰㈠紡鍑虹幇銆?/li></ul>
-<p>鐪熸鐨勪唬浠锋槸浠€涔堬紵</p>
-<p>褰撶劧杩樻槸锛?/p>
-<ul><li>浣犳妸涓婃柟绌洪棿璁╁嚭鍘讳簡銆?/li></ul>
-<p>鎵€浠?No Cost Collar 搴旇杩欐牱鐞嗚В锛?/p>
-<h3>瀹冣€滃厤璐光€濈殑鍦版柟</h3>
-<ul><li>浣犱拱 Put 鐨勭幇閲戞垚鏈鍗?Call 鐨勬敹鍏ュ啿鎺変簡銆?/li></ul>
-<h3>瀹冣€滀笉鍏嶈垂鈥濈殑鍦版柟</h3>
-<ul><li>浣犵壓鐗蹭簡鏈潵缁х画涓婃定鐨勯偅閮ㄥ垎鎯宠薄绌洪棿銆?/li></ul>
-<p>鎵€浠ュ畠涓嶆槸榄旀硶锛岃€屽彧鏄妸鎴愭湰浠庯細</p>
-<ul><li>鈥滅洿鎺ヨ姳閽变拱淇濇姢鈥?/li></ul>
-<p>鏀规垚浜嗭細</p>
-<ul><li>鈥滆鎺変竴閮ㄥ垎鏈潵鏀剁泭锛屾崲淇濇姢鈥濄€?/li></ul>
-<p>杩欐墠鏄瘹瀹炵殑璁叉硶銆?/p>
-<h1>浜斻€佷粈涔堟椂鍊欑壒鍒€傚悎鐢?Collar</h1>
-<h2>17.8 鍦烘櫙涓€锛氭垜鏈潵鎯崇敤 Protective Put 瀵瑰啿锛屼絾鎴戝珜瀹冨お璐?/h2>
-<p>鍥剧墖閲岀涓€涓娇鐢ㄥ満鏅啓寰楀緢娓呮锛岃繖涔熸槸鏈€甯歌鐨勫満鏅€?/p>
-<p>浣犲績閲屽彲鑳芥槸杩欐牱鎯崇殑锛?/p>
-<ul><li>鎴戠‘瀹炴兂淇濇姢涓€涓嬶紱</li><li>鎴戜篃涓嶆兂鍗栨帀姝ｈ偂锛?/li><li>浣嗗崟鐙拱 Put 澶倝鐤间簡銆?/li></ul>
-<p>杩欐椂鍊?Collar 灏辩壒鍒悎鐞嗐€?/p>
-<p>鍥犱负瀹冭浣犲仛鍒帮細</p>
-<ul><li>涓嬫柟淇濇姢杩樺湪锛?/li><li>鍙槸娌￠偅涔堚€滃ア渚堚€濓紱</li><li>涓婃柟鏀剁泭灏佹帀涓€閮ㄥ垎锛屾嬁鏉ヨˉ璐?Put 鎴愭湰銆?/li></ul>
-<p>鎵€浠ュ杩欑浜烘潵璇达紝Collar 鐨勪环鍊间笉鏄細</p>
-<ul><li>鏈€鐚涳紱</li><li>鏈€璧氾紱</li></ul>
-<p>鑰屾槸锛?/p>
-<blockquote><p><strong>缁堜簬鑳戒拱寰楄捣杩欎唤淇濇姢銆?/strong></p></blockquote>
-<p>寰堝鐪熷疄璐︽埛鐢?Collar锛屽氨鏄湪鍋氳繖浠朵簨銆?/p>
-<h2>17.9 鍦烘櫙浜岋細涓嶆槸鍙鍐蹭竴鍙偂绁紝鑰屾槸鍋?Beta Hedging</h2>
-<p>鍥剧墖閲岀浜屼釜浣跨敤鍦烘櫙鐗瑰埆鏈夋剰鎬濓紝鑰屼笖姣旀櫘閫氭暀鏉愯寰楁洿鎺ヨ繎鐪熷疄璐︽埛銆?/p>
-<p>瀹冩彁鍒帮細</p>
+<p>很多人第一次听会误以为：</p>
+<ul><li>哦，这不就是免费保护吗？</li></ul>
+<p>不是。</p>
+<p>更准确的理解是：</p>
+<blockquote><p><strong>你卖 Call 收到的钱，差不多把你买 Put 花的钱抵掉了，所以从现金流上看，净支出接近 0。</strong></p></blockquote>
+<p>也就是说：</p>
+<ul><li>不是没有代价；</li><li>而是代价没有以“现金再掏出去”的形式出现。</li></ul>
+<p>真正的代价是什么？</p>
+<p>当然还是：</p>
+<ul><li>你把上方空间让出去了。</li></ul>
+<p>所以 No Cost Collar 应该这样理解：</p>
+<h3>它“免费”的地方</h3>
+<ul><li>你买 Put 的现金成本被卖 Call 的收入冲掉了。</li></ul>
+<h3>它“不免费”的地方</h3>
+<ul><li>你牺牲了未来继续上涨的那部分想象空间。</li></ul>
+<p>所以它不是魔法，而只是把成本从：</p>
+<ul><li>“直接花钱买保护”</li></ul>
+<p>改成了：</p>
+<ul><li>“让掉一部分未来收益，换保护”。</li></ul>
+<p>这才是诚实的讲法。</p>
+<h1>五、什么时候特别适合用 Collar</h1>
+<h2>17.8 场景一：我本来想用 Protective Put 对冲，但我嫌它太贵</h2>
+<p>图片里第一个使用场景写得很清楚，这也是最常见的场景。</p>
+<p>你心里可能是这样想的：</p>
+<ul><li>我确实想保护一下；</li><li>我也不想卖掉正股；</li><li>但单独买 Put 太肉疼了。</li></ul>
+<p>这时候 Collar 就特别合理。</p>
+<p>因为它让你做到：</p>
+<ul><li>下方保护还在；</li><li>只是没那么“奢侈”；</li><li>上方收益封掉一部分，拿来补贴 Put 成本。</li></ul>
+<p>所以对这种人来说，Collar 的价值不是：</p>
+<ul><li>最猛；</li><li>最赚；</li></ul>
+<p>而是：</p>
+<blockquote><p><strong>终于能买得起这份保护。</strong></p></blockquote>
+<p>很多真实账户用 Collar，就是在做这件事。</p>
+<h2>17.9 场景二：不是只对冲一只股票，而是做 Beta Hedging</h2>
+<p>图片里第二个使用场景特别有意思，而且比普通教材讲得更接近真实账户。</p>
+<p>它提到：</p>
 <ul><li><strong>Beta Hedging</strong></li></ul>
-<p>浠€涔堟剰鎬濓紵</p>
-<p>浜鸿瘽璁插氨鏄細</p>
-<blockquote><p><strong>鎴戜笉涓€瀹氭槸鎬曟煇鍙釜鑲℃毚闆凤紝鎴戞洿鎬曟暣涓競鍦虹郴缁熸€у洖鎾わ紝鎵€浠ユ垜瑕佺粰缁勫悎鏁翠綋瑁呬竴涓鍐层€?/strong></p></blockquote>
-<p>姣斿锛?/p>
-<ul><li>浣犳墜閲屾寔鏈夊緢澶氱鎶€鑲★紱</li><li>浣犳€曠殑鏄ぇ鐩樻垨鑰呯鎶€鏉垮潡鏁翠綋鍥炴挙锛?/li><li>杩欐椂浣犱笉涓€瀹氳涓€鍙竴鍙偂绁ㄥ垎鍒幓鍋?Collar锛?/li><li>浣犱篃鍙互鑰冭檻鐢ㄦ洿浠ｈ〃绯荤粺椋庨櫓鐨勬爣鐨勬潵鍋氥€?/li></ul>
-<p>鍥剧墖閲岀粰寰楀緢鍏蜂綋锛?/p>
-<ul><li>鎯冲鍐插ぇ鐩樼郴缁熸€ч闄╋紝鍙互鐪?<strong>SPY</strong>锛?/li><li>绉戞妧鑲′粨浣嶇壒鍒噸锛屽彲浠ョ湅 <strong>QQQ</strong>銆?/li></ul>
-<p>杩欒鏄庝粈涔堬紵</p>
-<p>璇存槑 Collar 涓嶄竴瀹氬彧鏄竴鍙偂绁ㄧ骇鍒殑鎿嶄綔锛屽畠涔熷彲浠ユ槸缁勫悎灞傞潰鐨勫姩浣溿€?/p>
-<p>杩欎竴涓嬶紝绛栫暐灏变粠鈥滃崟绁ㄦ妧宸р€濆崌绾ф垚鈥滅粍鍚堢鐞嗗伐鍏封€濅簡銆?/p>
-<p>杩欑偣闈炲父鍊奸挶銆?/p>
-<h1>鍏€丱TM Collar 鍜?ATM Collar锛屽埌搴曞湪閫変粈涔?/h1>
-<h2>17.10 鍚屾牱閮芥槸 Collar锛屼絾瀵瑰啿寮哄害鍙互瀹屽叏涓嶅悓</h2>
-<p>鍥剧墖閲屾湁涓€鍧楅潪甯搁噸瑕侊細</p>
+<p>什么意思？</p>
+<p>人话讲就是：</p>
+<blockquote><p><strong>我不一定是怕某只个股暴雷，我更怕整个市场系统性回撤，所以我要给组合整体装一个对冲。</strong></p></blockquote>
+<p>比如：</p>
+<ul><li>你手里持有很多科技股；</li><li>你怕的是大盘或者科技板块整体回撤；</li><li>这时你不一定要一只一只股票分别去做 Collar；</li><li>你也可以考虑用更代表系统风险的标的来做。</li></ul>
+<p>图片里给得很具体：</p>
+<ul><li>想对冲大盘系统性风险，可以看 <strong>SPY</strong>；</li><li>科技股仓位特别重，可以看 <strong>QQQ</strong>。</li></ul>
+<p>这说明什么？</p>
+<p>说明 Collar 不一定只是一只股票级别的操作，它也可以是组合层面的动作。</p>
+<p>这一下，策略就从“单票技巧”升级成“组合管理工具”了。</p>
+<p>这点非常值钱。</p>
+<h1>六、OTM Collar 和 ATM Collar，到底在选什么</h1>
+<h2>17.10 同样都是 Collar，但对冲强度可以完全不同</h2>
+<p>图片里有一块非常重要：</p>
 <ul><li><strong>OTM Collar vs ATM Collar</strong></li></ul>
-<p>杩欏潡濡傛灉璁茶櫄浜嗭紝璇昏€呭氨鍙細璁板悕瀛椼€傛垜浠妸瀹冭鎴愪汉璇濄€?/p>
+<p>这块如果讲虚了，读者就只会记名字。我们把它讲成人话。</p>
 <h3>OTM Collar</h3>
-<p>鎰忔€濋€氬父鏄細</p>
-<ul><li>Put 涔板緱娌￠偅涔堣繎锛?/li><li>Call 鍗栧緱涔熸病閭ｄ箞杩戯紱</li><li>涓ゆ潯鑵跨褰撳墠鑲′环绋嶅井杩滀竴鐐广€?/li></ul>
-<p>杩欎細甯︽潵浠€涔堟晥鏋滐紵</p>
-<ul><li>涓嬫柟淇濇姢娌℃湁閭ｄ箞婵€杩涳紱</li><li>涓婃柟绌洪棿涔熶繚鐣欏緱鏇村锛?/li><li>涓棿鍙椿鍔ㄧ┖闂存洿瀹姐€?/li></ul>
-<p>鎵€浠?OTM Collar 鏇村儚锛?/p>
-<blockquote><p><strong>鎴戞兂淇濇姢锛屼絾鎴戝張涓嶆兂涓€涓嬫妸鑷繁缁戝緱澶銆?/strong></p></blockquote>
+<p>意思通常是：</p>
+<ul><li>Put 买得没那么近；</li><li>Call 卖得也没那么近；</li><li>两条腿离当前股价稍微远一点。</li></ul>
+<p>这会带来什么效果？</p>
+<ul><li>下方保护没有那么激进；</li><li>上方空间也保留得更多；</li><li>中间可活动空间更宽。</li></ul>
+<p>所以 OTM Collar 更像：</p>
+<blockquote><p><strong>我想保护，但我又不想一下把自己绑得太死。</strong></p></blockquote>
 <h3>ATM Collar</h3>
-<p>鎰忔€濋€氬父鏄細</p>
-<ul><li>Put 寰堣创杩戝綋鍓嶈偂浠凤紱</li><li>Call 涔熷緢璐磋繎褰撳墠鑲′环锛?/li><li>涓ゆ潯鑵挎洿闈犺繎鐜板湪鐨勪綅缃€?/li></ul>
-<p>杩欎細甯︽潵浠€涔堟晥鏋滐紵</p>
-<ul><li>涓嬫柟淇濇姢鏇村己锛?/li><li>涓婃柟绌洪棿涔熶細琚帇寰楁洿鐙狅紱</li><li>鏁翠綋鏇村儚鈥滃己瀵瑰啿妯″紡鈥濄€?/li></ul>
-<p>鎵€浠?ATM Collar 鏇村儚锛?/p>
-<blockquote><p><strong>鎴戣繖娆′富瑕佺洰鏍囦笉鏄户缁禋澶ч挶锛岃€屾槸鎶婄郴缁熸€ч闄╁厛鍘嬩綇銆?/strong></p></blockquote>
-<p>杩欏氨鏄浘鐗囬噷閭ｅ彞寰堝€奸挶鐨勮瘽锛?/p>
-<ul><li>鍚屼竴涓瓥鐣ワ紝瀵瑰啿寮哄害鍙互瀹屽叏涓嶅悓銆?/li></ul>
-<p>涓嶆槸 Collar 鍙湁涓€绉嶏紝鑰屾槸浣犲湪鐢ㄤ袱鏉¤吙鐨勪綅缃紝鍐冲畾浣犲埌搴曟兂澶氬己鐨勪繚鎶ゃ€佷繚鐣欏灏戜笂娑ㄧ┖闂淬€?/p>
-<h2>17.11 鍥剧墖閲岃繕鏈変竴涓壒鍒疄鐢ㄧ殑鎻愰啋锛氱湡姝ｆ牳蹇冨線寰€鏄?Put 琛屾潈浠风殑閫夋嫨锛岃€屼笉鍙槸 Call</h2>
-<p>杩欎竴鐐瑰緢瀹规槗琚拷鐣ャ€?/p>
-<p>寰堝浜哄仛 Collar 鏃讹紝娉ㄦ剰鍔涘叏鏀惧湪锛?/p>
-<ul><li>鎴戣鍗栧杩滅殑 Call锛?/li></ul>
-<p>褰撶劧杩欎釜涔熼噸瑕併€?/p>
-<p>浣嗗浘鐗囬噷寮鸿皟寰楀緢瀵癸細</p>
-<blockquote><p><strong>鏍稿績寰€寰€鏄?Put 琛屾潈浠风殑閫夋嫨銆?/strong></p></blockquote>
-<p>涓轰粈涔堬紵</p>
-<p>鍥犱负 Put 鍐冲畾鐨勬槸锛?/p>
-<ul><li>浣犱粠鍝噷寮€濮嬬湡姝ｅ緱鍒颁繚鎶わ紱</li><li>浣犲埌搴曞湪闃插皬璺屻€佷腑璺岋紝杩樻槸鍙槻澶ц穼锛?/li><li>浣犳効鎰忎负杩欎釜淇濇姢浠樺嚭澶氬ぇ浠ｄ环銆?/li></ul>
-<p>鑰?Call 鏇村鏄湪璋冭妭锛?/p>
-<ul><li>鎴戞嬁浠€涔堝幓琛ヨ繖浠芥垚鏈紱</li><li>鎴戞効鎰忚鍑哄灏戜笂鏂圭┖闂淬€?/li></ul>
-<p>鎵€浠ユ垚鐔熷仛 Collar 鐨勬€濊矾涓嶆槸锛?/p>
-<ul><li>鍏堟兂鍗栧摢涓?Call 鏈€鍒掔畻锛?/li></ul>
-<p>鑰屾槸锛?/p>
-<ul><li>鎴戝埌搴曟兂鎶婂摢涓€娈典笅鏂归闄╁垏鎺夛紱</li><li>鐒跺悗鍐嶇湅鍗栧摢涓?Call 鏉ュ钩琛℃垚鏈€?/li></ul>
-<p>杩欐墠鏄富娆￠『搴忋€?/p>
-<h1>涓冦€丆ollar 鐨勫疄鎿嶆敞鎰忎簨椤癸紝杩欓噷蹇呴』璁插緱闈炲父鍏蜂綋</h1>
-<h2>17.12 娉ㄦ剰浜嬮」涓€锛氬厛纭浣犵湡鐨勫€煎緱淇濇姢杩欏彧鑲＄エ</h2>
-<p>鍥剧墖閲屾彁鍒帮細</p>
-<ul><li>姝ｈ偂锛氶噸瑕佹爣鐨勶紙鑷冲皯 100 鑲★級</li></ul>
-<p>杩欏彞璇濈壒鍒湸绱狅紝浣嗗緢閲嶈銆?/p>
-<p>涓嶈鎷夸竴鍙細</p>
-<ul><li>浣犳湰鏉ュ氨涓嶆兂闀挎湡鎸佹湁锛?/li><li>鍙槸鐭嚎鎽镐竴鎶婏紱</li><li>鎴栬€呮祦鍔ㄦ€у緢宸殑灏忕エ锛?/li></ul>
-<p>鍘诲仛鐗瑰埆瀹屾暣鐨?Collar銆?/p>
-<p>鍥犱负 Collar 鐨勫墠鎻愭槸锛?/p>
-<ul><li>浣犳墜閲岃繖涓粨浣嶅€煎緱淇濇姢锛?/li><li>浣犱笉鏄墦绠楅┈涓婃墧鎺夊畠锛?/li><li>浣犳槸鎯崇户缁繚鐣欙紝浣嗘兂鎶婇闄╂敼閫犱竴涓嬨€?/li></ul>
-<p>鎵€浠ュ畠鏇撮€傚悎锛?/p>
-<ul><li>鏍稿績浠撲綅锛?/li><li>闀挎湡鐪嬪ソ鐨勬鑲★紱</li><li>鎴栬€呴渶瑕侀樁娈垫€т繚鎶ょ殑澶т粨浣嶃€?/li></ul>
-<h2>17.13 娉ㄦ剰浜嬮」浜岋細鍒版湡鏃ヤ笉鏄殢渚块€夛紝鑰屾槸鍦ㄩ€変綘鎯充繚鎶ゅ涔?/h2>
-<p>鍥剧墖閲屾妸杩欎竴鐐瑰啓寰楀緢娓呮锛?/p>
-<ul><li>鍒版湡鏃?= 鎯宠鐨勫鍐叉椂闂淬€?/li></ul>
-<p>杩欏彞璇濈炕鎴愪汉璇濋潪甯哥畝鍗曪細</p>
-<ul><li>浣犱笉鏄湪鈥滈€変竴涓ソ鐪嬬殑鏃ユ湡鈥濓紱</li><li>浣犳槸鍦ㄩ€夛細鎴戝埌搴曟兂淇濇姢杩欐椋庨櫓澶氫箙銆?/li></ul>
-<p>姣斿锛?/p>
-<h3>鍙€曚竴涓緢杩戠殑浜嬩欢</h3>
-<ul><li>姣斿璐㈡姤銆佷細璁€佹斂绛栬妭鐐癸紱</li><li>閭ｅ氨涓嶉渶瑕佷拱寰堥暱鐨勫埌鏈熴€?/li></ul>
-<h3>浣犳€曠殑鏄洿鎸佺画鐨勪竴娈靛競鍦轰笉绋?/h3>
-<ul><li>閭ｅ氨瑕佽€冭檻鏇撮暱涓€鐐圭殑鏃堕棿瑕嗙洊銆?/li></ul>
-<p>鎵€浠?Collar 鐨勫埌鏈熸棩锛屾湰璐ㄤ笂涓嶆槸鎶€鏈弬鏁帮紝鑰屾槸浣犵殑椋庨櫓绐楀彛銆?/p>
-<h2>17.14 娉ㄦ剰浜嬮」涓夛細涓ゆ潯鑵跨褰撳墠鑲′环瓒婅繎锛屽鍐茶秺寮猴紝浣嗕笂鏂瑰氨瓒婂皯</h2>
-<p>鍥剧墖閲岀粰浜嗕竴鍙ョ壒鍒€傚悎鐩存帴璁板繂鐨勮瘽锛?/p>
-<ul><li>瓒婅繎 = 瀵瑰啿瓒婂己锛屼笂娑ㄨ秺灏?/li><li>瓒婅繙 = 瀵瑰啿瓒婂急锛屼笂娑ㄨ秺澶?/li></ul>
-<p>杩欐槸 Collar 鏈€濂借銆佷篃鏈€瀹炵敤鐨勪竴鏉¤寰嬨€?/p>
-<p>浣犱互鍚庡彧瑕佽浣忥細</p>
-<blockquote><p><strong>鑵挎敹寰楄秺绱э紝淇濇姢瓒婂己锛岃嚜鐢辫秺灏戯紱鑵挎斁寰楄秺瀹斤紝淇濇姢瓒婂急锛岃嚜鐢辫秺澶氥€?/strong></p></blockquote>
-<p>杩欏彞璇濅竴璁颁綇锛孫TM / ATM 閭ｄ簺鍏蜂綋鎼硶灏遍兘瀹规槗鐞嗚В浜嗐€?/p>
-<h2>17.15 娉ㄦ剰浜嬮」鍥涳細Collar 涓嶆槸鎷挎潵姘镐箙鎸佹湁鐨?/h2>
-<p>鍥剧墖閲岀洿鎺ュ啓浜嗕竴鍙ュ緢纭殑璇濓細</p>
-<ul><li><strong>涓嶅彲闀挎寔锛屽洜涓洪檺鍒舵敹鐩娿€?/strong></li></ul>
-<p>杩欏彞璇濇垜瑙夊緱鐗瑰埆鍊煎緱淇濈暀銆?/p>
-<p>涓轰粈涔堬紵</p>
-<p>鍥犱负寰堝浜轰竴鐪嬪埌鈥滄湁淇濇姢鈥濓紝灏卞鏄撴湰鑳藉湴瑙夊緱锛?/p>
-<ul><li>閭ｆ垜涓€鐩村鐫€涓嶅氨琛屼簡鍚楋紵</li></ul>
-<p>涓嶈銆?/p>
-<p>Collar 鐨勬湰璐ㄦ槸闃舵鎬ч闄╃鐞嗗伐鍏凤紝涓嶆槸姘镐箙褰㈡€併€?/p>
-<p>鍥犱负浣犱竴鏃﹂暱鏈熷鐫€锛?/p>
-<ul><li>姣忔甯傚満鐪熸澶ф定锛屼綘閮戒細琚崱浣忎竴閮ㄥ垎涓婃柟锛?/li><li>浣犵殑闀挎湡澶嶅埄鑳藉姏浼氳鍙嶅鎵撴姌锛?/li><li>浣犱細閫愭笎鍙戠幇鑷繁濂藉儚鏃㈡病瀹屽叏浜彈鑲℃潈涓婃定锛屽張涓€鐩村湪鍋氶檺鍒舵敹鐩婄殑鍔ㄤ綔銆?/li></ul>
-<p>鎵€浠ュ畠鏇村儚锛?/p>
-<blockquote><p><strong>闃舵鎬х┛闆ㄨ。</strong></p></blockquote>
-<p>鑰屼笉鏄細</p>
-<blockquote><p><strong>姘歌繙绌跨潃鍘氱洈鐢茬敓娲汇€?/strong></p></blockquote>
-<p>杩欐瘮鍠诲緢鍦燂紝浣嗗緢鍑嗐€?/p>
-<h2>17.16 娉ㄦ剰浜嬮」浜旓細鍚庣画澶勭悊鐗瑰埆閲嶈鈥斺€斿钩浠撱€佺户缁繚鎶ゃ€佽繕鏄?Roll</h2>
-<p>鍥剧墖鏈€鍚庤繖閮ㄥ垎闈炲父瀹炴垬锛屾垜鐩存帴缈绘垚浜鸿瘽銆?/p>
-<p>濡傛灉浣犲仛浜?Collar锛屽悗闈㈤€氬父浼氶潰涓村嚑绉嶅鐞嗭細</p>
-<h3>鎯呭喌 1锛氬鍐茬洰鐨勫凡缁忚揪鍒?/h3>
-<p>姣斿锛?/p>
-<ul><li>璐㈡姤杩囦簡锛?/li><li>椋庨櫓绐楀彛杩囧幓浜嗭紱</li><li>浣犱笉鍐嶉渶瑕佽繖涔堝己淇濇姢銆?/li></ul>
-<p>杩欐椂鍊欐瘮杈冨父瑙佺殑鍔ㄤ綔鏄細</p>
-<ul><li>鎶婁袱鏉℃湡鏉冭吙涓€璧峰钩鎺夛紱</li><li>鍙繚鐣欐鑲°€?/li></ul>
-<h3>鎯呭喌 2锛氶闄╄繕娌＄粨鏉燂紝浣嗗揩鍒版湡浜?/h3>
-<p>杩欐椂鍊欎綘鍙兘闇€瑕侊細</p>
-<ul><li><strong>Roll</strong> 涓ゆ潯鑵匡紱</li><li>鎶婁繚鎶ゆ椂闂村線鍚庡欢銆?/li></ul>
-<h3>鎯呭喌 3锛氳鎯呭凡缁忓ぇ骞呭彉鍖栵紝鍘熸潵鐨勮吙浣嶇疆涓嶅悎閫備簡</h3>
-<p>杩欐椂鍊欎篃鍙兘闇€瑕佽皟鏁达細</p>
-<ul><li>閲嶆柊璁惧畾 Put 浣嶇疆锛?/li><li>閲嶆柊璁惧畾 Call 浣嶇疆锛?/li><li>璁╀繚鎶ゅ己搴﹂噸鏂板尮閰嶄綘鐜板湪鐨勯闄╁垽鏂€?/li></ul>
-<p>鎵€浠?Collar 涓嶆槸鈥滃涓婂氨涓嶇鈥濓紝鑰屾槸锛?/p>
-<blockquote><p><strong>瀹冩槸涓€涓樁娈垫€ч闄╁伐绋嬶紝闇€瑕佸悗缁鐞嗐€?/strong></p></blockquote>
-<p>杩欑偣闈炲父閲嶈銆?/p>
-<h1>鍏€佹湰绔犲皬缁擄細Collar 涓嶆槸涓轰簡鏇磋禋锛岃€屾槸涓轰簡璁┾€滄嬁鐫€鑲＄エ鈥濊繖浠朵簨鏇村彲鎵垮彈</h1>
-<p>杩欎竴绔犲鏋滆鍘嬫垚鏈€閲嶈鐨勫嚑鍙ヨ瘽锛屾垜甯屾湜浣犺浣忚繖浜涳細</p>
-<ul><li>Collar = 鎸佽偂 + 涔?Put + 鍗?Call锛?/li><li>瀹冩湰璐ㄤ笂灏辨槸锛?strong>Protective Put + Covered Call</strong>锛?/li><li>瀹冩渶鏍稿績鐨勯€昏緫鏄細</li><li><strong>璁╁嚭涓€閮ㄥ垎涓婃柟鏀剁泭锛屾崲鏇翠究瀹滅殑涓嬫柟淇濇姢</strong>锛?/li><li>No Cost Collar 涓嶆槸鍏嶈垂锛屽彧鏄幇閲戝噣鏀嚭鎺ヨ繎 0锛岀湡瀹炰唬浠锋槸涓婃柟绌洪棿锛?/li><li>OTM Collar 鏇村鏉撅紝淇濈暀鏇村涓婃定锛屼絾淇濇姢寮变竴鐐癸紱</li><li>ATM Collar 瀵瑰啿鏈€寮猴紝浣嗗嚑涔庢妸涓婃定绌洪棿鍘嬪緱寰堢揣锛?/li><li>鐪熸鐨勬牳蹇冨線寰€鏄細</li><li>鎴戞兂浠庡摢涓€娈靛紑濮嬩繚鎶わ紱</li><li>鎴戞効鎰忚鎺夊灏戜笂鏂圭┖闂存潵鎹㈣繖浠戒繚鎶わ紱</li><li>Collar 涓嶆槸姘镐箙鐩旂敳锛屾洿鍍忛樁娈垫€ч洦琛ｏ紱</li><li>鍋氬畬涔嬪悗锛屽悗缁钩浠撱€佺户缁繚鎶ゃ€佽繕鏄?Roll锛屽悓鏍烽噸瑕併€?/li></ul>
-<p>濡傛灉鎶婅繖绔犲帇鎴愪竴鍙ョ湡姝ｅ€奸挶鐨勮瘽锛岄偅灏辨槸锛?/p>
-<blockquote><p><strong>Collar 涓嶆槸涓轰簡鏇磋禋锛岃€屾槸涓轰簡璁┾€滅户缁寔鏈夎繖鍙偂绁ㄢ€濊繖浠朵簨鍙樺緱鏇存湁杈圭晫銆佹洿鍙壙鍙椼€?/strong></p></blockquote>
-<p>杩欏氨鏄畠鏈€鐪熷疄鐨勪环鍊笺€?/p>
+<p>意思通常是：</p>
+<ul><li>Put 很贴近当前股价；</li><li>Call 也很贴近当前股价；</li><li>两条腿更靠近现在的位置。</li></ul>
+<p>这会带来什么效果？</p>
+<ul><li>下方保护更强；</li><li>上方空间也会被压得更狠；</li><li>整体更像“强对冲模式”。</li></ul>
+<p>所以 ATM Collar 更像：</p>
+<blockquote><p><strong>我这次主要目标不是继续赚大钱，而是把系统性风险先压住。</strong></p></blockquote>
+<p>这就是图片里那句很值钱的话：</p>
+<ul><li>同一个策略，对冲强度可以完全不同。</li></ul>
+<p>不是 Collar 只有一种，而是你在用两条腿的位置，决定你到底想多强的保护、保留多少上涨空间。</p>
+<h2>17.11 图片里还有一个特别实用的提醒：真正核心往往是 Put 行权价的选择，而不只是 Call</h2>
+<p>这一点很容易被忽略。</p>
+<p>很多人做 Collar 时，注意力全放在：</p>
+<ul><li>我要卖多远的 Call？</li></ul>
+<p>当然这个也重要。</p>
+<p>但图片里强调得很对：</p>
+<blockquote><p><strong>核心往往是 Put 行权价的选择。</strong></p></blockquote>
+<p>为什么？</p>
+<p>因为 Put 决定的是：</p>
+<ul><li>你从哪里开始真正得到保护；</li><li>你到底在防小跌、中跌，还是只防大跌；</li><li>你愿意为这个保护付出多大代价。</li></ul>
+<p>而 Call 更多是在调节：</p>
+<ul><li>我拿什么去补这份成本；</li><li>我愿意让出多少上方空间。</li></ul>
+<p>所以成熟做 Collar 的思路不是：</p>
+<ul><li>先想卖哪个 Call 最划算；</li></ul>
+<p>而是：</p>
+<ul><li>我到底想把哪一段下方风险切掉；</li><li>然后再看卖哪个 Call 来平衡成本。</li></ul>
+<p>这才是主次顺序。</p>
+<h1>七、Collar 的实操注意事项，这里必须讲得非常具体</h1>
+<h2>17.12 注意事项一：先确认你真的值得保护这只股票</h2>
+<p>图片里提到：</p>
+<ul><li>正股：重要标的（至少 100 股）</li></ul>
+<p>这句话特别朴素，但很重要。</p>
+<p>不要拿一只：</p>
+<ul><li>你本来就不想长期持有；</li><li>只是短线摸一把；</li><li>或者流动性很差的小票；</li></ul>
+<p>去做特别完整的 Collar。</p>
+<p>因为 Collar 的前提是：</p>
+<ul><li>你手里这个仓位值得保护；</li><li>你不是打算马上扔掉它；</li><li>你是想继续保留，但想把风险改造一下。</li></ul>
+<p>所以它更适合：</p>
+<ul><li>核心仓位；</li><li>长期看好的正股；</li><li>或者需要阶段性保护的大仓位。</li></ul>
+<h2>17.13 注意事项二：到期日不是随便选，而是在选你想保护多久</h2>
+<p>图片里把这一点写得很清楚：</p>
+<ul><li>到期日 = 想要的对冲时间。</li></ul>
+<p>这句话翻成人话非常简单：</p>
+<ul><li>你不是在“选一个好看的日期”；</li><li>你是在选：我到底想保护这段风险多久。</li></ul>
+<p>比如：</p>
+<h3>只怕一个很近的事件</h3>
+<ul><li>比如财报、会议、政策节点；</li><li>那就不需要买很长的到期。</li></ul>
+<h3>你怕的是更持续的一段市场不稳</h3>
+<ul><li>那就要考虑更长一点的时间覆盖。</li></ul>
+<p>所以 Collar 的到期日，本质上不是技术参数，而是你的风险窗口。</p>
+<h2>17.14 注意事项三：两条腿离当前股价越近，对冲越强，但上方就越少</h2>
+<p>图片里给了一句特别适合直接记忆的话：</p>
+<ul><li>越近 = 对冲越强，上涨越少</li><li>越远 = 对冲越弱，上涨越多</li></ul>
+<p>这是 Collar 最好记、也最实用的一条规律。</p>
+<p>你以后只要记住：</p>
+<blockquote><p><strong>腿收得越紧，保护越强，自由越少；腿放得越宽，保护越弱，自由越多。</strong></p></blockquote>
+<p>这句话一记住，OTM / ATM 那些具体搭法就都容易理解了。</p>
+<h2>17.15 注意事项四：Collar 不是拿来永久持有的</h2>
+<p>图片里直接写了一句很硬的话：</p>
+<ul><li><strong>不可长持，因为限制收益。</strong></li></ul>
+<p>这句话我觉得特别值得保留。</p>
+<p>为什么？</p>
+<p>因为很多人一看到“有保护”，就容易本能地觉得：</p>
+<ul><li>那我一直套着不就行了吗？</li></ul>
+<p>不行。</p>
+<p>Collar 的本质是阶段性风险管理工具，不是永久形态。</p>
+<p>因为你一旦长期套着：</p>
+<ul><li>每次市场真正大涨，你都会被卡住一部分上方；</li><li>你的长期复利能力会被反复打折；</li><li>你会逐渐发现自己好像既没完全享受股权上涨，又一直在做限制收益的动作。</li></ul>
+<p>所以它更像：</p>
+<blockquote><p><strong>阶段性穿雨衣</strong></p></blockquote>
+<p>而不是：</p>
+<blockquote><p><strong>永远穿着厚盔甲生活。</strong></p></blockquote>
+<p>这比喻很土，但很准。</p>
+<h2>17.16 注意事项五：后续处理特别重要——平仓、继续保护、还是 Roll</h2>
+<p>图片最后这部分非常实战，我直接翻成人话。</p>
+<p>如果你做了 Collar，后面通常会面临几种处理：</p>
+<h3>情况 1：对冲目的已经达到</h3>
+<p>比如：</p>
+<ul><li>财报过了；</li><li>风险窗口过去了；</li><li>你不再需要这么强保护。</li></ul>
+<p>这时候比较常见的动作是：</p>
+<ul><li>把两条期权腿一起平掉；</li><li>只保留正股。</li></ul>
+<h3>情况 2：风险还没结束，但快到期了</h3>
+<p>这时候你可能需要：</p>
+<ul><li><strong>Roll</strong> 两条腿；</li><li>把保护时间往后延。</li></ul>
+<h3>情况 3：行情已经大幅变化，原来的腿位置不合适了</h3>
+<p>这时候也可能需要调整：</p>
+<ul><li>重新设定 Put 位置；</li><li>重新设定 Call 位置；</li><li>让保护强度重新匹配你现在的风险判断。</li></ul>
+<p>所以 Collar 不是“套上就不管”，而是：</p>
+<blockquote><p><strong>它是一个阶段性风险工程，需要后续处理。</strong></p></blockquote>
+<p>这点非常重要。</p>
+<h1>八、本章小结：Collar 不是为了更赚，而是为了让“拿着股票”这件事更可承受</h1>
+<p>这一章如果要压成最重要的几句话，我希望你记住这些：</p>
+<ul><li>Collar = 持股 + 买 Put + 卖 Call；</li><li>它本质上就是：<strong>Protective Put + Covered Call</strong>；</li><li>它最核心的逻辑是：</li><li><strong>让出一部分上方收益，换更便宜的下方保护</strong>；</li><li>No Cost Collar 不是免费，只是现金净支出接近 0，真实代价是上方空间；</li><li>OTM Collar 更宽松，保留更多上涨，但保护弱一点；</li><li>ATM Collar 对冲最强，但几乎把上涨空间压得很紧；</li><li>真正的核心往往是：</li><li>我想从哪一段开始保护；</li><li>我愿意让掉多少上方空间来换这份保护；</li><li>Collar 不是永久盔甲，更像阶段性雨衣；</li><li>做完之后，后续平仓、继续保护、还是 Roll，同样重要。</li></ul>
+<p>如果把这章压成一句真正值钱的话，那就是：</p>
+<blockquote><p><strong>Collar 不是为了更赚，而是为了让“继续持有这只股票”这件事变得更有边界、更可承受。</strong></p></blockquote>
+<p>这就是它最真实的价值。</p>
 <hr>
-<h2>涓€鍙ヨ瘽鎬荤粨</h2>
-<blockquote><p><strong>Collar 鏈€鍊奸挶鐨勫湴鏂癸紝涓嶆槸璁╀綘璧氭洿澶氾紝鑰屾槸璁╁凡鏈夋寔浠撶涓€娆″悓鏃舵湁浜嗕笅鏂逛繚鎶ゅ拰涓婃柟杈圭晫銆?/strong></p></blockquote>
-<h2>鑷祴棰?/h2>
-<p>1锛変负浠€涔堣 Collar 鏈川涓婁笉鏄柊鍔ㄧ墿锛岃€屾槸 Protective Put 鍜?Covered Call 鐨勭粍鍚堬紵</p>
-<p>2锛?45 / 155 Collar 閲岋紝145 Put 鍜?155 Call 鍒嗗埆鍦ㄦ敼閫犲摢涓€杈圭殑椋庨櫓锛?/p>
-<p>3锛変负浠€涔?No Cost Collar 涓嶈兘鐞嗚В鎴愨€滃厤璐逛繚鎶も€濓紵</p>
-<p>4锛塐TM Collar 鍜?ATM Collar 鐨勬牳蹇冨樊鍒紝鏈川涓婃槸鍦ㄥ彇鑸嶄粈涔堬紵</p>
-<p>5锛変负浠€涔堣 Collar 鏇撮€傚悎闃舵鎬ч闄╃鐞嗭紝鑰屼笉閫傚悎闀挎湡涓€鐩村鐫€涓嶅姩锛?/p>
-<h2>涓嬩竴绔犻鍛婏細绛栫暐閫夋嫨妗嗘灦鈥斺€斾笉鏄啀鑳屾洿澶氬悕瀛楋紝鑰屾槸鍏堝浼氭寜闂閫夌瓥鐣?/h2>
-<p>浣犲垰鍒氱湅鍒扮殑鏄細</p>
-<ul><li>鎴戝凡缁忔湁姝ｈ偂锛屾€庝箞缁欏畠鍔犱繚闄┿€佸姞杈圭晫锛?/li></ul>
-<p>浣嗗鍒拌繖閲岋紝寰堝浜鸿剳瀛愰噷浼氬紑濮嬪嚭鐜板彟涓€涓洿鐜板疄鐨勯棶棰橈細</p>
-<ul><li>杩欎簺绛栫暐鍒板簳璇ユ€庝箞鍒嗛棬鍒被锛?/li><li>鎴戞槸鍦ㄨ祵鏂瑰悜銆佽祵娉㈠姩锛岃繕鏄湪鏀归€犲凡鏈夋寔浠擄紵</li><li>鎴戞洿璇ヤ紭鍏堣€冭檻椋庨櫓杈圭晫锛岃繕鏄祫閲戞晥鐜囷紵</li></ul>
-<p>涓嬩竴绔犱笉浼氬啀鎬ョ潃鍔犱竴涓柊鑺辨牱锛岃€屾槸鍏堟妸鍓嶉潰瀛﹁繃鐨勫伐鍏烽噸鏂版帓椤恒€?/p>
-<h2>鏈珷鍙傝€冨彛寰勶紙渚夸簬杩芥函锛?/h2>
-<ul><li>鍥剧墖鍏宠仈閲嶇偣锛?code>Collar = 100 姝ｈ偂 + 涔?OTM Put + 鍗?OTM Call</code>銆?code>No Cost Collar</code>銆?code>145/155 绀轰緥</code>銆?code>浠€涔堟儏鍐典笅浣跨敤 Collar</code>銆?code>Beta Hedging</code>銆?code>OTM vs ATM Collar</code>銆?code>瀹炴搷涓庡悗缁鐞?/code></li><li>OCC / OIC锛氱敤浜庢牎鍑?collar strategy 鐨勫熀纭€鏁欒偛鍙ｅ緞</li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li><li>Fidelity Options Strategy Guide锛氱敤浜庝繚鎸?collar / protective strategies 鐨勬敹鐩婇闄╄〃杩颁笌涓绘祦鍒稿晢鍙ｅ緞涓€鑷?/li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li><li>CBOE Options Institute锛氱敤浜庝繚鎸?collar銆乸ortfolio hedging銆乧overed strategies 鐨勬暀瀛︽湳璇竴鑷?/li><li><a href="https://www.cboe.com/optionsinstitute/">https://www.cboe.com/optionsinstitute/</a></li></ul>
+<h2>一句话总结</h2>
+<blockquote><p><strong>Collar 最值钱的地方，不是让你赚更多，而是让已有持仓第一次同时有了下方保护和上方边界。</strong></p></blockquote>
+<h2>自测题</h2>
+<p>1）为什么说 Collar 本质上不是新动物，而是 Protective Put 和 Covered Call 的组合？</p>
+<p>2）145 / 155 Collar 里，145 Put 和 155 Call 分别在改造哪一边的风险？</p>
+<p>3）为什么 No Cost Collar 不能理解成“免费保护”？</p>
+<p>4）OTM Collar 和 ATM Collar 的核心差别，本质上是在取舍什么？</p>
+<p>5）为什么说 Collar 更适合阶段性风险管理，而不适合长期一直套着不动？</p>
+<h2>下一章预告：策略选择框架——不是再背更多名字，而是先学会按问题选策略</h2>
+<p>你刚刚看到的是：</p>
+<ul><li>我已经有正股，怎么给它加保险、加边界；</li></ul>
+<p>但学到这里，很多人脑子里会开始出现另一个更现实的问题：</p>
+<ul><li>这些策略到底该怎么分门别类？</li><li>我是在赌方向、赌波动，还是在改造已有持仓？</li><li>我更该优先考虑风险边界，还是资金效率？</li></ul>
+<p>下一章不会再急着加一个新花样，而是先把前面学过的工具重新排顺。</p>
+<h2>本章参考口径（便于追溯）</h2>
+<ul><li>图片关联重点：<code>Collar = 100 正股 + 买 OTM Put + 卖 OTM Call</code>、<code>No Cost Collar</code>、<code>145/155 示例</code>、<code>什么情况下使用 Collar</code>、<code>Beta Hedging</code>、<code>OTM vs ATM Collar</code>、<code>实操与后续处理</code></li><li>OCC / OIC：用于校准 collar strategy 的基础教育口径</li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li><li>Fidelity Options Strategy Guide：用于保持 collar / protective strategies 的收益风险表述与主流券商口径一致</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li><li>CBOE Options Institute：用于保持 collar、portfolio hedging、covered strategies 的教学术语一致</li><li><a href="https://www.cboe.com/optionsinstitute/">https://www.cboe.com/optionsinstitute/</a></li></ul>
             </article>
         </section>
 
@@ -582,27 +582,27 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-navigation-title">绔犺妭瀵艰埅</h2>
-                    <p class="section-subtitle">鏄惧紡淇濈暀涓婁竴绔?/ 杩斿洖璇剧▼ / 涓嬩竴绔犱笁涓彲瑙佹Ы浣嶏紝渚夸簬鐢熸垚鍣ㄧǔ瀹氬～鍏?/p>
+                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
+                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
                 </div>
             </div>
 
             <div class="chapter-nav-card">
                 <div class="chapter-nav-grid">
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">涓婁竴绔?/div>
-                        <a class="chapter-nav-link" href="./16.html">绗?16 绔?路 娉㈠姩鐜囩瓥鐣?/a>
-                        <p>浠庢柟鍚戜氦鏄撹浆鍚戞尝鍔ㄥ箙搴︿氦鏄擄紝鐞嗚В Straddle銆丼trangle 绛夋尝鍔ㄧ巼绛栫暐鐨勬牳蹇冮€昏緫銆?/p>
+                        <div class="chapter-nav-label">上一章</div>
+                        <a class="chapter-nav-link" href="./16.html">第 16 章 · 波动率策略</a>
+                        <p>从方向交易转向波动幅度交易，理解 Straddle、Strangle 等波动率策略的核心逻辑。</p>
                     </div>
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">杩斿洖璇剧▼</div>
-                        <a class="chapter-nav-link" href="./index.html">缇庤偂鏈熸潈鏁欐潗 鐩綍</a>
-                        <p>杩斿洖璇剧▼鐩綍锛屾寜 section 鍜?batch 鏌ョ湅鍏ㄥ眬杩涘害銆?/p>
+                        <div class="chapter-nav-label">返回课程</div>
+                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
+                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
                     </div>
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">涓嬩竴绔?/div>
-                        <a class="chapter-nav-link" href="./18.html">绗?18 绔?路 绛栫暐閫夋嫨妗嗘灦</a>
-                        <p>鎶婂墠闈㈠凡瀛︾瓥鐣ユ寜鏂瑰悜銆佹尝鍔ㄣ€侀闄╄竟鐣屼笌璧勯噾鏁堢巼閲嶆柊褰掍綅锛屽府鍔╂柊鎵嬪厛瀛︿細閫夌瓥鐣ャ€?/p>
+                        <div class="chapter-nav-label">下一章</div>
+                        <a class="chapter-nav-link" href="./18.html">第 18 章 · 策略选择框架</a>
+                        <p>把前面已学策略按方向、波动、风险边界与资金效率重新归位，帮助新手先学会选策略。</p>
                     </div>
                 </div>
             </div>
@@ -610,15 +610,15 @@
     </main>
 
     <footer>
-        <p>鏈熸潈鏁欐潗 路 缁撴瀯鍖栧涔?路 HTML 浼樺厛</p>
+        <p>期权教材 · 结构化学习 · HTML 优先</p>
         <p class="disclaimer">
-            鍏嶈矗澹版槑锛氭湰鏁欐潗椤甸潰浠呬緵瀛︿範浜ゆ祦浣跨敤锛屼笉鏋勬垚浠讳綍鎶曡祫寤鸿銆傛湡鏉冧氦鏄撴秹鍙婃潬鏉嗐€佹椂闂存崯鑰椾笌娴佸姩鎬ч闄╋紝鍔″繀缁撳悎鑷韩鎯呭喌鐙珛鍒ゆ柇銆?
+            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
         </p>
     </footer>
 
-    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="鍒囨崲娣辫壊妯″紡" title="鍒囨崲娣辫壊妯″紡">馃寭</button>
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="杩斿洖椤堕儴">鈫?/button>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260326review1"></script>
+    <script src="../js/main.js?v=20260326review2"></script>
 </body>
 </html>
