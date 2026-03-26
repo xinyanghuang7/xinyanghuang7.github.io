@@ -308,14 +308,6 @@
 <p>这时就会有人想：</p>
 <ul><li>我其实不是非得拿“真的 100 股”不可；</li><li>我真正想要的是“一个很像持有 100 股的多头暴露”；</li><li>有没有一种东西，可以用更少的钱，先复制出大部分正股感觉？</li></ul>
 <p>于是 PMCC 这套思路就出现了。</p>
-<hr>
-<h2>阅读导航：第一次读先抓“它是替代持股，不是省钱神技”，第二次读再补 long leg 质量</h2>
-<p>这一章第一次读，最容易被名字带偏：好像 PMCC 只是用更少的钱做 Covered Call。</p>
-<p>其实你第一遍最该抓的是：</p>
-<p>1. <strong>它本质上是在找一个足够像正股的长期 Call 替身。</strong> 2. <strong>它省的是前置资金，不是把风险和要求一起省掉。</strong> 3. <strong>long leg 的质量，决定这套结构到底像不像持股。</strong></p>
-<p>第二遍再去补：</p>
-<ul><li>为什么要 deep ITM、high delta、long-dated；</li><li>为什么 Theta / Vega 仍然会持续作用；</li><li>为什么 short leg 管理和 Covered Call 很像，但底层体验不一样。</li></ul>
-<hr>
 <h2>27.2 PMCC 的最人话定义：用长期深实值 Call 代替正股，再卖短期 Call 收租</h2>
 <p>PMCC 全称是：</p>
 <ul><li><strong>Poor Man’s Covered Call</strong></li></ul>
@@ -333,14 +325,6 @@
 <ul><li>底仓替身是：一张长期、deep ITM 的 LEAP Call</li><li>上层租金腿仍然是：卖近月 Call</li></ul>
 <p>所以 PMCC 最该记住的一句话，就是：</p>
 <blockquote><p><strong>它不是一个全新策略，而是把 Covered Call 里的“正股底仓”换成了“长期 Call 底仓”。</strong></p></blockquote>
-<hr>
-<h2>阅读导航：第一次读先抓“它是替代持股，不是省钱神技”，第二次读再补 long leg 质量</h2>
-<p>这一章第一次读，最容易被名字带偏：好像 PMCC 只是用更少的钱做 Covered Call。</p>
-<p>其实你第一遍最该抓的是：</p>
-<p>1. <strong>它本质上是在找一个足够像正股的长期 Call 替身。</strong> 2. <strong>它省的是前置资金，不是把风险和要求一起省掉。</strong> 3. <strong>long leg 的质量，决定这套结构到底像不像持股。</strong></p>
-<p>第二遍再去补：</p>
-<ul><li>为什么要 deep ITM、high delta、long-dated；</li><li>为什么 Theta / Vega 仍然会持续作用；</li><li>为什么 short leg 管理和 Covered Call 很像，但底层体验不一样。</li></ul>
-<hr>
 <h1>二、为什么长期 deep ITM Call 可以被拿来当“正股替身”</h1>
 <h2>27.3 不是所有 Call 都能当替身，关键是要足够像股票</h2>
 <p>这里特别重要。</p>
@@ -354,14 +338,6 @@
 <p>因为你不是在买一个纯梦想型彩票 Call，而是在买一个：</p>
 <ul><li>价格行为尽量像股票；</li><li>时间损耗相对没那么夸张；</li><li>Delta 尽量接近 1；</li><li>更适合拿来做底仓替身的长期合约。</li></ul>
 <p>如果这条 long leg 选歪了，整套 PMCC 会变味。</p>
-<hr>
-<h2>阅读导航：第一次读先抓“它是替代持股，不是省钱神技”，第二次读再补 long leg 质量</h2>
-<p>这一章第一次读，最容易被名字带偏：好像 PMCC 只是用更少的钱做 Covered Call。</p>
-<p>其实你第一遍最该抓的是：</p>
-<p>1. <strong>它本质上是在找一个足够像正股的长期 Call 替身。</strong> 2. <strong>它省的是前置资金，不是把风险和要求一起省掉。</strong> 3. <strong>long leg 的质量，决定这套结构到底像不像持股。</strong></p>
-<p>第二遍再去补：</p>
-<ul><li>为什么要 deep ITM、high delta、long-dated；</li><li>为什么 Theta / Vega 仍然会持续作用；</li><li>为什么 short leg 管理和 Covered Call 很像，但底层体验不一样。</li></ul>
-<hr>
 <h2>27.4 为什么要选一年以上的 LEAP</h2>
 <p>这点看起来简单，其实特别关键。</p>
 <p>如果你的 long leg 太短，会发生什么？</p>
@@ -372,14 +348,6 @@
 <blockquote><p><strong>你是想找一个长期替身，不是找一个马上要过期的临时演员。</strong></p></blockquote>
 <p>越长的 LEAP：</p>
 <ul><li>时间损耗更慢；</li><li>更像一个可以拿着走一段时间的“替代底仓”；</li><li>也更适合上面持续去卖近月 Call。</li></ul>
-<hr>
-<h2>阅读导航：第一次读先抓“它是替代持股，不是省钱神技”，第二次读再补 long leg 质量</h2>
-<p>这一章第一次读，最容易被名字带偏：好像 PMCC 只是用更少的钱做 Covered Call。</p>
-<p>其实你第一遍最该抓的是：</p>
-<p>1. <strong>它本质上是在找一个足够像正股的长期 Call 替身。</strong> 2. <strong>它省的是前置资金，不是把风险和要求一起省掉。</strong> 3. <strong>long leg 的质量，决定这套结构到底像不像持股。</strong></p>
-<p>第二遍再去补：</p>
-<ul><li>为什么要 deep ITM、high delta、long-dated；</li><li>为什么 Theta / Vega 仍然会持续作用；</li><li>为什么 short leg 管理和 Covered Call 很像，但底层体验不一样。</li></ul>
-<hr>
 <h2>27.5 为什么要选 deep ITM，最好还要高 Delta</h2>
 <p>这是 PMCC 最容易做错的地方。</p>
 <p>很多人一看“降低成本”，就会忍不住往便宜的 OTM 或浅 ITM Call 去靠。</p>
@@ -394,14 +362,6 @@
 <p>如果你买得太浅，Delta 不够高，long leg 就会出问题：</p>
 <ul><li>上涨时它跟得没那么像股票；</li><li>时间损耗会更明显；</li><li>你上面再卖短 Call，就容易变成“底仓不稳、短腿先很活跃”。</li></ul>
 <p>那样 PMCC 就会越来越别扭。</p>
-<hr>
-<h2>阅读导航：第一次读先抓“它是替代持股，不是省钱神技”，第二次读再补 long leg 质量</h2>
-<p>这一章第一次读，最容易被名字带偏：好像 PMCC 只是用更少的钱做 Covered Call。</p>
-<p>其实你第一遍最该抓的是：</p>
-<p>1. <strong>它本质上是在找一个足够像正股的长期 Call 替身。</strong> 2. <strong>它省的是前置资金，不是把风险和要求一起省掉。</strong> 3. <strong>long leg 的质量，决定这套结构到底像不像持股。</strong></p>
-<p>第二遍再去补：</p>
-<ul><li>为什么要 deep ITM、high delta、long-dated；</li><li>为什么 Theta / Vega 仍然会持续作用；</li><li>为什么 short leg 管理和 Covered Call 很像，但底层体验不一样。</li></ul>
-<hr>
 <h1>三、用图片里的 SPY 例子，直接看出 PMCC 为什么会让人觉得“真香”</h1>
 <h2>27.6 Covered Call 要先掏 100 股的钱，PMCC 先掏的是 LEAP 的钱</h2>
 <p>图片里给了一个很好的 SPY 对比例子。</p>
@@ -413,14 +373,6 @@
 <p>你立刻就会感受到它最直观的吸引力：</p>
 <blockquote><p><strong>我没那么多资金，但我居然也能做出一个“很像 Covered Call”的结构。</strong></p></blockquote>
 <p>这就是 PMCC 最大的魅力来源。</p>
-<hr>
-<h2>阅读导航：第一次读先抓“它是替代持股，不是省钱神技”，第二次读再补 long leg 质量</h2>
-<p>这一章第一次读，最容易被名字带偏：好像 PMCC 只是用更少的钱做 Covered Call。</p>
-<p>其实你第一遍最该抓的是：</p>
-<p>1. <strong>它本质上是在找一个足够像正股的长期 Call 替身。</strong> 2. <strong>它省的是前置资金，不是把风险和要求一起省掉。</strong> 3. <strong>long leg 的质量，决定这套结构到底像不像持股。</strong></p>
-<p>第二遍再去补：</p>
-<ul><li>为什么要 deep ITM、high delta、long-dated；</li><li>为什么 Theta / Vega 仍然会持续作用；</li><li>为什么 short leg 管理和 Covered Call 很像，但底层体验不一样。</li></ul>
-<hr>
 <h2>27.7 所以 PMCC 真正“便宜”的地方，不是风险变小，而是前置资金门槛变低了</h2>
 <p>这里必须讲准。</p>
 <p>很多人一看到 PMCC 成本低，就会自动脑补成：</p>
@@ -435,14 +387,6 @@
 <p>所以 PMCC 最成熟的理解应该是：</p>
 <blockquote><p><strong>它不是‘更轻松的 Covered Call’，而是‘更省钱、但结构更脆一些的 Covered Call 变体’。</strong></p></blockquote>
 <p>这句话很重要。</p>
-<hr>
-<h2>阅读导航：第一次读先抓“它是替代持股，不是省钱神技”，第二次读再补 long leg 质量</h2>
-<p>这一章第一次读，最容易被名字带偏：好像 PMCC 只是用更少的钱做 Covered Call。</p>
-<p>其实你第一遍最该抓的是：</p>
-<p>1. <strong>它本质上是在找一个足够像正股的长期 Call 替身。</strong> 2. <strong>它省的是前置资金，不是把风险和要求一起省掉。</strong> 3. <strong>long leg 的质量，决定这套结构到底像不像持股。</strong></p>
-<p>第二遍再去补：</p>
-<ul><li>为什么要 deep ITM、high delta、long-dated；</li><li>为什么 Theta / Vega 仍然会持续作用；</li><li>为什么 short leg 管理和 Covered Call 很像，但底层体验不一样。</li></ul>
-<hr>
 <h1>四、PMCC 和 Covered Call 到底像在哪，又不像在哪</h1>
 <h2>27.8 它们的投资逻辑确实很像：底下拿多头，上面拿租金</h2>
 <p>图片里直接说：</p>
@@ -458,14 +402,6 @@
 <h3>PMCC 的底仓</h3>
 <p>是一张长期 deep ITM Call。</p>
 <p>这就导致它们在几个关键点上会明显不同。</p>
-<hr>
-<h2>阅读导航：第一次读先抓“它是替代持股，不是省钱神技”，第二次读再补 long leg 质量</h2>
-<p>这一章第一次读，最容易被名字带偏：好像 PMCC 只是用更少的钱做 Covered Call。</p>
-<p>其实你第一遍最该抓的是：</p>
-<p>1. <strong>它本质上是在找一个足够像正股的长期 Call 替身。</strong> 2. <strong>它省的是前置资金，不是把风险和要求一起省掉。</strong> 3. <strong>long leg 的质量，决定这套结构到底像不像持股。</strong></p>
-<p>第二遍再去补：</p>
-<ul><li>为什么要 deep ITM、high delta、long-dated；</li><li>为什么 Theta / Vega 仍然会持续作用；</li><li>为什么 short leg 管理和 Covered Call 很像，但底层体验不一样。</li></ul>
-<hr>
 <h2>27.9 不同点一：最大亏损结构不一样</h2>
 <p>图片里第一条对比特别重要：</p>
 <ul><li>Covered Call 最大损失更大，因为你底下是真 100 股正股；</li><li>PMCC 最大损失更低，因为你底下最多亏掉的是 LEAP Call 的成本。</li></ul>
@@ -479,14 +415,6 @@
 <p>所以从“最大理论损失”这件事上看，PMCC 的确更轻。</p>
 <p>但要小心，这不等于它就更舒服。</p>
 <p>因为它的舒服和不舒服，不只取决于最大损失数字，还取决于 long leg 自己在过程中会怎么变化。</p>
-<hr>
-<h2>阅读导航：第一次读先抓“它是替代持股，不是省钱神技”，第二次读再补 long leg 质量</h2>
-<p>这一章第一次读，最容易被名字带偏：好像 PMCC 只是用更少的钱做 Covered Call。</p>
-<p>其实你第一遍最该抓的是：</p>
-<p>1. <strong>它本质上是在找一个足够像正股的长期 Call 替身。</strong> 2. <strong>它省的是前置资金，不是把风险和要求一起省掉。</strong> 3. <strong>long leg 的质量，决定这套结构到底像不像持股。</strong></p>
-<p>第二遍再去补：</p>
-<ul><li>为什么要 deep ITM、high delta、long-dated；</li><li>为什么 Theta / Vega 仍然会持续作用；</li><li>为什么 short leg 管理和 Covered Call 很像，但底层体验不一样。</li></ul>
-<hr>
 <h2>27.10 不同点二：Covered Call 的底仓没有 Theta，PMCC 的底仓有</h2>
 <p>这也是图片里特别想提醒你的点。</p>
 <h3>Covered Call 的正股底仓</h3>
@@ -498,14 +426,6 @@
 <p>这就是为什么图片里直接提醒：</p>
 <ul><li>Long leg 不要频繁折腾；</li><li>要打算长期持有；</li><li>但也不能真拿到快到期再装看不见。</li></ul>
 <p>这个“它会老”的属性，是 PMCC 和真正 Covered Call 最大的气质差别之一。</p>
-<hr>
-<h2>阅读导航：第一次读先抓“它是替代持股，不是省钱神技”，第二次读再补 long leg 质量</h2>
-<p>这一章第一次读，最容易被名字带偏：好像 PMCC 只是用更少的钱做 Covered Call。</p>
-<p>其实你第一遍最该抓的是：</p>
-<p>1. <strong>它本质上是在找一个足够像正股的长期 Call 替身。</strong> 2. <strong>它省的是前置资金，不是把风险和要求一起省掉。</strong> 3. <strong>long leg 的质量，决定这套结构到底像不像持股。</strong></p>
-<p>第二遍再去补：</p>
-<ul><li>为什么要 deep ITM、high delta、long-dated；</li><li>为什么 Theta / Vega 仍然会持续作用；</li><li>为什么 short leg 管理和 Covered Call 很像，但底层体验不一样。</li></ul>
-<hr>
 <h2>27.11 不同点三：PMCC 对 IV 更敏感，所以开仓时机也更讲究</h2>
 <p>图片里这条特别值钱：</p>
 <ul><li>Covered Call 更像在 IV 高的时候开仓，等 IV 回落；</li><li>PMCC 则更适合在 IV 相对较低的时候开仓。</li></ul>
@@ -518,14 +438,6 @@
 <p>所以 PMCC 最成熟的开仓直觉是：</p>
 <blockquote><p><strong>它不像 Covered Call 那样主要盯上面那张短 Call 的卖价，它还要认真看底下那张 LEAP Call 有没有买贵。</strong></p></blockquote>
 <p>这一步很关键。</p>
-<hr>
-<h2>阅读导航：第一次读先抓“它是替代持股，不是省钱神技”，第二次读再补 long leg 质量</h2>
-<p>这一章第一次读，最容易被名字带偏：好像 PMCC 只是用更少的钱做 Covered Call。</p>
-<p>其实你第一遍最该抓的是：</p>
-<p>1. <strong>它本质上是在找一个足够像正股的长期 Call 替身。</strong> 2. <strong>它省的是前置资金，不是把风险和要求一起省掉。</strong> 3. <strong>long leg 的质量，决定这套结构到底像不像持股。</strong></p>
-<p>第二遍再去补：</p>
-<ul><li>为什么要 deep ITM、high delta、long-dated；</li><li>为什么 Theta / Vega 仍然会持续作用；</li><li>为什么 short leg 管理和 Covered Call 很像，但底层体验不一样。</li></ul>
-<hr>
 <h1>五、PMCC 的几个最实用实操规则，图片里给得很细，我直接翻成人话</h1>
 <h2>27.12 规则一：long leg 要选流动性好的大标的</h2>
 <p>图片里明确说：</p>
@@ -536,14 +448,6 @@
 <p>所以 PMCC 特别不适合拿冷门小票乱试。</p>
 <p>更适合的是：</p>
 <ul><li>大盘 ETF；</li><li>热门大盘股；</li><li>期权链成熟、长期 LEAP 活跃的标的。</li></ul>
-<hr>
-<h2>阅读导航：第一次读先抓“它是替代持股，不是省钱神技”，第二次读再补 long leg 质量</h2>
-<p>这一章第一次读，最容易被名字带偏：好像 PMCC 只是用更少的钱做 Covered Call。</p>
-<p>其实你第一遍最该抓的是：</p>
-<p>1. <strong>它本质上是在找一个足够像正股的长期 Call 替身。</strong> 2. <strong>它省的是前置资金，不是把风险和要求一起省掉。</strong> 3. <strong>long leg 的质量，决定这套结构到底像不像持股。</strong></p>
-<p>第二遍再去补：</p>
-<ul><li>为什么要 deep ITM、high delta、long-dated；</li><li>为什么 Theta / Vega 仍然会持续作用；</li><li>为什么 short leg 管理和 Covered Call 很像，但底层体验不一样。</li></ul>
-<hr>
 <h2>27.13 规则二：long leg 尽量别动，把它当底仓，而不是拿来短炒</h2>
 <p>图片里这一点说得很明白：</p>
 <ul><li>Long leg：不要动；</li><li>必须是打算长期持有；</li><li>流动损耗高，不适合频繁交易。</li></ul>
@@ -552,14 +456,6 @@
 <ul><li>充当正股替身；</li><li>提供稳定的多头骨架；</li><li>让你上面可以持续卖短期 Call。</li></ul>
 <p>如果你底下这条腿自己老换来换去，整个 PMCC 就会越来越不像“持仓收租”，更像“组合乱跳”。</p>
 <p>所以要把 long leg 当成地基，而不是当成另外一张短炒票。</p>
-<hr>
-<h2>阅读导航：第一次读先抓“它是替代持股，不是省钱神技”，第二次读再补 long leg 质量</h2>
-<p>这一章第一次读，最容易被名字带偏：好像 PMCC 只是用更少的钱做 Covered Call。</p>
-<p>其实你第一遍最该抓的是：</p>
-<p>1. <strong>它本质上是在找一个足够像正股的长期 Call 替身。</strong> 2. <strong>它省的是前置资金，不是把风险和要求一起省掉。</strong> 3. <strong>long leg 的质量，决定这套结构到底像不像持股。</strong></p>
-<p>第二遍再去补：</p>
-<ul><li>为什么要 deep ITM、high delta、long-dated；</li><li>为什么 Theta / Vega 仍然会持续作用；</li><li>为什么 short leg 管理和 Covered Call 很像，但底层体验不一样。</li></ul>
-<hr>
 <h2>27.14 规则三：short leg 的管理方式，基本和 Covered Call 一样</h2>
 <p>图片里直接写了：</p>
 <ul><li>Short leg：和 CC 一样——平常 or Rollover。</li></ul>
@@ -567,14 +463,6 @@
 <ul><li>上面那张近月 Call，本质上还是在收租；</li><li>它怎么管理，和 Covered Call 的短腿逻辑差不多；</li><li>你可以：</li><li>平掉；</li><li>到期处理；</li><li>觉得还想继续收租就 roll 下去。</li></ul>
 <p>所以对 PMCC 来说，真正的难点往往不在 short leg，而在：</p>
 <ul><li>你有没有把 long leg 选对；</li><li>你有没有把 short leg 卖得太激进；</li><li>你有没有在暴涨时及时处理。</li></ul>
-<hr>
-<h2>阅读导航：第一次读先抓“它是替代持股，不是省钱神技”，第二次读再补 long leg 质量</h2>
-<p>这一章第一次读，最容易被名字带偏：好像 PMCC 只是用更少的钱做 Covered Call。</p>
-<p>其实你第一遍最该抓的是：</p>
-<p>1. <strong>它本质上是在找一个足够像正股的长期 Call 替身。</strong> 2. <strong>它省的是前置资金，不是把风险和要求一起省掉。</strong> 3. <strong>long leg 的质量，决定这套结构到底像不像持股。</strong></p>
-<p>第二遍再去补：</p>
-<ul><li>为什么要 deep ITM、high delta、long-dated；</li><li>为什么 Theta / Vega 仍然会持续作用；</li><li>为什么 short leg 管理和 Covered Call 很像，但底层体验不一样。</li></ul>
-<hr>
 <h2>27.15 规则四：股价暴涨时，不要傻扛短腿</h2>
 <p>图片里给了一个很重要的提醒：</p>
 <ul><li>股价暴涨时，short leg 会变得越来越麻烦；</li><li>需要提前处理 PMCC。</li></ul>
@@ -587,14 +475,6 @@
 <p>所以当标的大幅冲上去时，更成熟的做法通常是：</p>
 <ul><li>提前平掉短腿；</li><li>或者把短腿 roll 到更远更高的位置；</li><li>必要时甚至把整套 PMCC 先拆掉重来。</li></ul>
 <p>这一步不能装死。</p>
-<hr>
-<h2>阅读导航：第一次读先抓“它是替代持股，不是省钱神技”，第二次读再补 long leg 质量</h2>
-<p>这一章第一次读，最容易被名字带偏：好像 PMCC 只是用更少的钱做 Covered Call。</p>
-<p>其实你第一遍最该抓的是：</p>
-<p>1. <strong>它本质上是在找一个足够像正股的长期 Call 替身。</strong> 2. <strong>它省的是前置资金，不是把风险和要求一起省掉。</strong> 3. <strong>long leg 的质量，决定这套结构到底像不像持股。</strong></p>
-<p>第二遍再去补：</p>
-<ul><li>为什么要 deep ITM、high delta、long-dated；</li><li>为什么 Theta / Vega 仍然会持续作用；</li><li>为什么 short leg 管理和 Covered Call 很像，但底层体验不一样。</li></ul>
-<hr>
 <h2>27.16 规则五：LEAP 剩余时间不要拖到太短，最好提前滚动</h2>
 <p>图片里最后一个提醒也非常实用：</p>
 <ul><li>LEAP Call 快到期时，替代正股效果会越来越差；</li><li>尽量不要低于 6 个月；</li><li>要提前平仓或 roll 到更远月。</li></ul>
@@ -604,66 +484,26 @@
 <p>更成熟的思路是：</p>
 <blockquote><p><strong>把它一直维持在“仍然像正股替身”的状态，而不是硬拖到它老得不像样。</strong></p></blockquote>
 <p>这就是为什么图片里给了“尽量不要低于 6 个月”这个很实用的经验线。</p>
-<hr>
-<h2>阅读导航：第一次读先抓“它是替代持股，不是省钱神技”，第二次读再补 long leg 质量</h2>
-<p>这一章第一次读，最容易被名字带偏：好像 PMCC 只是用更少的钱做 Covered Call。</p>
-<p>其实你第一遍最该抓的是：</p>
-<p>1. <strong>它本质上是在找一个足够像正股的长期 Call 替身。</strong> 2. <strong>它省的是前置资金，不是把风险和要求一起省掉。</strong> 3. <strong>long leg 的质量，决定这套结构到底像不像持股。</strong></p>
-<p>第二遍再去补：</p>
-<ul><li>为什么要 deep ITM、high delta、long-dated；</li><li>为什么 Theta / Vega 仍然会持续作用；</li><li>为什么 short leg 管理和 Covered Call 很像，但底层体验不一样。</li></ul>
-<hr>
 <h1>六、本章小结：PMCC 不是 Covered Call 的青春版，而是它的“低资金门槛变体”</h1>
 <p>这一章如果只压成最重要的几句话，我希望你记住：</p>
 <ul><li><strong>PMCC = LEAP Call + 卖短期 Call</strong>；</li><li>它本质上是在用长期 deep ITM Call 替代正股，再做 Covered Call；</li><li>它最大的吸引力，是前置资金门槛低得多；</li><li>但它不是白送的，因为 long leg 自己会有：</li><li>Theta；</li><li>Vega / IV 风险；</li><li>对选股、选期限、选 Delta 的更高要求；</li><li>long leg 要尽量：</li><li>一年以上；</li><li>deep ITM；</li><li>delta 尽量高；</li><li>流动性要好；</li><li>short leg 的管理和 Covered Call 很像，但暴涨时一定要主动处理；</li><li>LEAP 不要拖到太老，最好提前 roll。</li></ul>
 <p>如果把它压成一句最人话的话，就是：</p>
 <blockquote><p><strong>PMCC 不是让你用更少的钱“白嫖” Covered Call，而是让你用一个更省钱、但也更讲究 long leg 质量的方式，去做一套类似 Covered Call 的结构。</strong></p></blockquote>
 <p>这就是它真正的价值和边界。</p>
-<hr>
-<h2>阅读导航：第一次读先抓“它是替代持股，不是省钱神技”，第二次读再补 long leg 质量</h2>
-<p>这一章第一次读，最容易被名字带偏：好像 PMCC 只是用更少的钱做 Covered Call。</p>
-<p>其实你第一遍最该抓的是：</p>
-<p>1. <strong>它本质上是在找一个足够像正股的长期 Call 替身。</strong> 2. <strong>它省的是前置资金，不是把风险和要求一起省掉。</strong> 3. <strong>long leg 的质量，决定这套结构到底像不像持股。</strong></p>
-<p>第二遍再去补：</p>
-<ul><li>为什么要 deep ITM、high delta、long-dated；</li><li>为什么 Theta / Vega 仍然会持续作用；</li><li>为什么 short leg 管理和 Covered Call 很像，但底层体验不一样。</li></ul>
-<hr>
 <h2>本章一句话总结</h2>
 <blockquote><p><strong>PMCC 不是用更少的钱白嫖 Covered Call，而是用一张足够像正股、但自己也会受 Delta、Theta、Vega 约束的长期 Call，去搭一个更省资金也更讲究质量的替代持股结构。</strong></p></blockquote>
-<hr>
-<h2>阅读导航：第一次读先抓“它是替代持股，不是省钱神技”，第二次读再补 long leg 质量</h2>
-<p>这一章第一次读，最容易被名字带偏：好像 PMCC 只是用更少的钱做 Covered Call。</p>
-<p>其实你第一遍最该抓的是：</p>
-<p>1. <strong>它本质上是在找一个足够像正股的长期 Call 替身。</strong> 2. <strong>它省的是前置资金，不是把风险和要求一起省掉。</strong> 3. <strong>long leg 的质量，决定这套结构到底像不像持股。</strong></p>
-<p>第二遍再去补：</p>
-<ul><li>为什么要 deep ITM、high delta、long-dated；</li><li>为什么 Theta / Vega 仍然会持续作用；</li><li>为什么 short leg 管理和 Covered Call 很像，但底层体验不一样。</li></ul>
-<hr>
 <h2>自测题</h2>
 <p>1）为什么说 PMCC 本质上是把 Covered Call 里的正股底仓换成了一张长期 deep ITM Call？</p>
 <p>2）为什么 PMCC 的 long leg 不能随便买一张便宜 Call 代替，而要尽量选一年以上、deep ITM、delta 较高的 LEAP？</p>
 <p>3）为什么说 PMCC 降低的是前置资金门槛，而不是把所有风险都变没了？</p>
 <p>4）PMCC 和 Covered Call 最大的几个不同点分别是什么？</p>
 <p>5）为什么 long leg 剩余时间太短时，要考虑提前平仓或 roll 到更远月？</p>
-<hr>
-<h2>阅读导航：第一次读先抓“它是替代持股，不是省钱神技”，第二次读再补 long leg 质量</h2>
-<p>这一章第一次读，最容易被名字带偏：好像 PMCC 只是用更少的钱做 Covered Call。</p>
-<p>其实你第一遍最该抓的是：</p>
-<p>1. <strong>它本质上是在找一个足够像正股的长期 Call 替身。</strong> 2. <strong>它省的是前置资金，不是把风险和要求一起省掉。</strong> 3. <strong>long leg 的质量，决定这套结构到底像不像持股。</strong></p>
-<p>第二遍再去补：</p>
-<ul><li>为什么要 deep ITM、high delta、long-dated；</li><li>为什么 Theta / Vega 仍然会持续作用；</li><li>为什么 short leg 管理和 Covered Call 很像，但底层体验不一样。</li></ul>
-<hr>
 <h2>下一步建议：把 PMCC 放回整套应用框架里重看一次</h2>
 <p>学完 PMCC 之后，最值得做的，不是立刻找一只贵股票去上手，而是先把它放回整套应用框架里重看一遍：</p>
 <ul><li>第23章《单腿买方策略应用》：看 LEAP Call 为什么能承担长期方向工具的角色；</li><li>第25章《Covered Call 深化应用》：看 PMCC 和 Covered Call 在管理逻辑上哪里相像、哪里不一样；</li><li>第19章、第21章、第22章：回看 Delta、Theta、Vega，理解 long leg 为什么既讲究，又不白送。</li></ul>
 <p>如果后续继续扩写，最自然的下一步会是：</p>
 <ul><li>案例篇；</li><li>组合管理；</li><li>实战复盘。</li></ul>
 <p>到那一步时，PMCC 才会真正从“一个策略名字”，变成“你知道该在什么账户、什么标的、什么波动率环境里用它”的结构工具。</p>
-<hr>
-<h2>阅读导航：第一次读先抓“它是替代持股，不是省钱神技”，第二次读再补 long leg 质量</h2>
-<p>这一章第一次读，最容易被名字带偏：好像 PMCC 只是用更少的钱做 Covered Call。</p>
-<p>其实你第一遍最该抓的是：</p>
-<p>1. <strong>它本质上是在找一个足够像正股的长期 Call 替身。</strong> 2. <strong>它省的是前置资金，不是把风险和要求一起省掉。</strong> 3. <strong>long leg 的质量，决定这套结构到底像不像持股。</strong></p>
-<p>第二遍再去补：</p>
-<ul><li>为什么要 deep ITM、high delta、long-dated；</li><li>为什么 Theta / Vega 仍然会持续作用；</li><li>为什么 short leg 管理和 Covered Call 很像，但底层体验不一样。</li></ul>
-<hr>
 <h2>本章参考口径（便于追溯）</h2>
 <ul><li>图片关联重点：<code>PMCC = LEAP Call + 卖 Call</code>、<code>PMCC vs Covered Call</code>、<code>deep ITM / high delta / long-dated LEAP</code>、<code>IV 时机</code>、<code>short leg 管理</code>、<code>LEAP 不要拖到太短</code></li><li>OCC / OIC：用于校准 covered call、long call replacement、PMCC 类结构的基础教育口径</li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li><li>Fidelity Options Strategy Guide：用于保持 LEAP、covered call、diagonal / replacement-style logic 的收益风险表述与主流券商口径一致</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li><li>CBOE Options Institute：用于保持 LEAPS、covered call variants、capital efficiency 与 option replacement 思路的一致术语</li><li><a href="https://www.cboe.com/optionsinstitute/">https://www.cboe.com/optionsinstitute/</a></li></ul>
             </article>
