@@ -453,7 +453,16 @@ async function checkForSiteUpdate() {
 
         const payload = await response.json();
         const remoteBuild = String(payload?.build || '').trim();
-        if (!remoteBuild || remoteBuild === currentBuild) {
+        if (!remoteBuild) {
+            return;
+        }
+
+        if (remoteBuild === currentBuild) {
+            sessionStorage.removeItem(SITE_BUILD_RELOAD_KEY);
+            const existingNotice = document.getElementById('buildRefreshNotice');
+            if (existingNotice) {
+                existingNotice.remove();
+            }
             return;
         }
 
