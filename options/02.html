@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260324b">
+    <link rel="stylesheet" href="../css/style.css?v=20260326-options1">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -65,7 +65,6 @@
         }
 
         .chapter-summary-card,
-        .chapter-body-card,
         .chapter-nav-card {
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.08);
@@ -74,14 +73,28 @@
             box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
         }
 
-        .chapter-summary-card p,
-        .chapter-nav-card p {
-            color: var(--text-secondary);
+        .chapter-body-card {
+            background: rgba(248, 241, 228, 0.98);
+            border: 1px solid rgba(122, 91, 10, 0.16);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 22px 48px -28px rgba(84, 60, 14, 0.22);
+            line-height: 1.9;
+            color: #241e14;
         }
 
-        .chapter-body-card {
-            line-height: 1.9;
-            color: var(--text-primary);
+        .chapter-summary-card {
+            background: rgba(255, 250, 242, 0.96);
+            border: 1px solid rgba(122, 91, 10, 0.12);
+            box-shadow: 0 18px 40px -24px rgba(84, 60, 14, 0.18);
+        }
+
+        .chapter-summary-card p {
+            color: rgba(31,27,20,0.88);
+        }
+
+        .chapter-nav-card p {
+            color: var(--text-secondary);
         }
 
         .chapter-body-card h2,
@@ -89,14 +102,14 @@
         .chapter-body-card h4,
         .chapter-body-card h5,
         .chapter-body-card h6 {
-            color: var(--text-primary);
+            color: #1f1b14;
             margin-top: 1.6em;
         }
 
         .chapter-body-card p,
         .chapter-body-card li,
         .chapter-body-card blockquote {
-            color: var(--text-secondary);
+            color: rgba(31,27,20,0.9);
         }
 
         .chapter-body-card ul,
@@ -108,8 +121,23 @@
             margin: 1.5rem 0;
             padding: 1rem 1.25rem;
             border-left: 3px solid var(--accent-gold);
-            background: rgba(201, 162, 39, 0.08);
+            background: rgba(212, 175, 55, 0.12);
             border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-body-card code {
+            background: rgba(122, 91, 10, 0.08);
+            color: #5b4307;
+            padding: 0.12rem 0.35rem;
+            border-radius: 6px;
+        }
+
+        .chapter-body-card a {
+            color: #7a5b0a;
+        }
+
+        .chapter-body-card a:hover {
+            color: #5b4307;
         }
 
         .chapter-nav-grid {
@@ -259,6 +287,15 @@
 <p>所以本章的目标很朴素：</p>
 <blockquote><p>你读完以后，至少能在任何一款券商 App 上<strong>读懂期权链</strong>、<strong>算清成本</strong>、<strong>不走错开仓方向</strong>，并且能用“限价单”的方式把第一笔订单下得相对安全。</p></blockquote>
 <hr>
+<h2>阅读导航：第一次读先把流程跑顺，第二次读再抠报价细节</h2>
+<p>这一章第一次读，不建议你一上来就把所有界面字段都记住。</p>
+<p>你先抓住四步主线：</p>
+<p>1. <strong>先选标的。</strong> 2. <strong>再选到期日。</strong> 3. <strong>再选行权价。</strong> 4. <strong>最后确认成交方式和开仓方向。</strong></p>
+<p>只要这四步先跑顺，你就已经比很多第一次摸期权链的人稳很多。</p>
+<p>第二遍再去补：</p>
+<ul><li>Bid / Ask / Mid 为什么会直接影响你的真实成本；</li><li>为什么流动性差的合约会让你一进一出都更痛；</li><li>为什么 Sell to Close 和 Sell to Open 绝对不能点错。</li></ul>
+<p>这样读，会比一上来被整张期权链的信息量压住更顺。</p>
+<hr>
 <h3>2.2 先建立一个“期权链是菜单”的直觉：你在挑合同，不是在选号</h3>
 <p>打开某只股票（比如 AAPL）的期权链（Option Chain），你会看到一个典型结构：</p>
 <ul><li>上面是很多个到期日（Expiration）</li><li>中间是一列列行权价（Strike）</li><li>左边是 Calls（看涨）</li><li>右边是 Puts（看跌）</li></ul>
@@ -360,6 +397,9 @@
 <h3>2.8 本章小结：你把这些做对，后面学策略才不会越学越乱</h3>
 <ul><li>期权操作主线：<strong>选标的 → 选到期日 → 选行权价 → 用合适的成交方式下单</strong>。</li><li>期权链像菜单：你在挑合同，不是在选号。</li><li>买入看 Ask，卖出看 Bid；价差越大，越需要谨慎。</li><li>记住乘数：通常 1 张=100 股，报价要乘 100。</li><li>新手优先练流动性好的标的；别在冷门合约上和价差较劲。</li><li>Open/Close 一定要看清楚：Sell to Close 和 Sell to Open 是两条不同的路。</li></ul>
 <hr>
+<hr>
+<h3>一句话总结</h3>
+<blockquote><p><strong>会看期权链、会算一张合约的真实成本、会分清 Open 和 Close，你才算真正从“懂概念”走到了“会操作”。</strong></p></blockquote>
 <h3>2.9 自测题（把“操作”这关过了）</h3>
 <p>1) 你看到某张合约 Ask=2.50（每股），你买 1 张合约，名义成本大约是多少？</p>
 <p>2) 为什么新手不建议用市价单买期权？请用一句话解释。</p>
@@ -415,6 +455,6 @@
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260324b"></script>
+    <script src="../js/main.js?v=20260326-options1"></script>
 </body>
 </html>

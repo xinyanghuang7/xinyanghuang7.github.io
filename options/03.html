@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260324b">
+    <link rel="stylesheet" href="../css/style.css?v=20260326-options1">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -65,7 +65,6 @@
         }
 
         .chapter-summary-card,
-        .chapter-body-card,
         .chapter-nav-card {
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.08);
@@ -74,14 +73,28 @@
             box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
         }
 
-        .chapter-summary-card p,
-        .chapter-nav-card p {
-            color: var(--text-secondary);
+        .chapter-body-card {
+            background: rgba(248, 241, 228, 0.98);
+            border: 1px solid rgba(122, 91, 10, 0.16);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 22px 48px -28px rgba(84, 60, 14, 0.22);
+            line-height: 1.9;
+            color: #241e14;
         }
 
-        .chapter-body-card {
-            line-height: 1.9;
-            color: var(--text-primary);
+        .chapter-summary-card {
+            background: rgba(255, 250, 242, 0.96);
+            border: 1px solid rgba(122, 91, 10, 0.12);
+            box-shadow: 0 18px 40px -24px rgba(84, 60, 14, 0.18);
+        }
+
+        .chapter-summary-card p {
+            color: rgba(31,27,20,0.88);
+        }
+
+        .chapter-nav-card p {
+            color: var(--text-secondary);
         }
 
         .chapter-body-card h2,
@@ -89,14 +102,14 @@
         .chapter-body-card h4,
         .chapter-body-card h5,
         .chapter-body-card h6 {
-            color: var(--text-primary);
+            color: #1f1b14;
             margin-top: 1.6em;
         }
 
         .chapter-body-card p,
         .chapter-body-card li,
         .chapter-body-card blockquote {
-            color: var(--text-secondary);
+            color: rgba(31,27,20,0.9);
         }
 
         .chapter-body-card ul,
@@ -108,8 +121,23 @@
             margin: 1.5rem 0;
             padding: 1rem 1.25rem;
             border-left: 3px solid var(--accent-gold);
-            background: rgba(201, 162, 39, 0.08);
+            background: rgba(212, 175, 55, 0.12);
             border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-body-card code {
+            background: rgba(122, 91, 10, 0.08);
+            color: #5b4307;
+            padding: 0.12rem 0.35rem;
+            border-radius: 6px;
+        }
+
+        .chapter-body-card a {
+            color: #7a5b0a;
+        }
+
+        .chapter-body-card a:hover {
+            color: #5b4307;
         }
 
         .chapter-nav-grid {
@@ -259,6 +287,16 @@
 <ul><li>为什么买方常常亏得少、但需要行情走得很对很猛才赚得多；</li><li>为什么卖方常常看起来胜率高、收钱很快，但偶尔会遇到一次很难受的赔付；</li><li>为什么同样一张 Call，有人希望它涨上天，有人只求它别涨太多。</li></ul>
 <p>本章我们就把这三条逻辑讲透，并且用几个具体的美股场景把它落地。</p>
 <hr>
+<h2>阅读导航：第一次读先抓“钱往哪边走、风险往哪边堆”</h2>
+<p>这一章第一次读时，最容易掉进一个坑：把买方和卖方理解成“只是方向不同”。</p>
+<p>其实不是。你第一遍最该抓住的是下面三句：</p>
+<p>1. <strong>买方先付钱，卖方先收钱。</strong> 2. <strong>买方拿权利，卖方背义务。</strong> 3. <strong>买方通常亏损有限，卖方通常收益有限。</strong></p>
+<p>如果这三句先抓住，后面你再看：</p>
+<ul><li>为什么买方更需要行情真的发生；</li><li>为什么卖方经常看起来胜率高；</li><li>为什么同一张 Call，双方会有完全不同的期待；</li></ul>
+<p>你就不会乱。</p>
+<p>第二遍再去补：</p>
+<ul><li>买方和卖方在时间价值面前为什么体感完全不同；</li><li>为什么卖 Put 和卖 Call 虽然都叫卖方，但尾部风险长相并不一样；</li><li>为什么 Sell to Close 和 Sell to Open 绝对不能混。</li></ul>
+<hr>
 <h3>3.2 先把角色说清楚：买方拿权利，卖方背义务</h3>
 <p>严格定义先给你一句话（后面反复用）：</p>
 <blockquote><p><strong>期权买方（Buyer / Holder / Long）拥有权利但没有义务；期权卖方（Seller / Writer / Short）收取权利金，但承担履约义务。</strong></p></blockquote>
@@ -352,6 +390,9 @@
 <p>3）<strong>买方多是亏损有限、盈利可能很大；卖方多是盈利有限、亏损可能很大。</strong></p>
 <p>如果你能把这三句话讲给别人听，而且别人能听懂，你就已经超过很多只会背 Call/Put 的人了。</p>
 <hr>
+<hr>
+<h3>一句话总结</h3>
+<blockquote><p><strong>买方和卖方最大的差别，不是一个看多一个看空，而是一个先花钱买权利，一个先收钱扛义务。</strong></p></blockquote>
 <h3>3.9 自测题（把直觉固化）</h3>
 <p>1）为什么说卖方赚的上限通常就是权利金？</p>
 <p>2）请用一句话解释：买方和卖方对市场的要求有什么根本区别？</p>
@@ -409,6 +450,6 @@
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260324b"></script>
+    <script src="../js/main.js?v=20260326-options1"></script>
 </body>
 </html>

@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260324b">
+    <link rel="stylesheet" href="../css/style.css?v=20260326-options1">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -65,7 +65,6 @@
         }
 
         .chapter-summary-card,
-        .chapter-body-card,
         .chapter-nav-card {
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.08);
@@ -74,14 +73,28 @@
             box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
         }
 
-        .chapter-summary-card p,
-        .chapter-nav-card p {
-            color: var(--text-secondary);
+        .chapter-body-card {
+            background: rgba(248, 241, 228, 0.98);
+            border: 1px solid rgba(122, 91, 10, 0.16);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 22px 48px -28px rgba(84, 60, 14, 0.22);
+            line-height: 1.9;
+            color: #241e14;
         }
 
-        .chapter-body-card {
-            line-height: 1.9;
-            color: var(--text-primary);
+        .chapter-summary-card {
+            background: rgba(255, 250, 242, 0.96);
+            border: 1px solid rgba(122, 91, 10, 0.12);
+            box-shadow: 0 18px 40px -24px rgba(84, 60, 14, 0.18);
+        }
+
+        .chapter-summary-card p {
+            color: rgba(31,27,20,0.88);
+        }
+
+        .chapter-nav-card p {
+            color: var(--text-secondary);
         }
 
         .chapter-body-card h2,
@@ -89,14 +102,14 @@
         .chapter-body-card h4,
         .chapter-body-card h5,
         .chapter-body-card h6 {
-            color: var(--text-primary);
+            color: #1f1b14;
             margin-top: 1.6em;
         }
 
         .chapter-body-card p,
         .chapter-body-card li,
         .chapter-body-card blockquote {
-            color: var(--text-secondary);
+            color: rgba(31,27,20,0.9);
         }
 
         .chapter-body-card ul,
@@ -108,8 +121,23 @@
             margin: 1.5rem 0;
             padding: 1rem 1.25rem;
             border-left: 3px solid var(--accent-gold);
-            background: rgba(201, 162, 39, 0.08);
+            background: rgba(212, 175, 55, 0.12);
             border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-body-card code {
+            background: rgba(122, 91, 10, 0.08);
+            color: #5b4307;
+            padding: 0.12rem 0.35rem;
+            border-radius: 6px;
+        }
+
+        .chapter-body-card a {
+            color: #7a5b0a;
+        }
+
+        .chapter-body-card a:hover {
+            color: #5b4307;
         }
 
         .chapter-nav-grid {
@@ -258,6 +286,14 @@
 <p>这两个词一旦理解不清，很容易在实战里出问题。常见灾难包括：</p>
 <ul><li>以为自己只是买了一张期权，结果账户突然多出 100 股正股；</li><li>以为卖方只是赚权利金，结果一夜之间被要求交割；</li><li>以为拿到到期日再看也行，结果因为自动行权或资金不足被券商强行处理。</li></ul>
 <p>所以这一章我们不只讲定义，而是把“合同最后会发生什么”这件事彻底讲透。</p></blockquote>
+<hr>
+<h2>阅读导航：第一次读先分清“谁能决定、谁必须配合”</h2>
+<p>这一章第一次读，不要先去纠结券商细枝末节。</p>
+<p>你先抓住最底层的合同关系：</p>
+<p>1. <strong>买方有权利，可以决定要不要行权。</strong> 2. <strong>卖方有义务，如果被要求兑现就必须配合。</strong> 3. <strong>到期前平仓、到期时自动处理、真的去行权，是三件不同的事。</strong></p>
+<p>第一遍先把这三层分清，你就不会再把期权当成“最后自然卖掉就行”的东西。</p>
+<p>第二遍再去补：</p>
+<ul><li>美式 / 欧式期权在行权时点上的差别；</li><li>为什么自动行权和资金不足会带来账户风险；</li><li>为什么很多交易者在实战里更常见的是平仓，而不是主动行权。</li></ul>
 <hr>
 <h2>8.1 先把最核心的一句话背下来</h2>
 <p>如果这一章你最后只记住一句话，那就记这个：</p>
@@ -527,6 +563,9 @@
 <ul><li>如果最后被执行，会发生什么；</li><li>我的账户能不能承受；</li><li>我是不是愿意走到那一步。</li></ul>
 <p>这才是对期权真正负责的态度。</p>
 <hr>
+<hr>
+<h2>一句话总结</h2>
+<blockquote><p><strong>行权和被行权真正要你明白的，不是术语，而是这份合同最后会不会真的变成股票、现金和账户里的义务。</strong></p></blockquote>
 <h2>自测题</h2>
 <p>1）为什么说“买方拥有权利，卖方承担义务”是理解行权与被行权的核心？</p>
 <p>2）买入一张 ITM Call 后，为什么多数普通交易者更常选择卖出平仓，而不是直接行权？</p>
@@ -591,6 +630,6 @@
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260324b"></script>
+    <script src="../js/main.js?v=20260326-options1"></script>
 </body>
 </html>

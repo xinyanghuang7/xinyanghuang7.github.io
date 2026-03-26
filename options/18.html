@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="理解贫民版 Covered Call 如何用长期深度实值 Call 替代正股，以及它节省资金背后的额外风险。">
+    <meta name="description" content="把前面已学策略按方向、波动、风险边界与资金效率重新归位，帮助新手先学会选策略。">
     <meta name="author" content="ValueInvest">
     <meta name="theme-color" content="#c9a227">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="canonical" href="https://4fire.qzz.io/options/18.html">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://4fire.qzz.io/options/18.html">
-    <meta property="og:title" content="PMCC | 美股期权教材">
-    <meta property="og:description" content="理解贫民版 Covered Call 如何用长期深度实值 Call 替代正股，以及它节省资金背后的额外风险。">
+    <meta property="og:title" content="策略选择框架 | 美股期权教材">
+    <meta property="og:description" content="把前面已学策略按方向、波动、风险边界与资金效率重新归位，帮助新手先学会选策略。">
     <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PMCC | 美股期权教材">
-    <meta name="twitter:description" content="理解贫民版 Covered Call 如何用长期深度实值 Call 替代正股，以及它节省资金背后的额外风险。">
+    <meta name="twitter:title" content="策略选择框架 | 美股期权教材">
+    <meta name="twitter:description" content="把前面已学策略按方向、波动、风险边界与资金效率重新归位，帮助新手先学会选策略。">
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
-    <title>PMCC | 美股期权教材</title>
+    <title>策略选择框架 | 美股期权教材</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260324b">
+    <link rel="stylesheet" href="../css/style.css?v=20260326-options1">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -65,7 +65,6 @@
         }
 
         .chapter-summary-card,
-        .chapter-body-card,
         .chapter-nav-card {
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.08);
@@ -74,14 +73,28 @@
             box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
         }
 
-        .chapter-summary-card p,
-        .chapter-nav-card p {
-            color: var(--text-secondary);
+        .chapter-body-card {
+            background: rgba(248, 241, 228, 0.98);
+            border: 1px solid rgba(122, 91, 10, 0.16);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 22px 48px -28px rgba(84, 60, 14, 0.22);
+            line-height: 1.9;
+            color: #241e14;
         }
 
-        .chapter-body-card {
-            line-height: 1.9;
-            color: var(--text-primary);
+        .chapter-summary-card {
+            background: rgba(255, 250, 242, 0.96);
+            border: 1px solid rgba(122, 91, 10, 0.12);
+            box-shadow: 0 18px 40px -24px rgba(84, 60, 14, 0.18);
+        }
+
+        .chapter-summary-card p {
+            color: rgba(31,27,20,0.88);
+        }
+
+        .chapter-nav-card p {
+            color: var(--text-secondary);
         }
 
         .chapter-body-card h2,
@@ -89,14 +102,14 @@
         .chapter-body-card h4,
         .chapter-body-card h5,
         .chapter-body-card h6 {
-            color: var(--text-primary);
+            color: #1f1b14;
             margin-top: 1.6em;
         }
 
         .chapter-body-card p,
         .chapter-body-card li,
         .chapter-body-card blockquote {
-            color: var(--text-secondary);
+            color: rgba(31,27,20,0.9);
         }
 
         .chapter-body-card ul,
@@ -108,8 +121,23 @@
             margin: 1.5rem 0;
             padding: 1rem 1.25rem;
             border-left: 3px solid var(--accent-gold);
-            background: rgba(201, 162, 39, 0.08);
+            background: rgba(212, 175, 55, 0.12);
             border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-body-card code {
+            background: rgba(122, 91, 10, 0.08);
+            color: #5b4307;
+            padding: 0.12rem 0.35rem;
+            border-radius: 6px;
+        }
+
+        .chapter-body-card a {
+            color: #7a5b0a;
+        }
+
+        .chapter-body-card a:hover {
+            color: #5b4307;
         }
 
         .chapter-nav-grid {
@@ -163,8 +191,8 @@
     {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": "PMCC",
-        "description": "理解贫民版 Covered Call 如何用长期深度实值 Call 替代正股，以及它节省资金背后的额外风险。",
+        "headline": "策略选择框架",
+        "description": "把前面已学策略按方向、波动、风险边界与资金效率重新归位，帮助新手先学会选策略。",
         "author": {
             "@type": "Person",
             "name": "ValueInvest"
@@ -208,9 +236,9 @@
         <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
         <div class="hero-content">
             <div class="subtitle">进阶结构与波动率篇</div>
-            <h1>第 18 章 · PMCC</h1>
+            <h1>第 18 章 · 策略选择框架</h1>
             <p class="tagline">进阶结构与波动率篇 · Batch 5</p>
-            <p class="hero-description">理解贫民版 Covered Call 如何用长期深度实值 Call 替代正股，以及它节省资金背后的额外风险。</p>
+            <p class="hero-description">把前面已学策略按方向、波动、风险边界与资金效率重新归位，帮助新手先学会选策略。</p>
         </div>
         <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
     </section>
@@ -233,7 +261,7 @@
             </div>
 
             <div class="chapter-summary-card">
-                <p>理解贫民版 Covered Call 如何用长期深度实值 Call 替代正股，以及它节省资金背后的额外风险。</p>
+                <p>把前面已学策略按方向、波动、风险边界与资金效率重新归位，帮助新手先学会选策略。</p>
             </div>
         </section>
 
@@ -248,245 +276,155 @@
 
             <article class="chapter-body-card">
 <h1>《美股期权教材》</h1>
-<h2>第18章 PMCC：为什么它被叫做“穷人版 Covered Call”，以及它到底便宜在什么地方、危险又藏在哪里</h2>
-<blockquote><p>这一章也一定要贴着图片看，因为图里已经把 PMCC 的核心讲得很清楚：</p>
-<ul><li><strong>PMCC = LEAP Call + 卖短期 Call</strong></li><li>它本质上是在用一张长期、深度 ITM 的 Call，去替代本来需要的 100 股正股；</li><li>然后再像 Covered Call 那样，卖出近月 Call 去收租。</li></ul>
-<p>图片里还给了几个非常关键的提醒：</p>
-<ul><li>PMCC 和 Covered Call 的投资逻辑很像；</li><li>它的优点是<strong>大幅降低前置资金成本</strong>；</li><li>但它不是白送的，因为长期 Call 自己也会有：</li><li>时间损耗；</li><li>Vega / IV 敏感度；</li><li>对 long leg 选择质量的高度依赖；</li><li>实操上，long leg 要尽量选：</li><li><strong>一年以上的 LEAP</strong>；</li><li><strong>deep ITM</strong>；</li><li><strong>delta 尽量高（图里建议 &gt; 0.85）</strong>；</li><li><strong>流动性要好</strong>；</li><li>短腿的管理则和 Covered Call 很像：</li><li>平仓；</li><li>Roll；</li><li>遇到暴涨不要装死。</li></ul>
-<p>所以这一章最重要的，不是把 PMCC 当成一个新奇名字，而是把它翻成人话：</p>
-<blockquote><p><strong>PMCC 就是‘我没那么多钱先买 100 股，但我想用一张足够像正股的长期 Call，当作正股替身，再拿它去做 Covered Call。’</strong></p></blockquote>
-<p>只要这句话你真的懂了，后面的风险和细节就能顺着走。</p></blockquote>
+<h2>第18章 策略选择框架：方向、波动、风险边界与资金效率</h2>
+<blockquote><p>到这里，你其实已经学了不少策略名字。</p>
+<p>真正会把人读乱的，往往不是概念本身太难，而是：</p>
+<ul><li>Long Call / Long Put 怎么选；</li><li>Spread 和单腿到底差在哪；</li><li>Covered Call、Protective Put、Collar、Sell Put 分别适合什么账户状态；</li><li>我到底是在赌方向、赌波动，还是在改造自己已有的持仓。</li></ul>
+<p>所以这一章不再引入一个新花样，而是做一件更值钱的事：</p>
+<blockquote><p><strong>把前面已经学过的工具，整理成一套新手真的能拿来判断的选择顺序。</strong></p></blockquote></blockquote>
 <hr>
-<h1>一、先把 PMCC 讲成人话：它本质上是在找一个“便宜版正股替身”</h1>
-<h2>18.1 为什么会有人发明 PMCC</h2>
-<p>Covered Call 的逻辑我们前面已经很熟了：</p>
-<ul><li>持有 100 股正股；</li><li>卖 1 张近月 Call；</li><li>收权利金；</li><li>用一部分未来上方空间，换一点现在的现金流。</li></ul>
-<p>它很好理解，也很常用。</p>
-<p>但它有一个非常现实的问题：</p>
-<blockquote><p><strong>你得先拿得出买 100 股正股的钱。</strong></p></blockquote>
-<p>如果股票便宜，这还好说。</p>
-<p>但如果你面对的是：</p>
-<ul><li>SPY；</li><li>QQQ；</li><li>NVDA；</li><li>META；</li><li>或者任何价格比较高的标的；</li></ul>
-<p>那么你要先买满 100 股，资金压力会非常真实。</p>
-<p>这时就会有人想：</p>
-<ul><li>我其实不是非得拿“真的 100 股”不可；</li><li>我真正想要的是“一个很像持有 100 股的多头暴露”；</li><li>有没有一种东西，可以用更少的钱，先复制出大部分正股感觉？</li></ul>
-<p>于是 PMCC 这套思路就出现了。</p>
+<h2>阅读导航：第一次读先记四个问题，第二次读再做策略配对</h2>
+<p>如果你第一次读这一章，不要急着把所有策略都重新背一遍。</p>
+<p>先记四个问题：</p>
+<p>1. <strong>我是在赌方向，还是赌波动？</strong> 2. <strong>我更像买方，还是更像卖方？</strong> 3. <strong>我更在意风险边界，还是更在意资金效率 / 现金流？</strong> 4. <strong>我是空仓表达观点，还是在改造已有持仓？</strong></p>
+<p>第一遍你只要能先把这四问挂在脑子里，后面看到策略时就不会像在抽卡，而会更像在做筛选。</p>
+<p>第二遍再去补：</p>
+<ul><li>各类策略为什么会落到不同象限；</li><li>哪些结构适合新手先学，哪些适合先知道边界、别急着上手；</li><li>Greeks 为什么会在下一编里变得重要。</li></ul>
 <hr>
-<h2>18.2 PMCC 的最人话定义：用长期深实值 Call 代替正股，再卖短期 Call 收租</h2>
-<p>PMCC 全称是：</p>
-<ul><li><strong>Poor Man’s Covered Call</strong></li></ul>
-<p>直译过来就是：</p>
-<ul><li><strong>穷人版 Covered Call</strong></li></ul>
-<p>这个名字虽然有点戏谑，但它点得很准。</p>
-<p>因为它本质上就是：</p>
-<blockquote><p><strong>我先不拿真实 100 股，而是拿一张很像 100 股的长期 deep ITM Call 来当替身，然后再卖短期 Call 去收租。</strong></p></blockquote>
-<p>所以它的标准结构是：</p>
-<ul><li><strong>Long leg：买一张 LEAP Call</strong>（长期、深实值）</li><li><strong>Short leg：卖一张短期 Call</strong></li></ul>
-<p>这和 Covered Call 的区别在哪？</p>
-<h3>Covered Call</h3>
-<ul><li>底仓是：100 股正股</li><li>上层租金腿是：卖近月 Call</li></ul>
-<h3>PMCC</h3>
-<ul><li>底仓替身是：一张长期、deep ITM 的 LEAP Call</li><li>上层租金腿仍然是：卖近月 Call</li></ul>
-<p>所以 PMCC 最该记住的一句话，就是：</p>
-<blockquote><p><strong>它不是一个全新策略，而是把 Covered Call 里的“正股底仓”换成了“长期 Call 底仓”。</strong></p></blockquote>
+<h1>一、为什么很多人学了一堆策略，实战里还是不会选</h1>
+<h2>18.1 真问题往往不是“不会定义”，而是“不会匹配场景”</h2>
+<p>很多人学期权，前面会经历一个很典型的阶段：</p>
+<ul><li>名字越学越多；</li><li>觉得自己好像懂了；</li><li>真到要下单时，反而更犹豫。</li></ul>
+<p>原因通常不是公式没背下来，而是脑子里没有一套选择顺序。</p>
+<p>比如同样是看涨，你可以：</p>
+<ul><li>直接买 Call；</li><li>卖 Put；</li><li>做 Bull Call Spread；</li><li>已有持仓时卖 Covered Call；</li><li>甚至后面还可以用 PMCC 这种更讲究的替代持股结构。</li></ul>
+<p>这些都和“看涨”有关，但它们要解决的问题根本不是一回事。</p>
+<p>所以这章最重要的任务，是把前面学过的策略重新归位：</p>
+<blockquote><p><strong>不是按名字背，而是按“我要解决什么问题”来选。</strong></p></blockquote>
 <hr>
-<h1>二、为什么长期 deep ITM Call 可以被拿来当“正股替身”</h1>
-<h2>18.3 不是所有 Call 都能当替身，关键是要足够像股票</h2>
-<p>这里特别重要。</p>
-<p>很多新手一听 PMCC，会直接误会成：</p>
-<ul><li>那我随便买张 Call，不就行了吗？</li></ul>
-<p>完全不是。</p>
-<p>PMCC 之所以成立，前提是这张 long leg 必须尽量“像正股”。</p>
-<p>而图片里给得很明确，它通常要满足几个条件：</p>
-<ul><li><strong>到期足够远</strong>：一年以上；</li><li><strong>位置足够深 ITM</strong>；</li><li><strong>Delta 尽量高</strong>：图里直接建议选 delta &gt; 0.85；</li><li><strong>流动性要好</strong>。</li></ul>
-<p>为什么要这样？</p>
-<p>因为你不是在买一个纯梦想型彩票 Call，而是在买一个：</p>
-<ul><li>价格行为尽量像股票；</li><li>时间损耗相对没那么夸张；</li><li>Delta 尽量接近 1；</li><li>更适合拿来做底仓替身的长期合约。</li></ul>
-<p>如果这条 long leg 选歪了，整套 PMCC 会变味。</p>
+<h1>二、第一问：你是在赌方向，还是赌波动</h1>
+<h2>18.2 先把这条线分开，后面一半混乱都会自动消失</h2>
+<p>很多新手最容易把两类完全不同的交易意图搅在一起：</p>
+<h3>方向型问题</h3>
+<p>你在想的是：</p>
+<ul><li>我看涨；</li><li>我看跌；</li><li>我想参与一波上行；</li><li>我想给下跌加保护。</li></ul>
+<p>这类问题更容易落到：</p>
+<ul><li>Long Call / Long Put；</li><li>Bull / Bear Spread；</li><li>Protective Put；</li><li>Covered Call；</li><li>Sell Put。</li></ul>
+<h3>波动型问题</h3>
+<p>你在想的是：</p>
+<ul><li>我不确定方向，但觉得会闹大；</li><li>我不在乎小波动，只是觉得市场对“会动多大”这件事定得太夸张或太保守。</li></ul>
+<p>这类问题更容易落到：</p>
+<ul><li>Long Straddle / Long Strangle；</li><li>Short Straddle / Short Strangle；</li><li>Iron Butterfly / Iron Condor。</li></ul>
+<p>所以第一问永远应该是：</p>
+<blockquote><p><strong>我到底是在押“往哪边走”，还是押“会不会走得很夸张”。</strong></p></blockquote>
+<p>这一步一旦分开，你至少不会把方向问题和波动问题搅成一团。</p>
 <hr>
-<h2>18.4 为什么要选一年以上的 LEAP</h2>
-<p>这点看起来简单，其实特别关键。</p>
-<p>如果你的 long leg 太短，会发生什么？</p>
-<ul><li>时间损耗会明显变快；</li><li>它就不再像“底仓”，更像“一个有期限的方向赌单”；</li><li>你底下地基本身都在明显流血，就很难稳稳地去做上面的收租动作。</li></ul>
-<p>所以图片里直接建议：</p>
-<ul><li><strong>一年以上。</strong></li></ul>
-<p>这背后的逻辑非常简单：</p>
-<blockquote><p><strong>你是想找一个长期替身，不是找一个马上要过期的临时演员。</strong></p></blockquote>
-<p>越长的 LEAP：</p>
-<ul><li>时间损耗更慢；</li><li>更像一个可以拿着走一段时间的“替代底仓”；</li><li>也更适合上面持续去卖近月 Call。</li></ul>
+<h1>三、第二问：你更像买方，还是卖方</h1>
+<h2>18.3 这决定了你是先付钱买弹性，还是先收钱换义务</h2>
+<p>第二条线，是买方思维和卖方思维。</p>
+<h3>买方思维</h3>
+<p>更像是在说：</p>
+<ul><li>我先花一笔可控的钱；</li><li>去换一段方向弹性，或者一层风险保护；</li><li>最坏情况先锁住。</li></ul>
+<p>这类策略通常更适合：</p>
+<ul><li>想把最大亏损事先锁死的人；</li><li>还不想承担接股、被行权、保证金压力的人；</li><li>明知道胜率可能没那么高，但更重视边界的人。</li></ul>
+<p>典型工具：</p>
+<ul><li>Long Call；</li><li>Long Put；</li><li>Debit Spread；</li><li>Protective Put。</li></ul>
+<h3>卖方思维</h3>
+<p>更像是在说：</p>
+<ul><li>我先把权利金收进来；</li><li>愿意承担某种义务；</li><li>用时间和概率，换更高的“常态舒适感”。</li></ul>
+<p>这类策略通常更适合：</p>
+<ul><li>能接受接股或被迫处理仓位的人；</li><li>有更强纪律的人；</li><li>不会把“经常小赚”误会成“风险很小”的人。</li></ul>
+<p>典型工具：</p>
+<ul><li>Covered Call；</li><li>Sell Put / Cash-Secured Put；</li><li>Credit Spread；</li><li>一部分 short volatility 结构。</li></ul>
+<p>所以第二问其实是在问：</p>
+<blockquote><p><strong>我更想先把最坏情况锁死，还是更想先把钱收进来？</strong></p></blockquote>
 <hr>
-<h2>18.5 为什么要选 deep ITM，最好还要高 Delta</h2>
-<p>这是 PMCC 最容易做错的地方。</p>
-<p>很多人一看“降低成本”，就会忍不住往便宜的 OTM 或浅 ITM Call 去靠。</p>
-<p>这会把策略直接做歪。</p>
-<p>因为你真正需要的是：</p>
-<ul><li>这张 long leg 要足够像股票；</li><li>它不能只是“如果涨很多才有戏”；</li><li>它要在正常上涨时，就已经能提供比较稳定的多头暴露。</li></ul>
-<p>所以图片里才会强调：</p>
-<ul><li><strong>deep ITM</strong>；</li><li><strong>delta &gt; 0.85 更好</strong>。</li></ul>
-<p>为什么？</p>
-<p>因为这样它更像什么？</p>
-<ul><li>像一个带杠杆的股票替身；</li><li>而不是一张远期彩票。</li></ul>
-<p>如果你买得太浅，Delta 不够高，long leg 就会出问题：</p>
-<ul><li>上涨时它跟得没那么像股票；</li><li>时间损耗会更明显；</li><li>你上面再卖短 Call，就容易变成“底仓不稳、短腿先很活跃”。</li></ul>
-<p>那样 PMCC 就会越来越别扭。</p>
+<h1>四、第三问：你更在意风险边界，还是更在意资金效率 / 现金流</h1>
+<h2>18.4 很多策略差别不在方向，而在你愿意拿什么做交换</h2>
+<p>同样是看涨，Long Call 和 Sell Put 都能表达偏多观点。</p>
+<p>但它们真正的差别是：</p>
+<ul><li>Long Call 更像花钱买弹性，最大亏损从一开始就锁在权利金；</li><li>Sell Put 更像先收钱，代价是跌下来你可能要接股，或承担长时间账面压力。</li></ul>
+<p>同样是“我不想裸着扛下跌”，Protective Put 和 Collar 也不一样：</p>
+<ul><li>Protective Put 更重视保护强度；</li><li>Collar 更重视把保险做得更便宜，但要让出一部分上行空间。</li></ul>
+<p>所以第三问其实是在逼你说清楚：</p>
+<ul><li>我更在意风险是不是先封住；</li><li>还是更在意本金占用能不能更轻；</li><li>还是更在意能不能先把现金流做出来。</li></ul>
+<p>很多策略从名字上看很复杂， 但拆到这里，其实都只是不同交换而已。</p>
 <hr>
-<h1>三、用图片里的 SPY 例子，直接看出 PMCC 为什么会让人觉得“真香”</h1>
-<h2>18.6 Covered Call 要先掏 100 股的钱，PMCC 先掏的是 LEAP 的钱</h2>
-<p>图片里给了一个很好的 SPY 对比例子。</p>
-<p>虽然具体数字会随着市场变，但它表达的核心非常清楚：</p>
-<h3>Covered Call</h3>
-<ul><li>你要先买 100 股 SPY；</li><li>假设股价 465；</li><li>那你底仓大概就要 46,500 美元级别；</li><li>然后你再卖 1 张近月 Call 去收租。</li></ul>
-<h3>PMCC</h3>
-<ul><li>你不用先掏 46,500；</li><li>你可以买一张一年以上的 deep ITM LEAP Call；</li><li>比如成本只需要一万多美元量级；</li><li>然后同样卖 1 张近月 Call。</li></ul>
-<p>你立刻就会感受到它最直观的吸引力：</p>
-<blockquote><p><strong>我没那么多资金，但我居然也能做出一个“很像 Covered Call”的结构。</strong></p></blockquote>
-<p>这就是 PMCC 最大的魅力来源。</p>
+<h1>五、第四问：你是空仓表达观点，还是在改造已有持仓</h1>
+<h2>18.5 这是最容易被忽略、但对初中级读者最重要的一问</h2>
+<p>因为很多策略根本不是给“空仓瞎选”的。</p>
+<h3>空仓表达观点</h3>
+<p>你可能更常考虑：</p>
+<ul><li>Long Call / Long Put；</li><li>Bull / Bear Spread；</li><li>Straddle / Strangle；</li><li>Sell Put（如果你愿意把它当作价格型建仓承诺）。</li></ul>
+<h3>已有持仓要改造</h3>
+<p>你可能更该想的是：</p>
+<ul><li>Protective Put：给现有持仓加保险；</li><li>Covered Call：给现有持仓加租金 / 止盈纪律；</li><li>Collar：让已有持仓的上下边界更清楚。</li></ul>
+<p>这一步非常关键。</p>
+<p>因为如果你手里本来就有股票， 很多问题其实不是“我要不要新开一笔方向仓”， 而是：</p>
+<blockquote><p><strong>我该怎么把手里这笔仓位，改造成更适合当前市场阶段的形状。</strong></p></blockquote>
+<p>这也是为什么第13章讲结构骨架， 到第24–26章又要把 Protective Put、Covered Call、Sell Put 单独拆开重讲。</p>
+<p>前者在讲“它们为什么互相长得像”； 后者在讲“真实账户里到底该怎么用”。</p>
 <hr>
-<h2>18.7 所以 PMCC 真正“便宜”的地方，不是风险变小，而是前置资金门槛变低了</h2>
-<p>这里必须讲准。</p>
-<p>很多人一看到 PMCC 成本低，就会自动脑补成：</p>
-<ul><li>那是不是风险也更低？</li></ul>
-<p>不完全是。</p>
-<p>更准确的说法应该是：</p>
-<blockquote><p><strong>PMCC 降低的是前置资金门槛，不是把所有风险都变没。</strong></p></blockquote>
-<p>你少付的钱，是从哪里省下来的？</p>
-<ul><li>你没有真的买 100 股正股；</li><li>你买的是一张长期 Call；</li><li>所以你省掉的是“直接持股需要的那笔完整资本”。</li></ul>
-<p>但与此同时，你也引入了新的东西：</p>
-<ul><li>long leg 本身会有时间损耗；</li><li>它对 IV 有敏感度；</li><li>它不是股票本身；</li><li>你的底仓稳定性取决于这张 long leg 选得好不好。</li></ul>
-<p>所以 PMCC 最成熟的理解应该是：</p>
-<blockquote><p><strong>它不是‘更轻松的 Covered Call’，而是‘更省钱、但结构更脆一些的 Covered Call 变体’。</strong></p></blockquote>
-<p>这句话很重要。</p>
+<h1>六、把前面的策略快速归到四问里，你就知道这套书后面怎么读了</h1>
+<h2>18.6 一个最实用的初学者配对法</h2>
+<p>如果你现在要把前面学过的东西先粗分，可以先这样归位：</p>
+<h3>我空仓，而且偏看涨，但想把最大亏损锁死</h3>
+<p>优先想：</p>
+<ul><li>Long Call；</li><li>Bull Call Spread；</li><li>如果是更长期的观点，后面再看 LEAP Call。</li></ul>
+<h3>我空仓，而且偏看跌，但不想直接做空股票</h3>
+<p>优先想：</p>
+<ul><li>Long Put；</li><li>Bear Put Spread。</li></ul>
+<h3>我手里已经有股票，但怕下跌</h3>
+<p>优先想：</p>
+<ul><li>Protective Put；</li><li>如果还想兼顾成本，再看 Collar。</li></ul>
+<h3>我手里已经有股票，愿意让掉部分上涨，换现金流或止盈纪律</h3>
+<p>优先想：</p>
+<ul><li>Covered Call。</li></ul>
+<h3>我本来就想在更低价格买入一只股票</h3>
+<p>优先想：</p>
+<ul><li>Cash-Secured Put。</li></ul>
+<h3>我面对的是高价股，未来又想做类似 Covered Call 的结构，但前置资金太重</h3>
+<p>先把这个问题记住， 因为它会自然通向后面的：</p>
+<ul><li><strong>PMCC</strong>。</li></ul>
+<p>也正因为如此，PMCC 放在 Greeks 之后、更靠近应用篇，教学顺序会更顺。</p>
 <hr>
-<h1>四、PMCC 和 Covered Call 到底像在哪，又不像在哪</h1>
-<h2>18.8 它们的投资逻辑确实很像：底下拿多头，上面拿租金</h2>
-<p>图片里直接说：</p>
-<ul><li><strong>PMCC 和 CC（Covered Call）投资逻辑相同。</strong></li></ul>
-<p>这句话是对的。</p>
-<p>因为它们两者都在做同一件事：</p>
-<ul><li>底下拿着一个多头暴露；</li><li>上面卖短期 Call 收租；</li><li>用一部分未来上涨空间，换现在一笔权利金。</li></ul>
-<p>从这个角度看，它们确实是同一家族。</p>
-<p>但它们又绝不是完全一样。</p>
-<p>因为底仓完全不同：</p>
-<h3>Covered Call 的底仓</h3>
-<p>是真股票。</p>
-<h3>PMCC 的底仓</h3>
-<p>是一张长期 deep ITM Call。</p>
-<p>这就导致它们在几个关键点上会明显不同。</p>
+<h1>七、这章最重要的价值：它不是给你新策略，而是给你“选策略的顺序”</h1>
+<h2>18.7 学会问对问题，比多背一个名字更值钱</h2>
+<p>如果你把这章真正吃进去，后面再看到一个策略时，你脑子里应该先冒出来的，不再是：</p>
+<ul><li>这个名字我背过没有？</li></ul>
+<p>而是：</p>
+<p>1. 我是在做方向，还是做波动？ 2. 我更像买方，还是卖方？ 3. 我是在换风险边界，还是换资金效率 / 现金流？ 4. 我是在空仓表达观点，还是在改造已有持仓？</p>
+<p>只要这四问先立住， 很多原本看起来很乱的策略，都会开始自动归位。</p>
+<p>这也是为什么，这一章适合放在 Greeks 前面当一个桥：</p>
+<ul><li>前面的策略骨架，你已经大致看过了；</li><li>下一编 Greeks，则会把“这些策略为什么会那样动”这套语言系统补齐。</li></ul>
 <hr>
-<h2>18.9 不同点一：最大亏损结构不一样</h2>
-<p>图片里第一条对比特别重要：</p>
-<ul><li>Covered Call 最大损失更大，因为你底下是真 100 股正股；</li><li>PMCC 最大损失更低，因为你底下最多亏掉的是 LEAP Call 的成本。</li></ul>
-<p>这句话翻成人话就是：</p>
-<blockquote><p><strong>Covered Call 像拿真房子收租，PMCC 像先租了一个长租代理权再转租。</strong></p></blockquote>
-<p>所以：</p>
-<h3>Covered Call</h3>
-<ul><li>如果股票一路大跌；</li><li>你持有的是完整正股暴露；</li><li>最大伤害和 100 股正股强相关。</li></ul>
-<h3>PMCC</h3>
-<ul><li>如果 long leg 最后彻底失效；</li><li>你最多亏的是那张 LEAP Call 本身投入的成本。</li></ul>
-<p>所以从“最大理论损失”这件事上看，PMCC 的确更轻。</p>
-<p>但要小心，这不等于它就更舒服。</p>
-<p>因为它的舒服和不舒服，不只取决于最大损失数字，还取决于 long leg 自己在过程中会怎么变化。</p>
+<h1>八、本章小结：先学会分类，后面学策略才不会越学越乱</h1>
+<p>这一章最该带走的，不是某一个新招式，而是一套选择顺序：</p>
+<p>1. <strong>先分方向型问题，还是波动型问题。</strong> 2. <strong>再分买方思维，还是卖方思维。</strong> 3. <strong>再看你更在意风险边界，还是更在意资金效率 / 现金流。</strong> 4. <strong>最后确认你是在新开观点仓，还是在改造已有持仓。</strong></p>
+<p>如果这四步你能先跑一遍， 你以后再看：</p>
+<ul><li>Long Call / Long Put；</li><li>Spread；</li><li>Protective Put；</li><li>Covered Call；</li><li>Sell Put；</li><li>PMCC；</li></ul>
+<p>就不会只看到一堆名字， 而会更像在看：</p>
+<ul><li>哪个工具适合哪个问题；</li><li>哪种代价在换哪种好处；</li><li>哪个结构更像现在的你该用的。</li></ul>
 <hr>
-<h2>18.10 不同点二：Covered Call 的底仓没有 Theta，PMCC 的底仓有</h2>
-<p>这也是图片里特别想提醒你的点。</p>
-<h3>Covered Call 的正股底仓</h3>
-<ul><li>没有时间损耗；</li><li>股票不会因为“时间过去了”自己变烂。</li></ul>
-<h3>PMCC 的 LEAP Call 底仓</h3>
-<ul><li>虽然时间损耗相对较慢；</li><li>但它依然有 Theta；</li><li>它不是股票。</li></ul>
-<p>所以 PMCC 一个经常被忽略的现实是：</p>
-<blockquote><p><strong>你底下那层“正股替身”，自己其实也是会老、会耗的。</strong></p></blockquote>
-<p>这就是为什么图片里直接提醒：</p>
-<ul><li>Long leg 不要频繁折腾；</li><li>要打算长期持有；</li><li>但也不能真拿到快到期再装看不见。</li></ul>
-<p>这个“它会老”的属性，是 PMCC 和真正 Covered Call 最大的气质差别之一。</p>
-<hr>
-<h2>18.11 不同点三：PMCC 对 IV 更敏感，所以开仓时机也更讲究</h2>
-<p>图片里这条特别值钱：</p>
-<ul><li>Covered Call 更像在 IV 高的时候开仓，等 IV 回落；</li><li>PMCC 则更适合在 IV 相对较低的时候开仓。</li></ul>
-<p>为什么？</p>
-<p>因为 PMCC 底下那条 long leg 是一张 LEAP Call。</p>
-<p>而长期 Call 对什么更敏感？</p>
-<ul><li>对 IV 更敏感；</li><li>对 Vega 更有感觉。</li></ul>
-<p>也就是说：</p>
-<ul><li>如果你在 IV 很高的时候去买 long LEAP；</li><li>你可能一开始就把“底仓替身”买贵了；</li><li>后面哪怕方向没错，IV 回落也可能拖你一下。</li></ul>
-<p>所以 PMCC 最成熟的开仓直觉是：</p>
-<blockquote><p><strong>它不像 Covered Call 那样主要盯上面那张短 Call 的卖价，它还要认真看底下那张 LEAP Call 有没有买贵。</strong></p></blockquote>
-<p>这一步很关键。</p>
-<hr>
-<h1>五、PMCC 的几个最实用实操规则，图片里给得很细，我直接翻成人话</h1>
-<h2>18.12 规则一：long leg 要选流动性好的大标的</h2>
-<p>图片里明确说：</p>
-<ul><li>LEAP Call 对应的正股选择，要流动性高；</li><li>建议知名度高、交易量高。</li></ul>
-<p>这非常合理。</p>
-<p>因为：</p>
-<ul><li>你 long leg 是整套策略的地基；</li><li>如果它本身流动性差、点差宽；</li><li>你后面每次调整都会很难受。</li></ul>
-<p>所以 PMCC 特别不适合拿冷门小票乱试。</p>
-<p>更适合的是：</p>
-<ul><li>大盘 ETF；</li><li>热门大盘股；</li><li>期权链成熟、长期 LEAP 活跃的标的。</li></ul>
-<hr>
-<h2>18.13 规则二：long leg 尽量别动，把它当底仓，而不是拿来短炒</h2>
-<p>图片里这一点说得很明白：</p>
-<ul><li>Long leg：不要动；</li><li>必须是打算长期持有；</li><li>流动损耗高，不适合频繁交易。</li></ul>
-<p>为什么？</p>
-<p>因为这条腿在整套结构里的职责，不是用来折腾，而是：</p>
-<ul><li>充当正股替身；</li><li>提供稳定的多头骨架；</li><li>让你上面可以持续卖短期 Call。</li></ul>
-<p>如果你底下这条腿自己老换来换去，整个 PMCC 就会越来越不像“持仓收租”，更像“组合乱跳”。</p>
-<p>所以要把 long leg 当成地基，而不是当成另外一张短炒票。</p>
-<hr>
-<h2>18.14 规则三：short leg 的管理方式，基本和 Covered Call 一样</h2>
-<p>图片里直接写了：</p>
-<ul><li>Short leg：和 CC 一样——平常 or Rollover。</li></ul>
-<p>这句话翻成人话就是：</p>
-<ul><li>上面那张近月 Call，本质上还是在收租；</li><li>它怎么管理，和 Covered Call 的短腿逻辑差不多；</li><li>你可以：</li><li>平掉；</li><li>到期处理；</li><li>觉得还想继续收租就 roll 下去。</li></ul>
-<p>所以对 PMCC 来说，真正的难点往往不在 short leg，而在：</p>
-<ul><li>你有没有把 long leg 选对；</li><li>你有没有把 short leg 卖得太激进；</li><li>你有没有在暴涨时及时处理。</li></ul>
-<hr>
-<h2>18.15 规则四：股价暴涨时，不要傻扛短腿</h2>
-<p>图片里给了一个很重要的提醒：</p>
-<ul><li>股价暴涨时，short leg 会变得越来越麻烦；</li><li>需要提前处理 PMCC。</li></ul>
-<p>这特别重要。</p>
-<p>因为很多人以为：</p>
-<ul><li>我底下不是有 long LEAP 吗；</li><li>那上面短腿被打进来也没事吧？</li></ul>
-<p>不完全是。</p>
-<p>如果股价快速暴涨，短腿近月 Call 会变得非常敏感：</p>
-<ul><li>它越来越深 ITM；</li><li>你上方空间会被锁得非常死；</li><li>组合会越来越别扭；</li><li>你如果不处理，会从“开心收租”变成“越涨越难受”。</li></ul>
-<p>所以当标的大幅冲上去时，更成熟的做法通常是：</p>
-<ul><li>提前平掉短腿；</li><li>或者把短腿 roll 到更远更高的位置；</li><li>必要时甚至把整套 PMCC 先拆掉重来。</li></ul>
-<p>这一步不能装死。</p>
-<hr>
-<h2>18.16 规则五：LEAP 剩余时间不要拖到太短，最好提前滚动</h2>
-<p>图片里最后一个提醒也非常实用：</p>
-<ul><li>LEAP Call 快到期时，替代正股效果会越来越差；</li><li>尽量不要低于 6 个月；</li><li>要提前平仓或 roll 到更远月。</li></ul>
-<p>这背后的逻辑很清楚：</p>
-<ul><li>你之所以用 LEAP，是为了让它足够像长期底仓；</li><li>可一旦它开始进入中后期，时间损耗和结构特性都在变化；</li><li>它就会越来越不像“正股替身”。</li></ul>
-<p>所以 PMCC 的 long leg 不是买了就忘。</p>
-<p>更成熟的思路是：</p>
-<blockquote><p><strong>把它一直维持在“仍然像正股替身”的状态，而不是硬拖到它老得不像样。</strong></p></blockquote>
-<p>这就是为什么图片里给了“尽量不要低于 6 个月”这个很实用的经验线。</p>
-<hr>
-<h1>六、本章小结：PMCC 不是 Covered Call 的青春版，而是它的“低资金门槛变体”</h1>
-<p>这一章如果只压成最重要的几句话，我希望你记住：</p>
-<ul><li><strong>PMCC = LEAP Call + 卖短期 Call</strong>；</li><li>它本质上是在用长期 deep ITM Call 替代正股，再做 Covered Call；</li><li>它最大的吸引力，是前置资金门槛低得多；</li><li>但它不是白送的，因为 long leg 自己会有：</li><li>Theta；</li><li>Vega / IV 风险；</li><li>对选股、选期限、选 Delta 的更高要求；</li><li>long leg 要尽量：</li><li>一年以上；</li><li>deep ITM；</li><li>delta 尽量高；</li><li>流动性要好；</li><li>short leg 的管理和 Covered Call 很像，但暴涨时一定要主动处理；</li><li>LEAP 不要拖到太老，最好提前 roll。</li></ul>
-<p>如果把它压成一句最人话的话，就是：</p>
-<blockquote><p><strong>PMCC 不是让你用更少的钱“白嫖” Covered Call，而是让你用一个更省钱、但也更讲究 long leg 质量的方式，去做一套类似 Covered Call 的结构。</strong></p></blockquote>
-<p>这就是它真正的价值和边界。</p>
+<h2>本章一句话总结</h2>
+<blockquote><p><strong>真正能把策略学顺的人，不是背得出更多名字的人，而是遇到问题时，先知道自己该按什么顺序做筛选。</strong></p></blockquote>
 <hr>
 <h2>自测题</h2>
-<p>1）为什么说 PMCC 本质上是把 Covered Call 里的正股底仓换成了一张长期 deep ITM Call？</p>
-<p>2）为什么 PMCC 的 long leg 不能随便买一张便宜 Call 代替，而要尽量选一年以上、deep ITM、delta 较高的 LEAP？</p>
-<p>3）为什么说 PMCC 降低的是前置资金门槛，而不是把所有风险都变没了？</p>
-<p>4）PMCC 和 Covered Call 最大的几个不同点分别是什么？</p>
-<p>5）为什么 long leg 剩余时间太短时，要考虑提前平仓或 roll 到更远月？</p>
+<p>1）为什么说很多新手的问题，不是不会定义策略，而是不会把策略和真实场景匹配起来？</p>
+<p>2）“方向型问题”和“波动型问题”最大的区别是什么？请各举一个策略例子。</p>
+<p>3）为什么说买方思维和卖方思维的核心差别，不只是风险大小，而是“先付钱买弹性”还是“先收钱换义务”？</p>
+<p>4）同样是偏看涨，Long Call 和 Sell Put 的真实账户体验为什么会很不一样？</p>
+<p>5）为什么说“我是空仓表达观点，还是在改造已有持仓”这一步，对策略选择特别重要？</p>
 <hr>
-<h2>下一章预告：策略选择框架——不是记更多名字，而是学会先问自己四个问题</h2>
-<p>到这里，你已经学了很多结构：</p>
-<ul><li>单腿；</li><li>价差；</li><li>波动率策略；</li><li>持仓保护；</li><li>PMCC。</li></ul>
-<p>接下来再继续堆策略名字，价值就没那么大了。</p>
-<p>更重要的是把这些东西整理成一个真正能拿来用的选择框架：</p>
-<ul><li>我到底是在赌方向，还是赌波动？</li><li>我更像买方，还是更像卖方？</li><li>我更在意资金效率，还是更在意风险边界？</li><li>我是空仓做策略，还是已有正股持仓要改造？</li></ul>
-<p>这就是下一章要做的事。</p>
+<h2>下一章预告：Delta——为什么它既像“涨跌敏感度”，又像“到期进实值的概率尺”</h2>
+<p>这一章我们刚把前面的策略按问题类型重新排了一遍。</p>
+<p>下一章开始，就要进入一套真正解释“这些仓位为什么会那样动”的语言系统了。</p>
+<p>Delta 会先告诉你：</p>
+<ul><li>为什么有的 Call 很像正股；</li><li>为什么有的 Call 更像赔率仓；</li><li>为什么同样看涨，不同执行价拿在手里的感觉完全不一样。</li></ul>
+<p>把 Delta 读懂之后，你前面很多“我知道这个策略名字，但手感还不稳定”的地方，就会明显顺下来。</p>
 <hr>
 <h2>本章参考口径（便于追溯）</h2>
-<ul><li>图片关联重点：<code>PMCC = LEAP Call + 卖 Call</code>、<code>PMCC vs Covered Call</code>、<code>deep ITM / high delta / long-dated LEAP</code>、<code>IV 时机</code>、<code>short leg 管理</code>、<code>LEAP 不要拖到太短</code></li><li>OCC / OIC：用于校准 covered call、long call replacement、PMCC 类结构的基础教育口径</li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li><li>Fidelity Options Strategy Guide：用于保持 LEAP、covered call、diagonal / replacement-style logic 的收益风险表述与主流券商口径一致</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li><li>CBOE Options Institute：用于保持 LEAPS、covered call variants、capital efficiency 与 option replacement 思路的一致术语</li><li><a href="https://www.cboe.com/optionsinstitute/">https://www.cboe.com/optionsinstitute/</a></li></ul>
+<ul><li>本章为教材内部桥梁章，主要作用是把前面已学策略按“问题类型 / 账户状态 / 风险偏好”重新归位，不对应单一主图。</li><li>相关基础策略口径仍以上一阶段章节与对应权威教育资料为准：</li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li><li><a href="https://www.cboe.com/optionsinstitute/">https://www.cboe.com/optionsinstitute/</a></li></ul>
             </article>
         </section>
 
@@ -513,8 +451,8 @@
                     </div>
                     <div class="chapter-nav-slot">
                         <div class="chapter-nav-label">下一章</div>
-                        <a class="chapter-nav-link" href="./index.html">回到课程首页</a>
-                        <p>这是当前最后一篇已发布章节。</p>
+                        <a class="chapter-nav-link" href="./19.html">第 19 章 · Delta</a>
+                        <p>理解 Delta 如何同时刻画价格敏感度、位置手感与期权更像股票还是赔率仓的差异。</p>
                     </div>
                 </div>
             </div>
@@ -531,6 +469,6 @@
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260324b"></script>
+    <script src="../js/main.js?v=20260326-options1"></script>
 </body>
 </html>

@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260324b">
+    <link rel="stylesheet" href="../css/style.css?v=20260326-options1">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -65,7 +65,6 @@
         }
 
         .chapter-summary-card,
-        .chapter-body-card,
         .chapter-nav-card {
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.08);
@@ -74,14 +73,28 @@
             box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
         }
 
-        .chapter-summary-card p,
-        .chapter-nav-card p {
-            color: var(--text-secondary);
+        .chapter-body-card {
+            background: rgba(248, 241, 228, 0.98);
+            border: 1px solid rgba(122, 91, 10, 0.16);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 22px 48px -28px rgba(84, 60, 14, 0.22);
+            line-height: 1.9;
+            color: #241e14;
         }
 
-        .chapter-body-card {
-            line-height: 1.9;
-            color: var(--text-primary);
+        .chapter-summary-card {
+            background: rgba(255, 250, 242, 0.96);
+            border: 1px solid rgba(122, 91, 10, 0.12);
+            box-shadow: 0 18px 40px -24px rgba(84, 60, 14, 0.18);
+        }
+
+        .chapter-summary-card p {
+            color: rgba(31,27,20,0.88);
+        }
+
+        .chapter-nav-card p {
+            color: var(--text-secondary);
         }
 
         .chapter-body-card h2,
@@ -89,14 +102,14 @@
         .chapter-body-card h4,
         .chapter-body-card h5,
         .chapter-body-card h6 {
-            color: var(--text-primary);
+            color: #1f1b14;
             margin-top: 1.6em;
         }
 
         .chapter-body-card p,
         .chapter-body-card li,
         .chapter-body-card blockquote {
-            color: var(--text-secondary);
+            color: rgba(31,27,20,0.9);
         }
 
         .chapter-body-card ul,
@@ -108,8 +121,23 @@
             margin: 1.5rem 0;
             padding: 1rem 1.25rem;
             border-left: 3px solid var(--accent-gold);
-            background: rgba(201, 162, 39, 0.08);
+            background: rgba(212, 175, 55, 0.12);
             border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-body-card code {
+            background: rgba(122, 91, 10, 0.08);
+            color: #5b4307;
+            padding: 0.12rem 0.35rem;
+            border-radius: 6px;
+        }
+
+        .chapter-body-card a {
+            color: #7a5b0a;
+        }
+
+        .chapter-body-card a:hover {
+            color: #5b4307;
         }
 
         .chapter-nav-grid {
@@ -255,7 +283,22 @@
 <ul><li>为什么 Covered Call 很像 Short Put；</li><li>为什么 Protective Put 很像 Long Call；</li><li>为什么买 Call + 卖 Put 又会像直接持股。</li></ul>
 <p>也就是说，这章最重要的不是背公式，而是建立一种新的视角：</p>
 <blockquote><p><strong>表面上动作不同、名字不同的策略，最后的风险收益结构，可能非常接近。</strong></p></blockquote>
-<p>一旦你把这一点看明白，期权在你眼里就不再是一堆零散招式，而会开始变成一种“拼风险形状”的系统。</p></blockquote>
+<p>一旦你把这一点看明白，期权在你眼里就不再是一堆零散招式，而会开始变成一种“拼风险形状”的系统。</p>
+<p>这一章的定位要先说清：</p>
+<ul><li><strong>第13章讲的是“结构识别”</strong>——看穿 Covered Call、Protective Put、Short Put、Long Call 之间为什么会互相“长得像”；</li><li><strong>后面的第24–26章讲的是“实战应用”</strong>——什么时候该用、怎么选行权价、怎么处理到期、roll 或接股；</li><li>所以这里不是把后面重复一遍，而是先把骨架看懂，再在后面把它们一个个落回真实交易。</li></ul></blockquote>
+<hr>
+<h2>阅读导航：第一次读先抓结构，别急着跟公式较劲</h2>
+<p>这一章对初中级读者来说，最容易卡住的地方，不是 Covered Call 或 Protective Put 本身，而是后面那层“它们为什么会互相长得像”。</p>
+<p>所以第一遍读，我建议你先抓住两组最值钱的结构翻译：</p>
+<ul><li><strong>Protective Put ≈ Long Call</strong></li><li><strong>Covered Call ≈ Short Put</strong></li></ul>
+<p>你先别急着把 Put-Call Parity 的字母形式背下来。</p>
+<p>因为这一章真正要你学会的，不是公式本身，而是这件事：</p>
+<blockquote><p><strong>不同零件拼出来的仓位，最后可能在风险收益上非常接近。</strong></p></blockquote>
+<p>第一遍读的时候，你只要能回答下面三个问题，就已经抓到主干了：</p>
+<p>1. Covered Call 到底是在拿什么换权利金？ 2. Protective Put 到底是在花什么钱买什么保护？ 3. 为什么 Covered Call 和 Short Put、Protective Put 和 Long Call，看起来部件不同，结果却会很像？</p>
+<p>第二遍再去补：</p>
+<ul><li>Put-Call Parity 的严格表达；</li><li>Synthetic Long 为什么会越来越像持股；</li><li>这些结构等价在实战中意味着什么。</li></ul>
+<p>这样你会更像是在搭骨架，而不是一上来就被公式压住。</p>
 <hr>
 <h1>一、先从最接地气的两个组合开始：Covered Call 和 Protective Put</h1>
 <h2>13.1 为什么这两个最适合当高阶入口</h2>
@@ -655,6 +698,9 @@
 <ul><li>市场上很多所谓复杂策略，本质上只是把这几种风险结构重新拼装；</li><li>真正成熟的人，不是名字背得多，而是看一眼就知道：这个结构到底更像什么。</li></ul>
 <p>这就是第 13 章的意义。</p>
 <hr>
+<h2>一句话总结</h2>
+<blockquote><p><strong>这章真正要学会的，不是死背 Put-Call Parity 的公式，而是看懂不同零件为什么能拼出几乎一样的风险形状。</strong></p></blockquote>
+<hr>
 <h2>自测题</h2>
 <p>1）为什么说 Covered Call 更像“持股收租”，而不是单纯看空？</p>
 <p>2）Protective Put 为什么像“给持仓买保险”？它最主要的好处和代价分别是什么？</p>
@@ -715,6 +761,6 @@
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260324b"></script>
+    <script src="../js/main.js?v=20260326-options1"></script>
 </body>
 </html>

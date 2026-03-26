@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260324b">
+    <link rel="stylesheet" href="../css/style.css?v=20260326-options1">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -65,7 +65,6 @@
         }
 
         .chapter-summary-card,
-        .chapter-body-card,
         .chapter-nav-card {
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.08);
@@ -74,14 +73,28 @@
             box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
         }
 
-        .chapter-summary-card p,
-        .chapter-nav-card p {
-            color: var(--text-secondary);
+        .chapter-body-card {
+            background: rgba(248, 241, 228, 0.98);
+            border: 1px solid rgba(122, 91, 10, 0.16);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 22px 48px -28px rgba(84, 60, 14, 0.22);
+            line-height: 1.9;
+            color: #241e14;
         }
 
-        .chapter-body-card {
-            line-height: 1.9;
-            color: var(--text-primary);
+        .chapter-summary-card {
+            background: rgba(255, 250, 242, 0.96);
+            border: 1px solid rgba(122, 91, 10, 0.12);
+            box-shadow: 0 18px 40px -24px rgba(84, 60, 14, 0.18);
+        }
+
+        .chapter-summary-card p {
+            color: rgba(31,27,20,0.88);
+        }
+
+        .chapter-nav-card p {
+            color: var(--text-secondary);
         }
 
         .chapter-body-card h2,
@@ -89,14 +102,14 @@
         .chapter-body-card h4,
         .chapter-body-card h5,
         .chapter-body-card h6 {
-            color: var(--text-primary);
+            color: #1f1b14;
             margin-top: 1.6em;
         }
 
         .chapter-body-card p,
         .chapter-body-card li,
         .chapter-body-card blockquote {
-            color: var(--text-secondary);
+            color: rgba(31,27,20,0.9);
         }
 
         .chapter-body-card ul,
@@ -108,8 +121,23 @@
             margin: 1.5rem 0;
             padding: 1rem 1.25rem;
             border-left: 3px solid var(--accent-gold);
-            background: rgba(201, 162, 39, 0.08);
+            background: rgba(212, 175, 55, 0.12);
             border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-body-card code {
+            background: rgba(122, 91, 10, 0.08);
+            color: #5b4307;
+            padding: 0.12rem 0.35rem;
+            border-radius: 6px;
+        }
+
+        .chapter-body-card a {
+            color: #7a5b0a;
+        }
+
+        .chapter-body-card a:hover {
+            color: #5b4307;
         }
 
         .chapter-nav-grid {
@@ -259,6 +287,14 @@
 <p>这一章我们不讲抽象名词，专门讲两个最重要、最稳定、最值得你背下来的规律。你以后只要看到期权链，脑子里都应该自动想起这两条：</p>
 <p>1. <strong>到期时间越长，时间价值通常越高</strong> 2. <strong>在同一到期日下，越靠近 ATM，时间价值通常越高；越往深 ITM / 深 OTM，两边通常越低</strong></p>
 <p>这两条就是本章的“铁律”。</p></blockquote>
+<hr>
+<h2>阅读导航：第一次读先背两条铁律，第二次读再看为什么会偏离</h2>
+<p>这一章第一次读，不需要把所有价格差异都解释到极致。</p>
+<p>你先把两条最重要的分布规律记住：</p>
+<p>1. <strong>到期时间越长，时间价值通常越高。</strong> 2. <strong>同一到期日下，越靠近 ATM，时间价值通常越厚。</strong></p>
+<p>第一遍这两句站稳，你以后看期权链时就会开始有“正常长相”的直觉。</p>
+<p>第二遍再去补：</p>
+<ul><li>为什么真实市场里它不会每次都长得那么工整；</li><li>为什么财报、IV、流动性会让这套分布暂时扭曲；</li><li>为什么理解“正常形状”以后，才看得懂哪些地方是贵、哪些地方是便宜。</li></ul>
 <hr>
 <h3>6.1 先把讨论边界讲清楚：这里说的是“其他条件大致不变时”的规律</h3>
 <p>在真实市场里，期权价格不会只受一个因素影响。除了到期时间、行权价位置之外，波动率、财报、市场情绪、流动性都会影响报价。</p>
@@ -483,6 +519,9 @@
 <p>而下一章，我们就要讲这件事最残酷的一面：</p>
 <blockquote><p><strong>时间价值不只是存在，它还会被时间一点一点吃掉。</strong></p></blockquote>
 <hr>
+<hr>
+<h2>一句话总结</h2>
+<blockquote><p><strong>时间价值最关键的两条铁律就是：时间越长越贵，越靠近 ATM 越厚；这决定了你买到的不只是方向，还是一段可能性。</strong></p></blockquote>
 <h2>自测题</h2>
 <p>1）为什么说“到期时间越长，时间价值通常越高”？请不要只回答“因为时间多”，而是说明背后的逻辑。</p>
 <p>2）为什么同一到期日下，ATM 附近的时间价值通常更高？</p>
@@ -545,6 +584,6 @@
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260324b"></script>
+    <script src="../js/main.js?v=20260326-options1"></script>
 </body>
 </html>

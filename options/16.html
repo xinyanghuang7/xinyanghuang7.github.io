@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260324b">
+    <link rel="stylesheet" href="../css/style.css?v=20260326-options1">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -65,7 +65,6 @@
         }
 
         .chapter-summary-card,
-        .chapter-body-card,
         .chapter-nav-card {
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.08);
@@ -74,14 +73,28 @@
             box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
         }
 
-        .chapter-summary-card p,
-        .chapter-nav-card p {
-            color: var(--text-secondary);
+        .chapter-body-card {
+            background: rgba(248, 241, 228, 0.98);
+            border: 1px solid rgba(122, 91, 10, 0.16);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 22px 48px -28px rgba(84, 60, 14, 0.22);
+            line-height: 1.9;
+            color: #241e14;
         }
 
-        .chapter-body-card {
-            line-height: 1.9;
-            color: var(--text-primary);
+        .chapter-summary-card {
+            background: rgba(255, 250, 242, 0.96);
+            border: 1px solid rgba(122, 91, 10, 0.12);
+            box-shadow: 0 18px 40px -24px rgba(84, 60, 14, 0.18);
+        }
+
+        .chapter-summary-card p {
+            color: rgba(31,27,20,0.88);
+        }
+
+        .chapter-nav-card p {
+            color: var(--text-secondary);
         }
 
         .chapter-body-card h2,
@@ -89,14 +102,14 @@
         .chapter-body-card h4,
         .chapter-body-card h5,
         .chapter-body-card h6 {
-            color: var(--text-primary);
+            color: #1f1b14;
             margin-top: 1.6em;
         }
 
         .chapter-body-card p,
         .chapter-body-card li,
         .chapter-body-card blockquote {
-            color: var(--text-secondary);
+            color: rgba(31,27,20,0.9);
         }
 
         .chapter-body-card ul,
@@ -108,8 +121,23 @@
             margin: 1.5rem 0;
             padding: 1rem 1.25rem;
             border-left: 3px solid var(--accent-gold);
-            background: rgba(201, 162, 39, 0.08);
+            background: rgba(212, 175, 55, 0.12);
             border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-body-card code {
+            background: rgba(122, 91, 10, 0.08);
+            color: #5b4307;
+            padding: 0.12rem 0.35rem;
+            border-radius: 6px;
+        }
+
+        .chapter-body-card a {
+            color: #7a5b0a;
+        }
+
+        .chapter-body-card a:hover {
+            color: #5b4307;
         }
 
         .chapter-nav-grid {
@@ -256,6 +284,15 @@
 <blockquote><p><strong>Long 系列：我赌会出大动静。</strong></p>
 <p><strong>Short 系列：我赌别出那么大动静，或者至少别超出市场原本的夸张预期。</strong></p></blockquote>
 <p>你先把这两句抓住，后面的名字就都只是细分版本而已。</p></blockquote>
+<hr>
+<h2>阅读导航：第一次读先分清 Long / Short，第二次读再分结构名字</h2>
+<p>这一章第一次读，最容易把人读晕的，不是逻辑太难，而是名字一下变多了。</p>
+<p>所以第一遍你先别急着背 Straddle、Strangle、Butterfly、Condor 的所有细节。</p>
+<p>先抓两层最关键的分法：</p>
+<p>1. <strong>Long 系列 = 我赌会出大动静。</strong> 2. <strong>Short 系列 = 我赌别出那么大动静。</strong></p>
+<p>等这两层先站稳，第二遍再去补：</p>
+<ul><li>Straddle 和 Strangle 到底差在哪；</li><li>Butterfly 和 Condor 为什么本质上是加了护栏的 short 结构；</li><li>为什么很多波动率策略真正赌的，是“市场预期”和“真实结果”之间的落差。</li></ul>
+<p>这样读，会比一上来就被四个名字压住顺很多。</p>
 <hr>
 <h1>一、先把这章最底层讲清楚：这类策略赌的不是方向，而是“幅度够不够大”</h1>
 <h2>16.1 前面的策略像在赌“往哪边走”，这一章更像在赌“会不会闹大”</h2>
@@ -511,6 +548,9 @@
 <blockquote><p><strong>波动率策略真正赌的，不只是动不动，而是市场原本把“会怎么动”这件事，定得有没有太夸张。</strong></p></blockquote>
 <p>这句话理解了，你这章就真的进去了。</p>
 <hr>
+<hr>
+<h2>一句话总结</h2>
+<blockquote><p><strong>波动率策略本质上不是押方向，而是在比较“真实波动”和“市场原本预期的波动”到底谁更夸张。</strong></p></blockquote>
 <h2>自测题</h2>
 <p>1）为什么说 Long Straddle 和 Long Strangle 赌的不是方向，而是“幅度”？</p>
 <p>2）Long Straddle 和 Long Strangle 最核心的区别是什么？</p>
@@ -519,6 +559,12 @@
 <p>5）IV Crush 为什么特别适合和 Short 系列放在一起理解？</p>
 <p>6）Iron Butterfly 和 Iron Condor，本质上分别是在什么基础上加了保护腿？</p>
 <hr>
+<hr>
+<h2>下一章预告：Collar 衣领策略——保护下行的同时，拿上行空间去换成本</h2>
+<p>这一章你已经看到：很多复杂策略，本质上还是在围绕风险边界做重新拼装。</p>
+<p>下一章我们会把这件事落到一个非常贴近真实持仓的结构上：</p>
+<ul><li>你已经有股票；</li><li>你不想裸着扛下跌；</li><li>但你也不想把保险做得太贵。</li></ul>
+<p>这就是 Collar 要解决的问题。</p>
 <h2>本章参考口径（便于追溯）</h2>
 <ul><li>图片关联重点：<code>Long/Short Straddle</code>、<code>Long/Short Strangle</code>、<code>Short Straddle vs Short Strangle</code>、<code>IV Crush</code>、<code>Iron Butterfly</code>、<code>Iron Condor</code>、<code>Covered Straddle / Covered Strangle</code></li><li>OCC / OIC：用于校准 straddle/strangle、iron butterfly、iron condor 的基础教育口径</li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li></ul>
 <ul><li>Fidelity Options Strategy Guide：用于保持波动率策略与 Iron 系列的收益风险表述和主流券商口径一致</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li></ul>
@@ -567,6 +613,6 @@
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260324b"></script>
+    <script src="../js/main.js?v=20260326-options1"></script>
 </body>
 </html>

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="理解时间损耗如何持续侵蚀期权价值，并把买方与卖方放在不同的时间压力下观察。">
+    <meta name="author" content="ValueInvest">
+    <meta name="theme-color" content="#c9a227">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="canonical" href="https://4fire.qzz.io/options/21.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://4fire.qzz.io/options/21.html">
+    <meta property="og:title" content="Theta | 美股期权教材">
+    <meta property="og:description" content="理解时间损耗如何持续侵蚀期权价值，并把买方与卖方放在不同的时间压力下观察。">
+    <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Theta | 美股期权教材">
+    <meta name="twitter:description" content="理解时间损耗如何持续侵蚀期权价值，并把买方与卖方放在不同的时间压力下观察。">
+    <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <title>Theta | 美股期权教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css?v=20260326-options1">
+    <style>
+        .chapter-meta-bar {
+            width: min(1100px, calc(100% - 2rem));
+            margin: -2.25rem auto 0;
+            padding: 1rem 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+            position: relative;
+            z-index: 2;
+        }
+
+        .chapter-meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-secondary);
+            background: rgba(201, 162, 39, 0.08);
+            font-size: 0.95rem;
+        }
+
+        .chapter-meta-link {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .chapter-meta-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .chapter-shell {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .chapter-summary-card,
+        .chapter-nav-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+        }
+
+        .chapter-body-card {
+            background: rgba(248, 241, 228, 0.98);
+            border: 1px solid rgba(122, 91, 10, 0.16);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 22px 48px -28px rgba(84, 60, 14, 0.22);
+            line-height: 1.9;
+            color: #241e14;
+        }
+
+        .chapter-summary-card {
+            background: rgba(255, 250, 242, 0.96);
+            border: 1px solid rgba(122, 91, 10, 0.12);
+            box-shadow: 0 18px 40px -24px rgba(84, 60, 14, 0.18);
+        }
+
+        .chapter-summary-card p {
+            color: rgba(31,27,20,0.88);
+        }
+
+        .chapter-nav-card p {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card h2,
+        .chapter-body-card h3,
+        .chapter-body-card h4,
+        .chapter-body-card h5,
+        .chapter-body-card h6 {
+            color: #1f1b14;
+            margin-top: 1.6em;
+        }
+
+        .chapter-body-card p,
+        .chapter-body-card li,
+        .chapter-body-card blockquote {
+            color: rgba(31,27,20,0.9);
+        }
+
+        .chapter-body-card ul,
+        .chapter-body-card ol {
+            padding-left: 1.2rem;
+        }
+
+        .chapter-body-card blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.25rem;
+            border-left: 3px solid var(--accent-gold);
+            background: rgba(212, 175, 55, 0.12);
+            border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-body-card code {
+            background: rgba(122, 91, 10, 0.08);
+            color: #5b4307;
+            padding: 0.12rem 0.35rem;
+            border-radius: 6px;
+        }
+
+        .chapter-body-card a {
+            color: #7a5b0a;
+        }
+
+        .chapter-body-card a:hover {
+            color: #5b4307;
+        }
+
+        .chapter-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .chapter-nav-slot {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            min-height: 100%;
+            padding: 1rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(201, 162, 39, 0.06);
+        }
+
+        .chapter-nav-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .chapter-nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .chapter-nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        @media (max-width: 800px) {
+            .chapter-nav-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chapter-summary-card,
+            .chapter-body-card,
+            .chapter-nav-card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Theta",
+        "description": "理解时间损耗如何持续侵蚀期权价值，并把买方与卖方放在不同的时间压力下观察。",
+        "author": {
+            "@type": "Person",
+            "name": "ValueInvest"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ValueInvest",
+            "sameAs": "https://4fire.qzz.io/"
+        },
+        "mainEntityOfPage": "https://4fire.qzz.io/options/21.html",
+        "isPartOf": {
+            "@type": "Course",
+            "name": "美股期权教材",
+            "url": "https://4fire.qzz.io/options/"
+        },
+        "image": [
+            "https://4fire.qzz.io/images/hero-bg.jpg"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
+
+    <header id="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="期权章节页主导航">
+                <ul class="nav-links">
+                    <li><a href="../index.html">返回首页</a></li>
+                    <li><a href="./index.html">返回课程</a></li>
+                    <li><a href="#chapter-navigation">章节导航</a></li>
+                </ul>
+            </nav>
+            <div class="nav-date">第 21 章</div>
+        </div>
+    </header>
+
+    <section class="hero" role="banner">
+        <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
+        <div class="hero-content">
+            <div class="subtitle">Greeks 与仓位行为篇</div>
+            <h1>第 21 章 · Theta</h1>
+            <p class="tagline">Greeks 与仓位行为篇 · Batch 6</p>
+            <p class="hero-description">理解时间损耗如何持续侵蚀期权价值，并把买方与卖方放在不同的时间压力下观察。</p>
+        </div>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
+    </section>
+
+    <div class="chapter-meta-bar" aria-label="章节关键信息">
+        <div class="chapter-meta-pill">章节编号：第 21 章</div>
+        <div class="chapter-meta-pill">Section：Greeks 与仓位行为篇</div>
+        <div class="chapter-meta-pill">Batch：Batch 6 · 已发布</div>
+        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
+    </div>
+
+    <main id="main" class="chapter-shell">
+        <section class="section" id="chapter-summary" aria-labelledby="chapter-summary-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">01</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
+                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
+                </div>
+            </div>
+
+            <div class="chapter-summary-card">
+                <p>理解时间损耗如何持续侵蚀期权价值，并把买方与卖方放在不同的时间压力下观察。</p>
+            </div>
+        </section>
+
+        <section class="section" id="chapter-content" aria-labelledby="chapter-content-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">02</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
+                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
+                </div>
+            </div>
+
+            <article class="chapter-body-card">
+<h1>《美股期权教材》</h1>
+<h2>第21章 Theta：时间损耗与持仓压力</h2>
+<blockquote><p>本章主要基于以下图片材料整理并扩写：</p>
+<ul><li><code>renamed/img11.jpg</code>：Greeks 总纲，说明 Theta 是理解期权持仓体验的核心维度之一；</li><li><code>renamed/img14.jpg</code>：Theta 主图，强调“期权每天都在流失时间价值”、ATM 与临近到期时损耗更明显，以及 Gamma 与 Theta 的此消彼长。</li></ul>
+<p>如果你只记一句话，那就是：</p>
+<blockquote><p><strong>Theta 说的不是你对不对方向，而是“就算方向暂时没错，只要时间在走，你的期权会不会先被时间吃掉”。</strong></p></blockquote>
+<p>很多新手第一次做 long call 或 long put，都有一个非常强烈的困惑：</p>
+<ul><li>我买的方向明明没完全错；</li><li>股价甚至还在我想的方向附近；</li><li>可期权价格就是一天比一天更难受。</li></ul>
+<p>这时候，真正压着你账户的，往往不是 Delta，而是 Theta。</p>
+<p>Delta 讲的是“股价动一下，你的期权大概怎么动”； Theta 讲的是“哪怕股价先不怎么动，时间本身也会不会让你的期权变便宜”。</p>
+<p>它决定的，是期权交易里一个很不舒服、但又必须接受的现实：</p>
+<p><strong>买方不仅要判断方向，还要和时间赛跑。</strong></p></blockquote>
+<hr>
+<h2>阅读导航：第一次读先抓“时间会不会先把你磨掉”，第二次读再补损耗速度</h2>
+<p>这一章第一次读，最重要的不是去记某个具体日损数字。</p>
+<p>你先抓一句：</p>
+<blockquote><p><strong>对期权来说，时间不是背景板，而是每天都在发生作用的成本。</strong></p></blockquote>
+<p>第一遍只要看懂：</p>
+<ul><li>买方为什么更怕时间；</li><li>卖方为什么常常更喜欢时间过去；</li><li>为什么期权买方不只是方向对，还得及时对。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>为什么 ATM、临近到期的 Theta 体感更强；</li><li>为什么 Theta 不是固定日损表；</li><li>为什么正 Theta 也绝不自动等于低风险。</li></ul>
+<hr>
+<h1>一、先把 Theta 讲成人话：它就是“时间每过一天，期权大概要掉多少”</h1>
+<h2>21.1 期权不是股票，它自带保质期</h2>
+<p>股票没有到期日。</p>
+<p>你买入一股 AAPL，只要公司没退市，你可以一直拿着。只要基本面、估值和市场风格允许，它不会因为“时间到了”就自动失效。</p>
+<p>期权不一样。</p>
+<p>期权从一开始就是一张有期限的合同：</p>
+<ul><li>到某个到期日之前，它还有交易价值；</li><li>一旦到期，时间价值这部分就会被结算掉；</li><li>到了最后，如果期权仍然是虚值，它会像保险到期一样归零。</li></ul>
+<p>这就是为什么，期权的世界里必须有一个专门衡量“时间流逝对价格的伤害”的量尺。</p>
+<p>这个量尺，就是 Theta。</p>
+<hr>
+<h2>阅读导航：第一次读先抓“时间会不会先把你磨掉”，第二次读再补损耗速度</h2>
+<p>这一章第一次读，最重要的不是去记某个具体日损数字。</p>
+<p>你先抓一句：</p>
+<blockquote><p><strong>对期权来说，时间不是背景板，而是每天都在发生作用的成本。</strong></p></blockquote>
+<p>第一遍只要看懂：</p>
+<ul><li>买方为什么更怕时间；</li><li>卖方为什么常常更喜欢时间过去；</li><li>为什么期权买方不只是方向对，还得及时对。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>为什么 ATM、临近到期的 Theta 体感更强；</li><li>为什么 Theta 不是固定日损表；</li><li>为什么正 Theta 也绝不自动等于低风险。</li></ul>
+<hr>
+<h2>21.2 一个更正式但仍然实用的定义</h2>
+<p>按 Greeks 的常见定义，Theta 可以先这样理解：</p>
+<blockquote><p><strong>在其他条件暂时不变的前提下，时间每过去一天，期权价格理论上会变化多少。</strong></p></blockquote>
+<p>如果一张期权的 Theta 是：</p>
+<ul><li><strong>-0.05</strong></li></ul>
+<p>它最直观的读法就是：</p>
+<ul><li>在其他变量变化不大的情况下；</li><li>每过一天；</li><li>这张期权的理论价值大约会减少 0.05 美元。</li></ul>
+<p>美股期权一张合约对应 100 股，所以如果粗略换算到一张合约：</p>
+<ul><li>0.05 × 100 = <strong>5 美元</strong></li></ul>
+<p>也就是说，这张合约大致每天会损耗 5 美元的时间价值。</p>
+<p>这里一定要把三个限定词记住：</p>
+<ul><li><strong>理论上</strong>；</li><li><strong>其他条件不变</strong>；</li><li><strong>大约</strong>。</li></ul>
+<p>Theta 不是一个“今天一定亏 5 美元”的承诺书。</p>
+<p>真实市场里，期权价格还会同时受到：</p>
+<ul><li>股价变化；</li><li>IV 变化；</li><li>买卖价差；</li><li>临近事件的预期修正；</li><li>市场整体波动。</li></ul>
+<p>所以 Theta 更像一个“时间这件事本身，对你有多不友好”的刻度。</p>
+<hr>
+<h2>阅读导航：第一次读先抓“时间会不会先把你磨掉”，第二次读再补损耗速度</h2>
+<p>这一章第一次读，最重要的不是去记某个具体日损数字。</p>
+<p>你先抓一句：</p>
+<blockquote><p><strong>对期权来说，时间不是背景板，而是每天都在发生作用的成本。</strong></p></blockquote>
+<p>第一遍只要看懂：</p>
+<ul><li>买方为什么更怕时间；</li><li>卖方为什么常常更喜欢时间过去；</li><li>为什么期权买方不只是方向对，还得及时对。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>为什么 ATM、临近到期的 Theta 体感更强；</li><li>为什么 Theta 不是固定日损表；</li><li>为什么正 Theta 也绝不自动等于低风险。</li></ul>
+<hr>
+<h2>21.3 为什么很多人一碰短期期权，就开始体会到 Theta 的压力</h2>
+<p>因为短期期权最容易让你感受到一件事：</p>
+<blockquote><p><strong>你不是只在赌方向，你还在赌“方向要来得够快”。</strong></p></blockquote>
+<p>比如你买一张 7 天到期的 ATM Call：</p>
+<ul><li>你当然可能看对方向；</li><li>但如果股价只是慢慢涨；</li><li>或者先横两天再涨；</li><li>那你最终可能会发现，方向并没有及时兑现，时间价值先被拿走了一大块。</li></ul>
+<p>这也是为什么，新手常常会误以为：</p>
+<ul><li>“我明明看得不差，为什么仓位这么难受？”</li></ul>
+<p>因为股票只要求你大方向别错； 期权买方往往还要求你：</p>
+<ul><li>方向别错；</li><li>发生得够快；</li><li>IV 别同时塌；</li><li>你选的合约别太容易被时间吃掉。</li></ul>
+<p>Theta，就是把这个“时间不等人”的事实量化出来。</p>
+<hr>
+<h2>阅读导航：第一次读先抓“时间会不会先把你磨掉”，第二次读再补损耗速度</h2>
+<p>这一章第一次读，最重要的不是去记某个具体日损数字。</p>
+<p>你先抓一句：</p>
+<blockquote><p><strong>对期权来说，时间不是背景板，而是每天都在发生作用的成本。</strong></p></blockquote>
+<p>第一遍只要看懂：</p>
+<ul><li>买方为什么更怕时间；</li><li>卖方为什么常常更喜欢时间过去；</li><li>为什么期权买方不只是方向对，还得及时对。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>为什么 ATM、临近到期的 Theta 体感更强；</li><li>为什么 Theta 不是固定日损表；</li><li>为什么正 Theta 也绝不自动等于低风险。</li></ul>
+<hr>
+<h1>二、为什么 Theta 永远更偏向卖方，而不是买方</h1>
+<h2>21.4 买方付出的，本来就包含“时间这项成本”</h2>
+<p>回到前面讲过的期权价格构成：</p>
+<blockquote><p><strong>期权价格 = 内在价值 + 时间价值</strong></p></blockquote>
+<p>只要你买的那部分价格里含有时间价值，它就不可能永远停在那里不动。</p>
+<p>因为随着到期日越来越近：</p>
+<ul><li>未来可以发生惊喜的时间在变少；</li><li>这张合同的“可选择空间”在缩小；</li><li>市场愿意为这种可能性支付的溢价，也会逐渐下降。</li></ul>
+<p>所以对买方来说，Theta 常常是负的。</p>
+<p>这不是市场故意针对买方，而是你从一开始就买了一份“有保质期的可能性”。</p>
+<p>只要时间流逝，这份可能性的价值通常就会缩水。</p>
+<hr>
+<h2>阅读导航：第一次读先抓“时间会不会先把你磨掉”，第二次读再补损耗速度</h2>
+<p>这一章第一次读，最重要的不是去记某个具体日损数字。</p>
+<p>你先抓一句：</p>
+<blockquote><p><strong>对期权来说，时间不是背景板，而是每天都在发生作用的成本。</strong></p></blockquote>
+<p>第一遍只要看懂：</p>
+<ul><li>买方为什么更怕时间；</li><li>卖方为什么常常更喜欢时间过去；</li><li>为什么期权买方不只是方向对，还得及时对。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>为什么 ATM、临近到期的 Theta 体感更强；</li><li>为什么 Theta 不是固定日损表；</li><li>为什么正 Theta 也绝不自动等于低风险。</li></ul>
+<hr>
+<h2>21.5 卖方为什么通常是正 Theta</h2>
+<p>如果买方每天在流失时间价值，那么谁在另一边？</p>
+<p>答案当然是卖方。</p>
+<p>卖方卖出的，本质上就是一份带时间价值的合同。</p>
+<ul><li>买方买的是“未来的不确定机会”；</li><li>卖方卖的是“把这种不确定机会打包提供给别人”。</li></ul>
+<p>于是当时间过去、期权价值自然回落时：</p>
+<ul><li>买方感受到的是磨损；</li><li>卖方感受到的则是时间站在自己这边。</li></ul>
+<p>这就是为什么你经常会听到一句话：</p>
+<blockquote><p><strong>卖方赚 Theta。</strong></p></blockquote>
+<p>这句话方向上没错，但如果只背这半句，会出大问题。</p>
+<p>因为卖方虽然常常拿到正 Theta，另一边往往也要承担：</p>
+<ul><li>负 Gamma；</li><li>突发行情下更难受的仓位变脸；</li><li>尾部风险；</li><li>过近到期时的管理压力。</li></ul>
+<p>所以真正成熟的表达不是“卖方躺赚时间”，而是：</p>
+<blockquote><p><strong>卖方通常在收时间价值，但必须为此承担别的风险。</strong></p></blockquote>
+<hr>
+<h2>阅读导航：第一次读先抓“时间会不会先把你磨掉”，第二次读再补损耗速度</h2>
+<p>这一章第一次读，最重要的不是去记某个具体日损数字。</p>
+<p>你先抓一句：</p>
+<blockquote><p><strong>对期权来说，时间不是背景板，而是每天都在发生作用的成本。</strong></p></blockquote>
+<p>第一遍只要看懂：</p>
+<ul><li>买方为什么更怕时间；</li><li>卖方为什么常常更喜欢时间过去；</li><li>为什么期权买方不只是方向对，还得及时对。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>为什么 ATM、临近到期的 Theta 体感更强；</li><li>为什么 Theta 不是固定日损表；</li><li>为什么正 Theta 也绝不自动等于低风险。</li></ul>
+<hr>
+<h1>三、为什么 ATM、临近到期时，Theta 常常最有杀伤力</h1>
+<h2>21.6 时间价值最多的地方，往往也是时间损耗最明显的地方</h2>
+<p>图片里给出的直觉非常重要：</p>
+<ul><li><strong>ATM 附近，时间价值通常最高；</strong></li><li><strong>时间价值高的地方，Theta 的绝对值往往也更显眼。</strong></li></ul>
+<p>为什么？</p>
+<p>因为 ATM 附近的期权，最像一张“胜负还没揭晓的合同”。</p>
+<ul><li>Deep ITM 的很多价值已经更接近内在价值；</li><li>Deep OTM 的合同，看起来又太远，市场不会给它太多时间溢价；</li><li>真正最让市场犹豫、也最愿意为未来可能性多付钱的，恰恰是 ATM 一带。</li></ul>
+<p>而一旦时间价值本来就高，时间流逝带来的磨损自然也更值得警惕。</p>
+<p>这就是为什么：</p>
+<ul><li>很多 ATM 期权看着“最顺手”；</li><li>但它们也经常是 Theta 体感最明显的一档。</li></ul>
+<hr>
+<h2>阅读导航：第一次读先抓“时间会不会先把你磨掉”，第二次读再补损耗速度</h2>
+<p>这一章第一次读，最重要的不是去记某个具体日损数字。</p>
+<p>你先抓一句：</p>
+<blockquote><p><strong>对期权来说，时间不是背景板，而是每天都在发生作用的成本。</strong></p></blockquote>
+<p>第一遍只要看懂：</p>
+<ul><li>买方为什么更怕时间；</li><li>卖方为什么常常更喜欢时间过去；</li><li>为什么期权买方不只是方向对，还得及时对。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>为什么 ATM、临近到期的 Theta 体感更强；</li><li>为什么 Theta 不是固定日损表；</li><li>为什么正 Theta 也绝不自动等于低风险。</li></ul>
+<hr>
+<h2>21.7 越接近到期，Theta 往往越不温柔</h2>
+<p>Theta 的可怕之处，不只是它存在，而是它通常<strong>不是匀速流失</strong>。</p>
+<p>离到期还很远时：</p>
+<ul><li>时间价值损耗往往比较平缓；</li><li>你会觉得每天掉一点，还能接受。</li></ul>
+<p>可一旦接近到期：</p>
+<ul><li>市场对“还剩多少翻盘时间”的定价会明显收紧；</li><li>同样的一天，价值缩水的体感会比前面更强。</li></ul>
+<p>这就是为什么图里特别强调：</p>
+<blockquote><p><strong>越临近到期日，时间损耗越大。</strong></p></blockquote>
+<p>你可以把它理解成：</p>
+<ul><li>长期期权像慢慢融化的冰；</li><li>短期期权更像最后几天突然加速塌下去。</li></ul>
+<p>所以当你看到短期期权权利金很便宜时，千万别只看到便宜。</p>
+<p>你还要问：</p>
+<ul><li>它便宜，是不是因为 Theta 已经开始非常凶？</li><li>我真的需要这么短的时间窗口吗？</li><li>我承担得起“方向晚两天才来”的代价吗？</li></ul>
+<hr>
+<h2>阅读导航：第一次读先抓“时间会不会先把你磨掉”，第二次读再补损耗速度</h2>
+<p>这一章第一次读，最重要的不是去记某个具体日损数字。</p>
+<p>你先抓一句：</p>
+<blockquote><p><strong>对期权来说，时间不是背景板，而是每天都在发生作用的成本。</strong></p></blockquote>
+<p>第一遍只要看懂：</p>
+<ul><li>买方为什么更怕时间；</li><li>卖方为什么常常更喜欢时间过去；</li><li>为什么期权买方不只是方向对，还得及时对。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>为什么 ATM、临近到期的 Theta 体感更强；</li><li>为什么 Theta 不是固定日损表；</li><li>为什么正 Theta 也绝不自动等于低风险。</li></ul>
+<hr>
+<h2>21.8 关于周末：为什么不交易，Theta 也不是真的停下来</h2>
+<p>很多新手还有一个误解：</p>
+<ul><li>市场周末不开盘；</li><li>那周六周日是不是就没有 Theta？</li></ul>
+<p>更准确的理解是：</p>
+<ul><li>期权定价里，时间并不会因为周末就完全暂停；</li><li>真实市场对周末时间流逝的反映，通常会体现在临近周末和周一开盘后的价格里；</li><li>但它不会像闹钟一样，严格平均地“每天精确扣同样的钱”。</li></ul>
+<p>所以你不能把 Theta 理解成“每天晚上结算一次固定租金”。</p>
+<p>它更像一股持续存在的磨损，只是在不同时点、不同合约上，呈现得快慢不同。</p>
+<hr>
+<h2>阅读导航：第一次读先抓“时间会不会先把你磨掉”，第二次读再补损耗速度</h2>
+<p>这一章第一次读，最重要的不是去记某个具体日损数字。</p>
+<p>你先抓一句：</p>
+<blockquote><p><strong>对期权来说，时间不是背景板，而是每天都在发生作用的成本。</strong></p></blockquote>
+<p>第一遍只要看懂：</p>
+<ul><li>买方为什么更怕时间；</li><li>卖方为什么常常更喜欢时间过去；</li><li>为什么期权买方不只是方向对，还得及时对。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>为什么 ATM、临近到期的 Theta 体感更强；</li><li>为什么 Theta 不是固定日损表；</li><li>为什么正 Theta 也绝不自动等于低风险。</li></ul>
+<hr>
+<h1>四、Theta 和 Gamma 为什么总是绑在一起看</h1>
+<h2>21.9 买方常常是“正 Gamma + 负 Theta”</h2>
+<p>如果你买的是 long option，最常见的组合体验就是：</p>
+<ul><li><strong>正 Gamma</strong>：行情往你有利方向跑时，仓位更容易开始跟上；</li><li><strong>负 Theta</strong>：如果行情不够快，时间每天都在消耗你。</li></ul>
+<p>这就是为什么买方仓位经常给人一种“有爆发力，但不耐拖”的感觉。</p>
+<p>你拥有的是：</p>
+<ul><li>更好的弹性；</li><li>更干净的最大亏损边界；</li><li>但也要接受持仓时间不站在自己这边。</li></ul>
+<p>所以很多单腿买方策略的核心问题，并不是“你看不看对”，而是：</p>
+<blockquote><p><strong>你有没有在时间价值被吸干之前，把方向兑现出来。</strong></p></blockquote>
+<hr>
+<h2>阅读导航：第一次读先抓“时间会不会先把你磨掉”，第二次读再补损耗速度</h2>
+<p>这一章第一次读，最重要的不是去记某个具体日损数字。</p>
+<p>你先抓一句：</p>
+<blockquote><p><strong>对期权来说，时间不是背景板，而是每天都在发生作用的成本。</strong></p></blockquote>
+<p>第一遍只要看懂：</p>
+<ul><li>买方为什么更怕时间；</li><li>卖方为什么常常更喜欢时间过去；</li><li>为什么期权买方不只是方向对，还得及时对。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>为什么 ATM、临近到期的 Theta 体感更强；</li><li>为什么 Theta 不是固定日损表；</li><li>为什么正 Theta 也绝不自动等于低风险。</li></ul>
+<hr>
+<h2>21.10 卖方常常是“负 Gamma + 正 Theta”</h2>
+<p>卖方的体验往往正相反：</p>
+<ul><li><strong>正 Theta</strong>：时间流逝通常有利；</li><li><strong>负 Gamma</strong>：一旦行情逼近危险区域，风险可能加速恶化。</li></ul>
+<p>这也是为什么卖方策略常常呈现一种很典型的手感：</p>
+<ul><li>大多数时候，看着都挺舒服；</li><li>真到不舒服的时候，通常不会给你太多从容。</li></ul>
+<p>所以你以后看到任何“持续赚时间价值”的策略，都应该顺手再问一句：</p>
+<ul><li>那它在 Gamma 这一边，付出的代价是什么？</li></ul>
+<p>如果你不把 Theta 和 Gamma 放在一起看，就很容易只看到一半。</p>
+<hr>
+<h2>阅读导航：第一次读先抓“时间会不会先把你磨掉”，第二次读再补损耗速度</h2>
+<p>这一章第一次读，最重要的不是去记某个具体日损数字。</p>
+<p>你先抓一句：</p>
+<blockquote><p><strong>对期权来说，时间不是背景板，而是每天都在发生作用的成本。</strong></p></blockquote>
+<p>第一遍只要看懂：</p>
+<ul><li>买方为什么更怕时间；</li><li>卖方为什么常常更喜欢时间过去；</li><li>为什么期权买方不只是方向对，还得及时对。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>为什么 ATM、临近到期的 Theta 体感更强；</li><li>为什么 Theta 不是固定日损表；</li><li>为什么正 Theta 也绝不自动等于低风险。</li></ul>
+<hr>
+<h1>五、把 Theta 放回真实交易：你到底该怎么用它读仓位</h1>
+<h2>21.11 例子：AAPL 的短期 ATM Call 和长期 Call，痛感为什么完全不同</h2>
+<p>假设你同样看多 AAPL：</p>
+<h3>方案 A：买 7 天到期的 ATM Call</h3>
+<ul><li>成本相对较低；</li><li>Delta 可能不差；</li><li>但 Theta 往往更凶。</li></ul>
+<p>如果 AAPL 两天不动，或者只是慢慢涨一点：</p>
+<ul><li>你会明显感受到时间在偷走期权价格。</li></ul>
+<h3>方案 B：买 6 个月到期的 Call</h3>
+<ul><li>成本更高；</li><li>杠杆感没那么刺激；</li><li>但时间给你的容错更大。</li></ul>
+<p>它未必更“赚”，但它更像是在买一个更宽的实现窗口。</p>
+<p>所以 Theta 真正帮你的，不是挑“最猛”的合约，而是帮你看清：</p>
+<ul><li>这张合约要求我多快看对？</li><li>如果行情慢一点，我还有没有时间？</li></ul>
+<hr>
+<h2>阅读导航：第一次读先抓“时间会不会先把你磨掉”，第二次读再补损耗速度</h2>
+<p>这一章第一次读，最重要的不是去记某个具体日损数字。</p>
+<p>你先抓一句：</p>
+<blockquote><p><strong>对期权来说，时间不是背景板，而是每天都在发生作用的成本。</strong></p></blockquote>
+<p>第一遍只要看懂：</p>
+<ul><li>买方为什么更怕时间；</li><li>卖方为什么常常更喜欢时间过去；</li><li>为什么期权买方不只是方向对，还得及时对。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>为什么 ATM、临近到期的 Theta 体感更强；</li><li>为什么 Theta 不是固定日损表；</li><li>为什么正 Theta 也绝不自动等于低风险。</li></ul>
+<hr>
+<h2>21.12 例子：Covered Call 为什么经常有“时间站在自己这边”的感觉</h2>
+<p>如果你持有 100 股正股，再卖一张 Call：</p>
+<ul><li>你收进一笔权利金；</li><li>这张 short call 往往带有正 Theta；</li><li>只要股价别迅速冲到让你难受的位置，时间流逝通常会帮你把那张 Call 压便宜。</li></ul>
+<p>这就是很多人做 Covered Call 时，常说自己在“收租”的原因。</p>
+<p>但你现在应该能看得更完整一些：</p>
+<ul><li>你确实在收 Theta；</li><li>但你同时也在让出一部分上行空间；</li><li>如果股价突然猛冲，负 Gamma 的烦恼就会找上门。</li></ul>
+<p>所以 Theta 从来不是孤立存在的。</p>
+<p>它必须放回完整仓位里看。</p>
+<hr>
+<h2>阅读导航：第一次读先抓“时间会不会先把你磨掉”，第二次读再补损耗速度</h2>
+<p>这一章第一次读，最重要的不是去记某个具体日损数字。</p>
+<p>你先抓一句：</p>
+<blockquote><p><strong>对期权来说，时间不是背景板，而是每天都在发生作用的成本。</strong></p></blockquote>
+<p>第一遍只要看懂：</p>
+<ul><li>买方为什么更怕时间；</li><li>卖方为什么常常更喜欢时间过去；</li><li>为什么期权买方不只是方向对，还得及时对。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>为什么 ATM、临近到期的 Theta 体感更强；</li><li>为什么 Theta 不是固定日损表；</li><li>为什么正 Theta 也绝不自动等于低风险。</li></ul>
+<hr>
+<h1>六、新手最容易犯的四个 Theta 误会</h1>
+<h2>21.13 误会一：Theta 就是每天固定亏多少钱</h2>
+<p>不是。</p>
+<p>Theta 是在某个时点、在其他条件近似不变时，对时间损耗的理论估计。</p>
+<p>真实市场里：</p>
+<ul><li>Delta 会变；</li><li>Vega 会变；</li><li>IV 会变；</li><li>买卖盘会变。</li></ul>
+<p>所以 Theta 更像“此刻的时间磨损速度”，而不是未来每一天都完全一样的结果。</p>
+<hr>
+<h2>阅读导航：第一次读先抓“时间会不会先把你磨掉”，第二次读再补损耗速度</h2>
+<p>这一章第一次读，最重要的不是去记某个具体日损数字。</p>
+<p>你先抓一句：</p>
+<blockquote><p><strong>对期权来说，时间不是背景板，而是每天都在发生作用的成本。</strong></p></blockquote>
+<p>第一遍只要看懂：</p>
+<ul><li>买方为什么更怕时间；</li><li>卖方为什么常常更喜欢时间过去；</li><li>为什么期权买方不只是方向对，还得及时对。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>为什么 ATM、临近到期的 Theta 体感更强；</li><li>为什么 Theta 不是固定日损表；</li><li>为什么正 Theta 也绝不自动等于低风险。</li></ul>
+<hr>
+<h2>21.14 误会二：只要卖方有正 Theta，就比较安全</h2>
+<p>也不对。</p>
+<p>卖方常常是：</p>
+<ul><li>小钱慢慢赚；</li><li>但一旦行情不利，仓位可能恶化得很快。</li></ul>
+<p>所以“正 Theta”只是说明时间维度对你有利，不代表这笔交易整体就低风险。</p>
+<hr>
+<h2>阅读导航：第一次读先抓“时间会不会先把你磨掉”，第二次读再补损耗速度</h2>
+<p>这一章第一次读，最重要的不是去记某个具体日损数字。</p>
+<p>你先抓一句：</p>
+<blockquote><p><strong>对期权来说，时间不是背景板，而是每天都在发生作用的成本。</strong></p></blockquote>
+<p>第一遍只要看懂：</p>
+<ul><li>买方为什么更怕时间；</li><li>卖方为什么常常更喜欢时间过去；</li><li>为什么期权买方不只是方向对，还得及时对。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>为什么 ATM、临近到期的 Theta 体感更强；</li><li>为什么 Theta 不是固定日损表；</li><li>为什么正 Theta 也绝不自动等于低风险。</li></ul>
+<hr>
+<h2>21.15 误会三：只要看对方向，Theta 不是问题</h2>
+<p>这也是最常见的坑。</p>
+<p>对股票来说，看对方向可能就够了。</p>
+<p>对期权买方来说，你往往还需要：</p>
+<ul><li>看对方向；</li><li>看对节奏；</li><li>选对期限；</li><li>不要在过贵、过短、过慢兑现的仓位里硬扛。</li></ul>
+<p>Theta 会逼你承认一件事：</p>
+<blockquote><p><strong>期权买方不仅要对，还得及时对。</strong></p></blockquote>
+<hr>
+<h2>阅读导航：第一次读先抓“时间会不会先把你磨掉”，第二次读再补损耗速度</h2>
+<p>这一章第一次读，最重要的不是去记某个具体日损数字。</p>
+<p>你先抓一句：</p>
+<blockquote><p><strong>对期权来说，时间不是背景板，而是每天都在发生作用的成本。</strong></p></blockquote>
+<p>第一遍只要看懂：</p>
+<ul><li>买方为什么更怕时间；</li><li>卖方为什么常常更喜欢时间过去；</li><li>为什么期权买方不只是方向对，还得及时对。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>为什么 ATM、临近到期的 Theta 体感更强；</li><li>为什么 Theta 不是固定日损表；</li><li>为什么正 Theta 也绝不自动等于低风险。</li></ul>
+<hr>
+<h2>21.16 误会四：Theta 只和短线赌财报的人有关</h2>
+<p>也不对。</p>
+<p>无论你是：</p>
+<ul><li>买短期 Call；</li><li>买 LEAP；</li><li>做保护性 Put；</li><li>做卖方收权利金；</li></ul>
+<p>你都在和 Theta 打交道。</p>
+<p>区别只在于：</p>
+<ul><li>有些仓位 Theta 更凶；</li><li>有些仓位 Theta 更温和；</li><li>有些仓位你是付出它；</li><li>有些仓位你是在收它。</li></ul>
+<p>所以 Theta 不是某类交易者的专属概念，而是所有期权持仓都绕不过去的一层现实。</p>
+<hr>
+<h2>阅读导航：第一次读先抓“时间会不会先把你磨掉”，第二次读再补损耗速度</h2>
+<p>这一章第一次读，最重要的不是去记某个具体日损数字。</p>
+<p>你先抓一句：</p>
+<blockquote><p><strong>对期权来说，时间不是背景板，而是每天都在发生作用的成本。</strong></p></blockquote>
+<p>第一遍只要看懂：</p>
+<ul><li>买方为什么更怕时间；</li><li>卖方为什么常常更喜欢时间过去；</li><li>为什么期权买方不只是方向对，还得及时对。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>为什么 ATM、临近到期的 Theta 体感更强；</li><li>为什么 Theta 不是固定日损表；</li><li>为什么正 Theta 也绝不自动等于低风险。</li></ul>
+<hr>
+<h1>七、把这一章收住：Theta 是你理解“为什么方向没大错，仓位却越来越难受”的关键</h1>
+<h2>21.17 本章你最该带走的五句话</h2>
+<p>1. <strong>Theta 衡量的是时间每过去一天，期权价格理论上会变化多少。</strong> 2. <strong>买方通常是负 Theta，卖方通常是正 Theta。</strong> 3. <strong>ATM 附近、临近到期的期权，Theta 体感往往更明显。</strong> 4. <strong>Theta 不是固定日损表，而是此刻的时间磨损速度。</strong> 5. <strong>期权买方不仅要看对方向，还要在时间价值被吃掉前及时看对。</strong></p>
+<p>如果 Delta 让你开始理解“期权怎么跟股价一起动”， 那 Theta 就是在提醒你：</p>
+<ul><li>有时候最难受的，不是方向错；</li><li>而是时间先把你耗掉了。</li></ul>
+<hr>
+<h2>阅读导航：第一次读先抓“时间会不会先把你磨掉”，第二次读再补损耗速度</h2>
+<p>这一章第一次读，最重要的不是去记某个具体日损数字。</p>
+<p>你先抓一句：</p>
+<blockquote><p><strong>对期权来说，时间不是背景板，而是每天都在发生作用的成本。</strong></p></blockquote>
+<p>第一遍只要看懂：</p>
+<ul><li>买方为什么更怕时间；</li><li>卖方为什么常常更喜欢时间过去；</li><li>为什么期权买方不只是方向对，还得及时对。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>为什么 ATM、临近到期的 Theta 体感更强；</li><li>为什么 Theta 不是固定日损表；</li><li>为什么正 Theta 也绝不自动等于低风险。</li></ul>
+<hr>
+<h1>八、自测题</h1>
+<p>1. 为什么股票可以长期拿着，但期权必须专门考虑 Theta？ 2. 一张期权的 Theta 是 -0.05，为什么不能简单理解成“每天一定亏 5 美元/张”？ 3. 为什么很多 ATM、临近到期的期权，Theta 体感会特别强？ 4. 为什么说卖方虽然常常是正 Theta，但不能因此把卖方等同于低风险？ 5. 如果你想给一个看多观点更长的兑现时间，Theta 会如何影响你对到期日的选择？</p>
+<hr>
+<h2>阅读导航：第一次读先抓“时间会不会先把你磨掉”，第二次读再补损耗速度</h2>
+<p>这一章第一次读，最重要的不是去记某个具体日损数字。</p>
+<p>你先抓一句：</p>
+<blockquote><p><strong>对期权来说，时间不是背景板，而是每天都在发生作用的成本。</strong></p></blockquote>
+<p>第一遍只要看懂：</p>
+<ul><li>买方为什么更怕时间；</li><li>卖方为什么常常更喜欢时间过去；</li><li>为什么期权买方不只是方向对，还得及时对。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>为什么 ATM、临近到期的 Theta 体感更强；</li><li>为什么 Theta 不是固定日损表；</li><li>为什么正 Theta 也绝不自动等于低风险。</li></ul>
+<hr>
+<h1>本章一句话总结</h1>
+<blockquote><p><strong>Theta 真正逼你面对的，不是“你看没看对”，而是“在你等结果的这段时间里，期权会不会先把耐心和本金一起磨掉”。</strong></p></blockquote>
+<hr>
+<h2>阅读导航：第一次读先抓“时间会不会先把你磨掉”，第二次读再补损耗速度</h2>
+<p>这一章第一次读，最重要的不是去记某个具体日损数字。</p>
+<p>你先抓一句：</p>
+<blockquote><p><strong>对期权来说，时间不是背景板，而是每天都在发生作用的成本。</strong></p></blockquote>
+<p>第一遍只要看懂：</p>
+<ul><li>买方为什么更怕时间；</li><li>卖方为什么常常更喜欢时间过去；</li><li>为什么期权买方不只是方向对，还得及时对。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>为什么 ATM、临近到期的 Theta 体感更强；</li><li>为什么 Theta 不是固定日损表；</li><li>为什么正 Theta 也绝不自动等于低风险。</li></ul>
+<hr>
+<h2>下一章预告：Vega——IV 变化与波动率冲击</h2>
+<p>Theta 讲的是时间怎么磨你， 下一章 Vega 讲的则是：</p>
+<ul><li>市场对未来波动的看法一变；</li><li>你的期权价格会不会跟着被重估；</li><li>为什么财报前后，很多“方向没错”的单子依然让人不爽。</li></ul>
+            </article>
+        </section>
+
+        <section class="section" id="chapter-navigation" aria-labelledby="chapter-navigation-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">03</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
+                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
+                </div>
+            </div>
+
+            <div class="chapter-nav-card">
+                <div class="chapter-nav-grid">
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">上一章</div>
+                        <a class="chapter-nav-link" href="./20.html">第 20 章 · Gamma</a>
+                        <p>理解 Gamma 作为 Delta 的变化速度，为什么仓位越接近关键位置越容易突然变脸。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">返回课程</div>
+                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
+                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">下一章</div>
+                        <a class="chapter-nav-link" href="./22.html">第 22 章 · Vega</a>
+                        <p>理解隐含波动率变化如何重新定价期权，以及事件前后 Vega 暴露为何会显著影响盈亏。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>期权教材 · 结构化学习 · HTML 优先</p>
+        <p class="disclaimer">
+            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
+        </p>
+    </footer>
+
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
+
+    <script src="../js/main.js?v=20260326-options1"></script>
+</body>
+</html>

@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260324b">
+    <link rel="stylesheet" href="../css/style.css?v=20260326-options1">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -65,7 +65,6 @@
         }
 
         .chapter-summary-card,
-        .chapter-body-card,
         .chapter-nav-card {
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.08);
@@ -74,14 +73,28 @@
             box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
         }
 
-        .chapter-summary-card p,
-        .chapter-nav-card p {
-            color: var(--text-secondary);
+        .chapter-body-card {
+            background: rgba(248, 241, 228, 0.98);
+            border: 1px solid rgba(122, 91, 10, 0.16);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 22px 48px -28px rgba(84, 60, 14, 0.22);
+            line-height: 1.9;
+            color: #241e14;
         }
 
-        .chapter-body-card {
-            line-height: 1.9;
-            color: var(--text-primary);
+        .chapter-summary-card {
+            background: rgba(255, 250, 242, 0.96);
+            border: 1px solid rgba(122, 91, 10, 0.12);
+            box-shadow: 0 18px 40px -24px rgba(84, 60, 14, 0.18);
+        }
+
+        .chapter-summary-card p {
+            color: rgba(31,27,20,0.88);
+        }
+
+        .chapter-nav-card p {
+            color: var(--text-secondary);
         }
 
         .chapter-body-card h2,
@@ -89,14 +102,14 @@
         .chapter-body-card h4,
         .chapter-body-card h5,
         .chapter-body-card h6 {
-            color: var(--text-primary);
+            color: #1f1b14;
             margin-top: 1.6em;
         }
 
         .chapter-body-card p,
         .chapter-body-card li,
         .chapter-body-card blockquote {
-            color: var(--text-secondary);
+            color: rgba(31,27,20,0.9);
         }
 
         .chapter-body-card ul,
@@ -108,8 +121,23 @@
             margin: 1.5rem 0;
             padding: 1rem 1.25rem;
             border-left: 3px solid var(--accent-gold);
-            background: rgba(201, 162, 39, 0.08);
+            background: rgba(212, 175, 55, 0.12);
             border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-body-card code {
+            background: rgba(122, 91, 10, 0.08);
+            color: #5b4307;
+            padding: 0.12rem 0.35rem;
+            border-radius: 6px;
+        }
+
+        .chapter-body-card a {
+            color: #7a5b0a;
+        }
+
+        .chapter-body-card a:hover {
+            color: #5b4307;
         }
 
         .chapter-nav-grid {
@@ -263,6 +291,16 @@
 <ul><li>有的合同已经站在更有现实价值的位置；</li><li>有的合同站在正卡在中间的位置；</li><li>有的合同则还停留在先买个希望的位置。</li></ul>
 <p>这就是 ITM、ATM、OTM 这三个词真正有用的地方。它们不是考试术语，而是你判断这张期权现在是更像资产、还是更像希望的起点。</p>
 <hr>
+<h2>阅读导航：第一次读先分位置，第二次读再分“手感”</h2>
+<p>这一章第一次读时，不要急着把所有 Call / Put 的定义都背成表格。</p>
+<p>你先抓住最关键的一层：</p>
+<p>1. <strong>ITM = 现在就已经更有现实价值。</strong> 2. <strong>ATM = 正卡在临界位置。</strong> 3. <strong>OTM = 现在更像在买未来可能性。</strong></p>
+<p>如果这三层先站稳，后面你再去看：</p>
+<ul><li>为什么 ITM 往往更贵；</li><li>为什么 OTM 虽然便宜，但更依赖行情真的跑出来；</li><li>为什么 ATM 常常最像“最有戏、也最敏感”的那一档；</li></ul>
+<p>你就不会只是在背缩写。</p>
+<p>第二遍再去补：</p>
+<ul><li>Call 和 Put 的 ITM / ATM / OTM 到底怎么分别判断；</li><li>这些位置和权利金构成、敏感度、仓位体感之间的关系。</li></ul>
+<hr>
 <h3>4.2 先给最朴素的判断问题：如果现在立刻行权，这张期权有现实好处吗？</h3>
 <p>这是理解 ITM / ATM / OTM 最稳的一条线索，也是图片这部分的隐含核心。</p>
 <p>你每次遇到一张期权，都先问自己一句话：</p>
@@ -382,6 +420,9 @@
 <p>1. 先看它是 Call 还是 Put。 2. 再把当前股价和行权价放在一起。 3. 问自己：如果现在立刻行权，这份合同有没有现实好处？ 4. 然后再判断它是 ITM、ATM 还是 OTM。</p>
 <p>你只要把这 4 步练熟，后面学期权价格构成时就会轻松很多，因为你终于知道：你买的不是一个抽象代码，而是一份站在不同位置上的合同。</p>
 <hr>
+<hr>
+<h3>一句话总结</h3>
+<blockquote><p><strong>ITM / ATM / OTM 不是抽象缩写，而是在告诉你这张期权离“真正有用”还有多远、价格里哪部分在起作用。</strong></p></blockquote>
 <h3>4.12 自测题（别只背缩写，要能自己推）</h3>
 <p>1）AAPL 现价 175：</p>
 <ul><li>170 Call 属于什么？</li><li>175 Call 属于什么？</li><li>180 Call 属于什么？</li></ul>
@@ -441,6 +482,6 @@
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260324b"></script>
+    <script src="../js/main.js?v=20260326-options1"></script>
 </body>
 </html>

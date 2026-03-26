@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260324b">
+    <link rel="stylesheet" href="../css/style.css?v=20260326-options1">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -65,7 +65,6 @@
         }
 
         .chapter-summary-card,
-        .chapter-body-card,
         .chapter-nav-card {
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.08);
@@ -74,14 +73,28 @@
             box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
         }
 
-        .chapter-summary-card p,
-        .chapter-nav-card p {
-            color: var(--text-secondary);
+        .chapter-body-card {
+            background: rgba(248, 241, 228, 0.98);
+            border: 1px solid rgba(122, 91, 10, 0.16);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 22px 48px -28px rgba(84, 60, 14, 0.22);
+            line-height: 1.9;
+            color: #241e14;
         }
 
-        .chapter-body-card {
-            line-height: 1.9;
-            color: var(--text-primary);
+        .chapter-summary-card {
+            background: rgba(255, 250, 242, 0.96);
+            border: 1px solid rgba(122, 91, 10, 0.12);
+            box-shadow: 0 18px 40px -24px rgba(84, 60, 14, 0.18);
+        }
+
+        .chapter-summary-card p {
+            color: rgba(31,27,20,0.88);
+        }
+
+        .chapter-nav-card p {
+            color: var(--text-secondary);
         }
 
         .chapter-body-card h2,
@@ -89,14 +102,14 @@
         .chapter-body-card h4,
         .chapter-body-card h5,
         .chapter-body-card h6 {
-            color: var(--text-primary);
+            color: #1f1b14;
             margin-top: 1.6em;
         }
 
         .chapter-body-card p,
         .chapter-body-card li,
         .chapter-body-card blockquote {
-            color: var(--text-secondary);
+            color: rgba(31,27,20,0.9);
         }
 
         .chapter-body-card ul,
@@ -108,8 +121,23 @@
             margin: 1.5rem 0;
             padding: 1rem 1.25rem;
             border-left: 3px solid var(--accent-gold);
-            background: rgba(201, 162, 39, 0.08);
+            background: rgba(212, 175, 55, 0.12);
             border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-body-card code {
+            background: rgba(122, 91, 10, 0.08);
+            color: #5b4307;
+            padding: 0.12rem 0.35rem;
+            border-radius: 6px;
+        }
+
+        .chapter-body-card a {
+            color: #7a5b0a;
+        }
+
+        .chapter-body-card a:hover {
+            color: #5b4307;
         }
 
         .chapter-nav-grid {
@@ -256,6 +284,16 @@
 <p>看起来都只是一个数字，但如果你不知道这个数字里哪部分是“已经有的价值”，哪部分是“市场对未来的期待”，后面很多现象你都会看不懂：</p>
 <ul><li>为什么股价明明朝我预期方向走了，我的期权却没赚多少？</li><li>为什么有些期权明明 OTM，却还能卖出价格？</li><li>为什么离到期越近，有些合约掉价越来越快？</li></ul>
 <p>这一章我们就把期权价格拆开来看。</p></blockquote>
+<hr>
+<h2>阅读导航：第一次读先学会“拆报价”，第二次读再看为什么会蒸发</h2>
+<p>这一章第一次读，你先别被公式吓到。</p>
+<p>最关键的主干只有一句：</p>
+<blockquote><p><strong>期权价格 = 内在价值 + 时间价值。</strong></p></blockquote>
+<p>第一遍你只要把这句话真的拆懂，就已经抓到核心了：</p>
+<ul><li>内在价值 = 现在立刻行权已经有的现实好处；</li><li>时间价值 = 市场愿意为未来可能性先付的钱。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>为什么有些 OTM 期权明明现在没现实价值，依然有报价；</li><li>为什么临近到期，很多期权掉价会越来越快；</li><li>为什么总价高不代表更划算，便宜也不自动代表更值得买。</li></ul>
+<p>这样读，你会更像在拆机器，而不是在背词。</p>
 <hr>
 <h3>5.1 先记住本章最核心的一条公式</h3>
 <p>无论是 Call 还是 Put，只要是普通期权，我们都可以先用一个非常重要的框架去理解它的价格：</p>
@@ -447,6 +485,9 @@
 <ul><li>ITM 为什么更像带点现货；</li><li>OTM 为什么更像在买希望；</li><li>时间为什么会成为买方最大的压力来源。</li></ul>
 <p>而这，正好通往下一章。</p>
 <hr>
+<hr>
+<h3>一句话总结</h3>
+<blockquote><p><strong>一张期权的价格，真正拆开看，就是内在价值、时间价值，以及市场愿意为不确定性先付多少钱。</strong></p></blockquote>
 <h3>5.17 自测题</h3>
 <p>1）某股票现价 153：</p>
 <ul><li>150 Call 报价 4.55，它的内在价值和时间价值分别是多少？</li><li>155 Call 报价 1.90，它的内在价值和时间价值分别是多少？</li></ul>
@@ -511,6 +552,6 @@
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260324b"></script>
+    <script src="../js/main.js?v=20260326-options1"></script>
 </body>
 </html>

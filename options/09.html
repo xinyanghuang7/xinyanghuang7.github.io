@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260324b">
+    <link rel="stylesheet" href="../css/style.css?v=20260326-options1">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -65,7 +65,6 @@
         }
 
         .chapter-summary-card,
-        .chapter-body-card,
         .chapter-nav-card {
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.08);
@@ -74,14 +73,28 @@
             box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
         }
 
-        .chapter-summary-card p,
-        .chapter-nav-card p {
-            color: var(--text-secondary);
+        .chapter-body-card {
+            background: rgba(248, 241, 228, 0.98);
+            border: 1px solid rgba(122, 91, 10, 0.16);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 22px 48px -28px rgba(84, 60, 14, 0.22);
+            line-height: 1.9;
+            color: #241e14;
         }
 
-        .chapter-body-card {
-            line-height: 1.9;
-            color: var(--text-primary);
+        .chapter-summary-card {
+            background: rgba(255, 250, 242, 0.96);
+            border: 1px solid rgba(122, 91, 10, 0.12);
+            box-shadow: 0 18px 40px -24px rgba(84, 60, 14, 0.18);
+        }
+
+        .chapter-summary-card p {
+            color: rgba(31,27,20,0.88);
+        }
+
+        .chapter-nav-card p {
+            color: var(--text-secondary);
         }
 
         .chapter-body-card h2,
@@ -89,14 +102,14 @@
         .chapter-body-card h4,
         .chapter-body-card h5,
         .chapter-body-card h6 {
-            color: var(--text-primary);
+            color: #1f1b14;
             margin-top: 1.6em;
         }
 
         .chapter-body-card p,
         .chapter-body-card li,
         .chapter-body-card blockquote {
-            color: var(--text-secondary);
+            color: rgba(31,27,20,0.9);
         }
 
         .chapter-body-card ul,
@@ -108,8 +121,23 @@
             margin: 1.5rem 0;
             padding: 1rem 1.25rem;
             border-left: 3px solid var(--accent-gold);
-            background: rgba(201, 162, 39, 0.08);
+            background: rgba(212, 175, 55, 0.12);
             border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-body-card code {
+            background: rgba(122, 91, 10, 0.08);
+            color: #5b4307;
+            padding: 0.12rem 0.35rem;
+            border-radius: 6px;
+        }
+
+        .chapter-body-card a {
+            color: #7a5b0a;
+        }
+
+        .chapter-body-card a:hover {
+            color: #5b4307;
         }
 
         .chapter-nav-grid {
@@ -259,6 +287,18 @@
 <p>如果你真的看懂了四大单腿策略的到期收益图，你会开始拥有一种非常重要的能力：</p>
 <ul><li>看到策略名字，就能大概想出它的风险边界；</li><li>看到行权价和权利金，就能估出盈亏平衡点；</li><li>看到某个仓位，就知道它更像是在赌爆发、赚时间，还是在承诺接货；</li><li>更重要的是，你不会再用“我觉得会涨”这种模糊语言做决定，而会开始问：<strong>涨多少、跌多少、到哪里我亏、到哪里我赚、风险封不封顶。</strong></li></ul>
 <p>所以这一章，不是单纯讲四个名字，而是要把这四张最基础的图，变成你脑子里的固定图形。</p></blockquote>
+<hr>
+<h2>阅读导航：第一次读先抓什么，第二次读再补什么</h2>
+<p>如果你是第一次读这一章，我建议你先不要急着把四张图所有细节一次背完。</p>
+<p>先抓住三件最关键的事：</p>
+<p>1. <strong>谁是先付钱的人，谁是先收钱的人</strong>； 2. <strong>最大亏损有没有封顶，最大收益有没有封顶</strong>； 3. <strong>盈亏平衡点大概落在哪里</strong>。</p>
+<p>第一遍你只要能把四个结构粗粗分开，就已经很有价值：</p>
+<ul><li>Long Call：花钱买向上的弹性；</li><li>Short Call：先收钱，但最怕大涨；</li><li>Long Put：花钱买向下的保护或看跌弹性；</li><li>Short Put：先收钱，本质上是在承诺“跌下来我愿意接货”。</li></ul>
+<p>如果你第一遍读到这里，还不能立刻把每一条线默画出来，不用着急。这一章最重要的，不是画得像不像，而是先建立一种反射：</p>
+<blockquote><p><strong>看到一个单腿策略时，你会先问：我赚哪一边的钱，怕哪一边的行情，最坏会坏到哪里。</strong></p></blockquote>
+<p>第二遍再去补：</p>
+<ul><li>每个结构的精确盈亏平衡点；</li><li>为什么买方都是“亏损有限、盈利弹性更大”；</li><li>为什么卖方常常是“收益有限、尾部更难看”；</li><li>为什么 Short Put 虽然不是理论无限亏损，但实战里仍然不能轻视。</li></ul>
+<p>这样读，你会比一上来硬背四张图更顺。</p>
 <hr>
 <h2>9.1 什么叫“到期收益图”</h2>
 <p>先把讨论边界讲清楚。</p>
@@ -664,6 +704,9 @@
 <ul><li>风险边界</li><li>盈亏平衡点</li><li>哪边是利润区</li><li>哪边是危险区</li></ul>
 <p>这一步，是从“懂词”到“懂仓位”的分水岭。</p>
 <hr>
+<h2>一句话总结</h2>
+<blockquote><p><strong>四大单腿策略的收益图，本质上是在训练你把“方向判断”翻译成“风险结构”：别再只说看涨看跌，要开始说自己赚哪边、怕哪边、最坏会坏到哪里。</strong></p></blockquote>
+<hr>
 <h2>自测题</h2>
 <p>1）Long Call 的最大亏损、盈亏平衡点、盈利上限分别是什么？</p>
 <p>2）为什么说 Short Call 是收益有限、风险理论无限？</p>
@@ -727,6 +770,6 @@
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260324b"></script>
+    <script src="../js/main.js?v=20260326-options1"></script>
 </body>
 </html>

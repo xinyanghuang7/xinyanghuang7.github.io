@@ -28,15 +28,22 @@ class BuildOptionsCourseTests(unittest.TestCase):
         original_manifest_path = mod.MANIFEST_PATH
         original_index_template_path = mod.INDEX_TEMPLATE_PATH
         original_chapter_template_path = mod.CHAPTER_TEMPLATE_PATH
+        original_homepage_path = getattr(mod, "HOMEPAGE_PATH", None)
+
+        homepage_html = (MODULE_PATH.parent.parent / "index.html").read_text(encoding="utf-8")
+        (temp_root / "index.html").write_text(homepage_html, encoding="utf-8")
 
         mod.SITE_ROOT = temp_root
         mod.MANIFEST_PATH = MANIFEST_PATH
         mod.INDEX_TEMPLATE_PATH = original_index_template_path
         mod.CHAPTER_TEMPLATE_PATH = original_chapter_template_path
+        mod.HOMEPAGE_PATH = temp_root / "index.html"
         self.addCleanup(setattr, mod, "SITE_ROOT", original_site_root)
         self.addCleanup(setattr, mod, "MANIFEST_PATH", original_manifest_path)
         self.addCleanup(setattr, mod, "INDEX_TEMPLATE_PATH", original_index_template_path)
         self.addCleanup(setattr, mod, "CHAPTER_TEMPLATE_PATH", original_chapter_template_path)
+        if original_homepage_path is not None:
+            self.addCleanup(setattr, mod, "HOMEPAGE_PATH", original_homepage_path)
 
         return mod.build_site(), temp_root
 
@@ -156,6 +163,23 @@ class BuildOptionsCourseTests(unittest.TestCase):
             self.assertIn('<div class="chapter-nav-label">返回课程</div>', chapter_html)
             self.assertIn('<div class="chapter-nav-label">下一章</div>', chapter_html)
             self.assertEqual(chapter_html.count('class="chapter-nav-slot"'), 3)
+
+    def test_build_site_updates_homepage_course_card_and_sync_date(self) -> None:
+        _, temp_root = self.build_site_in_temp()
+        chapters = mod.load_manifest(MANIFEST_PATH)
+        published = [chapter for chapter in chapters if chapter.status == "published"]
+        homepage_html = (temp_root / "index.html").read_text(encoding="utf-8")
+        course_index_html = (temp_root / "options" / "index.html").read_text(encoding="utf-8")
+
+        self.assertIn(f"已发布 {len(published)} 章", homepage_html)
+        self.assertNotIn("已发布 11 章", homepage_html)
+        self.assertIn("已全部上线", homepage_html)
+        self.assertNotIn("Batch 4 即将上线", homepage_html)
+        self.assertIn(f"下一批次：{mod.next_unpublished_batch(chapters)}", homepage_html)
+
+        expected_sync_date = mod.last_sync_label(mod.resolve_workspace_root(), published)
+        self.assertIn(f'<div class="nav-date">{expected_sync_date}</div>', course_index_html)
+        self.assertNotIn('<div class="nav-date">2026-03-24</div>', course_index_html)
 
 
 if __name__ == "__main__":

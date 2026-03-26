@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260324b">
+    <link rel="stylesheet" href="../css/style.css?v=20260326-options1">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -65,7 +65,6 @@
         }
 
         .chapter-summary-card,
-        .chapter-body-card,
         .chapter-nav-card {
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.08);
@@ -74,14 +73,28 @@
             box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
         }
 
-        .chapter-summary-card p,
-        .chapter-nav-card p {
-            color: var(--text-secondary);
+        .chapter-body-card {
+            background: rgba(248, 241, 228, 0.98);
+            border: 1px solid rgba(122, 91, 10, 0.16);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 22px 48px -28px rgba(84, 60, 14, 0.22);
+            line-height: 1.9;
+            color: #241e14;
         }
 
-        .chapter-body-card {
-            line-height: 1.9;
-            color: var(--text-primary);
+        .chapter-summary-card {
+            background: rgba(255, 250, 242, 0.96);
+            border: 1px solid rgba(122, 91, 10, 0.12);
+            box-shadow: 0 18px 40px -24px rgba(84, 60, 14, 0.18);
+        }
+
+        .chapter-summary-card p {
+            color: rgba(31,27,20,0.88);
+        }
+
+        .chapter-nav-card p {
+            color: var(--text-secondary);
         }
 
         .chapter-body-card h2,
@@ -89,14 +102,14 @@
         .chapter-body-card h4,
         .chapter-body-card h5,
         .chapter-body-card h6 {
-            color: var(--text-primary);
+            color: #1f1b14;
             margin-top: 1.6em;
         }
 
         .chapter-body-card p,
         .chapter-body-card li,
         .chapter-body-card blockquote {
-            color: var(--text-secondary);
+            color: rgba(31,27,20,0.9);
         }
 
         .chapter-body-card ul,
@@ -108,8 +121,23 @@
             margin: 1.5rem 0;
             padding: 1rem 1.25rem;
             border-left: 3px solid var(--accent-gold);
-            background: rgba(201, 162, 39, 0.08);
+            background: rgba(212, 175, 55, 0.12);
             border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-body-card code {
+            background: rgba(122, 91, 10, 0.08);
+            color: #5b4307;
+            padding: 0.12rem 0.35rem;
+            border-radius: 6px;
+        }
+
+        .chapter-body-card a {
+            color: #7a5b0a;
+        }
+
+        .chapter-body-card a:hover {
+            color: #5b4307;
         }
 
         .chapter-nav-grid {
@@ -258,6 +286,14 @@
 <p>你如果买了期权，就等于买了一块会慢慢融化的冰； 你如果卖了期权，很多时候就像站在旁边，等别人那块冰自己变小。</p>
 <p>这一章我们要讲的，就是期权里最残酷、最实战、也最容易被低估的一件事：</p>
 <p><strong>时间衰减（Time Decay）</strong>。</p></blockquote>
+<hr>
+<h2>阅读导航：第一次读先抓“谁在被时间伤害”，第二次读再补速度差异</h2>
+<p>这一章第一次读，最重要的不是把所有衰减细节都算出来。</p>
+<p>你先抓住两句：</p>
+<p>1. <strong>时间主要吃掉的是时间价值，不是内在价值。</strong> 2. <strong>买方通常更怕时间，卖方通常更喜欢时间过去。</strong></p>
+<p>只要这两句先抓住，你后面看期权时就不会再把“方向没错却越来越难受”当成神秘现象。</p>
+<p>第二遍再去补：</p>
+<ul><li>为什么临近到期时时间衰减会更凶；</li><li>为什么 ATM 一带体感往往更明显；</li><li>为什么“看对方向”对期权买方仍然可能不够。</li></ul>
 <hr>
 <h3>7.1 先说结论：时间真正吃掉的，主要不是内在价值，而是时间价值</h3>
 <p>上一章我们已经知道：</p>
@@ -466,6 +502,9 @@
 <p>这就是时间的魔法与诅咒。</p>
 <ul><li>对卖方，它经常像顺风；</li><li>对买方，它经常像漏斗。</li></ul>
 <hr>
+<hr>
+<h2>一句话总结</h2>
+<blockquote><p><strong>时间对期权从来不是中性的：它会慢慢帮卖方赚钱，也会慢慢逼买方承认自己不仅要看对，还得及时看对。</strong></p></blockquote>
 <h2>自测题</h2>
 <p>1）为什么说时间衰减主要吃掉的是时间价值，而不是内在价值？</p>
 <p>2）为什么一张 OTM 期权在标的几乎不动的情况下，也可能持续掉价？</p>
@@ -526,6 +565,6 @@
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260324b"></script>
+    <script src="../js/main.js?v=20260326-options1"></script>
 </body>
 </html>

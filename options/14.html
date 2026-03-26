@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260324b">
+    <link rel="stylesheet" href="../css/style.css?v=20260326-options1">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -65,7 +65,6 @@
         }
 
         .chapter-summary-card,
-        .chapter-body-card,
         .chapter-nav-card {
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.08);
@@ -74,14 +73,28 @@
             box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
         }
 
-        .chapter-summary-card p,
-        .chapter-nav-card p {
-            color: var(--text-secondary);
+        .chapter-body-card {
+            background: rgba(248, 241, 228, 0.98);
+            border: 1px solid rgba(122, 91, 10, 0.16);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 22px 48px -28px rgba(84, 60, 14, 0.22);
+            line-height: 1.9;
+            color: #241e14;
         }
 
-        .chapter-body-card {
-            line-height: 1.9;
-            color: var(--text-primary);
+        .chapter-summary-card {
+            background: rgba(255, 250, 242, 0.96);
+            border: 1px solid rgba(122, 91, 10, 0.12);
+            box-shadow: 0 18px 40px -24px rgba(84, 60, 14, 0.18);
+        }
+
+        .chapter-summary-card p {
+            color: rgba(31,27,20,0.88);
+        }
+
+        .chapter-nav-card p {
+            color: var(--text-secondary);
         }
 
         .chapter-body-card h2,
@@ -89,14 +102,14 @@
         .chapter-body-card h4,
         .chapter-body-card h5,
         .chapter-body-card h6 {
-            color: var(--text-primary);
+            color: #1f1b14;
             margin-top: 1.6em;
         }
 
         .chapter-body-card p,
         .chapter-body-card li,
         .chapter-body-card blockquote {
-            color: var(--text-secondary);
+            color: rgba(31,27,20,0.9);
         }
 
         .chapter-body-card ul,
@@ -108,8 +121,23 @@
             margin: 1.5rem 0;
             padding: 1rem 1.25rem;
             border-left: 3px solid var(--accent-gold);
-            background: rgba(201, 162, 39, 0.08);
+            background: rgba(212, 175, 55, 0.12);
             border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-body-card code {
+            background: rgba(122, 91, 10, 0.08);
+            color: #5b4307;
+            padding: 0.12rem 0.35rem;
+            border-radius: 6px;
+        }
+
+        .chapter-body-card a {
+            color: #7a5b0a;
+        }
+
+        .chapter-body-card a:hover {
+            color: #5b4307;
         }
 
         .chapter-nav-grid {
@@ -255,6 +283,14 @@
 <p>这一章最想帮你解决的，不是考试问题，而是一个真实交易中的崩溃时刻：</p>
 <p><strong>为什么我明明方向看对了，期权还是没让我赚得像我想的那么爽？</strong></p>
 <p>答案，很多时候就藏在 IV 里。</p></blockquote>
+<hr>
+<h2>阅读导航：第一次读先抓“多旋钮定价”，第二次读再补 IV 脾气</h2>
+<p>这一章第一次读时，最容易被吓到的，不是公式本身，而是信息量一下变多了。</p>
+<p>你第一遍其实只要先抓三件事：</p>
+<p>1. <strong>期权价格不是只看方向，而是多旋钮一起定价。</strong> 2. <strong>对普通交易者来说，最该先盯的是股价、时间、IV。</strong> 3. <strong>IV 高低会直接影响你到底是在买贵，还是卖贵。</strong></p>
+<p>第一遍这三句抓住，就已经足够有用。</p>
+<p>第二遍再去补：</p>
+<ul><li>BSM 为什么更像一个定价框架，而不是让你手算的考试题；</li><li>IV 为什么有“均值回归”和“急涨缓跌”这两种脾气；</li><li>为什么财报前后，方向对了也不一定让买方舒服。</li></ul>
 <hr>
 <h1>一、先把最底层的问题讲清楚：期权价格为什么不像股票那样“涨就是涨，跌就是跌”</h1>
 <h2>14.1 股票更像单旋钮，期权更像多旋钮</h2>
@@ -495,6 +531,9 @@
 <blockquote><p><strong>做期权，不只是看方向对不对，还要看你现在买的是不是一份很贵的情绪。</strong></p></blockquote>
 <p>这句话一旦真正懂了，你的期权世界就会清楚很多。</p>
 <hr>
+<hr>
+<h2>一句话总结</h2>
+<blockquote><p><strong>BSM 与 IV 这一章真正要你学会的，是别只看方向，还要看市场此刻是不是在把这份不确定性卖得太贵。</strong></p></blockquote>
 <h2>自测题</h2>
 <p>1）为什么说 BSM 最重要的意义，不是让你手算，而是告诉你“哪些旋钮在控制期权价格”？</p>
 <p>2）IV 到底是什么？为什么它不是历史波动率本身？</p>
@@ -503,6 +542,12 @@
 <p>5）“均值回归”和“急涨缓跌”分别在描述 IV 什么性格？</p>
 <p>6）什么叫 IV Crush？为什么会让“方向对了”的买方也不一定很满意？</p>
 <hr>
+<hr>
+<h2>下一章预告：价差策略入门——双腿结构如何在成本、风险和收益之间做取舍</h2>
+<p>前面你已经理解了：方向看对，还不代表期权一定好做，因为价格里还掺着时间和 IV。</p>
+<p>下一章我们就进一步往结构上走：</p>
+<ul><li>如果单腿太贵，能不能加一条腿降成本；</li><li>如果单腿太刺激，能不能加一条腿把风险收紧；</li><li>Bull / Bear、Debit / Credit 到底该怎么拆开看。</li></ul>
+<p>也就是从“定价理解”走到“结构取舍”。</p>
 <h2>本章参考口径（便于追溯）</h2>
 <ul><li>图片关联重点：<code>BSM 模型</code>、<code>IV 的作用</code>、<code>IV 的相对判断</code>、<code>均值回归</code>、<code>急涨缓跌</code>、<code>高 IV / 低 IV 环境下的思路</code></li><li>OCC / OIC：用于校准 implied volatility 与 option pricing 的基础教育口径</li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li></ul>
 <ul><li>Fidelity Options Learning Center：用于保持 IV、option pricing、volatility environment 的解释与主流券商口径一致</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li></ul>
@@ -551,6 +596,6 @@
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260324b"></script>
+    <script src="../js/main.js?v=20260326-options1"></script>
 </body>
 </html>

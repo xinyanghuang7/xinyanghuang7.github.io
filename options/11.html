@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260324b">
+    <link rel="stylesheet" href="../css/style.css?v=20260326-options1">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -65,7 +65,6 @@
         }
 
         .chapter-summary-card,
-        .chapter-body-card,
         .chapter-nav-card {
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.08);
@@ -74,14 +73,28 @@
             box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
         }
 
-        .chapter-summary-card p,
-        .chapter-nav-card p {
-            color: var(--text-secondary);
+        .chapter-body-card {
+            background: rgba(248, 241, 228, 0.98);
+            border: 1px solid rgba(122, 91, 10, 0.16);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 22px 48px -28px rgba(84, 60, 14, 0.22);
+            line-height: 1.9;
+            color: #241e14;
         }
 
-        .chapter-body-card {
-            line-height: 1.9;
-            color: var(--text-primary);
+        .chapter-summary-card {
+            background: rgba(255, 250, 242, 0.96);
+            border: 1px solid rgba(122, 91, 10, 0.12);
+            box-shadow: 0 18px 40px -24px rgba(84, 60, 14, 0.18);
+        }
+
+        .chapter-summary-card p {
+            color: rgba(31,27,20,0.88);
+        }
+
+        .chapter-nav-card p {
+            color: var(--text-secondary);
         }
 
         .chapter-body-card h2,
@@ -89,14 +102,14 @@
         .chapter-body-card h4,
         .chapter-body-card h5,
         .chapter-body-card h6 {
-            color: var(--text-primary);
+            color: #1f1b14;
             margin-top: 1.6em;
         }
 
         .chapter-body-card p,
         .chapter-body-card li,
         .chapter-body-card blockquote {
-            color: var(--text-secondary);
+            color: rgba(31,27,20,0.9);
         }
 
         .chapter-body-card ul,
@@ -108,8 +121,23 @@
             margin: 1.5rem 0;
             padding: 1rem 1.25rem;
             border-left: 3px solid var(--accent-gold);
-            background: rgba(201, 162, 39, 0.08);
+            background: rgba(212, 175, 55, 0.12);
             border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-body-card code {
+            background: rgba(122, 91, 10, 0.08);
+            color: #5b4307;
+            padding: 0.12rem 0.35rem;
+            border-radius: 6px;
+        }
+
+        .chapter-body-card a {
+            color: #7a5b0a;
+        }
+
+        .chapter-body-card a:hover {
+            color: #5b4307;
         }
 
         .chapter-nav-grid {
@@ -262,6 +290,14 @@
 <p>这三件事看起来都和期权有关，但它们背后的出发点完全不同：</p>
 <ul><li>对冲是在说：<strong>我怕出事。</strong></li><li>杠杆是在说：<strong>我想用更少本金表达强观点。</strong></li><li>现金流是在说：<strong>我愿意承担某种义务，换一笔现在先到手的钱。</strong></li></ul>
 <p>你如果能把这三种“使用语言”分清楚，后面学 spread、波动率策略、PMCC、collar，就不会老觉得所有策略都搅成一团。</p></blockquote>
+<hr>
+<h2>阅读导航：第一次读先分清“我到底想解决什么问题”</h2>
+<p>这一章第一次读，不建议你把它当成又一章新定义去背。</p>
+<p>你先抓住三种最底层的使用意图：</p>
+<p>1. <strong>对冲</strong>：我已经有风险了，我不想裸着扛。 2. <strong>杠杆</strong>：我有明确观点，我想用更少本金换更高弹性。 3. <strong>现金流</strong>：我愿意承担某种义务，先把权利金收进来。</p>
+<p>如果这三种意图先分开，后面很多策略自然会开始自己归位。</p>
+<p>第二遍再去补：</p>
+<ul><li>为什么同样都是 Put，有时是在看跌，有时是在做保险；</li><li>为什么同样都是收权利金，有时是在经营持仓，有时是在等待建仓；</li><li>为什么很多人不是不会策略，而是先把“用途”想错了。</li></ul>
 <hr>
 <h1>一、先把整章讲透：很多人学期权，只学了方向，没学用途</h1>
 <h2>11.1 新手最容易犯的错：把所有期权都理解成“看涨买 Call，看跌买 Put”</h2>
@@ -542,6 +578,9 @@
 <p>这就是期权真正的意义。</p>
 <p>不是显得高级，而是让你的仓位表达更精细。</p>
 <hr>
+<hr>
+<h2>一句话总结</h2>
+<blockquote><p><strong>期权最核心的三种用途，不是炫策略，而是把“怕风险、想要弹性、愿意换现金流”这三类不同需求说清楚。</strong></p></blockquote>
 <h2>自测题</h2>
 <p>1）为什么说买 Put 做对冲时，不能只看这张 Put 自己是不是赚了很多？</p>
 <p>2）为什么说期权杠杆更准确的说法是“用更少本金换更高弹性”，而不是简单“放大收益”？</p>
@@ -599,6 +638,6 @@
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260324b"></script>
+    <script src="../js/main.js?v=20260326-options1"></script>
 </body>
 </html>

@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260324b">
+    <link rel="stylesheet" href="../css/style.css?v=20260326-options1">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -65,7 +65,6 @@
         }
 
         .chapter-summary-card,
-        .chapter-body-card,
         .chapter-nav-card {
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.08);
@@ -74,14 +73,28 @@
             box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
         }
 
-        .chapter-summary-card p,
-        .chapter-nav-card p {
-            color: var(--text-secondary);
+        .chapter-body-card {
+            background: rgba(248, 241, 228, 0.98);
+            border: 1px solid rgba(122, 91, 10, 0.16);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 22px 48px -28px rgba(84, 60, 14, 0.22);
+            line-height: 1.9;
+            color: #241e14;
         }
 
-        .chapter-body-card {
-            line-height: 1.9;
-            color: var(--text-primary);
+        .chapter-summary-card {
+            background: rgba(255, 250, 242, 0.96);
+            border: 1px solid rgba(122, 91, 10, 0.12);
+            box-shadow: 0 18px 40px -24px rgba(84, 60, 14, 0.18);
+        }
+
+        .chapter-summary-card p {
+            color: rgba(31,27,20,0.88);
+        }
+
+        .chapter-nav-card p {
+            color: var(--text-secondary);
         }
 
         .chapter-body-card h2,
@@ -89,14 +102,14 @@
         .chapter-body-card h4,
         .chapter-body-card h5,
         .chapter-body-card h6 {
-            color: var(--text-primary);
+            color: #1f1b14;
             margin-top: 1.6em;
         }
 
         .chapter-body-card p,
         .chapter-body-card li,
         .chapter-body-card blockquote {
-            color: var(--text-secondary);
+            color: rgba(31,27,20,0.9);
         }
 
         .chapter-body-card ul,
@@ -108,8 +121,23 @@
             margin: 1.5rem 0;
             padding: 1rem 1.25rem;
             border-left: 3px solid var(--accent-gold);
-            background: rgba(201, 162, 39, 0.08);
+            background: rgba(212, 175, 55, 0.12);
             border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-body-card code {
+            background: rgba(122, 91, 10, 0.08);
+            color: #5b4307;
+            padding: 0.12rem 0.35rem;
+            border-radius: 6px;
+        }
+
+        .chapter-body-card a {
+            color: #7a5b0a;
+        }
+
+        .chapter-body-card a:hover {
+            color: #5b4307;
         }
 
         .chapter-nav-grid {
@@ -256,6 +284,15 @@
 <p>但如果你把这件事倒过来看，会发现：期权的外表确实复杂，可它的核心骨架一点都不玄学。图片里第一条期权本质是一种选择权就抓到了要害。你只要抓住选择权这三个字，后面那些名词就不是背诵题，而是自然长出来的解释。</p>
 <p>这一章我们先不谈策略、不谈下单、不谈 Greeks，更不谈怎么赚钱。我们只做一件事：把期权到底是什么、你买到的到底是什么、为什么有人把它当保险、有人把它当杠杆——这些最基础的问题讲到你能用自己的话解释清楚。</p>
 <hr>
+<h2>阅读导航：第一次读先抓骨架，第二次读再补术语</h2>
+<p>如果你是第一次读期权，我建议这一章先别急着把英文词背全。</p>
+<p>先抓住四个骨架：</p>
+<p>1. <strong>期权是一份合约，不是股票本身。</strong> 2. <strong>买方拿到的是权利，不是义务。</strong> 3. <strong>Call 是未来按约定价买的权利，Put 是未来按约定价卖的权利。</strong> 4. <strong>权利金就是你为这份选择权先付的成本。</strong></p>
+<p>第一遍读，你只要能把这四句话讲顺，就已经抓到主干了。</p>
+<p>第二遍再去补：</p>
+<ul><li>Premium、Underlying、Strike、Expiration 这些术语；</li><li>为什么 Put 不只是“看跌”，还像保险；</li><li>为什么美股一张标准合约通常对应 100 股。</li></ul>
+<p>这样读，会比一上来就记一堆英文缩写顺很多。</p>
+<hr>
 <h3>1.2 用一句权威口径把期权钉死：它是一份合约，买方有权利但没义务</h3>
 <p>严格定义（先背这一句就够用）：</p>
 <blockquote><p><strong>期权是一种合约，赋予买方在特定期限内，以约定价格买入或卖出某种证券的权利，但不是义务。</strong></p></blockquote>
@@ -369,6 +406,9 @@
 <ul><li><strong>期权是一份合约，不是股票本身。</strong></li><li><strong>期权买方拿到的是权利，不是义务；不划算时可以选择不用。</strong></li><li><strong>Call 是未来按某价格买的权利，Put 是未来按某价格卖的权利；Put 也常被用来当下跌保险。</strong></li><li><strong>权利金是你为这份选择权付的成本；美股通常一张合约对应 100 股，所以报价要乘 100 理解真实成本。</strong></li></ul>
 <p>如果你能把这几句用更口语的方式说出来（甚至讲给一个不懂投资的朋友听），第一章就算打通了。</p>
 <hr>
+<hr>
+<h3>一句话总结</h3>
+<blockquote><p><strong>期权最值得先学会的，不是把 Call 和 Put 背熟，而是明白：你买到的是一份有选择权、没强制义务的合同。</strong></p></blockquote>
 <h3>1.13 自测题（不难，但能检验你有没有把权利 vs 义务混掉）</h3>
 <p><strong>题 1</strong>：你买了一张 AAPL 的 Call，你买到的到底是什么？</p>
 <p>A. 100 股 AAPL 股票本身 B. 在未来某段时间内按约定价格买入 AAPL 的权利 C. 必须买入 AAPL 的义务 D. 一份固定利息收入</p>
@@ -432,6 +472,6 @@
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260324b"></script>
+    <script src="../js/main.js?v=20260326-options1"></script>
 </body>
 </html>

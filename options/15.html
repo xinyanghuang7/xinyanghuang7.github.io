@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260324b">
+    <link rel="stylesheet" href="../css/style.css?v=20260326-options1">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -65,7 +65,6 @@
         }
 
         .chapter-summary-card,
-        .chapter-body-card,
         .chapter-nav-card {
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.08);
@@ -74,14 +73,28 @@
             box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
         }
 
-        .chapter-summary-card p,
-        .chapter-nav-card p {
-            color: var(--text-secondary);
+        .chapter-body-card {
+            background: rgba(248, 241, 228, 0.98);
+            border: 1px solid rgba(122, 91, 10, 0.16);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 22px 48px -28px rgba(84, 60, 14, 0.22);
+            line-height: 1.9;
+            color: #241e14;
         }
 
-        .chapter-body-card {
-            line-height: 1.9;
-            color: var(--text-primary);
+        .chapter-summary-card {
+            background: rgba(255, 250, 242, 0.96);
+            border: 1px solid rgba(122, 91, 10, 0.12);
+            box-shadow: 0 18px 40px -24px rgba(84, 60, 14, 0.18);
+        }
+
+        .chapter-summary-card p {
+            color: rgba(31,27,20,0.88);
+        }
+
+        .chapter-nav-card p {
+            color: var(--text-secondary);
         }
 
         .chapter-body-card h2,
@@ -89,14 +102,14 @@
         .chapter-body-card h4,
         .chapter-body-card h5,
         .chapter-body-card h6 {
-            color: var(--text-primary);
+            color: #1f1b14;
             margin-top: 1.6em;
         }
 
         .chapter-body-card p,
         .chapter-body-card li,
         .chapter-body-card blockquote {
-            color: var(--text-secondary);
+            color: rgba(31,27,20,0.9);
         }
 
         .chapter-body-card ul,
@@ -108,8 +121,23 @@
             margin: 1.5rem 0;
             padding: 1rem 1.25rem;
             border-left: 3px solid var(--accent-gold);
-            background: rgba(201, 162, 39, 0.08);
+            background: rgba(212, 175, 55, 0.12);
             border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-body-card code {
+            background: rgba(122, 91, 10, 0.08);
+            color: #5b4307;
+            padding: 0.12rem 0.35rem;
+            border-radius: 6px;
+        }
+
+        .chapter-body-card a {
+            color: #7a5b0a;
+        }
+
+        .chapter-body-card a:hover {
+            color: #5b4307;
         }
 
         .chapter-nav-grid {
@@ -259,6 +287,25 @@
 <ul><li>为什么要在单腿上再加一条腿；</li><li>第二条腿到底是在帮你干什么；</li><li>看涨、看跌和 Call / Put 到底该怎么搭配；</li><li>Debit 和 Credit 到底不是在讲方向，而是在讲“开仓先付钱还是先收钱”；</li><li>为什么两条腿行权价离得远和离得近，策略手感完全不一样。</li></ul>
 <p>你如果把这一章吃透了，后面看到各种 Spread，就不会觉得它们像一堆新招式，而会更像：</p>
 <p><strong>我在一个单腿观点上，给自己加了一条辅助腿，去降成本、降风险，或者让收益更可控。</strong></p></blockquote>
+<hr>
+<h2>阅读导航：第一次读先别背四个名字，先把三层关系抓住</h2>
+<p>这一章最容易把人读晕的，不是概念难，而是名字太密：</p>
+<ul><li>Bull Call Spread</li><li>Bear Put Spread</li><li>Bull Put Spread</li><li>Bear Call Spread</li><li>Debit / Credit Spread</li></ul>
+<p>如果你第一遍就想把这些名字、方向、现金流、风险图一次全装进去，脑子很容易打结。</p>
+<p>所以第一次读，我建议你先抓三层关系：</p>
+<h3>第一层：为什么要做 Spread</h3>
+<p>先记这一句就够：</p>
+<blockquote><p><strong>Spread 不是为了更花哨，而是为了给单腿加一条辅助腿，去修正单腿最难受的地方。</strong></p></blockquote>
+<h3>第二层：Bull / Bear 讲的是方向</h3>
+<p>也就是：</p>
+<ul><li>Bull = 偏看涨</li><li>Bear = 偏看跌</li></ul>
+<h3>第三层：Debit / Credit 讲的是开仓现金流</h3>
+<p>也就是：</p>
+<ul><li>Debit = 先付钱开仓</li><li>Credit = 先收钱开仓</li></ul>
+<p>第一遍你只要把这三层分开，后面很多名字都会自己变得没那么吓人。</p>
+<p>第二遍再去补：</p>
+<ul><li>为什么 Bull Call 和 Bull Put 最后都能表达偏看涨；</li><li>为什么 Bear Put 和 Bear Call 最后都能表达偏看跌；</li><li>为什么两条腿行权价离得近和离得远，策略手感会很不一样；</li><li>为什么很多卖方价差会有“赚到大部分就先走”的管理思路。</li></ul>
+<p>这样处理后，你读这一章会像在拆积木，而不是在背密码。</p>
 <hr>
 <h1>一、先讲最核心的人话：Spread 就是“单腿 + 一条辅助腿”</h1>
 <h2>15.1 图片里这一句最重要：Spread 出现的目的，是为了弥补单腿的劣势</h2>
@@ -629,6 +676,9 @@
 <ul><li>我愿意少赚一点，换更低成本；</li><li>我愿意少赚一点，换风险封顶；</li><li>我愿意少一点单腿的刺激，换更可控的体验。</li></ul>
 <p>这就是 Spread 真正的美感。</p>
 <hr>
+<h2>一句话总结</h2>
+<blockquote><p><strong>Spread 的核心不是多一条腿，而是用第二条腿把单腿最难受的地方修掉：先分方向，再看开仓现金流，最后再看风险是不是被真正收紧。</strong></p></blockquote>
+<hr>
 <h2>自测题</h2>
 <p>1）为什么说 Spread 的第二条腿不是主角，而是“用来修正第一条腿缺点”的辅助腿？</p>
 <p>2）Bear Put Spread 和 Bear Call Spread 虽然一个用 Put、一个用 Call，但为什么最终收益图会很像？</p>
@@ -637,12 +687,15 @@
 <p>5）为什么说两条腿的执行价离得越近，策略越不像单腿、越像一个更保守的区间型结构？</p>
 <p>6）为什么很多人会在 Credit Spread 赚到 80% 左右时就考虑提前关仓？</p>
 <hr>
-<h2>下一章预告：PMCC、Collar 以及更像“仓位工程”的中高级组合</h2>
-<p>你图片里除了双腿策略之外，后面还延伸到了更多“不是纯投机，而是更像仓位工程”的组合思路。</p>
-<p>如果继续往下写，最自然的下一步会是：</p>
-<ul><li>PMCC（Poor Man&#x27;s Covered Call）</li><li>Collar</li><li>以及这些结构和 Covered Call / Protective Put 的关系</li></ul>
-<p>到那一层时，你会更清楚地看到：</p>
-<blockquote><p><strong>很多所谓高级策略，本质上仍然是在反复做那几件事——收租、买保险、降成本、封风险。</strong></p></blockquote>
+<h2>下一章预告：波动率策略入门——当你赌的不是涨跌，而是“到底会不会闹大”</h2>
+<p>前面几章你看到的，大多还是方向策略：</p>
+<ul><li>看涨；</li><li>看跌；</li><li>或者把风险和成本做成更可控的价差结构。</li></ul>
+<p>下一章开始，我们会切进另一条非常重要的线：</p>
+<ul><li>不是赌往哪边走；</li><li>而是赌最后的波动幅度，到底会不会大过市场原本的预期。</li></ul>
+<p>也就是：</p>
+<ul><li>Long Straddle / Long Strangle</li><li>Short Straddle / Short Strangle</li><li>Iron Butterfly / Iron Condor</li></ul>
+<p>到那一层时，你会开始真正理解：</p>
+<blockquote><p><strong>有些期权策略赌的不是方向，而是“别停在中间”或者“最好别闹太大”。</strong></p></blockquote>
 <hr>
 <h2>本章参考口径（便于追溯）</h2>
 <ul><li>图片关联重点：<code>Spread 的目的</code>、<code>Bull/Bear Spread</code>、<code>Debit/Credit Spread</code>、<code>两条腿行权价远近的影响</code>、<code>不要轻易拆腿</code>、<code>80% 提前关仓</code>、<code>Spread 对希腊字母的抵消</code></li><li>OCC / OIC：用于校准 vertical spreads、debit spread、credit spread 的基础教育口径</li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li></ul>
@@ -692,6 +745,6 @@
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260324b"></script>
+    <script src="../js/main.js?v=20260326-options1"></script>
 </body>
 </html>

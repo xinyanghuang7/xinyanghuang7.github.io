@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260324b">
+    <link rel="stylesheet" href="../css/style.css?v=20260326-options1">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -65,7 +65,6 @@
         }
 
         .chapter-summary-card,
-        .chapter-body-card,
         .chapter-nav-card {
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.08);
@@ -74,14 +73,28 @@
             box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
         }
 
-        .chapter-summary-card p,
-        .chapter-nav-card p {
-            color: var(--text-secondary);
+        .chapter-body-card {
+            background: rgba(248, 241, 228, 0.98);
+            border: 1px solid rgba(122, 91, 10, 0.16);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 22px 48px -28px rgba(84, 60, 14, 0.22);
+            line-height: 1.9;
+            color: #241e14;
         }
 
-        .chapter-body-card {
-            line-height: 1.9;
-            color: var(--text-primary);
+        .chapter-summary-card {
+            background: rgba(255, 250, 242, 0.96);
+            border: 1px solid rgba(122, 91, 10, 0.12);
+            box-shadow: 0 18px 40px -24px rgba(84, 60, 14, 0.18);
+        }
+
+        .chapter-summary-card p {
+            color: rgba(31,27,20,0.88);
+        }
+
+        .chapter-nav-card p {
+            color: var(--text-secondary);
         }
 
         .chapter-body-card h2,
@@ -89,14 +102,14 @@
         .chapter-body-card h4,
         .chapter-body-card h5,
         .chapter-body-card h6 {
-            color: var(--text-primary);
+            color: #1f1b14;
             margin-top: 1.6em;
         }
 
         .chapter-body-card p,
         .chapter-body-card li,
         .chapter-body-card blockquote {
-            color: var(--text-secondary);
+            color: rgba(31,27,20,0.9);
         }
 
         .chapter-body-card ul,
@@ -108,8 +121,23 @@
             margin: 1.5rem 0;
             padding: 1rem 1.25rem;
             border-left: 3px solid var(--accent-gold);
-            background: rgba(201, 162, 39, 0.08);
+            background: rgba(212, 175, 55, 0.12);
             border-radius: 0 14px 14px 0;
+        }
+
+        .chapter-body-card code {
+            background: rgba(122, 91, 10, 0.08);
+            color: #5b4307;
+            padding: 0.12rem 0.35rem;
+            border-radius: 6px;
+        }
+
+        .chapter-body-card a {
+            color: #7a5b0a;
+        }
+
+        .chapter-body-card a:hover {
+            color: #5b4307;
         }
 
         .chapter-nav-grid {
@@ -255,6 +283,15 @@
 <p>如果你能把这张图看懂，你对期权的理解会一下子往前走一大步。</p>
 <p>因为你会第一次真正明白：</p>
 <p><strong>期权不是到了行权价才“突然活过来”的东西。只要还没到期，它就一直在被市场提前定价。</strong></p></blockquote>
+<hr>
+<h2>阅读导航：第一次读先分清“到期图”和“价格曲线”不是一回事</h2>
+<p>这一章第一次读时，最容易混淆的就是：</p>
+<ul><li>第9章的到期收益图；</li><li>和这一章的没到期价格曲线；</li></ul>
+<p>看起来都像“图”，但它们回答的问题完全不同。</p>
+<p>第一遍你先抓三件事：</p>
+<p>1. <strong>到期图讲的是最终结果。</strong> 2. <strong>价格曲线讲的是现在市场给这张期权的报价。</strong> 3. <strong>两者之间最关键的差别，就在时间价值。</strong></p>
+<p>第二遍再去补：</p>
+<ul><li>为什么 ATM 附近通常鼓得最高；</li><li>为什么曲线不同位置的斜率，其实已经在提前透露 Delta；</li><li>为什么同样一句“我看涨”，深 ITM、ATM、深 OTM 的持仓体验会差很多。</li></ul>
 <hr>
 <h1>一、先把最容易混淆的地方讲清楚：第9章和这一章到底差在哪</h1>
 <h2>10.1 第9章画的是“最后结局”，这一章画的是“中途的市场价格”</h2>
@@ -468,6 +505,9 @@
 <blockquote><p><strong>市场其实一直在提前给未来定价。</strong></p></blockquote>
 <p>这才是这章真正值钱的地方。</p>
 <hr>
+<hr>
+<h2>一句话总结</h2>
+<blockquote><p><strong>价格曲线真正帮你看懂的，是市场不会等到到期才反应，而是会提前把时间、位置和可能性一起报进期权价格里。</strong></p></blockquote>
 <h2>自测题</h2>
 <p>1）为什么没到期时，期权价格曲线不会像到期收益图那样是一根硬折线？</p>
 <p>2）图片里两条线之间“悬空”的距离，为什么可以理解成时间价值？</p>
@@ -475,6 +515,12 @@
 <p>4）为什么说深 ITM 更像股票、深 OTM 更像彩票？</p>
 <p>5）同样都是看涨，买深 ITM、ATM、深 OTM Call，为什么仓位体验会完全不同？</p>
 <hr>
+<hr>
+<h2>下一章预告：期权的三大基本作用——它不是只有“赌涨跌”，而是在帮你处理三类完全不同的问题</h2>
+<p>到这里，你已经看懂了期权在没到期时为什么不会只按到期图那样死板地走。</p>
+<p>下一章我们要把这层“价格行为”往真实用途上落：</p>
+<ul><li>什么时候该拿它来对冲风险；</li><li>什么时候它更像杠杆工具；</li><li>什么时候它又是在换现金流。</li></ul>
+<p>也就是：同样都是期权，为什么有的人是在买保险，有的人是在放大观点，有的人是在经营现金流。</p>
 <h2>本章参考口径（便于追溯）</h2>
 <ul><li>图片关联重点：<code>价格曲线 vs 内在价值线</code>、<code>ATM 附近时间价值最大</code>、<code>曲线斜率差异对应 Delta 直觉</code></li><li>OCC / OIC：用于校准期权价格、内在价值、时间价值与 Delta 的基础教育口径</li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li></ul>
 <ul><li>Fidelity Options Learning Center：用于保持期权价格曲线和 moneyness/Delta 教学口径一致</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li></ul>
@@ -523,6 +569,6 @@
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260324b"></script>
+    <script src="../js/main.js?v=20260326-options1"></script>
 </body>
 </html>
