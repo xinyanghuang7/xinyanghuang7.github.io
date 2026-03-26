@@ -3908,9 +3908,17 @@ footer .disclaimer {
     border-bottom: 1px solid rgba(212, 175, 55, 0.2);
 }
 
+.calendar-title-wrap {
+    display: grid;
+    gap: 0.5rem;
+    justify-items: center;
+    min-width: 180px;
+}
+
 .calendar-nav {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3946,14 +3954,31 @@ footer .disclaimer {
     min-width: 140px;
 }
 
+.calendar-month-select {
+    min-width: 140px;
+    padding: 0.45rem 0.75rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    background: rgba(255,255,255,0.04);
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+}
+
+.calendar-month-select:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 2px;
+}
+
 .calendar-year,
 .calendar-month {
     color: var(--accent-gold);
 }
 
 .calendar-today {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -4122,6 +4147,12 @@ footer .disclaimer {
 }
 
 /* Light Mode Adjustments */
+body.light-mode .calendar-month-select {
+    background: rgba(156, 116, 16, 0.08);
+    border-color: rgba(156, 116, 16, 0.22);
+    color: rgba(77, 56, 14, 0.92);
+}
+
 body.light-mode .calendar-day.empty {
     color: rgba(0, 0, 0, 0.25);
 }
@@ -4150,18 +4181,31 @@ body.light-mode .calendar-day.has-post:hover {
     
     .calendar-header {
         gap: var(--space-sm);
+        align-items: flex-start;
+        flex-wrap: wrap;
     }
     
     .calendar-nav,
     .calendar-today {
         width: 44px;
         height: 44px;
+        flex: 0 0 44px;
         font-size: 1.3rem;
     }
     
+    .calendar-title-wrap {
+        min-width: 0;
+        flex: 1 1 160px;
+    }
+
     .calendar-title {
         font-size: 1.25rem;
         min-width: 120px;
+    }
+
+    .calendar-month-select {
+        width: 100%;
+        min-width: 0;
     }
     
     .calendar-weekdays {
