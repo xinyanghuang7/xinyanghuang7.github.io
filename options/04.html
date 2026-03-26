@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="理解期权相对当前股价所处的位置，掌握实值、平值、虚值的判断方法与阅读期权链的直觉。">
+    <meta name="description" content="鐞嗚В鏈熸潈鐩稿褰撳墠鑲′环鎵€澶勭殑浣嶇疆锛屾帉鎻″疄鍊笺€佸钩鍊笺€佽櫄鍊肩殑鍒ゆ柇鏂规硶涓庨槄璇绘湡鏉冮摼鐨勭洿瑙夈€?>
     <meta name="author" content="ValueInvest">
     <meta name="theme-color" content="#c9a227">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="canonical" href="https://4fire.qzz.io/options/04.html">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://4fire.qzz.io/options/04.html">
-    <meta property="og:title" content="ITM / ATM / OTM | 美股期权教材">
-    <meta property="og:description" content="理解期权相对当前股价所处的位置，掌握实值、平值、虚值的判断方法与阅读期权链的直觉。">
+    <meta property="og:title" content="ITM / ATM / OTM | 缇庤偂鏈熸潈鏁欐潗">
+    <meta property="og:description" content="鐞嗚В鏈熸潈鐩稿褰撳墠鑲′环鎵€澶勭殑浣嶇疆锛屾帉鎻″疄鍊笺€佸钩鍊笺€佽櫄鍊肩殑鍒ゆ柇鏂规硶涓庨槄璇绘湡鏉冮摼鐨勭洿瑙夈€?>
     <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ITM / ATM / OTM | 美股期权教材">
-    <meta name="twitter:description" content="理解期权相对当前股价所处的位置，掌握实值、平值、虚值的判断方法与阅读期权链的直觉。">
+    <meta name="twitter:title" content="ITM / ATM / OTM | 缇庤偂鏈熸潈鏁欐潗">
+    <meta name="twitter:description" content="鐞嗚В鏈熸潈鐩稿褰撳墠鑲′环鎵€澶勭殑浣嶇疆锛屾帉鎻″疄鍊笺€佸钩鍊笺€佽櫄鍊肩殑鍒ゆ柇鏂规硶涓庨槄璇绘湡鏉冮摼鐨勭洿瑙夈€?>
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
-    <title>ITM / ATM / OTM | 美股期权教材</title>
+    <title>ITM / ATM / OTM | 缇庤偂鏈熸潈鏁欐潗</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260326site4">
+    <link rel="stylesheet" href="../css/style.css?v=20260326review1">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -192,7 +192,7 @@
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "ITM / ATM / OTM",
-        "description": "理解期权相对当前股价所处的位置，掌握实值、平值、虚值的判断方法与阅读期权链的直觉。",
+        "description": "鐞嗚В鏈熸潈鐩稿褰撳墠鑲′环鎵€澶勭殑浣嶇疆锛屾帉鎻″疄鍊笺€佸钩鍊笺€佽櫄鍊肩殑鍒ゆ柇鏂规硶涓庨槄璇绘湡鏉冮摼鐨勭洿瑙夈€?,
         "author": {
             "@type": "Person",
             "name": "ValueInvest"
@@ -205,7 +205,7 @@
         "mainEntityOfPage": "https://4fire.qzz.io/options/04.html",
         "isPartOf": {
             "@type": "Course",
-            "name": "美股期权教材",
+            "name": "缇庤偂鏈熸潈鏁欐潗",
             "url": "https://4fire.qzz.io/options/"
         },
         "image": [
@@ -215,39 +215,39 @@
     </script>
 </head>
 <body>
-    <a href="#main" class="skip-link">跳转到主内容</a>
-    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
+    <a href="#main" class="skip-link">璺宠浆鍒颁富鍐呭</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="椤甸潰闃呰杩涘害"></div>
 
     <header id="header">
         <div class="nav-container">
-            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
-            <nav aria-label="期权章节页主导航">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 棣栭〉">Value<span>Invest</span></a>
+            <nav aria-label="鏈熸潈绔犺妭椤典富瀵艰埅">
                 <ul class="nav-links">
-                    <li><a href="../index.html">返回首页</a></li>
-                    <li><a href="./index.html">返回课程</a></li>
-                    <li><a href="#chapter-navigation">章节导航</a></li>
+                    <li><a href="../index.html">杩斿洖棣栭〉</a></li>
+                    <li><a href="./index.html">杩斿洖璇剧▼</a></li>
+                    <li><a href="#chapter-navigation">绔犺妭瀵艰埅</a></li>
                 </ul>
             </nav>
-            <div class="nav-date">第 04 章</div>
+            <div class="nav-date">绗?04 绔?/div>
         </div>
     </header>
 
     <section class="hero" role="banner">
         <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
         <div class="hero-content">
-            <div class="subtitle">基础认知篇</div>
-            <h1>第 04 章 · ITM / ATM / OTM</h1>
-            <p class="tagline">基础认知篇 · Batch 1</p>
-            <p class="hero-description">理解期权相对当前股价所处的位置，掌握实值、平值、虚值的判断方法与阅读期权链的直觉。</p>
+            <div class="subtitle">鍩虹璁ょ煡绡?/div>
+            <h1>绗?04 绔?路 ITM / ATM / OTM</h1>
+            <p class="tagline">鍩虹璁ょ煡绡?路 Batch 1</p>
+            <p class="hero-description">鐞嗚В鏈熸潈鐩稿褰撳墠鑲′环鎵€澶勭殑浣嶇疆锛屾帉鎻″疄鍊笺€佸钩鍊笺€佽櫄鍊肩殑鍒ゆ柇鏂规硶涓庨槄璇绘湡鏉冮摼鐨勭洿瑙夈€?/p>
         </div>
-        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="鍚戜笅婊氬姩鍒扮珷鑺傛憳瑕?>鍚戜笅婊氬姩</a>
     </section>
 
-    <div class="chapter-meta-bar" aria-label="章节关键信息">
-        <div class="chapter-meta-pill">章节编号：第 04 章</div>
-        <div class="chapter-meta-pill">Section：基础认知篇</div>
-        <div class="chapter-meta-pill">Batch：Batch 1 · 已发布</div>
-        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
+    <div class="chapter-meta-bar" aria-label="绔犺妭鍏抽敭淇℃伅">
+        <div class="chapter-meta-pill">绔犺妭缂栧彿锛氱 04 绔?/div>
+        <div class="chapter-meta-pill">Section锛氬熀纭€璁ょ煡绡?/div>
+        <div class="chapter-meta-pill">Batch锛欱atch 1 路 宸插彂甯?/div>
+        <div class="chapter-meta-pill">鎵€灞炶绋嬶細<a class="chapter-meta-link" href="./index.html">缇庤偂鏈熸潈鏁欐潗</a></div>
     </div>
 
     <main id="main" class="chapter-shell">
@@ -255,13 +255,13 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">01</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
-                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
+                    <h2 class="section-title" id="chapter-summary-title">绔犺妭鎽樿</h2>
+                    <p class="section-subtitle">缁欒鑰呬竴涓厛璇绘噦妗嗘灦銆佸啀娣卞叆姝ｆ枃鐨勮惤鐐?/p>
                 </div>
             </div>
 
             <div class="chapter-summary-card">
-                <p>理解期权相对当前股价所处的位置，掌握实值、平值、虚值的判断方法与阅读期权链的直觉。</p>
+                <p>鐞嗚В鏈熸潈鐩稿褰撳墠鑲′环鎵€澶勭殑浣嶇疆锛屾帉鎻″疄鍊笺€佸钩鍊笺€佽櫄鍊肩殑鍒ゆ柇鏂规硶涓庨槄璇绘湡鏉冮摼鐨勭洿瑙夈€?/p>
             </div>
         </section>
 
@@ -269,175 +269,175 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">02</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
-                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
+                    <h2 class="section-title" id="chapter-content-title">绔犺妭姝ｆ枃</h2>
+                    <p class="section-subtitle">姝ｆ枃鍐呭鐢辩敓鎴愬櫒鐩存帴鍐欏叆 HTML锛岄粯璁ゆ棤鑴氭湰涔熷簲瀹屾暣鍙</p>
                 </div>
             </div>
 
             <article class="chapter-body-card">
-<h1>《美股期权教材》</h1>
-<h2>第4章 ITM / ATM / OTM：你在期权链里到底买的是哪一档</h2>
-<blockquote><p>对照图片里的 4. 根据股价对期权进行分类分支，本章要解决的不是一个缩写题，而是一个非常实际的问题：<strong>当你在期权链里看到一排行权价时，你到底是在挑哪一类合同？</strong></p>
-<p>图片给出的骨架很清楚：</p>
-<ul><li>ITM（价内）</li><li>OTM（价外）</li><li>ATM（平价）</li></ul>
-<p>但如果只记住字面定义，你在真实操作里还是会发懵。因为真正的问题不是哪三个缩写分别是什么意思，而是它们和我付出的权利金、我需要的涨跌幅、我这张合约的手感，到底有什么关系。</p></blockquote>
+<h1>銆婄編鑲℃湡鏉冩暀鏉愩€?/h1>
+<h2>绗?绔?ITM / ATM / OTM锛氫綘鍦ㄦ湡鏉冮摼閲屽埌搴曚拱鐨勬槸鍝竴妗?/h2>
+<blockquote><p>瀵圭収鍥剧墖閲岀殑 4. 鏍规嵁鑲′环瀵规湡鏉冭繘琛屽垎绫诲垎鏀紝鏈珷瑕佽В鍐崇殑涓嶆槸涓€涓缉鍐欓锛岃€屾槸涓€涓潪甯稿疄闄呯殑闂锛?strong>褰撲綘鍦ㄦ湡鏉冮摼閲岀湅鍒颁竴鎺掕鏉冧环鏃讹紝浣犲埌搴曟槸鍦ㄦ寫鍝竴绫诲悎鍚岋紵</strong></p>
+<p>鍥剧墖缁欏嚭鐨勯鏋跺緢娓呮锛?/p>
+<ul><li>ITM锛堜环鍐咃級</li><li>OTM锛堜环澶栵級</li><li>ATM锛堝钩浠凤級</li></ul>
+<p>浣嗗鏋滃彧璁颁綇瀛楅潰瀹氫箟锛屼綘鍦ㄧ湡瀹炴搷浣滈噷杩樻槸浼氬彂鎳点€傚洜涓虹湡姝ｇ殑闂涓嶆槸鍝笁涓缉鍐欏垎鍒槸浠€涔堟剰鎬濓紝鑰屾槸瀹冧滑鍜屾垜浠樺嚭鐨勬潈鍒╅噾銆佹垜闇€瑕佺殑娑ㄨ穼骞呫€佹垜杩欏紶鍚堢害鐨勬墜鎰燂紝鍒板簳鏈変粈涔堝叧绯汇€?/p></blockquote>
 <hr>
-<h3>4.1 为什么这章非常关键：你在期权链里选的不是号码，而是位置</h3>
-<p>上一章我们已经讲过，期权链像一张菜单。你点开 AAPL、TSLA、SPY 之后，会看到一排排行权价：170、175、180、185、190……看起来像号码，但它们本质上不是号码，而是你在不同位置上签的合同。</p>
-<p>这个位置怎么理解？最简单的方式就是把它和<strong>当前股价</strong>放在一起看。</p>
-<p>假设现在 AAPL 股价是 175：</p>
+<h3>4.1 涓轰粈涔堣繖绔犻潪甯稿叧閿細浣犲湪鏈熸潈閾鹃噷閫夌殑涓嶆槸鍙风爜锛岃€屾槸浣嶇疆</h3>
+<p>涓婁竴绔犳垜浠凡缁忚杩囷紝鏈熸潈閾惧儚涓€寮犺彍鍗曘€備綘鐐瑰紑 AAPL銆乀SLA銆丼PY 涔嬪悗锛屼細鐪嬪埌涓€鎺掓帓琛屾潈浠凤細170銆?75銆?80銆?85銆?90鈥︹€︾湅璧锋潵鍍忓彿鐮侊紝浣嗗畠浠湰璐ㄤ笂涓嶆槸鍙风爜锛岃€屾槸浣犲湪涓嶅悓浣嶇疆涓婄鐨勫悎鍚屻€?/p>
+<p>杩欎釜浣嶇疆鎬庝箞鐞嗚В锛熸渶绠€鍗曠殑鏂瑰紡灏辨槸鎶婂畠鍜?strong>褰撳墠鑲′环</strong>鏀惧湪涓€璧风湅銆?/p>
+<p>鍋囪鐜板湪 AAPL 鑲′环鏄?175锛?/p>
 <ul><li>170 Call</li><li>175 Call</li><li>180 Call</li><li>185 Call</li></ul>
-<p>这几份合同不是同一件事只是价钱不同，它们是完全不同的起跑线。你可以把它们想成：</p>
-<ul><li>有的合同已经站在更有现实价值的位置；</li><li>有的合同站在正卡在中间的位置；</li><li>有的合同则还停留在先买个希望的位置。</li></ul>
-<p>这就是 ITM、ATM、OTM 这三个词真正有用的地方。它们不是考试术语，而是你判断这张期权现在是更像资产、还是更像希望的起点。</p>
+<p>杩欏嚑浠藉悎鍚屼笉鏄悓涓€浠朵簨鍙槸浠烽挶涓嶅悓锛屽畠浠槸瀹屽叏涓嶅悓鐨勮捣璺戠嚎銆備綘鍙互鎶婂畠浠兂鎴愶細</p>
+<ul><li>鏈夌殑鍚堝悓宸茬粡绔欏湪鏇存湁鐜板疄浠峰€肩殑浣嶇疆锛?/li><li>鏈夌殑鍚堝悓绔欏湪姝ｅ崱鍦ㄤ腑闂寸殑浣嶇疆锛?/li><li>鏈夌殑鍚堝悓鍒欒繕鍋滅暀鍦ㄥ厛涔颁釜甯屾湜鐨勪綅缃€?/li></ul>
+<p>杩欏氨鏄?ITM銆丄TM銆丱TM 杩欎笁涓瘝鐪熸鏈夌敤鐨勫湴鏂广€傚畠浠笉鏄€冭瘯鏈锛岃€屾槸浣犲垽鏂繖寮犳湡鏉冪幇鍦ㄦ槸鏇村儚璧勪骇銆佽繕鏄洿鍍忓笇鏈涚殑璧风偣銆?/p>
 <hr>
-<h2>阅读导航：第一次读先分位置，第二次读再分“手感”</h2>
-<p>这一章第一次读时，不要急着把所有 Call / Put 的定义都背成表格。</p>
-<p>你先抓住最关键的一层：</p>
-<p>1. <strong>ITM = 现在就已经更有现实价值。</strong> 2. <strong>ATM = 正卡在临界位置。</strong> 3. <strong>OTM = 现在更像在买未来可能性。</strong></p>
-<p>如果这三层先站稳，后面你再去看：</p>
-<ul><li>为什么 ITM 往往更贵；</li><li>为什么 OTM 虽然便宜，但更依赖行情真的跑出来；</li><li>为什么 ATM 常常最像“最有戏、也最敏感”的那一档；</li></ul>
-<p>你就不会只是在背缩写。</p>
-<p>第二遍再去补：</p>
-<ul><li>Call 和 Put 的 ITM / ATM / OTM 到底怎么分别判断；</li><li>这些位置和权利金构成、敏感度、仓位体感之间的关系。</li></ul>
+<h2>闃呰瀵艰埅锛氱涓€娆¤鍏堝垎浣嶇疆锛岀浜屾璇诲啀鍒嗏€滄墜鎰熲€?/h2>
+<p>杩欎竴绔犵涓€娆¤鏃讹紝涓嶈鎬ョ潃鎶婃墍鏈?Call / Put 鐨勫畾涔夐兘鑳屾垚琛ㄦ牸銆?/p>
+<p>浣犲厛鎶撲綇鏈€鍏抽敭鐨勪竴灞傦細</p>
+<p>1. <strong>ITM = 鐜板湪灏卞凡缁忔洿鏈夌幇瀹炰环鍊笺€?/strong> 2. <strong>ATM = 姝ｅ崱鍦ㄤ复鐣屼綅缃€?/strong> 3. <strong>OTM = 鐜板湪鏇村儚鍦ㄤ拱鏈潵鍙兘鎬с€?/strong></p>
+<p>濡傛灉杩欎笁灞傚厛绔欑ǔ锛屽悗闈綘鍐嶅幓鐪嬶細</p>
+<ul><li>涓轰粈涔?ITM 寰€寰€鏇磋吹锛?/li><li>涓轰粈涔?OTM 铏界劧渚垮疁锛屼絾鏇翠緷璧栬鎯呯湡鐨勮窇鍑烘潵锛?/li><li>涓轰粈涔?ATM 甯稿父鏈€鍍忊€滄渶鏈夋垙銆佷篃鏈€鏁忔劅鈥濈殑閭ｄ竴妗ｏ紱</li></ul>
+<p>浣犲氨涓嶄細鍙槸鍦ㄨ儗缂╁啓銆?/p>
+<p>绗簩閬嶅啀鍘昏ˉ锛?/p>
+<ul><li>Call 鍜?Put 鐨?ITM / ATM / OTM 鍒板簳鎬庝箞鍒嗗埆鍒ゆ柇锛?/li><li>杩欎簺浣嶇疆鍜屾潈鍒╅噾鏋勬垚銆佹晱鎰熷害銆佷粨浣嶄綋鎰熶箣闂寸殑鍏崇郴銆?/li></ul>
 <hr>
-<h3>4.2 先给最朴素的判断问题：如果现在立刻行权，这张期权有现实好处吗？</h3>
-<p>这是理解 ITM / ATM / OTM 最稳的一条线索，也是图片这部分的隐含核心。</p>
-<p>你每次遇到一张期权，都先问自己一句话：</p>
-<blockquote><p><strong>如果现在立刻行权，我会不会得到一个现实中的好处？</strong></p></blockquote>
-<ul><li>如果有，而且这个好处是明确的，那它大概率是 <strong>ITM（价内）</strong>；</li><li>如果几乎刚刚好，不明显赚也不明显亏，它通常靠近 <strong>ATM（平价）</strong>；</li><li>如果现在立刻行权一点意义都没有，那它大概率是 <strong>OTM（价外）</strong>。</li></ul>
-<p>这句话很重要，因为它让你不需要死背，而是能自己推。</p>
+<h3>4.2 鍏堢粰鏈€鏈寸礌鐨勫垽鏂棶棰橈細濡傛灉鐜板湪绔嬪埢琛屾潈锛岃繖寮犳湡鏉冩湁鐜板疄濂藉鍚楋紵</h3>
+<p>杩欐槸鐞嗚В ITM / ATM / OTM 鏈€绋崇殑涓€鏉＄嚎绱紝涔熸槸鍥剧墖杩欓儴鍒嗙殑闅愬惈鏍稿績銆?/p>
+<p>浣犳瘡娆￠亣鍒颁竴寮犳湡鏉冿紝閮藉厛闂嚜宸变竴鍙ヨ瘽锛?/p>
+<blockquote><p><strong>濡傛灉鐜板湪绔嬪埢琛屾潈锛屾垜浼氫笉浼氬緱鍒颁竴涓幇瀹炰腑鐨勫ソ澶勶紵</strong></p></blockquote>
+<ul><li>濡傛灉鏈夛紝鑰屼笖杩欎釜濂藉鏄槑纭殑锛岄偅瀹冨ぇ姒傜巼鏄?<strong>ITM锛堜环鍐咃級</strong>锛?/li><li>濡傛灉鍑犱箮鍒氬垰濂斤紝涓嶆槑鏄捐禋涔熶笉鏄庢樉浜忥紝瀹冮€氬父闈犺繎 <strong>ATM锛堝钩浠凤級</strong>锛?/li><li>濡傛灉鐜板湪绔嬪埢琛屾潈涓€鐐规剰涔夐兘娌℃湁锛岄偅瀹冨ぇ姒傜巼鏄?<strong>OTM锛堜环澶栵級</strong>銆?/li></ul>
+<p>杩欏彞璇濆緢閲嶈锛屽洜涓哄畠璁╀綘涓嶉渶瑕佹鑳岋紝鑰屾槸鑳借嚜宸辨帹銆?/p>
 <hr>
-<h3>4.3 先说 Call：对看涨期权来说，什么叫 ITM / ATM / OTM？</h3>
-<h4>4.3.1 Call 的基本逻辑先回顾一下</h4>
-<p>一张 Call 给你的权利是：</p>
-<blockquote><p><strong>在到期前，以行权价买入标的资产。</strong></p></blockquote>
-<p>所以对 Call 来说，有没有现实好处的关键在于：</p>
-<ul><li>现在市场价是不是已经高于你的行权价？</li></ul>
-<p>如果市场价已经比行权价更高，那你手里这份按较低价格买的权利就有现实意义；反过来，如果市场价还低于行权价，那你现在根本没必要按更高价格去买。</p>
-<h4>4.3.2 ITM Call（价内看涨期权）</h4>
-<p>对于 Call，<strong>当股价 &gt; 行权价</strong> 时，它就是 ITM。</p>
-<h5>例子：AAPL 现价 175，170 Call</h5>
-<ul><li>当前股价：175</li><li>行权价：170</li></ul>
-<p>如果你现在就行使这张 Call，你可以按 170 买到市场上值 175 的股票。也就是说，这张合同里已经内含了现实中的好处。</p>
-<p>它像什么？像一张已经有一点折扣价值的优惠券。你拿着它，不是光在等未来，而是现在就已经比没有这张券更有利。</p>
-<h5>再举一个更直观的例子</h5>
-<p>图片里用过类似的数字：</p>
-<ul><li>股价 146</li><li>Call 行权价 140</li></ul>
-<p>因为 146 &gt; 140，这张 Call 是 ITM。你可以理解为：你拥有一张140 买一个市场上值 146 的东西的合同，它当然已经有现实价值。</p>
-<h4>4.3.3 ATM Call（平价看涨期权）</h4>
-<p>对于 Call，当<strong>股价 ≈ 行权价</strong> 时，它通常被看成 ATM。</p>
-<h5>例子：AAPL 现价 175，175 Call</h5>
-<ul><li>当前股价：175</li><li>行权价：175</li></ul>
-<p>这时候你可以说，这张合同站在正中间。现在立刻行权，不会产生明显的白赚空间；但只要股价稍微往上走，这张期权就会迅速变得更有意义。</p>
-<p>所以 ATM 往往像一个转折点：它既不是已经很有现实价值的深价内，也不是离得很远的纯希望。它很敏感，也很关键。</p>
-<h4>4.3.4 OTM Call（价外看涨期权）</h4>
-<p>对于 Call，当<strong>股价 &lt; 行权价</strong> 时，它就是 OTM。</p>
-<h5>例子：AAPL 现价 175，180 Call</h5>
-<ul><li>当前股价：175</li><li>行权价：180</li></ul>
-<p>你如果现在立刻行使这张期权，就等于愿意按 180 去买一个市场价只有 175 的股票，这显然没有意义。所以这张合约当前没有立刻可兑现的现实价值。</p>
-<p>但注意，没现实价值，不等于没价格。它仍然会有市场报价，因为市场还在为未来可能涨上去这件事定价。</p>
-<p>这就是为什么很多 OTM Call 看起来像便宜票：你买到的更多是未来的希望，而不是现在已经存在的价值。</p>
+<h3>4.3 鍏堣 Call锛氬鐪嬫定鏈熸潈鏉ヨ锛屼粈涔堝彨 ITM / ATM / OTM锛?/h3>
+<h4>4.3.1 Call 鐨勫熀鏈€昏緫鍏堝洖椤句竴涓?/h4>
+<p>涓€寮?Call 缁欎綘鐨勬潈鍒╂槸锛?/p>
+<blockquote><p><strong>鍦ㄥ埌鏈熷墠锛屼互琛屾潈浠蜂拱鍏ユ爣鐨勮祫浜с€?/strong></p></blockquote>
+<p>鎵€浠ュ Call 鏉ヨ锛屾湁娌℃湁鐜板疄濂藉鐨勫叧閿湪浜庯細</p>
+<ul><li>鐜板湪甯傚満浠锋槸涓嶆槸宸茬粡楂樹簬浣犵殑琛屾潈浠凤紵</li></ul>
+<p>濡傛灉甯傚満浠峰凡缁忔瘮琛屾潈浠锋洿楂橈紝閭ｄ綘鎵嬮噷杩欎唤鎸夎緝浣庝环鏍间拱鐨勬潈鍒╁氨鏈夌幇瀹炴剰涔夛紱鍙嶈繃鏉ワ紝濡傛灉甯傚満浠疯繕浣庝簬琛屾潈浠凤紝閭ｄ綘鐜板湪鏍规湰娌″繀瑕佹寜鏇撮珮浠锋牸鍘讳拱銆?/p>
+<h4>4.3.2 ITM Call锛堜环鍐呯湅娑ㄦ湡鏉冿級</h4>
+<p>瀵逛簬 Call锛?strong>褰撹偂浠?&gt; 琛屾潈浠?/strong> 鏃讹紝瀹冨氨鏄?ITM銆?/p>
+<h5>渚嬪瓙锛欰APL 鐜颁环 175锛?70 Call</h5>
+<ul><li>褰撳墠鑲′环锛?75</li><li>琛屾潈浠凤細170</li></ul>
+<p>濡傛灉浣犵幇鍦ㄥ氨琛屼娇杩欏紶 Call锛屼綘鍙互鎸?170 涔板埌甯傚満涓婂€?175 鐨勮偂绁ㄣ€備篃灏辨槸璇达紝杩欏紶鍚堝悓閲屽凡缁忓唴鍚簡鐜板疄涓殑濂藉銆?/p>
+<p>瀹冨儚浠€涔堬紵鍍忎竴寮犲凡缁忔湁涓€鐐规姌鎵ｄ环鍊肩殑浼樻儬鍒搞€備綘鎷跨潃瀹冿紝涓嶆槸鍏夊湪绛夋湭鏉ワ紝鑰屾槸鐜板湪灏卞凡缁忔瘮娌℃湁杩欏紶鍒告洿鏈夊埄銆?/p>
+<h5>鍐嶄妇涓€涓洿鐩磋鐨勪緥瀛?/h5>
+<p>鍥剧墖閲岀敤杩囩被浼肩殑鏁板瓧锛?/p>
+<ul><li>鑲′环 146</li><li>Call 琛屾潈浠?140</li></ul>
+<p>鍥犱负 146 &gt; 140锛岃繖寮?Call 鏄?ITM銆備綘鍙互鐞嗚В涓猴細浣犳嫢鏈変竴寮?40 涔颁竴涓競鍦轰笂鍊?146 鐨勪笢瑗跨殑鍚堝悓锛屽畠褰撶劧宸茬粡鏈夌幇瀹炰环鍊笺€?/p>
+<h4>4.3.3 ATM Call锛堝钩浠风湅娑ㄦ湡鏉冿級</h4>
+<p>瀵逛簬 Call锛屽綋<strong>鑲′环 鈮?琛屾潈浠?/strong> 鏃讹紝瀹冮€氬父琚湅鎴?ATM銆?/p>
+<h5>渚嬪瓙锛欰APL 鐜颁环 175锛?75 Call</h5>
+<ul><li>褰撳墠鑲′环锛?75</li><li>琛屾潈浠凤細175</li></ul>
+<p>杩欐椂鍊欎綘鍙互璇达紝杩欏紶鍚堝悓绔欏湪姝ｄ腑闂淬€傜幇鍦ㄧ珛鍒昏鏉冿紝涓嶄細浜х敓鏄庢樉鐨勭櫧璧氱┖闂达紱浣嗗彧瑕佽偂浠风◢寰線涓婅蛋锛岃繖寮犳湡鏉冨氨浼氳繀閫熷彉寰楁洿鏈夋剰涔夈€?/p>
+<p>鎵€浠?ATM 寰€寰€鍍忎竴涓浆鎶樼偣锛氬畠鏃笉鏄凡缁忓緢鏈夌幇瀹炰环鍊肩殑娣变环鍐咃紝涔熶笉鏄寰楀緢杩滅殑绾笇鏈涖€傚畠寰堟晱鎰燂紝涔熷緢鍏抽敭銆?/p>
+<h4>4.3.4 OTM Call锛堜环澶栫湅娑ㄦ湡鏉冿級</h4>
+<p>瀵逛簬 Call锛屽綋<strong>鑲′环 &lt; 琛屾潈浠?/strong> 鏃讹紝瀹冨氨鏄?OTM銆?/p>
+<h5>渚嬪瓙锛欰APL 鐜颁环 175锛?80 Call</h5>
+<ul><li>褰撳墠鑲′环锛?75</li><li>琛屾潈浠凤細180</li></ul>
+<p>浣犲鏋滅幇鍦ㄧ珛鍒昏浣胯繖寮犳湡鏉冿紝灏辩瓑浜庢効鎰忔寜 180 鍘讳拱涓€涓競鍦轰环鍙湁 175 鐨勮偂绁紝杩欐樉鐒舵病鏈夋剰涔夈€傛墍浠ヨ繖寮犲悎绾﹀綋鍓嶆病鏈夌珛鍒诲彲鍏戠幇鐨勭幇瀹炰环鍊笺€?/p>
+<p>浣嗘敞鎰忥紝娌＄幇瀹炰环鍊硷紝涓嶇瓑浜庢病浠锋牸銆傚畠浠嶇劧浼氭湁甯傚満鎶ヤ环锛屽洜涓哄競鍦鸿繕鍦ㄤ负鏈潵鍙兘娑ㄤ笂鍘昏繖浠朵簨瀹氫环銆?/p>
+<p>杩欏氨鏄负浠€涔堝緢澶?OTM Call 鐪嬭捣鏉ュ儚渚垮疁绁細浣犱拱鍒扮殑鏇村鏄湭鏉ョ殑甯屾湜锛岃€屼笉鏄幇鍦ㄥ凡缁忓瓨鍦ㄧ殑浠峰€笺€?/p>
 <hr>
-<h3>4.4 再说 Put：对看跌期权来说，方向完全反过来</h3>
-<h4>4.4.1 Put 的基本逻辑先回顾一下</h4>
-<p>一张 Put 给你的权利是：</p>
-<blockquote><p><strong>在到期前，以行权价卖出标的资产。</strong></p></blockquote>
-<p>所以对 Put 来说，有没有现实好处的关键变成了：</p>
-<ul><li>现在市场价是不是已经低于你的行权价？</li></ul>
-<p>因为如果市场已经跌下去了，而你还能按更高价格卖，那这份合同当然有现实意义。</p>
-<h4>4.4.2 ITM Put（价内看跌期权）</h4>
-<p>对于 Put，<strong>当股价 &lt; 行权价</strong> 时，它就是 ITM。</p>
-<h5>例子：AAPL 现价 140，146 Put</h5>
-<ul><li>当前股价：140</li><li>行权价：146</li></ul>
-<p>如果你现在能按 146 卖出一个市场上只值 140 的东西，这份权利当然值钱。所以这张 Put 是 ITM。</p>
-<p>你可以把它理解成：你手里有一份高价卖出的合同，而市场价格已经比合同价格更低了，这就是现实好处。</p>
-<h4>4.4.3 ATM Put（平价看跌期权）</h4>
-<p>对于 Put，当<strong>股价 ≈ 行权价</strong> 时，它通常被看成 ATM。</p>
-<h5>例子：SPY 现价 500，500 Put</h5>
-<p>这时候它站在一个临界点上：现在不算明显赚，但如果标的再跌一点，这张 Put 的现实意义会快速增强。</p>
-<h4>4.4.4 OTM Put（价外看跌期权）</h4>
-<p>对于 Put，<strong>当股价 &gt; 行权价</strong> 时，它就是 OTM。</p>
-<h5>例子：AAPL 现价 175，170 Put</h5>
-<p>你如果现在就行使，相当于想按 170 卖出一个市场上明明能卖 175 的东西，这当然没意义。所以这张 Put 没有立刻行权的现实价值，它现在更多是一张如果未来跌下去就会变得有用的合同。</p>
+<h3>4.4 鍐嶈 Put锛氬鐪嬭穼鏈熸潈鏉ヨ锛屾柟鍚戝畬鍏ㄥ弽杩囨潵</h3>
+<h4>4.4.1 Put 鐨勫熀鏈€昏緫鍏堝洖椤句竴涓?/h4>
+<p>涓€寮?Put 缁欎綘鐨勬潈鍒╂槸锛?/p>
+<blockquote><p><strong>鍦ㄥ埌鏈熷墠锛屼互琛屾潈浠峰崠鍑烘爣鐨勮祫浜с€?/strong></p></blockquote>
+<p>鎵€浠ュ Put 鏉ヨ锛屾湁娌℃湁鐜板疄濂藉鐨勫叧閿彉鎴愪簡锛?/p>
+<ul><li>鐜板湪甯傚満浠锋槸涓嶆槸宸茬粡浣庝簬浣犵殑琛屾潈浠凤紵</li></ul>
+<p>鍥犱负濡傛灉甯傚満宸茬粡璺屼笅鍘讳簡锛岃€屼綘杩樿兘鎸夋洿楂樹环鏍煎崠锛岄偅杩欎唤鍚堝悓褰撶劧鏈夌幇瀹炴剰涔夈€?/p>
+<h4>4.4.2 ITM Put锛堜环鍐呯湅璺屾湡鏉冿級</h4>
+<p>瀵逛簬 Put锛?strong>褰撹偂浠?&lt; 琛屾潈浠?/strong> 鏃讹紝瀹冨氨鏄?ITM銆?/p>
+<h5>渚嬪瓙锛欰APL 鐜颁环 140锛?46 Put</h5>
+<ul><li>褰撳墠鑲′环锛?40</li><li>琛屾潈浠凤細146</li></ul>
+<p>濡傛灉浣犵幇鍦ㄨ兘鎸?146 鍗栧嚭涓€涓競鍦轰笂鍙€?140 鐨勪笢瑗匡紝杩欎唤鏉冨埄褰撶劧鍊奸挶銆傛墍浠ヨ繖寮?Put 鏄?ITM銆?/p>
+<p>浣犲彲浠ユ妸瀹冪悊瑙ｆ垚锛氫綘鎵嬮噷鏈変竴浠介珮浠峰崠鍑虹殑鍚堝悓锛岃€屽競鍦轰环鏍煎凡缁忔瘮鍚堝悓浠锋牸鏇翠綆浜嗭紝杩欏氨鏄幇瀹炲ソ澶勩€?/p>
+<h4>4.4.3 ATM Put锛堝钩浠风湅璺屾湡鏉冿級</h4>
+<p>瀵逛簬 Put锛屽綋<strong>鑲′环 鈮?琛屾潈浠?/strong> 鏃讹紝瀹冮€氬父琚湅鎴?ATM銆?/p>
+<h5>渚嬪瓙锛歋PY 鐜颁环 500锛?00 Put</h5>
+<p>杩欐椂鍊欏畠绔欏湪涓€涓复鐣岀偣涓婏細鐜板湪涓嶇畻鏄庢樉璧氾紝浣嗗鏋滄爣鐨勫啀璺屼竴鐐癸紝杩欏紶 Put 鐨勭幇瀹炴剰涔変細蹇€熷寮恒€?/p>
+<h4>4.4.4 OTM Put锛堜环澶栫湅璺屾湡鏉冿級</h4>
+<p>瀵逛簬 Put锛?strong>褰撹偂浠?&gt; 琛屾潈浠?/strong> 鏃讹紝瀹冨氨鏄?OTM銆?/p>
+<h5>渚嬪瓙锛欰APL 鐜颁环 175锛?70 Put</h5>
+<p>浣犲鏋滅幇鍦ㄥ氨琛屼娇锛岀浉褰撲簬鎯虫寜 170 鍗栧嚭涓€涓競鍦轰笂鏄庢槑鑳藉崠 175 鐨勪笢瑗匡紝杩欏綋鐒舵病鎰忎箟銆傛墍浠ヨ繖寮?Put 娌℃湁绔嬪埢琛屾潈鐨勭幇瀹炰环鍊硷紝瀹冪幇鍦ㄦ洿澶氭槸涓€寮犲鏋滄湭鏉ヨ穼涓嬪幓灏变細鍙樺緱鏈夌敤鐨勫悎鍚屻€?/p>
 <hr>
-<h3>4.5 把 Call 和 Put 放在一起看：别把方向混掉</h3>
-<p>很多人第一次学 ITM / ATM / OTM 时，最大的混乱不是定义太难，而是<strong>Call 和 Put 的方向反过来</strong>。</p>
-<p>你可以用最简单的一张表先固定住：</p>
-<div class="course-table-wrap"><table><thead><tr><th>类型</th><th>ITM</th><th>ATM</th><th>OTM</th></tr></thead><tbody><tr><td>Call</td><td>股价 &gt; 行权价</td><td>股价 ≈ 行权价</td><td>股价 &lt; 行权价</td></tr><tr><td>Put</td><td>股价 &lt; 行权价</td><td>股价 ≈ 行权价</td><td>股价 &gt; 行权价</td></tr></tbody></table></div>
-<p>你如果怕记混，可以别硬背表，而是永远回到那句判断题：</p>
-<ul><li>Call：我是不是能按更低价买？</li><li>Put：我是不是能按更高价卖？</li></ul>
-<p>有现实好处，就是 ITM；没现实好处，就是 OTM；卡在中间，就是 ATM。</p>
+<h3>4.5 鎶?Call 鍜?Put 鏀惧湪涓€璧风湅锛氬埆鎶婃柟鍚戞贩鎺?/h3>
+<p>寰堝浜虹涓€娆″ ITM / ATM / OTM 鏃讹紝鏈€澶х殑娣蜂贡涓嶆槸瀹氫箟澶毦锛岃€屾槸<strong>Call 鍜?Put 鐨勬柟鍚戝弽杩囨潵</strong>銆?/p>
+<p>浣犲彲浠ョ敤鏈€绠€鍗曠殑涓€寮犺〃鍏堝浐瀹氫綇锛?/p>
+<div class="course-table-wrap"><table><thead><tr><th>绫诲瀷</th><th>ITM</th><th>ATM</th><th>OTM</th></tr></thead><tbody><tr><td>Call</td><td>鑲′环 &gt; 琛屾潈浠?/td><td>鑲′环 鈮?琛屾潈浠?/td><td>鑲′环 &lt; 琛屾潈浠?/td></tr><tr><td>Put</td><td>鑲′环 &lt; 琛屾潈浠?/td><td>鑲′环 鈮?琛屾潈浠?/td><td>鑲′环 &gt; 琛屾潈浠?/td></tr></tbody></table></div>
+<p>浣犲鏋滄€曡娣凤紝鍙互鍒‖鑳岃〃锛岃€屾槸姘歌繙鍥炲埌閭ｅ彞鍒ゆ柇棰橈細</p>
+<ul><li>Call锛氭垜鏄笉鏄兘鎸夋洿浣庝环涔帮紵</li><li>Put锛氭垜鏄笉鏄兘鎸夋洿楂樹环鍗栵紵</li></ul>
+<p>鏈夌幇瀹炲ソ澶勶紝灏辨槸 ITM锛涙病鐜板疄濂藉锛屽氨鏄?OTM锛涘崱鍦ㄤ腑闂达紝灏辨槸 ATM銆?/p>
 <hr>
-<h3>4.6 这三个分类到底有什么用：为什么你不该把它们当成纯术语</h3>
-<p>如果 ITM / ATM / OTM 只是定义题，那没必要专门一章讲它。之所以必须单独讲，是因为它们会直接影响你后面所有东西：</p>
-<ul><li>你买的到底更像现在就有一点现实价值的合同，还是纯粹赌未来的合同；</li><li>你的权利金里有多少已经是实的，多少是市场对未来的期待；</li><li>你的期权价格对正股涨跌到底敏不敏感；</li><li>你到底是在买一个更贵但更扎实的位置，还是买一个更便宜但更需要行情爆发的位置。</li></ul>
-<p>你可以先把它理解成一个非常粗但非常实用的判断：</p>
-<ul><li><strong>ITM 更像现在已经有点东西</strong></li><li><strong>ATM 更像站在分界线上</strong></li><li><strong>OTM 更像先买个未来可能性</strong></li></ul>
-<p>当然，这只是直觉层面的简化，后面到了价格构成那一章，我们会把现在已经有点东西具体拆成内在价值，把未来可能性拆成时间价值。</p>
+<h3>4.6 杩欎笁涓垎绫诲埌搴曟湁浠€涔堢敤锛氫负浠€涔堜綘涓嶈鎶婂畠浠綋鎴愮函鏈</h3>
+<p>濡傛灉 ITM / ATM / OTM 鍙槸瀹氫箟棰橈紝閭ｆ病蹇呰涓撻棬涓€绔犺瀹冦€備箣鎵€浠ュ繀椤诲崟鐙锛屾槸鍥犱负瀹冧滑浼氱洿鎺ュ奖鍝嶄綘鍚庨潰鎵€鏈変笢瑗匡細</p>
+<ul><li>浣犱拱鐨勫埌搴曟洿鍍忕幇鍦ㄥ氨鏈変竴鐐圭幇瀹炰环鍊肩殑鍚堝悓锛岃繕鏄函绮硅祵鏈潵鐨勫悎鍚岋紱</li><li>浣犵殑鏉冨埄閲戦噷鏈夊灏戝凡缁忔槸瀹炵殑锛屽灏戞槸甯傚満瀵规湭鏉ョ殑鏈熷緟锛?/li><li>浣犵殑鏈熸潈浠锋牸瀵规鑲℃定璺屽埌搴曟晱涓嶆晱鎰燂紱</li><li>浣犲埌搴曟槸鍦ㄤ拱涓€涓洿璐典絾鏇存墡瀹炵殑浣嶇疆锛岃繕鏄拱涓€涓洿渚垮疁浣嗘洿闇€瑕佽鎯呯垎鍙戠殑浣嶇疆銆?/li></ul>
+<p>浣犲彲浠ュ厛鎶婂畠鐞嗚В鎴愪竴涓潪甯哥矖浣嗛潪甯稿疄鐢ㄧ殑鍒ゆ柇锛?/p>
+<ul><li><strong>ITM 鏇村儚鐜板湪宸茬粡鏈夌偣涓滆タ</strong></li><li><strong>ATM 鏇村儚绔欏湪鍒嗙晫绾夸笂</strong></li><li><strong>OTM 鏇村儚鍏堜拱涓湭鏉ュ彲鑳芥€?/strong></li></ul>
+<p>褰撶劧锛岃繖鍙槸鐩磋灞傞潰鐨勭畝鍖栵紝鍚庨潰鍒颁簡浠锋牸鏋勬垚閭ｄ竴绔狅紝鎴戜滑浼氭妸鐜板湪宸茬粡鏈夌偣涓滆タ鍏蜂綋鎷嗘垚鍐呭湪浠峰€硷紝鎶婃湭鏉ュ彲鑳芥€ф媶鎴愭椂闂翠环鍊笺€?/p>
 <hr>
-<h3>4.7 为什么很多新手会被 OTM 吸引：它看起来便宜，但便宜往往是有原因的</h3>
-<p>这部分非常重要，因为真实交易里最常见的错误之一，就是新手喜欢冲着便宜去买 OTM。</p>
-<p>比如你打开 AAPL 期权链，看到：</p>
-<ul><li>170 Call 很贵</li><li>175 Call 也不便宜</li><li>190 Call 好像只要一点点钱</li></ul>
-<p>于是你会想：</p>
-<ul><li>那我是不是买 190 Call 更划算？反正如果涨起来，涨得更多。</li></ul>
-<p>问题在于，190 Call 之所以便宜，往往是因为市场在说：</p>
-<ul><li>它要在这段时间里涨到那里，不容易。</li></ul>
-<p>也就是说，OTM 并不只是便宜版本，它常常也是更依赖行情爆发的版本。你买它，通常是在买一个更远、更窄、更需要速度的机会窗口。</p>
-<p>这不是说 OTM 不能碰，而是说：<strong>别因为便宜就误以为它更好。</strong> 很多便宜，只是在提前反映它实现起来更难。</p>
+<h3>4.7 涓轰粈涔堝緢澶氭柊鎵嬩細琚?OTM 鍚稿紩锛氬畠鐪嬭捣鏉ヤ究瀹滐紝浣嗕究瀹滃線寰€鏄湁鍘熷洜鐨?/h3>
+<p>杩欓儴鍒嗛潪甯搁噸瑕侊紝鍥犱负鐪熷疄浜ゆ槗閲屾渶甯歌鐨勯敊璇箣涓€锛屽氨鏄柊鎵嬪枩娆㈠啿鐫€渚垮疁鍘讳拱 OTM銆?/p>
+<p>姣斿浣犳墦寮€ AAPL 鏈熸潈閾撅紝鐪嬪埌锛?/p>
+<ul><li>170 Call 寰堣吹</li><li>175 Call 涔熶笉渚垮疁</li><li>190 Call 濂藉儚鍙涓€鐐圭偣閽?/li></ul>
+<p>浜庢槸浣犱細鎯筹細</p>
+<ul><li>閭ｆ垜鏄笉鏄拱 190 Call 鏇村垝绠楋紵鍙嶆濡傛灉娑ㄨ捣鏉ワ紝娑ㄥ緱鏇村銆?/li></ul>
+<p>闂鍦ㄤ簬锛?90 Call 涔嬫墍浠ヤ究瀹滐紝寰€寰€鏄洜涓哄競鍦哄湪璇达細</p>
+<ul><li>瀹冭鍦ㄨ繖娈垫椂闂撮噷娑ㄥ埌閭ｉ噷锛屼笉瀹规槗銆?/li></ul>
+<p>涔熷氨鏄锛孫TM 骞朵笉鍙槸渚垮疁鐗堟湰锛屽畠甯稿父涔熸槸鏇翠緷璧栬鎯呯垎鍙戠殑鐗堟湰銆備綘涔板畠锛岄€氬父鏄湪涔颁竴涓洿杩溿€佹洿绐勩€佹洿闇€瑕侀€熷害鐨勬満浼氱獥鍙ｃ€?/p>
+<p>杩欎笉鏄 OTM 涓嶈兘纰帮紝鑰屾槸璇达細<strong>鍒洜涓轰究瀹滃氨璇互涓哄畠鏇村ソ銆?/strong> 寰堝渚垮疁锛屽彧鏄湪鎻愬墠鍙嶆槧瀹冨疄鐜拌捣鏉ユ洿闅俱€?/p>
 <hr>
-<h3>4.8 ITM 一定更好吗？也不是。它更贵，也意味着你先付了更多钱</h3>
-<p>说完 OTM，再把话拉回来：既然 OTM 看起来更像在买希望，那是不是 ITM 就一定更好？</p>
-<p>也不是。</p>
-<p>ITM 的好处在于：</p>
-<ul><li>它已经带有现实价值</li><li>对正股变化往往更敏感</li><li>在很多情况下，它更不像纯彩票</li></ul>
-<p>但代价也很明确：</p>
-<ul><li>它通常更贵</li><li>你一开始要付出更多权利金</li></ul>
-<p>所以你选 ITM / ATM / OTM，不是在选哪种永远更优，而是在选：</p>
-<blockquote><p><strong>我是更想要扎实一点的位置，还是更想要更低成本的远期可能性？</strong></p></blockquote>
-<p>这也是为什么这三个分类一定要在策略之前弄懂。因为你后面每次选行权价，本质上都是在这三种位置之间做取舍。</p>
+<h3>4.8 ITM 涓€瀹氭洿濂藉悧锛熶篃涓嶆槸銆傚畠鏇磋吹锛屼篃鎰忓懗鐫€浣犲厛浠樹簡鏇村閽?/h3>
+<p>璇村畬 OTM锛屽啀鎶婅瘽鎷夊洖鏉ワ細鏃㈢劧 OTM 鐪嬭捣鏉ユ洿鍍忓湪涔板笇鏈涳紝閭ｆ槸涓嶆槸 ITM 灏变竴瀹氭洿濂斤紵</p>
+<p>涔熶笉鏄€?/p>
+<p>ITM 鐨勫ソ澶勫湪浜庯細</p>
+<ul><li>瀹冨凡缁忓甫鏈夌幇瀹炰环鍊?/li><li>瀵规鑲″彉鍖栧線寰€鏇存晱鎰?/li><li>鍦ㄥ緢澶氭儏鍐典笅锛屽畠鏇翠笉鍍忕函褰╃エ</li></ul>
+<p>浣嗕唬浠蜂篃寰堟槑纭細</p>
+<ul><li>瀹冮€氬父鏇磋吹</li><li>浣犱竴寮€濮嬭浠樺嚭鏇村鏉冨埄閲?/li></ul>
+<p>鎵€浠ヤ綘閫?ITM / ATM / OTM锛屼笉鏄湪閫夊摢绉嶆案杩滄洿浼橈紝鑰屾槸鍦ㄩ€夛細</p>
+<blockquote><p><strong>鎴戞槸鏇存兂瑕佹墡瀹炰竴鐐圭殑浣嶇疆锛岃繕鏄洿鎯宠鏇翠綆鎴愭湰鐨勮繙鏈熷彲鑳芥€э紵</strong></p></blockquote>
+<p>杩欎篃鏄负浠€涔堣繖涓変釜鍒嗙被涓€瀹氳鍦ㄧ瓥鐣ヤ箣鍓嶅紕鎳傘€傚洜涓轰綘鍚庨潰姣忔閫夎鏉冧环锛屾湰璐ㄤ笂閮芥槸鍦ㄨ繖涓夌浣嶇疆涔嬮棿鍋氬彇鑸嶃€?/p>
 <hr>
-<h3>4.9 几个容易混淆的点，必须提前纠正</h3>
-<h4>误区 1：OTM 就是没价值</h4>
-<p>不对。OTM 的准确说法应该是：</p>
-<ul><li><strong>它没有立刻行权的内在价值</strong>，</li><li>但它仍然可以有市场价格，因为市场在给未来变得有价值的可能性定价。</li></ul>
-<p>也正因为如此，很多 OTM 期权在离到期还有一段时间时，仍然能卖出价格，不是废纸。</p>
-<h4>误区 2：ATM 就是完全没用</h4>
-<p>也不对。ATM 恰恰经常是最关键的位置，因为它卡在分界线上，对后面一小段波动非常敏感。它不是没用，而是最靠近即将发生变化的地方。</p>
-<h4>误区 3：ITM 就等于稳赚</h4>
-<p>更不对。ITM 只是说明这张合同当前已经有现实好处，不代表你买它就一定赚钱。你买的时候付了多少权利金、后面时间怎么流逝、股价有没有继续往有利方向走，这些都会影响最终盈亏。</p>
-<p>所以别把当前位置误当成最终结果。</p>
+<h3>4.9 鍑犱釜瀹规槗娣锋穯鐨勭偣锛屽繀椤绘彁鍓嶇籂姝?/h3>
+<h4>璇尯 1锛歄TM 灏辨槸娌′环鍊?/h4>
+<p>涓嶅銆侽TM 鐨勫噯纭娉曞簲璇ユ槸锛?/p>
+<ul><li><strong>瀹冩病鏈夌珛鍒昏鏉冪殑鍐呭湪浠峰€?/strong>锛?/li><li>浣嗗畠浠嶇劧鍙互鏈夊競鍦轰环鏍硷紝鍥犱负甯傚満鍦ㄧ粰鏈潵鍙樺緱鏈変环鍊肩殑鍙兘鎬у畾浠枫€?/li></ul>
+<p>涔熸鍥犱负濡傛锛屽緢澶?OTM 鏈熸潈鍦ㄧ鍒版湡杩樻湁涓€娈垫椂闂存椂锛屼粛鐒惰兘鍗栧嚭浠锋牸锛屼笉鏄簾绾搞€?/p>
+<h4>璇尯 2锛欰TM 灏辨槸瀹屽叏娌＄敤</h4>
+<p>涔熶笉瀵广€侫TM 鎭版伆缁忓父鏄渶鍏抽敭鐨勪綅缃紝鍥犱负瀹冨崱鍦ㄥ垎鐣岀嚎涓婏紝瀵瑰悗闈竴灏忔娉㈠姩闈炲父鏁忔劅銆傚畠涓嶆槸娌＄敤锛岃€屾槸鏈€闈犺繎鍗冲皢鍙戠敓鍙樺寲鐨勫湴鏂广€?/p>
+<h4>璇尯 3锛欼TM 灏辩瓑浜庣ǔ璧?/h4>
+<p>鏇翠笉瀵广€侷TM 鍙槸璇存槑杩欏紶鍚堝悓褰撳墠宸茬粡鏈夌幇瀹炲ソ澶勶紝涓嶄唬琛ㄤ綘涔板畠灏变竴瀹氳禋閽便€備綘涔扮殑鏃跺€欎粯浜嗗灏戞潈鍒╅噾銆佸悗闈㈡椂闂存€庝箞娴侀€濄€佽偂浠锋湁娌℃湁缁х画寰€鏈夊埄鏂瑰悜璧帮紝杩欎簺閮戒細褰卞搷鏈€缁堢泩浜忋€?/p>
+<p>鎵€浠ュ埆鎶婂綋鍓嶄綅缃褰撴垚鏈€缁堢粨鏋溿€?/p>
 <hr>
-<h3>4.10 用一个完整小场景，把三种位置放在同一条线上看</h3>
-<p>假设 AAPL 现价 175，我们只看 Call：</p>
-<ul><li>170 Call → ITM</li><li>175 Call → ATM</li><li>180 Call → OTM</li></ul>
-<p>这三张合约像什么？</p>
-<ul><li><strong>170 Call</strong>：你已经站在门里面一点了，所以更贵，也更像现在就有点货；</li><li><strong>175 Call</strong>：你站在门槛上，往里还是往外，很快会看出来；</li><li><strong>180 Call</strong>：你还站在门外，买的是希望门一会儿自己打开。</li></ul>
-<p>这个比喻不完美，但很有用，因为它把位置感建立起来了。以后你看到期权链，不会再只是看到几个数字，而会开始有画面：我现在是在买门里、门口，还是门外的那份合同？</p>
+<h3>4.10 鐢ㄤ竴涓畬鏁村皬鍦烘櫙锛屾妸涓夌浣嶇疆鏀惧湪鍚屼竴鏉＄嚎涓婄湅</h3>
+<p>鍋囪 AAPL 鐜颁环 175锛屾垜浠彧鐪?Call锛?/p>
+<ul><li>170 Call 鈫?ITM</li><li>175 Call 鈫?ATM</li><li>180 Call 鈫?OTM</li></ul>
+<p>杩欎笁寮犲悎绾﹀儚浠€涔堬紵</p>
+<ul><li><strong>170 Call</strong>锛氫綘宸茬粡绔欏湪闂ㄩ噷闈竴鐐逛簡锛屾墍浠ユ洿璐碉紝涔熸洿鍍忕幇鍦ㄥ氨鏈夌偣璐э紱</li><li><strong>175 Call</strong>锛氫綘绔欏湪闂ㄦ涓婏紝寰€閲岃繕鏄線澶栵紝寰堝揩浼氱湅鍑烘潵锛?/li><li><strong>180 Call</strong>锛氫綘杩樼珯鍦ㄩ棬澶栵紝涔扮殑鏄笇鏈涢棬涓€浼氬効鑷繁鎵撳紑銆?/li></ul>
+<p>杩欎釜姣斿柣涓嶅畬缇庯紝浣嗗緢鏈夌敤锛屽洜涓哄畠鎶婁綅缃劅寤虹珛璧锋潵浜嗐€備互鍚庝綘鐪嬪埌鏈熸潈閾撅紝涓嶄細鍐嶅彧鏄湅鍒板嚑涓暟瀛楋紝鑰屼細寮€濮嬫湁鐢婚潰锛氭垜鐜板湪鏄湪涔伴棬閲屻€侀棬鍙ｏ紝杩樻槸闂ㄥ鐨勯偅浠藉悎鍚岋紵</p>
 <hr>
-<h3>4.11 本章小结：你以后每次看期权链，都应该先做这个判断</h3>
-<p>1. 先看它是 Call 还是 Put。 2. 再把当前股价和行权价放在一起。 3. 问自己：如果现在立刻行权，这份合同有没有现实好处？ 4. 然后再判断它是 ITM、ATM 还是 OTM。</p>
-<p>你只要把这 4 步练熟，后面学期权价格构成时就会轻松很多，因为你终于知道：你买的不是一个抽象代码，而是一份站在不同位置上的合同。</p>
+<h3>4.11 鏈珷灏忕粨锛氫綘浠ュ悗姣忔鐪嬫湡鏉冮摼锛岄兘搴旇鍏堝仛杩欎釜鍒ゆ柇</h3>
+<p>1. 鍏堢湅瀹冩槸 Call 杩樻槸 Put銆?2. 鍐嶆妸褰撳墠鑲′环鍜岃鏉冧环鏀惧湪涓€璧枫€?3. 闂嚜宸憋細濡傛灉鐜板湪绔嬪埢琛屾潈锛岃繖浠藉悎鍚屾湁娌℃湁鐜板疄濂藉锛?4. 鐒跺悗鍐嶅垽鏂畠鏄?ITM銆丄TM 杩樻槸 OTM銆?/p>
+<p>浣犲彧瑕佹妸杩?4 姝ョ粌鐔燂紝鍚庨潰瀛︽湡鏉冧环鏍兼瀯鎴愭椂灏变細杞绘澗寰堝锛屽洜涓轰綘缁堜簬鐭ラ亾锛氫綘涔扮殑涓嶆槸涓€涓娊璞′唬鐮侊紝鑰屾槸涓€浠界珯鍦ㄤ笉鍚屼綅缃笂鐨勫悎鍚屻€?/p>
 <hr>
 <hr>
-<h3>一句话总结</h3>
-<blockquote><p><strong>ITM / ATM / OTM 不是抽象缩写，而是在告诉你这张期权离“真正有用”还有多远、价格里哪部分在起作用。</strong></p></blockquote>
-<h3>4.12 自测题（别只背缩写，要能自己推）</h3>
-<p>1）AAPL 现价 175：</p>
-<ul><li>170 Call 属于什么？</li><li>175 Call 属于什么？</li><li>180 Call 属于什么？</li></ul>
-<p>2）AAPL 现价 175：</p>
-<ul><li>180 Put 属于什么？</li><li>175 Put 属于什么？</li><li>170 Put 属于什么？</li></ul>
-<p>3）为什么说OTM 没有内在价值不等于OTM 完全没有价格？</p>
+<h3>涓€鍙ヨ瘽鎬荤粨</h3>
+<blockquote><p><strong>ITM / ATM / OTM 涓嶆槸鎶借薄缂╁啓锛岃€屾槸鍦ㄥ憡璇変綘杩欏紶鏈熸潈绂烩€滅湡姝ｆ湁鐢ㄢ€濊繕鏈夊杩溿€佷环鏍奸噷鍝儴鍒嗗湪璧蜂綔鐢ㄣ€?/strong></p></blockquote>
+<h3>4.12 鑷祴棰橈紙鍒彧鑳岀缉鍐欙紝瑕佽兘鑷繁鎺級</h3>
+<p>1锛堿APL 鐜颁环 175锛?/p>
+<ul><li>170 Call 灞炰簬浠€涔堬紵</li><li>175 Call 灞炰簬浠€涔堬紵</li><li>180 Call 灞炰簬浠€涔堬紵</li></ul>
+<p>2锛堿APL 鐜颁环 175锛?/p>
+<ul><li>180 Put 灞炰簬浠€涔堬紵</li><li>175 Put 灞炰簬浠€涔堬紵</li><li>170 Put 灞炰簬浠€涔堬紵</li></ul>
+<p>3锛変负浠€涔堣OTM 娌℃湁鍐呭湪浠峰€间笉绛変簬OTM 瀹屽叏娌℃湁浠锋牸锛?/p>
 <hr>
-<h3>4.13 下一章预告：期权价格由什么构成——内在价值和时间价值</h3>
-<p>这一章你已经知道了 ITM / ATM / OTM 本质上是在描述你这份合同现在站在哪个位置。下一章我们就把这个位置感进一步拆开：</p>
-<ul><li>什么叫内在价值？</li><li>什么叫时间价值？</li><li>为什么 ITM 更像已经有点东西，OTM 更像在买未来可能性？</li></ul>
-<p>到了那一步，你会第一次真正把分类和价格连在一起。</p>
+<h3>4.13 涓嬩竴绔犻鍛婏細鏈熸潈浠锋牸鐢变粈涔堟瀯鎴愨€斺€斿唴鍦ㄤ环鍊煎拰鏃堕棿浠峰€?/h3>
+<p>杩欎竴绔犱綘宸茬粡鐭ラ亾浜?ITM / ATM / OTM 鏈川涓婃槸鍦ㄦ弿杩颁綘杩欎唤鍚堝悓鐜板湪绔欏湪鍝釜浣嶇疆銆備笅涓€绔犳垜浠氨鎶婅繖涓綅缃劅杩涗竴姝ユ媶寮€锛?/p>
+<ul><li>浠€涔堝彨鍐呭湪浠峰€硷紵</li><li>浠€涔堝彨鏃堕棿浠峰€硷紵</li><li>涓轰粈涔?ITM 鏇村儚宸茬粡鏈夌偣涓滆タ锛孫TM 鏇村儚鍦ㄤ拱鏈潵鍙兘鎬э紵</li></ul>
+<p>鍒颁簡閭ｄ竴姝ワ紝浣犱細绗竴娆＄湡姝ｆ妸鍒嗙被鍜屼环鏍艰繛鍦ㄤ竴璧枫€?/p>
 <hr>
-<h3>本章参考口径（便于追溯）</h3>
-<ul><li>图片骨架：ITM / OTM / ATM 的分类逻辑（Call 与 Put 的方向相反）</li><li>Investor.gov：期权作为有权利但无义务的合约定义，用于保证本章分类解释依然围绕行权是否有现实好处来讲</li><li><a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/options">https://www.investor.gov/introduction-investing/investing-basics/glossary/options</a></li></ul>
-<ul><li>Fidelity Learning Center：用于保持本章的风险表述边界——不要把 ITM/OTM 写成哪档一定更好，而要和后面的 max risk / pricing logic 连接起来</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li></ul>
+<h3>鏈珷鍙傝€冨彛寰勶紙渚夸簬杩芥函锛?/h3>
+<ul><li>鍥剧墖楠ㄦ灦锛欼TM / OTM / ATM 鐨勫垎绫婚€昏緫锛圕all 涓?Put 鐨勬柟鍚戠浉鍙嶏級</li><li>Investor.gov锛氭湡鏉冧綔涓烘湁鏉冨埄浣嗘棤涔夊姟鐨勫悎绾﹀畾涔夛紝鐢ㄤ簬淇濊瘉鏈珷鍒嗙被瑙ｉ噴渚濈劧鍥寸粫琛屾潈鏄惁鏈夌幇瀹炲ソ澶勬潵璁?/li><li><a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/options">https://www.investor.gov/introduction-investing/investing-basics/glossary/options</a></li></ul>
+<ul><li>Fidelity Learning Center锛氱敤浜庝繚鎸佹湰绔犵殑椋庨櫓琛ㄨ堪杈圭晫鈥斺€斾笉瑕佹妸 ITM/OTM 鍐欐垚鍝。涓€瀹氭洿濂斤紝鑰岃鍜屽悗闈㈢殑 max risk / pricing logic 杩炴帴璧锋潵</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li></ul>
             </article>
         </section>
 
@@ -445,27 +445,27 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
-                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
+                    <h2 class="section-title" id="chapter-navigation-title">绔犺妭瀵艰埅</h2>
+                    <p class="section-subtitle">鏄惧紡淇濈暀涓婁竴绔?/ 杩斿洖璇剧▼ / 涓嬩竴绔犱笁涓彲瑙佹Ы浣嶏紝渚夸簬鐢熸垚鍣ㄧǔ瀹氬～鍏?/p>
                 </div>
             </div>
 
             <div class="chapter-nav-card">
                 <div class="chapter-nav-grid">
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">上一章</div>
-                        <a class="chapter-nav-link" href="./03.html">第 03 章 · 买方与卖方</a>
-                        <p>对比买方与卖方在权利、义务、盈亏结构和风险暴露上的根本差异，建立正确站位。</p>
+                        <div class="chapter-nav-label">涓婁竴绔?/div>
+                        <a class="chapter-nav-link" href="./03.html">绗?03 绔?路 涔版柟涓庡崠鏂?/a>
+                        <p>瀵规瘮涔版柟涓庡崠鏂瑰湪鏉冨埄銆佷箟鍔°€佺泩浜忕粨鏋勫拰椋庨櫓鏆撮湶涓婄殑鏍规湰宸紓锛屽缓绔嬫纭珯浣嶃€?/p>
                     </div>
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">返回课程</div>
-                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
-                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
+                        <div class="chapter-nav-label">杩斿洖璇剧▼</div>
+                        <a class="chapter-nav-link" href="./index.html">缇庤偂鏈熸潈鏁欐潗 鐩綍</a>
+                        <p>杩斿洖璇剧▼鐩綍锛屾寜 section 鍜?batch 鏌ョ湅鍏ㄥ眬杩涘害銆?/p>
                     </div>
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">下一章</div>
-                        <a class="chapter-nav-link" href="./05.html">第 05 章 · 价格解剖学</a>
-                        <p>拆解期权报价的来源，区分内在价值与时间价值，建立理解权利金的底层框架。</p>
+                        <div class="chapter-nav-label">涓嬩竴绔?/div>
+                        <a class="chapter-nav-link" href="./05.html">绗?05 绔?路 浠锋牸瑙ｅ墫瀛?/a>
+                        <p>鎷嗚В鏈熸潈鎶ヤ环鐨勬潵婧愶紝鍖哄垎鍐呭湪浠峰€间笌鏃堕棿浠峰€硷紝寤虹珛鐞嗚В鏉冨埄閲戠殑搴曞眰妗嗘灦銆?/p>
                     </div>
                 </div>
             </div>
@@ -473,15 +473,15 @@
     </main>
 
     <footer>
-        <p>期权教材 · 结构化学习 · HTML 优先</p>
+        <p>鏈熸潈鏁欐潗 路 缁撴瀯鍖栧涔?路 HTML 浼樺厛</p>
         <p class="disclaimer">
-            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
+            鍏嶈矗澹版槑锛氭湰鏁欐潗椤甸潰浠呬緵瀛︿範浜ゆ祦浣跨敤锛屼笉鏋勬垚浠讳綍鎶曡祫寤鸿銆傛湡鏉冧氦鏄撴秹鍙婃潬鏉嗐€佹椂闂存崯鑰椾笌娴佸姩鎬ч闄╋紝鍔″繀缁撳悎鑷韩鎯呭喌鐙珛鍒ゆ柇銆?
         </p>
     </footer>
 
-    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="鍒囨崲娣辫壊妯″紡" title="鍒囨崲娣辫壊妯″紡">馃寭</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="杩斿洖椤堕儴">鈫?/button>
 
-    <script src="../js/main.js?v=20260326site4"></script>
+    <script src="../js/main.js?v=20260326review1"></script>
 </body>
 </html>
