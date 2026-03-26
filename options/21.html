@@ -1,27 +1,27 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="鐞嗚В鏃堕棿鎹熻€楀浣曟寔缁镜铓€鏈熸潈浠峰€硷紝骞舵妸涔版柟涓庡崠鏂规斁鍦ㄤ笉鍚岀殑鏃堕棿鍘嬪姏涓嬭瀵熴€?>
+    <meta name="description" content="理解时间损耗如何持续侵蚀期权价值，并把买方与卖方放在不同的时间压力下观察。">
     <meta name="author" content="ValueInvest">
     <meta name="theme-color" content="#c9a227">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="canonical" href="https://4fire.qzz.io/options/21.html">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://4fire.qzz.io/options/21.html">
-    <meta property="og:title" content="Theta | 缇庤偂鏈熸潈鏁欐潗">
-    <meta property="og:description" content="鐞嗚В鏃堕棿鎹熻€楀浣曟寔缁镜铓€鏈熸潈浠峰€硷紝骞舵妸涔版柟涓庡崠鏂规斁鍦ㄤ笉鍚岀殑鏃堕棿鍘嬪姏涓嬭瀵熴€?>
+    <meta property="og:title" content="Theta | 美股期权教材">
+    <meta property="og:description" content="理解时间损耗如何持续侵蚀期权价值，并把买方与卖方放在不同的时间压力下观察。">
     <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Theta | 缇庤偂鏈熸潈鏁欐潗">
-    <meta name="twitter:description" content="鐞嗚В鏃堕棿鎹熻€楀浣曟寔缁镜铓€鏈熸潈浠峰€硷紝骞舵妸涔版柟涓庡崠鏂规斁鍦ㄤ笉鍚岀殑鏃堕棿鍘嬪姏涓嬭瀵熴€?>
+    <meta name="twitter:title" content="Theta | 美股期权教材">
+    <meta name="twitter:description" content="理解时间损耗如何持续侵蚀期权价值，并把买方与卖方放在不同的时间压力下观察。">
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
-    <title>Theta | 缇庤偂鏈熸潈鏁欐潗</title>
+    <title>Theta | 美股期权教材</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260326review1">
+    <link rel="stylesheet" href="../css/style.css?v=20260326review2">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -192,7 +192,7 @@
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "Theta",
-        "description": "鐞嗚В鏃堕棿鎹熻€楀浣曟寔缁镜铓€鏈熸潈浠峰€硷紝骞舵妸涔版柟涓庡崠鏂规斁鍦ㄤ笉鍚岀殑鏃堕棿鍘嬪姏涓嬭瀵熴€?,
+        "description": "理解时间损耗如何持续侵蚀期权价值，并把买方与卖方放在不同的时间压力下观察。",
         "author": {
             "@type": "Person",
             "name": "ValueInvest"
@@ -205,7 +205,7 @@
         "mainEntityOfPage": "https://4fire.qzz.io/options/21.html",
         "isPartOf": {
             "@type": "Course",
-            "name": "缇庤偂鏈熸潈鏁欐潗",
+            "name": "美股期权教材",
             "url": "https://4fire.qzz.io/options/"
         },
         "image": [
@@ -215,39 +215,39 @@
     </script>
 </head>
 <body>
-    <a href="#main" class="skip-link">璺宠浆鍒颁富鍐呭</a>
-    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="椤甸潰闃呰杩涘害"></div>
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
 
     <header id="header">
         <div class="nav-container">
-            <a href="../index.html" class="logo" aria-label="ValueInvest 棣栭〉">Value<span>Invest</span></a>
-            <nav aria-label="鏈熸潈绔犺妭椤典富瀵艰埅">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="期权章节页主导航">
                 <ul class="nav-links">
-                    <li><a href="../index.html">杩斿洖棣栭〉</a></li>
-                    <li><a href="./index.html">杩斿洖璇剧▼</a></li>
-                    <li><a href="#chapter-navigation">绔犺妭瀵艰埅</a></li>
+                    <li><a href="../index.html">返回首页</a></li>
+                    <li><a href="./index.html">返回课程</a></li>
+                    <li><a href="#chapter-navigation">章节导航</a></li>
                 </ul>
             </nav>
-            <div class="nav-date">绗?21 绔?/div>
+            <div class="nav-date">第 21 章</div>
         </div>
     </header>
 
     <section class="hero" role="banner">
         <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
         <div class="hero-content">
-            <div class="subtitle">Greeks 涓庝粨浣嶈涓虹瘒</div>
-            <h1>绗?21 绔?路 Theta</h1>
-            <p class="tagline">Greeks 涓庝粨浣嶈涓虹瘒 路 Batch 6</p>
-            <p class="hero-description">鐞嗚В鏃堕棿鎹熻€楀浣曟寔缁镜铓€鏈熸潈浠峰€硷紝骞舵妸涔版柟涓庡崠鏂规斁鍦ㄤ笉鍚岀殑鏃堕棿鍘嬪姏涓嬭瀵熴€?/p>
+            <div class="subtitle">Greeks 与仓位行为篇</div>
+            <h1>第 21 章 · Theta</h1>
+            <p class="tagline">Greeks 与仓位行为篇 · Batch 6</p>
+            <p class="hero-description">理解时间损耗如何持续侵蚀期权价值，并把买方与卖方放在不同的时间压力下观察。</p>
         </div>
-        <a href="#chapter-summary" class="scroll-indicator" aria-label="鍚戜笅婊氬姩鍒扮珷鑺傛憳瑕?>鍚戜笅婊氬姩</a>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
     </section>
 
-    <div class="chapter-meta-bar" aria-label="绔犺妭鍏抽敭淇℃伅">
-        <div class="chapter-meta-pill">绔犺妭缂栧彿锛氱 21 绔?/div>
-        <div class="chapter-meta-pill">Section锛欸reeks 涓庝粨浣嶈涓虹瘒</div>
-        <div class="chapter-meta-pill">Batch锛欱atch 6 路 宸插彂甯?/div>
-        <div class="chapter-meta-pill">鎵€灞炶绋嬶細<a class="chapter-meta-link" href="./index.html">缇庤偂鏈熸潈鏁欐潗</a></div>
+    <div class="chapter-meta-bar" aria-label="章节关键信息">
+        <div class="chapter-meta-pill">章节编号：第 21 章</div>
+        <div class="chapter-meta-pill">Section：Greeks 与仓位行为篇</div>
+        <div class="chapter-meta-pill">Batch：Batch 6 · 已发布</div>
+        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
     </div>
 
     <main id="main" class="chapter-shell">
@@ -255,13 +255,13 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">01</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-summary-title">绔犺妭鎽樿</h2>
-                    <p class="section-subtitle">缁欒鑰呬竴涓厛璇绘噦妗嗘灦銆佸啀娣卞叆姝ｆ枃鐨勮惤鐐?/p>
+                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
+                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
                 </div>
             </div>
 
             <div class="chapter-summary-card">
-                <p>鐞嗚В鏃堕棿鎹熻€楀浣曟寔缁镜铓€鏈熸潈浠峰€硷紝骞舵妸涔版柟涓庡崠鏂规斁鍦ㄤ笉鍚岀殑鏃堕棿鍘嬪姏涓嬭瀵熴€?/p>
+                <p>理解时间损耗如何持续侵蚀期权价值，并把买方与卖方放在不同的时间压力下观察。</p>
             </div>
         </section>
 
@@ -269,199 +269,199 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">02</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-content-title">绔犺妭姝ｆ枃</h2>
-                    <p class="section-subtitle">姝ｆ枃鍐呭鐢辩敓鎴愬櫒鐩存帴鍐欏叆 HTML锛岄粯璁ゆ棤鑴氭湰涔熷簲瀹屾暣鍙</p>
+                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
+                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
                 </div>
             </div>
 
             <article class="chapter-body-card">
-<h1>銆婄編鑲℃湡鏉冩暀鏉愩€?/h1>
-<h2>绗?1绔?Theta锛氭椂闂存崯鑰椾笌鎸佷粨鍘嬪姏</h2>
-<blockquote><p>鏈珷涓昏鍩轰簬浠ヤ笅鍥剧墖鏉愭枡鏁寸悊骞舵墿鍐欙細</p>
-<ul><li><code>renamed/img11.jpg</code>锛欸reeks 鎬荤翰锛岃鏄?Theta 鏄悊瑙ｆ湡鏉冩寔浠撲綋楠岀殑鏍稿績缁村害涔嬩竴锛?/li><li><code>renamed/img14.jpg</code>锛歍heta 涓诲浘锛屽己璋冣€滄湡鏉冩瘡澶╅兘鍦ㄦ祦澶辨椂闂翠环鍊尖€濄€丄TM 涓庝复杩戝埌鏈熸椂鎹熻€楁洿鏄庢樉锛屼互鍙?Gamma 涓?Theta 鐨勬娑堝郊闀裤€?/li></ul>
-<p>濡傛灉浣犲彧璁颁竴鍙ヨ瘽锛岄偅灏辨槸锛?/p>
-<blockquote><p><strong>Theta 璇寸殑涓嶆槸浣犲涓嶅鏂瑰悜锛岃€屾槸鈥滃氨绠楁柟鍚戞殏鏃舵病閿欙紝鍙鏃堕棿鍦ㄨ蛋锛屼綘鐨勬湡鏉冧細涓嶄細鍏堣鏃堕棿鍚冩帀鈥濄€?/strong></p></blockquote>
-<p>寰堝鏂版墜绗竴娆″仛 long call 鎴?long put锛岄兘鏈変竴涓潪甯稿己鐑堢殑鍥版儜锛?/p>
-<ul><li>鎴戜拱鐨勬柟鍚戞槑鏄庢病瀹屽叏閿欙紱</li><li>鑲′环鐢氳嚦杩樺湪鎴戞兂鐨勬柟鍚戦檮杩戯紱</li><li>鍙湡鏉冧环鏍煎氨鏄竴澶╂瘮涓€澶╂洿闅惧彈銆?/li></ul>
-<p>杩欐椂鍊欙紝鐪熸鍘嬬潃浣犺处鎴风殑锛屽線寰€涓嶆槸 Delta锛岃€屾槸 Theta銆?/p>
-<p>Delta 璁茬殑鏄€滆偂浠峰姩涓€涓嬶紝浣犵殑鏈熸潈澶ф鎬庝箞鍔ㄢ€濓紱 Theta 璁茬殑鏄€滃摢鎬曡偂浠峰厛涓嶆€庝箞鍔紝鏃堕棿鏈韩涔熶細涓嶄細璁╀綘鐨勬湡鏉冨彉渚垮疁鈥濄€?/p>
-<p>瀹冨喅瀹氱殑锛屾槸鏈熸潈浜ゆ槗閲屼竴涓緢涓嶈垝鏈嶃€佷絾鍙堝繀椤绘帴鍙楃殑鐜板疄锛?/p>
-<p><strong>涔版柟涓嶄粎瑕佸垽鏂柟鍚戯紝杩樿鍜屾椂闂磋禌璺戙€?/strong></p></blockquote>
+<h1>《美股期权教材》</h1>
+<h2>第21章 Theta：时间损耗与持仓压力</h2>
+<blockquote><p>本章主要基于以下图片材料整理并扩写：</p>
+<ul><li><code>renamed/img11.jpg</code>：Greeks 总纲，说明 Theta 是理解期权持仓体验的核心维度之一；</li><li><code>renamed/img14.jpg</code>：Theta 主图，强调“期权每天都在流失时间价值”、ATM 与临近到期时损耗更明显，以及 Gamma 与 Theta 的此消彼长。</li></ul>
+<p>如果你只记一句话，那就是：</p>
+<blockquote><p><strong>Theta 说的不是你对不对方向，而是“就算方向暂时没错，只要时间在走，你的期权会不会先被时间吃掉”。</strong></p></blockquote>
+<p>很多新手第一次做 long call 或 long put，都有一个非常强烈的困惑：</p>
+<ul><li>我买的方向明明没完全错；</li><li>股价甚至还在我想的方向附近；</li><li>可期权价格就是一天比一天更难受。</li></ul>
+<p>这时候，真正压着你账户的，往往不是 Delta，而是 Theta。</p>
+<p>Delta 讲的是“股价动一下，你的期权大概怎么动”； Theta 讲的是“哪怕股价先不怎么动，时间本身也会不会让你的期权变便宜”。</p>
+<p>它决定的，是期权交易里一个很不舒服、但又必须接受的现实：</p>
+<p><strong>买方不仅要判断方向，还要和时间赛跑。</strong></p></blockquote>
 <hr>
-<h2>闃呰瀵艰埅锛氱涓€娆¤鍏堟姄鈥滄椂闂翠細涓嶄細鍏堟妸浣犵（鎺夆€濓紝绗簩娆¤鍐嶈ˉ鎹熻€楅€熷害</h2>
-<p>杩欎竴绔犵涓€娆¤锛屾渶閲嶈鐨勪笉鏄幓璁版煇涓叿浣撴棩鎹熸暟瀛椼€?/p>
-<p>浣犲厛鎶撲竴鍙ワ細</p>
-<blockquote><p><strong>瀵规湡鏉冩潵璇达紝鏃堕棿涓嶆槸鑳屾櫙鏉匡紝鑰屾槸姣忓ぉ閮藉湪鍙戠敓浣滅敤鐨勬垚鏈€?/strong></p></blockquote>
-<p>绗竴閬嶅彧瑕佺湅鎳傦細</p>
-<ul><li>涔版柟涓轰粈涔堟洿鎬曟椂闂达紱</li><li>鍗栨柟涓轰粈涔堝父甯告洿鍠滄鏃堕棿杩囧幓锛?/li><li>涓轰粈涔堟湡鏉冧拱鏂逛笉鍙槸鏂瑰悜瀵癸紝杩樺緱鍙婃椂瀵广€?/li></ul>
-<p>绗簩閬嶅啀鍘昏ˉ锛?/p>
-<ul><li>涓轰粈涔?ATM銆佷复杩戝埌鏈熺殑 Theta 浣撴劅鏇村己锛?/li><li>涓轰粈涔?Theta 涓嶆槸鍥哄畾鏃ユ崯琛紱</li><li>涓轰粈涔堟 Theta 涔熺粷涓嶈嚜鍔ㄧ瓑浜庝綆椋庨櫓銆?/li></ul>
+<h2>阅读导航：第一次读先抓“时间会不会先把你磨掉”，第二次读再补损耗速度</h2>
+<p>这一章第一次读，最重要的不是去记某个具体日损数字。</p>
+<p>你先抓一句：</p>
+<blockquote><p><strong>对期权来说，时间不是背景板，而是每天都在发生作用的成本。</strong></p></blockquote>
+<p>第一遍只要看懂：</p>
+<ul><li>买方为什么更怕时间；</li><li>卖方为什么常常更喜欢时间过去；</li><li>为什么期权买方不只是方向对，还得及时对。</li></ul>
+<p>第二遍再去补：</p>
+<ul><li>为什么 ATM、临近到期的 Theta 体感更强；</li><li>为什么 Theta 不是固定日损表；</li><li>为什么正 Theta 也绝不自动等于低风险。</li></ul>
 <hr>
-<h1>涓€銆佸厛鎶?Theta 璁叉垚浜鸿瘽锛氬畠灏辨槸鈥滄椂闂存瘡杩囦竴澶╋紝鏈熸潈澶ф瑕佹帀澶氬皯鈥?/h1>
-<h2>21.1 鏈熸潈涓嶆槸鑲＄エ锛屽畠鑷甫淇濊川鏈?/h2>
-<p>鑲＄エ娌℃湁鍒版湡鏃ャ€?/p>
-<p>浣犱拱鍏ヤ竴鑲?AAPL锛屽彧瑕佸叕鍙告病閫€甯傦紝浣犲彲浠ヤ竴鐩存嬁鐫€銆傚彧瑕佸熀鏈潰銆佷及鍊煎拰甯傚満椋庢牸鍏佽锛屽畠涓嶄細鍥犱负鈥滄椂闂村埌浜嗏€濆氨鑷姩澶辨晥銆?/p>
-<p>鏈熸潈涓嶄竴鏍枫€?/p>
-<p>鏈熸潈浠庝竴寮€濮嬪氨鏄竴寮犳湁鏈熼檺鐨勫悎鍚岋細</p>
-<ul><li>鍒版煇涓埌鏈熸棩涔嬪墠锛屽畠杩樻湁浜ゆ槗浠峰€硷紱</li><li>涓€鏃﹀埌鏈燂紝鏃堕棿浠峰€艰繖閮ㄥ垎灏变細琚粨绠楁帀锛?/li><li>鍒颁簡鏈€鍚庯紝濡傛灉鏈熸潈浠嶇劧鏄櫄鍊硷紝瀹冧細鍍忎繚闄╁埌鏈熶竴鏍峰綊闆躲€?/li></ul>
-<p>杩欏氨鏄负浠€涔堬紝鏈熸潈鐨勪笘鐣岄噷蹇呴』鏈変竴涓笓闂ㄨ　閲忊€滄椂闂存祦閫濆浠锋牸鐨勪激瀹斥€濈殑閲忓昂銆?/p>
-<p>杩欎釜閲忓昂锛屽氨鏄?Theta銆?/p>
-<h2>21.2 涓€涓洿姝ｅ紡浣嗕粛鐒跺疄鐢ㄧ殑瀹氫箟</h2>
-<p>鎸?Greeks 鐨勫父瑙佸畾涔夛紝Theta 鍙互鍏堣繖鏍风悊瑙ｏ細</p>
-<blockquote><p><strong>鍦ㄥ叾浠栨潯浠舵殏鏃朵笉鍙樼殑鍓嶆彁涓嬶紝鏃堕棿姣忚繃鍘讳竴澶╋紝鏈熸潈浠锋牸鐞嗚涓婁細鍙樺寲澶氬皯銆?/strong></p></blockquote>
-<p>濡傛灉涓€寮犳湡鏉冪殑 Theta 鏄細</p>
+<h1>一、先把 Theta 讲成人话：它就是“时间每过一天，期权大概要掉多少”</h1>
+<h2>21.1 期权不是股票，它自带保质期</h2>
+<p>股票没有到期日。</p>
+<p>你买入一股 AAPL，只要公司没退市，你可以一直拿着。只要基本面、估值和市场风格允许，它不会因为“时间到了”就自动失效。</p>
+<p>期权不一样。</p>
+<p>期权从一开始就是一张有期限的合同：</p>
+<ul><li>到某个到期日之前，它还有交易价值；</li><li>一旦到期，时间价值这部分就会被结算掉；</li><li>到了最后，如果期权仍然是虚值，它会像保险到期一样归零。</li></ul>
+<p>这就是为什么，期权的世界里必须有一个专门衡量“时间流逝对价格的伤害”的量尺。</p>
+<p>这个量尺，就是 Theta。</p>
+<h2>21.2 一个更正式但仍然实用的定义</h2>
+<p>按 Greeks 的常见定义，Theta 可以先这样理解：</p>
+<blockquote><p><strong>在其他条件暂时不变的前提下，时间每过去一天，期权价格理论上会变化多少。</strong></p></blockquote>
+<p>如果一张期权的 Theta 是：</p>
 <ul><li><strong>-0.05</strong></li></ul>
-<p>瀹冩渶鐩磋鐨勮娉曞氨鏄細</p>
-<ul><li>鍦ㄥ叾浠栧彉閲忓彉鍖栦笉澶х殑鎯呭喌涓嬶紱</li><li>姣忚繃涓€澶╋紱</li><li>杩欏紶鏈熸潈鐨勭悊璁轰环鍊煎ぇ绾︿細鍑忓皯 0.05 缇庡厓銆?/li></ul>
-<p>缇庤偂鏈熸潈涓€寮犲悎绾﹀搴?100 鑲★紝鎵€浠ュ鏋滅矖鐣ユ崲绠楀埌涓€寮犲悎绾︼細</p>
-<ul><li>0.05 脳 100 = <strong>5 缇庡厓</strong></li></ul>
-<p>涔熷氨鏄锛岃繖寮犲悎绾﹀ぇ鑷存瘡澶╀細鎹熻€?5 缇庡厓鐨勬椂闂翠环鍊笺€?/p>
-<p>杩欓噷涓€瀹氳鎶婁笁涓檺瀹氳瘝璁颁綇锛?/p>
-<ul><li><strong>鐞嗚涓?/strong>锛?/li><li><strong>鍏朵粬鏉′欢涓嶅彉</strong>锛?/li><li><strong>澶х害</strong>銆?/li></ul>
-<p>Theta 涓嶆槸涓€涓€滀粖澶╀竴瀹氫簭 5 缇庡厓鈥濈殑鎵胯涔︺€?/p>
-<p>鐪熷疄甯傚満閲岋紝鏈熸潈浠锋牸杩樹細鍚屾椂鍙楀埌锛?/p>
-<ul><li>鑲′环鍙樺寲锛?/li><li>IV 鍙樺寲锛?/li><li>涔板崠浠峰樊锛?/li><li>涓磋繎浜嬩欢鐨勯鏈熶慨姝ｏ紱</li><li>甯傚満鏁翠綋娉㈠姩銆?/li></ul>
-<p>鎵€浠?Theta 鏇村儚涓€涓€滄椂闂磋繖浠朵簨鏈韩锛屽浣犳湁澶氫笉鍙嬪ソ鈥濈殑鍒诲害銆?/p>
-<h2>21.3 涓轰粈涔堝緢澶氫汉涓€纰扮煭鏈熸湡鏉冿紝灏卞紑濮嬩綋浼氬埌 Theta 鐨勫帇鍔?/h2>
-<p>鍥犱负鐭湡鏈熸潈鏈€瀹规槗璁╀綘鎰熷彈鍒颁竴浠朵簨锛?/p>
-<blockquote><p><strong>浣犱笉鏄彧鍦ㄨ祵鏂瑰悜锛屼綘杩樺湪璧屸€滄柟鍚戣鏉ュ緱澶熷揩鈥濄€?/strong></p></blockquote>
-<p>姣斿浣犱拱涓€寮?7 澶╁埌鏈熺殑 ATM Call锛?/p>
-<ul><li>浣犲綋鐒跺彲鑳界湅瀵规柟鍚戯紱</li><li>浣嗗鏋滆偂浠峰彧鏄參鎱㈡定锛?/li><li>鎴栬€呭厛妯袱澶╁啀娑紱</li><li>閭ｄ綘鏈€缁堝彲鑳戒細鍙戠幇锛屾柟鍚戝苟娌℃湁鍙婃椂鍏戠幇锛屾椂闂翠环鍊煎厛琚嬁璧颁簡涓€澶у潡銆?/li></ul>
-<p>杩欎篃鏄负浠€涔堬紝鏂版墜甯稿父浼氳浠ヤ负锛?/p>
-<ul><li>鈥滄垜鏄庢槑鐪嬪緱涓嶅樊锛屼负浠€涔堜粨浣嶈繖涔堥毦鍙楋紵鈥?/li></ul>
-<p>鍥犱负鑲＄エ鍙姹備綘澶ф柟鍚戝埆閿欙紱 鏈熸潈涔版柟寰€寰€杩樿姹備綘锛?/p>
-<ul><li>鏂瑰悜鍒敊锛?/li><li>鍙戠敓寰楀蹇紱</li><li>IV 鍒悓鏃跺锛?/li><li>浣犻€夌殑鍚堢害鍒お瀹规槗琚椂闂村悆鎺夈€?/li></ul>
-<p>Theta锛屽氨鏄妸杩欎釜鈥滄椂闂翠笉绛変汉鈥濈殑浜嬪疄閲忓寲鍑烘潵銆?/p>
-<h1>浜屻€佷负浠€涔?Theta 姘歌繙鏇村亸鍚戝崠鏂癸紝鑰屼笉鏄拱鏂?/h1>
-<h2>21.4 涔版柟浠樺嚭鐨勶紝鏈潵灏卞寘鍚€滄椂闂磋繖椤规垚鏈€?/h2>
-<p>鍥炲埌鍓嶉潰璁茶繃鐨勬湡鏉冧环鏍兼瀯鎴愶細</p>
-<blockquote><p><strong>鏈熸潈浠锋牸 = 鍐呭湪浠峰€?+ 鏃堕棿浠峰€?/strong></p></blockquote>
-<p>鍙浣犱拱鐨勯偅閮ㄥ垎浠锋牸閲屽惈鏈夋椂闂翠环鍊硷紝瀹冨氨涓嶅彲鑳芥案杩滃仠鍦ㄩ偅閲屼笉鍔ㄣ€?/p>
-<p>鍥犱负闅忕潃鍒版湡鏃ヨ秺鏉ヨ秺杩戯細</p>
-<ul><li>鏈潵鍙互鍙戠敓鎯婂枩鐨勬椂闂村湪鍙樺皯锛?/li><li>杩欏紶鍚堝悓鐨勨€滃彲閫夋嫨绌洪棿鈥濆湪缂╁皬锛?/li><li>甯傚満鎰挎剰涓鸿繖绉嶅彲鑳芥€ф敮浠樼殑婧环锛屼篃浼氶€愭笎涓嬮檷銆?/li></ul>
-<p>鎵€浠ュ涔版柟鏉ヨ锛孴heta 甯稿父鏄礋鐨勩€?/p>
-<p>杩欎笉鏄競鍦烘晠鎰忛拡瀵逛拱鏂癸紝鑰屾槸浣犱粠涓€寮€濮嬪氨涔颁簡涓€浠解€滄湁淇濊川鏈熺殑鍙兘鎬р€濄€?/p>
-<p>鍙鏃堕棿娴侀€濓紝杩欎唤鍙兘鎬х殑浠峰€奸€氬父灏变細缂╂按銆?/p>
-<h2>21.5 鍗栨柟涓轰粈涔堥€氬父鏄 Theta</h2>
-<p>濡傛灉涔版柟姣忓ぉ鍦ㄦ祦澶辨椂闂翠环鍊硷紝閭ｄ箞璋佸湪鍙︿竴杈癸紵</p>
-<p>绛旀褰撶劧鏄崠鏂广€?/p>
-<p>鍗栨柟鍗栧嚭鐨勶紝鏈川涓婂氨鏄竴浠藉甫鏃堕棿浠峰€肩殑鍚堝悓銆?/p>
-<ul><li>涔版柟涔扮殑鏄€滄湭鏉ョ殑涓嶇‘瀹氭満浼氣€濓紱</li><li>鍗栨柟鍗栫殑鏄€滄妸杩欑涓嶇‘瀹氭満浼氭墦鍖呮彁渚涚粰鍒汉鈥濄€?/li></ul>
-<p>浜庢槸褰撴椂闂磋繃鍘汇€佹湡鏉冧环鍊艰嚜鐒跺洖钀芥椂锛?/p>
-<ul><li>涔版柟鎰熷彈鍒扮殑鏄（鎹燂紱</li><li>鍗栨柟鎰熷彈鍒扮殑鍒欐槸鏃堕棿绔欏湪鑷繁杩欒竟銆?/li></ul>
-<p>杩欏氨鏄负浠€涔堜綘缁忓父浼氬惉鍒颁竴鍙ヨ瘽锛?/p>
-<blockquote><p><strong>鍗栨柟璧?Theta銆?/strong></p></blockquote>
-<p>杩欏彞璇濇柟鍚戜笂娌￠敊锛屼絾濡傛灉鍙儗杩欏崐鍙ワ紝浼氬嚭澶ч棶棰樸€?/p>
-<p>鍥犱负鍗栨柟铏界劧甯稿父鎷垮埌姝?Theta锛屽彟涓€杈瑰線寰€涔熻鎵挎媴锛?/p>
-<ul><li>璐?Gamma锛?/li><li>绐佸彂琛屾儏涓嬫洿闅惧彈鐨勪粨浣嶅彉鑴革紱</li><li>灏鹃儴椋庨櫓锛?/li><li>杩囪繎鍒版湡鏃剁殑绠＄悊鍘嬪姏銆?/li></ul>
-<p>鎵€浠ョ湡姝ｆ垚鐔熺殑琛ㄨ揪涓嶆槸鈥滃崠鏂硅汉璧氭椂闂粹€濓紝鑰屾槸锛?/p>
-<blockquote><p><strong>鍗栨柟閫氬父鍦ㄦ敹鏃堕棿浠峰€硷紝浣嗗繀椤讳负姝ゆ壙鎷呭埆鐨勯闄┿€?/strong></p></blockquote>
-<h1>涓夈€佷负浠€涔?ATM銆佷复杩戝埌鏈熸椂锛孴heta 甯稿父鏈€鏈夋潃浼ゅ姏</h1>
-<h2>21.6 鏃堕棿浠峰€兼渶澶氱殑鍦版柟锛屽線寰€涔熸槸鏃堕棿鎹熻€楁渶鏄庢樉鐨勫湴鏂?/h2>
-<p>鍥剧墖閲岀粰鍑虹殑鐩磋闈炲父閲嶈锛?/p>
-<ul><li><strong>ATM 闄勮繎锛屾椂闂翠环鍊奸€氬父鏈€楂橈紱</strong></li><li><strong>鏃堕棿浠峰€奸珮鐨勫湴鏂癸紝Theta 鐨勭粷瀵瑰€煎線寰€涔熸洿鏄剧溂銆?/strong></li></ul>
-<p>涓轰粈涔堬紵</p>
-<p>鍥犱负 ATM 闄勮繎鐨勬湡鏉冿紝鏈€鍍忎竴寮犫€滆儨璐熻繕娌℃彮鏅撶殑鍚堝悓鈥濄€?/p>
-<ul><li>Deep ITM 鐨勫緢澶氫环鍊煎凡缁忔洿鎺ヨ繎鍐呭湪浠峰€硷紱</li><li>Deep OTM 鐨勫悎鍚岋紝鐪嬭捣鏉ュ張澶繙锛屽競鍦轰笉浼氱粰瀹冨お澶氭椂闂存孩浠凤紱</li><li>鐪熸鏈€璁╁競鍦虹姽璞€佷篃鏈€鎰挎剰涓烘湭鏉ュ彲鑳芥€у浠橀挶鐨勶紝鎭版伆鏄?ATM 涓€甯︺€?/li></ul>
-<p>鑰屼竴鏃︽椂闂翠环鍊兼湰鏉ュ氨楂橈紝鏃堕棿娴侀€濆甫鏉ョ殑纾ㄦ崯鑷劧涔熸洿鍊煎緱璀︽儠銆?/p>
-<p>杩欏氨鏄负浠€涔堬細</p>
-<ul><li>寰堝 ATM 鏈熸潈鐪嬬潃鈥滄渶椤烘墜鈥濓紱</li><li>浣嗗畠浠篃缁忓父鏄?Theta 浣撴劅鏈€鏄庢樉鐨勪竴妗ｃ€?/li></ul>
-<h2>21.7 瓒婃帴杩戝埌鏈燂紝Theta 寰€寰€瓒婁笉娓╂煍</h2>
-<p>Theta 鐨勫彲鎬曚箣澶勶紝涓嶅彧鏄畠瀛樺湪锛岃€屾槸瀹冮€氬父<strong>涓嶆槸鍖€閫熸祦澶?/strong>銆?/p>
-<p>绂诲埌鏈熻繕寰堣繙鏃讹細</p>
-<ul><li>鏃堕棿浠峰€兼崯鑰楀線寰€姣旇緝骞崇紦锛?/li><li>浣犱細瑙夊緱姣忓ぉ鎺変竴鐐癸紝杩樿兘鎺ュ彈銆?/li></ul>
-<p>鍙竴鏃︽帴杩戝埌鏈燂細</p>
-<ul><li>甯傚満瀵光€滆繕鍓╁灏戠炕鐩樻椂闂粹€濈殑瀹氫环浼氭槑鏄炬敹绱э紱</li><li>鍚屾牱鐨勪竴澶╋紝浠峰€肩缉姘寸殑浣撴劅浼氭瘮鍓嶉潰鏇村己銆?/li></ul>
-<p>杩欏氨鏄负浠€涔堝浘閲岀壒鍒己璋冿細</p>
-<blockquote><p><strong>瓒婁复杩戝埌鏈熸棩锛屾椂闂存崯鑰楄秺澶с€?/strong></p></blockquote>
-<p>浣犲彲浠ユ妸瀹冪悊瑙ｆ垚锛?/p>
-<ul><li>闀挎湡鏈熸潈鍍忔參鎱㈣瀺鍖栫殑鍐帮紱</li><li>鐭湡鏈熸潈鏇村儚鏈€鍚庡嚑澶╃獊鐒跺姞閫熷涓嬪幓銆?/li></ul>
-<p>鎵€浠ュ綋浣犵湅鍒扮煭鏈熸湡鏉冩潈鍒╅噾寰堜究瀹滄椂锛屽崈涓囧埆鍙湅鍒颁究瀹溿€?/p>
-<p>浣犺繕瑕侀棶锛?/p>
-<ul><li>瀹冧究瀹滐紝鏄笉鏄洜涓?Theta 宸茬粡寮€濮嬮潪甯稿嚩锛?/li><li>鎴戠湡鐨勯渶瑕佽繖涔堢煭鐨勬椂闂寸獥鍙ｅ悧锛?/li><li>鎴戞壙鎷呭緱璧封€滄柟鍚戞櫄涓ゅぉ鎵嶆潵鈥濈殑浠ｄ环鍚楋紵</li></ul>
-<h2>21.8 鍏充簬鍛ㄦ湯锛氫负浠€涔堜笉浜ゆ槗锛孴heta 涔熶笉鏄湡鐨勫仠涓嬫潵</h2>
-<p>寰堝鏂版墜杩樻湁涓€涓瑙ｏ細</p>
-<ul><li>甯傚満鍛ㄦ湯涓嶅紑鐩橈紱</li><li>閭ｅ懆鍏懆鏃ユ槸涓嶆槸灏辨病鏈?Theta锛?/li></ul>
-<p>鏇村噯纭殑鐞嗚В鏄細</p>
-<ul><li>鏈熸潈瀹氫环閲岋紝鏃堕棿骞朵笉浼氬洜涓哄懆鏈氨瀹屽叏鏆傚仠锛?/li><li>鐪熷疄甯傚満瀵瑰懆鏈椂闂存祦閫濈殑鍙嶆槧锛岄€氬父浼氫綋鐜板湪涓磋繎鍛ㄦ湯鍜屽懆涓€寮€鐩樺悗鐨勪环鏍奸噷锛?/li><li>浣嗗畠涓嶄細鍍忛椆閽熶竴鏍凤紝涓ユ牸骞冲潎鍦扳€滄瘡澶╃簿纭墸鍚屾牱鐨勯挶鈥濄€?/li></ul>
-<p>鎵€浠ヤ綘涓嶈兘鎶?Theta 鐞嗚В鎴愨€滄瘡澶╂櫄涓婄粨绠椾竴娆″浐瀹氱閲戔€濄€?/p>
-<p>瀹冩洿鍍忎竴鑲℃寔缁瓨鍦ㄧ殑纾ㄦ崯锛屽彧鏄湪涓嶅悓鏃剁偣銆佷笉鍚屽悎绾︿笂锛屽憟鐜板緱蹇參涓嶅悓銆?/p>
-<h1>鍥涖€乀heta 鍜?Gamma 涓轰粈涔堟€绘槸缁戝湪涓€璧风湅</h1>
-<h2>21.9 涔版柟甯稿父鏄€滄 Gamma + 璐?Theta鈥?/h2>
-<p>濡傛灉浣犱拱鐨勬槸 long option锛屾渶甯歌鐨勭粍鍚堜綋楠屽氨鏄細</p>
-<ul><li><strong>姝?Gamma</strong>锛氳鎯呭線浣犳湁鍒╂柟鍚戣窇鏃讹紝浠撲綅鏇村鏄撳紑濮嬭窡涓婏紱</li><li><strong>璐?Theta</strong>锛氬鏋滆鎯呬笉澶熷揩锛屾椂闂存瘡澶╅兘鍦ㄦ秷鑰椾綘銆?/li></ul>
-<p>杩欏氨鏄负浠€涔堜拱鏂逛粨浣嶇粡甯哥粰浜轰竴绉嶁€滄湁鐖嗗彂鍔涳紝浣嗕笉鑰愭嫋鈥濈殑鎰熻銆?/p>
-<p>浣犳嫢鏈夌殑鏄細</p>
-<ul><li>鏇村ソ鐨勫脊鎬э紱</li><li>鏇村共鍑€鐨勬渶澶т簭鎹熻竟鐣岋紱</li><li>浣嗕篃瑕佹帴鍙楁寔浠撴椂闂翠笉绔欏湪鑷繁杩欒竟銆?/li></ul>
-<p>鎵€浠ュ緢澶氬崟鑵夸拱鏂圭瓥鐣ョ殑鏍稿績闂锛屽苟涓嶆槸鈥滀綘鐪嬩笉鐪嬪鈥濓紝鑰屾槸锛?/p>
-<blockquote><p><strong>浣犳湁娌℃湁鍦ㄦ椂闂翠环鍊艰鍚稿共涔嬪墠锛屾妸鏂瑰悜鍏戠幇鍑烘潵銆?/strong></p></blockquote>
-<h2>21.10 鍗栨柟甯稿父鏄€滆礋 Gamma + 姝?Theta鈥?/h2>
-<p>鍗栨柟鐨勪綋楠屽線寰€姝ｇ浉鍙嶏細</p>
-<ul><li><strong>姝?Theta</strong>锛氭椂闂存祦閫濋€氬父鏈夊埄锛?/li><li><strong>璐?Gamma</strong>锛氫竴鏃﹁鎯呴€艰繎鍗遍櫓鍖哄煙锛岄闄╁彲鑳藉姞閫熸伓鍖栥€?/li></ul>
-<p>杩欎篃鏄负浠€涔堝崠鏂圭瓥鐣ュ父甯稿憟鐜颁竴绉嶅緢鍏稿瀷鐨勬墜鎰燂細</p>
-<ul><li>澶у鏁版椂鍊欙紝鐪嬬潃閮芥尯鑸掓湇锛?/li><li>鐪熷埌涓嶈垝鏈嶇殑鏃跺€欙紝閫氬父涓嶄細缁欎綘澶浠庡銆?/li></ul>
-<p>鎵€浠ヤ綘浠ュ悗鐪嬪埌浠讳綍鈥滄寔缁禋鏃堕棿浠峰€尖€濈殑绛栫暐锛岄兘搴旇椤烘墜鍐嶉棶涓€鍙ワ細</p>
-<ul><li>閭ｅ畠鍦?Gamma 杩欎竴杈癸紝浠樺嚭鐨勪唬浠锋槸浠€涔堬紵</li></ul>
-<p>濡傛灉浣犱笉鎶?Theta 鍜?Gamma 鏀惧湪涓€璧风湅锛屽氨寰堝鏄撳彧鐪嬪埌涓€鍗娿€?/p>
-<h1>浜斻€佹妸 Theta 鏀惧洖鐪熷疄浜ゆ槗锛氫綘鍒板簳璇ユ€庝箞鐢ㄥ畠璇讳粨浣?/h1>
-<h2>21.11 渚嬪瓙锛欰APL 鐨勭煭鏈?ATM Call 鍜岄暱鏈?Call锛岀棝鎰熶负浠€涔堝畬鍏ㄤ笉鍚?/h2>
-<p>鍋囪浣犲悓鏍风湅澶?AAPL锛?/p>
-<h3>鏂规 A锛氫拱 7 澶╁埌鏈熺殑 ATM Call</h3>
-<ul><li>鎴愭湰鐩稿杈冧綆锛?/li><li>Delta 鍙兘涓嶅樊锛?/li><li>浣?Theta 寰€寰€鏇村嚩銆?/li></ul>
-<p>濡傛灉 AAPL 涓ゅぉ涓嶅姩锛屾垨鑰呭彧鏄參鎱㈡定涓€鐐癸細</p>
-<ul><li>浣犱細鏄庢樉鎰熷彈鍒版椂闂村湪鍋疯蛋鏈熸潈浠锋牸銆?/li></ul>
-<h3>鏂规 B锛氫拱 6 涓湀鍒版湡鐨?Call</h3>
-<ul><li>鎴愭湰鏇撮珮锛?/li><li>鏉犳潌鎰熸病閭ｄ箞鍒烘縺锛?/li><li>浣嗘椂闂寸粰浣犵殑瀹归敊鏇村ぇ銆?/li></ul>
-<p>瀹冩湭蹇呮洿鈥滆禋鈥濓紝浣嗗畠鏇村儚鏄湪涔颁竴涓洿瀹界殑瀹炵幇绐楀彛銆?/p>
-<p>鎵€浠?Theta 鐪熸甯綘鐨勶紝涓嶆槸鎸戔€滄渶鐚涒€濈殑鍚堢害锛岃€屾槸甯綘鐪嬫竻锛?/p>
-<ul><li>杩欏紶鍚堢害瑕佹眰鎴戝蹇湅瀵癸紵</li><li>濡傛灉琛屾儏鎱竴鐐癸紝鎴戣繕鏈夋病鏈夋椂闂达紵</li></ul>
-<h2>21.12 渚嬪瓙锛欳overed Call 涓轰粈涔堢粡甯告湁鈥滄椂闂寸珯鍦ㄨ嚜宸辫繖杈光€濈殑鎰熻</h2>
-<p>濡傛灉浣犳寔鏈?100 鑲℃鑲★紝鍐嶅崠涓€寮?Call锛?/p>
-<ul><li>浣犳敹杩涗竴绗旀潈鍒╅噾锛?/li><li>杩欏紶 short call 寰€寰€甯︽湁姝?Theta锛?/li><li>鍙鑲′环鍒繀閫熷啿鍒拌浣犻毦鍙楃殑浣嶇疆锛屾椂闂存祦閫濋€氬父浼氬府浣犳妸閭ｅ紶 Call 鍘嬩究瀹溿€?/li></ul>
-<p>杩欏氨鏄緢澶氫汉鍋?Covered Call 鏃讹紝甯歌鑷繁鍦ㄢ€滄敹绉熲€濈殑鍘熷洜銆?/p>
-<p>浣嗕綘鐜板湪搴旇鑳界湅寰楁洿瀹屾暣涓€浜涳細</p>
-<ul><li>浣犵‘瀹炲湪鏀?Theta锛?/li><li>浣嗕綘鍚屾椂涔熷湪璁╁嚭涓€閮ㄥ垎涓婅绌洪棿锛?/li><li>濡傛灉鑲′环绐佺劧鐚涘啿锛岃礋 Gamma 鐨勭儲鎭煎氨浼氭壘涓婇棬銆?/li></ul>
-<p>鎵€浠?Theta 浠庢潵涓嶆槸瀛ょ珛瀛樺湪鐨勩€?/p>
-<p>瀹冨繀椤绘斁鍥炲畬鏁翠粨浣嶉噷鐪嬨€?/p>
-<h1>鍏€佹柊鎵嬫渶瀹规槗鐘殑鍥涗釜 Theta 璇細</h1>
-<h2>21.13 璇細涓€锛歍heta 灏辨槸姣忓ぉ鍥哄畾浜忓灏戦挶</h2>
-<p>涓嶆槸銆?/p>
-<p>Theta 鏄湪鏌愪釜鏃剁偣銆佸湪鍏朵粬鏉′欢杩戜技涓嶅彉鏃讹紝瀵规椂闂存崯鑰楃殑鐞嗚浼拌銆?/p>
-<p>鐪熷疄甯傚満閲岋細</p>
-<ul><li>Delta 浼氬彉锛?/li><li>Vega 浼氬彉锛?/li><li>IV 浼氬彉锛?/li><li>涔板崠鐩樹細鍙樸€?/li></ul>
-<p>鎵€浠?Theta 鏇村儚鈥滄鍒荤殑鏃堕棿纾ㄦ崯閫熷害鈥濓紝鑰屼笉鏄湭鏉ユ瘡涓€澶╅兘瀹屽叏涓€鏍风殑缁撴灉銆?/p>
-<h2>21.14 璇細浜岋細鍙鍗栨柟鏈夋 Theta锛屽氨姣旇緝瀹夊叏</h2>
-<p>涔熶笉瀵广€?/p>
-<p>鍗栨柟甯稿父鏄細</p>
-<ul><li>灏忛挶鎱㈡參璧氾紱</li><li>浣嗕竴鏃﹁鎯呬笉鍒╋紝浠撲綅鍙兘鎭跺寲寰楀緢蹇€?/li></ul>
-<p>鎵€浠モ€滄 Theta鈥濆彧鏄鏄庢椂闂寸淮搴﹀浣犳湁鍒╋紝涓嶄唬琛ㄨ繖绗斾氦鏄撴暣浣撳氨浣庨闄┿€?/p>
-<h2>21.15 璇細涓夛細鍙鐪嬪鏂瑰悜锛孴heta 涓嶆槸闂</h2>
-<p>杩欎篃鏄渶甯歌鐨勫潙銆?/p>
-<p>瀵硅偂绁ㄦ潵璇达紝鐪嬪鏂瑰悜鍙兘灏卞浜嗐€?/p>
-<p>瀵规湡鏉冧拱鏂规潵璇达紝浣犲線寰€杩橀渶瑕侊細</p>
-<ul><li>鐪嬪鏂瑰悜锛?/li><li>鐪嬪鑺傚锛?/li><li>閫夊鏈熼檺锛?/li><li>涓嶈鍦ㄨ繃璐点€佽繃鐭€佽繃鎱㈠厬鐜扮殑浠撲綅閲岀‖鎵涖€?/li></ul>
-<p>Theta 浼氶€间綘鎵胯涓€浠朵簨锛?/p>
-<blockquote><p><strong>鏈熸潈涔版柟涓嶄粎瑕佸锛岃繕寰楀強鏃跺銆?/strong></p></blockquote>
-<h2>21.16 璇細鍥涳細Theta 鍙拰鐭嚎璧岃储鎶ョ殑浜烘湁鍏?/h2>
-<p>涔熶笉瀵广€?/p>
-<p>鏃犺浣犳槸锛?/p>
-<ul><li>涔扮煭鏈?Call锛?/li><li>涔?LEAP锛?/li><li>鍋氫繚鎶ゆ€?Put锛?/li><li>鍋氬崠鏂规敹鏉冨埄閲戯紱</li></ul>
-<p>浣犻兘鍦ㄥ拰 Theta 鎵撲氦閬撱€?/p>
-<p>鍖哄埆鍙湪浜庯細</p>
-<ul><li>鏈変簺浠撲綅 Theta 鏇村嚩锛?/li><li>鏈変簺浠撲綅 Theta 鏇存俯鍜岋紱</li><li>鏈変簺浠撲綅浣犳槸浠樺嚭瀹冿紱</li><li>鏈変簺浠撲綅浣犳槸鍦ㄦ敹瀹冦€?/li></ul>
-<p>鎵€浠?Theta 涓嶆槸鏌愮被浜ゆ槗鑰呯殑涓撳睘姒傚康锛岃€屾槸鎵€鏈夋湡鏉冩寔浠撻兘缁曚笉杩囧幓鐨勪竴灞傜幇瀹炪€?/p>
-<h1>涓冦€佹妸杩欎竴绔犳敹浣忥細Theta 鏄綘鐞嗚В鈥滀负浠€涔堟柟鍚戞病澶ч敊锛屼粨浣嶅嵈瓒婃潵瓒婇毦鍙椻€濈殑鍏抽敭</h1>
-<h2>21.17 鏈珷浣犳渶璇ュ甫璧扮殑浜斿彞璇?/h2>
-<p>1. <strong>Theta 琛￠噺鐨勬槸鏃堕棿姣忚繃鍘讳竴澶╋紝鏈熸潈浠锋牸鐞嗚涓婁細鍙樺寲澶氬皯銆?/strong> 2. <strong>涔版柟閫氬父鏄礋 Theta锛屽崠鏂归€氬父鏄 Theta銆?/strong> 3. <strong>ATM 闄勮繎銆佷复杩戝埌鏈熺殑鏈熸潈锛孴heta 浣撴劅寰€寰€鏇存槑鏄俱€?/strong> 4. <strong>Theta 涓嶆槸鍥哄畾鏃ユ崯琛紝鑰屾槸姝ゅ埢鐨勬椂闂寸（鎹熼€熷害銆?/strong> 5. <strong>鏈熸潈涔版柟涓嶄粎瑕佺湅瀵规柟鍚戯紝杩樿鍦ㄦ椂闂翠环鍊艰鍚冩帀鍓嶅強鏃剁湅瀵广€?/strong></p>
-<p>濡傛灉 Delta 璁╀綘寮€濮嬬悊瑙ｂ€滄湡鏉冩€庝箞璺熻偂浠蜂竴璧峰姩鈥濓紝 閭?Theta 灏辨槸鍦ㄦ彁閱掍綘锛?/p>
-<ul><li>鏈夋椂鍊欐渶闅惧彈鐨勶紝涓嶆槸鏂瑰悜閿欙紱</li><li>鑰屾槸鏃堕棿鍏堟妸浣犺€楁帀浜嗐€?/li></ul>
-<h1>鍏€佽嚜娴嬮</h1>
-<p>1. 涓轰粈涔堣偂绁ㄥ彲浠ラ暱鏈熸嬁鐫€锛屼絾鏈熸潈蹇呴』涓撻棬鑰冭檻 Theta锛?2. 涓€寮犳湡鏉冪殑 Theta 鏄?-0.05锛屼负浠€涔堜笉鑳界畝鍗曠悊瑙ｆ垚鈥滄瘡澶╀竴瀹氫簭 5 缇庡厓/寮犫€濓紵 3. 涓轰粈涔堝緢澶?ATM銆佷复杩戝埌鏈熺殑鏈熸潈锛孴heta 浣撴劅浼氱壒鍒己锛?4. 涓轰粈涔堣鍗栨柟铏界劧甯稿父鏄 Theta锛屼絾涓嶈兘鍥犳鎶婂崠鏂圭瓑鍚屼簬浣庨闄╋紵 5. 濡傛灉浣犳兂缁欎竴涓湅澶氳鐐规洿闀跨殑鍏戠幇鏃堕棿锛孴heta 浼氬浣曞奖鍝嶄綘瀵瑰埌鏈熸棩鐨勯€夋嫨锛?/p>
-<h1>鏈珷涓€鍙ヨ瘽鎬荤粨</h1>
-<blockquote><p><strong>Theta 鐪熸閫间綘闈㈠鐨勶紝涓嶆槸鈥滀綘鐪嬫病鐪嬪鈥濓紝鑰屾槸鈥滃湪浣犵瓑缁撴灉鐨勮繖娈垫椂闂撮噷锛屾湡鏉冧細涓嶄細鍏堟妸鑰愬績鍜屾湰閲戜竴璧风（鎺夆€濄€?/strong></p></blockquote>
-<h2>涓嬩竴绔犻鍛婏細Vega鈥斺€擨V 鍙樺寲涓庢尝鍔ㄧ巼鍐插嚮</h2>
-<p>Theta 璁茬殑鏄椂闂存€庝箞纾ㄤ綘锛?涓嬩竴绔?Vega 璁茬殑鍒欐槸锛?/p>
-<ul><li>甯傚満瀵规湭鏉ユ尝鍔ㄧ殑鐪嬫硶涓€鍙橈紱</li><li>浣犵殑鏈熸潈浠锋牸浼氫笉浼氳窡鐫€琚噸浼帮紱</li><li>涓轰粈涔堣储鎶ュ墠鍚庯紝寰堝鈥滄柟鍚戞病閿欌€濈殑鍗曞瓙渚濈劧璁╀汉涓嶇埥銆?/li></ul>
+<p>它最直观的读法就是：</p>
+<ul><li>在其他变量变化不大的情况下；</li><li>每过一天；</li><li>这张期权的理论价值大约会减少 0.05 美元。</li></ul>
+<p>美股期权一张合约对应 100 股，所以如果粗略换算到一张合约：</p>
+<ul><li>0.05 × 100 = <strong>5 美元</strong></li></ul>
+<p>也就是说，这张合约大致每天会损耗 5 美元的时间价值。</p>
+<p>这里一定要把三个限定词记住：</p>
+<ul><li><strong>理论上</strong>；</li><li><strong>其他条件不变</strong>；</li><li><strong>大约</strong>。</li></ul>
+<p>Theta 不是一个“今天一定亏 5 美元”的承诺书。</p>
+<p>真实市场里，期权价格还会同时受到：</p>
+<ul><li>股价变化；</li><li>IV 变化；</li><li>买卖价差；</li><li>临近事件的预期修正；</li><li>市场整体波动。</li></ul>
+<p>所以 Theta 更像一个“时间这件事本身，对你有多不友好”的刻度。</p>
+<h2>21.3 为什么很多人一碰短期期权，就开始体会到 Theta 的压力</h2>
+<p>因为短期期权最容易让你感受到一件事：</p>
+<blockquote><p><strong>你不是只在赌方向，你还在赌“方向要来得够快”。</strong></p></blockquote>
+<p>比如你买一张 7 天到期的 ATM Call：</p>
+<ul><li>你当然可能看对方向；</li><li>但如果股价只是慢慢涨；</li><li>或者先横两天再涨；</li><li>那你最终可能会发现，方向并没有及时兑现，时间价值先被拿走了一大块。</li></ul>
+<p>这也是为什么，新手常常会误以为：</p>
+<ul><li>“我明明看得不差，为什么仓位这么难受？”</li></ul>
+<p>因为股票只要求你大方向别错； 期权买方往往还要求你：</p>
+<ul><li>方向别错；</li><li>发生得够快；</li><li>IV 别同时塌；</li><li>你选的合约别太容易被时间吃掉。</li></ul>
+<p>Theta，就是把这个“时间不等人”的事实量化出来。</p>
+<h1>二、为什么 Theta 永远更偏向卖方，而不是买方</h1>
+<h2>21.4 买方付出的，本来就包含“时间这项成本”</h2>
+<p>回到前面讲过的期权价格构成：</p>
+<blockquote><p><strong>期权价格 = 内在价值 + 时间价值</strong></p></blockquote>
+<p>只要你买的那部分价格里含有时间价值，它就不可能永远停在那里不动。</p>
+<p>因为随着到期日越来越近：</p>
+<ul><li>未来可以发生惊喜的时间在变少；</li><li>这张合同的“可选择空间”在缩小；</li><li>市场愿意为这种可能性支付的溢价，也会逐渐下降。</li></ul>
+<p>所以对买方来说，Theta 常常是负的。</p>
+<p>这不是市场故意针对买方，而是你从一开始就买了一份“有保质期的可能性”。</p>
+<p>只要时间流逝，这份可能性的价值通常就会缩水。</p>
+<h2>21.5 卖方为什么通常是正 Theta</h2>
+<p>如果买方每天在流失时间价值，那么谁在另一边？</p>
+<p>答案当然是卖方。</p>
+<p>卖方卖出的，本质上就是一份带时间价值的合同。</p>
+<ul><li>买方买的是“未来的不确定机会”；</li><li>卖方卖的是“把这种不确定机会打包提供给别人”。</li></ul>
+<p>于是当时间过去、期权价值自然回落时：</p>
+<ul><li>买方感受到的是磨损；</li><li>卖方感受到的则是时间站在自己这边。</li></ul>
+<p>这就是为什么你经常会听到一句话：</p>
+<blockquote><p><strong>卖方赚 Theta。</strong></p></blockquote>
+<p>这句话方向上没错，但如果只背这半句，会出大问题。</p>
+<p>因为卖方虽然常常拿到正 Theta，另一边往往也要承担：</p>
+<ul><li>负 Gamma；</li><li>突发行情下更难受的仓位变脸；</li><li>尾部风险；</li><li>过近到期时的管理压力。</li></ul>
+<p>所以真正成熟的表达不是“卖方躺赚时间”，而是：</p>
+<blockquote><p><strong>卖方通常在收时间价值，但必须为此承担别的风险。</strong></p></blockquote>
+<h1>三、为什么 ATM、临近到期时，Theta 常常最有杀伤力</h1>
+<h2>21.6 时间价值最多的地方，往往也是时间损耗最明显的地方</h2>
+<p>图片里给出的直觉非常重要：</p>
+<ul><li><strong>ATM 附近，时间价值通常最高；</strong></li><li><strong>时间价值高的地方，Theta 的绝对值往往也更显眼。</strong></li></ul>
+<p>为什么？</p>
+<p>因为 ATM 附近的期权，最像一张“胜负还没揭晓的合同”。</p>
+<ul><li>Deep ITM 的很多价值已经更接近内在价值；</li><li>Deep OTM 的合同，看起来又太远，市场不会给它太多时间溢价；</li><li>真正最让市场犹豫、也最愿意为未来可能性多付钱的，恰恰是 ATM 一带。</li></ul>
+<p>而一旦时间价值本来就高，时间流逝带来的磨损自然也更值得警惕。</p>
+<p>这就是为什么：</p>
+<ul><li>很多 ATM 期权看着“最顺手”；</li><li>但它们也经常是 Theta 体感最明显的一档。</li></ul>
+<h2>21.7 越接近到期，Theta 往往越不温柔</h2>
+<p>Theta 的可怕之处，不只是它存在，而是它通常<strong>不是匀速流失</strong>。</p>
+<p>离到期还很远时：</p>
+<ul><li>时间价值损耗往往比较平缓；</li><li>你会觉得每天掉一点，还能接受。</li></ul>
+<p>可一旦接近到期：</p>
+<ul><li>市场对“还剩多少翻盘时间”的定价会明显收紧；</li><li>同样的一天，价值缩水的体感会比前面更强。</li></ul>
+<p>这就是为什么图里特别强调：</p>
+<blockquote><p><strong>越临近到期日，时间损耗越大。</strong></p></blockquote>
+<p>你可以把它理解成：</p>
+<ul><li>长期期权像慢慢融化的冰；</li><li>短期期权更像最后几天突然加速塌下去。</li></ul>
+<p>所以当你看到短期期权权利金很便宜时，千万别只看到便宜。</p>
+<p>你还要问：</p>
+<ul><li>它便宜，是不是因为 Theta 已经开始非常凶？</li><li>我真的需要这么短的时间窗口吗？</li><li>我承担得起“方向晚两天才来”的代价吗？</li></ul>
+<h2>21.8 关于周末：为什么不交易，Theta 也不是真的停下来</h2>
+<p>很多新手还有一个误解：</p>
+<ul><li>市场周末不开盘；</li><li>那周六周日是不是就没有 Theta？</li></ul>
+<p>更准确的理解是：</p>
+<ul><li>期权定价里，时间并不会因为周末就完全暂停；</li><li>真实市场对周末时间流逝的反映，通常会体现在临近周末和周一开盘后的价格里；</li><li>但它不会像闹钟一样，严格平均地“每天精确扣同样的钱”。</li></ul>
+<p>所以你不能把 Theta 理解成“每天晚上结算一次固定租金”。</p>
+<p>它更像一股持续存在的磨损，只是在不同时点、不同合约上，呈现得快慢不同。</p>
+<h1>四、Theta 和 Gamma 为什么总是绑在一起看</h1>
+<h2>21.9 买方常常是“正 Gamma + 负 Theta”</h2>
+<p>如果你买的是 long option，最常见的组合体验就是：</p>
+<ul><li><strong>正 Gamma</strong>：行情往你有利方向跑时，仓位更容易开始跟上；</li><li><strong>负 Theta</strong>：如果行情不够快，时间每天都在消耗你。</li></ul>
+<p>这就是为什么买方仓位经常给人一种“有爆发力，但不耐拖”的感觉。</p>
+<p>你拥有的是：</p>
+<ul><li>更好的弹性；</li><li>更干净的最大亏损边界；</li><li>但也要接受持仓时间不站在自己这边。</li></ul>
+<p>所以很多单腿买方策略的核心问题，并不是“你看不看对”，而是：</p>
+<blockquote><p><strong>你有没有在时间价值被吸干之前，把方向兑现出来。</strong></p></blockquote>
+<h2>21.10 卖方常常是“负 Gamma + 正 Theta”</h2>
+<p>卖方的体验往往正相反：</p>
+<ul><li><strong>正 Theta</strong>：时间流逝通常有利；</li><li><strong>负 Gamma</strong>：一旦行情逼近危险区域，风险可能加速恶化。</li></ul>
+<p>这也是为什么卖方策略常常呈现一种很典型的手感：</p>
+<ul><li>大多数时候，看着都挺舒服；</li><li>真到不舒服的时候，通常不会给你太多从容。</li></ul>
+<p>所以你以后看到任何“持续赚时间价值”的策略，都应该顺手再问一句：</p>
+<ul><li>那它在 Gamma 这一边，付出的代价是什么？</li></ul>
+<p>如果你不把 Theta 和 Gamma 放在一起看，就很容易只看到一半。</p>
+<h1>五、把 Theta 放回真实交易：你到底该怎么用它读仓位</h1>
+<h2>21.11 例子：AAPL 的短期 ATM Call 和长期 Call，痛感为什么完全不同</h2>
+<p>假设你同样看多 AAPL：</p>
+<h3>方案 A：买 7 天到期的 ATM Call</h3>
+<ul><li>成本相对较低；</li><li>Delta 可能不差；</li><li>但 Theta 往往更凶。</li></ul>
+<p>如果 AAPL 两天不动，或者只是慢慢涨一点：</p>
+<ul><li>你会明显感受到时间在偷走期权价格。</li></ul>
+<h3>方案 B：买 6 个月到期的 Call</h3>
+<ul><li>成本更高；</li><li>杠杆感没那么刺激；</li><li>但时间给你的容错更大。</li></ul>
+<p>它未必更“赚”，但它更像是在买一个更宽的实现窗口。</p>
+<p>所以 Theta 真正帮你的，不是挑“最猛”的合约，而是帮你看清：</p>
+<ul><li>这张合约要求我多快看对？</li><li>如果行情慢一点，我还有没有时间？</li></ul>
+<h2>21.12 例子：Covered Call 为什么经常有“时间站在自己这边”的感觉</h2>
+<p>如果你持有 100 股正股，再卖一张 Call：</p>
+<ul><li>你收进一笔权利金；</li><li>这张 short call 往往带有正 Theta；</li><li>只要股价别迅速冲到让你难受的位置，时间流逝通常会帮你把那张 Call 压便宜。</li></ul>
+<p>这就是很多人做 Covered Call 时，常说自己在“收租”的原因。</p>
+<p>但你现在应该能看得更完整一些：</p>
+<ul><li>你确实在收 Theta；</li><li>但你同时也在让出一部分上行空间；</li><li>如果股价突然猛冲，负 Gamma 的烦恼就会找上门。</li></ul>
+<p>所以 Theta 从来不是孤立存在的。</p>
+<p>它必须放回完整仓位里看。</p>
+<h1>六、新手最容易犯的四个 Theta 误会</h1>
+<h2>21.13 误会一：Theta 就是每天固定亏多少钱</h2>
+<p>不是。</p>
+<p>Theta 是在某个时点、在其他条件近似不变时，对时间损耗的理论估计。</p>
+<p>真实市场里：</p>
+<ul><li>Delta 会变；</li><li>Vega 会变；</li><li>IV 会变；</li><li>买卖盘会变。</li></ul>
+<p>所以 Theta 更像“此刻的时间磨损速度”，而不是未来每一天都完全一样的结果。</p>
+<h2>21.14 误会二：只要卖方有正 Theta，就比较安全</h2>
+<p>也不对。</p>
+<p>卖方常常是：</p>
+<ul><li>小钱慢慢赚；</li><li>但一旦行情不利，仓位可能恶化得很快。</li></ul>
+<p>所以“正 Theta”只是说明时间维度对你有利，不代表这笔交易整体就低风险。</p>
+<h2>21.15 误会三：只要看对方向，Theta 不是问题</h2>
+<p>这也是最常见的坑。</p>
+<p>对股票来说，看对方向可能就够了。</p>
+<p>对期权买方来说，你往往还需要：</p>
+<ul><li>看对方向；</li><li>看对节奏；</li><li>选对期限；</li><li>不要在过贵、过短、过慢兑现的仓位里硬扛。</li></ul>
+<p>Theta 会逼你承认一件事：</p>
+<blockquote><p><strong>期权买方不仅要对，还得及时对。</strong></p></blockquote>
+<h2>21.16 误会四：Theta 只和短线赌财报的人有关</h2>
+<p>也不对。</p>
+<p>无论你是：</p>
+<ul><li>买短期 Call；</li><li>买 LEAP；</li><li>做保护性 Put；</li><li>做卖方收权利金；</li></ul>
+<p>你都在和 Theta 打交道。</p>
+<p>区别只在于：</p>
+<ul><li>有些仓位 Theta 更凶；</li><li>有些仓位 Theta 更温和；</li><li>有些仓位你是付出它；</li><li>有些仓位你是在收它。</li></ul>
+<p>所以 Theta 不是某类交易者的专属概念，而是所有期权持仓都绕不过去的一层现实。</p>
+<h1>七、把这一章收住：Theta 是你理解“为什么方向没大错，仓位却越来越难受”的关键</h1>
+<h2>21.17 本章你最该带走的五句话</h2>
+<p>1. <strong>Theta 衡量的是时间每过去一天，期权价格理论上会变化多少。</strong> 2. <strong>买方通常是负 Theta，卖方通常是正 Theta。</strong> 3. <strong>ATM 附近、临近到期的期权，Theta 体感往往更明显。</strong> 4. <strong>Theta 不是固定日损表，而是此刻的时间磨损速度。</strong> 5. <strong>期权买方不仅要看对方向，还要在时间价值被吃掉前及时看对。</strong></p>
+<p>如果 Delta 让你开始理解“期权怎么跟股价一起动”， 那 Theta 就是在提醒你：</p>
+<ul><li>有时候最难受的，不是方向错；</li><li>而是时间先把你耗掉了。</li></ul>
+<h1>八、自测题</h1>
+<p>1. 为什么股票可以长期拿着，但期权必须专门考虑 Theta？ 2. 一张期权的 Theta 是 -0.05，为什么不能简单理解成“每天一定亏 5 美元/张”？ 3. 为什么很多 ATM、临近到期的期权，Theta 体感会特别强？ 4. 为什么说卖方虽然常常是正 Theta，但不能因此把卖方等同于低风险？ 5. 如果你想给一个看多观点更长的兑现时间，Theta 会如何影响你对到期日的选择？</p>
+<h1>本章一句话总结</h1>
+<blockquote><p><strong>Theta 真正逼你面对的，不是“你看没看对”，而是“在你等结果的这段时间里，期权会不会先把耐心和本金一起磨掉”。</strong></p></blockquote>
+<h2>下一章预告：Vega——IV 变化与波动率冲击</h2>
+<p>Theta 讲的是时间怎么磨你， 下一章 Vega 讲的则是：</p>
+<ul><li>市场对未来波动的看法一变；</li><li>你的期权价格会不会跟着被重估；</li><li>为什么财报前后，很多“方向没错”的单子依然让人不爽。</li></ul>
             </article>
         </section>
 
@@ -469,27 +469,27 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-navigation-title">绔犺妭瀵艰埅</h2>
-                    <p class="section-subtitle">鏄惧紡淇濈暀涓婁竴绔?/ 杩斿洖璇剧▼ / 涓嬩竴绔犱笁涓彲瑙佹Ы浣嶏紝渚夸簬鐢熸垚鍣ㄧǔ瀹氬～鍏?/p>
+                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
+                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
                 </div>
             </div>
 
             <div class="chapter-nav-card">
                 <div class="chapter-nav-grid">
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">涓婁竴绔?/div>
-                        <a class="chapter-nav-link" href="./20.html">绗?20 绔?路 Gamma</a>
-                        <p>鐞嗚В Gamma 浣滀负 Delta 鐨勫彉鍖栭€熷害锛屼负浠€涔堜粨浣嶈秺鎺ヨ繎鍏抽敭浣嶇疆瓒婂鏄撶獊鐒跺彉鑴搞€?/p>
+                        <div class="chapter-nav-label">上一章</div>
+                        <a class="chapter-nav-link" href="./20.html">第 20 章 · Gamma</a>
+                        <p>理解 Gamma 作为 Delta 的变化速度，为什么仓位越接近关键位置越容易突然变脸。</p>
                     </div>
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">杩斿洖璇剧▼</div>
-                        <a class="chapter-nav-link" href="./index.html">缇庤偂鏈熸潈鏁欐潗 鐩綍</a>
-                        <p>杩斿洖璇剧▼鐩綍锛屾寜 section 鍜?batch 鏌ョ湅鍏ㄥ眬杩涘害銆?/p>
+                        <div class="chapter-nav-label">返回课程</div>
+                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
+                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
                     </div>
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">涓嬩竴绔?/div>
-                        <a class="chapter-nav-link" href="./22.html">绗?22 绔?路 Vega</a>
-                        <p>鐞嗚В闅愬惈娉㈠姩鐜囧彉鍖栧浣曢噸鏂板畾浠锋湡鏉冿紝浠ュ強浜嬩欢鍓嶅悗 Vega 鏆撮湶涓轰綍浼氭樉钁楀奖鍝嶇泩浜忋€?/p>
+                        <div class="chapter-nav-label">下一章</div>
+                        <a class="chapter-nav-link" href="./22.html">第 22 章 · Vega</a>
+                        <p>理解隐含波动率变化如何重新定价期权，以及事件前后 Vega 暴露为何会显著影响盈亏。</p>
                     </div>
                 </div>
             </div>
@@ -497,15 +497,15 @@
     </main>
 
     <footer>
-        <p>鏈熸潈鏁欐潗 路 缁撴瀯鍖栧涔?路 HTML 浼樺厛</p>
+        <p>期权教材 · 结构化学习 · HTML 优先</p>
         <p class="disclaimer">
-            鍏嶈矗澹版槑锛氭湰鏁欐潗椤甸潰浠呬緵瀛︿範浜ゆ祦浣跨敤锛屼笉鏋勬垚浠讳綍鎶曡祫寤鸿銆傛湡鏉冧氦鏄撴秹鍙婃潬鏉嗐€佹椂闂存崯鑰椾笌娴佸姩鎬ч闄╋紝鍔″繀缁撳悎鑷韩鎯呭喌鐙珛鍒ゆ柇銆?
+            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
         </p>
     </footer>
 
-    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="鍒囨崲娣辫壊妯″紡" title="鍒囨崲娣辫壊妯″紡">馃寭</button>
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="杩斿洖椤堕儴">鈫?/button>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260326review1"></script>
+    <script src="../js/main.js?v=20260326review2"></script>
 </body>
 </html>
