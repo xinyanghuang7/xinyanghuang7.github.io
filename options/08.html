@@ -64,7 +64,18 @@
             gap: 2rem;
         }
 
+        .chapter-shell > .section,
+        .chapter-shell .section-header,
+        .chapter-shell .section-title-group,
         .chapter-summary-card,
+        .chapter-body-card,
+        .chapter-nav-card,
+        .chapter-nav-slot {
+            min-width: 0;
+        }
+
+        .chapter-summary-card,
+        .chapter-body-card,
         .chapter-nav-card {
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.08);
@@ -73,28 +84,14 @@
             box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
         }
 
-        .chapter-body-card {
-            background: rgba(248, 241, 228, 0.98);
-            border: 1px solid rgba(122, 91, 10, 0.16);
-            border-radius: 18px;
-            padding: 1.75rem;
-            box-shadow: 0 22px 48px -28px rgba(84, 60, 14, 0.22);
-            line-height: 1.9;
-            color: #241e14;
-        }
-
-        .chapter-summary-card {
-            background: rgba(255, 250, 242, 0.96);
-            border: 1px solid rgba(122, 91, 10, 0.12);
-            box-shadow: 0 18px 40px -24px rgba(84, 60, 14, 0.18);
-        }
-
-        .chapter-summary-card p {
-            color: rgba(31,27,20,0.88);
-        }
-
+        .chapter-summary-card p,
         .chapter-nav-card p {
             color: var(--text-secondary);
+        }
+
+        .chapter-body-card {
+            line-height: 1.9;
+            color: var(--text-primary);
         }
 
         .chapter-body-card h2,
@@ -102,14 +99,31 @@
         .chapter-body-card h4,
         .chapter-body-card h5,
         .chapter-body-card h6 {
-            color: #1f1b14;
+            color: var(--text-primary);
             margin-top: 1.6em;
         }
 
         .chapter-body-card p,
         .chapter-body-card li,
         .chapter-body-card blockquote {
-            color: rgba(31,27,20,0.9);
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card p,
+        .chapter-body-card li,
+        .chapter-body-card blockquote,
+        .chapter-body-card h1,
+        .chapter-body-card h2,
+        .chapter-body-card h3,
+        .chapter-body-card h4,
+        .chapter-body-card h5,
+        .chapter-body-card h6,
+        .section-title,
+        .section-subtitle,
+        .chapter-nav-link,
+        .chapter-nav-card p {
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
 
         .chapter-body-card ul,
@@ -121,23 +135,8 @@
             margin: 1.5rem 0;
             padding: 1rem 1.25rem;
             border-left: 3px solid var(--accent-gold);
-            background: rgba(212, 175, 55, 0.12);
+            background: rgba(201, 162, 39, 0.08);
             border-radius: 0 14px 14px 0;
-        }
-
-        .chapter-body-card code {
-            background: rgba(122, 91, 10, 0.08);
-            color: #5b4307;
-            padding: 0.12rem 0.35rem;
-            border-radius: 6px;
-        }
-
-        .chapter-body-card a {
-            color: #7a5b0a;
-        }
-
-        .chapter-body-card a:hover {
-            color: #5b4307;
         }
 
         .chapter-nav-grid {
@@ -270,7 +269,7 @@
                 <div class="section-number" aria-hidden="true">02</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="chapter-content-title">章节正文</h2>
-                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
+                    <p class="section-subtitle">正文按完整阅读链组织，建议先抓主结论，再回到分节例子逐段吃透。</p>
                 </div>
             </div>
 
@@ -594,7 +593,7 @@
                 <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
-                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
+                    <p class="section-subtitle">读完本章后，可以继续前后章节，或回到课程目录按 section 与 batch 复习。</p>
                 </div>
             </div>
 
