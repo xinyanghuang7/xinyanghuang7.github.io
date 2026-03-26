@@ -1,27 +1,27 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="鎶?Covered Call 鎷嗘垚鏀剁銆佹鐩堛€侀檷鎴愭湰涓庡急瀵瑰啿鍥涚浠诲姟锛岃娓呰鏉冧环鍜?Delta 閫夋嫨銆?>
+    <meta name="description" content="把 Covered Call 拆成收租、止盈、降成本与弱对冲四种任务，讲清行权价和 Delta 选择。">
     <meta name="author" content="ValueInvest">
     <meta name="theme-color" content="#c9a227">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="canonical" href="https://4fire.qzz.io/options/25.html">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://4fire.qzz.io/options/25.html">
-    <meta property="og:title" content="Covered Call 娣卞寲搴旂敤 | 缇庤偂鏈熸潈鏁欐潗">
-    <meta property="og:description" content="鎶?Covered Call 鎷嗘垚鏀剁銆佹鐩堛€侀檷鎴愭湰涓庡急瀵瑰啿鍥涚浠诲姟锛岃娓呰鏉冧环鍜?Delta 閫夋嫨銆?>
+    <meta property="og:title" content="Covered Call 深化应用 | 美股期权教材">
+    <meta property="og:description" content="把 Covered Call 拆成收租、止盈、降成本与弱对冲四种任务，讲清行权价和 Delta 选择。">
     <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Covered Call 娣卞寲搴旂敤 | 缇庤偂鏈熸潈鏁欐潗">
-    <meta name="twitter:description" content="鎶?Covered Call 鎷嗘垚鏀剁銆佹鐩堛€侀檷鎴愭湰涓庡急瀵瑰啿鍥涚浠诲姟锛岃娓呰鏉冧环鍜?Delta 閫夋嫨銆?>
+    <meta name="twitter:title" content="Covered Call 深化应用 | 美股期权教材">
+    <meta name="twitter:description" content="把 Covered Call 拆成收租、止盈、降成本与弱对冲四种任务，讲清行权价和 Delta 选择。">
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
-    <title>Covered Call 娣卞寲搴旂敤 | 缇庤偂鏈熸潈鏁欐潗</title>
+    <title>Covered Call 深化应用 | 美股期权教材</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260326review1">
+    <link rel="stylesheet" href="../css/style.css?v=20260326review2">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -191,8 +191,8 @@
     {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": "Covered Call 娣卞寲搴旂敤",
-        "description": "鎶?Covered Call 鎷嗘垚鏀剁銆佹鐩堛€侀檷鎴愭湰涓庡急瀵瑰啿鍥涚浠诲姟锛岃娓呰鏉冧环鍜?Delta 閫夋嫨銆?,
+        "headline": "Covered Call 深化应用",
+        "description": "把 Covered Call 拆成收租、止盈、降成本与弱对冲四种任务，讲清行权价和 Delta 选择。",
         "author": {
             "@type": "Person",
             "name": "ValueInvest"
@@ -205,7 +205,7 @@
         "mainEntityOfPage": "https://4fire.qzz.io/options/25.html",
         "isPartOf": {
             "@type": "Course",
-            "name": "缇庤偂鏈熸潈鏁欐潗",
+            "name": "美股期权教材",
             "url": "https://4fire.qzz.io/options/"
         },
         "image": [
@@ -215,39 +215,39 @@
     </script>
 </head>
 <body>
-    <a href="#main" class="skip-link">璺宠浆鍒颁富鍐呭</a>
-    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="椤甸潰闃呰杩涘害"></div>
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
 
     <header id="header">
         <div class="nav-container">
-            <a href="../index.html" class="logo" aria-label="ValueInvest 棣栭〉">Value<span>Invest</span></a>
-            <nav aria-label="鏈熸潈绔犺妭椤典富瀵艰埅">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="期权章节页主导航">
                 <ul class="nav-links">
-                    <li><a href="../index.html">杩斿洖棣栭〉</a></li>
-                    <li><a href="./index.html">杩斿洖璇剧▼</a></li>
-                    <li><a href="#chapter-navigation">绔犺妭瀵艰埅</a></li>
+                    <li><a href="../index.html">返回首页</a></li>
+                    <li><a href="./index.html">返回课程</a></li>
+                    <li><a href="#chapter-navigation">章节导航</a></li>
                 </ul>
             </nav>
-            <div class="nav-date">绗?25 绔?/div>
+            <div class="nav-date">第 25 章</div>
         </div>
     </header>
 
     <section class="hero" role="banner">
         <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
         <div class="hero-content">
-            <div class="subtitle">瀹炴垬搴旂敤绡?/div>
-            <h1>绗?25 绔?路 Covered Call 娣卞寲搴旂敤</h1>
-            <p class="tagline">瀹炴垬搴旂敤绡?路 Batch 7</p>
-            <p class="hero-description">鎶?Covered Call 鎷嗘垚鏀剁銆佹鐩堛€侀檷鎴愭湰涓庡急瀵瑰啿鍥涚浠诲姟锛岃娓呰鏉冧环鍜?Delta 閫夋嫨銆?/p>
+            <div class="subtitle">实战应用篇</div>
+            <h1>第 25 章 · Covered Call 深化应用</h1>
+            <p class="tagline">实战应用篇 · Batch 7</p>
+            <p class="hero-description">把 Covered Call 拆成收租、止盈、降成本与弱对冲四种任务，讲清行权价和 Delta 选择。</p>
         </div>
-        <a href="#chapter-summary" class="scroll-indicator" aria-label="鍚戜笅婊氬姩鍒扮珷鑺傛憳瑕?>鍚戜笅婊氬姩</a>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
     </section>
 
-    <div class="chapter-meta-bar" aria-label="绔犺妭鍏抽敭淇℃伅">
-        <div class="chapter-meta-pill">绔犺妭缂栧彿锛氱 25 绔?/div>
-        <div class="chapter-meta-pill">Section锛氬疄鎴樺簲鐢ㄧ瘒</div>
-        <div class="chapter-meta-pill">Batch锛欱atch 7 路 宸插彂甯?/div>
-        <div class="chapter-meta-pill">鎵€灞炶绋嬶細<a class="chapter-meta-link" href="./index.html">缇庤偂鏈熸潈鏁欐潗</a></div>
+    <div class="chapter-meta-bar" aria-label="章节关键信息">
+        <div class="chapter-meta-pill">章节编号：第 25 章</div>
+        <div class="chapter-meta-pill">Section：实战应用篇</div>
+        <div class="chapter-meta-pill">Batch：Batch 7 · 已发布</div>
+        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
     </div>
 
     <main id="main" class="chapter-shell">
@@ -255,13 +255,13 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">01</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-summary-title">绔犺妭鎽樿</h2>
-                    <p class="section-subtitle">缁欒鑰呬竴涓厛璇绘噦妗嗘灦銆佸啀娣卞叆姝ｆ枃鐨勮惤鐐?/p>
+                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
+                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
                 </div>
             </div>
 
             <div class="chapter-summary-card">
-                <p>鎶?Covered Call 鎷嗘垚鏀剁銆佹鐩堛€侀檷鎴愭湰涓庡急瀵瑰啿鍥涚浠诲姟锛岃娓呰鏉冧环鍜?Delta 閫夋嫨銆?/p>
+                <p>把 Covered Call 拆成收租、止盈、降成本与弱对冲四种任务，讲清行权价和 Delta 选择。</p>
             </div>
         </section>
 
@@ -269,319 +269,319 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">02</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-content-title">绔犺妭姝ｆ枃</h2>
-                    <p class="section-subtitle">姝ｆ枃鍐呭鐢辩敓鎴愬櫒鐩存帴鍐欏叆 HTML锛岄粯璁ゆ棤鑴氭湰涔熷簲瀹屾暣鍙</p>
+                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
+                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
                 </div>
             </div>
 
             <article class="chapter-body-card">
-<h1>銆婄編鑲℃湡鏉冩暀鏉愩€?/h1>
-<h2>绗?5绔?Covered Call 娣卞寲搴旂敤锛氭敹绉熴€佹鐩堛€侀檷鎴愭湰涓庡急瀵瑰啿</h2>
-<blockquote><p>鏈珷涓昏鍩轰簬浠ヤ笅鍥剧墖鏉愭枡鏁寸悊骞舵墿鍐欙細</p>
-<ul><li><code>renamed/img19.jpg</code>锛欳overed Call 鐨勫熀鏈粨鏋勩€佹敹鐩婄嚎銆佹渶澶ф敹鐩婁笌鐩堜簭骞宠　鐐癸紱</li><li><code>renamed/img20.jpg</code>锛欳overed Call 浣滀负鈥滄敹绉熲€濈瓥鐣ユ椂锛屾爣鐨勩€佸埌鏈熸棩銆佽鏉冧环涓庡埌鏈熷鐞嗭紱</li><li><code>renamed/img21.jpg</code>锛欳overed Call 鐨勫洓绉嶅簲鐢ㄥ満鏅噷锛岄噸鐐瑰睍寮€姝㈢泩涓庨檷浣庡紑浠撴垚鏈紱</li><li><code>renamed/img22.jpg</code>锛欳overed Call 浣滀负寮卞鍐插伐鍏凤紝涓?Protective Put 鐨勪繚鎶ゅ己寮卞姣旓紱</li><li><code>renamed/img23.jpg</code>锛氫粠 Delta 鐞嗚В Covered Call 鐨勬湰璐ㄢ€斺€旈€夎鏉冧环锛屾湰璐ㄤ笂灏辨槸閫?Delta銆?/li></ul>
-<p>濡傛灉浣犲彧璁颁竴鍙ヨ瘽锛岄偅灏辨槸锛?/p>
-<blockquote><p><strong>Covered Call 涓嶆槸鈥滄寔鑲￠『鎵嬫敹鐐圭鈥濊繖涔堢畝鍗曪紝瀹冩湰璐ㄤ笂鏄湪鎷夸竴閮ㄥ垎涓婃定绌洪棿锛屽幓鎹㈢幇閲戞祦銆侀€€鍑虹邯寰嬨€佹垚鏈ˉ璐存垨涓€灞傛湁闄愪繚鎶ゃ€?/strong></p></blockquote>
-<p>寰堝浜虹涓€娆″ Covered Call锛屼細瑙夊緱瀹冨緢娓╁拰锛?/p>
-<ul><li>鎴戞湰鏉ュ氨鏈夎偂绁紱</li><li>鐜板湪鍙槸椤烘墜鍗栦竴寮?Call锛?/li><li>鏀剁偣鏉冨埄閲戯紝鐪嬭捣鏉ユ病浠€涔堝鏉傜殑銆?/li></ul>
-<p>鐪熸鐨勯棶棰樻伆鎭板湪杩欓噷銆?/p>
-<p>鍥犱负 Covered Call 瀹规槗涓婃墜锛屼絾涔熸渶瀹规槗琚鐢ㄣ€?/p>
-<p>濡傛灉浣犳病鎯虫竻妤氾細</p>
-<ul><li>鑷繁涓轰粈涔堝崠杩欏紶 Call锛?/li><li>鎰夸笉鎰挎剰鍗栨帀鑲＄エ锛?/li><li>鎯宠鐨勬槸鏀跺叆銆佹鐩堛€侀檷鎴愭湰锛岃繕鏄鍐诧紱</li><li>浠ュ強璇ラ€夊杩滅殑琛屾潈浠峰拰澶氶暱鐨勫埌鏈熸椂闂达紱</li></ul>
-<p>閭ｅ畠鐪嬩技绠€鍗曪紝缁撴灉鍗村緢瀹规槗鍙樻垚锛?/p>
-<ul><li>璇ユ定鐨勬椂鍊欐妸鍒╂鼎灏佹锛?/li><li>璇ヤ繚鎶ょ殑鏃跺€欏張淇濇姢涓嶅锛?/li><li>鐢氳嚦杩炶嚜宸辨槸鎯崇暀鑲＄エ杩樻槸鎯冲崠鑲＄エ锛岄兘鎼炰笉娓呮銆?/li></ul>
-<p>鎵€浠ヨ繖涓€绔犱笉鍙槸璁?Covered Call 鐨勭粨鏋勶紝鑰屾槸瑕佹妸瀹冪湡姝ｆ媶鎴愬洓绉嶄笉鍚屼换鍔℃潵鐪嬶細</p>
-<p><strong>鏀剁銆佹鐩堛€侀檷浣庡紑浠撴垚鏈€佸急瀵瑰啿銆?/strong></p></blockquote>
+<h1>《美股期权教材》</h1>
+<h2>第25章 Covered Call 深化应用：收租、止盈、降成本与弱对冲</h2>
+<blockquote><p>本章主要基于以下图片材料整理并扩写：</p>
+<ul><li><code>renamed/img19.jpg</code>：Covered Call 的基本结构、收益线、最大收益与盈亏平衡点；</li><li><code>renamed/img20.jpg</code>：Covered Call 作为“收租”策略时，标的、到期日、行权价与到期处理；</li><li><code>renamed/img21.jpg</code>：Covered Call 的四种应用场景里，重点展开止盈与降低开仓成本；</li><li><code>renamed/img22.jpg</code>：Covered Call 作为弱对冲工具，与 Protective Put 的保护强弱对比；</li><li><code>renamed/img23.jpg</code>：从 Delta 理解 Covered Call 的本质——选行权价，本质上就是选 Delta。</li></ul>
+<p>如果你只记一句话，那就是：</p>
+<blockquote><p><strong>Covered Call 不是“持股顺手收点租”这么简单，它本质上是在拿一部分上涨空间，去换现金流、退出纪律、成本补贴或一层有限保护。</strong></p></blockquote>
+<p>很多人第一次学 Covered Call，会觉得它很温和：</p>
+<ul><li>我本来就有股票；</li><li>现在只是顺手卖一张 Call；</li><li>收点权利金，看起来没什么复杂的。</li></ul>
+<p>真正的问题恰恰在这里。</p>
+<p>因为 Covered Call 容易上手，但也最容易被误用。</p>
+<p>如果你没想清楚：</p>
+<ul><li>自己为什么卖这张 Call；</li><li>愿不愿意卖掉股票；</li><li>想要的是收入、止盈、降成本，还是对冲；</li><li>以及该选多远的行权价和多长的到期时间；</li></ul>
+<p>那它看似简单，结果却很容易变成：</p>
+<ul><li>该涨的时候把利润封死；</li><li>该保护的时候又保护不够；</li><li>甚至连自己是想留股票还是想卖股票，都搞不清楚。</li></ul>
+<p>所以这一章不只是讲 Covered Call 的结构，而是要把它真正拆成四种不同任务来看：</p>
+<p><strong>收租、止盈、降低开仓成本、弱对冲。</strong></p></blockquote>
 <hr>
-<h2>闃呰瀵艰埅锛氱涓€娆¤鍏堟姄鈥滀綘鍒板簳鎯宠瀹冩浛浣犲畬鎴愪粈涔堜换鍔♀€濓紝绗簩娆¤鍐嶈ˉ Delta 閫夋嫨</h2>
-<p>杩欎竴绔犵涓€娆¤锛屾渶瀹规槗鐘殑閿欏氨鏄妸 Covered Call 缁熶竴鐞嗚В鎴愨€滈『鎵嬫敹绉熲€濄€?/p>
-<p>浣犵涓€閬嶅厛鍒€ョ潃鐪嬭鏉冧环杩滆繎锛屽厛闂嚜宸憋細</p>
-<ul><li>浣犳槸鍦ㄦ敹绉燂紱</li><li>鍦ㄥ仛姝㈢泩绾緥锛?/li><li>鍦ㄩ檷浣庡紑浠撴垚鏈紱</li><li>杩樻槸鍦ㄥ仛涓€灞傚緢鏈夐檺鐨勫急瀵瑰啿銆?/li></ul>
-<p>浠诲姟鍏堝垎娓咃紝鍚庨潰鐨勮鏉冧环鍜屾湡闄愰€夋嫨鎵嶆湁鎰忎箟銆?/p>
-<p>绗簩閬嶅啀鍘昏ˉ锛?/p>
-<ul><li>涓轰粈涔堣鏉冧环鏈川涓婃槸鍦ㄩ€?Delta锛?/li><li>涓轰粈涔堜笉鍚屽埌鏈熸椂闂翠細甯︽潵瀹屽叏涓嶅悓鐨勭鐞嗗帇鍔涳紱</li><li>浠€涔堟椂鍊欒琛屾潈鏄畬鎴愪换鍔★紝浠€涔堟椂鍊欏彧鏄綘寮€浠撴病鎯虫竻妤氥€?/li></ul>
+<h2>阅读导航：第一次读先抓“你到底想让它替你完成什么任务”，第二次读再补 Delta 选择</h2>
+<p>这一章第一次读，最容易犯的错就是把 Covered Call 统一理解成“顺手收租”。</p>
+<p>你第一遍先别急着看行权价远近，先问自己：</p>
+<ul><li>你是在收租；</li><li>在做止盈纪律；</li><li>在降低开仓成本；</li><li>还是在做一层很有限的弱对冲。</li></ul>
+<p>任务先分清，后面的行权价和期限选择才有意义。</p>
+<p>第二遍再去补：</p>
+<ul><li>为什么行权价本质上是在选 Delta；</li><li>为什么不同到期时间会带来完全不同的管理压力；</li><li>什么时候被行权是完成任务，什么时候只是你开仓没想清楚。</li></ul>
 <hr>
-<h1>涓€銆佸厛鎶?Covered Call 璁叉垚浜鸿瘽锛氬畠鏄€滄寔鑲?+ 鍗栧嚭涓€寮犵湅娑ㄦ湡鏉冣€?/h1>
-<h2>25.1 鍩烘湰缁撴瀯闈炲父绠€鍗曪紝浣嗗惈涔変竴鐐逛篃涓嶇畝鍗?/h2>
-<p>Covered Call 鐨勬爣鍑嗙粨鏋勬槸锛?/p>
-<ul><li>鎸佹湁 100 鑲℃鑲★紱</li><li>鍚屾椂鍗栧嚭 1 寮?Call锛?/li><li>杩欏紶 Call 鐨勬爣鐨勬槸鍚屼竴鍙偂绁ㄣ€?/li></ul>
-<p>鎵€浠ュ畠鍜岃８鍗?Call 鏈€澶х殑鍖哄埆鍦ㄤ簬锛?/p>
-<ul><li>浣犱笉鏄┖鎵嬪湪鍗栦竴浠戒笂娑ㄤ箟鍔★紱</li><li>浣犳墜閲屾湰鏉ュ氨鏈夎偂绁紱</li><li>涓囦竴瀵规柟琛屾潈锛屼綘浜ゅ緱鍑烘爣鐨勩€?/li></ul>
-<p>杩欎篃鏄负浠€涔堝畠鍙?<strong>Covered</strong> Call锛?/p>
-<ul><li>浣犵殑鍗栧嚭涔夊姟锛屾槸琚鑲♀€滅洊浣忊€濈殑銆?/li></ul>
-<p>浣嗗埆鍥犱负瀹冨惉璧锋潵鏇村畨鍏紝灏辨妸瀹冪悊瑙ｆ垚鏃犺剳澧炵泭銆?/p>
-<p>瀹冪湡姝ｇ殑浜ゆ槗鍚箟鏄細</p>
-<blockquote><p><strong>浣犵户缁寔鏈夎偂绁紝浣嗕綘鎰挎剰鍦ㄦ煇涓环浣嶄箣涓婏紝鎶婁竴閮ㄥ垎涓婃定绌洪棿璁╁嚭鍘伙紝鎹㈠洖涓€绗旂珛鍒诲叆璐︾殑鏉冨埄閲戙€?/strong></p></blockquote>
-<p>杩欏氨鏄畠鎵€鏈夊簲鐢ㄥ満鏅殑鏍广€?/p>
-<h2>25.2 AAPL 鐨勭粡鍏镐緥瀛愶細涓轰粈涔堝畠鍍忊€滅湅娑?+ 鏀剁鈥濓紝鍙堝儚鈥滄湁闄愭鐩堚€?/h2>
-<p>鍥剧墖閲岀粰浜嗕竴涓緢閫傚悎鏁欐潗浣跨敤鐨勪緥瀛愶細</p>
-<ul><li>浣犳寔鏈?100 鑲?AAPL锛?/li><li>鎴愭湰浠锋槸 <strong>150 缇庡厓</strong>锛?/li><li>鍗栧嚭涓€寮?<strong>琛屾潈浠?160</strong> 鐨?Call锛?/li><li>鏀跺埌 <strong>3 缇庡厓鏉冨埄閲?/strong>锛?/li><li>鍒版湡鏃堕棿鍋囪鏄竴鏈堝唴銆?/li></ul>
-<p>閭ｄ箞杩欑瑪 Covered Call 鐨勫叧閿暟瀛楀氨闈炲父娓呮锛?/p>
-<h3>鏈€澶ф敹鐩?/h3>
-<p>濡傛灉鍒版湡鏃惰偂浠锋定鍒拌鏉冧环浠ヤ笂锛屼綘鐨勬€绘敹鐩婂ぇ鑷存槸锛?/p>
-<ul><li>姝ｈ偂浠?150 娑ㄥ埌 160锛岃禋 <strong>10</strong>锛?/li><li>鍗?Call 鏀跺埌鏉冨埄閲戯紝璧?<strong>3</strong>锛?/li><li>鍚堣鏈€澶ф敹鐩婄害涓?<strong>13 缇庡厓/鑲?/strong>銆?/li></ul>
-<p>涔熷氨鏄锛?/p>
-<blockquote><p><strong>鏈€澶ф敹鐩?=锛堣鏉冧环 - 鎸佽偂鎴愭湰锛? 鏉冨埄閲?/strong></p></blockquote>
+<h1>一、先把 Covered Call 讲成人话：它是“持股 + 卖出一张看涨期权”</h1>
+<h2>25.1 基本结构非常简单，但含义一点也不简单</h2>
+<p>Covered Call 的标准结构是：</p>
+<ul><li>持有 100 股正股；</li><li>同时卖出 1 张 Call；</li><li>这张 Call 的标的是同一只股票。</li></ul>
+<p>所以它和裸卖 Call 最大的区别在于：</p>
+<ul><li>你不是空手在卖一份上涨义务；</li><li>你手里本来就有股票；</li><li>万一对方行权，你交得出标的。</li></ul>
+<p>这也是为什么它叫 <strong>Covered</strong> Call：</p>
+<ul><li>你的卖出义务，是被正股“盖住”的。</li></ul>
+<p>但别因为它听起来更安全，就把它理解成无脑增益。</p>
+<p>它真正的交易含义是：</p>
+<blockquote><p><strong>你继续持有股票，但你愿意在某个价位之上，把一部分上涨空间让出去，换回一笔立刻入账的权利金。</strong></p></blockquote>
+<p>这就是它所有应用场景的根。</p>
+<h2>25.2 AAPL 的经典例子：为什么它像“看涨 + 收租”，又像“有限止盈”</h2>
+<p>图片里给了一个很适合教材使用的例子：</p>
+<ul><li>你持有 100 股 AAPL；</li><li>成本价是 <strong>150 美元</strong>；</li><li>卖出一张 <strong>行权价 160</strong> 的 Call；</li><li>收到 <strong>3 美元权利金</strong>；</li><li>到期时间假设是一月内。</li></ul>
+<p>那么这笔 Covered Call 的关键数字就非常清楚：</p>
+<h3>最大收益</h3>
+<p>如果到期时股价涨到行权价以上，你的总收益大致是：</p>
+<ul><li>正股从 150 涨到 160，赚 <strong>10</strong>；</li><li>卖 Call 收到权利金，赚 <strong>3</strong>；</li><li>合计最大收益约为 <strong>13 美元/股</strong>。</li></ul>
+<p>也就是说：</p>
+<blockquote><p><strong>最大收益 =（行权价 - 持股成本）+ 权利金</strong></p></blockquote>
 <hr>
-<h3>鐩堜簭骞宠　鐐?/h3>
-<p>鐢变簬浣犲厛鏀朵簡 3 缇庡厓鏉冨埄閲戯紝绛変簬鎶婃寔鑲℃垚鏈粠 150 闄嶅埌 147銆?/p>
-<p>鎵€浠ヨ繖绗斾粨浣嶇殑鐩堜簭骞宠　鐐规槸锛?/p>
-<blockquote><p><strong>鐩堜簭骞宠　鐐?= 鎸佽偂鎴愭湰 - 鏉冨埄閲?= 150 - 3 = 147</strong></p></blockquote>
-<p>杩欏氨鏄?Covered Call 鐪嬭捣鏉モ€滄瘮绾寔鑲＄◢寰姉璺屼竴鐐光€濈殑鏉ユ簮銆?/p>
-<p>浣嗘敞鎰忥紝鍙槸<strong>绋嶅井</strong>銆?/p>
+<h3>盈亏平衡点</h3>
+<p>由于你先收了 3 美元权利金，等于把持股成本从 150 降到 147。</p>
+<p>所以这笔仓位的盈亏平衡点是：</p>
+<blockquote><p><strong>盈亏平衡点 = 持股成本 - 权利金 = 150 - 3 = 147</strong></p></blockquote>
+<p>这就是 Covered Call 看起来“比纯持股稍微抗跌一点”的来源。</p>
+<p>但注意，只是<strong>稍微</strong>。</p>
 <hr>
-<h3>鏈€澶ч闄?/h3>
-<p>寰堝鏂版墜浼氳浠ヤ负锛?/p>
-<ul><li>鏃㈢劧鍗栦簡 Call 鏀朵簡閽憋紱</li><li>閭ｆ槸涓嶆槸椋庨櫓宸茬粡寰堝皬锛?/li></ul>
-<p>涓嶆槸銆?/p>
-<p>濡傛灉鑲＄エ涓€璺穼鍒版帴杩?0锛屼綘鏈€澶х殑鎹熷け浠嶇劧鎺ヨ繎锛?/p>
-<blockquote><p><strong>鎸佽偂鎴愭湰 - 鏀跺埌鐨勬潈鍒╅噾</strong></p></blockquote>
-<p>鎵€浠?Covered Call 涓嶆槸鏃犻闄╂敹鍏ユ満銆?/p>
-<p>瀹冨彧鏄細</p>
-<ul><li>涓婃定琚皝椤讹紱</li><li>涓嬭穼鍙緱鍒颁竴灞傛湁闄愮紦鍐层€?/li></ul>
-<p>杩欎釜缁撴瀯鍐冲畾浜嗭紝瀹冨彧鑳藉彨锛?/p>
-<ul><li><strong>澧炲己鏀跺叆鐨勬寔鑲＄瓥鐣?/strong>锛?/li><li>鎴栬€?strong>寮变繚鎶ゃ€佸急瀵瑰啿鐨勬寔鑲＄瓥鐣?/strong>锛?/li><li>缁濅笉鑳借璇В鎴愬畬鏁寸殑闃插畧绯荤粺銆?/li></ul>
-<h1>浜屻€佺涓€鍘熷垯锛欳overed Call 鍙兘鐢ㄥ湪鈥滀綘鏈潵灏辨効鎰忔寔鏈夆€濈殑鑲＄エ涓?/h1>
-<h2>25.3 濡傛灉浣犺繛鑲＄エ閮戒笉鎯虫寔鏈夛紝灏卞埆鍏堟兂鐫€鍗?Call</h2>
-<p>鍥剧墖閲屾湁涓€鍙ヨ瘽寰堝叧閿細</p>
-<blockquote><p><strong>寮€浠撹偂绁ㄥ繀椤绘椂鈥?涓嶇湅鍧?鈥濄€?/strong></p></blockquote>
-<p>瀹冪殑浜鸿瘽缈昏瘧灏辨槸锛?/p>
-<ul><li>浣犺嚦灏戜笉鑳芥槑鏄剧湅绌鸿繖鍙偂绁紱</li><li>鏇村噯纭湴璇达紝浣犲緱鎰挎剰缁х画鎸佹湁瀹冦€?/li></ul>
-<p>鍥犱负 Covered Call 鐨勫墠鎻愶紝涓嶆槸鈥滄垜鎯宠禋鐐规湡鏉冭垂鈥濓紝鑰屾槸锛?/p>
-<ul><li>鎴戝凡缁忔湁鑲＄エ锛?/li><li>鎴栬€呮垜鍘熸湰灏辨効鎰忔寔鏈夎偂绁紱</li><li>鐒跺悗鎵嶈€冭檻鏄惁鎶婁竴閮ㄥ垎涓婃定鏉冨崠鍑哄幓銆?/li></ul>
-<p>濡傛灉浣犳湰鏉ュ氨涓嶇湅濂借繖鍙偂绁ㄣ€佹垨鑰呮牴鏈笉鎯崇户缁嬁瀹冿紝閭?Covered Call 寰€寰€涓嶆槸棣栭€夈€?/p>
-<p>鍥犱负锛?/p>
-<ul><li>涓嬭穼椋庨櫓鐨勫ぇ澶翠粛鐒跺湪姝ｈ偂锛?/li><li>浣犳敹鐨勯偅鐐规潈鍒╅噾锛屼笉瓒充互鏇夸唬瀵规爣鐨勬湰韬殑鍒ゆ柇銆?/li></ul>
-<h2>25.4 閫傚悎鍋?Covered Call 鐨勬爣鐨勶紝閫氬父鏈変笁涓叡鍚岀偣</h2>
-<p>缁撳悎鍥剧墖閲岀殑缁忛獙鎬荤粨锛孋overed Call 鏇撮€傚悎杩欎簺鑲＄エ锛?/p>
-<h3>绗竴锛屼綘鎰挎剰闀挎湡鎸佹湁</h3>
-<p>姣斿鎴愮啛钃濈銆佸ぇ鐩樼鎶€銆佺ǔ鍋?ETF锛屾垨鑰呬綘鏈潵灏辫鍒掔户缁嬁涓€娈垫椂闂寸殑浼樿川鍏徃銆?/p>
-<h3>绗簩锛屼笉鏄珮鐖嗗彂銆侀珮澶辨帶鍨嬫爣鐨?/h3>
-<p>濡傛灉涓€鍙偂绁ㄥ緢瀹规槗涓€鍛ㄦ毚鎷?15%鈥?0%锛岄偅鍗?Call 寰€寰€鐗瑰埆瀹规槗鎶婅嚜宸卞崠寰楀悗鎮斻€?/p>
-<h3>绗笁锛屾湡鏉冩祦鍔ㄦ€ц濂?/h3>
-<p>娴佸姩鎬у樊鐨勮偂绁細</p>
-<ul><li>鐐瑰樊澶э紱</li><li>婊氫粨楹荤儲锛?/li><li>骞充粨鎴愭湰楂橈紱</li><li>鏈€鍚庡彲鑳芥妸鏈潵寰堟湸绱犵殑鏀剁閫昏緫锛屽仛鎴愪簡婊戠偣鍜屾懇鎿︽垚鏈瓥鐣ャ€?/li></ul>
-<p>鎵€浠?Covered Call 鐪嬩技绠€鍗曪紝鐪熸绗竴姝ヤ笉鏄寫琛屾潈浠凤紝鑰屾槸锛?/p>
-<blockquote><p><strong>鍏堟寫瀵逛綘鎰挎剰闀挎湡鐩稿鐨勮偂绁ㄣ€?/strong></p></blockquote>
-<h1>涓夈€丆overed Call 鐨勫洓绉嶅簲鐢ㄥ満鏅紝涓嶈娣风潃鍋?/h1>
-<h2>25.5 鍦烘櫙涓€锛氳禋鍙栨湡鏉冭垂锛屼篃灏辨槸鏈€甯歌鐨勨€滄敹绉熲€?/h2>
-<p>杩欐槸 Covered Call 鏈€甯歌鐨勭敤閫斻€?/p>
-<p>瀹冪殑搴曞眰閫昏緫寰堢洿鎺ワ細</p>
-<ul><li>浣犳寔鏈夎偂绁紱</li><li>璁や负鐭湡鍐呬笉浼氬ぇ娑ㄥ埌澶辨帶锛?/li><li>鎰挎剰鎶婁竴閮ㄥ垎涓婃柟绌洪棿鍗栫粰鍒汉锛?/li><li>鎹㈠洖涓€绗旂珛鍒诲埌璐︾殑鏉冨埄閲戙€?/li></ul>
-<p>濡傛灉鑲′环鏈€缁堟病鏈夎秴杩囪鏉冧环锛?/p>
-<ul><li>Call 澶ф鐜囧綊闆讹紱</li><li>浣犱繚鐣欒偂绁紱</li><li>鍚屾椂鎶婃潈鍒╅噾瀹屾暣鏀朵笅銆?/li></ul>
-<p>杩欏氨鏄緢澶氫汉鍙ｄ腑鐨勨€滄敹绉熲€濄€?/p>
-<p>浣嗚繖浠朵簨鐪熸鎴愮珛鐨勫墠鎻愶紝鏄細</p>
-<ul><li>浣犲鐭湡璧板娍鍋忎腑鎬у埌娓╁拰鐪嬪锛?/li><li>涓嶆槸鍦ㄤ竴鍙殢鏃朵細鏆村啿鐨勮偂绁ㄤ笂鐩叉敹绉燂紱</li><li>涔熶笉鏄妸鈥滅煭鏈熸嬁涓嶅埌鐖嗗彂琛屾儏鈥濊褰撴垚纭畾浜嬪疄銆?/li></ul>
-<p>鎵€浠?Covered Call 鐨勨€滄敹绉熲€濆苟涓嶆槸绋宠禋锛岃€屾槸锛?/p>
-<blockquote><p><strong>鍦ㄤ綘鎰挎剰鎸佽偂鐨勫墠鎻愪笅锛屾妸涓€娈电煭鏈熶笂娑ㄧ┖闂村崠鎺夛紝鎹㈢幇閲戞祦銆?/strong></p></blockquote>
-<h2>25.6 鍦烘櫙浜岋細姝㈢泩鈥斺€斿垎娓呰鍔ㄦ鐩堝拰涓诲姩姝㈢泩</h2>
-<p>鍥剧墖閲屾妸鈥滄鐩堚€濇媶寰楅潪甯稿ソ锛岃繖閲屽繀椤讳繚鐣欍€?/p>
-<h3>1锛夎鍔ㄦ鐩堬細鎻愬墠璁″垝鏈潵鐨勫崠鐐?/h3>
-<p>杩欑鎯呭喌閫氬父鏄細</p>
-<ul><li>浣犱粛鐒剁湅娑紝浣嗘媴蹇冩定澶揩浼氬洖钀斤紱</li><li>浣犳効鎰忓湪鏌愪釜浠锋牸闄勮繎鎶婅偂绁ㄥ崠鎺夛紱</li><li>浜庢槸鎸佽偂 + 鍗?OTM Call銆?/li></ul>
-<p>杩欐湰璐ㄤ笂鏄湪璇达細</p>
-<ul><li>濡傛灉鑲′环娌″啿杩囧幓锛屾垜鍏堟敹鏉冨埄閲戯紱</li><li>濡傛灉鍐茶繃鍘伙紝鎴戝氨鎸夎鍒掓妸鑲＄エ浜ゅ嚭鍘汇€?/li></ul>
-<p>瀹冮€傚悎锛?/p>
-<ul><li>浣犲凡缁忔兂濂戒簡鏈潵鐨勪笂鏂瑰崠鐐癸紱</li><li>鑰屼笉鏄槾涓婅鈥滄効鎰忓崠鈥濓紝鐪熸定杩囧幓鍙堝畬鍏ㄨ垗涓嶅緱銆?/li></ul>
+<h3>最大风险</h3>
+<p>很多新手会误以为：</p>
+<ul><li>既然卖了 Call 收了钱；</li><li>那是不是风险已经很小？</li></ul>
+<p>不是。</p>
+<p>如果股票一路跌到接近 0，你最大的损失仍然接近：</p>
+<blockquote><p><strong>持股成本 - 收到的权利金</strong></p></blockquote>
+<p>所以 Covered Call 不是无风险收入机。</p>
+<p>它只是：</p>
+<ul><li>上涨被封顶；</li><li>下跌只得到一层有限缓冲。</li></ul>
+<p>这个结构决定了，它只能叫：</p>
+<ul><li><strong>增强收入的持股策略</strong>；</li><li>或者<strong>弱保护、弱对冲的持股策略</strong>；</li><li>绝不能被误解成完整的防守系统。</li></ul>
+<h1>二、第一原则：Covered Call 只能用在“你本来就愿意持有”的股票上</h1>
+<h2>25.3 如果你连股票都不想持有，就别先想着卖 Call</h2>
+<p>图片里有一句话很关键：</p>
+<blockquote><p><strong>开仓股票必须时“ 不看坏 ”。</strong></p></blockquote>
+<p>它的人话翻译就是：</p>
+<ul><li>你至少不能明显看空这只股票；</li><li>更准确地说，你得愿意继续持有它。</li></ul>
+<p>因为 Covered Call 的前提，不是“我想赚点期权费”，而是：</p>
+<ul><li>我已经有股票；</li><li>或者我原本就愿意持有股票；</li><li>然后才考虑是否把一部分上涨权卖出去。</li></ul>
+<p>如果你本来就不看好这只股票、或者根本不想继续拿它，那 Covered Call 往往不是首选。</p>
+<p>因为：</p>
+<ul><li>下跌风险的大头仍然在正股；</li><li>你收的那点权利金，不足以替代对标的本身的判断。</li></ul>
+<h2>25.4 适合做 Covered Call 的标的，通常有三个共同点</h2>
+<p>结合图片里的经验总结，Covered Call 更适合这些股票：</p>
+<h3>第一，你愿意长期持有</h3>
+<p>比如成熟蓝筹、大盘科技、稳健 ETF，或者你本来就计划继续拿一段时间的优质公司。</p>
+<h3>第二，不是高爆发、高失控型标的</h3>
+<p>如果一只股票很容易一周暴拉 15%–20%，那卖 Call 往往特别容易把自己卖得后悔。</p>
+<h3>第三，期权流动性要好</h3>
+<p>流动性差的股票：</p>
+<ul><li>点差大；</li><li>滚仓麻烦；</li><li>平仓成本高；</li><li>最后可能把本来很朴素的收租逻辑，做成了滑点和摩擦成本策略。</li></ul>
+<p>所以 Covered Call 看似简单，真正第一步不是挑行权价，而是：</p>
+<blockquote><p><strong>先挑对你愿意长期相处的股票。</strong></p></blockquote>
+<h1>三、Covered Call 的四种应用场景，不要混着做</h1>
+<h2>25.5 场景一：赚取期权费，也就是最常说的“收租”</h2>
+<p>这是 Covered Call 最常见的用途。</p>
+<p>它的底层逻辑很直接：</p>
+<ul><li>你持有股票；</li><li>认为短期内不会大涨到失控；</li><li>愿意把一部分上方空间卖给别人；</li><li>换回一笔立刻到账的权利金。</li></ul>
+<p>如果股价最终没有超过行权价：</p>
+<ul><li>Call 大概率归零；</li><li>你保留股票；</li><li>同时把权利金完整收下。</li></ul>
+<p>这就是很多人口中的“收租”。</p>
+<p>但这件事真正成立的前提，是：</p>
+<ul><li>你对短期走势偏中性到温和看多；</li><li>不是在一只随时会暴冲的股票上盲收租；</li><li>也不是把“短期拿不到爆发行情”误当成确定事实。</li></ul>
+<p>所以 Covered Call 的“收租”并不是稳赚，而是：</p>
+<blockquote><p><strong>在你愿意持股的前提下，把一段短期上涨空间卖掉，换现金流。</strong></p></blockquote>
+<h2>25.6 场景二：止盈——分清被动止盈和主动止盈</h2>
+<p>图片里把“止盈”拆得非常好，这里必须保留。</p>
+<h3>1）被动止盈：提前计划未来的卖点</h3>
+<p>这种情况通常是：</p>
+<ul><li>你仍然看涨，但担心涨太快会回落；</li><li>你愿意在某个价格附近把股票卖掉；</li><li>于是持股 + 卖 OTM Call。</li></ul>
+<p>这本质上是在说：</p>
+<ul><li>如果股价没冲过去，我先收权利金；</li><li>如果冲过去，我就按计划把股票交出去。</li></ul>
+<p>它适合：</p>
+<ul><li>你已经想好了未来的上方卖点；</li><li>而不是嘴上说“愿意卖”，真涨过去又完全舍不得。</li></ul>
 <hr>
-<h3>2锛変富鍔ㄦ鐩堬細鎴戝熀鏈凡缁忓喅瀹氬崠锛屽彧鏄兂鎶婃敹鐩婇攣寰楁洿姝讳竴浜?/h3>
-<p>鍥剧墖閲岀殑绗簩绉嶆鐩堟洿鍋忎富鍔細</p>
-<ul><li>浣犲叾瀹炲凡缁忔兂鍗栬繖鍙偂绁紱</li><li>鍙槸甯屾湜鍦ㄥ崠鍑哄墠锛屽啀椤烘墜澶氭敹涓€鐐规潈鍒╅噾锛?/li><li>杩欐椂鐢氳嚦鍙兘閫夋嫨鏇磋创杩戙€佺敋鑷?ITM 鐨?Call銆?/li></ul>
-<p>杩欑鍋氭硶鐨勬剰涔夋槸锛?/p>
-<ul><li>琛屾潈姒傜巼鏇撮珮锛?/li><li>鏇村鏄撻攣浣忓綋鍓嶇泩鍒╋紱</li><li>浣犳湰鏉ュ氨涓嶆槸鎯崇户缁韩鍙楀お澶氫笂琛屻€?/li></ul>
-<p>浣嗗畠涔熸湁涓€涓繀椤昏娓呯殑杈圭晫锛?/p>
-<ul><li>濡傛灉鍒版湡鏃惰偂浠锋病绔欎笂琛屾潈浠凤紱</li><li>浣犲苟涓嶄細鑷姩鍗栨帀鑲＄エ锛?/li><li>鎵€浠モ€滄垜涓€瀹氫細鍗栨垚鈥濊繖浠朵簨锛屽苟涓嶈兘鍙潬鍗?Call 绁堢シ銆?/li></ul>
-<p>濡傛灉浣犵湡鐨勯潪甯告槑纭閫€鍑猴紝Covered Call 鍙槸甯姪浣犱紭鍖栭€€鍑猴紝涓嶆槸鏇夸唬閫€鍑烘湰韬€?/p>
-<h2>25.7 鍦烘櫙涓夛細闄嶄綆寮€浠撴垚鏈€斺€斿挨鍏堕€傚悎浼樿川鑲＄煭鏈熸壙鍘嬫椂</h2>
-<p>杩欐槸鍥剧墖閲屾渶瀹规槗琚綆浼般€佷絾寰堟湁瀹炴垬鎰熺殑涓€绉嶇敤閫斻€?/p>
-<p>瀹冪殑閫昏緫澶ц嚧鏄細</p>
-<ul><li>浣犲凡缁忔寔鏈変竴鍙熀鏈潰涓嶉敊銆佹効鎰忛暱鏈熸寔鏈夌殑鑲＄エ锛?/li><li>浣嗙煭鏈熷競鍦烘儏缁亸寮便€佹尝鍔ㄤ笂鍗囷紝鐢氳嚦甯︽湁涓€鐐规亹鎱岋紱</li><li>浣犲垽鏂畠鐭湡闅句互蹇€熷ぇ娑紱</li><li>杩欐椂鍗栧嚭 OTM Call锛屽鏀朵竴绗旀潈鍒╅噾锛岀瓑浜庤ˉ璐翠竴閮ㄥ垎鎸佷粨鎴愭湰銆?/li></ul>
-<p>杩欏叾瀹炴槸鍦ㄥ仛涓€浠跺緢鏈寸礌鐨勪簨锛?/p>
-<blockquote><p><strong>浣庝拱楂樺崠銆?/strong></p></blockquote>
-<p>鍙槸杩欓噷鐨勨€滈珮鍗栤€濓紝涓嶆槸绔嬪埢鍗栨帀鑲＄エ锛岃€屾槸锛?/p>
-<ul><li>鍏堟妸涓€閮ㄥ垎鐭湡涓婃定鏉冨崠鍑哄幓锛?/li><li>鐢ㄦ潈鍒╅噾闄嶄綆浣犵殑鍑€鎸佽偂鎴愭湰銆?/li></ul>
-<p>杩欑被鎿嶄綔鐗瑰埆閫傚悎锛?/p>
-<ul><li>浼樿川鑲＄煭鏈熷彈鍘嬶紱</li><li>IV 鍙堟瘮杈冮珮锛?/li><li>浣犱笉鎬ョ潃绛夊畠绔嬪埢寮哄弽寮广€?/li></ul>
-<p>鍥犱负鍦ㄨ繖绉嶇幆澧冮噷锛孋all 鐨勪环鏍煎線寰€鏇村ソ鍗栥€?/p>
-<p>浣嗗墠鎻愪緷鐒舵槸锛?/p>
-<ul><li>浣犳効鎰忛暱鏈熺户缁寔鏈夊畠锛?/li><li>涓嶆槸鎷夸竴涓凡缁忓熀鏈笉鎯宠鐨勪粨浣嶏紝纭В閲婃垚鈥滈檷鎴愭湰鈥濄€?/li></ul>
-<h2>25.8 鍦烘櫙鍥涳細寮卞鍐测€斺€斿畠鑳界紦鍐诧紝浣嗕笉鑳藉綋闃插脊琛?/h2>
-<p>鍥剧墖閲屾妸杩欎竴鐐硅寰楀緢閫忥細</p>
-<ul><li>Covered Call 鍙互鍋氬鍐诧紱</li><li>浣嗗畠鏄?strong>寮卞鍐?/strong>锛?/li><li>涓嶈兘鎸佺画淇濈暀锛屼篃涓嶈兘鎷挎潵鏇夸唬寮轰繚鎶ゃ€?/li></ul>
-<p>涓轰粈涔堬紵</p>
-<p>鍥犱负 Covered Call 鐨勪繚鎶ゆ潵婧愶紝涓嶆槸涓嬭穼鏃舵湁涓€寮?Put 绔欏嚭鏉ユ浛浣犺ˉ琛€锛?鑰屽彧鏄細</p>
-<ul><li>浣犲厛鏀朵簡涓€绗旀潈鍒╅噾锛?/li><li>鎵€浠ヤ笅璺屾椂锛屽墠闈㈠厛甯綘鍨竴鐐广€?/li></ul>
-<p>杩欏拰 Protective Put 瀹屽叏涓嶆槸涓€涓噺绾с€?/p>
+<h3>2）主动止盈：我基本已经决定卖，只是想把收益锁得更死一些</h3>
+<p>图片里的第二种止盈更偏主动：</p>
+<ul><li>你其实已经想卖这只股票；</li><li>只是希望在卖出前，再顺手多收一点权利金；</li><li>这时甚至可能选择更贴近、甚至 ITM 的 Call。</li></ul>
+<p>这种做法的意义是：</p>
+<ul><li>行权概率更高；</li><li>更容易锁住当前盈利；</li><li>你本来就不是想继续享受太多上行。</li></ul>
+<p>但它也有一个必须讲清的边界：</p>
+<ul><li>如果到期时股价没站上行权价；</li><li>你并不会自动卖掉股票；</li><li>所以“我一定会卖成”这件事，并不能只靠卖 Call 祈祷。</li></ul>
+<p>如果你真的非常明确要退出，Covered Call 只是帮助你优化退出，不是替代退出本身。</p>
+<h2>25.7 场景三：降低开仓成本——尤其适合优质股短期承压时</h2>
+<p>这是图片里最容易被低估、但很有实战感的一种用途。</p>
+<p>它的逻辑大致是：</p>
+<ul><li>你已经持有一只基本面不错、愿意长期持有的股票；</li><li>但短期市场情绪偏弱、波动上升，甚至带有一点恐慌；</li><li>你判断它短期难以快速大涨；</li><li>这时卖出 OTM Call，多收一笔权利金，等于补贴一部分持仓成本。</li></ul>
+<p>这其实是在做一件很朴素的事：</p>
+<blockquote><p><strong>低买高卖。</strong></p></blockquote>
+<p>只是这里的“高卖”，不是立刻卖掉股票，而是：</p>
+<ul><li>先把一部分短期上涨权卖出去；</li><li>用权利金降低你的净持股成本。</li></ul>
+<p>这类操作特别适合：</p>
+<ul><li>优质股短期受压；</li><li>IV 又比较高；</li><li>你不急着等它立刻强反弹。</li></ul>
+<p>因为在这种环境里，Call 的价格往往更好卖。</p>
+<p>但前提依然是：</p>
+<ul><li>你愿意长期继续持有它；</li><li>不是拿一个已经基本不想要的仓位，硬解释成“降成本”。</li></ul>
+<h2>25.8 场景四：弱对冲——它能缓冲，但不能当防弹衣</h2>
+<p>图片里把这一点说得很透：</p>
+<ul><li>Covered Call 可以做对冲；</li><li>但它是<strong>弱对冲</strong>；</li><li>不能持续保留，也不能拿来替代强保护。</li></ul>
+<p>为什么？</p>
+<p>因为 Covered Call 的保护来源，不是下跌时有一张 Put 站出来替你补血， 而只是：</p>
+<ul><li>你先收了一笔权利金；</li><li>所以下跌时，前面先帮你垫一点。</li></ul>
+<p>这和 Protective Put 完全不是一个量级。</p>
 <h3>Protective Put</h3>
-<ul><li>寮哄鍐诧紱</li><li>璺屽緱瓒婂锛屼繚鎶よ秺鏄庢樉锛?/li><li>浣嗘垚鏈珮銆?/li></ul>
+<ul><li>强对冲；</li><li>跌得越多，保护越明显；</li><li>但成本高。</li></ul>
 <h3>Covered Call</h3>
-<ul><li>寮卞鍐诧紱</li><li>鍙兘鎻愪緵鏈夐檺缂撳啿锛?/li><li>涓嶇敤鍏堥澶栨帍閽憋紝浣嗚鐗虹壊涓€閮ㄥ垎涓婃定娼滃姏銆?/li></ul>
-<p>鎵€浠?Covered Call 鏇撮€傚悎杩欎簺瀵瑰啿鎯呮櫙锛?/p>
-<ul><li>鑲′环宸茬粡鍦ㄧ浉瀵归珮浣嶏紝浣犳媴蹇冪煭鏈熷洖璋冿紱</li><li>鎴栬€呰偂浠峰凡缁忓洖钀斤紝浣犲垽鏂繕浼氱户缁急涓€娈碉紱</li><li>浣犳兂鍏堟嬁涓€鐐规潈鍒╅噾锛岄檷浣庝竴涓嬬煭鏈熼闄╂毚闇层€?/li></ul>
-<p>瀹冧笉閫傚悎锛?/p>
-<ul><li>浣犵湡姝ｆ€曞ぇ璺岋紝鍗村張鑸嶄笉寰楀嚭淇濇姢鎴愭湰锛?/li><li>杩欐椂鍊?Covered Call 澶氬崐淇濇姢涓嶅锛屼簨鍚庤繕瀹规槗涓ゅご涓嶆弧鎰忋€?/li></ul>
-<h1>鍥涖€佸埌鏈熸椂闂存€庝箞閫夛細涓嶆槸瓒婄煭瓒婅仾鏄庯紝涔熶笉鏄秺闀胯秺鐪佸績</h1>
-<h2>25.9 鐭埌鏈熺殑濂藉锛氭椂闂翠环鍊兼帀寰楀揩锛屾敹绉熸晥鐜囬珮</h2>
-<p>鍥剧墖閲屾彁鍒颁竴涓緢鐪熷疄鐨?trade-off锛?/p>
-<ul><li>鍒版湡鏃ヨ秺鐭紝Call 鐨勬椂闂翠环鍊兼帀寰楁洿蹇紱</li><li>鏀剁泭鍥炴敹鏇村揩锛?/li><li>浣嗙鐞嗛毦搴﹀拰 Gamma risk 涔熸洿楂樸€?/li></ul>
-<p>鎵€浠ョ煭鍒版湡鏇村儚鏄細</p>
-<ul><li>鏇撮绻佸湴鏀剁锛?/li><li>鏇撮绻佸湴鍋氬喅瀹氾紱</li><li>鏇村鏄撹涓磋繎鍒版湡鐨勮偂浠锋尝鍔ㄦ姌鑵俱€?/li></ul>
-<p>閫傚悎锛?/p>
-<ul><li>浣犳効鎰忚鐪熺洴浠擄紱</li><li>浣犳湰鏉ュ氨鎶?Covered Call 褰撴垚涓€涓鎸佺画绠＄悊鐨勬敹鍏ョ瓥鐣ワ紱</li><li>鑰屼笉鏄兂鈥滀竴鍗栦簡涔嬧€濆嚑鍛ㄤ笉鐪嬨€?/li></ul>
-<h2>25.10 闀夸竴鐐圭殑鍒版湡锛岄€氬父鏇撮€傚悎鎯冲皯鎶樿吘鐨勪汉</h2>
-<p>鍥剧墖涔熺粰浜嗗彟涓€杈癸細</p>
-<ul><li>鍒版湡鏃ユ洿闀匡紝Gamma 椋庨櫓浣庝竴浜涳紱</li><li>闇€瑕佸仛鍐崇瓥鐨勯鐜囨洿浣庯紱</li><li>瀵规柊鎵嬫洿鍙嬪ソ锛?/li><li>浣嗗勾鍖栨剰涔変笂鐨勬敹绉熸晥鐜囧彲鑳芥病閭ｄ箞鐚涖€?/li></ul>
-<p>鎵€浠ュ緢澶氭暀鏉愰噷浼氭妸 Covered Call 鐨勫埌鏈熸椂闂达紝鐞嗚В鎴愪竴涓€滅鐞嗛鐜囬€夋嫨鍣ㄢ€濓細</p>
-<ul><li>鎯抽珮棰戞敹绉燂紝灏辨洿鐭紱</li><li>鎯冲皯涓€鐐规姌鑵撅紝灏辨洿闀夸竴鐐广€?/li></ul>
-<p>浣嗕袱杈归兘鍒瀬绔€?/p>
-<p>澶煭锛?/p>
-<ul><li>寰堝鏄撴妸鏈潵鏈寸礌鐨?Covered Call锛屽仛鎴愰珮绠＄悊鍘嬪姏绛栫暐銆?/li></ul>
-<p>澶暱锛?/p>
-<ul><li>浣犱細鎶婁笂鏂圭┖闂村皝澶箙锛?/li><li>鑲＄エ涓€鏃︽寔缁笂娑紝鍚庢倲鎰熶篃浼氳鎷夐暱銆?/li></ul>
-<p>鎵€浠ュ疄璺甸噷锛屾洿閲嶈鐨勪笉鏄浐瀹氭煇涓ぉ鏁帮紝鑰屾槸锛?/p>
-<blockquote><p><strong>浣犵殑鐩爣鏄敹绉熴€佹鐩堛€侀檷鎴愭湰杩樻槸瀵瑰啿锛屼笉鍚屼换鍔″搴旂殑鍒版湡鏃堕棿鍋忓ソ涓嶄竴鏍枫€?/strong></p></blockquote>
-<h1>浜斻€佽鏉冧环鐨勫叧閿笉鏄€滅寰楀杩溾€濓紝鑰屾槸浣犲埌搴曟兂瑕佸寮虹殑涓婃定鏆撮湶鍜屽寮虹殑淇濇姢</h1>
-<h2>25.11 閫夋嫨琛屾潈浠凤紝鏈川涓婃槸鍦ㄩ€?Delta</h2>
-<p>杩欎竴鐐规槸鏈珷鏈€鍏抽敭鐨勮繘闃堕儴鍒嗐€?/p>
-<p>鍥剧墖閲岀殑鏍稿績鍙ュ瓙闈炲父濂斤細</p>
-<blockquote><p><strong>閫夋嫨琛屾潈浠?= 閫夋嫨 Delta銆?/strong></p></blockquote>
-<p>涓轰粈涔堬紵</p>
-<p>鍥犱负 Covered Call 鐨勭粍鍚?Delta锛屽ぇ鑷村彲浠ョ悊瑙ｆ垚锛?/p>
-<ul><li>姝ｈ偂 Delta 绾︾瓑浜?<strong>1</strong>锛?/li><li>鍗栧嚭 Call 鐨?Delta 鍦?<strong>0 鍒?-1</strong> 涔嬮棿锛?/li><li>鎵€浠ョ粍鍚?Delta = 1 + 鍗栧嚭 Call 鐨?Delta銆?/li></ul>
-<p>杩欐剰鍛崇潃锛?/p>
-<ul><li>鍗栧嚭鐨?Call 瓒婃帴杩?ATM 鎴?ITM锛岀粷瀵?Delta 瓒婂ぇ锛?/li><li>缁勫悎鍓╀笅鐨勭湅娑ㄦ毚闇插氨瓒婂皬锛?/li><li>瀵瑰啿鎰熸洿寮猴紝涓婃定鍙備笌鏇村急銆?/li></ul>
-<p>杩欏氨鏄负浠€涔堬紝鎸戣鏉冧环涓嶆槸鍙湅浠锋牸浣嶇疆锛岃€屾槸鍦ㄦ寫锛?/p>
-<ul><li>浣犳効鎰忎繚鐣欏灏戜笂娑紱</li><li>浣犳効鎰忔嬁澶氬皯淇濇姢锛?/li><li>浣犲埌搴曟洿鍍忓湪鏀剁锛岃繕鏄洿鍍忓湪鍗婁富鍔ㄩ檷浠撱€?/li></ul>
-<h2>25.12 OTM / ATM / ITM Covered Call锛屾€ф牸瀹屽叏涓嶅悓</h2>
-<p>鏍规嵁鍥剧墖閲岀殑 Delta 璇绘硶锛屽彲浠ユ妸涓夌被 Covered Call 杩欐牱鐞嗚В銆?/p>
+<ul><li>弱对冲；</li><li>只能提供有限缓冲；</li><li>不用先额外掏钱，但要牺牲一部分上涨潜力。</li></ul>
+<p>所以 Covered Call 更适合这些对冲情景：</p>
+<ul><li>股价已经在相对高位，你担心短期回调；</li><li>或者股价已经回落，你判断还会继续弱一段；</li><li>你想先拿一点权利金，降低一下短期风险暴露。</li></ul>
+<p>它不适合：</p>
+<ul><li>你真正怕大跌，却又舍不得出保护成本；</li><li>这时候 Covered Call 多半保护不够，事后还容易两头不满意。</li></ul>
+<h1>四、到期时间怎么选：不是越短越聪明，也不是越长越省心</h1>
+<h2>25.9 短到期的好处：时间价值掉得快，收租效率高</h2>
+<p>图片里提到一个很真实的 trade-off：</p>
+<ul><li>到期日越短，Call 的时间价值掉得更快；</li><li>收益回收更快；</li><li>但管理难度和 Gamma risk 也更高。</li></ul>
+<p>所以短到期更像是：</p>
+<ul><li>更频繁地收租；</li><li>更频繁地做决定；</li><li>更容易被临近到期的股价波动折腾。</li></ul>
+<p>适合：</p>
+<ul><li>你愿意认真盯仓；</li><li>你本来就把 Covered Call 当成一个要持续管理的收入策略；</li><li>而不是想“一卖了之”几周不看。</li></ul>
+<h2>25.10 长一点的到期，通常更适合想少折腾的人</h2>
+<p>图片也给了另一边：</p>
+<ul><li>到期日更长，Gamma 风险低一些；</li><li>需要做决策的频率更低；</li><li>对新手更友好；</li><li>但年化意义上的收租效率可能没那么猛。</li></ul>
+<p>所以很多教材里会把 Covered Call 的到期时间，理解成一个“管理频率选择器”：</p>
+<ul><li>想高频收租，就更短；</li><li>想少一点折腾，就更长一点。</li></ul>
+<p>但两边都别极端。</p>
+<p>太短：</p>
+<ul><li>很容易把本来朴素的 Covered Call，做成高管理压力策略。</li></ul>
+<p>太长：</p>
+<ul><li>你会把上方空间封太久；</li><li>股票一旦持续上涨，后悔感也会被拉长。</li></ul>
+<p>所以实践里，更重要的不是固定某个天数，而是：</p>
+<blockquote><p><strong>你的目标是收租、止盈、降成本还是对冲，不同任务对应的到期时间偏好不一样。</strong></p></blockquote>
+<h1>五、行权价的关键不是“离得多远”，而是你到底想要多强的上涨暴露和多强的保护</h1>
+<h2>25.11 选择行权价，本质上是在选 Delta</h2>
+<p>这一点是本章最关键的进阶部分。</p>
+<p>图片里的核心句子非常好：</p>
+<blockquote><p><strong>选择行权价 = 选择 Delta。</strong></p></blockquote>
+<p>为什么？</p>
+<p>因为 Covered Call 的组合 Delta，大致可以理解成：</p>
+<ul><li>正股 Delta 约等于 <strong>1</strong>；</li><li>卖出 Call 的 Delta 在 <strong>0 到 -1</strong> 之间；</li><li>所以组合 Delta = 1 + 卖出 Call 的 Delta。</li></ul>
+<p>这意味着：</p>
+<ul><li>卖出的 Call 越接近 ATM 或 ITM，绝对 Delta 越大；</li><li>组合剩下的看涨暴露就越小；</li><li>对冲感更强，上涨参与更弱。</li></ul>
+<p>这就是为什么，挑行权价不是只看价格位置，而是在挑：</p>
+<ul><li>你愿意保留多少上涨；</li><li>你愿意拿多少保护；</li><li>你到底更像在收租，还是更像在半主动降仓。</li></ul>
+<h2>25.12 OTM / ATM / ITM Covered Call，性格完全不同</h2>
+<p>根据图片里的 Delta 读法，可以把三类 Covered Call 这样理解。</p>
 <h3>OTM Covered Call</h3>
-<ul><li>缁勫悎 Delta 鏇撮珮锛屽ぇ鑷存洿鎺ヨ繎 <strong>0.7</strong> 杩欎竴绫伙紱</li><li>浣犱粛鐒朵繚鐣欒緝寮虹殑鐪嬫定鏆撮湶锛?/li><li>鏉冨埄閲戠浉瀵瑰皯涓€鐐癸紱</li><li>瀵瑰啿鏇村急锛屼絾鍚庢倲绌洪棿涔熸洿灏忋€?/li></ul>
-<p>閫傚悎锛?/p>
-<ul><li>浣犳€讳綋浠嶅亸鐪嬫定锛?/li><li>鍙槸瑙夊緱鐭湡涓嶈嚦浜庢毚娑紱</li><li>鏇存兂鏀剁锛岃€屼笉鏄珛鍒诲帇鎺変笂娑ㄥ脊鎬с€?/li></ul>
+<ul><li>组合 Delta 更高，大致更接近 <strong>0.7</strong> 这一类；</li><li>你仍然保留较强的看涨暴露；</li><li>权利金相对少一点；</li><li>对冲更弱，但后悔空间也更小。</li></ul>
+<p>适合：</p>
+<ul><li>你总体仍偏看涨；</li><li>只是觉得短期不至于暴涨；</li><li>更想收租，而不是立刻压掉上涨弹性。</li></ul>
 <h3>ATM Covered Call</h3>
-<ul><li>缁勫悎 Delta 澶ц嚧灞呬腑锛?/li><li>鏀跺叆銆佷繚鎶ゅ拰涓婃柟灏侀《閮芥洿鍧囪　锛?/li><li>鏇村儚鈥滀腑鎬т竴鐐圭殑鎶樹腑鏂规鈥濄€?/li></ul>
-<p>閫傚悎锛?/p>
-<ul><li>浣犵煭鏈熸病鏈夊緢寮烘柟鍚戝€惧悜锛?/li><li>涔熸効鎰忔帴鍙楁敹鐩婄┖闂磋鍘嬪緱鏇存槑鏄句竴浜涖€?/li></ul>
+<ul><li>组合 Delta 大致居中；</li><li>收入、保护和上方封顶都更均衡；</li><li>更像“中性一点的折中方案”。</li></ul>
+<p>适合：</p>
+<ul><li>你短期没有很强方向倾向；</li><li>也愿意接受收益空间被压得更明显一些。</li></ul>
 <h3>ITM Covered Call</h3>
-<ul><li>缁勫悎 Delta 鏇翠綆锛屽彲鑳芥帴杩?<strong>0.3</strong> 涓€绫伙紱</li><li>鐪嬫定鏆撮湶鏄庢樉涓嬮檷锛?/li><li>瀵瑰啿鎰熸洿寮猴紱</li><li>涔熸洿鍍忎富鍔ㄦ鐩堟垨杈冨己闄嶄粨銆?/li></ul>
-<p>閫傚悎锛?/p>
-<ul><li>浣犱笉澶兂缁х画杩芥眰澶у箙涓婃定锛?/li><li>鏇存兂浼樺厛閿佷綇鐜版湁鏀剁泭鎴栧揩閫熸彁楂樿琛屾潈姒傜巼銆?/li></ul>
-<p>鎵€浠ュ埆鍐嶆妸琛屾潈浠峰彧鐪嬫垚鈥滆繙涓€鐐规垨杩戜竴鐐光€濄€?/p>
-<p>瀹冪湡姝ｈ〃杈剧殑鏄細</p>
-<blockquote><p><strong>浣犵殑浠撲綅杩樻兂淇濈暀澶氬己鐨?bullish exposure銆?/strong></p></blockquote>
-<h2>25.13 Delta 杩樹細闅忚偂浠峰彉鍖栬€屽彉鍖栵紝杩欏喅瀹氫簡 Covered Call 鐨勪粨浣嶆墜鎰熶細鑷繁鍙?/h2>
-<p>鍥剧墖閲岃繕鏈変竴涓緢鍊煎緱淇濈暀涓嬫潵鐨勫姩鎬佹彁閱掋€?/p>
-<p>鍋囪浣犱竴寮€濮嬪崠鐨勬槸 ATM Call锛?/p>
-<ul><li>濡傛灉鍚庨潰鑲′环涓婃定锛?/li><li>鍗?Call 鐨勭粷瀵?Delta 寰€寰€浼氱户缁彉澶э紱</li><li>浣犵殑缁勫悎 Delta 浼氫笅闄嶏紱</li><li>涔熷氨鏄笂娑ㄥ弬涓庝細瓒婃潵瓒婂急锛屽鍐叉劅瓒婃潵瓒婂己銆?/li></ul>
-<p>杩欏氨鏄緢澶氫汉鍋?Covered Call 鏃朵細浣撲細鍒扮殑锛?/p>
-<ul><li>鑲＄エ瓒婃定锛岃嚜宸辫秺鍍忓湪琚姩鍑忎粨銆?/li></ul>
-<p>鍙嶈繃鏉ワ紝濡傛灉鑲′环涓嬭穼锛?/p>
-<ul><li>閭ｅ紶鍗栧嚭鐨?Call 缁濆 Delta 浼氫笅闄嶏紱</li><li>缁勫悎 Delta 鍙嶈€屼細涓婂崌锛?/li><li>浠撲綅浼氳秺鏉ヨ秺鍍忓崟绾寔鑲°€?/li></ul>
-<p>杩欏氨瑙ｉ噴浜嗕竴涓緢澶氫汉浜嬪悗鎵嶅彂鐜扮殑鐜板疄锛?/p>
-<ul><li>鑲＄エ娑ㄧ殑鏃跺€欙紝Covered Call 浼氳秺鏉ヨ秺鈥滀笉璺熲€濓紱</li><li>鑲＄エ璺岀殑鏃跺€欙紝瀹冪殑淇濇姢鍗翠細瓒婃潵瓒婃湁闄愩€?/li></ul>
-<p>鎵€浠?Covered Call 鐨勪繚鎶や笉鏄嚎鎬х殑锛岃€屾槸锛?/p>
-<blockquote><p><strong>娑ㄦ椂瓒婃定瓒婂儚鍑忎粨锛岃穼鏃惰秺璺岃秺鍍忛噸鏂板彉鍥炴寔鑲°€?/strong></p></blockquote>
-<p>杩欏彞璇濅竴鎳傦紝浣犲瀹冪殑棰勬湡灏变細鎴愮啛寰堝銆?/p>
-<h1>鍏€佸紑浠撳悗鎬庝箞澶勭悊锛氳琚鏉冦€佽涔板洖銆佽繕鏄 roll</h1>
-<h2>25.14 濡傛灉鍒版湡鏃惰偂浠锋槑鏄鹃珮浜庤鏉冧环锛屽厛闂嚜宸变竴鍙ワ細浣犳湰鏉ユ効涓嶆効鎰忓崠</h2>
-<p>杩欐槸 Covered Call 绠＄悊閲屾渶鏍稿績鐨勯棶棰樸€?/p>
-<p>濡傛灉鑲′环娑ㄨ繃琛屾潈浠凤紝甯歌鍋氭硶鏈変笁绉嶏細</p>
-<h3>1锛夋帴鍙楄琛屾潈</h3>
-<p>濡傛灉浣犳湰鏉ュ氨鎶婅繖寮?Covered Call 褰撲綔锛?/p>
-<ul><li>琚姩姝㈢泩锛?/li><li>鎴栬€呮槑纭殑鍗栧嚭璁″垝锛?/li></ul>
-<p>閭ｈ琛屾潈鏈繀鏄潖浜嬨€?/p>
-<p>寰堝浜哄仛 Covered Call 鏈€澶х殑闂锛屼笉鏄琛屾潈锛岃€屾槸锛?/p>
-<ul><li>寮€浠撳墠鍢翠笂璇存効鎰忓崠锛?/li><li>鐪熸定杩囧幓鍚庡張鑸嶄笉寰椼€?/li></ul>
-<p>濡傛灉鏄繖鏍凤紝闂涓嶅湪绛栫暐锛岃€屽湪寮€浠撶洰鐨勬病鎯虫竻妤氥€?/p>
+<ul><li>组合 Delta 更低，可能接近 <strong>0.3</strong> 一类；</li><li>看涨暴露明显下降；</li><li>对冲感更强；</li><li>也更像主动止盈或较强降仓。</li></ul>
+<p>适合：</p>
+<ul><li>你不太想继续追求大幅上涨；</li><li>更想优先锁住现有收益或快速提高被行权概率。</li></ul>
+<p>所以别再把行权价只看成“远一点或近一点”。</p>
+<p>它真正表达的是：</p>
+<blockquote><p><strong>你的仓位还想保留多强的 bullish exposure。</strong></p></blockquote>
+<h2>25.13 Delta 还会随股价变化而变化，这决定了 Covered Call 的仓位手感会自己变</h2>
+<p>图片里还有一个很值得保留下来的动态提醒。</p>
+<p>假设你一开始卖的是 ATM Call：</p>
+<ul><li>如果后面股价上涨；</li><li>卖 Call 的绝对 Delta 往往会继续变大；</li><li>你的组合 Delta 会下降；</li><li>也就是上涨参与会越来越弱，对冲感越来越强。</li></ul>
+<p>这就是很多人做 Covered Call 时会体会到的：</p>
+<ul><li>股票越涨，自己越像在被动减仓。</li></ul>
+<p>反过来，如果股价下跌：</p>
+<ul><li>那张卖出的 Call 绝对 Delta 会下降；</li><li>组合 Delta 反而会上升；</li><li>仓位会越来越像单纯持股。</li></ul>
+<p>这就解释了一个很多人事后才发现的现实：</p>
+<ul><li>股票涨的时候，Covered Call 会越来越“不跟”；</li><li>股票跌的时候，它的保护却会越来越有限。</li></ul>
+<p>所以 Covered Call 的保护不是线性的，而是：</p>
+<blockquote><p><strong>涨时越涨越像减仓，跌时越跌越像重新变回持股。</strong></p></blockquote>
+<p>这句话一懂，你对它的预期就会成熟很多。</p>
+<h1>六、开仓后怎么处理：该被行权、该买回、还是该 roll</h1>
+<h2>25.14 如果到期时股价明显高于行权价，先问自己一句：你本来愿不愿意卖</h2>
+<p>这是 Covered Call 管理里最核心的问题。</p>
+<p>如果股价涨过行权价，常见做法有三种：</p>
+<h3>1）接受被行权</h3>
+<p>如果你本来就把这张 Covered Call 当作：</p>
+<ul><li>被动止盈；</li><li>或者明确的卖出计划；</li></ul>
+<p>那被行权未必是坏事。</p>
+<p>很多人做 Covered Call 最大的问题，不是被行权，而是：</p>
+<ul><li>开仓前嘴上说愿意卖；</li><li>真涨过去后又舍不得。</li></ul>
+<p>如果是这样，问题不在策略，而在开仓目的没想清楚。</p>
 <hr>
-<h3>2锛変拱鍥?Call锛岄伩鍏嶈偂绁ㄨ鍗栬蛋</h3>
-<p>濡傛灉浣犲悗鏉ュ彂鐜帮細</p>
-<ul><li>thesis 鍙樺緱鏇村己锛?/li><li>浣犱笉鎯冲崠鑲＄エ浜嗭紱</li><li>鎴栬€呭崠鍑烘椂鏈鸿鎻愬墠瑙﹀彂寰楀お鏃╋紱</li></ul>
-<p>閭ｅ氨鍙互涔板洖 Call銆?/p>
-<p>浠ｄ环閫氬父鏄細</p>
-<ul><li>浣犺浠樺嚭鏇撮珮鐨勫钩浠撴垚鏈紱</li><li>鏈夋椂鐢氳嚦浼氬悙鎺夊師鍏堢殑澶ч儴鍒嗘潈鍒╅噾銆?/li></ul>
-<p>鎵€浠ヤ拱鍥炰笉鏄敊锛屼絾瀹冩彁閱掍綘锛?/p>
-<blockquote><p><strong>Covered Call 涓€鏃﹀紑鍑哄幓锛屼綘灏卞凡缁忕湡鐨勬妸涓€閮ㄥ垎涓婃定鏉冨崠鎺変簡銆?/strong></p></blockquote>
-<p>涓嶆槸鎯虫嬁鍥炴潵鏃讹紝涓€瀹氳繕鑳藉緢鑸掓湇鍦版嬁鍥炴潵銆?/p>
+<h3>2）买回 Call，避免股票被卖走</h3>
+<p>如果你后来发现：</p>
+<ul><li>thesis 变得更强；</li><li>你不想卖股票了；</li><li>或者卖出时机被提前触发得太早；</li></ul>
+<p>那就可以买回 Call。</p>
+<p>代价通常是：</p>
+<ul><li>你要付出更高的平仓成本；</li><li>有时甚至会吐掉原先的大部分权利金。</li></ul>
+<p>所以买回不是错，但它提醒你：</p>
+<blockquote><p><strong>Covered Call 一旦开出去，你就已经真的把一部分上涨权卖掉了。</strong></p></blockquote>
+<p>不是想拿回来时，一定还能很舒服地拿回来。</p>
 <hr>
-<h3>3锛塕ollover锛氬钩鎺夋棫 Call锛屽啀鍗栧嚭鏇磋繙鍒版湡鎴栨洿楂樿鏉冧环鐨勬柊 Call</h3>
-<p>杩欏氨鏄渶甯歌鐨?roll銆?/p>
-<p>瀹冮€傚悎锛?/p>
-<ul><li>浣犺繕鎯充繚鐣欒偂绁紱</li><li>浣嗕篃涓嶆兂褰诲簳鏀惧純 Covered Call 杩欐潯绾匡紱</li><li>鎴栬€呬綘鎯虫妸涓婃柟绌洪棿寰€澶栨尓涓€鐐癸紝鎹㈠洖鏇村鏃堕棿銆?/li></ul>
-<p>roll 鐨勬湰璐ㄤ笉鏄€滈瓟娉曚慨澶嶁€濓紝鑰屾槸閲嶆柊瀹氫环浣犵殑鍙栬垗锛?/p>
-<ul><li>鏄缁欒嚜宸变竴鐐逛笂娑ㄧ┖闂达紱</li><li>杩樻槸澶氭崲涓€鐐规柊鐨勬潈鍒╅噾锛?/li><li>鍙堟垨鑰呭彧鏄妸鍘熸湰鍗冲皢琚姩瑙﹀彂鐨勫眬闈紝寤跺悗鍒颁綘鏇存効鎰忓鐞嗙殑鏃堕棿銆?/li></ul>
-<p>鎵€浠ョ湡姝ｈ涓嶈 roll锛屼笉鍙栧喅浜庘€滅綉涓婇兘杩欎箞鍋氣€濓紝鑰屽彇鍐充簬锛?/p>
-<ul><li>浣犵幇鍦ㄨ繕鎯充笉鎯崇户缁寔鏈夛紱</li><li>浣犵幇鍦ㄥ杩欏彧鑲＄エ鐨勫垽鏂紝鏄惁杩樻敮鎸佺户缁崠 Call銆?/li></ul>
-<h2>25.15 濡傛灉鍒版湡鏃惰偂浠锋病鍒拌鏉冧环锛屽ぇ澶氭暟鏃跺€欎細鎬庝箞澶勭悊</h2>
-<p>濡傛灉鍒版湡鏃惰偂浠蜂粛浣庝簬琛屾潈浠凤紝鏈€甯歌鐨勬儏鍐垫槸锛?/p>
-<ul><li>Call 褰掗浂鎴栨帴杩戝綊闆讹紱</li><li>浣犱繚鐣欏叏閮ㄦ潈鍒╅噾锛?/li><li>缁х画鎸佹湁鑲＄エ銆?/li></ul>
-<p>鎺ヤ笅鏉ヤ綘鏈夊嚑绉嶅父瑙侀€夋嫨锛?/p>
-<ul><li>浠€涔堥兘涓嶅仛锛岀户缁寔鑲★紱</li><li>鍐嶅崠涓嬩竴鏈?Call锛屽欢缁?Covered Call 鏀剁锛?/li><li>濡傛灉鑲′环寰堟帴杩戣鏉冧环锛屼篃鍙互鎻愬墠婊氬埌涓嬩竴鏈燂紝閬垮厤涓磋繎鍒版湡鐨勮鍔ㄦ劅銆?/li></ul>
-<p>杩欐椂瑕佽浣忥紝Covered Call 鐨勨€滆繛缁敹绉熲€濅笉鏄箟鍔″姩浣溿€?/p>
-<p>鍙浠ヤ笅浠绘剰涓€鐐逛笉鍐嶆垚绔嬶紝灏辨病蹇呰鏈烘缁崠锛?/p>
-<ul><li>浣犱粛鎰挎剰鎸佹湁鑲＄エ锛?/li><li>浣犱笉鎷呭績鐭湡澶ф定鎶婅嚜宸卞皝姝伙紱</li><li>浣犲崠鍑虹殑鏉冨埄閲戜粛鐒跺€煎緱杩欐璁╂浮涓婃定绌洪棿銆?/li></ul>
-<h1>涓冦€丆overed Call 鍜?Protective Put锛岃皝鏇撮€傚悎鍋氫繚鎶?/h1>
-<h2>25.16 涓€涓己锛屼竴涓急锛涗竴涓鑺遍挶锛屼竴涓敤涓婃定绌洪棿浠樿处</h2>
-<p>鍥剧墖閲岀粰浜嗗緢濂界殑瀵规瘮锛屽€煎緱鐩存帴鍚告敹銆?/p>
+<h3>3）Rollover：平掉旧 Call，再卖出更远到期或更高行权价的新 Call</h3>
+<p>这就是最常见的 roll。</p>
+<p>它适合：</p>
+<ul><li>你还想保留股票；</li><li>但也不想彻底放弃 Covered Call 这条线；</li><li>或者你想把上方空间往外挪一点，换回更多时间。</li></ul>
+<p>roll 的本质不是“魔法修复”，而是重新定价你的取舍：</p>
+<ul><li>是多给自己一点上涨空间；</li><li>还是多换一点新的权利金；</li><li>又或者只是把原本即将被动触发的局面，延后到你更愿意处理的时间。</li></ul>
+<p>所以真正该不该 roll，不取决于“网上都这么做”，而取决于：</p>
+<ul><li>你现在还想不想继续持有；</li><li>你现在对这只股票的判断，是否还支持继续卖 Call。</li></ul>
+<h2>25.15 如果到期时股价没到行权价，大多数时候会怎么处理</h2>
+<p>如果到期时股价仍低于行权价，最常见的情况是：</p>
+<ul><li>Call 归零或接近归零；</li><li>你保留全部权利金；</li><li>继续持有股票。</li></ul>
+<p>接下来你有几种常见选择：</p>
+<ul><li>什么都不做，继续持股；</li><li>再卖下一期 Call，延续 Covered Call 收租；</li><li>如果股价很接近行权价，也可以提前滚到下一期，避免临近到期的被动感。</li></ul>
+<p>这时要记住，Covered Call 的“连续收租”不是义务动作。</p>
+<p>只要以下任意一点不再成立，就没必要机械续卖：</p>
+<ul><li>你仍愿意持有股票；</li><li>你不担心短期大涨把自己封死；</li><li>你卖出的权利金仍然值得这次让渡上涨空间。</li></ul>
+<h1>七、Covered Call 和 Protective Put，谁更适合做保护</h1>
+<h2>25.16 一个强，一个弱；一个要花钱，一个用上涨空间付账</h2>
+<p>图片里给了很好的对比，值得直接吸收。</p>
 <h3>Protective Put</h3>
-<ul><li>淇濇姢寮猴紱</li><li>璺屽緱瓒婃繁锛屾晥鏋滆秺鏄庢樉锛?/li><li>浣嗚浠樺嚭鐪熼噾鐧介摱鐨勪繚闄╂垚鏈€?/li></ul>
+<ul><li>保护强；</li><li>跌得越深，效果越明显；</li><li>但要付出真金白银的保险成本。</li></ul>
 <h3>Covered Call</h3>
-<ul><li>淇濇姢寮憋紱</li><li>鍙兘闈犳潈鍒╅噾鎻愪緵鏈夐檺缂撳啿锛?/li><li>浣犱笉鐢ㄩ澶栨帍閽憋紝浣嗚鐢ㄤ笂鏂圭┖闂存潵浠樿处銆?/li></ul>
-<p>鎵€浠ュ鏋滀綘鐨勭湡瀹為渶姹傛槸锛?/p>
-<ul><li><strong>鎴戦潪甯告€曞ぇ璺岋紱</strong></li><li><strong>鎴戜笉鎯冲彧鏄紦鍐蹭竴鐐癸紝鑰屾槸鎯崇湡姝ｆ墭浣忎笅鏂癸紱</strong></li></ul>
-<p>閭?Protective Put 閫氬父鏇村棰樸€?/p>
-<p>濡傛灉浣犵殑鐪熷疄闇€姹傛槸锛?/p>
-<ul><li><strong>鎴戞効鎰忕壓鐗蹭竴閮ㄥ垎涓婃定锛?/strong></li><li><strong>鎹竴鐐规敹鍏ュ拰涓€鐐圭紦鍐诧紱</strong></li><li><strong>鐭湡鍏堟妸浠撲綅鎯呯华鍘嬩笅鏉ワ紱</strong></li></ul>
-<p>閭?Covered Call 鎵嶆洿鍚堥€傘€?/p>
-<p>杩欎袱鑰呮病鏈夎皝缁濆鏇村ソ锛屽彧鏈夎皝鏇村尮閰嶄綘鐨勪换鍔°€?/p>
-<h1>鍏€佹柊鎵嬫渶瀹规槗鐘殑鍏釜 Covered Call 璇細</h1>
-<h2>25.17 璇細涓€锛欳overed Call 鏄綆椋庨櫓鏀舵伅绁炲櫒</h2>
-<p>涓嶆槸銆?/p>
-<p>涓嬭穼椋庨櫓鐨勫ぇ澶翠粛鐒舵潵鑷鑲°€?/p>
-<p>浣犲彧鏄細</p>
-<ul><li>鏀朵簡涓€绗旀潈鍒╅噾锛?/li><li>鎶婃垚鏈灚浣庝竴鐐癸紱</li><li>骞舵病鏈夌湡姝ｆ嬁鍒板畬鏁撮槻瀹堢郴缁熴€?/li></ul>
-<h2>25.18 璇細浜岋細鍙鎸佽偂锛屽氨鎬昏椤烘墜鍗?Call</h2>
-<p>涔熶笉瀵广€?/p>
-<p>濡傛灉浣狅細</p>
-<ul><li>鐗瑰埆鐪嬪锛?/li><li>瑙夊緱鐭湡寰堝彲鑳藉姞閫熶笂娑紱</li><li>鎴栨牴鏈笉鎰垮湪涓婃柟浠讳綍浠蜂綅鍗栧嚭鑲＄エ锛?/li></ul>
-<p>閭?Covered Call 寰堝彲鑳藉彧浼氳浣犲悗鎮斻€?/p>
-<h2>25.19 璇細涓夛細鏉冨埄閲戣秺澶氳秺濂?/h2>
-<p>閫氬父涓嶆槸銆?/p>
-<p>鏉冨埄閲戝锛屽線寰€鎰忓懗鐫€锛?/p>
-<ul><li>琛屾潈浠锋洿杩戯紱</li><li>鍒版湡鏇磋繎锛?/li><li>鎴栬€呮尝鍔ㄦ洿楂橈紱</li><li>浣犺鍑哄幓鐨勪笢瑗夸篃鏇村銆?/li></ul>
-<p>鎵€浠ヤ笉鑳藉彧鐪嬧€滄敹浜嗗灏戦挶鈥濓紝杩樿鐪嬩綘涓鸿繖绗旈挶鍗栨帀浜嗕粈涔堛€?/p>
-<h2>25.20 璇細鍥涳細Covered Call 鑳芥浛浠?Protective Put 鍋氶暱鏈熷鍐?/h2>
-<p>涓嶈銆?/p>
-<p>Covered Call 鍙兘绠楀急淇濇姢锛?鑰屼笖鎸佺画闀挎湡鍋氬鍐诧紝浼氫笉鏂壓鐗蹭笂娑ㄦ敹鐩娿€?/p>
-<p>濡傛灉浣犵殑鏍稿績闇€姹傛槸鐪熸鐨勪笅鏂逛繚闄╋紝瀹冧笉鏄渶鍚堥€傜殑閭ｆ妸閿ゅ瓙銆?/p>
-<h2>25.21 璇細浜旓細琚鏉冨氨绛変簬鍋氶敊浜?/h2>
-<p>杩欎篃涓嶅銆?/p>
-<p>濡傛灉浣犲紑浠撳墠灏辩煡閬擄細</p>
-<ul><li>鑷繁鎰挎剰鍦ㄨ繖涓环浣嶅崠锛?/li><li>杩欐湰鏉ュ氨鏄鍔ㄦ鐩堟垨閫€鍑鸿鍒掔殑涓€閮ㄥ垎锛?/li></ul>
-<p>閭ｈ琛屾潈瀹屽叏鍙兘鏄瓥鐣ユ寜棰勬湡瀹屾垚銆?/p>
-<p>鐪熸鐨勯棶棰橀€氬父鏄細</p>
-<ul><li>寮€浠撴椂娌℃妸鑷繁鍒板簳鎰夸笉鎰挎剰鍗栬偂绁ㄦ兂娓呮銆?/li></ul>
-<h2>25.22 璇細鍏細琛屾潈浠峰彧鏄洰鏍囦环锛屼笉鐢ㄧ Delta</h2>
-<p>杩欐伆鎭颁細璁╀綘姘歌繙鐞嗚В涓嶆繁銆?/p>
-<p>琛屾潈浠锋湰璐ㄤ笂鏄湪鍐冲畾锛?/p>
-<ul><li>浣犵殑缁勫悎杩樺墿澶氬皯鐪嬫定绋嬪害锛?/li><li>浣犵殑瀵瑰啿寮哄急濡備綍锛?/li><li>浣犺琛屾潈鐨勬鐜囨湁澶氬ぇ锛?/li><li>浣犳槸鍦ㄥ仛鏀剁銆佹鐩堣繕鏄洿鍍忓崐鍑忎粨銆?/li></ul>
-<p>鎵€浠ヤ竴鏃﹀紑濮嬬敤 Covered Call锛屾渶濂藉敖蹇舰鎴愯繖涓弽灏勶細</p>
-<blockquote><p><strong>鎴戜笉鏄湪閫変竴涓暟瀛楋紝鎴戞槸鍦ㄩ€変竴濂?Delta 鎬ф牸銆?/strong></p></blockquote>
-<h1>涔濄€佹妸杩欎竴绔犳敹浣忥細Covered Call 鐨勭湡姝ｉ毦鐐癸紝涓嶅湪缁撴瀯锛岃€屽湪鐩殑</h1>
-<h2>25.23 鏈珷浣犳渶璇ュ甫璧扮殑涓冨彞璇?/h2>
-<p>1. <strong>Covered Call = 鎸佹湁姝ｈ偂 + 鍗栧嚭 Call锛屾湰璐ㄤ笂鏄湪鍗栨帀涓€閮ㄥ垎涓婃定绌洪棿銆?/strong> 2. <strong>瀹冪殑鏈€澶ф敹鐩婃槸灏侀《鐨勶紝涓嬭穼涔熷彧鏈夋湁闄愮紦鍐层€?/strong> 3. <strong>瀹冩渶閫傚悎鐢ㄥ湪浣犳湰鏉ュ氨鎰挎剰鎸佹湁銆佽€屼笖涓嶇煭鏈熺湅鍧忕殑鑲＄エ涓娿€?/strong> 4. <strong>鏀剁銆佹鐩堛€侀檷浣庡紑浠撴垚鏈€佸急瀵瑰啿锛屾槸鍥涚涓嶅悓浠诲姟锛屽埆娣风潃鍋氥€?/strong> 5. <strong>鍒版湡鏃堕棿鍐冲畾绠＄悊棰戠巼鍜?Gamma 鍘嬪姏锛屼笉鑳藉彧鐪嬫潈鍒╅噾澶у皬銆?/strong> 6. <strong>閫夋嫨琛屾潈浠凤紝鏈川涓婃槸鍦ㄩ€?Delta锛屼篃鏄湪閫夎嚜宸辫繕瑕佷繚鐣欏灏戠湅娑ㄦ毚闇层€?/strong> 7. <strong>璇ヤ笉璇ヨ琛屾潈銆佽涓嶈 roll锛岀瓟妗堜笉鍦ㄥ競鍦轰笂锛岃€屽湪浣犲紑浠撴椂鍒板簳鎯冲畬鎴愪粈涔堜换鍔°€?/strong></p>
-<p>Covered Call 涔嬫墍浠ュ父琚鐢紝涓嶆槸鍥犱负瀹冨お澶嶆潅锛?鑰屾槸鍥犱负瀹冨お鍍忎竴涓€滈『鎵嬪氨鑳藉仛鈥濈殑鍔ㄤ綔銆?/p>
-<p>鐪熸鎴愮啛鐨勪娇鐢ㄦ柟寮忥紝鏄厛鎶婄洰鐨勮娓呮锛屽啀寮€浠撱€?/p>
-<p>鍚﹀垯浣犳敹鐨勪笉鏄锛屽父甯稿彧鏄湭鏉ュ悗鎮旂殑棰勪粯娆俱€?/p>
-<h1>鍗併€佽嚜娴嬮</h1>
-<p>1. 涓轰粈涔?Covered Call 鐨勬渶澶ч闄╀笉鑳界畝鍗曠悊瑙ｆ垚鈥滃嚑涔庢病鏈夐闄┾€濓紵 2. 鍚屾牱鏄崠 Call锛屾敹绉熴€佹鐩堝拰瀵瑰啿杩欎笁绉嶅満鏅殑鏍稿績浠诲姟鍒嗗埆鏈変粈涔堜笉鍚岋紵 3. 涓轰粈涔堣 OTM銆丄TM銆両TM Covered Call 鐨勫尯鍒紝鏈川涓婃槸 Delta 鎬ф牸鐨勫尯鍒紵 4. 濡傛灉鑲′环涓婃定瀵艰嚧鍗栧嚭 Call 鐨勭粷瀵?Delta 鍙樺ぇ锛屼负浠€涔堜綘鐨勭粍鍚堢湅娑ㄧ▼搴︿細涓嬮檷锛?5. 浠€涔堟椂鍊欎綘搴旇鎺ュ彈琚鏉冿紝浠€涔堟椂鍊欐洿閫傚悎涔板洖鎴?roll锛?6. 濡傛灉浣犵湡姝ｆ媴蹇冪殑鏄ぇ璺岋紝涓轰粈涔?Protective Put 寰€寰€姣?Covered Call 鏇村棰橈紵</p>
-<h1>鏈珷涓€鍙ヨ瘽鎬荤粨</h1>
-<blockquote><p><strong>Covered Call 鐪熸楂樻槑鐨勫湴鏂癸紝涓嶆槸澶氭敹浜嗕竴绗旀潈鍒╅噾锛岃€屾槸浣犺兘涓嶈兘鍦ㄥ紑浠撳墠灏辫娓咃細鎴戝埌搴曟槸鍦ㄥ崠涓婃定銆佸崠鏃堕棿锛岃繕鏄湪鍗栨帀鑷繁鏈潵鐨勫悗鎮旂┖闂淬€?/strong></p></blockquote>
-<h2>涓嬩竴绔犻鍛婏細Sell Put 涓?Cash-Secured Put鈥斺€旂湅娑ㄥ缓浠撱€佹敹绉熶笌鎺ヨ偂绾緥</h2>
-<p>Covered Call 璁茬殑鏄€滄垜宸茬粡鏈夎偂绁紝鎬庝箞缁忚惀鎸佷粨鈥濄€?/p>
-<p>涓嬩竴绔?Sell Put 璁茬殑鍒欐洿鍍忥細</p>
-<ul><li>鎴戣繕娌′拱鍒帮紱</li><li>浣嗗鏋滀环鏍煎洖鍒版煇涓綅缃紝鎴戞効鎰忔帴锛?/li><li>鍦ㄧ瓑寰呰繃绋嬩腑锛屾垜鑳戒笉鑳藉厛鎶婃潈鍒╅噾鏀惰繘鏉ャ€?/li></ul>
-<p>杩欎篃鏄负浠€涔堝畠鍜?Covered Call 楠ㄦ灦寰堝儚锛屼换鍔″嵈甯稿父涓嶅悓銆?/p>
+<ul><li>保护弱；</li><li>只能靠权利金提供有限缓冲；</li><li>你不用额外掏钱，但要用上方空间来付账。</li></ul>
+<p>所以如果你的真实需求是：</p>
+<ul><li><strong>我非常怕大跌；</strong></li><li><strong>我不想只是缓冲一点，而是想真正托住下方；</strong></li></ul>
+<p>那 Protective Put 通常更对题。</p>
+<p>如果你的真实需求是：</p>
+<ul><li><strong>我愿意牺牲一部分上涨；</strong></li><li><strong>换一点收入和一点缓冲；</strong></li><li><strong>短期先把仓位情绪压下来；</strong></li></ul>
+<p>那 Covered Call 才更合适。</p>
+<p>这两者没有谁绝对更好，只有谁更匹配你的任务。</p>
+<h1>八、新手最容易犯的六个 Covered Call 误会</h1>
+<h2>25.17 误会一：Covered Call 是低风险收息神器</h2>
+<p>不是。</p>
+<p>下跌风险的大头仍然来自正股。</p>
+<p>你只是：</p>
+<ul><li>收了一笔权利金；</li><li>把成本垫低一点；</li><li>并没有真正拿到完整防守系统。</li></ul>
+<h2>25.18 误会二：只要持股，就总该顺手卖 Call</h2>
+<p>也不对。</p>
+<p>如果你：</p>
+<ul><li>特别看多；</li><li>觉得短期很可能加速上涨；</li><li>或根本不愿在上方任何价位卖出股票；</li></ul>
+<p>那 Covered Call 很可能只会让你后悔。</p>
+<h2>25.19 误会三：权利金越多越好</h2>
+<p>通常不是。</p>
+<p>权利金多，往往意味着：</p>
+<ul><li>行权价更近；</li><li>到期更近；</li><li>或者波动更高；</li><li>你让出去的东西也更多。</li></ul>
+<p>所以不能只看“收了多少钱”，还要看你为这笔钱卖掉了什么。</p>
+<h2>25.20 误会四：Covered Call 能替代 Protective Put 做长期对冲</h2>
+<p>不行。</p>
+<p>Covered Call 只能算弱保护， 而且持续长期做对冲，会不断牺牲上涨收益。</p>
+<p>如果你的核心需求是真正的下方保险，它不是最合适的那把锤子。</p>
+<h2>25.21 误会五：被行权就等于做错了</h2>
+<p>这也不对。</p>
+<p>如果你开仓前就知道：</p>
+<ul><li>自己愿意在这个价位卖；</li><li>这本来就是被动止盈或退出计划的一部分；</li></ul>
+<p>那被行权完全可能是策略按预期完成。</p>
+<p>真正的问题通常是：</p>
+<ul><li>开仓时没把自己到底愿不愿意卖股票想清楚。</li></ul>
+<h2>25.22 误会六：行权价只是目标价，不用管 Delta</h2>
+<p>这恰恰会让你永远理解不深。</p>
+<p>行权价本质上是在决定：</p>
+<ul><li>你的组合还剩多少看涨程度；</li><li>你的对冲强弱如何；</li><li>你被行权的概率有多大；</li><li>你是在做收租、止盈还是更像半减仓。</li></ul>
+<p>所以一旦开始用 Covered Call，最好尽快形成这个反射：</p>
+<blockquote><p><strong>我不是在选一个数字，我是在选一套 Delta 性格。</strong></p></blockquote>
+<h1>九、把这一章收住：Covered Call 的真正难点，不在结构，而在目的</h1>
+<h2>25.23 本章你最该带走的七句话</h2>
+<p>1. <strong>Covered Call = 持有正股 + 卖出 Call，本质上是在卖掉一部分上涨空间。</strong> 2. <strong>它的最大收益是封顶的，下跌也只有有限缓冲。</strong> 3. <strong>它最适合用在你本来就愿意持有、而且不短期看坏的股票上。</strong> 4. <strong>收租、止盈、降低开仓成本、弱对冲，是四种不同任务，别混着做。</strong> 5. <strong>到期时间决定管理频率和 Gamma 压力，不能只看权利金大小。</strong> 6. <strong>选择行权价，本质上是在选 Delta，也是在选自己还要保留多少看涨暴露。</strong> 7. <strong>该不该被行权、该不该 roll，答案不在市场上，而在你开仓时到底想完成什么任务。</strong></p>
+<p>Covered Call 之所以常被误用，不是因为它太复杂， 而是因为它太像一个“顺手就能做”的动作。</p>
+<p>真正成熟的使用方式，是先把目的讲清楚，再开仓。</p>
+<p>否则你收的不是租，常常只是未来后悔的预付款。</p>
+<h1>十、自测题</h1>
+<p>1. 为什么 Covered Call 的最大风险不能简单理解成“几乎没有风险”？ 2. 同样是卖 Call，收租、止盈和对冲这三种场景的核心任务分别有什么不同？ 3. 为什么说 OTM、ATM、ITM Covered Call 的区别，本质上是 Delta 性格的区别？ 4. 如果股价上涨导致卖出 Call 的绝对 Delta 变大，为什么你的组合看涨程度会下降？ 5. 什么时候你应该接受被行权，什么时候更适合买回或 roll？ 6. 如果你真正担心的是大跌，为什么 Protective Put 往往比 Covered Call 更对题？</p>
+<h1>本章一句话总结</h1>
+<blockquote><p><strong>Covered Call 真正高明的地方，不是多收了一笔权利金，而是你能不能在开仓前就说清：我到底是在卖上涨、卖时间，还是在卖掉自己未来的后悔空间。</strong></p></blockquote>
+<h2>下一章预告：Sell Put 与 Cash-Secured Put——看涨建仓、收租与接股纪律</h2>
+<p>Covered Call 讲的是“我已经有股票，怎么经营持仓”。</p>
+<p>下一章 Sell Put 讲的则更像：</p>
+<ul><li>我还没买到；</li><li>但如果价格回到某个位置，我愿意接；</li><li>在等待过程中，我能不能先把权利金收进来。</li></ul>
+<p>这也是为什么它和 Covered Call 骨架很像，任务却常常不同。</p>
             </article>
         </section>
 
@@ -589,27 +589,27 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-navigation-title">绔犺妭瀵艰埅</h2>
-                    <p class="section-subtitle">鏄惧紡淇濈暀涓婁竴绔?/ 杩斿洖璇剧▼ / 涓嬩竴绔犱笁涓彲瑙佹Ы浣嶏紝渚夸簬鐢熸垚鍣ㄧǔ瀹氬～鍏?/p>
+                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
+                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
                 </div>
             </div>
 
             <div class="chapter-nav-card">
                 <div class="chapter-nav-grid">
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">涓婁竴绔?/div>
-                        <a class="chapter-nav-link" href="./24.html">绗?24 绔?路 Protective Put</a>
-                        <p>鎶婁繚鎶ゆ€?Put 鏀惧洖鐪熷疄鎸佷粨锛岃娓呬繚闄╅€昏緫銆佽鏉冧环鍙栬垗涓庝繚鎶ゆ垚鏈帶鍒躲€?/p>
+                        <div class="chapter-nav-label">上一章</div>
+                        <a class="chapter-nav-link" href="./24.html">第 24 章 · Protective Put</a>
+                        <p>把保护性 Put 放回真实持仓，讲清保险逻辑、行权价取舍与保护成本控制。</p>
                     </div>
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">杩斿洖璇剧▼</div>
-                        <a class="chapter-nav-link" href="./index.html">缇庤偂鏈熸潈鏁欐潗 鐩綍</a>
-                        <p>杩斿洖璇剧▼鐩綍锛屾寜 section 鍜?batch 鏌ョ湅鍏ㄥ眬杩涘害銆?/p>
+                        <div class="chapter-nav-label">返回课程</div>
+                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
+                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
                     </div>
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">涓嬩竴绔?/div>
-                        <a class="chapter-nav-link" href="./26.html">绗?26 绔?路 Sell Put</a>
-                        <p>鎶婂崠 Put 璁叉垚浠锋牸鍨嬪缓浠撴壙璇猴紝璁叉竻鎺ヨ偂绾緥銆佺泩浜忓钩琛＄偣涓庣幇閲戞媴淇濈殑鍋ュ悍鎵撳紑鏂瑰紡銆?/p>
+                        <div class="chapter-nav-label">下一章</div>
+                        <a class="chapter-nav-link" href="./26.html">第 26 章 · Sell Put</a>
+                        <p>把卖 Put 讲成价格型建仓承诺，讲清接股纪律、盈亏平衡点与现金担保的健康打开方式。</p>
                     </div>
                 </div>
             </div>
@@ -617,15 +617,15 @@
     </main>
 
     <footer>
-        <p>鏈熸潈鏁欐潗 路 缁撴瀯鍖栧涔?路 HTML 浼樺厛</p>
+        <p>期权教材 · 结构化学习 · HTML 优先</p>
         <p class="disclaimer">
-            鍏嶈矗澹版槑锛氭湰鏁欐潗椤甸潰浠呬緵瀛︿範浜ゆ祦浣跨敤锛屼笉鏋勬垚浠讳綍鎶曡祫寤鸿銆傛湡鏉冧氦鏄撴秹鍙婃潬鏉嗐€佹椂闂存崯鑰椾笌娴佸姩鎬ч闄╋紝鍔″繀缁撳悎鑷韩鎯呭喌鐙珛鍒ゆ柇銆?
+            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
         </p>
     </footer>
 
-    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="鍒囨崲娣辫壊妯″紡" title="鍒囨崲娣辫壊妯″紡">馃寭</button>
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="杩斿洖椤堕儴">鈫?/button>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260326review1"></script>
+    <script src="../js/main.js?v=20260326review2"></script>
 </body>
 </html>
