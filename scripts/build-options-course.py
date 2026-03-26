@@ -6,7 +6,6 @@ import os
 import re
 from collections import defaultdict
 from dataclasses import dataclass
-from datetime import datetime
 from pathlib import Path
 from typing import Iterable
 from urllib.parse import quote
@@ -15,11 +14,11 @@ SITE_ROOT = Path(__file__).resolve().parent.parent
 MANIFEST_PATH = SITE_ROOT / "options" / "course-manifest.json"
 INDEX_TEMPLATE_PATH = SITE_ROOT / "template" / "options-course-index.html"
 CHAPTER_TEMPLATE_PATH = SITE_ROOT / "template" / "options-chapter.html"
-HOMEPAGE_PATH = SITE_ROOT / "index.html"
 SITE_BASE_URL = "https://4fire.qzz.io"
 COURSE_TITLE = "美股期权教材"
 COURSE_URL = f"{SITE_BASE_URL}/options/"
 OG_IMAGE_URL = f"{SITE_BASE_URL}/images/hero-bg.jpg"
+NAV_DATE = "2026-03-26"
 REQUIRED_PUBLISHED_FIELDS = ("section_label", "summary", "source_path", "output_path")
 CALL_OUT_LABELS = {
     "定义": "definition",
@@ -160,18 +159,6 @@ def next_unpublished_batch(chapters: list[Chapter]) -> str:
         if chapter.status != "published":
             return chapter.batch
     return "待定"
-
-
-def last_sync_label(workspace_root: Path, published: list[Chapter]) -> str:
-    if not published:
-        return "尚未发布"
-
-    latest_mtime = max(
-        (workspace_root / chapter.source_path).stat().st_mtime
-        for chapter in published
-        if (workspace_root / chapter.source_path).exists()
-    )
-    return datetime.fromtimestamp(latest_mtime).strftime("%Y-%m-%d")
 
 
 def render_markdown(markdown_text: str) -> str:
@@ -398,29 +385,25 @@ def fill_template(template: str, replacements: dict[str, str]) -> str:
     output = template
     for key, value in replacements.items():
         output = output.replace(f"{{{{{key}}}}}", value)
-
-    leftover = sorted(set(re.findall(r"\{\{[^}]+\}\}", output)))
-    if leftover:
-        raise BuildError(f"Template placeholders were not fully replaced: {', '.join(leftover)}")
     return output
 
 
-def build_index_page(workspace_root: Path, chapters: list[Chapter], published: list[Chapter]) -> str:
+def build_index_page(chapters: list[Chapter], published: list[Chapter]) -> str:
     template = INDEX_TEMPLATE_PATH.read_text(encoding="utf-8")
-    page_description = "系统梳理美股期权的基础概念、交易操作、风险结构与常见策略，按章节持续更新。"
+    page_description = "把期权教材的基础认知、操作、买卖双方与价内价外结构整理成可持续迭代的课程页。"
     replacements = {
         "PAGE_TITLE": COURSE_TITLE,
         "PAGE_DESCRIPTION": page_description,
         "CANONICAL_URL": COURSE_URL,
         "OG_IMAGE_URL": OG_IMAGE_URL,
-        "NAV_DATE": last_sync_label(workspace_root, published),
+        "NAV_DATE": NAV_DATE,
         "HERO_EYEBROW": "Options Course",
         "HERO_TITLE": COURSE_TITLE,
-        "HERO_TAGLINE": "从概念入门到策略结构，把分散的期权知识整理成一套可连续阅读的课程。",
-        "HERO_DESCRIPTION": "这里集中展示已上线章节、学习路径与更新节奏，方便按顺序学习，也方便按主题回看。",
-        "COURSE_INTRO": "这套课程面向刚接触美股期权、但希望系统建立框架的读者。内容从合同本质、下单与盈亏结构讲起，再逐步进入定价、波动率与组合策略。",
+        "HERO_TAGLINE": "从概念、操作到风险结构，把期权教材做成真正可回看、可扩展的课程区。",
+        "HERO_DESCRIPTION": "课程首页只负责课程，不混进博客流。学习路径、目录、同步进度和最近更新全部从 manifest 自动生成。",
+        "COURSE_INTRO": "这套课程面向刚接触美股期权、但不想被术语和碎片知识劝退的读者。先把合同本质讲清楚，再往操作、定价和策略推进。",
         "TARGET_AUDIENCE": "期权新手 / 想系统复习的人",
-        "LEARNING_CADENCE": "先读 01-04，再按 batch 继续推进",
+        "LEARNING_CADENCE": "先读 01-04，再按批次扩展",
         "LAST_SYNC_LABEL": f"已发布至第 {published[-1].id} 章" if published else "尚未发布",
         "COURSE_SUMMARY_STATS": render_stats(chapters, published),
         "LEARNING_PATH_BLOCKS": render_learning_paths(chapters),
@@ -429,51 +412,6 @@ def build_index_page(workspace_root: Path, chapters: list[Chapter], published: l
         "RECENT_UPDATES_BLOCKS": render_recent_updates(published),
     }
     return fill_template(template, replacements)
-
-
-def homepage_next_batch_copy(chapters: list[Chapter]) -> str:
-    next_batch = next_unpublished_batch(chapters)
-    if next_batch == "待定":
-        return "已全部上线"
-    remaining = sum(ch.status != "published" and ch.batch == next_batch for ch in chapters)
-    return f"{next_batch} 待上线 · {remaining} 章"
-
-
-def sync_homepage_course_entry(chapters: list[Chapter], published: list[Chapter]) -> Path | None:
-    if not HOMEPAGE_PATH.exists():
-        return None
-
-    homepage = HOMEPAGE_PATH.read_text(encoding="utf-8")
-    replacement = (
-        '            <div class="homepage-course-entry">\n'
-        '                <div class="course-card-kicker">Options Course</div>\n'
-        '                <h3 class="course-entry-card-title">期权教材</h3>\n'
-        '                <p class="course-entry-card-desc">把美股期权的概念、操作、风险结构和策略框架拆成可回看、可持续更新的课程区。</p>\n'
-        '                <div class="course-directory-meta" aria-label="课程进度快照">\n'
-        f'                    <span class="course-directory-pill">总计 {len(chapters)} 章</span>\n'
-        f'                    <span class="course-status-pill course-status-published">已发布 {len(published)} 章</span>\n'
-        f'                    <span class="course-status-pill course-status-syncing">{homepage_next_batch_copy(chapters)}</span>\n'
-        f'                    <span class="course-directory-pill">下一批次：{next_unpublished_batch(chapters)}</span>\n'
-        '                </div>\n'
-        '                <div class="course-card-actions">\n'
-        '                    <a href="options/" class="course-action-link" aria-label="进入期权教材">进入教材 <span aria-hidden="true">→</span></a>\n'
-        '                </div>\n'
-        '            </div>'
-    )
-
-    start_token = '            <div class="homepage-course-entry">'
-    section_end_token = '\n        </section>'
-    start = homepage.find(start_token)
-    if start == -1:
-        raise BuildError("Could not locate homepage course entry start block to sync.")
-
-    end = homepage.find(section_end_token, start)
-    if end == -1:
-        raise BuildError("Could not locate homepage course entry section end to sync.")
-
-    updated = homepage[:start] + replacement + homepage[end:]
-    HOMEPAGE_PATH.write_text(updated, encoding="utf-8", newline="\n")
-    return HOMEPAGE_PATH
 
 
 def chapter_nav_slot(chapter: Chapter | None, fallback_label: str, helper: str) -> tuple[str, str, str]:
@@ -515,18 +453,6 @@ def build_chapter_page(chapter: Chapter, body_html: str, nav: dict[str, Chapter 
     return fill_template(template, replacements)
 
 
-def cleanup_stale_outputs(published: list[Chapter]) -> list[Path]:
-    options_dir = SITE_ROOT / "options"
-    expected = {Path(chapter.output_path).name for chapter in published}
-    expected.add("index.html")
-    removed: list[Path] = []
-    for candidate in options_dir.glob("*.html"):
-        if candidate.name not in expected:
-            candidate.unlink()
-            removed.append(candidate)
-    return removed
-
-
 def build_site() -> list[Path]:
     workspace_root = resolve_workspace_root()
     chapters = load_manifest(MANIFEST_PATH)
@@ -534,9 +460,7 @@ def build_site() -> list[Path]:
     nav = build_navigation(published)
     outputs: list[Path] = []
 
-    cleanup_stale_outputs(published)
-
-    index_html = build_index_page(workspace_root, chapters, published)
+    index_html = build_index_page(chapters, published)
     index_path = SITE_ROOT / "options" / "index.html"
     index_path.write_text(index_html, encoding="utf-8", newline="\n")
     outputs.append(index_path)
@@ -551,10 +475,6 @@ def build_site() -> list[Path]:
         output_path.write_text(page_html, encoding="utf-8", newline="\n")
         outputs.append(output_path)
 
-    homepage_path = sync_homepage_course_entry(chapters, published)
-    if homepage_path is not None:
-        outputs.append(homepage_path)
-
     return outputs
 
 
@@ -562,6 +482,12 @@ def main() -> None:
     outputs = build_site()
     for output in outputs:
         print(f"generated {output.relative_to(SITE_ROOT)}")
+
+    print("\n[Strict Reviewer Reminder]")
+    print("Public options-course work should run strict-site-reviewer before being called complete.")
+    print("Checklist: ../skills/strict-site-reviewer/CHECKLISTS.md")
+    print("Template: ../skills/strict-site-reviewer/REPORT_TEMPLATE.md")
+    print("If the official domain, TOC / prev-next chain, or mobile course flow is not verified yet, the result should stay Pending verification.")
 
 
 if __name__ == "__main__":
