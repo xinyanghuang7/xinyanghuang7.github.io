@@ -3511,7 +3511,20 @@ footer .disclaimer {
         top: 0;
     }
 
-    .nav-links { display: none; }
+    .nav-links {
+        display: flex;
+        order: 2;
+        width: 100%;
+        gap: 0.55rem;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding: 0.15rem 0 0.2rem;
+        scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
 
     .nav-container {
         padding: calc(0.85rem + env(safe-area-inset-top, 0px)) var(--space-md) 0.95rem;
@@ -3523,6 +3536,34 @@ footer .disclaimer {
     .logo {
         font-size: 1.25rem;
         letter-spacing: 0.14em;
+    }
+
+    .nav-links li {
+        flex: 0 0 auto;
+    }
+
+    .nav-links a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 2.35rem;
+        white-space: nowrap;
+        padding: 0.48rem 0.82rem;
+        border-radius: 999px;
+        border: 1px solid rgba(212,175,55,0.2);
+        background: rgba(255,255,255,0.03);
+        color: rgba(255,255,255,0.88);
+        font-size: 0.74rem;
+        letter-spacing: 0.08em;
+    }
+
+    .nav-links a::before {
+        display: none;
+    }
+
+    body.light-mode .nav-links a {
+        background: rgba(156,116,16,0.08);
+        border-color: rgba(156,116,16,0.22);
+        color: rgba(77,56,14,0.92) !important;
     }
 
     .nav-date {
