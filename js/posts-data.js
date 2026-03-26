@@ -1,6 +1,22 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-03-26",
+    "title": "2026年3月26日美股分析",
+    "desc": "2026年3月26日美股分析：Module 1 主角 ORCL，Oracle AI 数据库智能体与 Fusion Agentic Applications 更新；持仓 META/NVDA/NBIS 最新节点跟踪；组合动作地图",
+    "url": "posts/2026/03/26.html",
+    "keywords": [
+      "ORCL",
+      "Oracle",
+      "AI Agent",
+      "META",
+      "NVDA",
+      "NBIS",
+      "美股分析",
+      "持仓跟踪"
+    ]
+  },
+  {
     "date": "2026-03-25",
     "title": "2026年3月25日美股分析：SHOP 新主角 + 持仓决策区",
     "desc": "2026年3月25日美股分析：在 Module 1 新去重规则下，用 SHOP 作为全新主角，围绕高质量平台成长、AI 只是加速器这条主线，继续压实 META、NVDA、NBIS 的持仓决策区。",
