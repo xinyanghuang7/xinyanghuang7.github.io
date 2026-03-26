@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="通过 Covered Call、Protective Put 等经典结构，理解不同策略为何会呈现相近的风险收益形状。">
+    <meta name="description" content="閫氳繃 Covered Call銆丳rotective Put 绛夌粡鍏哥粨鏋勶紝鐞嗚В涓嶅悓绛栫暐涓轰綍浼氬憟鐜扮浉杩戠殑椋庨櫓鏀剁泭褰㈢姸銆?>
     <meta name="author" content="ValueInvest">
     <meta name="theme-color" content="#c9a227">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="canonical" href="https://4fire.qzz.io/options/13.html">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://4fire.qzz.io/options/13.html">
-    <meta property="og:title" content="经典组合与期权平价 | 美股期权教材">
-    <meta property="og:description" content="通过 Covered Call、Protective Put 等经典结构，理解不同策略为何会呈现相近的风险收益形状。">
+    <meta property="og:title" content="缁忓吀缁勫悎涓庢湡鏉冨钩浠?| 缇庤偂鏈熸潈鏁欐潗">
+    <meta property="og:description" content="閫氳繃 Covered Call銆丳rotective Put 绛夌粡鍏哥粨鏋勶紝鐞嗚В涓嶅悓绛栫暐涓轰綍浼氬憟鐜扮浉杩戠殑椋庨櫓鏀剁泭褰㈢姸銆?>
     <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="经典组合与期权平价 | 美股期权教材">
-    <meta name="twitter:description" content="通过 Covered Call、Protective Put 等经典结构，理解不同策略为何会呈现相近的风险收益形状。">
+    <meta name="twitter:title" content="缁忓吀缁勫悎涓庢湡鏉冨钩浠?| 缇庤偂鏈熸潈鏁欐潗">
+    <meta name="twitter:description" content="閫氳繃 Covered Call銆丳rotective Put 绛夌粡鍏哥粨鏋勶紝鐞嗚В涓嶅悓绛栫暐涓轰綍浼氬憟鐜扮浉杩戠殑椋庨櫓鏀剁泭褰㈢姸銆?>
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
-    <title>经典组合与期权平价 | 美股期权教材</title>
+    <title>缁忓吀缁勫悎涓庢湡鏉冨钩浠?| 缇庤偂鏈熸潈鏁欐潗</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260326site4">
+    <link rel="stylesheet" href="../css/style.css?v=20260326review1">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -191,8 +191,8 @@
     {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": "经典组合与期权平价",
-        "description": "通过 Covered Call、Protective Put 等经典结构，理解不同策略为何会呈现相近的风险收益形状。",
+        "headline": "缁忓吀缁勫悎涓庢湡鏉冨钩浠?,
+        "description": "閫氳繃 Covered Call銆丳rotective Put 绛夌粡鍏哥粨鏋勶紝鐞嗚В涓嶅悓绛栫暐涓轰綍浼氬憟鐜扮浉杩戠殑椋庨櫓鏀剁泭褰㈢姸銆?,
         "author": {
             "@type": "Person",
             "name": "ValueInvest"
@@ -205,7 +205,7 @@
         "mainEntityOfPage": "https://4fire.qzz.io/options/13.html",
         "isPartOf": {
             "@type": "Course",
-            "name": "美股期权教材",
+            "name": "缇庤偂鏈熸潈鏁欐潗",
             "url": "https://4fire.qzz.io/options/"
         },
         "image": [
@@ -215,39 +215,39 @@
     </script>
 </head>
 <body>
-    <a href="#main" class="skip-link">跳转到主内容</a>
-    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
+    <a href="#main" class="skip-link">璺宠浆鍒颁富鍐呭</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="椤甸潰闃呰杩涘害"></div>
 
     <header id="header">
         <div class="nav-container">
-            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
-            <nav aria-label="期权章节页主导航">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 棣栭〉">Value<span>Invest</span></a>
+            <nav aria-label="鏈熸潈绔犺妭椤典富瀵艰埅">
                 <ul class="nav-links">
-                    <li><a href="../index.html">返回首页</a></li>
-                    <li><a href="./index.html">返回课程</a></li>
-                    <li><a href="#chapter-navigation">章节导航</a></li>
+                    <li><a href="../index.html">杩斿洖棣栭〉</a></li>
+                    <li><a href="./index.html">杩斿洖璇剧▼</a></li>
+                    <li><a href="#chapter-navigation">绔犺妭瀵艰埅</a></li>
                 </ul>
             </nav>
-            <div class="nav-date">第 13 章</div>
+            <div class="nav-date">绗?13 绔?/div>
         </div>
     </header>
 
     <section class="hero" role="banner">
         <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
         <div class="hero-content">
-            <div class="subtitle">进阶结构与波动率篇</div>
-            <h1>第 13 章 · 经典组合与期权平价</h1>
-            <p class="tagline">进阶结构与波动率篇 · Batch 4</p>
-            <p class="hero-description">通过 Covered Call、Protective Put 等经典结构，理解不同策略为何会呈现相近的风险收益形状。</p>
+            <div class="subtitle">杩涢樁缁撴瀯涓庢尝鍔ㄧ巼绡?/div>
+            <h1>绗?13 绔?路 缁忓吀缁勫悎涓庢湡鏉冨钩浠?/h1>
+            <p class="tagline">杩涢樁缁撴瀯涓庢尝鍔ㄧ巼绡?路 Batch 4</p>
+            <p class="hero-description">閫氳繃 Covered Call銆丳rotective Put 绛夌粡鍏哥粨鏋勶紝鐞嗚В涓嶅悓绛栫暐涓轰綍浼氬憟鐜扮浉杩戠殑椋庨櫓鏀剁泭褰㈢姸銆?/p>
         </div>
-        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="鍚戜笅婊氬姩鍒扮珷鑺傛憳瑕?>鍚戜笅婊氬姩</a>
     </section>
 
-    <div class="chapter-meta-bar" aria-label="章节关键信息">
-        <div class="chapter-meta-pill">章节编号：第 13 章</div>
-        <div class="chapter-meta-pill">Section：进阶结构与波动率篇</div>
-        <div class="chapter-meta-pill">Batch：Batch 4 · 已发布</div>
-        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
+    <div class="chapter-meta-bar" aria-label="绔犺妭鍏抽敭淇℃伅">
+        <div class="chapter-meta-pill">绔犺妭缂栧彿锛氱 13 绔?/div>
+        <div class="chapter-meta-pill">Section锛氳繘闃剁粨鏋勪笌娉㈠姩鐜囩瘒</div>
+        <div class="chapter-meta-pill">Batch锛欱atch 4 路 宸插彂甯?/div>
+        <div class="chapter-meta-pill">鎵€灞炶绋嬶細<a class="chapter-meta-link" href="./index.html">缇庤偂鏈熸潈鏁欐潗</a></div>
     </div>
 
     <main id="main" class="chapter-shell">
@@ -255,13 +255,13 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">01</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
-                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
+                    <h2 class="section-title" id="chapter-summary-title">绔犺妭鎽樿</h2>
+                    <p class="section-subtitle">缁欒鑰呬竴涓厛璇绘噦妗嗘灦銆佸啀娣卞叆姝ｆ枃鐨勮惤鐐?/p>
                 </div>
             </div>
 
             <div class="chapter-summary-card">
-                <p>通过 Covered Call、Protective Put 等经典结构，理解不同策略为何会呈现相近的风险收益形状。</p>
+                <p>閫氳繃 Covered Call銆丳rotective Put 绛夌粡鍏哥粨鏋勶紝鐞嗚В涓嶅悓绛栫暐涓轰綍浼氬憟鐜扮浉杩戠殑椋庨櫓鏀剁泭褰㈢姸銆?/p>
             </div>
         </section>
 
@@ -269,454 +269,454 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">02</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
-                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
+                    <h2 class="section-title" id="chapter-content-title">绔犺妭姝ｆ枃</h2>
+                    <p class="section-subtitle">姝ｆ枃鍐呭鐢辩敓鎴愬櫒鐩存帴鍐欏叆 HTML锛岄粯璁ゆ棤鑴氭湰涔熷簲瀹屾暣鍙</p>
                 </div>
             </div>
 
             <article class="chapter-body-card">
-<h1>《美股期权教材》</h1>
-<h2>第13章 经典组合与期权平价：为什么 Covered Call、Protective Put、Short Put、Long Call 会互相“长得像”</h2>
-<blockquote><p>这一章一定要贴着图片看。</p>
-<p>因为你这组图其实给了一个非常好的学习顺序：</p>
-<p>1. 先看 <strong>Covered Call</strong> 到底是什么； 2. 再看它在真实账户里的几种常见用法； 3. 再看 <strong>Protective Put</strong> 是怎么给持仓上保险的； 4. 最后再回到一个更高阶的结论：</p>
-<ul><li>为什么 Covered Call 很像 Short Put；</li><li>为什么 Protective Put 很像 Long Call；</li><li>为什么买 Call + 卖 Put 又会像直接持股。</li></ul>
-<p>也就是说，这章最重要的不是背公式，而是建立一种新的视角：</p>
-<blockquote><p><strong>表面上动作不同、名字不同的策略，最后的风险收益结构，可能非常接近。</strong></p></blockquote>
-<p>一旦你把这一点看明白，期权在你眼里就不再是一堆零散招式，而会开始变成一种“拼风险形状”的系统。</p>
-<p>这一章的定位要先说清：</p>
-<ul><li><strong>第13章讲的是“结构识别”</strong>——看穿 Covered Call、Protective Put、Short Put、Long Call 之间为什么会互相“长得像”；</li><li><strong>后面的第24–26章讲的是“实战应用”</strong>——什么时候该用、怎么选行权价、怎么处理到期、roll 或接股；</li><li>所以这里不是把后面重复一遍，而是先把骨架看懂，再在后面把它们一个个落回真实交易。</li></ul></blockquote>
+<h1>銆婄編鑲℃湡鏉冩暀鏉愩€?/h1>
+<h2>绗?3绔?缁忓吀缁勫悎涓庢湡鏉冨钩浠凤細涓轰粈涔?Covered Call銆丳rotective Put銆丼hort Put銆丩ong Call 浼氫簰鐩糕€滈暱寰楀儚鈥?/h2>
+<blockquote><p>杩欎竴绔犱竴瀹氳璐寸潃鍥剧墖鐪嬨€?/p>
+<p>鍥犱负浣犺繖缁勫浘鍏跺疄缁欎簡涓€涓潪甯稿ソ鐨勫涔犻『搴忥細</p>
+<p>1. 鍏堢湅 <strong>Covered Call</strong> 鍒板簳鏄粈涔堬紱 2. 鍐嶇湅瀹冨湪鐪熷疄璐︽埛閲岀殑鍑犵甯歌鐢ㄦ硶锛?3. 鍐嶇湅 <strong>Protective Put</strong> 鏄€庝箞缁欐寔浠撲笂淇濋櫓鐨勶紱 4. 鏈€鍚庡啀鍥炲埌涓€涓洿楂橀樁鐨勭粨璁猴細</p>
+<ul><li>涓轰粈涔?Covered Call 寰堝儚 Short Put锛?/li><li>涓轰粈涔?Protective Put 寰堝儚 Long Call锛?/li><li>涓轰粈涔堜拱 Call + 鍗?Put 鍙堜細鍍忕洿鎺ユ寔鑲°€?/li></ul>
+<p>涔熷氨鏄锛岃繖绔犳渶閲嶈鐨勪笉鏄儗鍏紡锛岃€屾槸寤虹珛涓€绉嶆柊鐨勮瑙掞細</p>
+<blockquote><p><strong>琛ㄩ潰涓婂姩浣滀笉鍚屻€佸悕瀛椾笉鍚岀殑绛栫暐锛屾渶鍚庣殑椋庨櫓鏀剁泭缁撴瀯锛屽彲鑳介潪甯告帴杩戙€?/strong></p></blockquote>
+<p>涓€鏃︿綘鎶婅繖涓€鐐圭湅鏄庣櫧锛屾湡鏉冨湪浣犵溂閲屽氨涓嶅啀鏄竴鍫嗛浂鏁ｆ嫑寮忥紝鑰屼細寮€濮嬪彉鎴愪竴绉嶁€滄嫾椋庨櫓褰㈢姸鈥濈殑绯荤粺銆?/p>
+<p>杩欎竴绔犵殑瀹氫綅瑕佸厛璇存竻锛?/p>
+<ul><li><strong>绗?3绔犺鐨勬槸鈥滅粨鏋勮瘑鍒€?/strong>鈥斺€旂湅绌?Covered Call銆丳rotective Put銆丼hort Put銆丩ong Call 涔嬮棿涓轰粈涔堜細浜掔浉鈥滈暱寰楀儚鈥濓紱</li><li><strong>鍚庨潰鐨勭24鈥?6绔犺鐨勬槸鈥滃疄鎴樺簲鐢ㄢ€?/strong>鈥斺€斾粈涔堟椂鍊欒鐢ㄣ€佹€庝箞閫夎鏉冧环銆佹€庝箞澶勭悊鍒版湡銆乺oll 鎴栨帴鑲★紱</li><li>鎵€浠ヨ繖閲屼笉鏄妸鍚庨潰閲嶅涓€閬嶏紝鑰屾槸鍏堟妸楠ㄦ灦鐪嬫噦锛屽啀鍦ㄥ悗闈㈡妸瀹冧滑涓€涓釜钀藉洖鐪熷疄浜ゆ槗銆?/li></ul></blockquote>
 <hr>
-<h2>阅读导航：第一次读先抓结构，别急着跟公式较劲</h2>
-<p>这一章对初中级读者来说，最容易卡住的地方，不是 Covered Call 或 Protective Put 本身，而是后面那层“它们为什么会互相长得像”。</p>
-<p>所以第一遍读，我建议你先抓住两组最值钱的结构翻译：</p>
-<ul><li><strong>Protective Put ≈ Long Call</strong></li><li><strong>Covered Call ≈ Short Put</strong></li></ul>
-<p>你先别急着把 Put-Call Parity 的字母形式背下来。</p>
-<p>因为这一章真正要你学会的，不是公式本身，而是这件事：</p>
-<blockquote><p><strong>不同零件拼出来的仓位，最后可能在风险收益上非常接近。</strong></p></blockquote>
-<p>第一遍读的时候，你只要能回答下面三个问题，就已经抓到主干了：</p>
-<p>1. Covered Call 到底是在拿什么换权利金？ 2. Protective Put 到底是在花什么钱买什么保护？ 3. 为什么 Covered Call 和 Short Put、Protective Put 和 Long Call，看起来部件不同，结果却会很像？</p>
-<p>第二遍再去补：</p>
-<ul><li>Put-Call Parity 的严格表达；</li><li>Synthetic Long 为什么会越来越像持股；</li><li>这些结构等价在实战中意味着什么。</li></ul>
-<p>这样你会更像是在搭骨架，而不是一上来就被公式压住。</p>
+<h2>闃呰瀵艰埅锛氱涓€娆¤鍏堟姄缁撴瀯锛屽埆鎬ョ潃璺熷叕寮忚緝鍔?/h2>
+<p>杩欎竴绔犲鍒濅腑绾ц鑰呮潵璇达紝鏈€瀹规槗鍗′綇鐨勫湴鏂癸紝涓嶆槸 Covered Call 鎴?Protective Put 鏈韩锛岃€屾槸鍚庨潰閭ｅ眰鈥滃畠浠负浠€涔堜細浜掔浉闀垮緱鍍忊€濄€?/p>
+<p>鎵€浠ョ涓€閬嶈锛屾垜寤鸿浣犲厛鎶撲綇涓ょ粍鏈€鍊奸挶鐨勭粨鏋勭炕璇戯細</p>
+<ul><li><strong>Protective Put 鈮?Long Call</strong></li><li><strong>Covered Call 鈮?Short Put</strong></li></ul>
+<p>浣犲厛鍒€ョ潃鎶?Put-Call Parity 鐨勫瓧姣嶅舰寮忚儗涓嬫潵銆?/p>
+<p>鍥犱负杩欎竴绔犵湡姝ｈ浣犲浼氱殑锛屼笉鏄叕寮忔湰韬紝鑰屾槸杩欎欢浜嬶細</p>
+<blockquote><p><strong>涓嶅悓闆朵欢鎷煎嚭鏉ョ殑浠撲綅锛屾渶鍚庡彲鑳藉湪椋庨櫓鏀剁泭涓婇潪甯告帴杩戙€?/strong></p></blockquote>
+<p>绗竴閬嶈鐨勬椂鍊欙紝浣犲彧瑕佽兘鍥炵瓟涓嬮潰涓変釜闂锛屽氨宸茬粡鎶撳埌涓诲共浜嗭細</p>
+<p>1. Covered Call 鍒板簳鏄湪鎷夸粈涔堟崲鏉冨埄閲戯紵 2. Protective Put 鍒板簳鏄湪鑺变粈涔堥挶涔颁粈涔堜繚鎶わ紵 3. 涓轰粈涔?Covered Call 鍜?Short Put銆丳rotective Put 鍜?Long Call锛岀湅璧锋潵閮ㄤ欢涓嶅悓锛岀粨鏋滃嵈浼氬緢鍍忥紵</p>
+<p>绗簩閬嶅啀鍘昏ˉ锛?/p>
+<ul><li>Put-Call Parity 鐨勪弗鏍艰〃杈撅紱</li><li>Synthetic Long 涓轰粈涔堜細瓒婃潵瓒婂儚鎸佽偂锛?/li><li>杩欎簺缁撴瀯绛変环鍦ㄥ疄鎴樹腑鎰忓懗鐫€浠€涔堛€?/li></ul>
+<p>杩欐牱浣犱細鏇村儚鏄湪鎼鏋讹紝鑰屼笉鏄竴涓婃潵灏辫鍏紡鍘嬩綇銆?/p>
 <hr>
-<h1>一、先从最接地气的两个组合开始：Covered Call 和 Protective Put</h1>
-<h2>13.1 为什么这两个最适合当高阶入口</h2>
-<p>如果一上来就讲 Put-Call Parity 的公式，很多人会被吓跑。</p>
-<p>因为公式看起来像数学，不像交易。</p>
-<p>但你这组图的顺序很好，它没有先用公式吓人，而是先从两个非常接近真实账户的结构切进去：</p>
+<h1>涓€銆佸厛浠庢渶鎺ュ湴姘旂殑涓や釜缁勫悎寮€濮嬶細Covered Call 鍜?Protective Put</h1>
+<h2>13.1 涓轰粈涔堣繖涓や釜鏈€閫傚悎褰撻珮闃跺叆鍙?/h2>
+<p>濡傛灉涓€涓婃潵灏辫 Put-Call Parity 鐨勫叕寮忥紝寰堝浜轰細琚悡璺戙€?/p>
+<p>鍥犱负鍏紡鐪嬭捣鏉ュ儚鏁板锛屼笉鍍忎氦鏄撱€?/p>
+<p>浣嗕綘杩欑粍鍥剧殑椤哄簭寰堝ソ锛屽畠娌℃湁鍏堢敤鍏紡鍚撲汉锛岃€屾槸鍏堜粠涓や釜闈炲父鎺ヨ繎鐪熷疄璐︽埛鐨勭粨鏋勫垏杩涘幓锛?/p>
 <ul><li><strong>Covered Call</strong></li><li><strong>Protective Put</strong></li></ul>
-<p>为什么从它们开始特别好？</p>
-<p>因为它们都有一个共同点：</p>
-<blockquote><p><strong>你不是空手玩期权，而是在“本来就有正股仓位”的基础上，用期权去改造原来的仓位。</strong></p></blockquote>
-<p>这就比纯期权更贴近普通投资者真实的世界。</p>
-<p>很多人本来就有：</p>
-<ul><li>长期持有的股票；</li><li>已经盈利的核心仓位；</li><li>不想轻易卖掉的持仓；</li><li>想降低成本、增加收入、或者防一波大跌的现实需求。</li></ul>
-<p>这时候，Covered Call 和 Protective Put 就特别像两种“给现有持仓装配件”的方式：</p>
-<ul><li>一个是给持仓加租金；</li><li>一个是给持仓加保险。</li></ul>
-<p>这两个比喻非常重要，因为它们会让后面的高阶内容一直停留在人话层面：</p>
-<ul><li><strong>Covered Call = 收租</strong></li><li><strong>Protective Put = 买保险</strong></li></ul>
-<p>只要这两句一直抓住，后面再进公式也不会飘。</p>
+<p>涓轰粈涔堜粠瀹冧滑寮€濮嬬壒鍒ソ锛?/p>
+<p>鍥犱负瀹冧滑閮芥湁涓€涓叡鍚岀偣锛?/p>
+<blockquote><p><strong>浣犱笉鏄┖鎵嬬帺鏈熸潈锛岃€屾槸鍦ㄢ€滄湰鏉ュ氨鏈夋鑲′粨浣嶁€濈殑鍩虹涓婏紝鐢ㄦ湡鏉冨幓鏀归€犲師鏉ョ殑浠撲綅銆?/strong></p></blockquote>
+<p>杩欏氨姣旂函鏈熸潈鏇磋创杩戞櫘閫氭姇璧勮€呯湡瀹炵殑涓栫晫銆?/p>
+<p>寰堝浜烘湰鏉ュ氨鏈夛細</p>
+<ul><li>闀挎湡鎸佹湁鐨勮偂绁紱</li><li>宸茬粡鐩堝埄鐨勬牳蹇冧粨浣嶏紱</li><li>涓嶆兂杞绘槗鍗栨帀鐨勬寔浠擄紱</li><li>鎯抽檷浣庢垚鏈€佸鍔犳敹鍏ャ€佹垨鑰呴槻涓€娉㈠ぇ璺岀殑鐜板疄闇€姹傘€?/li></ul>
+<p>杩欐椂鍊欙紝Covered Call 鍜?Protective Put 灏辩壒鍒儚涓ょ鈥滅粰鐜版湁鎸佷粨瑁呴厤浠垛€濈殑鏂瑰紡锛?/p>
+<ul><li>涓€涓槸缁欐寔浠撳姞绉熼噾锛?/li><li>涓€涓槸缁欐寔浠撳姞淇濋櫓銆?/li></ul>
+<p>杩欎袱涓瘮鍠婚潪甯搁噸瑕侊紝鍥犱负瀹冧滑浼氳鍚庨潰鐨勯珮闃跺唴瀹逛竴鐩村仠鐣欏湪浜鸿瘽灞傞潰锛?/p>
+<ul><li><strong>Covered Call = 鏀剁</strong></li><li><strong>Protective Put = 涔颁繚闄?/strong></li></ul>
+<p>鍙杩欎袱鍙ヤ竴鐩存姄浣忥紝鍚庨潰鍐嶈繘鍏紡涔熶笉浼氶銆?/p>
 <hr>
-<h1>二、Covered Call：持股收租，但要接受上方利润被盖住</h1>
-<h2>13.2 最人话的定义：我手里先有 100 股，再把未来一段上涨空间租出去</h2>
-<p>图片里对 Covered Call 的定义非常清楚：</p>
-<ul><li>持有 100 股正股；</li><li>卖出 1 张对应的 Call。</li></ul>
-<p>把它翻成人话就是：</p>
-<blockquote><p><strong>我手里已经有货了，我愿意把未来一段上涨空间的一部分租出去，换一笔现在先到手的权利金。</strong></p></blockquote>
-<p>这里最关键的词就是：</p>
-<ul><li><strong>Covered（备兑）</strong></li></ul>
-<p>它不是普通的 Sell Call，而是：</p>
-<ul><li>你不是裸着卖；</li><li>你手里已经有现货；</li><li>所以后面真被行权，你至少有股票可以交。</li></ul>
-<p>这和裸卖 Call 是完全不同的动物。</p>
-<p>所以 Covered Call 的本质不是：</p>
-<ul><li>我在瞎赌上涨不会发生；</li></ul>
-<p>而更像：</p>
-<ul><li>我本来就持有股票；</li><li>我愿意在某个价格附近，把更高处那一截上涨让出去；</li><li>作为交换，我现在先收一笔钱。</li></ul>
+<h1>浜屻€丆overed Call锛氭寔鑲℃敹绉燂紝浣嗚鎺ュ彈涓婃柟鍒╂鼎琚洊浣?/h1>
+<h2>13.2 鏈€浜鸿瘽鐨勫畾涔夛細鎴戞墜閲屽厛鏈?100 鑲★紝鍐嶆妸鏈潵涓€娈典笂娑ㄧ┖闂寸鍑哄幓</h2>
+<p>鍥剧墖閲屽 Covered Call 鐨勫畾涔夐潪甯告竻妤氾細</p>
+<ul><li>鎸佹湁 100 鑲℃鑲★紱</li><li>鍗栧嚭 1 寮犲搴旂殑 Call銆?/li></ul>
+<p>鎶婂畠缈绘垚浜鸿瘽灏辨槸锛?/p>
+<blockquote><p><strong>鎴戞墜閲屽凡缁忔湁璐т簡锛屾垜鎰挎剰鎶婃湭鏉ヤ竴娈典笂娑ㄧ┖闂寸殑涓€閮ㄥ垎绉熷嚭鍘伙紝鎹竴绗旂幇鍦ㄥ厛鍒版墜鐨勬潈鍒╅噾銆?/strong></p></blockquote>
+<p>杩欓噷鏈€鍏抽敭鐨勮瘝灏辨槸锛?/p>
+<ul><li><strong>Covered锛堝鍏戯級</strong></li></ul>
+<p>瀹冧笉鏄櫘閫氱殑 Sell Call锛岃€屾槸锛?/p>
+<ul><li>浣犱笉鏄８鐫€鍗栵紱</li><li>浣犳墜閲屽凡缁忔湁鐜拌揣锛?/li><li>鎵€浠ュ悗闈㈢湡琚鏉冿紝浣犺嚦灏戞湁鑲＄エ鍙互浜ゃ€?/li></ul>
+<p>杩欏拰瑁稿崠 Call 鏄畬鍏ㄤ笉鍚岀殑鍔ㄧ墿銆?/p>
+<p>鎵€浠?Covered Call 鐨勬湰璐ㄤ笉鏄細</p>
+<ul><li>鎴戝湪鐬庤祵涓婃定涓嶄細鍙戠敓锛?/li></ul>
+<p>鑰屾洿鍍忥細</p>
+<ul><li>鎴戞湰鏉ュ氨鎸佹湁鑲＄エ锛?/li><li>鎴戞効鎰忓湪鏌愪釜浠锋牸闄勮繎锛屾妸鏇撮珮澶勯偅涓€鎴笂娑ㄨ鍑哄幓锛?/li><li>浣滀负浜ゆ崲锛屾垜鐜板湪鍏堟敹涓€绗旈挶銆?/li></ul>
 <hr>
-<h2>13.3 一个最具体的例子：苹果 150 成本，卖 160 Call 收 3 块，到底发生了什么</h2>
-<p>我们用图片里最适合新手理解的那种例子来讲。</p>
-<p>假设你手里有：</p>
-<ul><li>100 股苹果；</li><li>成本价 150。</li></ul>
-<p>你现在卖出：</p>
-<ul><li>1 张 160 的 Call；</li><li>收到 3 美元权利金。</li></ul>
-<p>这笔操作最人话的翻译是：</p>
-<ul><li>我仍然持有苹果；</li><li>但我愿意把“160 以上那段未来上涨”的一部分让出去；</li><li>作为交换，我今天先拿到 3 块钱。</li></ul>
-<p>现在分三种情况看。</p>
-<h3>情况 1：到期时股价在 155</h3>
-<p>这通常是 Covered Call 很舒服的结果。</p>
-<ul><li>正股从 150 涨到 155，你赚 5；</li><li>160 Call 没有真正打进价内，最后大概率作废；</li><li>你把 3 的权利金也全部留下。</li></ul>
-<p>所以你总体赚的是：</p>
-<ul><li>股票上涨这 5；</li><li>加上期权权利金这 3。</li></ul>
-<h3>情况 2：到期时股价在 160 附近</h3>
-<p>也很不错。</p>
-<ul><li>股票上涨 10；</li><li>Call 大概率贴近行权；</li><li>权利金 3 你也已经收到。</li></ul>
-<p>整体依然是漂亮结果。</p>
-<h3>情况 3：到期时股价冲到 175</h3>
-<p>这时候你不会亏，但你会开始感受到 Covered Call 的代价。</p>
-<p>因为：</p>
-<ul><li>你不是没赚钱；</li><li>但你会明显感觉到 160 以上那一大段上涨，你没全吃到。</li></ul>
-<p>也就是说，Covered Call 的核心交换是：</p>
-<blockquote><p><strong>少一点未来想象空间，换一笔现在就能落袋的真钱。</strong></p></blockquote>
-<p>这句话非常重要。</p>
+<h2>13.3 涓€涓渶鍏蜂綋鐨勪緥瀛愶細鑻规灉 150 鎴愭湰锛屽崠 160 Call 鏀?3 鍧楋紝鍒板簳鍙戠敓浜嗕粈涔?/h2>
+<p>鎴戜滑鐢ㄥ浘鐗囬噷鏈€閫傚悎鏂版墜鐞嗚В鐨勯偅绉嶄緥瀛愭潵璁层€?/p>
+<p>鍋囪浣犳墜閲屾湁锛?/p>
+<ul><li>100 鑲¤嫻鏋滐紱</li><li>鎴愭湰浠?150銆?/li></ul>
+<p>浣犵幇鍦ㄥ崠鍑猴細</p>
+<ul><li>1 寮?160 鐨?Call锛?/li><li>鏀跺埌 3 缇庡厓鏉冨埄閲戙€?/li></ul>
+<p>杩欑瑪鎿嶄綔鏈€浜鸿瘽鐨勭炕璇戞槸锛?/p>
+<ul><li>鎴戜粛鐒舵寔鏈夎嫻鏋滐紱</li><li>浣嗘垜鎰挎剰鎶娾€?60 浠ヤ笂閭ｆ鏈潵涓婃定鈥濈殑涓€閮ㄥ垎璁╁嚭鍘伙紱</li><li>浣滀负浜ゆ崲锛屾垜浠婂ぉ鍏堟嬁鍒?3 鍧楅挶銆?/li></ul>
+<p>鐜板湪鍒嗕笁绉嶆儏鍐电湅銆?/p>
+<h3>鎯呭喌 1锛氬埌鏈熸椂鑲′环鍦?155</h3>
+<p>杩欓€氬父鏄?Covered Call 寰堣垝鏈嶇殑缁撴灉銆?/p>
+<ul><li>姝ｈ偂浠?150 娑ㄥ埌 155锛屼綘璧?5锛?/li><li>160 Call 娌℃湁鐪熸鎵撹繘浠峰唴锛屾渶鍚庡ぇ姒傜巼浣滃簾锛?/li><li>浣犳妸 3 鐨勬潈鍒╅噾涔熷叏閮ㄧ暀涓嬨€?/li></ul>
+<p>鎵€浠ヤ綘鎬讳綋璧氱殑鏄細</p>
+<ul><li>鑲＄エ涓婃定杩?5锛?/li><li>鍔犱笂鏈熸潈鏉冨埄閲戣繖 3銆?/li></ul>
+<h3>鎯呭喌 2锛氬埌鏈熸椂鑲′环鍦?160 闄勮繎</h3>
+<p>涔熷緢涓嶉敊銆?/p>
+<ul><li>鑲＄エ涓婃定 10锛?/li><li>Call 澶ф鐜囪创杩戣鏉冿紱</li><li>鏉冨埄閲?3 浣犱篃宸茬粡鏀跺埌銆?/li></ul>
+<p>鏁翠綋渚濈劧鏄紓浜粨鏋溿€?/p>
+<h3>鎯呭喌 3锛氬埌鏈熸椂鑲′环鍐插埌 175</h3>
+<p>杩欐椂鍊欎綘涓嶄細浜忥紝浣嗕綘浼氬紑濮嬫劅鍙楀埌 Covered Call 鐨勪唬浠枫€?/p>
+<p>鍥犱负锛?/p>
+<ul><li>浣犱笉鏄病璧氶挶锛?/li><li>浣嗕綘浼氭槑鏄炬劅瑙夊埌 160 浠ヤ笂閭ｄ竴澶ф涓婃定锛屼綘娌″叏鍚冨埌銆?/li></ul>
+<p>涔熷氨鏄锛孋overed Call 鐨勬牳蹇冧氦鎹㈡槸锛?/p>
+<blockquote><p><strong>灏戜竴鐐规湭鏉ユ兂璞＄┖闂达紝鎹竴绗旂幇鍦ㄥ氨鑳借惤琚嬬殑鐪熼挶銆?/strong></p></blockquote>
+<p>杩欏彞璇濋潪甯搁噸瑕併€?/p>
 <hr>
-<h2>13.4 Covered Call 的收益图到底在表达什么</h2>
-<p>图片里收益图给得很直观：</p>
-<ul><li>下方不是完全没风险；</li><li>上涨前半段能赚钱；</li><li>但涨过某个位置后，上方会被压平。</li></ul>
-<p>如果把它翻成人话，你就能直接记住：</p>
-<blockquote><p><strong>Covered Call 很像持股那条上涨线，但上面被天花板盖住了一块。</strong></p></blockquote>
-<p>为什么？</p>
-<p>因为它本来就是两部分叠出来的：</p>
-<h3>部分 1：你持有正股</h3>
-<p>正股本来的图形是：</p>
-<ul><li>股价涨，一直赚；</li><li>股价跌，一直亏。</li></ul>
-<h3>部分 2：你卖出一张 Call</h3>
-<p>卖 Call 的效果是：</p>
-<ul><li>不大涨时，你舒服地拿权利金；</li><li>一旦涨太多，上方开始拖住你。</li></ul>
-<p>两者叠在一起就变成：</p>
-<ul><li>下跌时，你仍然有持股风险；</li><li>但因为先收了权利金，下跌初期会比纯持股稍微好一点；</li><li>上涨时，前半段还能跟着赚钱；</li><li>涨过行权价之后，上方利润开始封顶。</li></ul>
-<p>所以你以后看到 Covered Call，不要只想到“收租”，也要马上想到：</p>
-<ul><li>它不是防跌神器；</li><li>它只是给你一点点缓冲；</li><li>它真正改掉的，是<strong>上方收益结构</strong>。</li></ul>
+<h2>13.4 Covered Call 鐨勬敹鐩婂浘鍒板簳鍦ㄨ〃杈句粈涔?/h2>
+<p>鍥剧墖閲屾敹鐩婂浘缁欏緱寰堢洿瑙傦細</p>
+<ul><li>涓嬫柟涓嶆槸瀹屽叏娌￠闄╋紱</li><li>涓婃定鍓嶅崐娈佃兘璧氶挶锛?/li><li>浣嗘定杩囨煇涓綅缃悗锛屼笂鏂逛細琚帇骞炽€?/li></ul>
+<p>濡傛灉鎶婂畠缈绘垚浜鸿瘽锛屼綘灏辫兘鐩存帴璁颁綇锛?/p>
+<blockquote><p><strong>Covered Call 寰堝儚鎸佽偂閭ｆ潯涓婃定绾匡紝浣嗕笂闈㈣澶╄姳鏉跨洊浣忎簡涓€鍧椼€?/strong></p></blockquote>
+<p>涓轰粈涔堬紵</p>
+<p>鍥犱负瀹冩湰鏉ュ氨鏄袱閮ㄥ垎鍙犲嚭鏉ョ殑锛?/p>
+<h3>閮ㄥ垎 1锛氫綘鎸佹湁姝ｈ偂</h3>
+<p>姝ｈ偂鏈潵鐨勫浘褰㈡槸锛?/p>
+<ul><li>鑲′环娑紝涓€鐩磋禋锛?/li><li>鑲′环璺岋紝涓€鐩翠簭銆?/li></ul>
+<h3>閮ㄥ垎 2锛氫綘鍗栧嚭涓€寮?Call</h3>
+<p>鍗?Call 鐨勬晥鏋滄槸锛?/p>
+<ul><li>涓嶅ぇ娑ㄦ椂锛屼綘鑸掓湇鍦版嬁鏉冨埄閲戯紱</li><li>涓€鏃︽定澶锛屼笂鏂瑰紑濮嬫嫋浣忎綘銆?/li></ul>
+<p>涓よ€呭彔鍦ㄤ竴璧峰氨鍙樻垚锛?/p>
+<ul><li>涓嬭穼鏃讹紝浣犱粛鐒舵湁鎸佽偂椋庨櫓锛?/li><li>浣嗗洜涓哄厛鏀朵簡鏉冨埄閲戯紝涓嬭穼鍒濇湡浼氭瘮绾寔鑲＄◢寰ソ涓€鐐癸紱</li><li>涓婃定鏃讹紝鍓嶅崐娈佃繕鑳借窡鐫€璧氶挶锛?/li><li>娑ㄨ繃琛屾潈浠蜂箣鍚庯紝涓婃柟鍒╂鼎寮€濮嬪皝椤躲€?/li></ul>
+<p>鎵€浠ヤ綘浠ュ悗鐪嬪埌 Covered Call锛屼笉瑕佸彧鎯冲埌鈥滄敹绉熲€濓紝涔熻椹笂鎯冲埌锛?/p>
+<ul><li>瀹冧笉鏄槻璺岀鍣紱</li><li>瀹冨彧鏄粰浣犱竴鐐圭偣缂撳啿锛?/li><li>瀹冪湡姝ｆ敼鎺夌殑锛屾槸<strong>涓婃柟鏀剁泭缁撴瀯</strong>銆?/li></ul>
 <hr>
-<h1>三、图片里 Covered Call 的四种常见用法，要讲得特别实</h1>
-<h2>13.5 用法一：收租——这是最常见、也最容易理解的场景</h2>
-<p>图片里第一种用法，讲得很直接：</p>
-<ul><li>赚取期权费；</li><li>常用词就叫“收租金”。</li></ul>
-<p>这个比喻非常贴切。</p>
-<p>适合什么情况？</p>
-<ul><li>你本来就长期持有这只股票；</li><li>你短期不指望它暴涨；</li><li>你更在意给现有持仓加一点额外收入。</li></ul>
-<p>这个场景特别像什么？</p>
-<ul><li>我有一套房，我先把它租出去，收一笔租金；</li><li>但作为交换，某些灵活性我让掉了一部分。</li></ul>
-<p>图片里还强调了几点实操上的判断：</p>
-<h3>1）适合拿来做 Covered Call 的股票</h3>
-<p>不是所有股票都适合。</p>
-<p>更适合的是：</p>
-<ul><li>你愿意长期持有的；</li><li>流动性好的；</li><li>不至于天天像妖股一样剧烈乱飞的。</li></ul>
-<p>为什么？</p>
-<p>因为如果你拿一只你本来就不想长期拿、而且特别容易暴涨暴跌的票去做 Covered Call，你会很难受：</p>
-<ul><li>跌的时候照样疼；</li><li>涨得太猛时又会后悔把上方卖掉。</li></ul>
-<h3>2）到期日怎么选</h3>
-<p>图片里给了一个很实在的提醒：</p>
-<ul><li>太短：时间价值多，但你盯盘和处理的频率也高，Gamma 风险更重；</li><li>太长：灵活性下降，拖得久，效率未必最好。</li></ul>
-<p>翻成人话：</p>
-<ul><li>短租，租金密，但你更累；</li><li>长租，省事一点，但机会成本更大。</li></ul>
-<h3>3）行权价怎么选</h3>
-<p>本质是在问：</p>
-<ul><li>我愿意让出去多少上涨空间；</li><li>我想多收多少租金；</li><li>我到底更怕踏空，还是更想先多收一点钱。</li></ul>
-<p>所以 Covered Call 不是死规则，而是一道偏好题。</p>
+<h1>涓夈€佸浘鐗囬噷 Covered Call 鐨勫洓绉嶅父瑙佺敤娉曪紝瑕佽寰楃壒鍒疄</h1>
+<h2>13.5 鐢ㄦ硶涓€锛氭敹绉熲€斺€旇繖鏄渶甯歌銆佷篃鏈€瀹规槗鐞嗚В鐨勫満鏅?/h2>
+<p>鍥剧墖閲岀涓€绉嶇敤娉曪紝璁插緱寰堢洿鎺ワ細</p>
+<ul><li>璧氬彇鏈熸潈璐癸紱</li><li>甯哥敤璇嶅氨鍙€滄敹绉熼噾鈥濄€?/li></ul>
+<p>杩欎釜姣斿柣闈炲父璐村垏銆?/p>
+<p>閫傚悎浠€涔堟儏鍐碉紵</p>
+<ul><li>浣犳湰鏉ュ氨闀挎湡鎸佹湁杩欏彧鑲＄エ锛?/li><li>浣犵煭鏈熶笉鎸囨湜瀹冩毚娑紱</li><li>浣犳洿鍦ㄦ剰缁欑幇鏈夋寔浠撳姞涓€鐐归澶栨敹鍏ャ€?/li></ul>
+<p>杩欎釜鍦烘櫙鐗瑰埆鍍忎粈涔堬紵</p>
+<ul><li>鎴戞湁涓€濂楁埧锛屾垜鍏堟妸瀹冪鍑哄幓锛屾敹涓€绗旂閲戯紱</li><li>浣嗕綔涓轰氦鎹紝鏌愪簺鐏垫椿鎬ф垜璁╂帀浜嗕竴閮ㄥ垎銆?/li></ul>
+<p>鍥剧墖閲岃繕寮鸿皟浜嗗嚑鐐瑰疄鎿嶄笂鐨勫垽鏂細</p>
+<h3>1锛夐€傚悎鎷挎潵鍋?Covered Call 鐨勮偂绁?/h3>
+<p>涓嶆槸鎵€鏈夎偂绁ㄩ兘閫傚悎銆?/p>
+<p>鏇撮€傚悎鐨勬槸锛?/p>
+<ul><li>浣犳効鎰忛暱鏈熸寔鏈夌殑锛?/li><li>娴佸姩鎬уソ鐨勶紱</li><li>涓嶈嚦浜庡ぉ澶╁儚濡栬偂涓€鏍峰墽鐑堜贡椋炵殑銆?/li></ul>
+<p>涓轰粈涔堬紵</p>
+<p>鍥犱负濡傛灉浣犳嬁涓€鍙綘鏈潵灏变笉鎯抽暱鏈熸嬁銆佽€屼笖鐗瑰埆瀹规槗鏆存定鏆磋穼鐨勭エ鍘诲仛 Covered Call锛屼綘浼氬緢闅惧彈锛?/p>
+<ul><li>璺岀殑鏃跺€欑収鏍风柤锛?/li><li>娑ㄥ緱澶寷鏃跺張浼氬悗鎮旀妸涓婃柟鍗栨帀銆?/li></ul>
+<h3>2锛夊埌鏈熸棩鎬庝箞閫?/h3>
+<p>鍥剧墖閲岀粰浜嗕竴涓緢瀹炲湪鐨勬彁閱掞細</p>
+<ul><li>澶煭锛氭椂闂翠环鍊煎锛屼絾浣犵洴鐩樺拰澶勭悊鐨勯鐜囦篃楂橈紝Gamma 椋庨櫓鏇撮噸锛?/li><li>澶暱锛氱伒娲绘€т笅闄嶏紝鎷栧緱涔咃紝鏁堢巼鏈繀鏈€濂姐€?/li></ul>
+<p>缈绘垚浜鸿瘽锛?/p>
+<ul><li>鐭锛岀閲戝瘑锛屼絾浣犳洿绱紱</li><li>闀跨锛岀渷浜嬩竴鐐癸紝浣嗘満浼氭垚鏈洿澶с€?/li></ul>
+<h3>3锛夎鏉冧环鎬庝箞閫?/h3>
+<p>鏈川鏄湪闂細</p>
+<ul><li>鎴戞効鎰忚鍑哄幓澶氬皯涓婃定绌洪棿锛?/li><li>鎴戞兂澶氭敹澶氬皯绉熼噾锛?/li><li>鎴戝埌搴曟洿鎬曡笍绌猴紝杩樻槸鏇存兂鍏堝鏀朵竴鐐归挶銆?/li></ul>
+<p>鎵€浠?Covered Call 涓嶆槸姝昏鍒欙紝鑰屾槸涓€閬撳亸濂介銆?/p>
 <hr>
-<h2>13.6 用法二：被动止盈——我计划好未来上限，涨到那里就接受卖出</h2>
-<p>图片里第二种用法特别值得讲。</p>
-<p>很多人把 Covered Call 只理解成“收租”，其实它还有一个很实用的作用：</p>
-<blockquote><p><strong>被动止盈。</strong></p></blockquote>
-<p>什么意思？</p>
-<p>就是你本来心里就有一个大概的想法：</p>
-<ul><li>这只股票涨到某个位置，我也差不多愿意卖了；</li><li>那不如提前把那个位置附近的 Call 卖掉；</li><li>如果最后真涨到那儿，我就顺势被行权，同时先把权利金也拿了。</li></ul>
-<p>这和普通“挂一个卖出价”最大的区别在于：</p>
-<ul><li>你不是白等；</li><li>你在等待的过程中先收了一笔钱。</li></ul>
-<p>这就是为什么它特别适合那种：</p>
-<ul><li>本来就不看坏；</li><li>但也不指望无限上涨；</li><li>对未来有一个大概止盈预期的人。</li></ul>
-<p>这个用法很适合新手理解，因为它把 Covered Call 从“技术策略”重新讲回了“账户操作习惯”。</p>
+<h2>13.6 鐢ㄦ硶浜岋細琚姩姝㈢泩鈥斺€旀垜璁″垝濂芥湭鏉ヤ笂闄愶紝娑ㄥ埌閭ｉ噷灏辨帴鍙楀崠鍑?/h2>
+<p>鍥剧墖閲岀浜岀鐢ㄦ硶鐗瑰埆鍊煎緱璁层€?/p>
+<p>寰堝浜烘妸 Covered Call 鍙悊瑙ｆ垚鈥滄敹绉熲€濓紝鍏跺疄瀹冭繕鏈変竴涓緢瀹炵敤鐨勪綔鐢細</p>
+<blockquote><p><strong>琚姩姝㈢泩銆?/strong></p></blockquote>
+<p>浠€涔堟剰鎬濓紵</p>
+<p>灏辨槸浣犳湰鏉ュ績閲屽氨鏈変竴涓ぇ姒傜殑鎯虫硶锛?/p>
+<ul><li>杩欏彧鑲＄エ娑ㄥ埌鏌愪釜浣嶇疆锛屾垜涔熷樊涓嶅鎰挎剰鍗栦簡锛?/li><li>閭ｄ笉濡傛彁鍓嶆妸閭ｄ釜浣嶇疆闄勮繎鐨?Call 鍗栨帀锛?/li><li>濡傛灉鏈€鍚庣湡娑ㄥ埌閭ｅ効锛屾垜灏遍『鍔胯琛屾潈锛屽悓鏃跺厛鎶婃潈鍒╅噾涔熸嬁浜嗐€?/li></ul>
+<p>杩欏拰鏅€氣€滄寕涓€涓崠鍑轰环鈥濇渶澶х殑鍖哄埆鍦ㄤ簬锛?/p>
+<ul><li>浣犱笉鏄櫧绛夛紱</li><li>浣犲湪绛夊緟鐨勮繃绋嬩腑鍏堟敹浜嗕竴绗旈挶銆?/li></ul>
+<p>杩欏氨鏄负浠€涔堝畠鐗瑰埆閫傚悎閭ｇ锛?/p>
+<ul><li>鏈潵灏变笉鐪嬪潖锛?/li><li>浣嗕篃涓嶆寚鏈涙棤闄愪笂娑紱</li><li>瀵规湭鏉ユ湁涓€涓ぇ姒傛鐩堥鏈熺殑浜恒€?/li></ul>
+<p>杩欎釜鐢ㄦ硶寰堥€傚悎鏂版墜鐞嗚В锛屽洜涓哄畠鎶?Covered Call 浠庘€滄妧鏈瓥鐣モ€濋噸鏂拌鍥炰簡鈥滆处鎴锋搷浣滀範鎯€濄€?/p>
 <hr>
-<h2>13.7 用法三：主动止盈 / 锁定已有利润——这时它更像“我不想把到手利润全吐回去”</h2>
-<p>图片里第三种用法也很实战：</p>
-<ul><li>主动止盈；</li><li>锁定正股已有盈利。</li></ul>
-<p>这个场景通常是这样：</p>
-<ul><li>你手里的股票已经涨了不少；</li><li>你心里开始担心：再不处理，万一回调把利润吐回去怎么办；</li><li>但你又不是特别想今天就立刻卖掉正股。</li></ul>
-<p>这时候，卖一个更贴近的 Call，确实会有“锁定一部分结果”的作用。</p>
-<p>但这里要讲得很诚实：</p>
-<ul><li>这不是万能锁盈；</li><li>这是一种带取舍的锁盈。</li></ul>
-<p>因为你锁住的同时，也是在把未来进一步上涨的弹性切掉一部分。</p>
-<p>所以这个动作特别适合：</p>
-<ul><li>你已经有不错利润；</li><li>你对短期继续大涨没有特别强信心；</li><li>你愿意用一点上方空间去换更确定的落袋感。</li></ul>
+<h2>13.7 鐢ㄦ硶涓夛細涓诲姩姝㈢泩 / 閿佸畾宸叉湁鍒╂鼎鈥斺€旇繖鏃跺畠鏇村儚鈥滄垜涓嶆兂鎶婂埌鎵嬪埄娑﹀叏鍚愬洖鍘烩€?/h2>
+<p>鍥剧墖閲岀涓夌鐢ㄦ硶涔熷緢瀹炴垬锛?/p>
+<ul><li>涓诲姩姝㈢泩锛?/li><li>閿佸畾姝ｈ偂宸叉湁鐩堝埄銆?/li></ul>
+<p>杩欎釜鍦烘櫙閫氬父鏄繖鏍凤細</p>
+<ul><li>浣犳墜閲岀殑鑲＄エ宸茬粡娑ㄤ簡涓嶅皯锛?/li><li>浣犲績閲屽紑濮嬫媴蹇冿細鍐嶄笉澶勭悊锛屼竾涓€鍥炶皟鎶婂埄娑﹀悙鍥炲幓鎬庝箞鍔烇紱</li><li>浣嗕綘鍙堜笉鏄壒鍒兂浠婂ぉ灏辩珛鍒诲崠鎺夋鑲°€?/li></ul>
+<p>杩欐椂鍊欙紝鍗栦竴涓洿璐磋繎鐨?Call锛岀‘瀹炰細鏈夆€滈攣瀹氫竴閮ㄥ垎缁撴灉鈥濈殑浣滅敤銆?/p>
+<p>浣嗚繖閲岃璁插緱寰堣瘹瀹烇細</p>
+<ul><li>杩欎笉鏄竾鑳介攣鐩堬紱</li><li>杩欐槸涓€绉嶅甫鍙栬垗鐨勯攣鐩堛€?/li></ul>
+<p>鍥犱负浣犻攣浣忕殑鍚屾椂锛屼篃鏄湪鎶婃湭鏉ヨ繘涓€姝ヤ笂娑ㄧ殑寮规€у垏鎺変竴閮ㄥ垎銆?/p>
+<p>鎵€浠ヨ繖涓姩浣滅壒鍒€傚悎锛?/p>
+<ul><li>浣犲凡缁忔湁涓嶉敊鍒╂鼎锛?/li><li>浣犲鐭湡缁х画澶ф定娌℃湁鐗瑰埆寮轰俊蹇冿紱</li><li>浣犳効鎰忕敤涓€鐐逛笂鏂圭┖闂村幓鎹㈡洿纭畾鐨勮惤琚嬫劅銆?/li></ul>
 <hr>
-<h2>13.8 用法四：降低开仓成本——不是神仙省钱，而是用未来上方空间换今天的成本补贴</h2>
-<p>图片里第四种用法也特别重要：</p>
-<ul><li>降低开仓成本。</li></ul>
-<p>这句话很容易被讲玄乎，我直接把它讲成人话：</p>
-<blockquote><p><strong>你不是把成本凭空变没，而是在说：我愿意让出一点未来上涨空间，换现在先收一笔权利金来补贴成本。</strong></p></blockquote>
-<p>比如你本来在 150 买的股票，卖出一个 Call 收到 3 块。</p>
-<p>从会计角度看，你的净成本确实像从 150 被“补贴”到 147 了。</p>
-<p>但这个“补贴”不是白送的，它的来源是：</p>
-<ul><li>你把未来某个区间的上行弹性让出去了。</li></ul>
-<p>所以所有“Covered Call 可以降低成本”这种说法，都要配这句一起理解：</p>
-<blockquote><p><strong>它不是白省钱，而是在拿未来空间换现在补贴。</strong></p></blockquote>
-<p>这样才不虚。</p>
+<h2>13.8 鐢ㄦ硶鍥涳細闄嶄綆寮€浠撴垚鏈€斺€斾笉鏄浠欑渷閽憋紝鑰屾槸鐢ㄦ湭鏉ヤ笂鏂圭┖闂存崲浠婂ぉ鐨勬垚鏈ˉ璐?/h2>
+<p>鍥剧墖閲岀鍥涚鐢ㄦ硶涔熺壒鍒噸瑕侊細</p>
+<ul><li>闄嶄綆寮€浠撴垚鏈€?/li></ul>
+<p>杩欏彞璇濆緢瀹规槗琚鐜勪箮锛屾垜鐩存帴鎶婂畠璁叉垚浜鸿瘽锛?/p>
+<blockquote><p><strong>浣犱笉鏄妸鎴愭湰鍑┖鍙樻病锛岃€屾槸鍦ㄨ锛氭垜鎰挎剰璁╁嚭涓€鐐规湭鏉ヤ笂娑ㄧ┖闂达紝鎹㈢幇鍦ㄥ厛鏀朵竴绗旀潈鍒╅噾鏉ヨˉ璐存垚鏈€?/strong></p></blockquote>
+<p>姣斿浣犳湰鏉ュ湪 150 涔扮殑鑲＄エ锛屽崠鍑轰竴涓?Call 鏀跺埌 3 鍧椼€?/p>
+<p>浠庝細璁¤搴︾湅锛屼綘鐨勫噣鎴愭湰纭疄鍍忎粠 150 琚€滆ˉ璐粹€濆埌 147 浜嗐€?/p>
+<p>浣嗚繖涓€滆ˉ璐粹€濅笉鏄櫧閫佺殑锛屽畠鐨勬潵婧愭槸锛?/p>
+<ul><li>浣犳妸鏈潵鏌愪釜鍖洪棿鐨勪笂琛屽脊鎬ц鍑哄幓浜嗐€?/li></ul>
+<p>鎵€浠ユ墍鏈夆€淐overed Call 鍙互闄嶄綆鎴愭湰鈥濊繖绉嶈娉曪紝閮借閰嶈繖鍙ヤ竴璧风悊瑙ｏ細</p>
+<blockquote><p><strong>瀹冧笉鏄櫧鐪侀挶锛岃€屾槸鍦ㄦ嬁鏈潵绌洪棿鎹㈢幇鍦ㄨˉ璐淬€?/strong></p></blockquote>
+<p>杩欐牱鎵嶄笉铏氥€?/p>
 <hr>
-<h2>13.9 图片里还有一个很容易被忽略但很实用的点：Covered Call 也可以拿来做“弱对冲”</h2>
-<p>这一点很多教材一带而过，但你图片里专门点出来了，我觉得值得讲透。</p>
-<p>Covered Call 也可以拿来做一点点对冲，但它是：</p>
-<ul><li><strong>弱对冲</strong>；</li><li>不是完整保险。</li></ul>
-<p>为什么？</p>
-<p>因为你卖出 Call 收到的权利金，确实能在股票下跌时提供一点缓冲。</p>
-<p>但这个缓冲很有限：</p>
-<ul><li>股票小跌时，它像一个小垫子；</li><li>真遇到大跌，它根本不是 Protective Put 那种保险级别的保护。</li></ul>
-<p>所以你图片里把两者放在一起对比非常好：</p>
+<h2>13.9 鍥剧墖閲岃繕鏈変竴涓緢瀹规槗琚拷鐣ヤ絾寰堝疄鐢ㄧ殑鐐癸細Covered Call 涔熷彲浠ユ嬁鏉ュ仛鈥滃急瀵瑰啿鈥?/h2>
+<p>杩欎竴鐐瑰緢澶氭暀鏉愪竴甯﹁€岃繃锛屼絾浣犲浘鐗囬噷涓撻棬鐐瑰嚭鏉ヤ簡锛屾垜瑙夊緱鍊煎緱璁查€忋€?/p>
+<p>Covered Call 涔熷彲浠ユ嬁鏉ュ仛涓€鐐圭偣瀵瑰啿锛屼絾瀹冩槸锛?/p>
+<ul><li><strong>寮卞鍐?/strong>锛?/li><li>涓嶆槸瀹屾暣淇濋櫓銆?/li></ul>
+<p>涓轰粈涔堬紵</p>
+<p>鍥犱负浣犲崠鍑?Call 鏀跺埌鐨勬潈鍒╅噾锛岀‘瀹炶兘鍦ㄨ偂绁ㄤ笅璺屾椂鎻愪緵涓€鐐圭紦鍐层€?/p>
+<p>浣嗚繖涓紦鍐插緢鏈夐檺锛?/p>
+<ul><li>鑲＄エ灏忚穼鏃讹紝瀹冨儚涓€涓皬鍨瓙锛?/li><li>鐪熼亣鍒板ぇ璺岋紝瀹冩牴鏈笉鏄?Protective Put 閭ｇ淇濋櫓绾у埆鐨勪繚鎶ゃ€?/li></ul>
+<p>鎵€浠ヤ綘鍥剧墖閲屾妸涓よ€呮斁鍦ㄤ竴璧峰姣旈潪甯稿ソ锛?/p>
 <h3>Protective Put</h3>
-<ul><li>对冲更强；</li><li>下跌越多，保护越明显；</li><li>但成本高。</li></ul>
+<ul><li>瀵瑰啿鏇村己锛?/li><li>涓嬭穼瓒婂锛屼繚鎶よ秺鏄庢樉锛?/li><li>浣嗘垚鏈珮銆?/li></ul>
 <h3>Covered Call</h3>
-<ul><li>对冲更弱；</li><li>主要靠收到的权利金提供一点缓冲；</li><li>不会亏钱这话绝不能说，它只是稍微减震。</li></ul>
-<p>所以 Covered Call 做对冲时，最成熟的理解是：</p>
-<blockquote><p><strong>它不是拿来防大灾难的，它更像给持仓垫一层薄薄的缓冲垫。</strong></p></blockquote>
+<ul><li>瀵瑰啿鏇村急锛?/li><li>涓昏闈犳敹鍒扮殑鏉冨埄閲戞彁渚涗竴鐐圭紦鍐诧紱</li><li>涓嶄細浜忛挶杩欒瘽缁濅笉鑳借锛屽畠鍙槸绋嶅井鍑忛渿銆?/li></ul>
+<p>鎵€浠?Covered Call 鍋氬鍐叉椂锛屾渶鎴愮啛鐨勭悊瑙ｆ槸锛?/p>
+<blockquote><p><strong>瀹冧笉鏄嬁鏉ラ槻澶х伨闅剧殑锛屽畠鏇村儚缁欐寔浠撳灚涓€灞傝杽钖勭殑缂撳啿鍨€?/strong></p></blockquote>
 <hr>
-<h1>四、Protective Put：继续拿股票，但给下跌买一份保险</h1>
-<h2>13.10 最人话的定义：我不想卖股票，但我也不想裸着扛大跌</h2>
-<p>Protective Put 的标准结构是：</p>
-<ul><li>持有 100 股正股；</li><li>再买入 1 张 Put。</li></ul>
-<p>翻成人话特别简单：</p>
-<blockquote><p><strong>我继续拿着股票，但我再花一笔钱，买一份下跌保险。</strong></p></blockquote>
-<p>这就是它最核心的逻辑。</p>
-<p>它和 Covered Call 很像一组镜子：</p>
-<ul><li>Covered Call：给持仓加租金；</li><li>Protective Put：给持仓加保险。</li></ul>
-<p>这两个比喻如果记牢，后面所有高阶内容都会容易很多。</p>
+<h1>鍥涖€丳rotective Put锛氱户缁嬁鑲＄エ锛屼絾缁欎笅璺屼拱涓€浠戒繚闄?/h1>
+<h2>13.10 鏈€浜鸿瘽鐨勫畾涔夛細鎴戜笉鎯冲崠鑲＄エ锛屼絾鎴戜篃涓嶆兂瑁哥潃鎵涘ぇ璺?/h2>
+<p>Protective Put 鐨勬爣鍑嗙粨鏋勬槸锛?/p>
+<ul><li>鎸佹湁 100 鑲℃鑲★紱</li><li>鍐嶄拱鍏?1 寮?Put銆?/li></ul>
+<p>缈绘垚浜鸿瘽鐗瑰埆绠€鍗曪細</p>
+<blockquote><p><strong>鎴戠户缁嬁鐫€鑲＄エ锛屼絾鎴戝啀鑺变竴绗旈挶锛屼拱涓€浠戒笅璺屼繚闄┿€?/strong></p></blockquote>
+<p>杩欏氨鏄畠鏈€鏍稿績鐨勯€昏緫銆?/p>
+<p>瀹冨拰 Covered Call 寰堝儚涓€缁勯暅瀛愶細</p>
+<ul><li>Covered Call锛氱粰鎸佷粨鍔犵閲戯紱</li><li>Protective Put锛氱粰鎸佷粨鍔犱繚闄┿€?/li></ul>
+<p>杩欎袱涓瘮鍠诲鏋滆鐗紝鍚庨潰鎵€鏈夐珮闃跺唴瀹归兘浼氬鏄撳緢澶氥€?/p>
 <hr>
-<h2>13.11 Protective Put 适合什么样的人</h2>
-<p>它最适合的，不是那种本来就准备马上走人的仓位，而是下面这种心态：</p>
-<ul><li>我长期还想拿；</li><li>我不想因为短期担忧把股票卖掉；</li><li>但我也不想完全裸着扛大跌。</li></ul>
-<p>最典型的几个场景：</p>
-<h3>场景 1：财报前，不想卖掉核心仓位</h3>
-<p>长期逻辑没变，但财报节点不确定性太高。</p>
-<p>这时候：</p>
-<ul><li>直接卖股，可能太激进；</li><li>继续硬扛，又太裸；</li><li>买一张 Put，刚好把短期保护和长期持有拆开处理。</li></ul>
-<h3>场景 2：已经有较大盈利，不想全吐回去</h3>
-<p>股票涨了不少，你不想现在就卖，但也不想一波回撤把已得利润砸回去。</p>
-<p>这时候 Protective Put 会让你更心安。</p>
-<h3>场景 3：短期不确定，但长期没变</h3>
-<p>这其实是最常见、也最适合新手理解的场景。</p>
-<ul><li>我不是不看好；</li><li>我只是怕这段时间市场突然发疯；</li><li>我愿意花钱，换这段时间别裸奔。</li></ul>
+<h2>13.11 Protective Put 閫傚悎浠€涔堟牱鐨勪汉</h2>
+<p>瀹冩渶閫傚悎鐨勶紝涓嶆槸閭ｇ鏈潵灏卞噯澶囬┈涓婅蛋浜虹殑浠撲綅锛岃€屾槸涓嬮潰杩欑蹇冩€侊細</p>
+<ul><li>鎴戦暱鏈熻繕鎯虫嬁锛?/li><li>鎴戜笉鎯冲洜涓虹煭鏈熸媴蹇ф妸鑲＄エ鍗栨帀锛?/li><li>浣嗘垜涔熶笉鎯冲畬鍏ㄨ８鐫€鎵涘ぇ璺屻€?/li></ul>
+<p>鏈€鍏稿瀷鐨勫嚑涓満鏅細</p>
+<h3>鍦烘櫙 1锛氳储鎶ュ墠锛屼笉鎯冲崠鎺夋牳蹇冧粨浣?/h3>
+<p>闀挎湡閫昏緫娌″彉锛屼絾璐㈡姤鑺傜偣涓嶇‘瀹氭€уお楂樸€?/p>
+<p>杩欐椂鍊欙細</p>
+<ul><li>鐩存帴鍗栬偂锛屽彲鑳藉お婵€杩涳紱</li><li>缁х画纭墰锛屽張澶８锛?/li><li>涔颁竴寮?Put锛屽垰濂芥妸鐭湡淇濇姢鍜岄暱鏈熸寔鏈夋媶寮€澶勭悊銆?/li></ul>
+<h3>鍦烘櫙 2锛氬凡缁忔湁杈冨ぇ鐩堝埄锛屼笉鎯冲叏鍚愬洖鍘?/h3>
+<p>鑲＄エ娑ㄤ簡涓嶅皯锛屼綘涓嶆兂鐜板湪灏卞崠锛屼絾涔熶笉鎯充竴娉㈠洖鎾ゆ妸宸插緱鍒╂鼎鐮稿洖鍘汇€?/p>
+<p>杩欐椂鍊?Protective Put 浼氳浣犳洿蹇冨畨銆?/p>
+<h3>鍦烘櫙 3锛氱煭鏈熶笉纭畾锛屼絾闀挎湡娌″彉</h3>
+<p>杩欏叾瀹炴槸鏈€甯歌銆佷篃鏈€閫傚悎鏂版墜鐞嗚В鐨勫満鏅€?/p>
+<ul><li>鎴戜笉鏄笉鐪嬪ソ锛?/li><li>鎴戝彧鏄€曡繖娈垫椂闂村競鍦虹獊鐒跺彂鐤紱</li><li>鎴戞効鎰忚姳閽憋紝鎹㈣繖娈垫椂闂村埆瑁稿銆?/li></ul>
 <hr>
-<h2>13.12 Protective Put 的好处和坏处，必须一起看</h2>
-<p>图片里讲得很清楚，我这里直接翻成人话。</p>
-<h3>好处：保留上涨，限制下跌</h3>
-<p>你持有正股，所以：</p>
-<ul><li>如果股价继续涨，你依然能继续参与上涨。</li></ul>
-<p>你又持有 Put，所以：</p>
-<ul><li>如果股价大跌，Put 会增值，帮你对冲掉一部分甚至很大一部分伤害。</li></ul>
-<p>所以 Protective Put 最漂亮的地方就是：</p>
-<blockquote><p><strong>上面还开着，下面开始有护栏。</strong></p></blockquote>
-<h3>坏处：贵</h3>
-<p>这也是它最真实的问题。</p>
-<p>保险从来都不是免费的。</p>
-<p>尤其在下面这些情况下，Protective Put 会显得更贵：</p>
-<ul><li>你买得比较靠近 ATM；</li><li>市场本来就很恐慌，IV 很高；</li><li>你买的是比较近、比较厚的保护。</li></ul>
-<p>所以 Protective Put 最大的现实矛盾是：</p>
-<blockquote><p><strong>我愿不愿意花这笔保费，换一段时间的心安？</strong></p></blockquote>
-<p>这不是数学题，是偏好题。</p>
+<h2>13.12 Protective Put 鐨勫ソ澶勫拰鍧忓锛屽繀椤讳竴璧风湅</h2>
+<p>鍥剧墖閲岃寰楀緢娓呮锛屾垜杩欓噷鐩存帴缈绘垚浜鸿瘽銆?/p>
+<h3>濂藉锛氫繚鐣欎笂娑紝闄愬埗涓嬭穼</h3>
+<p>浣犳寔鏈夋鑲★紝鎵€浠ワ細</p>
+<ul><li>濡傛灉鑲′环缁х画娑紝浣犱緷鐒惰兘缁х画鍙備笌涓婃定銆?/li></ul>
+<p>浣犲張鎸佹湁 Put锛屾墍浠ワ細</p>
+<ul><li>濡傛灉鑲′环澶ц穼锛孭ut 浼氬鍊硷紝甯綘瀵瑰啿鎺変竴閮ㄥ垎鐢氳嚦寰堝ぇ涓€閮ㄥ垎浼ゅ銆?/li></ul>
+<p>鎵€浠?Protective Put 鏈€婕備寒鐨勫湴鏂瑰氨鏄細</p>
+<blockquote><p><strong>涓婇潰杩樺紑鐫€锛屼笅闈㈠紑濮嬫湁鎶ゆ爮銆?/strong></p></blockquote>
+<h3>鍧忓锛氳吹</h3>
+<p>杩欎篃鏄畠鏈€鐪熷疄鐨勯棶棰樸€?/p>
+<p>淇濋櫓浠庢潵閮戒笉鏄厤璐圭殑銆?/p>
+<p>灏ゅ叾鍦ㄤ笅闈㈣繖浜涙儏鍐典笅锛孭rotective Put 浼氭樉寰楁洿璐碉細</p>
+<ul><li>浣犱拱寰楁瘮杈冮潬杩?ATM锛?/li><li>甯傚満鏈潵灏卞緢鎭愭厡锛孖V 寰堥珮锛?/li><li>浣犱拱鐨勬槸姣旇緝杩戙€佹瘮杈冨帤鐨勪繚鎶ゃ€?/li></ul>
+<p>鎵€浠?Protective Put 鏈€澶х殑鐜板疄鐭涚浘鏄細</p>
+<blockquote><p><strong>鎴戞効涓嶆効鎰忚姳杩欑瑪淇濊垂锛屾崲涓€娈垫椂闂寸殑蹇冨畨锛?/strong></p></blockquote>
+<p>杩欎笉鏄暟瀛﹂锛屾槸鍋忓ソ棰樸€?/p>
 <hr>
-<h2>13.13 ATM Put 和 OTM Put，到底是在选什么</h2>
-<p>图片里这一点讲得特别实，我觉得必须保留。</p>
-<p>它说：</p>
-<ul><li>ATM Put：保护更强，但更贵；</li><li>OTM Put：更便宜，但保护来得更晚。</li></ul>
-<p>翻成人话就是：</p>
-<h3>买 ATM Put</h3>
-<p>像买一份很厚的保险。</p>
-<ul><li>一跌就开始保护；</li><li>保护很直接；</li><li>但保费更高。</li></ul>
-<h3>买 OTM Put</h3>
-<p>像买一份灾难险。</p>
-<ul><li>平时更便宜；</li><li>小跌时它帮不上那么多；</li><li>但真碰到大跌，它才会越来越有存在感。</li></ul>
-<p>所以这里真正的问题不是：</p>
-<ul><li>ATM 好还是 OTM 好？</li></ul>
-<p>而是：</p>
-<ul><li>我是想防“小跌就很难受”；</li><li>还是主要防“大跌别出事”？</li></ul>
-<p>这个差别特别重要。</p>
-<p>因为很多人嘴上说“我买了 Put 保护”，但如果买得太远 OTM，最后常常会遇到一种尴尬：</p>
-<ul><li>市场是跌了；</li><li>但还没跌到它真正开始大幅保护的位置；</li><li>结果看起来像白买了一样。</li></ul>
-<p>所以选择行权价，不是点一下那么简单，而是在选：</p>
-<blockquote><p><strong>我要多早开始保护，以及我要为这个保护付多少钱。</strong></p></blockquote>
+<h2>13.13 ATM Put 鍜?OTM Put锛屽埌搴曟槸鍦ㄩ€変粈涔?/h2>
+<p>鍥剧墖閲岃繖涓€鐐硅寰楃壒鍒疄锛屾垜瑙夊緱蹇呴』淇濈暀銆?/p>
+<p>瀹冭锛?/p>
+<ul><li>ATM Put锛氫繚鎶ゆ洿寮猴紝浣嗘洿璐碉紱</li><li>OTM Put锛氭洿渚垮疁锛屼絾淇濇姢鏉ュ緱鏇存櫄銆?/li></ul>
+<p>缈绘垚浜鸿瘽灏辨槸锛?/p>
+<h3>涔?ATM Put</h3>
+<p>鍍忎拱涓€浠藉緢鍘氱殑淇濋櫓銆?/p>
+<ul><li>涓€璺屽氨寮€濮嬩繚鎶わ紱</li><li>淇濇姢寰堢洿鎺ワ紱</li><li>浣嗕繚璐规洿楂樸€?/li></ul>
+<h3>涔?OTM Put</h3>
+<p>鍍忎拱涓€浠界伨闅鹃櫓銆?/p>
+<ul><li>骞虫椂鏇翠究瀹滐紱</li><li>灏忚穼鏃跺畠甯笉涓婇偅涔堝锛?/li><li>浣嗙湡纰板埌澶ц穼锛屽畠鎵嶄細瓒婃潵瓒婃湁瀛樺湪鎰熴€?/li></ul>
+<p>鎵€浠ヨ繖閲岀湡姝ｇ殑闂涓嶆槸锛?/p>
+<ul><li>ATM 濂借繕鏄?OTM 濂斤紵</li></ul>
+<p>鑰屾槸锛?/p>
+<ul><li>鎴戞槸鎯抽槻鈥滃皬璺屽氨寰堥毦鍙椻€濓紱</li><li>杩樻槸涓昏闃测€滃ぇ璺屽埆鍑轰簨鈥濓紵</li></ul>
+<p>杩欎釜宸埆鐗瑰埆閲嶈銆?/p>
+<p>鍥犱负寰堝浜哄槾涓婅鈥滄垜涔颁簡 Put 淇濇姢鈥濓紝浣嗗鏋滀拱寰楀お杩?OTM锛屾渶鍚庡父甯镐細閬囧埌涓€绉嶅按灏細</p>
+<ul><li>甯傚満鏄穼浜嗭紱</li><li>浣嗚繕娌¤穼鍒板畠鐪熸寮€濮嬪ぇ骞呬繚鎶ょ殑浣嶇疆锛?/li><li>缁撴灉鐪嬭捣鏉ュ儚鐧戒拱浜嗕竴鏍枫€?/li></ul>
+<p>鎵€浠ラ€夋嫨琛屾潈浠凤紝涓嶆槸鐐逛竴涓嬮偅涔堢畝鍗曪紝鑰屾槸鍦ㄩ€夛細</p>
+<blockquote><p><strong>鎴戣澶氭棭寮€濮嬩繚鎶わ紝浠ュ強鎴戣涓鸿繖涓繚鎶や粯澶氬皯閽便€?/strong></p></blockquote>
 <hr>
-<h2>13.14 Protective Put 什么时候更值得买？图片里那个提醒非常实用：看 IV，不是只看股价线</h2>
-<p>这一点特别值钱。</p>
-<p>图片里直接提醒：</p>
-<ul><li>买 Protective Put 时，选开仓时机的关键，不是只看股价 K 线，<strong>更要看期权的 IV。</strong></li></ul>
-<p>这句话非常重要，因为很多人买保险只看“我怕不怕跌”，但不看“现在保险贵不贵”。</p>
-<p>如果你在极度恐慌、IV 很高的时候去买 Put，常常会遇到：</p>
-<ul><li>保护是有了；</li><li>但保费特别贵；</li><li>后面就算没出事，或只是普通回调，你也会很心疼。</li></ul>
-<p>所以更成熟的思路应该是：</p>
-<ul><li>不是我害怕，就立刻无脑买；</li><li>而是我也要看：</li><li>现在 Put 是不是已经被恐慌抬得特别贵；</li><li>有没有更合适的时机去买这份保护。</li></ul>
-<p>这就是为什么图片里会写：</p>
-<ul><li>IV 低：long put 性价比更高；</li><li>IV 高：要想办法考虑怎么降低保护成本。</li></ul>
-<p>这个提醒非常实战，不是书面话。</p>
+<h2>13.14 Protective Put 浠€涔堟椂鍊欐洿鍊煎緱涔帮紵鍥剧墖閲岄偅涓彁閱掗潪甯稿疄鐢細鐪?IV锛屼笉鏄彧鐪嬭偂浠风嚎</h2>
+<p>杩欎竴鐐圭壒鍒€奸挶銆?/p>
+<p>鍥剧墖閲岀洿鎺ユ彁閱掞細</p>
+<ul><li>涔?Protective Put 鏃讹紝閫夊紑浠撴椂鏈虹殑鍏抽敭锛屼笉鏄彧鐪嬭偂浠?K 绾匡紝<strong>鏇磋鐪嬫湡鏉冪殑 IV銆?/strong></li></ul>
+<p>杩欏彞璇濋潪甯搁噸瑕侊紝鍥犱负寰堝浜轰拱淇濋櫓鍙湅鈥滄垜鎬曚笉鎬曡穼鈥濓紝浣嗕笉鐪嬧€滅幇鍦ㄤ繚闄╄吹涓嶈吹鈥濄€?/p>
+<p>濡傛灉浣犲湪鏋佸害鎭愭厡銆両V 寰堥珮鐨勬椂鍊欏幓涔?Put锛屽父甯镐細閬囧埌锛?/p>
+<ul><li>淇濇姢鏄湁浜嗭紱</li><li>浣嗕繚璐圭壒鍒吹锛?/li><li>鍚庨潰灏辩畻娌″嚭浜嬶紝鎴栧彧鏄櫘閫氬洖璋冿紝浣犱篃浼氬緢蹇冪柤銆?/li></ul>
+<p>鎵€浠ユ洿鎴愮啛鐨勬€濊矾搴旇鏄細</p>
+<ul><li>涓嶆槸鎴戝鎬曪紝灏辩珛鍒绘棤鑴戜拱锛?/li><li>鑰屾槸鎴戜篃瑕佺湅锛?/li><li>鐜板湪 Put 鏄笉鏄凡缁忚鎭愭厡鎶緱鐗瑰埆璐碉紱</li><li>鏈夋病鏈夋洿鍚堥€傜殑鏃舵満鍘讳拱杩欎唤淇濇姢銆?/li></ul>
+<p>杩欏氨鏄负浠€涔堝浘鐗囬噷浼氬啓锛?/p>
+<ul><li>IV 浣庯細long put 鎬т环姣旀洿楂橈紱</li><li>IV 楂橈細瑕佹兂鍔炴硶鑰冭檻鎬庝箞闄嶄綆淇濇姢鎴愭湰銆?/li></ul>
+<p>杩欎釜鎻愰啋闈炲父瀹炴垬锛屼笉鏄功闈㈣瘽銆?/p>
 <hr>
-<h2>13.15 图片里“降低 Protective Put 成本”的三种思路，要讲得诚实一点</h2>
-<p>这是这一章最容易被写虚的地方，我直接讲透。</p>
-<p>图片里给了三种降低 Protective Put 成本的思路：</p>
-<h3>方法 1：Long Put + 卖更低行权价 Put</h3>
-<p>这本质上是在说：</p>
-<ul><li>我还是要买保护；</li><li>但更深那一段极端下跌，我不想全部都保；</li><li>所以我卖一个更低行权价的 Put 来补贴成本。</li></ul>
-<p>这样确实能省钱。</p>
-<p>但你省下的钱，不是白送的，而是在说：</p>
-<ul><li>最深那一截风险，我重新承接了一部分。</li></ul>
-<h3>方法 2：Protective Put + 再卖一个更深 OTM Put</h3>
-<p>它本质上和上面类似，都是在拿“更极端的下方承接义务”来换保费补贴。</p>
-<h3>方法 3：Protective Put + 卖 Call = Collar</h3>
-<p>这是图片里明确推荐的一条路。</p>
-<p>什么意思？</p>
-<ul><li>我继续买 Put 保护下方；</li><li>同时卖一个 Call，收一点权利金来补贴 Put 成本；</li><li>代价是我把上方一部分收益也封起来。</li></ul>
-<p>所以这三种“降成本”方式，归根结底都在说同一句话：</p>
-<blockquote><p><strong>我想少花点保费，但我必须同时让出一点别的东西。</strong></p></blockquote>
-<p>这才是诚实的讲法。</p>
-<p>市场里没有白省下来的保险费。</p>
+<h2>13.15 鍥剧墖閲屸€滈檷浣?Protective Put 鎴愭湰鈥濈殑涓夌鎬濊矾锛岃璁插緱璇氬疄涓€鐐?/h2>
+<p>杩欐槸杩欎竴绔犳渶瀹规槗琚啓铏氱殑鍦版柟锛屾垜鐩存帴璁查€忋€?/p>
+<p>鍥剧墖閲岀粰浜嗕笁绉嶉檷浣?Protective Put 鎴愭湰鐨勬€濊矾锛?/p>
+<h3>鏂规硶 1锛歀ong Put + 鍗栨洿浣庤鏉冧环 Put</h3>
+<p>杩欐湰璐ㄤ笂鏄湪璇达細</p>
+<ul><li>鎴戣繕鏄涔颁繚鎶わ紱</li><li>浣嗘洿娣遍偅涓€娈垫瀬绔笅璺岋紝鎴戜笉鎯冲叏閮ㄩ兘淇濓紱</li><li>鎵€浠ユ垜鍗栦竴涓洿浣庤鏉冧环鐨?Put 鏉ヨˉ璐存垚鏈€?/li></ul>
+<p>杩欐牱纭疄鑳界渷閽便€?/p>
+<p>浣嗕綘鐪佷笅鐨勯挶锛屼笉鏄櫧閫佺殑锛岃€屾槸鍦ㄨ锛?/p>
+<ul><li>鏈€娣遍偅涓€鎴闄╋紝鎴戦噸鏂版壙鎺ヤ簡涓€閮ㄥ垎銆?/li></ul>
+<h3>鏂规硶 2锛歅rotective Put + 鍐嶅崠涓€涓洿娣?OTM Put</h3>
+<p>瀹冩湰璐ㄤ笂鍜屼笂闈㈢被浼硷紝閮芥槸鍦ㄦ嬁鈥滄洿鏋佺鐨勪笅鏂规壙鎺ヤ箟鍔♀€濇潵鎹繚璐硅ˉ璐淬€?/p>
+<h3>鏂规硶 3锛歅rotective Put + 鍗?Call = Collar</h3>
+<p>杩欐槸鍥剧墖閲屾槑纭帹鑽愮殑涓€鏉¤矾銆?/p>
+<p>浠€涔堟剰鎬濓紵</p>
+<ul><li>鎴戠户缁拱 Put 淇濇姢涓嬫柟锛?/li><li>鍚屾椂鍗栦竴涓?Call锛屾敹涓€鐐规潈鍒╅噾鏉ヨˉ璐?Put 鎴愭湰锛?/li><li>浠ｄ环鏄垜鎶婁笂鏂逛竴閮ㄥ垎鏀剁泭涔熷皝璧锋潵銆?/li></ul>
+<p>鎵€浠ヨ繖涓夌鈥滈檷鎴愭湰鈥濇柟寮忥紝褰掓牴缁撳簳閮藉湪璇村悓涓€鍙ヨ瘽锛?/p>
+<blockquote><p><strong>鎴戞兂灏戣姳鐐逛繚璐癸紝浣嗘垜蹇呴』鍚屾椂璁╁嚭涓€鐐瑰埆鐨勪笢瑗裤€?/strong></p></blockquote>
+<p>杩欐墠鏄瘹瀹炵殑璁叉硶銆?/p>
+<p>甯傚満閲屾病鏈夌櫧鐪佷笅鏉ョ殑淇濋櫓璐广€?/p>
 <hr>
-<h1>五、把 Covered Call 和 Protective Put 放在一起看：你会看见两种完全相反的持仓改造方式</h1>
-<h2>13.16 一个拿上涨空间换现金流，一个拿现金流换下跌保护</h2>
-<p>现在我们把这两者放在一起看，效果会特别清楚。</p>
-<h3>Covered Call 在改什么？</h3>
-<ul><li>你本来持有正股；</li><li>你把未来一部分上涨空间卖出去；</li><li>换来现在的权利金收入。</li></ul>
-<p>所以它在做的是：</p>
-<ul><li><strong>拿上方弹性，换现金流。</strong></li></ul>
-<h3>Protective Put 在改什么？</h3>
-<ul><li>你本来持有正股；</li><li>你再买一份下跌保险；</li><li>用保费换更清楚的下方保护。</li></ul>
-<p>所以它在做的是：</p>
-<ul><li><strong>拿现金流（成本），换下方护栏。</strong></li></ul>
-<p>一个偏“收租”，一个偏“买保险”。</p>
-<p>这两个动作方向正好相反，所以特别适合用来建立组合策略直觉。</p>
+<h1>浜斻€佹妸 Covered Call 鍜?Protective Put 鏀惧湪涓€璧风湅锛氫綘浼氱湅瑙佷袱绉嶅畬鍏ㄧ浉鍙嶇殑鎸佷粨鏀归€犳柟寮?/h1>
+<h2>13.16 涓€涓嬁涓婃定绌洪棿鎹㈢幇閲戞祦锛屼竴涓嬁鐜伴噾娴佹崲涓嬭穼淇濇姢</h2>
+<p>鐜板湪鎴戜滑鎶婅繖涓よ€呮斁鍦ㄤ竴璧风湅锛屾晥鏋滀細鐗瑰埆娓呮銆?/p>
+<h3>Covered Call 鍦ㄦ敼浠€涔堬紵</h3>
+<ul><li>浣犳湰鏉ユ寔鏈夋鑲★紱</li><li>浣犳妸鏈潵涓€閮ㄥ垎涓婃定绌洪棿鍗栧嚭鍘伙紱</li><li>鎹㈡潵鐜板湪鐨勬潈鍒╅噾鏀跺叆銆?/li></ul>
+<p>鎵€浠ュ畠鍦ㄥ仛鐨勬槸锛?/p>
+<ul><li><strong>鎷夸笂鏂瑰脊鎬э紝鎹㈢幇閲戞祦銆?/strong></li></ul>
+<h3>Protective Put 鍦ㄦ敼浠€涔堬紵</h3>
+<ul><li>浣犳湰鏉ユ寔鏈夋鑲★紱</li><li>浣犲啀涔颁竴浠戒笅璺屼繚闄╋紱</li><li>鐢ㄤ繚璐规崲鏇存竻妤氱殑涓嬫柟淇濇姢銆?/li></ul>
+<p>鎵€浠ュ畠鍦ㄥ仛鐨勬槸锛?/p>
+<ul><li><strong>鎷跨幇閲戞祦锛堟垚鏈級锛屾崲涓嬫柟鎶ゆ爮銆?/strong></li></ul>
+<p>涓€涓亸鈥滄敹绉熲€濓紝涓€涓亸鈥滀拱淇濋櫓鈥濄€?/p>
+<p>杩欎袱涓姩浣滄柟鍚戞濂界浉鍙嶏紝鎵€浠ョ壒鍒€傚悎鐢ㄦ潵寤虹珛缁勫悎绛栫暐鐩磋銆?/p>
 <hr>
-<h1>六、现在才轮到 Put-Call Parity：真正值钱的不是公式，而是“结构等价”</h1>
-<h2>13.17 先把最重要的结论放前面：不同零件，可能拼出同一张风险图</h2>
-<p>Put-Call Parity 真正值钱的地方，不是让你显得懂公式，而是它在提醒你：</p>
-<blockquote><p><strong>不同的零件组合，最后可能拼出非常接近的收益风险结构。</strong></p></blockquote>
-<p>这句话很重要。</p>
-<p>因为很多人学策略时，最容易被名字骗：</p>
-<ul><li>这个叫 Covered Call；</li><li>那个叫 Short Put；</li><li>那个又叫 Protective Put；</li><li>那个叫 Long Call。</li></ul>
-<p>名字一多，就容易觉得它们彼此毫无关系。</p>
-<p>但真正把图拿出来一比，你会发现：</p>
-<ul><li>很多结构虽然部件不同；</li><li>但它们的骨架很像；</li><li>所以它们在风险收益上会给你差不多的体验。</li></ul>
-<p>这就是期权平价最该先学到的，不是公式，而是：</p>
-<blockquote><p><strong>不要只记名字，要看它最后长得像什么。</strong></p></blockquote>
+<h1>鍏€佺幇鍦ㄦ墠杞埌 Put-Call Parity锛氱湡姝ｅ€奸挶鐨勪笉鏄叕寮忥紝鑰屾槸鈥滅粨鏋勭瓑浠封€?/h1>
+<h2>13.17 鍏堟妸鏈€閲嶈鐨勭粨璁烘斁鍓嶉潰锛氫笉鍚岄浂浠讹紝鍙兘鎷煎嚭鍚屼竴寮犻闄╁浘</h2>
+<p>Put-Call Parity 鐪熸鍊奸挶鐨勫湴鏂癸紝涓嶆槸璁╀綘鏄惧緱鎳傚叕寮忥紝鑰屾槸瀹冨湪鎻愰啋浣狅細</p>
+<blockquote><p><strong>涓嶅悓鐨勯浂浠剁粍鍚堬紝鏈€鍚庡彲鑳芥嫾鍑洪潪甯告帴杩戠殑鏀剁泭椋庨櫓缁撴瀯銆?/strong></p></blockquote>
+<p>杩欏彞璇濆緢閲嶈銆?/p>
+<p>鍥犱负寰堝浜哄绛栫暐鏃讹紝鏈€瀹规槗琚悕瀛楅獥锛?/p>
+<ul><li>杩欎釜鍙?Covered Call锛?/li><li>閭ｄ釜鍙?Short Put锛?/li><li>閭ｄ釜鍙堝彨 Protective Put锛?/li><li>閭ｄ釜鍙?Long Call銆?/li></ul>
+<p>鍚嶅瓧涓€澶氾紝灏卞鏄撹寰楀畠浠郊姝ゆ鏃犲叧绯汇€?/p>
+<p>浣嗙湡姝ｆ妸鍥炬嬁鍑烘潵涓€姣旓紝浣犱細鍙戠幇锛?/p>
+<ul><li>寰堝缁撴瀯铏界劧閮ㄤ欢涓嶅悓锛?/li><li>浣嗗畠浠殑楠ㄦ灦寰堝儚锛?/li><li>鎵€浠ュ畠浠湪椋庨櫓鏀剁泭涓婁細缁欎綘宸笉澶氱殑浣撻獙銆?/li></ul>
+<p>杩欏氨鏄湡鏉冨钩浠锋渶璇ュ厛瀛﹀埌鐨勶紝涓嶆槸鍏紡锛岃€屾槸锛?/p>
+<blockquote><p><strong>涓嶈鍙鍚嶅瓧锛岃鐪嬪畠鏈€鍚庨暱寰楀儚浠€涔堛€?/strong></p></blockquote>
 <hr>
-<h2>13.18 为什么 Protective Put 很像 Long Call</h2>
-<p>我们先看最容易懂的一组。</p>
-<h3>Protective Put = 持股 + 买 Put</h3>
-<p>它的效果是：</p>
-<ul><li>上涨时，你继续跟着股票赚钱；</li><li>下跌时，Put 会帮你兜底；</li><li>所以下方开始被托住，上方仍然打开。</li></ul>
-<p>你把这个结构在脑中画一下，会不会觉得很熟？</p>
-<p>很像什么？</p>
+<h2>13.18 涓轰粈涔?Protective Put 寰堝儚 Long Call</h2>
+<p>鎴戜滑鍏堢湅鏈€瀹规槗鎳傜殑涓€缁勩€?/p>
+<h3>Protective Put = 鎸佽偂 + 涔?Put</h3>
+<p>瀹冪殑鏁堟灉鏄細</p>
+<ul><li>涓婃定鏃讹紝浣犵户缁窡鐫€鑲＄エ璧氶挶锛?/li><li>涓嬭穼鏃讹紝Put 浼氬府浣犲厹搴曪紱</li><li>鎵€浠ヤ笅鏂瑰紑濮嬭鎵樹綇锛屼笂鏂逛粛鐒舵墦寮€銆?/li></ul>
+<p>浣犳妸杩欎釜缁撴瀯鍦ㄨ剳涓敾涓€涓嬶紝浼氫笉浼氳寰楀緢鐔燂紵</p>
+<p>寰堝儚浠€涔堬紵</p>
 <h3>Long Call</h3>
-<p>为什么像？</p>
-<p>因为 Long Call 的气质本来就是：</p>
-<ul><li>下方亏损有限；</li><li>上方盈利打开。</li></ul>
-<p>所以尽管它们表面动作完全不同：</p>
-<ul><li>一个是“持股 + 买 Put”；</li><li>一个是“单独买 Call”；</li></ul>
-<p>但最后呈现出来的图形和风险直觉会非常接近。</p>
-<p>这就是为什么很多教材都会说：</p>
-<blockquote><p><strong>Protective Put ≈ Long Call</strong></p></blockquote>
-<p>这里的“≈”不是说它们细节一模一样，而是说：</p>
-<ul><li><strong>风险结构非常像。</strong></li></ul>
+<p>涓轰粈涔堝儚锛?/p>
+<p>鍥犱负 Long Call 鐨勬皵璐ㄦ湰鏉ュ氨鏄細</p>
+<ul><li>涓嬫柟浜忔崯鏈夐檺锛?/li><li>涓婃柟鐩堝埄鎵撳紑銆?/li></ul>
+<p>鎵€浠ュ敖绠″畠浠〃闈㈠姩浣滃畬鍏ㄤ笉鍚岋細</p>
+<ul><li>涓€涓槸鈥滄寔鑲?+ 涔?Put鈥濓紱</li><li>涓€涓槸鈥滃崟鐙拱 Call鈥濓紱</li></ul>
+<p>浣嗘渶鍚庡憟鐜板嚭鏉ョ殑鍥惧舰鍜岄闄╃洿瑙変細闈炲父鎺ヨ繎銆?/p>
+<p>杩欏氨鏄负浠€涔堝緢澶氭暀鏉愰兘浼氳锛?/p>
+<blockquote><p><strong>Protective Put 鈮?Long Call</strong></p></blockquote>
+<p>杩欓噷鐨勨€溾増鈥濅笉鏄瀹冧滑缁嗚妭涓€妯′竴鏍凤紝鑰屾槸璇达細</p>
+<ul><li><strong>椋庨櫓缁撴瀯闈炲父鍍忋€?/strong></li></ul>
 <hr>
-<h2>13.19 为什么 Covered Call 很像 Short Put</h2>
-<p>同样的思路再来一遍。</p>
-<h3>Covered Call = 持股 + 卖 Call</h3>
-<p>它的气质是：</p>
-<ul><li>先收权利金；</li><li>不大涨时比较舒服；</li><li>上方封顶；</li><li>下方仍然有风险，只是稍微有一点权利金缓冲。</li></ul>
-<p>这个图形，像不像你前面学过的另一个东西？</p>
-<p>很像：</p>
+<h2>13.19 涓轰粈涔?Covered Call 寰堝儚 Short Put</h2>
+<p>鍚屾牱鐨勬€濊矾鍐嶆潵涓€閬嶃€?/p>
+<h3>Covered Call = 鎸佽偂 + 鍗?Call</h3>
+<p>瀹冪殑姘旇川鏄細</p>
+<ul><li>鍏堟敹鏉冨埄閲戯紱</li><li>涓嶅ぇ娑ㄦ椂姣旇緝鑸掓湇锛?/li><li>涓婃柟灏侀《锛?/li><li>涓嬫柟浠嶇劧鏈夐闄╋紝鍙槸绋嶅井鏈変竴鐐规潈鍒╅噾缂撳啿銆?/li></ul>
+<p>杩欎釜鍥惧舰锛屽儚涓嶅儚浣犲墠闈㈠杩囩殑鍙︿竴涓笢瑗匡紵</p>
+<p>寰堝儚锛?/p>
 <h3>Short Put</h3>
-<p>为什么？</p>
-<p>因为 Short Put 也是：</p>
-<ul><li>先收权利金；</li><li>只要不大跌，通常都舒服；</li><li>一旦往下掉很多，风险逐渐打开。</li></ul>
-<p>所以你会发现一件非常有意思的事：</p>
-<ul><li>表面上，一个是“持股 + 卖 Call”；</li><li>另一个是“单独卖 Put”；</li></ul>
-<p>听起来像两件完全不同的事。</p>
-<p>但把收益图拿出来对照时，你会发现：</p>
-<blockquote><p><strong>它们在风险收益结构上非常接近。</strong></p></blockquote>
-<p>这就是为什么教材和图片总爱把它们配对讲。</p>
-<p>不是为了凑对子，而是因为它们骨子里真的很像。</p>
+<p>涓轰粈涔堬紵</p>
+<p>鍥犱负 Short Put 涔熸槸锛?/p>
+<ul><li>鍏堟敹鏉冨埄閲戯紱</li><li>鍙涓嶅ぇ璺岋紝閫氬父閮借垝鏈嶏紱</li><li>涓€鏃﹀線涓嬫帀寰堝锛岄闄╅€愭笎鎵撳紑銆?/li></ul>
+<p>鎵€浠ヤ綘浼氬彂鐜颁竴浠堕潪甯告湁鎰忔€濈殑浜嬶細</p>
+<ul><li>琛ㄩ潰涓婏紝涓€涓槸鈥滄寔鑲?+ 鍗?Call鈥濓紱</li><li>鍙︿竴涓槸鈥滃崟鐙崠 Put鈥濓紱</li></ul>
+<p>鍚捣鏉ュ儚涓や欢瀹屽叏涓嶅悓鐨勪簨銆?/p>
+<p>浣嗘妸鏀剁泭鍥炬嬁鍑烘潵瀵圭収鏃讹紝浣犱細鍙戠幇锛?/p>
+<blockquote><p><strong>瀹冧滑鍦ㄩ闄╂敹鐩婄粨鏋勪笂闈炲父鎺ヨ繎銆?/strong></p></blockquote>
+<p>杩欏氨鏄负浠€涔堟暀鏉愬拰鍥剧墖鎬荤埍鎶婂畠浠厤瀵硅銆?/p>
+<p>涓嶆槸涓轰簡鍑戝瀛愶紝鑰屾槸鍥犱负瀹冧滑楠ㄥ瓙閲岀湡鐨勫緢鍍忋€?/p>
 <hr>
-<h2>13.20 现在才上公式：你不用先背，只要先懂它在说什么</h2>
-<p>更完整的金融学版本里，Put-Call Parity 会考虑：</p>
-<ul><li>行权价现值；</li><li>利率；</li><li>有些标的还要考虑股息。</li></ul>
-<p>但在我们这本教材的阶段，你先抓住“教学版骨架”就够了。</p>
-<p>最常见的简化表达是：</p>
-<blockquote><p><strong>S + P = C + K（或 K 的现值）</strong></p></blockquote>
-<p>你现在先不要被字母吓到。它在说的人话其实是：</p>
-<ul><li>持有股票，再加一张 Put；</li><li>在风险结构上，会很像一张 Call，再加一笔确定性的现金垫子。</li></ul>
-<p>这说明什么？</p>
-<p>说明公式不是在耍魔法，而是在说：</p>
-<blockquote><p><strong>这些零件拼起来，最后的风险形状是对应得上的。</strong></p></blockquote>
-<p>所以目前阶段，你最实用的两个“结构翻译”就够了：</p>
-<h3>结构翻译 1</h3>
-<p><strong>Protective Put ≈ Long Call</strong></p>
-<h3>结构翻译 2</h3>
-<p><strong>Covered Call ≈ Short Put</strong></p>
-<p>先把这两句消化透，比背一串字母更值钱。</p>
+<h2>13.20 鐜板湪鎵嶄笂鍏紡锛氫綘涓嶇敤鍏堣儗锛屽彧瑕佸厛鎳傚畠鍦ㄨ浠€涔?/h2>
+<p>鏇村畬鏁寸殑閲戣瀺瀛︾増鏈噷锛孭ut-Call Parity 浼氳€冭檻锛?/p>
+<ul><li>琛屾潈浠风幇鍊硷紱</li><li>鍒╃巼锛?/li><li>鏈変簺鏍囩殑杩樿鑰冭檻鑲℃伅銆?/li></ul>
+<p>浣嗗湪鎴戜滑杩欐湰鏁欐潗鐨勯樁娈碉紝浣犲厛鎶撲綇鈥滄暀瀛︾増楠ㄦ灦鈥濆氨澶熶簡銆?/p>
+<p>鏈€甯歌鐨勭畝鍖栬〃杈炬槸锛?/p>
+<blockquote><p><strong>S + P = C + K锛堟垨 K 鐨勭幇鍊硷級</strong></p></blockquote>
+<p>浣犵幇鍦ㄥ厛涓嶈琚瓧姣嶅悡鍒般€傚畠鍦ㄨ鐨勪汉璇濆叾瀹炴槸锛?/p>
+<ul><li>鎸佹湁鑲＄エ锛屽啀鍔犱竴寮?Put锛?/li><li>鍦ㄩ闄╃粨鏋勪笂锛屼細寰堝儚涓€寮?Call锛屽啀鍔犱竴绗旂‘瀹氭€х殑鐜伴噾鍨瓙銆?/li></ul>
+<p>杩欒鏄庝粈涔堬紵</p>
+<p>璇存槑鍏紡涓嶆槸鍦ㄨ€嶉瓟娉曪紝鑰屾槸鍦ㄨ锛?/p>
+<blockquote><p><strong>杩欎簺闆朵欢鎷艰捣鏉ワ紝鏈€鍚庣殑椋庨櫓褰㈢姸鏄搴斿緱涓婄殑銆?/strong></p></blockquote>
+<p>鎵€浠ョ洰鍓嶉樁娈碉紝浣犳渶瀹炵敤鐨勪袱涓€滅粨鏋勭炕璇戔€濆氨澶熶簡锛?/p>
+<h3>缁撴瀯缈昏瘧 1</h3>
+<p><strong>Protective Put 鈮?Long Call</strong></p>
+<h3>缁撴瀯缈昏瘧 2</h3>
+<p><strong>Covered Call 鈮?Short Put</strong></p>
+<p>鍏堟妸杩欎袱鍙ユ秷鍖栭€忥紝姣旇儗涓€涓插瓧姣嶆洿鍊奸挶銆?/p>
 <hr>
-<h1>七、Synthetic Long（合成多头）：为什么买 Call + 卖 Put 会越来越像持股</h1>
-<h2>13.21 最通俗的人话：上方跟着涨，下方也开始承担跌，那就越来越像股票</h2>
-<p>Synthetic Long 最经典的教学表达是：</p>
-<blockquote><p><strong>买 Call + 卖 Put ≈ 持有正股</strong></p></blockquote>
-<p>为什么？</p>
-<p>你把这两部分拆开看：</p>
-<h3>买 Call</h3>
-<ul><li>上涨时你有弹性；</li><li>下跌时亏损有限在权利金。</li></ul>
-<h3>卖 Put</h3>
-<ul><li>不跌时你舒服地收权利金；</li><li>大跌时你开始承担下方风险。</li></ul>
-<p>两者叠起来会发生什么？</p>
-<ul><li>上方，你越来越像在跟着正股一起涨；</li><li>下方，你也会像持股一样开始承担下跌；</li><li>整体形状越来越接近“直接持股”。</li></ul>
-<p>所以它叫“合成多头”，不是空话。</p>
-<p>它的意思就是：</p>
-<ul><li>我没有真的去买股票；</li><li>但我用期权部件，拼出了一个很像股票多头的骨架。</li></ul>
+<h1>涓冦€丼ynthetic Long锛堝悎鎴愬澶达級锛氫负浠€涔堜拱 Call + 鍗?Put 浼氳秺鏉ヨ秺鍍忔寔鑲?/h1>
+<h2>13.21 鏈€閫氫織鐨勪汉璇濓細涓婃柟璺熺潃娑紝涓嬫柟涔熷紑濮嬫壙鎷呰穼锛岄偅灏辫秺鏉ヨ秺鍍忚偂绁?/h2>
+<p>Synthetic Long 鏈€缁忓吀鐨勬暀瀛﹁〃杈炬槸锛?/p>
+<blockquote><p><strong>涔?Call + 鍗?Put 鈮?鎸佹湁姝ｈ偂</strong></p></blockquote>
+<p>涓轰粈涔堬紵</p>
+<p>浣犳妸杩欎袱閮ㄥ垎鎷嗗紑鐪嬶細</p>
+<h3>涔?Call</h3>
+<ul><li>涓婃定鏃朵綘鏈夊脊鎬э紱</li><li>涓嬭穼鏃朵簭鎹熸湁闄愬湪鏉冨埄閲戙€?/li></ul>
+<h3>鍗?Put</h3>
+<ul><li>涓嶈穼鏃朵綘鑸掓湇鍦版敹鏉冨埄閲戯紱</li><li>澶ц穼鏃朵綘寮€濮嬫壙鎷呬笅鏂归闄┿€?/li></ul>
+<p>涓よ€呭彔璧锋潵浼氬彂鐢熶粈涔堬紵</p>
+<ul><li>涓婃柟锛屼綘瓒婃潵瓒婂儚鍦ㄨ窡鐫€姝ｈ偂涓€璧锋定锛?/li><li>涓嬫柟锛屼綘涔熶細鍍忔寔鑲′竴鏍峰紑濮嬫壙鎷呬笅璺岋紱</li><li>鏁翠綋褰㈢姸瓒婃潵瓒婃帴杩戔€滅洿鎺ユ寔鑲♀€濄€?/li></ul>
+<p>鎵€浠ュ畠鍙€滃悎鎴愬澶粹€濓紝涓嶆槸绌鸿瘽銆?/p>
+<p>瀹冪殑鎰忔€濆氨鏄細</p>
+<ul><li>鎴戞病鏈夌湡鐨勫幓涔拌偂绁紱</li><li>浣嗘垜鐢ㄦ湡鏉冮儴浠讹紝鎷煎嚭浜嗕竴涓緢鍍忚偂绁ㄥ澶寸殑楠ㄦ灦銆?/li></ul>
 <hr>
-<h2>13.22 这个概念值钱，不是因为你明天就一定要用，而是因为它会改变你看策略的方式</h2>
-<p>很多人第一次看到 Synthetic Long，会忍不住想：</p>
-<ul><li>那我以后是不是都不用直接买股票了？</li></ul>
-<p>这不是当前最重要的问题。</p>
-<p>当前最重要的是，它会训练你一种更高级的眼光：</p>
-<ul><li>你以后不会只看策略名字；</li><li>你会开始看：这个结构最后更像什么？</li></ul>
-<p>这比死记“这叫策略 A，那叫策略 B”高一个维度。</p>
-<p>因为随着你越往后学，策略名字会越来越多，但底层风险形状并没有无限多。</p>
-<p>所以 Synthetic Long 这件事最值钱的，不是让你今天立刻上手，而是让你建立一个观念：</p>
-<blockquote><p><strong>期权世界里，很多东西都可以被合成。</strong></p></blockquote>
-<p>一旦能被合成，就意味着：</p>
-<ul><li>你可以比较不同路径的成本；</li><li>你可以比较不同路径的流动性；</li><li>你可以比较不同路径的保证金压力；</li><li>你可以发现，有些看起来完全不同的东西，其实只是换了一套零件。</li></ul>
-<p>这就是这章真正高级的地方。</p>
+<h2>13.22 杩欎釜姒傚康鍊奸挶锛屼笉鏄洜涓轰綘鏄庡ぉ灏变竴瀹氳鐢紝鑰屾槸鍥犱负瀹冧細鏀瑰彉浣犵湅绛栫暐鐨勬柟寮?/h2>
+<p>寰堝浜虹涓€娆＄湅鍒?Synthetic Long锛屼細蹇嶄笉浣忔兂锛?/p>
+<ul><li>閭ｆ垜浠ュ悗鏄笉鏄兘涓嶇敤鐩存帴涔拌偂绁ㄤ簡锛?/li></ul>
+<p>杩欎笉鏄綋鍓嶆渶閲嶈鐨勯棶棰樸€?/p>
+<p>褰撳墠鏈€閲嶈鐨勬槸锛屽畠浼氳缁冧綘涓€绉嶆洿楂樼骇鐨勭溂鍏夛細</p>
+<ul><li>浣犱互鍚庝笉浼氬彧鐪嬬瓥鐣ュ悕瀛楋紱</li><li>浣犱細寮€濮嬬湅锛氳繖涓粨鏋勬渶鍚庢洿鍍忎粈涔堬紵</li></ul>
+<p>杩欐瘮姝昏鈥滆繖鍙瓥鐣?A锛岄偅鍙瓥鐣?B鈥濋珮涓€涓淮搴︺€?/p>
+<p>鍥犱负闅忕潃浣犺秺寰€鍚庡锛岀瓥鐣ュ悕瀛椾細瓒婃潵瓒婂锛屼絾搴曞眰椋庨櫓褰㈢姸骞舵病鏈夋棤闄愬銆?/p>
+<p>鎵€浠?Synthetic Long 杩欎欢浜嬫渶鍊奸挶鐨勶紝涓嶆槸璁╀綘浠婂ぉ绔嬪埢涓婃墜锛岃€屾槸璁╀綘寤虹珛涓€涓蹇碉細</p>
+<blockquote><p><strong>鏈熸潈涓栫晫閲岋紝寰堝涓滆タ閮藉彲浠ヨ鍚堟垚銆?/strong></p></blockquote>
+<p>涓€鏃﹁兘琚悎鎴愶紝灏辨剰鍛崇潃锛?/p>
+<ul><li>浣犲彲浠ユ瘮杈冧笉鍚岃矾寰勭殑鎴愭湰锛?/li><li>浣犲彲浠ユ瘮杈冧笉鍚岃矾寰勭殑娴佸姩鎬э紱</li><li>浣犲彲浠ユ瘮杈冧笉鍚岃矾寰勭殑淇濊瘉閲戝帇鍔涳紱</li><li>浣犲彲浠ュ彂鐜帮紝鏈変簺鐪嬭捣鏉ュ畬鍏ㄤ笉鍚岀殑涓滆タ锛屽叾瀹炲彧鏄崲浜嗕竴濂楅浂浠躲€?/li></ul>
+<p>杩欏氨鏄繖绔犵湡姝ｉ珮绾х殑鍦版柟銆?/p>
 <hr>
-<h1>八、本章最该带走的一句话：不要只记名字，要看风险结构</h1>
-<h2>13.23 这章真正想让你学会的，是“看穿骨架”</h2>
-<p>如果把这一章压成一句最值钱的话，我希望是：</p>
-<blockquote><p><strong>不要只记策略名字，要看它的风险结构。</strong></p></blockquote>
-<p>因为这章所有内容，最后都指向同一个地方：</p>
-<ul><li>Covered Call 和 Short Put 很像；</li><li>Protective Put 和 Long Call 很像；</li><li>Buy Call + Sell Put 很像持股。</li></ul>
-<p>也就是说：</p>
-<ul><li>表面动作可以不同；</li><li>但只要最后收益图像，风险结构就接近。</li></ul>
-<p>你一旦建立这种思维，期权就会从“背招式”变成“拼图形”。</p>
-<p>而这，才是高阶内容真正值钱的地方。</p>
-<p>不是术语多，而是你开始看穿它们背后的骨架。</p>
+<h1>鍏€佹湰绔犳渶璇ュ甫璧扮殑涓€鍙ヨ瘽锛氫笉瑕佸彧璁板悕瀛楋紝瑕佺湅椋庨櫓缁撴瀯</h1>
+<h2>13.23 杩欑珷鐪熸鎯宠浣犲浼氱殑锛屾槸鈥滅湅绌块鏋垛€?/h2>
+<p>濡傛灉鎶婅繖涓€绔犲帇鎴愪竴鍙ユ渶鍊奸挶鐨勮瘽锛屾垜甯屾湜鏄細</p>
+<blockquote><p><strong>涓嶈鍙绛栫暐鍚嶅瓧锛岃鐪嬪畠鐨勯闄╃粨鏋勩€?/strong></p></blockquote>
+<p>鍥犱负杩欑珷鎵€鏈夊唴瀹癸紝鏈€鍚庨兘鎸囧悜鍚屼竴涓湴鏂癸細</p>
+<ul><li>Covered Call 鍜?Short Put 寰堝儚锛?/li><li>Protective Put 鍜?Long Call 寰堝儚锛?/li><li>Buy Call + Sell Put 寰堝儚鎸佽偂銆?/li></ul>
+<p>涔熷氨鏄锛?/p>
+<ul><li>琛ㄩ潰鍔ㄤ綔鍙互涓嶅悓锛?/li><li>浣嗗彧瑕佹渶鍚庢敹鐩婂浘鍍忥紝椋庨櫓缁撴瀯灏辨帴杩戙€?/li></ul>
+<p>浣犱竴鏃﹀缓绔嬭繖绉嶆€濈淮锛屾湡鏉冨氨浼氫粠鈥滆儗鎷涘紡鈥濆彉鎴愨€滄嫾鍥惧舰鈥濄€?/p>
+<p>鑰岃繖锛屾墠鏄珮闃跺唴瀹圭湡姝ｅ€奸挶鐨勫湴鏂广€?/p>
+<p>涓嶆槸鏈澶氾紝鑰屾槸浣犲紑濮嬬湅绌垮畠浠儗鍚庣殑楠ㄦ灦銆?/p>
 <hr>
-<h1>九、本章小结：从这一章开始，期权不再是一招一式，而开始变成“风险工程”</h1>
-<p>这一章你真正学到的，可以压成下面几层：</p>
-<h3>第一层：Covered Call</h3>
-<ul><li>持股 + 卖 Call；</li><li>像收租；</li><li>代价是上方利润被封住一部分。</li></ul>
-<h3>第二层：Protective Put</h3>
-<ul><li>持股 + 买 Put；</li><li>像买保险；</li><li>代价是要付保费。</li></ul>
-<h3>第三层：结构等价</h3>
-<ul><li>Covered Call ≈ Short Put；</li><li>Protective Put ≈ Long Call。</li></ul>
-<h3>第四层：合成思维</h3>
-<ul><li>买 Call + 卖 Put ≈ 持股；</li><li>很多策略可以用不同零件拼出来。</li></ul>
-<p>所以这章真正想让你看到的是：</p>
-<blockquote><p><strong>期权的高阶，不是更花哨，而是更会重组风险。</strong></p></blockquote>
-<p>你以后越往后学，越会发现：</p>
-<ul><li>市场上很多所谓复杂策略，本质上只是把这几种风险结构重新拼装；</li><li>真正成熟的人，不是名字背得多，而是看一眼就知道：这个结构到底更像什么。</li></ul>
-<p>这就是第 13 章的意义。</p>
+<h1>涔濄€佹湰绔犲皬缁擄細浠庤繖涓€绔犲紑濮嬶紝鏈熸潈涓嶅啀鏄竴鎷涗竴寮忥紝鑰屽紑濮嬪彉鎴愨€滈闄╁伐绋嬧€?/h1>
+<p>杩欎竴绔犱綘鐪熸瀛﹀埌鐨勶紝鍙互鍘嬫垚涓嬮潰鍑犲眰锛?/p>
+<h3>绗竴灞傦細Covered Call</h3>
+<ul><li>鎸佽偂 + 鍗?Call锛?/li><li>鍍忔敹绉燂紱</li><li>浠ｄ环鏄笂鏂瑰埄娑﹁灏佷綇涓€閮ㄥ垎銆?/li></ul>
+<h3>绗簩灞傦細Protective Put</h3>
+<ul><li>鎸佽偂 + 涔?Put锛?/li><li>鍍忎拱淇濋櫓锛?/li><li>浠ｄ环鏄浠樹繚璐广€?/li></ul>
+<h3>绗笁灞傦細缁撴瀯绛変环</h3>
+<ul><li>Covered Call 鈮?Short Put锛?/li><li>Protective Put 鈮?Long Call銆?/li></ul>
+<h3>绗洓灞傦細鍚堟垚鎬濈淮</h3>
+<ul><li>涔?Call + 鍗?Put 鈮?鎸佽偂锛?/li><li>寰堝绛栫暐鍙互鐢ㄤ笉鍚岄浂浠舵嫾鍑烘潵銆?/li></ul>
+<p>鎵€浠ヨ繖绔犵湡姝ｆ兂璁╀綘鐪嬪埌鐨勬槸锛?/p>
+<blockquote><p><strong>鏈熸潈鐨勯珮闃讹紝涓嶆槸鏇磋姳鍝紝鑰屾槸鏇翠細閲嶇粍椋庨櫓銆?/strong></p></blockquote>
+<p>浣犱互鍚庤秺寰€鍚庡锛岃秺浼氬彂鐜帮細</p>
+<ul><li>甯傚満涓婂緢澶氭墍璋撳鏉傜瓥鐣ワ紝鏈川涓婂彧鏄妸杩欏嚑绉嶉闄╃粨鏋勯噸鏂版嫾瑁咃紱</li><li>鐪熸鎴愮啛鐨勪汉锛屼笉鏄悕瀛楄儗寰楀锛岃€屾槸鐪嬩竴鐪煎氨鐭ラ亾锛氳繖涓粨鏋勫埌搴曟洿鍍忎粈涔堛€?/li></ul>
+<p>杩欏氨鏄 13 绔犵殑鎰忎箟銆?/p>
 <hr>
-<h2>一句话总结</h2>
-<blockquote><p><strong>这章真正要学会的，不是死背 Put-Call Parity 的公式，而是看懂不同零件为什么能拼出几乎一样的风险形状。</strong></p></blockquote>
+<h2>涓€鍙ヨ瘽鎬荤粨</h2>
+<blockquote><p><strong>杩欑珷鐪熸瑕佸浼氱殑锛屼笉鏄鑳?Put-Call Parity 鐨勫叕寮忥紝鑰屾槸鐪嬫噦涓嶅悓闆朵欢涓轰粈涔堣兘鎷煎嚭鍑犱箮涓€鏍风殑椋庨櫓褰㈢姸銆?/strong></p></blockquote>
 <hr>
-<h2>自测题</h2>
-<p>1）为什么说 Covered Call 更像“持股收租”，而不是单纯看空？</p>
-<p>2）Protective Put 为什么像“给持仓买保险”？它最主要的好处和代价分别是什么？</p>
-<p>3）为什么说 ATM Put 和 OTM Put 的差别，本质上是在“保护强度”和“保费成本”之间做选择？</p>
-<p>4）为什么说 Covered Call 和 Short Put 虽然部件不同，但风险结构很像？</p>
-<p>5）为什么说这章最重要的不是记公式，而是学会“结构等价”这件事？</p>
+<h2>鑷祴棰?/h2>
+<p>1锛変负浠€涔堣 Covered Call 鏇村儚鈥滄寔鑲℃敹绉熲€濓紝鑰屼笉鏄崟绾湅绌猴紵</p>
+<p>2锛塒rotective Put 涓轰粈涔堝儚鈥滅粰鎸佷粨涔颁繚闄┾€濓紵瀹冩渶涓昏鐨勫ソ澶勫拰浠ｄ环鍒嗗埆鏄粈涔堬紵</p>
+<p>3锛変负浠€涔堣 ATM Put 鍜?OTM Put 鐨勫樊鍒紝鏈川涓婃槸鍦ㄢ€滀繚鎶ゅ己搴︹€濆拰鈥滀繚璐规垚鏈€濅箣闂村仛閫夋嫨锛?/p>
+<p>4锛変负浠€涔堣 Covered Call 鍜?Short Put 铏界劧閮ㄤ欢涓嶅悓锛屼絾椋庨櫓缁撴瀯寰堝儚锛?/p>
+<p>5锛変负浠€涔堣杩欑珷鏈€閲嶈鐨勪笉鏄鍏紡锛岃€屾槸瀛︿細鈥滅粨鏋勭瓑浠封€濊繖浠朵簨锛?/p>
 <hr>
-<h2>下一章预告：BSM 与 IV——为什么你方向看对了，期权也不一定按你想的赚钱</h2>
-<p>前面我们已经把：</p>
-<ul><li>基础概念；</li><li>时间价值；</li><li>时间衰减；</li><li>单腿策略；</li><li>组合策略；</li><li>结构等价；</li></ul>
-<p>这些骨架搭得差不多了。</p>
-<p>下一章，我们就进入最容易让人“方向对了也不爽”的那块核心：</p>
-<ul><li>BSM 定价模型里到底哪些变量在动；</li><li>为什么 IV 会让 Call 和 Put 一起变贵；</li><li>为什么财报前后期权价格会出现很夸张的变化；</li><li>什么叫 IV Crush。</li></ul>
+<h2>涓嬩竴绔犻鍛婏細BSM 涓?IV鈥斺€斾负浠€涔堜綘鏂瑰悜鐪嬪浜嗭紝鏈熸潈涔熶笉涓€瀹氭寜浣犳兂鐨勮禋閽?/h2>
+<p>鍓嶉潰鎴戜滑宸茬粡鎶婏細</p>
+<ul><li>鍩虹姒傚康锛?/li><li>鏃堕棿浠峰€硷紱</li><li>鏃堕棿琛板噺锛?/li><li>鍗曡吙绛栫暐锛?/li><li>缁勫悎绛栫暐锛?/li><li>缁撴瀯绛変环锛?/li></ul>
+<p>杩欎簺楠ㄦ灦鎼緱宸笉澶氫簡銆?/p>
+<p>涓嬩竴绔狅紝鎴戜滑灏辫繘鍏ユ渶瀹规槗璁╀汉鈥滄柟鍚戝浜嗕篃涓嶇埥鈥濈殑閭ｅ潡鏍稿績锛?/p>
+<ul><li>BSM 瀹氫环妯″瀷閲屽埌搴曞摢浜涘彉閲忓湪鍔紱</li><li>涓轰粈涔?IV 浼氳 Call 鍜?Put 涓€璧峰彉璐碉紱</li><li>涓轰粈涔堣储鎶ュ墠鍚庢湡鏉冧环鏍间細鍑虹幇寰堝じ寮犵殑鍙樺寲锛?/li><li>浠€涔堝彨 IV Crush銆?/li></ul>
 <hr>
-<h2>本章参考口径（便于追溯）</h2>
-<ul><li>图片关联重点：<code>Covered Call</code>、<code>Covered Call 四种应用场景</code>、<code>Protective Put</code>、<code>ATM vs OTM Put</code>、<code>IV 时机</code>、<code>降低成本的 Collar 思路</code>、<code>Put-Call Parity</code>、<code>Synthetic Long</code></li><li>OCC / OIC：用于校准 covered call、protective put、synthetic long、put-call parity 的基础教育口径</li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li><li>Fidelity Options Strategy Guide：用于保持 Covered Call、Protective Put 的收益风险描述与主流券商口径一致</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li><li>CBOE Options Institute：用于保持组合策略与 parity / synthetic exposure 的教学术语一致</li><li><a href="https://www.cboe.com/optionsinstitute/">https://www.cboe.com/optionsinstitute/</a></li></ul>
+<h2>鏈珷鍙傝€冨彛寰勶紙渚夸簬杩芥函锛?/h2>
+<ul><li>鍥剧墖鍏宠仈閲嶇偣锛?code>Covered Call</code>銆?code>Covered Call 鍥涚搴旂敤鍦烘櫙</code>銆?code>Protective Put</code>銆?code>ATM vs OTM Put</code>銆?code>IV 鏃舵満</code>銆?code>闄嶄綆鎴愭湰鐨?Collar 鎬濊矾</code>銆?code>Put-Call Parity</code>銆?code>Synthetic Long</code></li><li>OCC / OIC锛氱敤浜庢牎鍑?covered call銆乸rotective put銆乻ynthetic long銆乸ut-call parity 鐨勫熀纭€鏁欒偛鍙ｅ緞</li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li><li>Fidelity Options Strategy Guide锛氱敤浜庝繚鎸?Covered Call銆丳rotective Put 鐨勬敹鐩婇闄╂弿杩颁笌涓绘祦鍒稿晢鍙ｅ緞涓€鑷?/li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li><li>CBOE Options Institute锛氱敤浜庝繚鎸佺粍鍚堢瓥鐣ヤ笌 parity / synthetic exposure 鐨勬暀瀛︽湳璇竴鑷?/li><li><a href="https://www.cboe.com/optionsinstitute/">https://www.cboe.com/optionsinstitute/</a></li></ul>
             </article>
         </section>
 
@@ -724,27 +724,27 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
-                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
+                    <h2 class="section-title" id="chapter-navigation-title">绔犺妭瀵艰埅</h2>
+                    <p class="section-subtitle">鏄惧紡淇濈暀涓婁竴绔?/ 杩斿洖璇剧▼ / 涓嬩竴绔犱笁涓彲瑙佹Ы浣嶏紝渚夸簬鐢熸垚鍣ㄧǔ瀹氬～鍏?/p>
                 </div>
             </div>
 
             <div class="chapter-nav-card">
                 <div class="chapter-nav-grid">
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">上一章</div>
-                        <a class="chapter-nav-link" href="./12.html">第 12 章 · 保证金与流动性</a>
-                        <p>回到账户现实，理解保证金要求与流动性条件如何直接限制策略可执行性与盈亏体验。</p>
+                        <div class="chapter-nav-label">涓婁竴绔?/div>
+                        <a class="chapter-nav-link" href="./12.html">绗?12 绔?路 淇濊瘉閲戜笌娴佸姩鎬?/a>
+                        <p>鍥炲埌璐︽埛鐜板疄锛岀悊瑙ｄ繚璇侀噾瑕佹眰涓庢祦鍔ㄦ€ф潯浠跺浣曠洿鎺ラ檺鍒剁瓥鐣ュ彲鎵ц鎬т笌鐩堜簭浣撻獙銆?/p>
                     </div>
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">返回课程</div>
-                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
-                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
+                        <div class="chapter-nav-label">杩斿洖璇剧▼</div>
+                        <a class="chapter-nav-link" href="./index.html">缇庤偂鏈熸潈鏁欐潗 鐩綍</a>
+                        <p>杩斿洖璇剧▼鐩綍锛屾寜 section 鍜?batch 鏌ョ湅鍏ㄥ眬杩涘害銆?/p>
                     </div>
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">下一章</div>
-                        <a class="chapter-nav-link" href="./14.html">第 14 章 · BSM 与 IV</a>
-                        <p>引入期权定价模型与隐含波动率，解释为什么方向看对时，期权盈亏仍可能不如预期。</p>
+                        <div class="chapter-nav-label">涓嬩竴绔?/div>
+                        <a class="chapter-nav-link" href="./14.html">绗?14 绔?路 BSM 涓?IV</a>
+                        <p>寮曞叆鏈熸潈瀹氫环妯″瀷涓庨殣鍚尝鍔ㄧ巼锛岃В閲婁负浠€涔堟柟鍚戠湅瀵规椂锛屾湡鏉冪泩浜忎粛鍙兘涓嶅棰勬湡銆?/p>
                     </div>
                 </div>
             </div>
@@ -752,15 +752,15 @@
     </main>
 
     <footer>
-        <p>期权教材 · 结构化学习 · HTML 优先</p>
+        <p>鏈熸潈鏁欐潗 路 缁撴瀯鍖栧涔?路 HTML 浼樺厛</p>
         <p class="disclaimer">
-            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
+            鍏嶈矗澹版槑锛氭湰鏁欐潗椤甸潰浠呬緵瀛︿範浜ゆ祦浣跨敤锛屼笉鏋勬垚浠讳綍鎶曡祫寤鸿銆傛湡鏉冧氦鏄撴秹鍙婃潬鏉嗐€佹椂闂存崯鑰椾笌娴佸姩鎬ч闄╋紝鍔″繀缁撳悎鑷韩鎯呭喌鐙珛鍒ゆ柇銆?
         </p>
     </footer>
 
-    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="鍒囨崲娣辫壊妯″紡" title="鍒囨崲娣辫壊妯″紡">馃寭</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="杩斿洖椤堕儴">鈫?/button>
 
-    <script src="../js/main.js?v=20260326site4"></script>
+    <script src="../js/main.js?v=20260326review1"></script>
 </body>
 </html>
