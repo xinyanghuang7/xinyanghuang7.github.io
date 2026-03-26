@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260326-options1">
+    <link rel="stylesheet" href="../css/style.css?v=20260326review1">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -65,6 +65,7 @@
         }
 
         .chapter-summary-card,
+        .chapter-body-card,
         .chapter-nav-card {
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.08);
@@ -73,28 +74,14 @@
             box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
         }
 
-        .chapter-body-card {
-            background: rgba(248, 241, 228, 0.98);
-            border: 1px solid rgba(122, 91, 10, 0.16);
-            border-radius: 18px;
-            padding: 1.75rem;
-            box-shadow: 0 22px 48px -28px rgba(84, 60, 14, 0.22);
-            line-height: 1.9;
-            color: #241e14;
-        }
-
-        .chapter-summary-card {
-            background: rgba(255, 250, 242, 0.96);
-            border: 1px solid rgba(122, 91, 10, 0.12);
-            box-shadow: 0 18px 40px -24px rgba(84, 60, 14, 0.18);
-        }
-
-        .chapter-summary-card p {
-            color: rgba(31,27,20,0.88);
-        }
-
+        .chapter-summary-card p,
         .chapter-nav-card p {
             color: var(--text-secondary);
+        }
+
+        .chapter-body-card {
+            line-height: 1.9;
+            color: var(--text-primary);
         }
 
         .chapter-body-card h2,
@@ -102,14 +89,14 @@
         .chapter-body-card h4,
         .chapter-body-card h5,
         .chapter-body-card h6 {
-            color: #1f1b14;
+            color: var(--text-primary);
             margin-top: 1.6em;
         }
 
         .chapter-body-card p,
         .chapter-body-card li,
         .chapter-body-card blockquote {
-            color: rgba(31,27,20,0.9);
+            color: var(--text-secondary);
         }
 
         .chapter-body-card ul,
@@ -121,23 +108,8 @@
             margin: 1.5rem 0;
             padding: 1rem 1.25rem;
             border-left: 3px solid var(--accent-gold);
-            background: rgba(212, 175, 55, 0.12);
+            background: rgba(201, 162, 39, 0.08);
             border-radius: 0 14px 14px 0;
-        }
-
-        .chapter-body-card code {
-            background: rgba(122, 91, 10, 0.08);
-            color: #5b4307;
-            padding: 0.12rem 0.35rem;
-            border-radius: 6px;
-        }
-
-        .chapter-body-card a {
-            color: #7a5b0a;
-        }
-
-        .chapter-body-card a:hover {
-            color: #5b4307;
         }
 
         .chapter-nav-grid {
@@ -215,17 +187,17 @@
     </script>
 </head>
 <body>
-    <a href="#main" class="skip-link">跳转到主内容</a>
-    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
+    <a href="#main" class="skip-link">璺宠浆鍒颁富鍐呭</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="椤甸潰闃呰杩涘害"></div>
 
     <header id="header">
         <div class="nav-container">
-            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
-            <nav aria-label="期权章节页主导航">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 棣栭〉">Value<span>Invest</span></a>
+            <nav aria-label="鏈熸潈绔犺妭椤典富瀵艰埅">
                 <ul class="nav-links">
-                    <li><a href="../index.html">返回首页</a></li>
-                    <li><a href="{{COURSE_RELATIVE_URL}}">返回课程</a></li>
-                    <li><a href="#chapter-navigation">章节导航</a></li>
+                    <li><a href="../index.html">杩斿洖棣栭〉</a></li>
+                    <li><a href="{{COURSE_RELATIVE_URL}}">杩斿洖璇剧▼</a></li>
+                    <li><a href="#chapter-navigation">绔犺妭瀵艰埅</a></li>
                 </ul>
             </nav>
             <div class="nav-date">{{CHAPTER_NUMBER_LABEL}}</div>
@@ -236,18 +208,18 @@
         <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
         <div class="hero-content">
             <div class="subtitle">{{SECTION_LABEL}}</div>
-            <h1>第 {{CHAPTER_NUMBER}} 章 · {{CHAPTER_TITLE}}</h1>
+            <h1>绗?{{CHAPTER_NUMBER}} 绔?路 {{CHAPTER_TITLE}}</h1>
             <p class="tagline">{{CHAPTER_TAGLINE}}</p>
             <p class="hero-description">{{CHAPTER_SUMMARY}}</p>
         </div>
-        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="鍚戜笅婊氬姩鍒扮珷鑺傛憳瑕?>鍚戜笅婊氬姩</a>
     </section>
 
-    <div class="chapter-meta-bar" aria-label="章节关键信息">
-        <div class="chapter-meta-pill">章节编号：{{CHAPTER_NUMBER_LABEL}}</div>
-        <div class="chapter-meta-pill">Section：{{SECTION_LABEL}}</div>
-        <div class="chapter-meta-pill">Batch：{{BATCH_LABEL}}</div>
-        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="{{COURSE_RELATIVE_URL}}">{{COURSE_TITLE}}</a></div>
+    <div class="chapter-meta-bar" aria-label="绔犺妭鍏抽敭淇℃伅">
+        <div class="chapter-meta-pill">绔犺妭缂栧彿锛歿{CHAPTER_NUMBER_LABEL}}</div>
+        <div class="chapter-meta-pill">Section锛歿{SECTION_LABEL}}</div>
+        <div class="chapter-meta-pill">Batch锛歿{BATCH_LABEL}}</div>
+        <div class="chapter-meta-pill">鎵€灞炶绋嬶細<a class="chapter-meta-link" href="{{COURSE_RELATIVE_URL}}">{{COURSE_TITLE}}</a></div>
     </div>
 
     <main id="main" class="chapter-shell">
@@ -255,8 +227,8 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">01</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
-                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
+                    <h2 class="section-title" id="chapter-summary-title">绔犺妭鎽樿</h2>
+                    <p class="section-subtitle">缁欒鑰呬竴涓厛璇绘噦妗嗘灦銆佸啀娣卞叆姝ｆ枃鐨勮惤鐐?/p>
                 </div>
             </div>
 
@@ -269,8 +241,8 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">02</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
-                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
+                    <h2 class="section-title" id="chapter-content-title">绔犺妭姝ｆ枃</h2>
+                    <p class="section-subtitle">姝ｆ枃鍐呭鐢辩敓鎴愬櫒鐩存帴鍐欏叆 HTML锛岄粯璁ゆ棤鑴氭湰涔熷簲瀹屾暣鍙</p>
                 </div>
             </div>
 
@@ -283,25 +255,25 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
-                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
+                    <h2 class="section-title" id="chapter-navigation-title">绔犺妭瀵艰埅</h2>
+                    <p class="section-subtitle">鏄惧紡淇濈暀涓婁竴绔?/ 杩斿洖璇剧▼ / 涓嬩竴绔犱笁涓彲瑙佹Ы浣嶏紝渚夸簬鐢熸垚鍣ㄧǔ瀹氬～鍏?/p>
                 </div>
             </div>
 
             <div class="chapter-nav-card">
                 <div class="chapter-nav-grid">
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">上一章</div>
+                        <div class="chapter-nav-label">涓婁竴绔?/div>
                         <a class="chapter-nav-link" href="{{PREV_CHAPTER_URL}}">{{PREV_CHAPTER_LABEL}}</a>
                         <p>{{PREV_CHAPTER_HELPER}}</p>
                     </div>
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">返回课程</div>
+                        <div class="chapter-nav-label">杩斿洖璇剧▼</div>
                         <a class="chapter-nav-link" href="{{COURSE_RELATIVE_URL}}">{{RETURN_TO_COURSE_LABEL}}</a>
                         <p>{{COURSE_RETURN_HELPER}}</p>
                     </div>
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">下一章</div>
+                        <div class="chapter-nav-label">涓嬩竴绔?/div>
                         <a class="chapter-nav-link" href="{{NEXT_CHAPTER_URL}}">{{NEXT_CHAPTER_LABEL}}</a>
                         <p>{{NEXT_CHAPTER_HELPER}}</p>
                     </div>
@@ -311,15 +283,15 @@
     </main>
 
     <footer>
-        <p>期权教材 · 结构化学习 · HTML 优先</p>
+        <p>鏈熸潈鏁欐潗 路 缁撴瀯鍖栧涔?路 HTML 浼樺厛</p>
         <p class="disclaimer">
-            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
+            鍏嶈矗澹版槑锛氭湰鏁欐潗椤甸潰浠呬緵瀛︿範浜ゆ祦浣跨敤锛屼笉鏋勬垚浠讳綍鎶曡祫寤鸿銆傛湡鏉冧氦鏄撴秹鍙婃潬鏉嗐€佹椂闂存崯鑰椾笌娴佸姩鎬ч闄╋紝鍔″繀缁撳悎鑷韩鎯呭喌鐙珛鍒ゆ柇銆?
         </p>
     </footer>
 
-    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="鍒囨崲娣辫壊妯″紡" title="鍒囨崲娣辫壊妯″紡">馃寭</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="杩斿洖椤堕儴">鈫?/button>
 
-    <script src="../js/main.js?v=20260326-options1"></script>
+    <script src="../js/main.js?v=20260326review1"></script>
 </body>
 </html>
