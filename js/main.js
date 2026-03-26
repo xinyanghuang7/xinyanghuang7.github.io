@@ -2,8 +2,6 @@
 // Premium Frontend Interactions
 // ============================================
 
-document.documentElement.classList.add('js-enhanced');
-
 // Scroll Progress Bar with smooth update
 function updateProgressBar() {
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -29,33 +27,78 @@ function updateHeader() {
 
 // Reveal sections on scroll with stagger effect
 function initScrollReveal() {
-    const sections = document.querySelectorAll('.section');
+    const sections = Array.from(document.querySelectorAll('.section'));
+    if (!sections.length) {
+        return;
+    }
+
+    const root = document.documentElement;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const revealSection = (section) => {
+        if (!section || section.classList.contains('visible')) {
+            return;
+        }
+
+        const children = section.querySelectorAll('.fade-child');
+        children.forEach((child, i) => {
+            const delay = prefersReducedMotion ? 0 : i * 100;
+            setTimeout(() => {
+                child.classList.add('visible');
+            }, delay);
+        });
+
+        section.classList.add('visible');
+    };
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+        root.classList.remove('js-enhanced');
+        sections.forEach(revealSection);
+        return;
+    }
+
+    root.classList.add('js-enhanced');
+
+    const isNearViewport = (section) => {
+        const rect = section.getBoundingClientRect();
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+        const revealTop = viewportHeight * 0.96;
+
+        return rect.top <= revealTop && rect.bottom >= 0;
+    };
+
     const observerOptions = {
         root: null,
-        rootMargin: '0px 0px -100px 0px',
-        threshold: 0.1
+        rootMargin: '0px 0px -12% 0px',
+        threshold: 0.05
     };
-    
+
     const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
+        entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                // Add stagger delay based on child index
-                const children = entry.target.querySelectorAll('.fade-child');
-                children.forEach((child, i) => {
-                    setTimeout(() => {
-                        child.classList.add('visible');
-                    }, i * 100); // 100ms stagger between children
-                });
-                
-                entry.target.classList.add('visible');
+                revealSection(entry.target);
                 sectionObserver.unobserve(entry.target);
             }
         });
     }, observerOptions);
-    
-    sections.forEach(section => {
+
+    const primeVisibleSections = () => {
+        sections.forEach((section) => {
+            if (isNearViewport(section)) {
+                revealSection(section);
+                sectionObserver.unobserve(section);
+            }
+        });
+    };
+
+    sections.forEach((section) => {
         sectionObserver.observe(section);
     });
+
+    window.requestAnimationFrame(primeVisibleSections);
+    window.setTimeout(primeVisibleSections, 180);
+    window.addEventListener('load', primeVisibleSections, { once: true });
+    window.addEventListener('resize', debounce(primeVisibleSections, 120));
 }
 
 // Smooth scroll for navigation links
@@ -579,7 +622,10 @@ function applyReducedMotionFallback() {
     }
 
     document.documentElement.style.scrollBehavior = 'auto';
-    document.querySelectorAll('.fade-child').forEach(el => {
+    document.documentElement.classList.remove('js-enhanced');
+
+    document.querySelectorAll('.section, .fade-child').forEach(el => {
+        el.classList.add('visible');
         el.style.opacity = '1';
         el.style.transform = 'none';
     });
