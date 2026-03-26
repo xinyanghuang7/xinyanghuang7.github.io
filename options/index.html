@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="系统梳理美股期权的基础概念、交易操作、风险结构与常见策略，按章节持续更新。">
+    <meta name="description" content="把期权教材的基础认知、操作、买卖双方与价内价外结构整理成可持续迭代的课程页。">
     <meta name="author" content="ValueInvest">
     <meta name="theme-color" content="#c9a227">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -11,11 +11,11 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://4fire.qzz.io/options/">
     <meta property="og:title" content="美股期权教材 | ValueInvest">
-    <meta property="og:description" content="系统梳理美股期权的基础概念、交易操作、风险结构与常见策略，按章节持续更新。">
+    <meta property="og:description" content="把期权教材的基础认知、操作、买卖双方与价内价外结构整理成可持续迭代的课程页。">
     <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="美股期权教材 | ValueInvest">
-    <meta name="twitter:description" content="系统梳理美股期权的基础概念、交易操作、风险结构与常见策略，按章节持续更新。">
+    <meta name="twitter:description" content="把期权教材的基础认知、操作、买卖双方与价内价外结构整理成可持续迭代的课程页。">
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <title>美股期权教材 | ValueInvest</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,6 +26,26 @@
         .course-shell {
             display: grid;
             gap: 2rem;
+        }
+
+        .course-shell > .section,
+        .course-shell .section-header,
+        .course-shell .section-title-group,
+        .course-grid-card,
+        .course-intro-card,
+        .course-update-card,
+        .course-note-card {
+            min-width: 0;
+        }
+
+        .course-card-title,
+        .course-card-desc,
+        .course-update-title,
+        .course-update-desc,
+        .section-title,
+        .section-subtitle {
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
 
         .course-intro-card,
@@ -148,7 +168,7 @@
         "@context": "https://schema.org",
         "@type": "Course",
         "name": "美股期权教材",
-        "description": "系统梳理美股期权的基础概念、交易操作、风险结构与常见策略，按章节持续更新。",
+        "description": "把期权教材的基础认知、操作、买卖双方与价内价外结构整理成可持续迭代的课程页。",
         "provider": {
             "@type": "Organization",
             "name": "ValueInvest",
@@ -181,8 +201,8 @@
         <div class="hero-content">
             <div class="subtitle">Options Course</div>
             <h1>美股期权教材</h1>
-            <p class="tagline">从概念入门到策略结构，把分散的期权知识整理成一套可连续阅读的课程。</p>
-            <p class="hero-description">这里集中展示已上线章节、学习路径与更新节奏，方便按顺序学习，也方便按主题回看。</p>
+            <p class="tagline">从概念、操作到风险结构，把期权教材做成真正可回看、可扩展的课程区。</p>
+            <p class="hero-description">课程首页只负责课程，不混进博客流。学习路径、目录、同步进度和最近更新全部从 manifest 自动生成。</p>
         </div>
         <a href="#course-overview" class="scroll-indicator" aria-label="向下滚动到课程概览">向下滚动</a>
     </section>
@@ -198,10 +218,10 @@
             </div>
 
             <div class="course-intro-card">
-                <p>这套课程面向刚接触美股期权、但希望系统建立框架的读者。内容从合同本质、下单与盈亏结构讲起，再逐步进入定价、波动率与组合策略。</p>
+                <p>这套课程面向刚接触美股期权、但不想被术语和碎片知识劝退的读者。先把合同本质讲清楚，再往操作、定价和策略推进。</p>
                 <div class="course-directory-meta">
                     <span class="course-directory-pill">适合对象：期权新手 / 想系统复习的人</span>
-                    <span class="course-directory-pill">学习节奏：先读 01-04，再按 batch 继续推进</span>
+                    <span class="course-directory-pill">学习节奏：先读 01-04，再按批次扩展</span>
                     <span class="course-directory-pill">最后同步：已发布至第 27 章</span>
                 </div>
             </div>
@@ -238,7 +258,7 @@
                 <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="chapter-directory-title">章节目录</h2>
-                    <p class="section-subtitle">课程首页是目录页，不是文章流。这里预留给生成器输出各章节卡片与跳转入口</p>
+                    <p class="section-subtitle">按章节顺序展开，方便你从头系统学习，也方便按主题快速跳转到对应内容页。</p>
                 </div>
             </div>
 
