@@ -3835,6 +3835,12 @@ footer .disclaimer {
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
+
+    .js-enhanced .section,
+    .js-enhanced .fade-child {
+        opacity: 1 !important;
+        transform: none !important;
+    }
 }
 
 
