@@ -64,6 +64,16 @@
             gap: 2rem;
         }
 
+        .chapter-shell > .section,
+        .chapter-shell .section-header,
+        .chapter-shell .section-title-group,
+        .chapter-summary-card,
+        .chapter-body-card,
+        .chapter-nav-card,
+        .chapter-nav-slot {
+            min-width: 0;
+        }
+
         .chapter-summary-card,
         .chapter-body-card,
         .chapter-nav-card {
@@ -97,6 +107,23 @@
         .chapter-body-card li,
         .chapter-body-card blockquote {
             color: var(--text-secondary);
+        }
+
+        .chapter-body-card p,
+        .chapter-body-card li,
+        .chapter-body-card blockquote,
+        .chapter-body-card h1,
+        .chapter-body-card h2,
+        .chapter-body-card h3,
+        .chapter-body-card h4,
+        .chapter-body-card h5,
+        .chapter-body-card h6,
+        .section-title,
+        .section-subtitle,
+        .chapter-nav-link,
+        .chapter-nav-card p {
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
 
         .chapter-body-card ul,
@@ -242,7 +269,7 @@
                 <div class="section-number" aria-hidden="true">02</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="chapter-content-title">章节正文</h2>
-                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
+                    <p class="section-subtitle">正文按完整阅读链组织，建议先抓主结论，再回到分节例子逐段吃透。</p>
                 </div>
             </div>
 
@@ -256,7 +283,7 @@
                 <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
-                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
+                    <p class="section-subtitle">读完本章后，可以继续前后章节，或回到课程目录按 section 与 batch 复习。</p>
                 </div>
             </div>
 
