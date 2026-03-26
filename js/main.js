@@ -323,6 +323,7 @@ function getCurrentBuildId() {
         ...document.querySelectorAll('script[src]'),
         ...document.querySelectorAll('link[rel="stylesheet"][href]')
     ];
+    const builds = [];
 
     for (const el of candidates) {
         const raw = el.getAttribute('src') || el.getAttribute('href');
@@ -334,14 +335,19 @@ function getCurrentBuildId() {
             const resolved = new URL(raw, window.location.href);
             const build = resolved.searchParams.get('v');
             if (build) {
-                return build;
+                builds.push(build);
             }
         } catch (_) {
             // ignore malformed URLs and keep scanning
         }
     }
 
-    return '';
+    if (!builds.length) {
+        return '';
+    }
+
+    builds.sort();
+    return builds[builds.length - 1];
 }
 
 function showBuildRefreshNotice(remoteBuild) {
