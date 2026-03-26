@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="从方向交易转向波动幅度交易，理解 Straddle、Strangle 等波动率策略的核心逻辑。">
+    <meta name="description" content="浠庢柟鍚戜氦鏄撹浆鍚戞尝鍔ㄥ箙搴︿氦鏄擄紝鐞嗚В Straddle銆丼trangle 绛夋尝鍔ㄧ巼绛栫暐鐨勬牳蹇冮€昏緫銆?>
     <meta name="author" content="ValueInvest">
     <meta name="theme-color" content="#c9a227">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="canonical" href="https://4fire.qzz.io/options/16.html">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://4fire.qzz.io/options/16.html">
-    <meta property="og:title" content="波动率策略入门 | 美股期权教材">
-    <meta property="og:description" content="从方向交易转向波动幅度交易，理解 Straddle、Strangle 等波动率策略的核心逻辑。">
+    <meta property="og:title" content="娉㈠姩鐜囩瓥鐣ュ叆闂?| 缇庤偂鏈熸潈鏁欐潗">
+    <meta property="og:description" content="浠庢柟鍚戜氦鏄撹浆鍚戞尝鍔ㄥ箙搴︿氦鏄擄紝鐞嗚В Straddle銆丼trangle 绛夋尝鍔ㄧ巼绛栫暐鐨勬牳蹇冮€昏緫銆?>
     <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="波动率策略入门 | 美股期权教材">
-    <meta name="twitter:description" content="从方向交易转向波动幅度交易，理解 Straddle、Strangle 等波动率策略的核心逻辑。">
+    <meta name="twitter:title" content="娉㈠姩鐜囩瓥鐣ュ叆闂?| 缇庤偂鏈熸潈鏁欐潗">
+    <meta name="twitter:description" content="浠庢柟鍚戜氦鏄撹浆鍚戞尝鍔ㄥ箙搴︿氦鏄擄紝鐞嗚В Straddle銆丼trangle 绛夋尝鍔ㄧ巼绛栫暐鐨勬牳蹇冮€昏緫銆?>
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
-    <title>波动率策略入门 | 美股期权教材</title>
+    <title>娉㈠姩鐜囩瓥鐣ュ叆闂?| 缇庤偂鏈熸潈鏁欐潗</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260326site4">
+    <link rel="stylesheet" href="../css/style.css?v=20260326review1">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -191,8 +191,8 @@
     {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": "波动率策略入门",
-        "description": "从方向交易转向波动幅度交易，理解 Straddle、Strangle 等波动率策略的核心逻辑。",
+        "headline": "娉㈠姩鐜囩瓥鐣ュ叆闂?,
+        "description": "浠庢柟鍚戜氦鏄撹浆鍚戞尝鍔ㄥ箙搴︿氦鏄擄紝鐞嗚В Straddle銆丼trangle 绛夋尝鍔ㄧ巼绛栫暐鐨勬牳蹇冮€昏緫銆?,
         "author": {
             "@type": "Person",
             "name": "ValueInvest"
@@ -205,7 +205,7 @@
         "mainEntityOfPage": "https://4fire.qzz.io/options/16.html",
         "isPartOf": {
             "@type": "Course",
-            "name": "美股期权教材",
+            "name": "缇庤偂鏈熸潈鏁欐潗",
             "url": "https://4fire.qzz.io/options/"
         },
         "image": [
@@ -215,39 +215,39 @@
     </script>
 </head>
 <body>
-    <a href="#main" class="skip-link">跳转到主内容</a>
-    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
+    <a href="#main" class="skip-link">璺宠浆鍒颁富鍐呭</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="椤甸潰闃呰杩涘害"></div>
 
     <header id="header">
         <div class="nav-container">
-            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
-            <nav aria-label="期权章节页主导航">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 棣栭〉">Value<span>Invest</span></a>
+            <nav aria-label="鏈熸潈绔犺妭椤典富瀵艰埅">
                 <ul class="nav-links">
-                    <li><a href="../index.html">返回首页</a></li>
-                    <li><a href="./index.html">返回课程</a></li>
-                    <li><a href="#chapter-navigation">章节导航</a></li>
+                    <li><a href="../index.html">杩斿洖棣栭〉</a></li>
+                    <li><a href="./index.html">杩斿洖璇剧▼</a></li>
+                    <li><a href="#chapter-navigation">绔犺妭瀵艰埅</a></li>
                 </ul>
             </nav>
-            <div class="nav-date">第 16 章</div>
+            <div class="nav-date">绗?16 绔?/div>
         </div>
     </header>
 
     <section class="hero" role="banner">
         <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
         <div class="hero-content">
-            <div class="subtitle">进阶结构与波动率篇</div>
-            <h1>第 16 章 · 波动率策略入门</h1>
-            <p class="tagline">进阶结构与波动率篇 · Batch 5</p>
-            <p class="hero-description">从方向交易转向波动幅度交易，理解 Straddle、Strangle 等波动率策略的核心逻辑。</p>
+            <div class="subtitle">杩涢樁缁撴瀯涓庢尝鍔ㄧ巼绡?/div>
+            <h1>绗?16 绔?路 娉㈠姩鐜囩瓥鐣ュ叆闂?/h1>
+            <p class="tagline">杩涢樁缁撴瀯涓庢尝鍔ㄧ巼绡?路 Batch 5</p>
+            <p class="hero-description">浠庢柟鍚戜氦鏄撹浆鍚戞尝鍔ㄥ箙搴︿氦鏄擄紝鐞嗚В Straddle銆丼trangle 绛夋尝鍔ㄧ巼绛栫暐鐨勬牳蹇冮€昏緫銆?/p>
         </div>
-        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="鍚戜笅婊氬姩鍒扮珷鑺傛憳瑕?>鍚戜笅婊氬姩</a>
     </section>
 
-    <div class="chapter-meta-bar" aria-label="章节关键信息">
-        <div class="chapter-meta-pill">章节编号：第 16 章</div>
-        <div class="chapter-meta-pill">Section：进阶结构与波动率篇</div>
-        <div class="chapter-meta-pill">Batch：Batch 5 · 已发布</div>
-        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
+    <div class="chapter-meta-bar" aria-label="绔犺妭鍏抽敭淇℃伅">
+        <div class="chapter-meta-pill">绔犺妭缂栧彿锛氱 16 绔?/div>
+        <div class="chapter-meta-pill">Section锛氳繘闃剁粨鏋勪笌娉㈠姩鐜囩瘒</div>
+        <div class="chapter-meta-pill">Batch锛欱atch 5 路 宸插彂甯?/div>
+        <div class="chapter-meta-pill">鎵€灞炶绋嬶細<a class="chapter-meta-link" href="./index.html">缇庤偂鏈熸潈鏁欐潗</a></div>
     </div>
 
     <main id="main" class="chapter-shell">
@@ -255,13 +255,13 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">01</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
-                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
+                    <h2 class="section-title" id="chapter-summary-title">绔犺妭鎽樿</h2>
+                    <p class="section-subtitle">缁欒鑰呬竴涓厛璇绘噦妗嗘灦銆佸啀娣卞叆姝ｆ枃鐨勮惤鐐?/p>
                 </div>
             </div>
 
             <div class="chapter-summary-card">
-                <p>从方向交易转向波动幅度交易，理解 Straddle、Strangle 等波动率策略的核心逻辑。</p>
+                <p>浠庢柟鍚戜氦鏄撹浆鍚戞尝鍔ㄥ箙搴︿氦鏄擄紝鐞嗚В Straddle銆丼trangle 绛夋尝鍔ㄧ巼绛栫暐鐨勬牳蹇冮€昏緫銆?/p>
             </div>
         </section>
 
@@ -269,306 +269,306 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">02</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
-                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
+                    <h2 class="section-title" id="chapter-content-title">绔犺妭姝ｆ枃</h2>
+                    <p class="section-subtitle">姝ｆ枃鍐呭鐢辩敓鎴愬櫒鐩存帴鍐欏叆 HTML锛岄粯璁ゆ棤鑴氭湰涔熷簲瀹屾暣鍙</p>
                 </div>
             </div>
 
             <article class="chapter-body-card">
-<h1>《美股期权教材》</h1>
-<h2>第16章 波动率策略入门：当你赌的不是涨跌，而是“到底会不会闹大”</h2>
-<blockquote><p>这一章一定要配着你图片里的那组 <code>Straddle / Strangle / Iron Butterfly / Iron Condor</code> 一起看。</p>
-<p>因为图片在讲的，其实不是一堆陌生名词，而是一条非常清楚的主线：</p>
-<ul><li>有的人赌市场会出大动静；</li><li>有的人赌市场不会像大家想得那么夸张；</li><li>如果直接裸着赌太危险，就再往外加两条腿，把风险封起来；</li><li>如果你手里本来有正股，还可以把某些 short 结构做得更像“持仓上的收租改造”。</li></ul>
-<p>这章最容易被讲复杂，所以我先把它全部压成两句最好懂的话：</p>
-<blockquote><p><strong>Long 系列：我赌会出大动静。</strong></p>
-<p><strong>Short 系列：我赌别出那么大动静，或者至少别超出市场原本的夸张预期。</strong></p></blockquote>
-<p>你先把这两句抓住，后面的名字就都只是细分版本而已。</p></blockquote>
+<h1>銆婄編鑲℃湡鏉冩暀鏉愩€?/h1>
+<h2>绗?6绔?娉㈠姩鐜囩瓥鐣ュ叆闂細褰撲綘璧岀殑涓嶆槸娑ㄨ穼锛岃€屾槸鈥滃埌搴曚細涓嶄細闂瑰ぇ鈥?/h2>
+<blockquote><p>杩欎竴绔犱竴瀹氳閰嶇潃浣犲浘鐗囬噷鐨勯偅缁?<code>Straddle / Strangle / Iron Butterfly / Iron Condor</code> 涓€璧风湅銆?/p>
+<p>鍥犱负鍥剧墖鍦ㄨ鐨勶紝鍏跺疄涓嶆槸涓€鍫嗛檶鐢熷悕璇嶏紝鑰屾槸涓€鏉￠潪甯告竻妤氱殑涓荤嚎锛?/p>
+<ul><li>鏈夌殑浜鸿祵甯傚満浼氬嚭澶у姩闈欙紱</li><li>鏈夌殑浜鸿祵甯傚満涓嶄細鍍忓ぇ瀹舵兂寰楅偅涔堝じ寮狅紱</li><li>濡傛灉鐩存帴瑁哥潃璧屽お鍗遍櫓锛屽氨鍐嶅線澶栧姞涓ゆ潯鑵匡紝鎶婇闄╁皝璧锋潵锛?/li><li>濡傛灉浣犳墜閲屾湰鏉ユ湁姝ｈ偂锛岃繕鍙互鎶婃煇浜?short 缁撴瀯鍋氬緱鏇村儚鈥滄寔浠撲笂鐨勬敹绉熸敼閫犫€濄€?/li></ul>
+<p>杩欑珷鏈€瀹规槗琚澶嶆潅锛屾墍浠ユ垜鍏堟妸瀹冨叏閮ㄥ帇鎴愪袱鍙ユ渶濂芥噦鐨勮瘽锛?/p>
+<blockquote><p><strong>Long 绯诲垪锛氭垜璧屼細鍑哄ぇ鍔ㄩ潤銆?/strong></p>
+<p><strong>Short 绯诲垪锛氭垜璧屽埆鍑洪偅涔堝ぇ鍔ㄩ潤锛屾垨鑰呰嚦灏戝埆瓒呭嚭甯傚満鍘熸湰鐨勫じ寮犻鏈熴€?/strong></p></blockquote>
+<p>浣犲厛鎶婅繖涓ゅ彞鎶撲綇锛屽悗闈㈢殑鍚嶅瓧灏遍兘鍙槸缁嗗垎鐗堟湰鑰屽凡銆?/p></blockquote>
 <hr>
-<h2>阅读导航：第一次读先分清 Long / Short，第二次读再分结构名字</h2>
-<p>这一章第一次读，最容易把人读晕的，不是逻辑太难，而是名字一下变多了。</p>
-<p>所以第一遍你先别急着背 Straddle、Strangle、Butterfly、Condor 的所有细节。</p>
-<p>先抓两层最关键的分法：</p>
-<p>1. <strong>Long 系列 = 我赌会出大动静。</strong> 2. <strong>Short 系列 = 我赌别出那么大动静。</strong></p>
-<p>等这两层先站稳，第二遍再去补：</p>
-<ul><li>Straddle 和 Strangle 到底差在哪；</li><li>Butterfly 和 Condor 为什么本质上是加了护栏的 short 结构；</li><li>为什么很多波动率策略真正赌的，是“市场预期”和“真实结果”之间的落差。</li></ul>
-<p>这样读，会比一上来就被四个名字压住顺很多。</p>
+<h2>闃呰瀵艰埅锛氱涓€娆¤鍏堝垎娓?Long / Short锛岀浜屾璇诲啀鍒嗙粨鏋勫悕瀛?/h2>
+<p>杩欎竴绔犵涓€娆¤锛屾渶瀹规槗鎶婁汉璇绘檿鐨勶紝涓嶆槸閫昏緫澶毦锛岃€屾槸鍚嶅瓧涓€涓嬪彉澶氫簡銆?/p>
+<p>鎵€浠ョ涓€閬嶄綘鍏堝埆鎬ョ潃鑳?Straddle銆丼trangle銆丅utterfly銆丆ondor 鐨勬墍鏈夌粏鑺傘€?/p>
+<p>鍏堟姄涓ゅ眰鏈€鍏抽敭鐨勫垎娉曪細</p>
+<p>1. <strong>Long 绯诲垪 = 鎴戣祵浼氬嚭澶у姩闈欍€?/strong> 2. <strong>Short 绯诲垪 = 鎴戣祵鍒嚭閭ｄ箞澶у姩闈欍€?/strong></p>
+<p>绛夎繖涓ゅ眰鍏堢珯绋筹紝绗簩閬嶅啀鍘昏ˉ锛?/p>
+<ul><li>Straddle 鍜?Strangle 鍒板簳宸湪鍝紱</li><li>Butterfly 鍜?Condor 涓轰粈涔堟湰璐ㄤ笂鏄姞浜嗘姢鏍忕殑 short 缁撴瀯锛?/li><li>涓轰粈涔堝緢澶氭尝鍔ㄧ巼绛栫暐鐪熸璧岀殑锛屾槸鈥滃競鍦洪鏈熲€濆拰鈥滅湡瀹炵粨鏋溾€濅箣闂寸殑钀藉樊銆?/li></ul>
+<p>杩欐牱璇伙紝浼氭瘮涓€涓婃潵灏辫鍥涗釜鍚嶅瓧鍘嬩綇椤哄緢澶氥€?/p>
 <hr>
-<h1>一、先把这章最底层讲清楚：这类策略赌的不是方向，而是“幅度够不够大”</h1>
-<h2>16.1 前面的策略像在赌“往哪边走”，这一章更像在赌“会不会闹大”</h2>
-<p>前面很多策略都很好理解：</p>
-<ul><li>Long Call：看涨</li><li>Long Put：看跌</li><li>Bull Call Spread：偏看涨</li><li>Bear Put Spread：偏看跌</li></ul>
-<p>你脑子里想的主要是方向。</p>
-<p>但这一章不是这样。</p>
-<p>这一章你最先要习惯的新问题是：</p>
-<ul><li>我不一定知道它往上还是往下；</li><li>但我判断它会不会大动。</li></ul>
-<p>或者反过来：</p>
-<ul><li>我也许不在乎它轻微涨跌；</li><li>我真正想赌的是，它最后不会走得太夸张。</li></ul>
-<p>这就是波动率策略和方向策略最大的区别。</p>
-<p>你可以这样理解：</p>
-<h3>方向策略</h3>
-<p>像在赌：</p>
-<ul><li>这场比赛哪一队会赢。</li></ul>
-<h3>波动率策略</h3>
-<p>更像在赌：</p>
-<ul><li>这场比赛会不会踢成大比分；</li><li>还是最后只是闷闷的小比分。</li></ul>
-<p>这个比喻非常适合这一章。</p>
-<p>因为这里最重要的，不是“多空股价”，而是：</p>
-<blockquote><p><strong>市场最后的真实波动，到底是大于、等于，还是小于大家原本预想的波动。</strong></p></blockquote>
+<h1>涓€銆佸厛鎶婅繖绔犳渶搴曞眰璁叉竻妤氾細杩欑被绛栫暐璧岀殑涓嶆槸鏂瑰悜锛岃€屾槸鈥滃箙搴﹀涓嶅澶р€?/h1>
+<h2>16.1 鍓嶉潰鐨勭瓥鐣ュ儚鍦ㄨ祵鈥滃線鍝竟璧扳€濓紝杩欎竴绔犳洿鍍忓湪璧屸€滀細涓嶄細闂瑰ぇ鈥?/h2>
+<p>鍓嶉潰寰堝绛栫暐閮藉緢濂界悊瑙ｏ細</p>
+<ul><li>Long Call锛氱湅娑?/li><li>Long Put锛氱湅璺?/li><li>Bull Call Spread锛氬亸鐪嬫定</li><li>Bear Put Spread锛氬亸鐪嬭穼</li></ul>
+<p>浣犺剳瀛愰噷鎯崇殑涓昏鏄柟鍚戙€?/p>
+<p>浣嗚繖涓€绔犱笉鏄繖鏍枫€?/p>
+<p>杩欎竴绔犱綘鏈€鍏堣涔犳儻鐨勬柊闂鏄細</p>
+<ul><li>鎴戜笉涓€瀹氱煡閬撳畠寰€涓婅繕鏄線涓嬶紱</li><li>浣嗘垜鍒ゆ柇瀹冧細涓嶄細澶у姩銆?/li></ul>
+<p>鎴栬€呭弽杩囨潵锛?/p>
+<ul><li>鎴戜篃璁镐笉鍦ㄤ箮瀹冭交寰定璺岋紱</li><li>鎴戠湡姝ｆ兂璧岀殑鏄紝瀹冩渶鍚庝笉浼氳蛋寰楀お澶稿紶銆?/li></ul>
+<p>杩欏氨鏄尝鍔ㄧ巼绛栫暐鍜屾柟鍚戠瓥鐣ユ渶澶х殑鍖哄埆銆?/p>
+<p>浣犲彲浠ヨ繖鏍风悊瑙ｏ細</p>
+<h3>鏂瑰悜绛栫暐</h3>
+<p>鍍忓湪璧岋細</p>
+<ul><li>杩欏満姣旇禌鍝竴闃熶細璧€?/li></ul>
+<h3>娉㈠姩鐜囩瓥鐣?/h3>
+<p>鏇村儚鍦ㄨ祵锛?/p>
+<ul><li>杩欏満姣旇禌浼氫笉浼氳涪鎴愬ぇ姣斿垎锛?/li><li>杩樻槸鏈€鍚庡彧鏄椃闂风殑灏忔瘮鍒嗐€?/li></ul>
+<p>杩欎釜姣斿柣闈炲父閫傚悎杩欎竴绔犮€?/p>
+<p>鍥犱负杩欓噷鏈€閲嶈鐨勶紝涓嶆槸鈥滃绌鸿偂浠封€濓紝鑰屾槸锛?/p>
+<blockquote><p><strong>甯傚満鏈€鍚庣殑鐪熷疄娉㈠姩锛屽埌搴曟槸澶т簬銆佺瓑浜庯紝杩樻槸灏忎簬澶у鍘熸湰棰勬兂鐨勬尝鍔ㄣ€?/strong></p></blockquote>
 <hr>
-<h1>二、Long Straddle：我不知道方向，但我赌一定会出大事</h1>
-<h2>16.2 最人话的定义：Long Straddle = 在当前价格正中间，两边一起埋伏</h2>
-<p>图片里写得很清楚：</p>
-<ul><li><strong>Long Straddle = 买 ATM Call + 买 ATM Put</strong></li></ul>
-<p>翻成人话非常简单：</p>
-<blockquote><p><strong>我在当前价格两边都埋一手。不管最后往上爆还是往下崩，只要动得足够猛，我总有一边会大赚。</strong></p></blockquote>
-<p>注意，这不是“同时看涨又看跌”。</p>
-<p>更准确的理解是：</p>
-<ul><li>我不押方向；</li><li>我押的是：<strong>别平淡，最好出大事。</strong></li></ul>
-<p>所以 Long Straddle 特别适合什么场景？</p>
-<p>比如：</p>
-<ul><li>财报前，你确定市场会大反应，但不知道方向；</li><li>重大会议前，你觉得股价会大跳，但不知道往哪跳；</li><li>某只股票已经压缩很久，你感觉快憋不住了。</li></ul>
-<p>这时候，Long Straddle 的逻辑就很顺：</p>
-<ul><li>不是押左边；</li><li>也不是押右边；</li><li>而是押“别停在中间”。</li></ul>
+<h1>浜屻€丩ong Straddle锛氭垜涓嶇煡閬撴柟鍚戯紝浣嗘垜璧屼竴瀹氫細鍑哄ぇ浜?/h1>
+<h2>16.2 鏈€浜鸿瘽鐨勫畾涔夛細Long Straddle = 鍦ㄥ綋鍓嶄环鏍兼涓棿锛屼袱杈逛竴璧峰煁浼?/h2>
+<p>鍥剧墖閲屽啓寰楀緢娓呮锛?/p>
+<ul><li><strong>Long Straddle = 涔?ATM Call + 涔?ATM Put</strong></li></ul>
+<p>缈绘垚浜鸿瘽闈炲父绠€鍗曪細</p>
+<blockquote><p><strong>鎴戝湪褰撳墠浠锋牸涓よ竟閮藉煁涓€鎵嬨€備笉绠℃渶鍚庡線涓婄垎杩樻槸寰€涓嬪穿锛屽彧瑕佸姩寰楄冻澶熺寷锛屾垜鎬绘湁涓€杈逛細澶ц禋銆?/strong></p></blockquote>
+<p>娉ㄦ剰锛岃繖涓嶆槸鈥滃悓鏃剁湅娑ㄥ張鐪嬭穼鈥濄€?/p>
+<p>鏇村噯纭殑鐞嗚В鏄細</p>
+<ul><li>鎴戜笉鎶兼柟鍚戯紱</li><li>鎴戞娂鐨勬槸锛?strong>鍒钩娣★紝鏈€濂藉嚭澶т簨銆?/strong></li></ul>
+<p>鎵€浠?Long Straddle 鐗瑰埆閫傚悎浠€涔堝満鏅紵</p>
+<p>姣斿锛?/p>
+<ul><li>璐㈡姤鍓嶏紝浣犵‘瀹氬競鍦轰細澶у弽搴旓紝浣嗕笉鐭ラ亾鏂瑰悜锛?/li><li>閲嶅ぇ浼氳鍓嶏紝浣犺寰楄偂浠蜂細澶ц烦锛屼絾涓嶇煡閬撳線鍝烦锛?/li><li>鏌愬彧鑲＄エ宸茬粡鍘嬬缉寰堜箙锛屼綘鎰熻蹇唻涓嶄綇浜嗐€?/li></ul>
+<p>杩欐椂鍊欙紝Long Straddle 鐨勯€昏緫灏卞緢椤猴細</p>
+<ul><li>涓嶆槸鎶煎乏杈癸紱</li><li>涔熶笉鏄娂鍙宠竟锛?/li><li>鑰屾槸鎶尖€滃埆鍋滃湪涓棿鈥濄€?/li></ul>
 <hr>
-<h2>16.3 为什么 Long Straddle 要买 ATM</h2>
-<p>图片里强调得非常清楚：</p>
-<ul><li>Long Straddle 买的是 <strong>ATM Call + ATM Put</strong></li></ul>
-<p>为什么要买 ATM？</p>
-<p>因为 ATM 最像什么？</p>
-<ul><li>最像站在正中间；</li><li>一旦市场开始大动，它是最先有明显反应的区域；</li><li>两边无论往哪边跑，它都最容易马上被激活。</li></ul>
-<p>所以如果你赌的是：</p>
-<ul><li>未来会有明显大波动；</li></ul>
-<p>那最直接的做法，就是在当前价位正中间两边一起埋伏。</p>
-<p>缺点是什么？</p>
-<p>也很明显：</p>
-<ul><li>因为你买的是最敏感的 Call 和最敏感的 Put；</li><li>所以它通常不便宜。</li></ul>
-<p>这就是 Long Straddle 的第一层交换：</p>
-<blockquote><p><strong>反应最快，但成本也最重。</strong></p></blockquote>
+<h2>16.3 涓轰粈涔?Long Straddle 瑕佷拱 ATM</h2>
+<p>鍥剧墖閲屽己璋冨緱闈炲父娓呮锛?/p>
+<ul><li>Long Straddle 涔扮殑鏄?<strong>ATM Call + ATM Put</strong></li></ul>
+<p>涓轰粈涔堣涔?ATM锛?/p>
+<p>鍥犱负 ATM 鏈€鍍忎粈涔堬紵</p>
+<ul><li>鏈€鍍忕珯鍦ㄦ涓棿锛?/li><li>涓€鏃﹀競鍦哄紑濮嬪ぇ鍔紝瀹冩槸鏈€鍏堟湁鏄庢樉鍙嶅簲鐨勫尯鍩燂紱</li><li>涓よ竟鏃犺寰€鍝竟璺戯紝瀹冮兘鏈€瀹规槗椹笂琚縺娲汇€?/li></ul>
+<p>鎵€浠ュ鏋滀綘璧岀殑鏄細</p>
+<ul><li>鏈潵浼氭湁鏄庢樉澶ф尝鍔紱</li></ul>
+<p>閭ｆ渶鐩存帴鐨勫仛娉曪紝灏辨槸鍦ㄥ綋鍓嶄环浣嶆涓棿涓よ竟涓€璧峰煁浼忋€?/p>
+<p>缂虹偣鏄粈涔堬紵</p>
+<p>涔熷緢鏄庢樉锛?/p>
+<ul><li>鍥犱负浣犱拱鐨勬槸鏈€鏁忔劅鐨?Call 鍜屾渶鏁忔劅鐨?Put锛?/li><li>鎵€浠ュ畠閫氬父涓嶄究瀹溿€?/li></ul>
+<p>杩欏氨鏄?Long Straddle 鐨勭涓€灞備氦鎹細</p>
+<blockquote><p><strong>鍙嶅簲鏈€蹇紝浣嗘垚鏈篃鏈€閲嶃€?/strong></p></blockquote>
 <hr>
-<h2>16.4 用图片里的例子讲：150/150 Straddle 为什么最大亏损就是总权利金</h2>
-<p>图片里有一个特别好的例子：</p>
-<ul><li>买 150 ATM Call</li><li>买 150 ATM Put</li><li>各花 5</li><li>总权利金 = 10</li></ul>
-<p>这组数字非常适合讲透。</p>
-<p>你做的事其实是：</p>
-<ul><li>左手花 5 买“往上爆”的可能；</li><li>右手花 5 买“往下崩”的可能；</li><li>一共先付出 10。</li></ul>
-<p>现在看三种情况。</p>
-<h3>情况 1：最后股价停在 150 附近</h3>
-<p>这是 Long Straddle 最不想看到的。</p>
-<p>因为：</p>
-<ul><li>Call 没跑出来；</li><li>Put 也没跑出来；</li><li>两边都不怎么值钱。</li></ul>
-<p>所以最差结果就是：</p>
-<ul><li>你付出去的那 10 基本亏掉。</li></ul>
-<p>这就是为什么图片里说：</p>
-<ul><li><strong>最大亏损 = 股价等于行权价附近时，损失总权利金</strong></li></ul>
-<p>翻成人话就是：</p>
-<blockquote><p><strong>你最怕的不是方向错，而是市场最后根本没闹起来。</strong></p></blockquote>
-<h3>情况 2：最后大涨</h3>
-<p>比如涨到 165 或 170。</p>
-<p>这时：</p>
-<ul><li>Call 那边会很爽；</li><li>Put 那边虽然亏光，但最多就是那 5；</li><li>只要上涨够猛，Call 的盈利会覆盖两边总成本。</li></ul>
-<h3>情况 3：最后大跌</h3>
-<p>逻辑完全对称：</p>
-<ul><li>Put 那边大赚；</li><li>Call 那边最多亏光；</li><li>只要跌得够猛，总体仍然能赚钱。</li></ul>
-<p>所以 Long Straddle 最重要的一句人话总结就是：</p>
-<blockquote><p><strong>我不怕走错边，我只怕它最后不动。</strong></p></blockquote>
+<h2>16.4 鐢ㄥ浘鐗囬噷鐨勪緥瀛愯锛?50/150 Straddle 涓轰粈涔堟渶澶т簭鎹熷氨鏄€绘潈鍒╅噾</h2>
+<p>鍥剧墖閲屾湁涓€涓壒鍒ソ鐨勪緥瀛愶細</p>
+<ul><li>涔?150 ATM Call</li><li>涔?150 ATM Put</li><li>鍚勮姳 5</li><li>鎬绘潈鍒╅噾 = 10</li></ul>
+<p>杩欑粍鏁板瓧闈炲父閫傚悎璁查€忋€?/p>
+<p>浣犲仛鐨勪簨鍏跺疄鏄細</p>
+<ul><li>宸︽墜鑺?5 涔扳€滃線涓婄垎鈥濈殑鍙兘锛?/li><li>鍙虫墜鑺?5 涔扳€滃線涓嬪穿鈥濈殑鍙兘锛?/li><li>涓€鍏卞厛浠樺嚭 10銆?/li></ul>
+<p>鐜板湪鐪嬩笁绉嶆儏鍐点€?/p>
+<h3>鎯呭喌 1锛氭渶鍚庤偂浠峰仠鍦?150 闄勮繎</h3>
+<p>杩欐槸 Long Straddle 鏈€涓嶆兂鐪嬪埌鐨勩€?/p>
+<p>鍥犱负锛?/p>
+<ul><li>Call 娌¤窇鍑烘潵锛?/li><li>Put 涔熸病璺戝嚭鏉ワ紱</li><li>涓よ竟閮戒笉鎬庝箞鍊奸挶銆?/li></ul>
+<p>鎵€浠ユ渶宸粨鏋滃氨鏄細</p>
+<ul><li>浣犱粯鍑哄幓鐨勯偅 10 鍩烘湰浜忔帀銆?/li></ul>
+<p>杩欏氨鏄负浠€涔堝浘鐗囬噷璇达細</p>
+<ul><li><strong>鏈€澶т簭鎹?= 鑲′环绛変簬琛屾潈浠烽檮杩戞椂锛屾崯澶辨€绘潈鍒╅噾</strong></li></ul>
+<p>缈绘垚浜鸿瘽灏辨槸锛?/p>
+<blockquote><p><strong>浣犳渶鎬曠殑涓嶆槸鏂瑰悜閿欙紝鑰屾槸甯傚満鏈€鍚庢牴鏈病闂硅捣鏉ャ€?/strong></p></blockquote>
+<h3>鎯呭喌 2锛氭渶鍚庡ぇ娑?/h3>
+<p>姣斿娑ㄥ埌 165 鎴?170銆?/p>
+<p>杩欐椂锛?/p>
+<ul><li>Call 閭ｈ竟浼氬緢鐖斤紱</li><li>Put 閭ｈ竟铏界劧浜忓厜锛屼絾鏈€澶氬氨鏄偅 5锛?/li><li>鍙涓婃定澶熺寷锛孋all 鐨勭泩鍒╀細瑕嗙洊涓よ竟鎬绘垚鏈€?/li></ul>
+<h3>鎯呭喌 3锛氭渶鍚庡ぇ璺?/h3>
+<p>閫昏緫瀹屽叏瀵圭О锛?/p>
+<ul><li>Put 閭ｈ竟澶ц禋锛?/li><li>Call 閭ｈ竟鏈€澶氫簭鍏夛紱</li><li>鍙璺屽緱澶熺寷锛屾€讳綋浠嶇劧鑳借禋閽便€?/li></ul>
+<p>鎵€浠?Long Straddle 鏈€閲嶈鐨勪竴鍙ヤ汉璇濇€荤粨灏辨槸锛?/p>
+<blockquote><p><strong>鎴戜笉鎬曡蛋閿欒竟锛屾垜鍙€曞畠鏈€鍚庝笉鍔ㄣ€?/strong></p></blockquote>
 <hr>
-<h2>16.5 Long Straddle 的盈亏平衡点怎么记</h2>
-<p>图片里给得很直白：</p>
-<ul><li><strong>盈亏平衡点 = 当前股价上下推移总权利金</strong></li></ul>
-<p>用刚才例子：</p>
-<ul><li>中心在 150</li><li>总权利金是 10</li></ul>
-<p>那大致平衡点就是：</p>
-<ul><li>向上 160</li><li>向下 140</li></ul>
-<p>这句话翻成人话就是：</p>
-<ul><li>你总共先花了 10；</li><li>所以市场至少要从中间跑出 10 的幅度；</li><li>你才开始从“光是把成本赚回来”进入真正净盈利。</li></ul>
-<p>所以 Long Straddle 不是：</p>
-<ul><li>只要动就赚钱；</li></ul>
-<p>而是：</p>
-<blockquote><p><strong>要动得够猛，才能把你买两边花出去的钱值回来。</strong></p></blockquote>
-<p>这点一定要想透，不然后面很容易误判。</p>
+<h2>16.5 Long Straddle 鐨勭泩浜忓钩琛＄偣鎬庝箞璁?/h2>
+<p>鍥剧墖閲岀粰寰楀緢鐩寸櫧锛?/p>
+<ul><li><strong>鐩堜簭骞宠　鐐?= 褰撳墠鑲′环涓婁笅鎺ㄧЩ鎬绘潈鍒╅噾</strong></li></ul>
+<p>鐢ㄥ垰鎵嶄緥瀛愶細</p>
+<ul><li>涓績鍦?150</li><li>鎬绘潈鍒╅噾鏄?10</li></ul>
+<p>閭ｅぇ鑷村钩琛＄偣灏辨槸锛?/p>
+<ul><li>鍚戜笂 160</li><li>鍚戜笅 140</li></ul>
+<p>杩欏彞璇濈炕鎴愪汉璇濆氨鏄細</p>
+<ul><li>浣犳€诲叡鍏堣姳浜?10锛?/li><li>鎵€浠ュ競鍦鸿嚦灏戣浠庝腑闂磋窇鍑?10 鐨勫箙搴︼紱</li><li>浣犳墠寮€濮嬩粠鈥滃厜鏄妸鎴愭湰璧氬洖鏉モ€濊繘鍏ョ湡姝ｅ噣鐩堝埄銆?/li></ul>
+<p>鎵€浠?Long Straddle 涓嶆槸锛?/p>
+<ul><li>鍙鍔ㄥ氨璧氶挶锛?/li></ul>
+<p>鑰屾槸锛?/p>
+<blockquote><p><strong>瑕佸姩寰楀鐚涳紝鎵嶈兘鎶婁綘涔颁袱杈硅姳鍑哄幓鐨勯挶鍊煎洖鏉ャ€?/strong></p></blockquote>
+<p>杩欑偣涓€瀹氳鎯抽€忥紝涓嶇劧鍚庨潰寰堝鏄撹鍒ゃ€?/p>
 <hr>
-<h1>三、Long Strangle：更便宜，但也更挑行情</h1>
-<h2>16.6 最人话的定义：Long Strangle = 把埋伏点往两边退一点，门票更便宜，但要求行情更大</h2>
-<p>图片里对应的是：</p>
-<ul><li><strong>Long Strangle = 买 OTM Call + 买 OTM Put</strong></li></ul>
-<p>翻成人话很好记：</p>
-<blockquote><p><strong>我还是赌会出大动静，但我不想像 Long Straddle 那样站在最中心买最贵的票，所以我往两边退一步，换便宜一点的门票。</strong></p></blockquote>
-<p>这就是 Long Strangle 最核心的交换。</p>
-<p>你可以把它和 Long Straddle 直接对比：</p>
+<h1>涓夈€丩ong Strangle锛氭洿渚垮疁锛屼絾涔熸洿鎸戣鎯?/h1>
+<h2>16.6 鏈€浜鸿瘽鐨勫畾涔夛細Long Strangle = 鎶婂煁浼忕偣寰€涓よ竟閫€涓€鐐癸紝闂ㄧエ鏇翠究瀹滐紝浣嗚姹傝鎯呮洿澶?/h2>
+<p>鍥剧墖閲屽搴旂殑鏄細</p>
+<ul><li><strong>Long Strangle = 涔?OTM Call + 涔?OTM Put</strong></li></ul>
+<p>缈绘垚浜鸿瘽寰堝ソ璁帮細</p>
+<blockquote><p><strong>鎴戣繕鏄祵浼氬嚭澶у姩闈欙紝浣嗘垜涓嶆兂鍍?Long Straddle 閭ｆ牱绔欏湪鏈€涓績涔版渶璐电殑绁紝鎵€浠ユ垜寰€涓よ竟閫€涓€姝ワ紝鎹究瀹滀竴鐐圭殑闂ㄧエ銆?/strong></p></blockquote>
+<p>杩欏氨鏄?Long Strangle 鏈€鏍稿績鐨勪氦鎹€?/p>
+<p>浣犲彲浠ユ妸瀹冨拰 Long Straddle 鐩存帴瀵规瘮锛?/p>
 <h3>Long Straddle</h3>
-<ul><li>更靠中心</li><li>更贵</li><li>反应更快</li></ul>
+<ul><li>鏇撮潬涓績</li><li>鏇磋吹</li><li>鍙嶅簲鏇村揩</li></ul>
 <h3>Long Strangle</h3>
-<ul><li>更往两边退</li><li>更便宜</li><li>但必须更大波动才真正有威力</li></ul>
-<p>所以一句话概括：</p>
-<blockquote><p><strong>Long Strangle = 便宜版 Long Straddle，但更挑行情。</strong></p></blockquote>
+<ul><li>鏇村線涓よ竟閫€</li><li>鏇翠究瀹?/li><li>浣嗗繀椤绘洿澶ф尝鍔ㄦ墠鐪熸鏈夊▉鍔?/li></ul>
+<p>鎵€浠ヤ竴鍙ヨ瘽姒傛嫭锛?/p>
+<blockquote><p><strong>Long Strangle = 渚垮疁鐗?Long Straddle锛屼絾鏇存寫琛屾儏銆?/strong></p></blockquote>
 <hr>
-<h2>16.7 用图片里的例子讲：155 Call + 145 Put，为什么总成本更低，但要求更高</h2>
-<p>图片里给了一个很典型的例子：</p>
-<ul><li>买 155 OTM Call</li><li>买 145 OTM Put</li><li>各花 3</li><li>总成本 = 6</li></ul>
-<p>和前面的 Straddle 对比一下，你立刻会看懂：</p>
+<h2>16.7 鐢ㄥ浘鐗囬噷鐨勪緥瀛愯锛?55 Call + 145 Put锛屼负浠€涔堟€绘垚鏈洿浣庯紝浣嗚姹傛洿楂?/h2>
+<p>鍥剧墖閲岀粰浜嗕竴涓緢鍏稿瀷鐨勪緥瀛愶細</p>
+<ul><li>涔?155 OTM Call</li><li>涔?145 OTM Put</li><li>鍚勮姳 3</li><li>鎬绘垚鏈?= 6</li></ul>
+<p>鍜屽墠闈㈢殑 Straddle 瀵规瘮涓€涓嬶紝浣犵珛鍒讳細鐪嬫噦锛?/p>
 <h3>Straddle</h3>
-<ul><li>花 10</li><li>站中间</li><li>反应更快</li></ul>
+<ul><li>鑺?10</li><li>绔欎腑闂?/li><li>鍙嶅簲鏇村揩</li></ul>
 <h3>Strangle</h3>
-<ul><li>花 6</li><li>往两边退开</li><li>便宜不少</li></ul>
-<p>但代价是：</p>
-<ul><li>市场必须冲破 155，或者跌破 145，</li><li>才会让某一边真正开始发力。</li></ul>
-<p>所以图片里才会说：</p>
-<ul><li>Long Straddle 更激进；</li><li>Long Strangle 相对更省成本，但也更需要大行情。</li></ul>
-<p>这不是谁更高级的问题，而是偏好问题：</p>
-<ul><li>你愿不愿意多花钱，换更快反应？</li><li>还是你愿意少花钱，但接受“如果只是中等波动，我可能还是白忙”。</li></ul>
+<ul><li>鑺?6</li><li>寰€涓よ竟閫€寮€</li><li>渚垮疁涓嶅皯</li></ul>
+<p>浣嗕唬浠锋槸锛?/p>
+<ul><li>甯傚満蹇呴』鍐茬牬 155锛屾垨鑰呰穼鐮?145锛?/li><li>鎵嶄細璁╂煇涓€杈圭湡姝ｅ紑濮嬪彂鍔涖€?/li></ul>
+<p>鎵€浠ュ浘鐗囬噷鎵嶄細璇达細</p>
+<ul><li>Long Straddle 鏇存縺杩涳紱</li><li>Long Strangle 鐩稿鏇寸渷鎴愭湰锛屼絾涔熸洿闇€瑕佸ぇ琛屾儏銆?/li></ul>
+<p>杩欎笉鏄皝鏇撮珮绾х殑闂锛岃€屾槸鍋忓ソ闂锛?/p>
+<ul><li>浣犳効涓嶆効鎰忓鑺遍挶锛屾崲鏇村揩鍙嶅簲锛?/li><li>杩樻槸浣犳効鎰忓皯鑺遍挶锛屼絾鎺ュ彈鈥滃鏋滃彧鏄腑绛夋尝鍔紝鎴戝彲鑳借繕鏄櫧蹇欌€濄€?/li></ul>
 <hr>
-<h1>四、Short Straddle：我赌别乱动，最好最后停在正中间</h1>
-<h2>16.8 最人话的定义：Short Straddle = 把中间两边最贵的保险都卖出去</h2>
-<p>图片里写得很清楚：</p>
-<ul><li><strong>Short Straddle = 卖 ATM Call + 卖 ATM Put</strong></li></ul>
-<p>翻成人话就是：</p>
-<blockquote><p><strong>我站在当前价格正中央，把往上和往下两边最敏感的保险都卖掉。我赌的是：市场最后别走太远。</strong></p></blockquote>
-<p>这句话是整章非常关键的一句。</p>
-<p>Short Straddle 不是在赌：</p>
-<ul><li>它一定涨；</li><li>或一定跌；</li></ul>
-<p>它是在赌：</p>
-<ul><li><strong>别大涨，也别大跌，最好就留在中间附近。</strong></li></ul>
-<p>所以它赚的是什么钱？</p>
-<ul><li>赚的是“市场最后没你想的那么夸张”的钱；</li><li>赚的是时间流逝的钱；</li><li>也常常赚的是 IV 从高往回掉的钱。</li></ul>
+<h1>鍥涖€丼hort Straddle锛氭垜璧屽埆涔卞姩锛屾渶濂芥渶鍚庡仠鍦ㄦ涓棿</h1>
+<h2>16.8 鏈€浜鸿瘽鐨勫畾涔夛細Short Straddle = 鎶婁腑闂翠袱杈规渶璐电殑淇濋櫓閮藉崠鍑哄幓</h2>
+<p>鍥剧墖閲屽啓寰楀緢娓呮锛?/p>
+<ul><li><strong>Short Straddle = 鍗?ATM Call + 鍗?ATM Put</strong></li></ul>
+<p>缈绘垚浜鸿瘽灏辨槸锛?/p>
+<blockquote><p><strong>鎴戠珯鍦ㄥ綋鍓嶄环鏍兼涓ぎ锛屾妸寰€涓婂拰寰€涓嬩袱杈规渶鏁忔劅鐨勪繚闄╅兘鍗栨帀銆傛垜璧岀殑鏄細甯傚満鏈€鍚庡埆璧板お杩溿€?/strong></p></blockquote>
+<p>杩欏彞璇濇槸鏁寸珷闈炲父鍏抽敭鐨勪竴鍙ャ€?/p>
+<p>Short Straddle 涓嶆槸鍦ㄨ祵锛?/p>
+<ul><li>瀹冧竴瀹氭定锛?/li><li>鎴栦竴瀹氳穼锛?/li></ul>
+<p>瀹冩槸鍦ㄨ祵锛?/p>
+<ul><li><strong>鍒ぇ娑紝涔熷埆澶ц穼锛屾渶濂藉氨鐣欏湪涓棿闄勮繎銆?/strong></li></ul>
+<p>鎵€浠ュ畠璧氱殑鏄粈涔堥挶锛?/p>
+<ul><li>璧氱殑鏄€滃競鍦烘渶鍚庢病浣犳兂鐨勯偅涔堝じ寮犫€濈殑閽憋紱</li><li>璧氱殑鏄椂闂存祦閫濈殑閽憋紱</li><li>涔熷父甯歌禋鐨勬槸 IV 浠庨珮寰€鍥炴帀鐨勯挶銆?/li></ul>
 <hr>
-<h2>16.9 为什么图片里说 Short Straddle 最大收益在“股价等于行权价附近”</h2>
-<p>用图片里的例子最容易懂：</p>
-<ul><li>卖 150 Call</li><li>卖 150 Put</li><li>各收 5</li><li>总共收 10</li></ul>
-<p>你最希望发生什么？</p>
-<p>当然是：</p>
-<ul><li>最后股价还在 150 附近；</li><li>这两张期权都没真正值钱；</li><li>你一开始收到的 10 全部留下。</li></ul>
-<p>所以图片里说：</p>
-<ul><li><strong>最大收益 = 股价等于行权价附近</strong></li></ul>
-<p>完全合理。</p>
-<p>图感上，它像什么？</p>
-<ul><li>像一个倒过来的尖顶小帐篷；</li><li>中间最高；</li><li>往两边一走，利润越来越少，最后变成亏损。</li></ul>
-<p>所以一句最该记住的人话是：</p>
-<blockquote><p><strong>Short Straddle 赚的是最中间、最平静的那一小块钱。</strong></p></blockquote>
+<h2>16.9 涓轰粈涔堝浘鐗囬噷璇?Short Straddle 鏈€澶ф敹鐩婂湪鈥滆偂浠风瓑浜庤鏉冧环闄勮繎鈥?/h2>
+<p>鐢ㄥ浘鐗囬噷鐨勪緥瀛愭渶瀹规槗鎳傦細</p>
+<ul><li>鍗?150 Call</li><li>鍗?150 Put</li><li>鍚勬敹 5</li><li>鎬诲叡鏀?10</li></ul>
+<p>浣犳渶甯屾湜鍙戠敓浠€涔堬紵</p>
+<p>褰撶劧鏄細</p>
+<ul><li>鏈€鍚庤偂浠疯繕鍦?150 闄勮繎锛?/li><li>杩欎袱寮犳湡鏉冮兘娌＄湡姝ｅ€奸挶锛?/li><li>浣犱竴寮€濮嬫敹鍒扮殑 10 鍏ㄩ儴鐣欎笅銆?/li></ul>
+<p>鎵€浠ュ浘鐗囬噷璇达細</p>
+<ul><li><strong>鏈€澶ф敹鐩?= 鑲′环绛変簬琛屾潈浠烽檮杩?/strong></li></ul>
+<p>瀹屽叏鍚堢悊銆?/p>
+<p>鍥炬劅涓婏紝瀹冨儚浠€涔堬紵</p>
+<ul><li>鍍忎竴涓€掕繃鏉ョ殑灏栭《灏忓笎绡凤紱</li><li>涓棿鏈€楂橈紱</li><li>寰€涓よ竟涓€璧帮紝鍒╂鼎瓒婃潵瓒婂皯锛屾渶鍚庡彉鎴愪簭鎹熴€?/li></ul>
+<p>鎵€浠ヤ竴鍙ユ渶璇ヨ浣忕殑浜鸿瘽鏄細</p>
+<blockquote><p><strong>Short Straddle 璧氱殑鏄渶涓棿銆佹渶骞抽潤鐨勯偅涓€灏忓潡閽便€?/strong></p></blockquote>
 <hr>
-<h2>16.10 为什么 Short Straddle 很诱人，但也很吓人</h2>
-<p>它诱人的地方非常明显：</p>
-<ul><li>卖的是两边最敏感、通常也最贵的期权；</li><li>所以一开始收的钱通常比较肥；</li><li>只要最后别大动，体验就很好。</li></ul>
-<p>但它吓人的地方也同样明显：</p>
-<ul><li>你是两边一起卖；</li><li>往上大涨，你受伤；</li><li>往下大跌，你也受伤；</li><li>中间只有一小块舒适区。</li></ul>
-<p>所以 Short Straddle 最应该记住的人话，不是“高胜率”，而是：</p>
-<blockquote><p><strong>它赚的是市场别闹事的钱，扛的是两边突然失控的风险。</strong></p></blockquote>
-<p>这也是为什么这种策略绝不能只看收了多少权利金。</p>
+<h2>16.10 涓轰粈涔?Short Straddle 寰堣浜猴紝浣嗕篃寰堝悡浜?/h2>
+<p>瀹冭浜虹殑鍦版柟闈炲父鏄庢樉锛?/p>
+<ul><li>鍗栫殑鏄袱杈规渶鏁忔劅銆侀€氬父涔熸渶璐电殑鏈熸潈锛?/li><li>鎵€浠ヤ竴寮€濮嬫敹鐨勯挶閫氬父姣旇緝鑲ワ紱</li><li>鍙鏈€鍚庡埆澶у姩锛屼綋楠屽氨寰堝ソ銆?/li></ul>
+<p>浣嗗畠鍚撲汉鐨勫湴鏂逛篃鍚屾牱鏄庢樉锛?/p>
+<ul><li>浣犳槸涓よ竟涓€璧峰崠锛?/li><li>寰€涓婂ぇ娑紝浣犲彈浼わ紱</li><li>寰€涓嬪ぇ璺岋紝浣犱篃鍙椾激锛?/li><li>涓棿鍙湁涓€灏忓潡鑸掗€傚尯銆?/li></ul>
+<p>鎵€浠?Short Straddle 鏈€搴旇璁颁綇鐨勪汉璇濓紝涓嶆槸鈥滈珮鑳滅巼鈥濓紝鑰屾槸锛?/p>
+<blockquote><p><strong>瀹冭禋鐨勬槸甯傚満鍒椆浜嬬殑閽憋紝鎵涚殑鏄袱杈圭獊鐒跺け鎺х殑椋庨櫓銆?/strong></p></blockquote>
+<p>杩欎篃鏄负浠€涔堣繖绉嶇瓥鐣ョ粷涓嶈兘鍙湅鏀朵簡澶氬皯鏉冨埄閲戙€?/p>
 <hr>
-<h1>五、Short Strangle：我也赌不会大动，但我把危险区往外推了一步</h1>
-<h2>16.11 最人话的定义：Short Strangle = 少收一点，但把舒适区放宽一点</h2>
-<p>图片里对应的是：</p>
-<ul><li><strong>Short Strangle = 卖 OTM Call + 卖 OTM Put</strong></li></ul>
-<p>翻成人话：</p>
-<blockquote><p><strong>我还是赌不会大动，但我不想像 Short Straddle 那样站得那么近，所以我把卖出的两条腿都往两边挪远一点。</strong></p></blockquote>
-<p>这时会发生什么？</p>
-<ul><li>你收的钱会少一点；</li><li>但市场也必须跑得更远，才真正打到你的危险区。</li></ul>
-<p>所以它最应该记住的一句人话就是：</p>
-<blockquote><p><strong>少收一点，换更宽的舒服区。</strong></p></blockquote>
-<p>这比死背定义更有用。</p>
+<h1>浜斻€丼hort Strangle锛氭垜涔熻祵涓嶄細澶у姩锛屼絾鎴戞妸鍗遍櫓鍖哄線澶栨帹浜嗕竴姝?/h1>
+<h2>16.11 鏈€浜鸿瘽鐨勫畾涔夛細Short Strangle = 灏戞敹涓€鐐癸紝浣嗘妸鑸掗€傚尯鏀惧涓€鐐?/h2>
+<p>鍥剧墖閲屽搴旂殑鏄細</p>
+<ul><li><strong>Short Strangle = 鍗?OTM Call + 鍗?OTM Put</strong></li></ul>
+<p>缈绘垚浜鸿瘽锛?/p>
+<blockquote><p><strong>鎴戣繕鏄祵涓嶄細澶у姩锛屼絾鎴戜笉鎯冲儚 Short Straddle 閭ｆ牱绔欏緱閭ｄ箞杩戯紝鎵€浠ユ垜鎶婂崠鍑虹殑涓ゆ潯鑵块兘寰€涓よ竟鎸繙涓€鐐广€?/strong></p></blockquote>
+<p>杩欐椂浼氬彂鐢熶粈涔堬紵</p>
+<ul><li>浣犳敹鐨勯挶浼氬皯涓€鐐癸紱</li><li>浣嗗競鍦轰篃蹇呴』璺戝緱鏇磋繙锛屾墠鐪熸鎵撳埌浣犵殑鍗遍櫓鍖恒€?/li></ul>
+<p>鎵€浠ュ畠鏈€搴旇璁颁綇鐨勪竴鍙ヤ汉璇濆氨鏄細</p>
+<blockquote><p><strong>灏戞敹涓€鐐癸紝鎹㈡洿瀹界殑鑸掓湇鍖恒€?/strong></p></blockquote>
+<p>杩欐瘮姝昏儗瀹氫箟鏇存湁鐢ㄣ€?/p>
 <hr>
-<h2>16.12 用图片里的例子讲：卖 155 Call + 卖 145 Put，为什么比 Short Straddle 更保守</h2>
-<p>图片里的例子非常直观：</p>
-<ul><li>卖 155 OTM Call</li><li>卖 145 OTM Put</li><li>各收 3.5</li><li>总共收 7</li></ul>
-<p>和前面的 Short Straddle 对比：</p>
+<h2>16.12 鐢ㄥ浘鐗囬噷鐨勪緥瀛愯锛氬崠 155 Call + 鍗?145 Put锛屼负浠€涔堟瘮 Short Straddle 鏇翠繚瀹?/h2>
+<p>鍥剧墖閲岀殑渚嬪瓙闈炲父鐩磋锛?/p>
+<ul><li>鍗?155 OTM Call</li><li>鍗?145 OTM Put</li><li>鍚勬敹 3.5</li><li>鎬诲叡鏀?7</li></ul>
+<p>鍜屽墠闈㈢殑 Short Straddle 瀵规瘮锛?/p>
 <h3>Short Straddle</h3>
-<ul><li>收 10</li><li>但危险区离得近</li><li>更容易被触发</li></ul>
+<ul><li>鏀?10</li><li>浣嗗嵄闄╁尯绂诲緱杩?/li><li>鏇村鏄撹瑙﹀彂</li></ul>
 <h3>Short Strangle</h3>
-<ul><li>只收 7</li><li>但危险区在 145 以下和 155 以上</li><li>需要更大的波动才真正打到</li></ul>
-<p>所以图片里才会写：</p>
-<ul><li><strong>最大收益下降，但最大收益成功率提高</strong></li></ul>
-<p>翻成人话就是：</p>
-<blockquote><p><strong>你少收了一点租金，但租客要把房子闹出事来也得更费劲。</strong></p></blockquote>
-<p>这就是 Short Strangle 的直觉。</p>
+<ul><li>鍙敹 7</li><li>浣嗗嵄闄╁尯鍦?145 浠ヤ笅鍜?155 浠ヤ笂</li><li>闇€瑕佹洿澶х殑娉㈠姩鎵嶇湡姝ｆ墦鍒?/li></ul>
+<p>鎵€浠ュ浘鐗囬噷鎵嶄細鍐欙細</p>
+<ul><li><strong>鏈€澶ф敹鐩婁笅闄嶏紝浣嗘渶澶ф敹鐩婃垚鍔熺巼鎻愰珮</strong></li></ul>
+<p>缈绘垚浜鸿瘽灏辨槸锛?/p>
+<blockquote><p><strong>浣犲皯鏀朵簡涓€鐐圭閲戯紝浣嗙瀹㈣鎶婃埧瀛愰椆鍑轰簨鏉ヤ篃寰楁洿璐瑰姴銆?/strong></p></blockquote>
+<p>杩欏氨鏄?Short Strangle 鐨勭洿瑙夈€?/p>
 <hr>
-<h1>六、Long 和 Short 两大组的最简对照</h1>
-<h2>16.13 如果你只想记一页纸，就记这四句话</h2>
+<h1>鍏€丩ong 鍜?Short 涓ゅぇ缁勭殑鏈€绠€瀵圭収</h1>
+<h2>16.13 濡傛灉浣犲彧鎯宠涓€椤电焊锛屽氨璁拌繖鍥涘彞璇?/h2>
 <h3>Long Straddle</h3>
-<ul><li>最贵</li><li>最靠中心</li><li>最快吃到大波动</li><li>最怕市场最后不动</li></ul>
+<ul><li>鏈€璐?/li><li>鏈€闈犱腑蹇?/li><li>鏈€蹇悆鍒板ぇ娉㈠姩</li><li>鏈€鎬曞競鍦烘渶鍚庝笉鍔?/li></ul>
 <h3>Long Strangle</h3>
-<ul><li>更便宜</li><li>更往两边退</li><li>需要更大波动</li><li>最怕波动不够大</li></ul>
+<ul><li>鏇翠究瀹?/li><li>鏇村線涓よ竟閫€</li><li>闇€瑕佹洿澶ф尝鍔?/li><li>鏈€鎬曟尝鍔ㄤ笉澶熷ぇ</li></ul>
 <h3>Short Straddle</h3>
-<ul><li>收钱最多</li><li>站得最近</li><li>最激进</li><li>最怕两边突然大幅失控</li></ul>
+<ul><li>鏀堕挶鏈€澶?/li><li>绔欏緱鏈€杩?/li><li>鏈€婵€杩?/li><li>鏈€鎬曚袱杈圭獊鐒跺ぇ骞呭け鎺?/li></ul>
 <h3>Short Strangle</h3>
-<ul><li>收钱少一点</li><li>危险区更远</li><li>更保守一点</li><li>更像“放宽后的 short straddle”</li></ul>
-<p>这四句，比一口气背全部定义更有用。</p>
+<ul><li>鏀堕挶灏戜竴鐐?/li><li>鍗遍櫓鍖烘洿杩?/li><li>鏇翠繚瀹堜竴鐐?/li><li>鏇村儚鈥滄斁瀹藉悗鐨?short straddle鈥?/li></ul>
+<p>杩欏洓鍙ワ紝姣斾竴鍙ｆ皵鑳屽叏閮ㄥ畾涔夋洿鏈夌敤銆?/p>
 <hr>
-<h1>七、为什么图片里把 IV Crush 和 Short 系列放在一起讲</h1>
-<h2>16.14 最人话的一句：Short 系列最喜欢“原本大家都很紧张，后来发现其实没那么夸张”</h2>
-<p>这就是 IV Crush 的主场之一。</p>
-<p>图片里写得很清楚：</p>
-<ul><li>IV 陡增时，Short Strangle 和 Short Straddle 是很典型的思路；</li><li>因为：</li></ul>
-<p>1. 期权费更贵； 2. IV 后面可能回归； 3. 无方向性，只赚 IV 回落的钱； 4. 资金使用率高。</p>
-<p>翻成人话非常简单：</p>
-<blockquote><p><strong>当市场很紧张、期权很贵时，Short 系列在卖的是一份被市场夸张定价的恐慌。</strong></p></blockquote>
-<p>如果后面发生什么？</p>
-<ul><li>事情虽然落地；</li><li>但没市场原本想得那么夸张；</li><li>IV 开始掉；</li><li>你卖出去的那些期权价格就会更快瘦下来。</li></ul>
-<p>这就是为什么财报前后，很多交易者会特别关注 short straddle / short strangle。</p>
-<p>不是因为它们更神秘，而是因为：</p>
-<blockquote><p><strong>它们最适合拿来赌“市场原本把波动定价得太高了”。</strong></p></blockquote>
+<h1>涓冦€佷负浠€涔堝浘鐗囬噷鎶?IV Crush 鍜?Short 绯诲垪鏀惧湪涓€璧疯</h1>
+<h2>16.14 鏈€浜鸿瘽鐨勪竴鍙ワ細Short 绯诲垪鏈€鍠滄鈥滃師鏈ぇ瀹堕兘寰堢揣寮狅紝鍚庢潵鍙戠幇鍏跺疄娌￠偅涔堝じ寮犫€?/h2>
+<p>杩欏氨鏄?IV Crush 鐨勪富鍦轰箣涓€銆?/p>
+<p>鍥剧墖閲屽啓寰楀緢娓呮锛?/p>
+<ul><li>IV 闄″鏃讹紝Short Strangle 鍜?Short Straddle 鏄緢鍏稿瀷鐨勬€濊矾锛?/li><li>鍥犱负锛?/li></ul>
+<p>1. 鏈熸潈璐规洿璐碉紱 2. IV 鍚庨潰鍙兘鍥炲綊锛?3. 鏃犳柟鍚戞€э紝鍙禋 IV 鍥炶惤鐨勯挶锛?4. 璧勯噾浣跨敤鐜囬珮銆?/p>
+<p>缈绘垚浜鸿瘽闈炲父绠€鍗曪細</p>
+<blockquote><p><strong>褰撳競鍦哄緢绱у紶銆佹湡鏉冨緢璐垫椂锛孲hort 绯诲垪鍦ㄥ崠鐨勬槸涓€浠借甯傚満澶稿紶瀹氫环鐨勬亹鎱屻€?/strong></p></blockquote>
+<p>濡傛灉鍚庨潰鍙戠敓浠€涔堬紵</p>
+<ul><li>浜嬫儏铏界劧钀藉湴锛?/li><li>浣嗘病甯傚満鍘熸湰鎯冲緱閭ｄ箞澶稿紶锛?/li><li>IV 寮€濮嬫帀锛?/li><li>浣犲崠鍑哄幓鐨勯偅浜涙湡鏉冧环鏍煎氨浼氭洿蹇槮涓嬫潵銆?/li></ul>
+<p>杩欏氨鏄负浠€涔堣储鎶ュ墠鍚庯紝寰堝浜ゆ槗鑰呬細鐗瑰埆鍏虫敞 short straddle / short strangle銆?/p>
+<p>涓嶆槸鍥犱负瀹冧滑鏇寸绉橈紝鑰屾槸鍥犱负锛?/p>
+<blockquote><p><strong>瀹冧滑鏈€閫傚悎鎷挎潵璧屸€滃競鍦哄師鏈妸娉㈠姩瀹氫环寰楀お楂樹簡鈥濄€?/strong></p></blockquote>
 <hr>
-<h1>八、如果你觉得 Short 系列太危险，图片后面给的答案就是：再加两条保护腿</h1>
-<h2>16.15 Iron Butterfly = 给 Short Straddle 左右两边各装一个保险杠</h2>
-<p>图片里这部分其实非常好懂。</p>
-<p>原本 Short Straddle 是：</p>
-<ul><li>中间最赚钱；</li><li>两边风险很大。</li></ul>
-<p>如果你不想裸着扛两边风险，就怎么办？</p>
-<p>很简单：</p>
-<ul><li>再在更外面买一个 Call；</li><li>再在更外面买一个 Put；</li><li>给它左右各装一个保险杠。</li></ul>
-<p>这就是 Iron Butterfly。</p>
-<p>所以我建议你最人话地记：</p>
-<blockquote><p><strong>Iron Butterfly = Short Straddle + 左右两边再买两条护栏。</strong></p></blockquote>
-<p>它本质上不是全新动物，而是给原来的结构加了风险保护壳。</p>
+<h1>鍏€佸鏋滀綘瑙夊緱 Short 绯诲垪澶嵄闄╋紝鍥剧墖鍚庨潰缁欑殑绛旀灏辨槸锛氬啀鍔犱袱鏉′繚鎶よ吙</h1>
+<h2>16.15 Iron Butterfly = 缁?Short Straddle 宸﹀彸涓よ竟鍚勮涓€涓繚闄╂潬</h2>
+<p>鍥剧墖閲岃繖閮ㄥ垎鍏跺疄闈炲父濂芥噦銆?/p>
+<p>鍘熸湰 Short Straddle 鏄細</p>
+<ul><li>涓棿鏈€璧氶挶锛?/li><li>涓よ竟椋庨櫓寰堝ぇ銆?/li></ul>
+<p>濡傛灉浣犱笉鎯宠８鐫€鎵涗袱杈归闄╋紝灏辨€庝箞鍔烇紵</p>
+<p>寰堢畝鍗曪細</p>
+<ul><li>鍐嶅湪鏇村闈拱涓€涓?Call锛?/li><li>鍐嶅湪鏇村闈拱涓€涓?Put锛?/li><li>缁欏畠宸﹀彸鍚勮涓€涓繚闄╂潬銆?/li></ul>
+<p>杩欏氨鏄?Iron Butterfly銆?/p>
+<p>鎵€浠ユ垜寤鸿浣犳渶浜鸿瘽鍦拌锛?/p>
+<blockquote><p><strong>Iron Butterfly = Short Straddle + 宸﹀彸涓よ竟鍐嶄拱涓ゆ潯鎶ゆ爮銆?/strong></p></blockquote>
+<p>瀹冩湰璐ㄤ笂涓嶆槸鍏ㄦ柊鍔ㄧ墿锛岃€屾槸缁欏師鏉ョ殑缁撴瀯鍔犱簡椋庨櫓淇濇姢澹炽€?/p>
 <hr>
-<h2>16.16 Iron Condor = 给 Short Strangle 左右两边各装一个保险杠</h2>
-<p>同理：</p>
-<ul><li>原本 Short Strangle 就已经比 Short Straddle 站得远一点；</li><li>如果你还想更稳，那就在两边更外面再各买一条；</li><li>这样最极端的风险就不会无限难看。</li></ul>
-<p>这就是 Iron Condor。</p>
-<p>最人话的记法就是：</p>
-<blockquote><p><strong>Iron Condor = Short Strangle + 左右两边再买两条护栏。</strong></p></blockquote>
-<p>所以：</p>
-<ul><li>Butterfly 对应的是 Straddle 的护栏版；</li><li>Condor 对应的是 Strangle 的护栏版。</li></ul>
-<p>这组关系一定要看懂，因为它比死背定义强太多。</p>
+<h2>16.16 Iron Condor = 缁?Short Strangle 宸﹀彸涓よ竟鍚勮涓€涓繚闄╂潬</h2>
+<p>鍚岀悊锛?/p>
+<ul><li>鍘熸湰 Short Strangle 灏卞凡缁忔瘮 Short Straddle 绔欏緱杩滀竴鐐癸紱</li><li>濡傛灉浣犺繕鎯虫洿绋筹紝閭ｅ氨鍦ㄤ袱杈规洿澶栭潰鍐嶅悇涔颁竴鏉★紱</li><li>杩欐牱鏈€鏋佺鐨勯闄╁氨涓嶄細鏃犻檺闅剧湅銆?/li></ul>
+<p>杩欏氨鏄?Iron Condor銆?/p>
+<p>鏈€浜鸿瘽鐨勮娉曞氨鏄細</p>
+<blockquote><p><strong>Iron Condor = Short Strangle + 宸﹀彸涓よ竟鍐嶄拱涓ゆ潯鎶ゆ爮銆?/strong></p></blockquote>
+<p>鎵€浠ワ細</p>
+<ul><li>Butterfly 瀵瑰簲鐨勬槸 Straddle 鐨勬姢鏍忕増锛?/li><li>Condor 瀵瑰簲鐨勬槸 Strangle 鐨勬姢鏍忕増銆?/li></ul>
+<p>杩欑粍鍏崇郴涓€瀹氳鐪嬫噦锛屽洜涓哄畠姣旀鑳屽畾涔夊己澶銆?/p>
 <hr>
-<h1>九、图片最后那点也很有意思：Covered Straddle / Covered Strangle 其实是在说“如果你有现货，上边就没那么吓人”</h1>
-<h2>16.17 最人话的理解：手里有股票，相当于把上方一部分风险盖住了</h2>
-<p>图片最后讲到：</p>
+<h1>涔濄€佸浘鐗囨渶鍚庨偅鐐逛篃寰堟湁鎰忔€濓細Covered Straddle / Covered Strangle 鍏跺疄鏄湪璇粹€滃鏋滀綘鏈夌幇璐э紝涓婅竟灏辨病閭ｄ箞鍚撲汉鈥?/h1>
+<h2>16.17 鏈€浜鸿瘽鐨勭悊瑙ｏ細鎵嬮噷鏈夎偂绁紝鐩稿綋浜庢妸涓婃柟涓€閮ㄥ垎椋庨櫓鐩栦綇浜?/h2>
+<p>鍥剧墖鏈€鍚庤鍒帮細</p>
 <ul><li>Covered Straddle</li><li>Covered Strangle</li></ul>
-<p>它的意思其实和前面 Covered Call 一脉相承。</p>
-<p>如果你手里本来就有正股，那么：</p>
-<ul><li>上涨时，你并不是完全裸着面对 short call 那一边；</li><li>因为你手里的股票会帮你覆盖一部分上方风险；</li><li>所以整体会更像“现货仓位上做收租改造”。</li></ul>
-<p>这也提醒你一件很重要的事：</p>
-<blockquote><p><strong>很多看起来很高级的期权结构，本质上还是在重复那几件老事：收租、买保险、降成本、封风险。</strong></p></blockquote>
-<p>只是拼法越来越灵活而已。</p>
+<p>瀹冪殑鎰忔€濆叾瀹炲拰鍓嶉潰 Covered Call 涓€鑴夌浉鎵裤€?/p>
+<p>濡傛灉浣犳墜閲屾湰鏉ュ氨鏈夋鑲★紝閭ｄ箞锛?/p>
+<ul><li>涓婃定鏃讹紝浣犲苟涓嶆槸瀹屽叏瑁哥潃闈㈠ short call 閭ｄ竴杈癸紱</li><li>鍥犱负浣犳墜閲岀殑鑲＄エ浼氬府浣犺鐩栦竴閮ㄥ垎涓婃柟椋庨櫓锛?/li><li>鎵€浠ユ暣浣撲細鏇村儚鈥滅幇璐т粨浣嶄笂鍋氭敹绉熸敼閫犫€濄€?/li></ul>
+<p>杩欎篃鎻愰啋浣犱竴浠跺緢閲嶈鐨勪簨锛?/p>
+<blockquote><p><strong>寰堝鐪嬭捣鏉ュ緢楂樼骇鐨勬湡鏉冪粨鏋勶紝鏈川涓婅繕鏄湪閲嶅閭ｅ嚑浠惰€佷簨锛氭敹绉熴€佷拱淇濋櫓銆侀檷鎴愭湰銆佸皝椋庨櫓銆?/strong></p></blockquote>
+<p>鍙槸鎷兼硶瓒婃潵瓒婄伒娲昏€屽凡銆?/p>
 <hr>
-<h1>十、本章小结：波动率策略真正赌的，是“市场预期”和“真实结果”谁更夸张</h1>
-<p>这一章如果只压成最重要的几句话，我希望你记住这些：</p>
-<ul><li>波动率策略赌的不是方向，而是“会不会闹大”；</li><li>Long 系列是在买大波动；</li><li>Short 系列是在卖大波动；</li><li>Straddle 更靠中心、更激进；</li><li>Strangle 更往外退、更便宜 / 更保守；</li><li>Short 系列特别适合和高 IV、IV Crush 场景放在一起看；</li><li>如果 short 结构太危险，就加外侧保护腿，变成 Iron Butterfly / Iron Condor。</li></ul>
-<p>而本章最值钱的一句收束，我会写成：</p>
-<blockquote><p><strong>波动率策略真正赌的，不只是动不动，而是市场原本把“会怎么动”这件事，定得有没有太夸张。</strong></p></blockquote>
-<p>这句话理解了，你这章就真的进去了。</p>
-<hr>
-<hr>
-<h2>一句话总结</h2>
-<blockquote><p><strong>波动率策略本质上不是押方向，而是在比较“真实波动”和“市场原本预期的波动”到底谁更夸张。</strong></p></blockquote>
-<h2>自测题</h2>
-<p>1）为什么说 Long Straddle 和 Long Strangle 赌的不是方向，而是“幅度”？</p>
-<p>2）Long Straddle 和 Long Strangle 最核心的区别是什么？</p>
-<p>3）为什么 Short Straddle 最大收益出现在股价停在最中间时？</p>
-<p>4）为什么说 Short Strangle 是“少收一点钱，换更宽的舒服区”？</p>
-<p>5）IV Crush 为什么特别适合和 Short 系列放在一起理解？</p>
-<p>6）Iron Butterfly 和 Iron Condor，本质上分别是在什么基础上加了保护腿？</p>
+<h1>鍗併€佹湰绔犲皬缁擄細娉㈠姩鐜囩瓥鐣ョ湡姝ｈ祵鐨勶紝鏄€滃競鍦洪鏈熲€濆拰鈥滅湡瀹炵粨鏋溾€濊皝鏇村じ寮?/h1>
+<p>杩欎竴绔犲鏋滃彧鍘嬫垚鏈€閲嶈鐨勫嚑鍙ヨ瘽锛屾垜甯屾湜浣犺浣忚繖浜涳細</p>
+<ul><li>娉㈠姩鐜囩瓥鐣ヨ祵鐨勪笉鏄柟鍚戯紝鑰屾槸鈥滀細涓嶄細闂瑰ぇ鈥濓紱</li><li>Long 绯诲垪鏄湪涔板ぇ娉㈠姩锛?/li><li>Short 绯诲垪鏄湪鍗栧ぇ娉㈠姩锛?/li><li>Straddle 鏇撮潬涓績銆佹洿婵€杩涳紱</li><li>Strangle 鏇村線澶栭€€銆佹洿渚垮疁 / 鏇翠繚瀹堬紱</li><li>Short 绯诲垪鐗瑰埆閫傚悎鍜岄珮 IV銆両V Crush 鍦烘櫙鏀惧湪涓€璧风湅锛?/li><li>濡傛灉 short 缁撴瀯澶嵄闄╋紝灏卞姞澶栦晶淇濇姢鑵匡紝鍙樻垚 Iron Butterfly / Iron Condor銆?/li></ul>
+<p>鑰屾湰绔犳渶鍊奸挶鐨勪竴鍙ユ敹鏉燂紝鎴戜細鍐欐垚锛?/p>
+<blockquote><p><strong>娉㈠姩鐜囩瓥鐣ョ湡姝ｈ祵鐨勶紝涓嶅彧鏄姩涓嶅姩锛岃€屾槸甯傚満鍘熸湰鎶娾€滀細鎬庝箞鍔ㄢ€濊繖浠朵簨锛屽畾寰楁湁娌℃湁澶じ寮犮€?/strong></p></blockquote>
+<p>杩欏彞璇濈悊瑙ｄ簡锛屼綘杩欑珷灏辩湡鐨勮繘鍘讳簡銆?/p>
 <hr>
 <hr>
-<h2>下一章预告：Collar 衣领策略——保护下行的同时，拿上行空间去换成本</h2>
-<p>这一章你已经看到：很多复杂策略，本质上还是在围绕风险边界做重新拼装。</p>
-<p>下一章我们会把这件事落到一个非常贴近真实持仓的结构上：</p>
-<ul><li>你已经有股票；</li><li>你不想裸着扛下跌；</li><li>但你也不想把保险做得太贵。</li></ul>
-<p>这就是 Collar 要解决的问题。</p>
-<h2>本章参考口径（便于追溯）</h2>
-<ul><li>图片关联重点：<code>Long/Short Straddle</code>、<code>Long/Short Strangle</code>、<code>Short Straddle vs Short Strangle</code>、<code>IV Crush</code>、<code>Iron Butterfly</code>、<code>Iron Condor</code>、<code>Covered Straddle / Covered Strangle</code></li><li>OCC / OIC：用于校准 straddle/strangle、iron butterfly、iron condor 的基础教育口径</li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li></ul>
-<ul><li>Fidelity Options Strategy Guide：用于保持波动率策略与 Iron 系列的收益风险表述和主流券商口径一致</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li></ul>
-<ul><li>CBOE Options Institute：用于保持 volatility strategy、IV crush、risk-defined premium selling 等术语一致</li><li><a href="https://www.cboe.com/optionsinstitute/">https://www.cboe.com/optionsinstitute/</a></li></ul>
+<h2>涓€鍙ヨ瘽鎬荤粨</h2>
+<blockquote><p><strong>娉㈠姩鐜囩瓥鐣ユ湰璐ㄤ笂涓嶆槸鎶兼柟鍚戯紝鑰屾槸鍦ㄦ瘮杈冣€滅湡瀹炴尝鍔ㄢ€濆拰鈥滃競鍦哄師鏈鏈熺殑娉㈠姩鈥濆埌搴曡皝鏇村じ寮犮€?/strong></p></blockquote>
+<h2>鑷祴棰?/h2>
+<p>1锛変负浠€涔堣 Long Straddle 鍜?Long Strangle 璧岀殑涓嶆槸鏂瑰悜锛岃€屾槸鈥滃箙搴︹€濓紵</p>
+<p>2锛塋ong Straddle 鍜?Long Strangle 鏈€鏍稿績鐨勫尯鍒槸浠€涔堬紵</p>
+<p>3锛変负浠€涔?Short Straddle 鏈€澶ф敹鐩婂嚭鐜板湪鑲′环鍋滃湪鏈€涓棿鏃讹紵</p>
+<p>4锛変负浠€涔堣 Short Strangle 鏄€滃皯鏀朵竴鐐归挶锛屾崲鏇村鐨勮垝鏈嶅尯鈥濓紵</p>
+<p>5锛塈V Crush 涓轰粈涔堢壒鍒€傚悎鍜?Short 绯诲垪鏀惧湪涓€璧风悊瑙ｏ紵</p>
+<p>6锛塈ron Butterfly 鍜?Iron Condor锛屾湰璐ㄤ笂鍒嗗埆鏄湪浠€涔堝熀纭€涓婂姞浜嗕繚鎶よ吙锛?/p>
+<hr>
+<hr>
+<h2>涓嬩竴绔犻鍛婏細Collar 琛ｉ绛栫暐鈥斺€斾繚鎶や笅琛岀殑鍚屾椂锛屾嬁涓婅绌洪棿鍘绘崲鎴愭湰</h2>
+<p>杩欎竴绔犱綘宸茬粡鐪嬪埌锛氬緢澶氬鏉傜瓥鐣ワ紝鏈川涓婅繕鏄湪鍥寸粫椋庨櫓杈圭晫鍋氶噸鏂版嫾瑁呫€?/p>
+<p>涓嬩竴绔犳垜浠細鎶婅繖浠朵簨钀藉埌涓€涓潪甯歌创杩戠湡瀹炴寔浠撶殑缁撴瀯涓婏細</p>
+<ul><li>浣犲凡缁忔湁鑲＄エ锛?/li><li>浣犱笉鎯宠８鐫€鎵涗笅璺岋紱</li><li>浣嗕綘涔熶笉鎯虫妸淇濋櫓鍋氬緱澶吹銆?/li></ul>
+<p>杩欏氨鏄?Collar 瑕佽В鍐崇殑闂銆?/p>
+<h2>鏈珷鍙傝€冨彛寰勶紙渚夸簬杩芥函锛?/h2>
+<ul><li>鍥剧墖鍏宠仈閲嶇偣锛?code>Long/Short Straddle</code>銆?code>Long/Short Strangle</code>銆?code>Short Straddle vs Short Strangle</code>銆?code>IV Crush</code>銆?code>Iron Butterfly</code>銆?code>Iron Condor</code>銆?code>Covered Straddle / Covered Strangle</code></li><li>OCC / OIC锛氱敤浜庢牎鍑?straddle/strangle銆乮ron butterfly銆乮ron condor 鐨勫熀纭€鏁欒偛鍙ｅ緞</li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li></ul>
+<ul><li>Fidelity Options Strategy Guide锛氱敤浜庝繚鎸佹尝鍔ㄧ巼绛栫暐涓?Iron 绯诲垪鐨勬敹鐩婇闄╄〃杩板拰涓绘祦鍒稿晢鍙ｅ緞涓€鑷?/li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li></ul>
+<ul><li>CBOE Options Institute锛氱敤浜庝繚鎸?volatility strategy銆両V crush銆乺isk-defined premium selling 绛夋湳璇竴鑷?/li><li><a href="https://www.cboe.com/optionsinstitute/">https://www.cboe.com/optionsinstitute/</a></li></ul>
             </article>
         </section>
 
@@ -576,27 +576,27 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
-                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
+                    <h2 class="section-title" id="chapter-navigation-title">绔犺妭瀵艰埅</h2>
+                    <p class="section-subtitle">鏄惧紡淇濈暀涓婁竴绔?/ 杩斿洖璇剧▼ / 涓嬩竴绔犱笁涓彲瑙佹Ы浣嶏紝渚夸簬鐢熸垚鍣ㄧǔ瀹氬～鍏?/p>
                 </div>
             </div>
 
             <div class="chapter-nav-card">
                 <div class="chapter-nav-grid">
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">上一章</div>
-                        <a class="chapter-nav-link" href="./15.html">第 15 章 · 价差策略</a>
-                        <p>从双腿结构出发，理解价差策略如何在控制成本、限制风险与管理收益之间做取舍。</p>
+                        <div class="chapter-nav-label">涓婁竴绔?/div>
+                        <a class="chapter-nav-link" href="./15.html">绗?15 绔?路 浠峰樊绛栫暐</a>
+                        <p>浠庡弻鑵跨粨鏋勫嚭鍙戯紝鐞嗚В浠峰樊绛栫暐濡備綍鍦ㄦ帶鍒舵垚鏈€侀檺鍒堕闄╀笌绠＄悊鏀剁泭涔嬮棿鍋氬彇鑸嶃€?/p>
                     </div>
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">返回课程</div>
-                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
-                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
+                        <div class="chapter-nav-label">杩斿洖璇剧▼</div>
+                        <a class="chapter-nav-link" href="./index.html">缇庤偂鏈熸潈鏁欐潗 鐩綍</a>
+                        <p>杩斿洖璇剧▼鐩綍锛屾寜 section 鍜?batch 鏌ョ湅鍏ㄥ眬杩涘害銆?/p>
                     </div>
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">下一章</div>
-                        <a class="chapter-nav-link" href="./17.html">第 17 章 · Collar</a>
-                        <p>把 Protective Put 与 Covered Call 组合起来，理解在保留下行保护时如何交换上行空间。</p>
+                        <div class="chapter-nav-label">涓嬩竴绔?/div>
+                        <a class="chapter-nav-link" href="./17.html">绗?17 绔?路 Collar</a>
+                        <p>鎶?Protective Put 涓?Covered Call 缁勫悎璧锋潵锛岀悊瑙ｅ湪淇濈暀涓嬭淇濇姢鏃跺浣曚氦鎹笂琛岀┖闂淬€?/p>
                     </div>
                 </div>
             </div>
@@ -604,15 +604,15 @@
     </main>
 
     <footer>
-        <p>期权教材 · 结构化学习 · HTML 优先</p>
+        <p>鏈熸潈鏁欐潗 路 缁撴瀯鍖栧涔?路 HTML 浼樺厛</p>
         <p class="disclaimer">
-            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
+            鍏嶈矗澹版槑锛氭湰鏁欐潗椤甸潰浠呬緵瀛︿範浜ゆ祦浣跨敤锛屼笉鏋勬垚浠讳綍鎶曡祫寤鸿銆傛湡鏉冧氦鏄撴秹鍙婃潬鏉嗐€佹椂闂存崯鑰椾笌娴佸姩鎬ч闄╋紝鍔″繀缁撳悎鑷韩鎯呭喌鐙珛鍒ゆ柇銆?
         </p>
     </footer>
 
-    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="鍒囨崲娣辫壊妯″紡" title="鍒囨崲娣辫壊妯″紡">馃寭</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="杩斿洖椤堕儴">鈫?/button>
 
-    <script src="../js/main.js?v=20260326site4"></script>
+    <script src="../js/main.js?v=20260326review1"></script>
 </body>
 </html>
