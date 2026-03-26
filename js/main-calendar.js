@@ -30,6 +30,7 @@ const CalendarArchive = {
         const prevBtn = document.getElementById('calendarPrev');
         const nextBtn = document.getElementById('calendarNext');
         const todayBtn = document.getElementById('calendarToday');
+        const monthSelect = document.getElementById('calendarMonthSelect');
         
         if (prevBtn) {
             prevBtn.addEventListener('click', () => this.navigateMonth(-1));
@@ -39,6 +40,15 @@ const CalendarArchive = {
         }
         if (todayBtn) {
             todayBtn.addEventListener('click', () => this.jumpToLatest());
+        }
+        if (monthSelect) {
+            monthSelect.addEventListener('change', (event) => {
+                const value = event.target.value;
+                if (!value) return;
+                const [year, month] = value.split('-').map(Number);
+                this.currentDate = new Date(year, month - 1, 1);
+                this.render();
+            });
         }
     },
     
@@ -62,6 +72,29 @@ const CalendarArchive = {
     getPostsForDate(dateStr) {
         return this.postsData.filter(post => post.date === dateStr);
     },
+
+    getAvailableMonths() {
+        const unique = new Map();
+        this.postsData.forEach((post) => {
+            const [year, month] = post.date.split('-');
+            const key = `${year}-${month}`;
+            if (!unique.has(key)) {
+                unique.set(key, {
+                    value: key,
+                    label: `${year}年${Number(month)}月`
+                });
+            }
+        });
+        return [...unique.values()];
+    },
+
+    populateMonthSelect(year, month) {
+        const select = document.getElementById('calendarMonthSelect');
+        if (!select) return;
+        const currentValue = `${year}-${String(month + 1).padStart(2, '0')}`;
+        const options = this.getAvailableMonths();
+        select.innerHTML = options.map(option => `<option value="${option.value}"${option.value === currentValue ? ' selected' : ''}>${option.label}</option>`).join('');
+    },
     
     formatDateStr(year, month, day) {
         return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
@@ -80,6 +113,7 @@ const CalendarArchive = {
         // Update header
         if (yearEl) yearEl.textContent = year;
         if (monthEl) monthEl.textContent = month + 1;
+        this.populateMonthSelect(year, month);
         
         // Get first day of month and number of days
         const firstDay = new Date(year, month, 1).getDay();
