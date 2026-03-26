@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="拆解期权报价的来源，区分内在价值与时间价值，建立理解权利金的底层框架。">
+    <meta name="description" content="鎷嗚В鏈熸潈鎶ヤ环鐨勬潵婧愶紝鍖哄垎鍐呭湪浠峰€间笌鏃堕棿浠峰€硷紝寤虹珛鐞嗚В鏉冨埄閲戠殑搴曞眰妗嗘灦銆?>
     <meta name="author" content="ValueInvest">
     <meta name="theme-color" content="#c9a227">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="canonical" href="https://4fire.qzz.io/options/05.html">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://4fire.qzz.io/options/05.html">
-    <meta property="og:title" content="期权价格的解剖学 | 美股期权教材">
-    <meta property="og:description" content="拆解期权报价的来源，区分内在价值与时间价值，建立理解权利金的底层框架。">
+    <meta property="og:title" content="鏈熸潈浠锋牸鐨勮В鍓栧 | 缇庤偂鏈熸潈鏁欐潗">
+    <meta property="og:description" content="鎷嗚В鏈熸潈鎶ヤ环鐨勬潵婧愶紝鍖哄垎鍐呭湪浠峰€间笌鏃堕棿浠峰€硷紝寤虹珛鐞嗚В鏉冨埄閲戠殑搴曞眰妗嗘灦銆?>
     <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="期权价格的解剖学 | 美股期权教材">
-    <meta name="twitter:description" content="拆解期权报价的来源，区分内在价值与时间价值，建立理解权利金的底层框架。">
+    <meta name="twitter:title" content="鏈熸潈浠锋牸鐨勮В鍓栧 | 缇庤偂鏈熸潈鏁欐潗">
+    <meta name="twitter:description" content="鎷嗚В鏈熸潈鎶ヤ环鐨勬潵婧愶紝鍖哄垎鍐呭湪浠峰€间笌鏃堕棿浠峰€硷紝寤虹珛鐞嗚В鏉冨埄閲戠殑搴曞眰妗嗘灦銆?>
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
-    <title>期权价格的解剖学 | 美股期权教材</title>
+    <title>鏈熸潈浠锋牸鐨勮В鍓栧 | 缇庤偂鏈熸潈鏁欐潗</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260326site4">
+    <link rel="stylesheet" href="../css/style.css?v=20260326review1">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -191,8 +191,8 @@
     {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": "期权价格的解剖学",
-        "description": "拆解期权报价的来源，区分内在价值与时间价值，建立理解权利金的底层框架。",
+        "headline": "鏈熸潈浠锋牸鐨勮В鍓栧",
+        "description": "鎷嗚В鏈熸潈鎶ヤ环鐨勬潵婧愶紝鍖哄垎鍐呭湪浠峰€间笌鏃堕棿浠峰€硷紝寤虹珛鐞嗚В鏉冨埄閲戠殑搴曞眰妗嗘灦銆?,
         "author": {
             "@type": "Person",
             "name": "ValueInvest"
@@ -205,7 +205,7 @@
         "mainEntityOfPage": "https://4fire.qzz.io/options/05.html",
         "isPartOf": {
             "@type": "Course",
-            "name": "美股期权教材",
+            "name": "缇庤偂鏈熸潈鏁欐潗",
             "url": "https://4fire.qzz.io/options/"
         },
         "image": [
@@ -215,39 +215,39 @@
     </script>
 </head>
 <body>
-    <a href="#main" class="skip-link">跳转到主内容</a>
-    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
+    <a href="#main" class="skip-link">璺宠浆鍒颁富鍐呭</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="椤甸潰闃呰杩涘害"></div>
 
     <header id="header">
         <div class="nav-container">
-            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
-            <nav aria-label="期权章节页主导航">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 棣栭〉">Value<span>Invest</span></a>
+            <nav aria-label="鏈熸潈绔犺妭椤典富瀵艰埅">
                 <ul class="nav-links">
-                    <li><a href="../index.html">返回首页</a></li>
-                    <li><a href="./index.html">返回课程</a></li>
-                    <li><a href="#chapter-navigation">章节导航</a></li>
+                    <li><a href="../index.html">杩斿洖棣栭〉</a></li>
+                    <li><a href="./index.html">杩斿洖璇剧▼</a></li>
+                    <li><a href="#chapter-navigation">绔犺妭瀵艰埅</a></li>
                 </ul>
             </nav>
-            <div class="nav-date">第 05 章</div>
+            <div class="nav-date">绗?05 绔?/div>
         </div>
     </header>
 
     <section class="hero" role="banner">
         <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
         <div class="hero-content">
-            <div class="subtitle">价值与时间篇</div>
-            <h1>第 05 章 · 期权价格的解剖学</h1>
-            <p class="tagline">价值与时间篇 · Batch 2</p>
-            <p class="hero-description">拆解期权报价的来源，区分内在价值与时间价值，建立理解权利金的底层框架。</p>
+            <div class="subtitle">浠峰€间笌鏃堕棿绡?/div>
+            <h1>绗?05 绔?路 鏈熸潈浠锋牸鐨勮В鍓栧</h1>
+            <p class="tagline">浠峰€间笌鏃堕棿绡?路 Batch 2</p>
+            <p class="hero-description">鎷嗚В鏈熸潈鎶ヤ环鐨勬潵婧愶紝鍖哄垎鍐呭湪浠峰€间笌鏃堕棿浠峰€硷紝寤虹珛鐞嗚В鏉冨埄閲戠殑搴曞眰妗嗘灦銆?/p>
         </div>
-        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="鍚戜笅婊氬姩鍒扮珷鑺傛憳瑕?>鍚戜笅婊氬姩</a>
     </section>
 
-    <div class="chapter-meta-bar" aria-label="章节关键信息">
-        <div class="chapter-meta-pill">章节编号：第 05 章</div>
-        <div class="chapter-meta-pill">Section：价值与时间篇</div>
-        <div class="chapter-meta-pill">Batch：Batch 2 · 已发布</div>
-        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
+    <div class="chapter-meta-bar" aria-label="绔犺妭鍏抽敭淇℃伅">
+        <div class="chapter-meta-pill">绔犺妭缂栧彿锛氱 05 绔?/div>
+        <div class="chapter-meta-pill">Section锛氫环鍊间笌鏃堕棿绡?/div>
+        <div class="chapter-meta-pill">Batch锛欱atch 2 路 宸插彂甯?/div>
+        <div class="chapter-meta-pill">鎵€灞炶绋嬶細<a class="chapter-meta-link" href="./index.html">缇庤偂鏈熸潈鏁欐潗</a></div>
     </div>
 
     <main id="main" class="chapter-shell">
@@ -255,13 +255,13 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">01</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
-                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
+                    <h2 class="section-title" id="chapter-summary-title">绔犺妭鎽樿</h2>
+                    <p class="section-subtitle">缁欒鑰呬竴涓厛璇绘噦妗嗘灦銆佸啀娣卞叆姝ｆ枃鐨勮惤鐐?/p>
                 </div>
             </div>
 
             <div class="chapter-summary-card">
-                <p>拆解期权报价的来源，区分内在价值与时间价值，建立理解权利金的底层框架。</p>
+                <p>鎷嗚В鏈熸潈鎶ヤ环鐨勬潵婧愶紝鍖哄垎鍐呭湪浠峰€间笌鏃堕棿浠峰€硷紝寤虹珛鐞嗚В鏉冨埄閲戠殑搴曞眰妗嗘灦銆?/p>
             </div>
         </section>
 
@@ -269,245 +269,245 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">02</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
-                    <p class="section-subtitle">正文内容由生成器直接写入 HTML，默认无脚本也应完整可读</p>
+                    <h2 class="section-title" id="chapter-content-title">绔犺妭姝ｆ枃</h2>
+                    <p class="section-subtitle">姝ｆ枃鍐呭鐢辩敓鎴愬櫒鐩存帴鍐欏叆 HTML锛岄粯璁ゆ棤鑴氭湰涔熷簲瀹屾暣鍙</p>
                 </div>
             </div>
 
             <article class="chapter-body-card">
-<h1>《美股期权教材》</h1>
-<h2>第5章 期权价格的解剖学：内在价值与时间价值</h2>
-<blockquote><p>上一章我们已经把期权分成了 ITM、ATM、OTM。那一章解决的是“这张合约站在哪个位置”。</p>
-<p>这一章要进一步解决另一个更关键的问题：<strong>你在软件里看到的期权价格，到底是怎么来的？</strong></p>
-<p>很多人第一次买期权时，最容易犯的错误就是把报价当成一个黑盒子：</p>
-<ul><li>AAPL 某张 Call 报 4.80</li><li>TSLA 某张 Put 报 7.20</li><li>SPY 某张合约报 1.35</li></ul>
-<p>看起来都只是一个数字，但如果你不知道这个数字里哪部分是“已经有的价值”，哪部分是“市场对未来的期待”，后面很多现象你都会看不懂：</p>
-<ul><li>为什么股价明明朝我预期方向走了，我的期权却没赚多少？</li><li>为什么有些期权明明 OTM，却还能卖出价格？</li><li>为什么离到期越近，有些合约掉价越来越快？</li></ul>
-<p>这一章我们就把期权价格拆开来看。</p></blockquote>
+<h1>銆婄編鑲℃湡鏉冩暀鏉愩€?/h1>
+<h2>绗?绔?鏈熸潈浠锋牸鐨勮В鍓栧锛氬唴鍦ㄤ环鍊间笌鏃堕棿浠峰€?/h2>
+<blockquote><p>涓婁竴绔犳垜浠凡缁忔妸鏈熸潈鍒嗘垚浜?ITM銆丄TM銆丱TM銆傞偅涓€绔犺В鍐崇殑鏄€滆繖寮犲悎绾︾珯鍦ㄥ摢涓綅缃€濄€?/p>
+<p>杩欎竴绔犺杩涗竴姝ヨВ鍐冲彟涓€涓洿鍏抽敭鐨勯棶棰橈細<strong>浣犲湪杞欢閲岀湅鍒扮殑鏈熸潈浠锋牸锛屽埌搴曟槸鎬庝箞鏉ョ殑锛?/strong></p>
+<p>寰堝浜虹涓€娆′拱鏈熸潈鏃讹紝鏈€瀹规槗鐘殑閿欒灏辨槸鎶婃姤浠峰綋鎴愪竴涓粦鐩掑瓙锛?/p>
+<ul><li>AAPL 鏌愬紶 Call 鎶?4.80</li><li>TSLA 鏌愬紶 Put 鎶?7.20</li><li>SPY 鏌愬紶鍚堢害鎶?1.35</li></ul>
+<p>鐪嬭捣鏉ラ兘鍙槸涓€涓暟瀛楋紝浣嗗鏋滀綘涓嶇煡閬撹繖涓暟瀛楅噷鍝儴鍒嗘槸鈥滃凡缁忔湁鐨勪环鍊尖€濓紝鍝儴鍒嗘槸鈥滃競鍦哄鏈潵鐨勬湡寰呪€濓紝鍚庨潰寰堝鐜拌薄浣犻兘浼氱湅涓嶆噦锛?/p>
+<ul><li>涓轰粈涔堣偂浠锋槑鏄庢湞鎴戦鏈熸柟鍚戣蛋浜嗭紝鎴戠殑鏈熸潈鍗存病璧氬灏戯紵</li><li>涓轰粈涔堟湁浜涙湡鏉冩槑鏄?OTM锛屽嵈杩樿兘鍗栧嚭浠锋牸锛?/li><li>涓轰粈涔堢鍒版湡瓒婅繎锛屾湁浜涘悎绾︽帀浠疯秺鏉ヨ秺蹇紵</li></ul>
+<p>杩欎竴绔犳垜浠氨鎶婃湡鏉冧环鏍兼媶寮€鏉ョ湅銆?/p></blockquote>
 <hr>
-<h2>阅读导航：第一次读先学会“拆报价”，第二次读再看为什么会蒸发</h2>
-<p>这一章第一次读，你先别被公式吓到。</p>
-<p>最关键的主干只有一句：</p>
-<blockquote><p><strong>期权价格 = 内在价值 + 时间价值。</strong></p></blockquote>
-<p>第一遍你只要把这句话真的拆懂，就已经抓到核心了：</p>
-<ul><li>内在价值 = 现在立刻行权已经有的现实好处；</li><li>时间价值 = 市场愿意为未来可能性先付的钱。</li></ul>
-<p>第二遍再去补：</p>
-<ul><li>为什么有些 OTM 期权明明现在没现实价值，依然有报价；</li><li>为什么临近到期，很多期权掉价会越来越快；</li><li>为什么总价高不代表更划算，便宜也不自动代表更值得买。</li></ul>
-<p>这样读，你会更像在拆机器，而不是在背词。</p>
+<h2>闃呰瀵艰埅锛氱涓€娆¤鍏堝浼氣€滄媶鎶ヤ环鈥濓紝绗簩娆¤鍐嶇湅涓轰粈涔堜細钂稿彂</h2>
+<p>杩欎竴绔犵涓€娆¤锛屼綘鍏堝埆琚叕寮忓悡鍒般€?/p>
+<p>鏈€鍏抽敭鐨勪富骞插彧鏈変竴鍙ワ細</p>
+<blockquote><p><strong>鏈熸潈浠锋牸 = 鍐呭湪浠峰€?+ 鏃堕棿浠峰€笺€?/strong></p></blockquote>
+<p>绗竴閬嶄綘鍙鎶婅繖鍙ヨ瘽鐪熺殑鎷嗘噦锛屽氨宸茬粡鎶撳埌鏍稿績浜嗭細</p>
+<ul><li>鍐呭湪浠峰€?= 鐜板湪绔嬪埢琛屾潈宸茬粡鏈夌殑鐜板疄濂藉锛?/li><li>鏃堕棿浠峰€?= 甯傚満鎰挎剰涓烘湭鏉ュ彲鑳芥€у厛浠樼殑閽便€?/li></ul>
+<p>绗簩閬嶅啀鍘昏ˉ锛?/p>
+<ul><li>涓轰粈涔堟湁浜?OTM 鏈熸潈鏄庢槑鐜板湪娌＄幇瀹炰环鍊硷紝渚濈劧鏈夋姤浠凤紱</li><li>涓轰粈涔堜复杩戝埌鏈燂紝寰堝鏈熸潈鎺変环浼氳秺鏉ヨ秺蹇紱</li><li>涓轰粈涔堟€讳环楂樹笉浠ｈ〃鏇村垝绠楋紝渚垮疁涔熶笉鑷姩浠ｈ〃鏇村€煎緱涔般€?/li></ul>
+<p>杩欐牱璇伙紝浣犱細鏇村儚鍦ㄦ媶鏈哄櫒锛岃€屼笉鏄湪鑳岃瘝銆?/p>
 <hr>
-<h3>5.1 先记住本章最核心的一条公式</h3>
-<p>无论是 Call 还是 Put，只要是普通期权，我们都可以先用一个非常重要的框架去理解它的价格：</p>
-<blockquote><p><strong>期权价格 = 内在价值（Intrinsic Value）+ 时间价值（Time Value）</strong></p></blockquote>
-<p>你可以把这条公式看成期权价格的“拆机图”。</p>
-<ul><li><strong>内在价值</strong>：如果现在立刻行权，这张合约本身已经带来的现实好处。</li><li><strong>时间价值</strong>：市场愿意为“在剩余时间里，事情也许会往更有利方向发展”所支付的那部分溢价。</li></ul>
-<p>这两部分加在一起，才构成你在券商软件里看到的权利金报价。</p>
-<p>如果只用一句最通俗的话概括：</p>
-<ul><li><strong>内在价值 = 已经发生的有利部分</strong></li><li><strong>时间价值 = 对未来可能性的付费</strong></li></ul>
+<h3>5.1 鍏堣浣忔湰绔犳渶鏍稿績鐨勪竴鏉″叕寮?/h3>
+<p>鏃犺鏄?Call 杩樻槸 Put锛屽彧瑕佹槸鏅€氭湡鏉冿紝鎴戜滑閮藉彲浠ュ厛鐢ㄤ竴涓潪甯搁噸瑕佺殑妗嗘灦鍘荤悊瑙ｅ畠鐨勪环鏍硷細</p>
+<blockquote><p><strong>鏈熸潈浠锋牸 = 鍐呭湪浠峰€硷紙Intrinsic Value锛? 鏃堕棿浠峰€硷紙Time Value锛?/strong></p></blockquote>
+<p>浣犲彲浠ユ妸杩欐潯鍏紡鐪嬫垚鏈熸潈浠锋牸鐨勨€滄媶鏈哄浘鈥濄€?/p>
+<ul><li><strong>鍐呭湪浠峰€?/strong>锛氬鏋滅幇鍦ㄧ珛鍒昏鏉冿紝杩欏紶鍚堢害鏈韩宸茬粡甯︽潵鐨勭幇瀹炲ソ澶勩€?/li><li><strong>鏃堕棿浠峰€?/strong>锛氬競鍦烘効鎰忎负鈥滃湪鍓╀綑鏃堕棿閲岋紝浜嬫儏涔熻浼氬線鏇存湁鍒╂柟鍚戝彂灞曗€濇墍鏀粯鐨勯偅閮ㄥ垎婧环銆?/li></ul>
+<p>杩欎袱閮ㄥ垎鍔犲湪涓€璧凤紝鎵嶆瀯鎴愪綘鍦ㄥ埜鍟嗚蒋浠堕噷鐪嬪埌鐨勬潈鍒╅噾鎶ヤ环銆?/p>
+<p>濡傛灉鍙敤涓€鍙ユ渶閫氫織鐨勮瘽姒傛嫭锛?/p>
+<ul><li><strong>鍐呭湪浠峰€?= 宸茬粡鍙戠敓鐨勬湁鍒╅儴鍒?/strong></li><li><strong>鏃堕棿浠峰€?= 瀵规湭鏉ュ彲鑳芥€х殑浠樿垂</strong></li></ul>
 <hr>
-<h3>5.2 为什么必须把价格拆开：不然你会把“价格高”误以为“更值得买”</h3>
-<p>很多新手会本能地这样看期权链：</p>
-<ul><li>170 Call 报价 8.20</li><li>175 Call 报价 4.50</li><li>180 Call 报价 2.10</li></ul>
-<p>然后下意识认为：</p>
-<ul><li>贵的那张是不是更好？</li><li>便宜的那张是不是更划算？</li></ul>
-<p>其实这两个判断都不一定成立。因为它们的价格来源不一样。</p>
-<p>有的期权贵，是因为它已经带着比较多的内在价值； 有的期权便宜，是因为它几乎全靠未来去兑现； 有的期权看起来不便宜，但其中很大一部分只是时间价值，一旦时间流逝，这部分会不断蒸发。</p>
-<p>所以你不能只看总价，必须学会问第二层问题：</p>
-<blockquote><p><strong>这个报价里，多少是“现在就有”的，多少是“未来可能有”的？</strong></p></blockquote>
-<p>只有把这层拆出来，期权价格才会开始变得有逻辑。</p>
+<h3>5.2 涓轰粈涔堝繀椤绘妸浠锋牸鎷嗗紑锛氫笉鐒朵綘浼氭妸鈥滀环鏍奸珮鈥濊浠ヤ负鈥滄洿鍊煎緱涔扳€?/h3>
+<p>寰堝鏂版墜浼氭湰鑳藉湴杩欐牱鐪嬫湡鏉冮摼锛?/p>
+<ul><li>170 Call 鎶ヤ环 8.20</li><li>175 Call 鎶ヤ环 4.50</li><li>180 Call 鎶ヤ环 2.10</li></ul>
+<p>鐒跺悗涓嬫剰璇嗚涓猴細</p>
+<ul><li>璐电殑閭ｅ紶鏄笉鏄洿濂斤紵</li><li>渚垮疁鐨勯偅寮犳槸涓嶆槸鏇村垝绠楋紵</li></ul>
+<p>鍏跺疄杩欎袱涓垽鏂兘涓嶄竴瀹氭垚绔嬨€傚洜涓哄畠浠殑浠锋牸鏉ユ簮涓嶄竴鏍枫€?/p>
+<p>鏈夌殑鏈熸潈璐碉紝鏄洜涓哄畠宸茬粡甯︾潃姣旇緝澶氱殑鍐呭湪浠峰€硷紱 鏈夌殑鏈熸潈渚垮疁锛屾槸鍥犱负瀹冨嚑涔庡叏闈犳湭鏉ュ幓鍏戠幇锛?鏈夌殑鏈熸潈鐪嬭捣鏉ヤ笉渚垮疁锛屼絾鍏朵腑寰堝ぇ涓€閮ㄥ垎鍙槸鏃堕棿浠峰€硷紝涓€鏃︽椂闂存祦閫濓紝杩欓儴鍒嗕細涓嶆柇钂稿彂銆?/p>
+<p>鎵€浠ヤ綘涓嶈兘鍙湅鎬讳环锛屽繀椤诲浼氶棶绗簩灞傞棶棰橈細</p>
+<blockquote><p><strong>杩欎釜鎶ヤ环閲岋紝澶氬皯鏄€滅幇鍦ㄥ氨鏈夆€濈殑锛屽灏戞槸鈥滄湭鏉ュ彲鑳芥湁鈥濈殑锛?/strong></p></blockquote>
+<p>鍙湁鎶婅繖灞傛媶鍑烘潵锛屾湡鏉冧环鏍兼墠浼氬紑濮嬪彉寰楁湁閫昏緫銆?/p>
 <hr>
-<h3>5.3 什么叫内在价值：它是“现在立刻行权能拿到的好处”</h3>
-<p>内在价值的定义并不复杂，但一定要真正吃透。</p>
-<blockquote><p><strong>内在价值 = 如果现在立刻行权，这张期权能带来的现实收益。</strong></p></blockquote>
-<p>注意几个关键词：</p>
-<ul><li><strong>现在</strong>：不是到期时，不是明天，不是你脑补的未来走势；</li><li><strong>立刻行权</strong>：不是把期权卖给别人，而是直接使用这份权利；</li><li><strong>现实收益</strong>：是真实已经能兑现的好处，而不是希望。</li></ul>
-<p>所以内在价值和上一章的 ITM / ATM / OTM 是直接连着的：</p>
-<ul><li>ITM 往往有内在价值；</li><li>ATM 通常接近没有内在价值；</li><li>OTM 没有内在价值。</li></ul>
-<p>但为了不只停留在“往往”，我们要把 Call 和 Put 分开写清楚。</p>
+<h3>5.3 浠€涔堝彨鍐呭湪浠峰€硷細瀹冩槸鈥滅幇鍦ㄧ珛鍒昏鏉冭兘鎷垮埌鐨勫ソ澶勨€?/h3>
+<p>鍐呭湪浠峰€肩殑瀹氫箟骞朵笉澶嶆潅锛屼絾涓€瀹氳鐪熸鍚冮€忋€?/p>
+<blockquote><p><strong>鍐呭湪浠峰€?= 濡傛灉鐜板湪绔嬪埢琛屾潈锛岃繖寮犳湡鏉冭兘甯︽潵鐨勭幇瀹炴敹鐩娿€?/strong></p></blockquote>
+<p>娉ㄦ剰鍑犱釜鍏抽敭璇嶏細</p>
+<ul><li><strong>鐜板湪</strong>锛氫笉鏄埌鏈熸椂锛屼笉鏄槑澶╋紝涓嶆槸浣犺剳琛ョ殑鏈潵璧板娍锛?/li><li><strong>绔嬪埢琛屾潈</strong>锛氫笉鏄妸鏈熸潈鍗栫粰鍒汉锛岃€屾槸鐩存帴浣跨敤杩欎唤鏉冨埄锛?/li><li><strong>鐜板疄鏀剁泭</strong>锛氭槸鐪熷疄宸茬粡鑳藉厬鐜扮殑濂藉锛岃€屼笉鏄笇鏈涖€?/li></ul>
+<p>鎵€浠ュ唴鍦ㄤ环鍊煎拰涓婁竴绔犵殑 ITM / ATM / OTM 鏄洿鎺ヨ繛鐫€鐨勶細</p>
+<ul><li>ITM 寰€寰€鏈夊唴鍦ㄤ环鍊硷紱</li><li>ATM 閫氬父鎺ヨ繎娌℃湁鍐呭湪浠峰€硷紱</li><li>OTM 娌℃湁鍐呭湪浠峰€笺€?/li></ul>
+<p>浣嗕负浜嗕笉鍙仠鐣欏湪鈥滃線寰€鈥濓紝鎴戜滑瑕佹妸 Call 鍜?Put 鍒嗗紑鍐欐竻妤氥€?/p>
 <hr>
-<h3>5.4 Call 的内在价值怎么判断</h3>
-<p>一张 Call 给你的权利是：</p>
-<blockquote><p><strong>按行权价买入标的资产。</strong></p></blockquote>
-<p>所以只有当市场价格已经高于行权价时，这个权利才有现实好处。</p>
-<h4>5.4.1 Call 内在价值公式</h4>
-<blockquote><p><strong>Call 的内在价值 = max（股价 - 行权价，0）</strong></p></blockquote>
-<p>意思很简单：</p>
-<ul><li>如果股价比行权价高，那差额就是内在价值；</li><li>如果股价没高过行权价，那内在价值就是 0；</li><li>绝不会出现负的内在价值，因为没意义时你完全可以不行权。</li></ul>
-<h4>5.4.2 例子 1：AAPL 现价 175，170 Call</h4>
-<ul><li>股价 = 175</li><li>行权价 = 170</li></ul>
-<p>这张 Call 的内在价值 = 175 - 170 = <strong>5</strong>。</p>
-<p>意思是：你现在就拥有了一个可以用 170 买到市场上值 175 东西的权利，这 5 块的差额是真实存在的。</p>
-<h4>5.4.3 例子 2：AAPL 现价 175，180 Call</h4>
-<ul><li>股价 = 175</li><li>行权价 = 180</li></ul>
-<p>这张 Call 的内在价值 = max(175 - 180, 0) = <strong>0</strong>。</p>
-<p>因为你不会傻到用 180 去买市场上只值 175 的股票。既然现在立刻行权没有现实好处，它的内在价值就是 0。</p>
+<h3>5.4 Call 鐨勫唴鍦ㄤ环鍊兼€庝箞鍒ゆ柇</h3>
+<p>涓€寮?Call 缁欎綘鐨勬潈鍒╂槸锛?/p>
+<blockquote><p><strong>鎸夎鏉冧环涔板叆鏍囩殑璧勪骇銆?/strong></p></blockquote>
+<p>鎵€浠ュ彧鏈夊綋甯傚満浠锋牸宸茬粡楂樹簬琛屾潈浠锋椂锛岃繖涓潈鍒╂墠鏈夌幇瀹炲ソ澶勩€?/p>
+<h4>5.4.1 Call 鍐呭湪浠峰€煎叕寮?/h4>
+<blockquote><p><strong>Call 鐨勫唴鍦ㄤ环鍊?= max锛堣偂浠?- 琛屾潈浠凤紝0锛?/strong></p></blockquote>
+<p>鎰忔€濆緢绠€鍗曪細</p>
+<ul><li>濡傛灉鑲′环姣旇鏉冧环楂橈紝閭ｅ樊棰濆氨鏄唴鍦ㄤ环鍊硷紱</li><li>濡傛灉鑲′环娌￠珮杩囪鏉冧环锛岄偅鍐呭湪浠峰€煎氨鏄?0锛?/li><li>缁濅笉浼氬嚭鐜拌礋鐨勫唴鍦ㄤ环鍊硷紝鍥犱负娌℃剰涔夋椂浣犲畬鍏ㄥ彲浠ヤ笉琛屾潈銆?/li></ul>
+<h4>5.4.2 渚嬪瓙 1锛欰APL 鐜颁环 175锛?70 Call</h4>
+<ul><li>鑲′环 = 175</li><li>琛屾潈浠?= 170</li></ul>
+<p>杩欏紶 Call 鐨勫唴鍦ㄤ环鍊?= 175 - 170 = <strong>5</strong>銆?/p>
+<p>鎰忔€濇槸锛氫綘鐜板湪灏辨嫢鏈変簡涓€涓彲浠ョ敤 170 涔板埌甯傚満涓婂€?175 涓滆タ鐨勬潈鍒╋紝杩?5 鍧楃殑宸鏄湡瀹炲瓨鍦ㄧ殑銆?/p>
+<h4>5.4.3 渚嬪瓙 2锛欰APL 鐜颁环 175锛?80 Call</h4>
+<ul><li>鑲′环 = 175</li><li>琛屾潈浠?= 180</li></ul>
+<p>杩欏紶 Call 鐨勫唴鍦ㄤ环鍊?= max(175 - 180, 0) = <strong>0</strong>銆?/p>
+<p>鍥犱负浣犱笉浼氬偦鍒扮敤 180 鍘讳拱甯傚満涓婂彧鍊?175 鐨勮偂绁ㄣ€傛棦鐒剁幇鍦ㄧ珛鍒昏鏉冩病鏈夌幇瀹炲ソ澶勶紝瀹冪殑鍐呭湪浠峰€煎氨鏄?0銆?/p>
 <hr>
-<h3>5.5 Put 的内在价值怎么判断</h3>
-<p>一张 Put 给你的权利是：</p>
-<blockquote><p><strong>按行权价卖出标的资产。</strong></p></blockquote>
-<p>所以只有当市场价格已经低于行权价时，这个权利才有现实好处。</p>
-<h4>5.5.1 Put 内在价值公式</h4>
-<blockquote><p><strong>Put 的内在价值 = max（行权价 - 股价，0）</strong></p></blockquote>
-<p>也就是：</p>
-<ul><li>如果行权价高于当前股价，那差额就是现实好处；</li><li>如果当前股价并不低于行权价，那内在价值就是 0。</li></ul>
-<h4>5.5.2 例子 1：AAPL 现价 140，146 Put</h4>
-<ul><li>行权价 = 146</li><li>股价 = 140</li></ul>
-<p>内在价值 = 146 - 140 = <strong>6</strong>。</p>
-<p>因为你拥有一张可以按 146 卖出一只市场上只值 140 股票的合同，这 6 块就是已经存在的价值。</p>
-<h4>5.5.3 例子 2：AAPL 现价 175，170 Put</h4>
-<ul><li>行权价 = 170</li><li>股价 = 175</li></ul>
-<p>内在价值 = max(170 - 175, 0) = <strong>0</strong>。</p>
-<p>因为现在市场上明明能卖到 175，你当然不会选择按 170 卖。</p>
+<h3>5.5 Put 鐨勫唴鍦ㄤ环鍊兼€庝箞鍒ゆ柇</h3>
+<p>涓€寮?Put 缁欎綘鐨勬潈鍒╂槸锛?/p>
+<blockquote><p><strong>鎸夎鏉冧环鍗栧嚭鏍囩殑璧勪骇銆?/strong></p></blockquote>
+<p>鎵€浠ュ彧鏈夊綋甯傚満浠锋牸宸茬粡浣庝簬琛屾潈浠锋椂锛岃繖涓潈鍒╂墠鏈夌幇瀹炲ソ澶勩€?/p>
+<h4>5.5.1 Put 鍐呭湪浠峰€煎叕寮?/h4>
+<blockquote><p><strong>Put 鐨勫唴鍦ㄤ环鍊?= max锛堣鏉冧环 - 鑲′环锛?锛?/strong></p></blockquote>
+<p>涔熷氨鏄細</p>
+<ul><li>濡傛灉琛屾潈浠烽珮浜庡綋鍓嶈偂浠凤紝閭ｅ樊棰濆氨鏄幇瀹炲ソ澶勶紱</li><li>濡傛灉褰撳墠鑲′环骞朵笉浣庝簬琛屾潈浠凤紝閭ｅ唴鍦ㄤ环鍊煎氨鏄?0銆?/li></ul>
+<h4>5.5.2 渚嬪瓙 1锛欰APL 鐜颁环 140锛?46 Put</h4>
+<ul><li>琛屾潈浠?= 146</li><li>鑲′环 = 140</li></ul>
+<p>鍐呭湪浠峰€?= 146 - 140 = <strong>6</strong>銆?/p>
+<p>鍥犱负浣犳嫢鏈変竴寮犲彲浠ユ寜 146 鍗栧嚭涓€鍙競鍦轰笂鍙€?140 鑲＄エ鐨勫悎鍚岋紝杩?6 鍧楀氨鏄凡缁忓瓨鍦ㄧ殑浠峰€笺€?/p>
+<h4>5.5.3 渚嬪瓙 2锛欰APL 鐜颁环 175锛?70 Put</h4>
+<ul><li>琛屾潈浠?= 170</li><li>鑲′环 = 175</li></ul>
+<p>鍐呭湪浠峰€?= max(170 - 175, 0) = <strong>0</strong>銆?/p>
+<p>鍥犱负鐜板湪甯傚満涓婃槑鏄庤兘鍗栧埌 175锛屼綘褰撶劧涓嶄細閫夋嫨鎸?170 鍗栥€?/p>
 <hr>
-<h3>5.6 一个极其重要的底线：内在价值永远不会是负数</h3>
-<p>很多刚接触期权的人会说：</p>
-<ul><li>那 OTM Call 的内在价值是不是 -5？</li><li>那 OTM Put 的内在价值是不是 -3？</li></ul>
-<p>都不是。</p>
-<p>这是一个很常见但必须立刻纠正的错误。</p>
-<p>原因很简单：期权是“有权利、没义务”的合同。你有权决定行不行权。既然没有意义，你完全可以不做。所以最差不是负数，而是<strong>0</strong>。</p>
-<p>这个细节看起来小，但它很关键。因为它提醒你：</p>
-<blockquote><p><strong>期权价格里的“未来可能性”不会把现在的内在价值拖成负数。</strong></p></blockquote>
-<p>OTM 没有内在价值，不等于它在现实收益上欠你钱；它只是现在没有可兑现的好处。</p>
+<h3>5.6 涓€涓瀬鍏堕噸瑕佺殑搴曠嚎锛氬唴鍦ㄤ环鍊兼案杩滀笉浼氭槸璐熸暟</h3>
+<p>寰堝鍒氭帴瑙︽湡鏉冪殑浜轰細璇达細</p>
+<ul><li>閭?OTM Call 鐨勫唴鍦ㄤ环鍊兼槸涓嶆槸 -5锛?/li><li>閭?OTM Put 鐨勫唴鍦ㄤ环鍊兼槸涓嶆槸 -3锛?/li></ul>
+<p>閮戒笉鏄€?/p>
+<p>杩欐槸涓€涓緢甯歌浣嗗繀椤荤珛鍒荤籂姝ｇ殑閿欒銆?/p>
+<p>鍘熷洜寰堢畝鍗曪細鏈熸潈鏄€滄湁鏉冨埄銆佹病涔夊姟鈥濈殑鍚堝悓銆備綘鏈夋潈鍐冲畾琛屼笉琛屾潈銆傛棦鐒舵病鏈夋剰涔夛紝浣犲畬鍏ㄥ彲浠ヤ笉鍋氥€傛墍浠ユ渶宸笉鏄礋鏁帮紝鑰屾槸<strong>0</strong>銆?/p>
+<p>杩欎釜缁嗚妭鐪嬭捣鏉ュ皬锛屼絾瀹冨緢鍏抽敭銆傚洜涓哄畠鎻愰啋浣狅細</p>
+<blockquote><p><strong>鏈熸潈浠锋牸閲岀殑鈥滄湭鏉ュ彲鑳芥€р€濅笉浼氭妸鐜板湪鐨勫唴鍦ㄤ环鍊兼嫋鎴愯礋鏁般€?/strong></p></blockquote>
+<p>OTM 娌℃湁鍐呭湪浠峰€硷紝涓嶇瓑浜庡畠鍦ㄧ幇瀹炴敹鐩婁笂娆犱綘閽憋紱瀹冨彧鏄幇鍦ㄦ病鏈夊彲鍏戠幇鐨勫ソ澶勩€?/p>
 <hr>
-<h3>5.7 什么叫时间价值：你花的钱里，有一部分是在为“还没发生的可能性”买单</h3>
-<p>如果说内在价值是已经落地的部分，那么时间价值就是还没落地、但市场愿意付费的那部分。</p>
-<blockquote><p><strong>时间价值 = 期权价格 - 内在价值</strong></p></blockquote>
-<p>这条公式其实就是上一条总公式移项而来，但它非常重要，因为它告诉你：</p>
-<ul><li>期权价格里并不全是“真材实料”；</li><li>其中有一部分，是对未来的预期、概率、弹性、博弈的综合定价；</li><li>这部分随着时间流逝，会逐渐衰减。</li></ul>
-<p>你可以把时间价值理解成三层意思叠在一起：</p>
-<p>1. <strong>剩余时间</strong>：离到期还早不早； 2. <strong>未来可能性</strong>：标的还有没有机会走到更有利位置； 3. <strong>市场情绪与博弈</strong>：大家愿不愿意为这份不确定性付钱。</p>
-<p>虽然我们现在先用“时间价值”这个词，但你要知道，它背后不仅仅是时间本身，还包含未来波动空间带来的定价。到后面讲 IV 时，你会把这件事看得更透。</p>
+<h3>5.7 浠€涔堝彨鏃堕棿浠峰€硷細浣犺姳鐨勯挶閲岋紝鏈変竴閮ㄥ垎鏄湪涓衡€滆繕娌″彂鐢熺殑鍙兘鎬р€濅拱鍗?/h3>
+<p>濡傛灉璇村唴鍦ㄤ环鍊兼槸宸茬粡钀藉湴鐨勯儴鍒嗭紝閭ｄ箞鏃堕棿浠峰€煎氨鏄繕娌¤惤鍦般€佷絾甯傚満鎰挎剰浠樿垂鐨勯偅閮ㄥ垎銆?/p>
+<blockquote><p><strong>鏃堕棿浠峰€?= 鏈熸潈浠锋牸 - 鍐呭湪浠峰€?/strong></p></blockquote>
+<p>杩欐潯鍏紡鍏跺疄灏辨槸涓婁竴鏉℃€诲叕寮忕Щ椤硅€屾潵锛屼絾瀹冮潪甯搁噸瑕侊紝鍥犱负瀹冨憡璇変綘锛?/p>
+<ul><li>鏈熸潈浠锋牸閲屽苟涓嶅叏鏄€滅湡鏉愬疄鏂欌€濓紱</li><li>鍏朵腑鏈変竴閮ㄥ垎锛屾槸瀵规湭鏉ョ殑棰勬湡銆佹鐜囥€佸脊鎬с€佸崥寮堢殑缁煎悎瀹氫环锛?/li><li>杩欓儴鍒嗛殢鐫€鏃堕棿娴侀€濓紝浼氶€愭笎琛板噺銆?/li></ul>
+<p>浣犲彲浠ユ妸鏃堕棿浠峰€肩悊瑙ｆ垚涓夊眰鎰忔€濆彔鍦ㄤ竴璧凤細</p>
+<p>1. <strong>鍓╀綑鏃堕棿</strong>锛氱鍒版湡杩樻棭涓嶆棭锛?2. <strong>鏈潵鍙兘鎬?/strong>锛氭爣鐨勮繕鏈夋病鏈夋満浼氳蛋鍒版洿鏈夊埄浣嶇疆锛?3. <strong>甯傚満鎯呯华涓庡崥寮?/strong>锛氬ぇ瀹舵効涓嶆効鎰忎负杩欎唤涓嶇‘瀹氭€т粯閽便€?/p>
+<p>铏界劧鎴戜滑鐜板湪鍏堢敤鈥滄椂闂翠环鍊尖€濊繖涓瘝锛屼絾浣犺鐭ラ亾锛屽畠鑳屽悗涓嶄粎浠呮槸鏃堕棿鏈韩锛岃繕鍖呭惈鏈潵娉㈠姩绌洪棿甯︽潵鐨勫畾浠枫€傚埌鍚庨潰璁?IV 鏃讹紝浣犱細鎶婅繖浠朵簨鐪嬪緱鏇撮€忋€?/p>
 <hr>
-<h3>5.8 直接上例子：同样是 Call，不同位置下价格构成完全不一样</h3>
-<p>假设现在某只股票股价是 <strong>153</strong>。</p>
-<h4>例子 1：150 Call 报价 4.55</h4>
-<ul><li>股价 = 153</li><li>行权价 = 150</li><li>期权价格 = 4.55</li></ul>
-<p>先算内在价值：</p>
+<h3>5.8 鐩存帴涓婁緥瀛愶細鍚屾牱鏄?Call锛屼笉鍚屼綅缃笅浠锋牸鏋勬垚瀹屽叏涓嶄竴鏍?/h3>
+<p>鍋囪鐜板湪鏌愬彧鑲＄エ鑲′环鏄?<strong>153</strong>銆?/p>
+<h4>渚嬪瓙 1锛?50 Call 鎶ヤ环 4.55</h4>
+<ul><li>鑲′环 = 153</li><li>琛屾潈浠?= 150</li><li>鏈熸潈浠锋牸 = 4.55</li></ul>
+<p>鍏堢畻鍐呭湪浠峰€硷細</p>
 <ul><li>153 - 150 = <strong>3</strong></li></ul>
-<p>再算时间价值：</p>
+<p>鍐嶇畻鏃堕棿浠峰€硷細</p>
 <ul><li>4.55 - 3 = <strong>1.55</strong></li></ul>
-<p>这说明什么？</p>
-<p>说明你花的 4.55 里：</p>
-<ul><li>有 <strong>3</strong> 是已经存在的现实价值；</li><li>有 <strong>1.55</strong> 是为剩余时间和未来空间支付的溢价。</li></ul>
-<p>换句话说，这张 ITM Call 不是纯希望，它里面已经有一块比较扎实的部分。</p>
-<h4>例子 2：155 Call 报价 1.90</h4>
-<ul><li>股价 = 153</li><li>行权价 = 155</li><li>期权价格 = 1.90</li></ul>
-<p>先算内在价值：</p>
+<p>杩欒鏄庝粈涔堬紵</p>
+<p>璇存槑浣犺姳鐨?4.55 閲岋細</p>
+<ul><li>鏈?<strong>3</strong> 鏄凡缁忓瓨鍦ㄧ殑鐜板疄浠峰€硷紱</li><li>鏈?<strong>1.55</strong> 鏄负鍓╀綑鏃堕棿鍜屾湭鏉ョ┖闂存敮浠樼殑婧环銆?/li></ul>
+<p>鎹㈠彞璇濊锛岃繖寮?ITM Call 涓嶆槸绾笇鏈涳紝瀹冮噷闈㈠凡缁忔湁涓€鍧楁瘮杈冩墡瀹炵殑閮ㄥ垎銆?/p>
+<h4>渚嬪瓙 2锛?55 Call 鎶ヤ环 1.90</h4>
+<ul><li>鑲′环 = 153</li><li>琛屾潈浠?= 155</li><li>鏈熸潈浠锋牸 = 1.90</li></ul>
+<p>鍏堢畻鍐呭湪浠峰€硷細</p>
 <ul><li>max(153 - 155, 0) = <strong>0</strong></li></ul>
-<p>再算时间价值：</p>
+<p>鍐嶇畻鏃堕棿浠峰€硷細</p>
 <ul><li>1.90 - 0 = <strong>1.90</strong></li></ul>
-<p>这说明：这张 OTM Call 的全部价格，100% 都是时间价值。</p>
-<p>你买它，不是在买现在已经值钱的东西，而是在买：</p>
-<blockquote><p>“也许在到期前，股价能涨上去。”</p></blockquote>
-<p>所以它便宜，但也更依赖后续行情。</p>
+<p>杩欒鏄庯細杩欏紶 OTM Call 鐨勫叏閮ㄤ环鏍硷紝100% 閮芥槸鏃堕棿浠峰€笺€?/p>
+<p>浣犱拱瀹冿紝涓嶆槸鍦ㄤ拱鐜板湪宸茬粡鍊奸挶鐨勪笢瑗匡紝鑰屾槸鍦ㄤ拱锛?/p>
+<blockquote><p>鈥滀篃璁稿湪鍒版湡鍓嶏紝鑲′环鑳芥定涓婂幓銆傗€?/p></blockquote>
+<p>鎵€浠ュ畠渚垮疁锛屼絾涔熸洿渚濊禆鍚庣画琛屾儏銆?/p>
 <hr>
-<h3>5.9 再看 Put：同样的拆法，一样成立</h3>
-<p>假设当前股价还是 <strong>153</strong>。</p>
-<h4>例子 1：160 Put 报价 8.20</h4>
-<ul><li>行权价 = 160</li><li>股价 = 153</li></ul>
-<p>内在价值：</p>
+<h3>5.9 鍐嶇湅 Put锛氬悓鏍风殑鎷嗘硶锛屼竴鏍锋垚绔?/h3>
+<p>鍋囪褰撳墠鑲′环杩樻槸 <strong>153</strong>銆?/p>
+<h4>渚嬪瓙 1锛?60 Put 鎶ヤ环 8.20</h4>
+<ul><li>琛屾潈浠?= 160</li><li>鑲′环 = 153</li></ul>
+<p>鍐呭湪浠峰€硷細</p>
 <ul><li>160 - 153 = <strong>7</strong></li></ul>
-<p>时间价值：</p>
+<p>鏃堕棿浠峰€硷細</p>
 <ul><li>8.20 - 7 = <strong>1.20</strong></li></ul>
-<p>也就是说，这张 Put 的价格大部分已经是现实价值，小部分是时间溢价。</p>
-<h4>例子 2：150 Put 报价 2.10</h4>
-<ul><li>行权价 = 150</li><li>股价 = 153</li></ul>
-<p>内在价值：</p>
+<p>涔熷氨鏄锛岃繖寮?Put 鐨勪环鏍煎ぇ閮ㄥ垎宸茬粡鏄幇瀹炰环鍊硷紝灏忛儴鍒嗘槸鏃堕棿婧环銆?/p>
+<h4>渚嬪瓙 2锛?50 Put 鎶ヤ环 2.10</h4>
+<ul><li>琛屾潈浠?= 150</li><li>鑲′环 = 153</li></ul>
+<p>鍐呭湪浠峰€硷細</p>
 <ul><li>max(150 - 153, 0) = <strong>0</strong></li></ul>
-<p>时间价值：</p>
+<p>鏃堕棿浠峰€硷細</p>
 <ul><li>2.10 - 0 = <strong>2.10</strong></li></ul>
-<p>这就是一张典型的 OTM Put：它现在没有内在价值，但市场愿意为未来可能跌破 150 这件事给它定价。</p>
+<p>杩欏氨鏄竴寮犲吀鍨嬬殑 OTM Put锛氬畠鐜板湪娌℃湁鍐呭湪浠峰€硷紝浣嗗競鍦烘効鎰忎负鏈潵鍙兘璺岀牬 150 杩欎欢浜嬬粰瀹冨畾浠枫€?/p>
 <hr>
-<h3>5.10 你现在应该真正明白：OTM 期权为什么“没有内在价值但仍然有价格”</h3>
-<p>这是许多新手一开始最困惑的地方。</p>
-<p>逻辑其实并不复杂：</p>
-<ul><li><strong>内在价值</strong>只看“现在立刻行权有没有好处”；</li><li><strong>市场价格</strong>看的是“到到期前，这份合同还有没有机会变得更值钱”。</li></ul>
-<p>所以一张 OTM 期权现在虽然没有现实价值，但只要还有剩余时间，只要市场认为它未来还有变成 ITM 的概率，它就不会是零。</p>
-<p>你可以把它理解成：</p>
-<ul><li>ITM 更像“已经带点货”；</li><li>OTM 更像“现在没货，但保留了未来上货的可能”；</li><li>而这个“未来可能上货”的权利，本身就值钱。</li></ul>
-<p>这就是为什么不能把 OTM 简单理解成废纸。真正快变成废纸的，是<strong>临近到期且仍然 OTM 的期权</strong>。因为那时候“未来可能性”已经被时间压缩得很薄了。</p>
+<h3>5.10 浣犵幇鍦ㄥ簲璇ョ湡姝ｆ槑鐧斤細OTM 鏈熸潈涓轰粈涔堚€滄病鏈夊唴鍦ㄤ环鍊间絾浠嶇劧鏈変环鏍尖€?/h3>
+<p>杩欐槸璁稿鏂版墜涓€寮€濮嬫渶鍥版儜鐨勫湴鏂广€?/p>
+<p>閫昏緫鍏跺疄骞朵笉澶嶆潅锛?/p>
+<ul><li><strong>鍐呭湪浠峰€?/strong>鍙湅鈥滅幇鍦ㄧ珛鍒昏鏉冩湁娌℃湁濂藉鈥濓紱</li><li><strong>甯傚満浠锋牸</strong>鐪嬬殑鏄€滃埌鍒版湡鍓嶏紝杩欎唤鍚堝悓杩樻湁娌℃湁鏈轰細鍙樺緱鏇村€奸挶鈥濄€?/li></ul>
+<p>鎵€浠ヤ竴寮?OTM 鏈熸潈鐜板湪铏界劧娌℃湁鐜板疄浠峰€硷紝浣嗗彧瑕佽繕鏈夊墿浣欐椂闂达紝鍙甯傚満璁や负瀹冩湭鏉ヨ繕鏈夊彉鎴?ITM 鐨勬鐜囷紝瀹冨氨涓嶄細鏄浂銆?/p>
+<p>浣犲彲浠ユ妸瀹冪悊瑙ｆ垚锛?/p>
+<ul><li>ITM 鏇村儚鈥滃凡缁忓甫鐐硅揣鈥濓紱</li><li>OTM 鏇村儚鈥滅幇鍦ㄦ病璐э紝浣嗕繚鐣欎簡鏈潵涓婅揣鐨勫彲鑳解€濓紱</li><li>鑰岃繖涓€滄湭鏉ュ彲鑳戒笂璐р€濈殑鏉冨埄锛屾湰韬氨鍊奸挶銆?/li></ul>
+<p>杩欏氨鏄负浠€涔堜笉鑳芥妸 OTM 绠€鍗曠悊瑙ｆ垚搴熺焊銆傜湡姝ｅ揩鍙樻垚搴熺焊鐨勶紝鏄?strong>涓磋繎鍒版湡涓斾粛鐒?OTM 鐨勬湡鏉?/strong>銆傚洜涓洪偅鏃跺€欌€滄湭鏉ュ彲鑳芥€р€濆凡缁忚鏃堕棿鍘嬬缉寰楀緢钖勪簡銆?/p>
 <hr>
-<h3>5.11 同样一张合约，随着时间流逝，哪部分会被吃掉？</h3>
-<p>这也是期权和股票最本质的区别之一。</p>
-<p>股票没有到期日。你买了腾讯、苹果、英伟达，只要公司不退市，你可以一直拿着。</p>
-<p>但期权不同。期权是有有效期的。于是它价格里的两部分，命运就不一样：</p>
-<ul><li><strong>内在价值</strong>：取决于股价和行权价的相对关系；</li><li><strong>时间价值</strong>：会随着到期临近不断缩水，最后归零。</li></ul>
-<p>这意味着：</p>
-<blockquote><p><strong>时间真正会吃掉的，不是内在价值，而是时间价值。</strong></p></blockquote>
-<p>这句话非常关键。因为很多人以为期权亏钱是一种笼统的“掉价”，实际上更准确地说，很多时候你是在眼睁睁看着自己买来的那部分“未来可能性”一天天贬值。</p>
-<p>这就是下一章“时间价值的规律”和后面“时间衰减”的基础。</p>
+<h3>5.11 鍚屾牱涓€寮犲悎绾︼紝闅忕潃鏃堕棿娴侀€濓紝鍝儴鍒嗕細琚悆鎺夛紵</h3>
+<p>杩欎篃鏄湡鏉冨拰鑲＄エ鏈€鏈川鐨勫尯鍒箣涓€銆?/p>
+<p>鑲＄エ娌℃湁鍒版湡鏃ャ€備綘涔颁簡鑵捐銆佽嫻鏋溿€佽嫳浼熻揪锛屽彧瑕佸叕鍙镐笉閫€甯傦紝浣犲彲浠ヤ竴鐩存嬁鐫€銆?/p>
+<p>浣嗘湡鏉冧笉鍚屻€傛湡鏉冩槸鏈夋湁鏁堟湡鐨勩€備簬鏄畠浠锋牸閲岀殑涓ら儴鍒嗭紝鍛借繍灏变笉涓€鏍凤細</p>
+<ul><li><strong>鍐呭湪浠峰€?/strong>锛氬彇鍐充簬鑲′环鍜岃鏉冧环鐨勭浉瀵瑰叧绯伙紱</li><li><strong>鏃堕棿浠峰€?/strong>锛氫細闅忕潃鍒版湡涓磋繎涓嶆柇缂╂按锛屾渶鍚庡綊闆躲€?/li></ul>
+<p>杩欐剰鍛崇潃锛?/p>
+<blockquote><p><strong>鏃堕棿鐪熸浼氬悆鎺夌殑锛屼笉鏄唴鍦ㄤ环鍊硷紝鑰屾槸鏃堕棿浠峰€笺€?/strong></p></blockquote>
+<p>杩欏彞璇濋潪甯稿叧閿€傚洜涓哄緢澶氫汉浠ヤ负鏈熸潈浜忛挶鏄竴绉嶇缁熺殑鈥滄帀浠封€濓紝瀹為檯涓婃洿鍑嗙‘鍦拌锛屽緢澶氭椂鍊欎綘鏄湪鐪肩潄鐫佺湅鐫€鑷繁涔版潵鐨勯偅閮ㄥ垎鈥滄湭鏉ュ彲鑳芥€р€濅竴澶╁ぉ璐€笺€?/p>
+<p>杩欏氨鏄笅涓€绔犫€滄椂闂翠环鍊肩殑瑙勫緥鈥濆拰鍚庨潰鈥滄椂闂磋“鍑忊€濈殑鍩虹銆?/p>
 <hr>
-<h3>5.12 为什么很多新手方向看对了，期权却还是不赚钱</h3>
-<p>因为他只看对了方向，却没理解价格结构。</p>
-<p>举个典型场景：</p>
-<ul><li>你买了一张 OTM Call，花了 2.00；</li><li>几天后股价确实涨了，但只涨了一点；</li><li>你发现期权只涨到 2.10，甚至还掉回去了。</li></ul>
-<p>为什么？</p>
-<p>因为你原来付的 2.00 里，几乎全是时间价值。股价确实朝你想要的方向走了一点，但这点有利变化还不足以抵消：</p>
-<ul><li>时间在流逝；</li><li>合约离到期更近；</li><li>市场对后续爆发的预期可能在下降。</li></ul>
-<p>结果就是：</p>
-<ul><li>方向没错；</li><li>但幅度不够、速度不够；</li><li>时间价值还在流失；</li><li>所以期权不一定马上体现出你想象中的盈利。</li></ul>
-<p>这也是为什么期权不是“只要看对涨跌方向就行”的东西。你还要看：</p>
-<ul><li>涨跌有没有快到足够改变内在价值；</li><li>你买的是 ITM、ATM 还是 OTM；</li><li>你花的钱里有多少本来就是时间溢价。</li></ul>
+<h3>5.12 涓轰粈涔堝緢澶氭柊鎵嬫柟鍚戠湅瀵逛簡锛屾湡鏉冨嵈杩樻槸涓嶈禋閽?/h3>
+<p>鍥犱负浠栧彧鐪嬪浜嗘柟鍚戯紝鍗存病鐞嗚В浠锋牸缁撴瀯銆?/p>
+<p>涓句釜鍏稿瀷鍦烘櫙锛?/p>
+<ul><li>浣犱拱浜嗕竴寮?OTM Call锛岃姳浜?2.00锛?/li><li>鍑犲ぉ鍚庤偂浠风‘瀹炴定浜嗭紝浣嗗彧娑ㄤ簡涓€鐐癸紱</li><li>浣犲彂鐜版湡鏉冨彧娑ㄥ埌 2.10锛岀敋鑷宠繕鎺夊洖鍘讳簡銆?/li></ul>
+<p>涓轰粈涔堬紵</p>
+<p>鍥犱负浣犲師鏉ヤ粯鐨?2.00 閲岋紝鍑犱箮鍏ㄦ槸鏃堕棿浠峰€笺€傝偂浠风‘瀹炴湞浣犳兂瑕佺殑鏂瑰悜璧颁簡涓€鐐癸紝浣嗚繖鐐规湁鍒╁彉鍖栬繕涓嶈冻浠ユ姷娑堬細</p>
+<ul><li>鏃堕棿鍦ㄦ祦閫濓紱</li><li>鍚堢害绂诲埌鏈熸洿杩戯紱</li><li>甯傚満瀵瑰悗缁垎鍙戠殑棰勬湡鍙兘鍦ㄤ笅闄嶃€?/li></ul>
+<p>缁撴灉灏辨槸锛?/p>
+<ul><li>鏂瑰悜娌￠敊锛?/li><li>浣嗗箙搴︿笉澶熴€侀€熷害涓嶅锛?/li><li>鏃堕棿浠峰€艰繕鍦ㄦ祦澶憋紱</li><li>鎵€浠ユ湡鏉冧笉涓€瀹氶┈涓婁綋鐜板嚭浣犳兂璞′腑鐨勭泩鍒┿€?/li></ul>
+<p>杩欎篃鏄负浠€涔堟湡鏉冧笉鏄€滃彧瑕佺湅瀵规定璺屾柟鍚戝氨琛屸€濈殑涓滆タ銆備綘杩樿鐪嬶細</p>
+<ul><li>娑ㄨ穼鏈夋病鏈夊揩鍒拌冻澶熸敼鍙樺唴鍦ㄤ环鍊硷紱</li><li>浣犱拱鐨勬槸 ITM銆丄TM 杩樻槸 OTM锛?/li><li>浣犺姳鐨勯挶閲屾湁澶氬皯鏈潵灏辨槸鏃堕棿婧环銆?/li></ul>
 <hr>
-<h3>5.13 为什么 ITM、ATM、OTM 在价格结构上会呈现不同气质</h3>
-<p>这部分不是严格数学推导，而是你做交易时很有用的直觉。</p>
-<h4>5.13.1 ITM：更像“已经有一部分实的东西”</h4>
-<p>ITM 期权往往带有明显的内在价值，所以它的价格里“实的部分”更多。你买它时，通常不是纯粹在赌一个未来大爆发，而是在买一张已经站得更靠里的合同。</p>
-<p>这也是为什么 ITM 通常更贵。</p>
-<h4>5.13.2 ATM：更像“站在分界线上的合同”</h4>
-<p>ATM 常常是市场最敏感的位置之一。它现在没有多少内在价值，但距离变成 ITM 也不远，所以市场会给它较强的时间价值定价。</p>
-<p>换句话说，ATM 往往不是最实，也不是最空，而是最卡在关键位置。</p>
-<h4>5.13.3 OTM：更像“当前没货，但保留了可能性”</h4>
-<p>OTM 当前没有内在价值，所以价格里几乎全是时间价值。它便宜，但更脆弱。因为一旦时间快速流逝，而价格又迟迟没有朝有利方向走，这部分价值就会被不断抽干。</p>
-<p>所以 OTM 并不是“低配版便宜好货”，而是“更依赖未来行情兑现的合同”。</p>
+<h3>5.13 涓轰粈涔?ITM銆丄TM銆丱TM 鍦ㄤ环鏍肩粨鏋勪笂浼氬憟鐜颁笉鍚屾皵璐?/h3>
+<p>杩欓儴鍒嗕笉鏄弗鏍兼暟瀛︽帹瀵硷紝鑰屾槸浣犲仛浜ゆ槗鏃跺緢鏈夌敤鐨勭洿瑙夈€?/p>
+<h4>5.13.1 ITM锛氭洿鍍忊€滃凡缁忔湁涓€閮ㄥ垎瀹炵殑涓滆タ鈥?/h4>
+<p>ITM 鏈熸潈寰€寰€甯︽湁鏄庢樉鐨勫唴鍦ㄤ环鍊硷紝鎵€浠ュ畠鐨勪环鏍奸噷鈥滃疄鐨勯儴鍒嗏€濇洿澶氥€備綘涔板畠鏃讹紝閫氬父涓嶆槸绾补鍦ㄨ祵涓€涓湭鏉ュぇ鐖嗗彂锛岃€屾槸鍦ㄤ拱涓€寮犲凡缁忕珯寰楁洿闈犻噷鐨勫悎鍚屻€?/p>
+<p>杩欎篃鏄负浠€涔?ITM 閫氬父鏇磋吹銆?/p>
+<h4>5.13.2 ATM锛氭洿鍍忊€滅珯鍦ㄥ垎鐣岀嚎涓婄殑鍚堝悓鈥?/h4>
+<p>ATM 甯稿父鏄競鍦烘渶鏁忔劅鐨勪綅缃箣涓€銆傚畠鐜板湪娌℃湁澶氬皯鍐呭湪浠峰€硷紝浣嗚窛绂诲彉鎴?ITM 涔熶笉杩滐紝鎵€浠ュ競鍦轰細缁欏畠杈冨己鐨勬椂闂翠环鍊煎畾浠枫€?/p>
+<p>鎹㈠彞璇濊锛孉TM 寰€寰€涓嶆槸鏈€瀹烇紝涔熶笉鏄渶绌猴紝鑰屾槸鏈€鍗″湪鍏抽敭浣嶇疆銆?/p>
+<h4>5.13.3 OTM锛氭洿鍍忊€滃綋鍓嶆病璐э紝浣嗕繚鐣欎簡鍙兘鎬р€?/h4>
+<p>OTM 褰撳墠娌℃湁鍐呭湪浠峰€硷紝鎵€浠ヤ环鏍奸噷鍑犱箮鍏ㄦ槸鏃堕棿浠峰€笺€傚畠渚垮疁锛屼絾鏇磋剢寮便€傚洜涓轰竴鏃︽椂闂村揩閫熸祦閫濓紝鑰屼环鏍煎張杩熻繜娌℃湁鏈濇湁鍒╂柟鍚戣蛋锛岃繖閮ㄥ垎浠峰€煎氨浼氳涓嶆柇鎶藉共銆?/p>
+<p>鎵€浠?OTM 骞朵笉鏄€滀綆閰嶇増渚垮疁濂借揣鈥濓紝鑰屾槸鈥滄洿渚濊禆鏈潵琛屾儏鍏戠幇鐨勫悎鍚屸€濄€?/p>
 <hr>
-<h3>5.14 一个真实交易里非常有用的习惯：别只看总价，要看价格结构</h3>
-<p>以后你打开期权链，别再只盯着哪个价格便宜，哪个价格贵。你应该训练自己多问两句：</p>
-<p>1. 这张期权是 ITM、ATM 还是 OTM？ 2. 它现在的内在价值大概是多少？ 3. 它报价里有多少是在为时间和未来概率付钱？</p>
-<p>你只要开始这样看，很多东西会突然变清楚：</p>
-<ul><li>为什么有些期权很贵但没那么“虚”；</li><li>为什么有些期权很便宜却很容易归零；</li><li>为什么时间一过去，有些合约掉价特别狠。</li></ul>
-<p>这会直接改变你挑行权价的方式。你不再是在选一个数字，而是在选一种价格结构。</p>
+<h3>5.14 涓€涓湡瀹炰氦鏄撻噷闈炲父鏈夌敤鐨勪範鎯細鍒彧鐪嬫€讳环锛岃鐪嬩环鏍肩粨鏋?/h3>
+<p>浠ュ悗浣犳墦寮€鏈熸潈閾撅紝鍒啀鍙洴鐫€鍝釜浠锋牸渚垮疁锛屽摢涓环鏍艰吹銆備綘搴旇璁粌鑷繁澶氶棶涓ゅ彞锛?/p>
+<p>1. 杩欏紶鏈熸潈鏄?ITM銆丄TM 杩樻槸 OTM锛?2. 瀹冪幇鍦ㄧ殑鍐呭湪浠峰€煎ぇ姒傛槸澶氬皯锛?3. 瀹冩姤浠烽噷鏈夊灏戞槸鍦ㄤ负鏃堕棿鍜屾湭鏉ユ鐜囦粯閽憋紵</p>
+<p>浣犲彧瑕佸紑濮嬭繖鏍风湅锛屽緢澶氫笢瑗夸細绐佺劧鍙樻竻妤氾細</p>
+<ul><li>涓轰粈涔堟湁浜涙湡鏉冨緢璐典絾娌￠偅涔堚€滆櫄鈥濓紱</li><li>涓轰粈涔堟湁浜涙湡鏉冨緢渚垮疁鍗村緢瀹规槗褰掗浂锛?/li><li>涓轰粈涔堟椂闂翠竴杩囧幓锛屾湁浜涘悎绾︽帀浠风壒鍒嫚銆?/li></ul>
+<p>杩欎細鐩存帴鏀瑰彉浣犳寫琛屾潈浠风殑鏂瑰紡銆備綘涓嶅啀鏄湪閫変竴涓暟瀛楋紝鑰屾槸鍦ㄩ€変竴绉嶄环鏍肩粨鏋勩€?/p>
 <hr>
-<h3>5.15 本章最容易踩的几个误区</h3>
-<h4>误区 1：价格高 = 更值得买</h4>
-<p>不对。它可能只是因为内在价值本来就多，也可能只是时间价值很贵。总价本身不说明值不值得。</p>
-<h4>误区 2：OTM 没有内在价值 = 它不值钱</h4>
-<p>不对。只要还有剩余时间，OTM 就可能仍然有显著的时间价值。</p>
-<h4>误区 3：时间价值是虚的，所以不重要</h4>
-<p>恰恰相反。很多期权之所以贵、之所以敏感、之所以容易亏，关键就在时间价值。它虽然不是“已经兑现”的价值，但它是真正花钱买来的东西。</p>
-<h4>误区 4：只要股价朝预期方向走，期权就一定会赚钱</h4>
-<p>不对。你还得看你买入时付出的时间价值有多少，以及行情来的幅度和速度够不够。</p>
+<h3>5.15 鏈珷鏈€瀹规槗韪╃殑鍑犱釜璇尯</h3>
+<h4>璇尯 1锛氫环鏍奸珮 = 鏇村€煎緱涔?/h4>
+<p>涓嶅銆傚畠鍙兘鍙槸鍥犱负鍐呭湪浠峰€兼湰鏉ュ氨澶氾紝涔熷彲鑳藉彧鏄椂闂翠环鍊煎緢璐点€傛€讳环鏈韩涓嶈鏄庡€间笉鍊煎緱銆?/p>
+<h4>璇尯 2锛歄TM 娌℃湁鍐呭湪浠峰€?= 瀹冧笉鍊奸挶</h4>
+<p>涓嶅銆傚彧瑕佽繕鏈夊墿浣欐椂闂达紝OTM 灏卞彲鑳戒粛鐒舵湁鏄捐憲鐨勬椂闂翠环鍊笺€?/p>
+<h4>璇尯 3锛氭椂闂翠环鍊兼槸铏氱殑锛屾墍浠ヤ笉閲嶈</h4>
+<p>鎭版伆鐩稿弽銆傚緢澶氭湡鏉冧箣鎵€浠ヨ吹銆佷箣鎵€浠ユ晱鎰熴€佷箣鎵€浠ュ鏄撲簭锛屽叧閿氨鍦ㄦ椂闂翠环鍊笺€傚畠铏界劧涓嶆槸鈥滃凡缁忓厬鐜扳€濈殑浠峰€硷紝浣嗗畠鏄湡姝ｈ姳閽变拱鏉ョ殑涓滆タ銆?/p>
+<h4>璇尯 4锛氬彧瑕佽偂浠锋湞棰勬湡鏂瑰悜璧帮紝鏈熸潈灏变竴瀹氫細璧氶挶</h4>
+<p>涓嶅銆備綘杩樺緱鐪嬩綘涔板叆鏃朵粯鍑虹殑鏃堕棿浠峰€兼湁澶氬皯锛屼互鍙婅鎯呮潵鐨勫箙搴﹀拰閫熷害澶熶笉澶熴€?/p>
 <hr>
-<h3>5.16 本章小结：以后看到一张期权报价，你脑子里要自动拆成两半</h3>
-<p>这一章你最需要带走的，不是几条公式本身，而是一种看价格的方式。</p>
-<p>以后看到一张期权报价，比如 4.80，你脑子里要自然冒出两个问题：</p>
-<ul><li>这里面有多少是已经存在的现实价值？</li><li>这里面有多少是在为未来可能性付费？</li></ul>
-<p>只要你开始这样看，期权价格就不再神秘。你会逐渐理解：</p>
-<ul><li>ITM 为什么更像带点现货；</li><li>OTM 为什么更像在买希望；</li><li>时间为什么会成为买方最大的压力来源。</li></ul>
-<p>而这，正好通往下一章。</p>
+<h3>5.16 鏈珷灏忕粨锛氫互鍚庣湅鍒颁竴寮犳湡鏉冩姤浠凤紝浣犺剳瀛愰噷瑕佽嚜鍔ㄦ媶鎴愪袱鍗?/h3>
+<p>杩欎竴绔犱綘鏈€闇€瑕佸甫璧扮殑锛屼笉鏄嚑鏉″叕寮忔湰韬紝鑰屾槸涓€绉嶇湅浠锋牸鐨勬柟寮忋€?/p>
+<p>浠ュ悗鐪嬪埌涓€寮犳湡鏉冩姤浠凤紝姣斿 4.80锛屼綘鑴戝瓙閲岃鑷劧鍐掑嚭涓や釜闂锛?/p>
+<ul><li>杩欓噷闈㈡湁澶氬皯鏄凡缁忓瓨鍦ㄧ殑鐜板疄浠峰€硷紵</li><li>杩欓噷闈㈡湁澶氬皯鏄湪涓烘湭鏉ュ彲鑳芥€т粯璐癸紵</li></ul>
+<p>鍙浣犲紑濮嬭繖鏍风湅锛屾湡鏉冧环鏍煎氨涓嶅啀绁炵銆備綘浼氶€愭笎鐞嗚В锛?/p>
+<ul><li>ITM 涓轰粈涔堟洿鍍忓甫鐐圭幇璐э紱</li><li>OTM 涓轰粈涔堟洿鍍忓湪涔板笇鏈涳紱</li><li>鏃堕棿涓轰粈涔堜細鎴愪负涔版柟鏈€澶х殑鍘嬪姏鏉ユ簮銆?/li></ul>
+<p>鑰岃繖锛屾濂介€氬線涓嬩竴绔犮€?/p>
 <hr>
 <hr>
-<h3>一句话总结</h3>
-<blockquote><p><strong>一张期权的价格，真正拆开看，就是内在价值、时间价值，以及市场愿意为不确定性先付多少钱。</strong></p></blockquote>
-<h3>5.17 自测题</h3>
-<p>1）某股票现价 153：</p>
-<ul><li>150 Call 报价 4.55，它的内在价值和时间价值分别是多少？</li><li>155 Call 报价 1.90，它的内在价值和时间价值分别是多少？</li></ul>
-<p>2）某股票现价 153：</p>
-<ul><li>160 Put 报价 8.20，它的内在价值和时间价值分别是多少？</li><li>150 Put 报价 2.10，它的内在价值和时间价值分别是多少？</li></ul>
-<p>3）为什么说 OTM 期权没有内在价值，但仍然可能有价格？</p>
-<p>4）为什么很多人方向看对了，期权却没有按预期赚钱？</p>
+<h3>涓€鍙ヨ瘽鎬荤粨</h3>
+<blockquote><p><strong>涓€寮犳湡鏉冪殑浠锋牸锛岀湡姝ｆ媶寮€鐪嬶紝灏辨槸鍐呭湪浠峰€笺€佹椂闂翠环鍊硷紝浠ュ強甯傚満鎰挎剰涓轰笉纭畾鎬у厛浠樺灏戦挶銆?/strong></p></blockquote>
+<h3>5.17 鑷祴棰?/h3>
+<p>1锛夋煇鑲＄エ鐜颁环 153锛?/p>
+<ul><li>150 Call 鎶ヤ环 4.55锛屽畠鐨勫唴鍦ㄤ环鍊煎拰鏃堕棿浠峰€煎垎鍒槸澶氬皯锛?/li><li>155 Call 鎶ヤ环 1.90锛屽畠鐨勫唴鍦ㄤ环鍊煎拰鏃堕棿浠峰€煎垎鍒槸澶氬皯锛?/li></ul>
+<p>2锛夋煇鑲＄エ鐜颁环 153锛?/p>
+<ul><li>160 Put 鎶ヤ环 8.20锛屽畠鐨勫唴鍦ㄤ环鍊煎拰鏃堕棿浠峰€煎垎鍒槸澶氬皯锛?/li><li>150 Put 鎶ヤ环 2.10锛屽畠鐨勫唴鍦ㄤ环鍊煎拰鏃堕棿浠峰€煎垎鍒槸澶氬皯锛?/li></ul>
+<p>3锛変负浠€涔堣 OTM 鏈熸潈娌℃湁鍐呭湪浠峰€硷紝浣嗕粛鐒跺彲鑳芥湁浠锋牸锛?/p>
+<p>4锛変负浠€涔堝緢澶氫汉鏂瑰悜鐪嬪浜嗭紝鏈熸潈鍗存病鏈夋寜棰勬湡璧氶挶锛?/p>
 <hr>
-<h3>5.18 下一章预告：时间价值不是静止的，它会被时间一点点吃掉</h3>
-<p>这一章我们只是先把价格拆开，知道了：</p>
-<ul><li>哪部分是内在价值；</li><li>哪部分是时间价值。</li></ul>
-<p>但真正残酷的地方在于，时间价值不是固定待在那里，它会随着到期临近不断流失，而且不是匀速流失。</p>
-<p>下一章，我们就正式进入：</p>
-<ul><li>时间价值受什么影响；</li><li>为什么 ATM 附近的时间价值最敏感；</li><li>为什么临近到期的期权会越来越像一块融化的冰。</li></ul>
-<p>这部分一旦吃透，你对期权买方和卖方的理解会直接上一个层级。</p>
+<h3>5.18 涓嬩竴绔犻鍛婏細鏃堕棿浠峰€间笉鏄潤姝㈢殑锛屽畠浼氳鏃堕棿涓€鐐圭偣鍚冩帀</h3>
+<p>杩欎竴绔犳垜浠彧鏄厛鎶婁环鏍兼媶寮€锛岀煡閬撲簡锛?/p>
+<ul><li>鍝儴鍒嗘槸鍐呭湪浠峰€硷紱</li><li>鍝儴鍒嗘槸鏃堕棿浠峰€笺€?/li></ul>
+<p>浣嗙湡姝ｆ畫閰风殑鍦版柟鍦ㄤ簬锛屾椂闂翠环鍊间笉鏄浐瀹氬緟鍦ㄩ偅閲岋紝瀹冧細闅忕潃鍒版湡涓磋繎涓嶆柇娴佸け锛岃€屼笖涓嶆槸鍖€閫熸祦澶便€?/p>
+<p>涓嬩竴绔狅紝鎴戜滑灏辨寮忚繘鍏ワ細</p>
+<ul><li>鏃堕棿浠峰€煎彈浠€涔堝奖鍝嶏紱</li><li>涓轰粈涔?ATM 闄勮繎鐨勬椂闂翠环鍊兼渶鏁忔劅锛?/li><li>涓轰粈涔堜复杩戝埌鏈熺殑鏈熸潈浼氳秺鏉ヨ秺鍍忎竴鍧楄瀺鍖栫殑鍐般€?/li></ul>
+<p>杩欓儴鍒嗕竴鏃﹀悆閫忥紝浣犲鏈熸潈涔版柟鍜屽崠鏂圭殑鐞嗚В浼氱洿鎺ヤ笂涓€涓眰绾с€?/p>
 <hr>
-<h3>本章参考口径（便于追溯）</h3>
-<ul><li>OCC / Investor.gov 关于期权基本定义：用于保持“期权价格拆分”依然围绕权利本身，不把概念讲偏成只剩数学公式</li><li><a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/options">https://www.investor.gov/introduction-investing/investing-basics/glossary/options</a></li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li></ul>
-<ul><li>Fidelity Options Strategy Guide：用于校准 intrinsic value / time value 的基础表达与术语边界</li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li></ul>
-<ul><li>CBOE Options Institute 学习材料：用于保持术语与市场通行表达一致</li><li><a href="https://www.cboe.com/optionsinstitute/">https://www.cboe.com/optionsinstitute/</a></li></ul>
+<h3>鏈珷鍙傝€冨彛寰勶紙渚夸簬杩芥函锛?/h3>
+<ul><li>OCC / Investor.gov 鍏充簬鏈熸潈鍩烘湰瀹氫箟锛氱敤浜庝繚鎸佲€滄湡鏉冧环鏍兼媶鍒嗏€濅緷鐒跺洿缁曟潈鍒╂湰韬紝涓嶆妸姒傚康璁插亸鎴愬彧鍓╂暟瀛﹀叕寮?/li><li><a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/options">https://www.investor.gov/introduction-investing/investing-basics/glossary/options</a></li><li><a href="https://www.optionseducation.org/">https://www.optionseducation.org/</a></li></ul>
+<ul><li>Fidelity Options Strategy Guide锛氱敤浜庢牎鍑?intrinsic value / time value 鐨勫熀纭€琛ㄨ揪涓庢湳璇竟鐣?/li><li><a href="https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview">https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/overview</a></li></ul>
+<ul><li>CBOE Options Institute 瀛︿範鏉愭枡锛氱敤浜庝繚鎸佹湳璇笌甯傚満閫氳琛ㄨ揪涓€鑷?/li><li><a href="https://www.cboe.com/optionsinstitute/">https://www.cboe.com/optionsinstitute/</a></li></ul>
             </article>
         </section>
 
@@ -515,27 +515,27 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
-                    <p class="section-subtitle">显式保留上一章 / 返回课程 / 下一章三个可见槽位，便于生成器稳定填充</p>
+                    <h2 class="section-title" id="chapter-navigation-title">绔犺妭瀵艰埅</h2>
+                    <p class="section-subtitle">鏄惧紡淇濈暀涓婁竴绔?/ 杩斿洖璇剧▼ / 涓嬩竴绔犱笁涓彲瑙佹Ы浣嶏紝渚夸簬鐢熸垚鍣ㄧǔ瀹氬～鍏?/p>
                 </div>
             </div>
 
             <div class="chapter-nav-card">
                 <div class="chapter-nav-grid">
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">上一章</div>
-                        <a class="chapter-nav-link" href="./04.html">第 04 章 · ITM / ATM / OTM</a>
-                        <p>理解期权相对当前股价所处的位置，掌握实值、平值、虚值的判断方法与阅读期权链的直觉。</p>
+                        <div class="chapter-nav-label">涓婁竴绔?/div>
+                        <a class="chapter-nav-link" href="./04.html">绗?04 绔?路 ITM / ATM / OTM</a>
+                        <p>鐞嗚В鏈熸潈鐩稿褰撳墠鑲′环鎵€澶勭殑浣嶇疆锛屾帉鎻″疄鍊笺€佸钩鍊笺€佽櫄鍊肩殑鍒ゆ柇鏂规硶涓庨槄璇绘湡鏉冮摼鐨勭洿瑙夈€?/p>
                     </div>
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">返回课程</div>
-                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
-                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
+                        <div class="chapter-nav-label">杩斿洖璇剧▼</div>
+                        <a class="chapter-nav-link" href="./index.html">缇庤偂鏈熸潈鏁欐潗 鐩綍</a>
+                        <p>杩斿洖璇剧▼鐩綍锛屾寜 section 鍜?batch 鏌ョ湅鍏ㄥ眬杩涘害銆?/p>
                     </div>
                     <div class="chapter-nav-slot">
-                        <div class="chapter-nav-label">下一章</div>
-                        <a class="chapter-nav-link" href="./06.html">第 06 章 · 时间价值铁律</a>
-                        <p>理解时间价值如何随到期日和 ATM 距离分布，为读懂期权链上的价格差异打基础。</p>
+                        <div class="chapter-nav-label">涓嬩竴绔?/div>
+                        <a class="chapter-nav-link" href="./06.html">绗?06 绔?路 鏃堕棿浠峰€奸搧寰?/a>
+                        <p>鐞嗚В鏃堕棿浠峰€煎浣曢殢鍒版湡鏃ュ拰 ATM 璺濈鍒嗗竷锛屼负璇绘噦鏈熸潈閾句笂鐨勪环鏍煎樊寮傛墦鍩虹銆?/p>
                     </div>
                 </div>
             </div>
@@ -543,15 +543,15 @@
     </main>
 
     <footer>
-        <p>期权教材 · 结构化学习 · HTML 优先</p>
+        <p>鏈熸潈鏁欐潗 路 缁撴瀯鍖栧涔?路 HTML 浼樺厛</p>
         <p class="disclaimer">
-            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
+            鍏嶈矗澹版槑锛氭湰鏁欐潗椤甸潰浠呬緵瀛︿範浜ゆ祦浣跨敤锛屼笉鏋勬垚浠讳綍鎶曡祫寤鸿銆傛湡鏉冧氦鏄撴秹鍙婃潬鏉嗐€佹椂闂存崯鑰椾笌娴佸姩鎬ч闄╋紝鍔″繀缁撳悎鑷韩鎯呭喌鐙珛鍒ゆ柇銆?
         </p>
     </footer>
 
-    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="鍒囨崲娣辫壊妯″紡" title="鍒囨崲娣辫壊妯″紡">馃寭</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="杩斿洖椤堕儴">鈫?/button>
 
-    <script src="../js/main.js?v=20260326site4"></script>
+    <script src="../js/main.js?v=20260326review1"></script>
 </body>
 </html>
