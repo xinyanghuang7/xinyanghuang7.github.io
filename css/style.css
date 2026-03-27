@@ -1,4 +1,4 @@
-﻿:root {
+:root {
     /* Core Colors - Deep Luxury */
     --bg-primary: #0a0a0a;
     --bg-secondary: #141414;
@@ -3822,6 +3822,16 @@ footer .disclaimer {
         padding: 0.68rem 0;
     }
 
+    #decision-cards .tracking-framework-grid {
+        padding-left: 0.95rem;
+        padding-right: 0.95rem;
+        box-sizing: border-box;
+    }
+
+    #decision-cards .tracking-card {
+        min-width: 0;
+    }
+
     main {
         padding: var(--space-xl) var(--space-md);
     }
@@ -3831,6 +3841,11 @@ footer .disclaimer {
         width: 46px;
         height: 46px;
         font-size: 1.05rem;
+    }
+
+    body.has-mobile-quick-nav .back-to-top,
+    body.has-mobile-quick-nav .dark-mode-toggle {
+        display: none;
     }
 
     .dark-mode-toggle {
