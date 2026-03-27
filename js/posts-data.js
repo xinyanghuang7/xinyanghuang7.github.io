@@ -1,5 +1,14 @@
-﻿// Auto-generated from posts/**/*.html. Do not edit by hand.
+// Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
+  {
+    "date": "2026-03-28",
+    "title": "别只盯着芯片，AI 电力链也在抬升",
+    "desc": "2026年3月28日美股观察：把 AI 主线从芯片往电力与交付链条再推一步，重点研究 ETN，并更新 META、NVDA、NBIS 的最新节点与动作判断。",
+    "url": "posts/2026/03/28.html",
+    "keywords": [
+      "ETN"
+    ]
+  },
   {
     "date": "2026-03-27",
     "title": "2026年3月27日美股分析：COST 飞轮新节点 + 持仓风险重定价",
