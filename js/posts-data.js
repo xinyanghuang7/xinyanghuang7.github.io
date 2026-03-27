@@ -1,5 +1,21 @@
-// Auto-generated from posts/**/*.html. Do not edit by hand.
+﻿// Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
+  {
+    "date": "2026-03-27",
+    "title": "2026年3月27日美股分析：COST 飞轮新节点 + 持仓风险重定价",
+    "desc": "2026年3月27日美股分析：Module 1 主角 COST，拆解会员制飞轮与独立加油站新节点；持仓 META 法律风险重定价、NVDA 风险偏好回落、NBIS Aether 3.5 与 RTX PRO 6000 最新复核。",
+    "url": "posts/2026/03/27.html",
+    "keywords": [
+      "COST",
+      "Costco",
+      "META",
+      "NVDA",
+      "NBIS",
+      "美股分析",
+      "会员制",
+      "持仓跟踪"
+    ]
+  },
   {
     "date": "2026-03-26",
     "title": "2026年3月26日美股分析",
