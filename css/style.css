@@ -1514,6 +1514,12 @@ main {
     gap: var(--space-lg);
 }
 
+#decision-cards .tracking-framework-grid {
+    padding-left: clamp(0.45rem, 1.4vw, 0.85rem);
+    padding-right: clamp(0.45rem, 1.4vw, 0.85rem);
+    box-sizing: border-box;
+}
+
 .tracking-card {
     padding: var(--space-lg);
     border-left-width: 4px;
