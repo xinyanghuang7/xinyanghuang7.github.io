@@ -1503,6 +1503,10 @@ main {
 
 /* Tracking Framework */
 .tracking-framework {
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: var(--shadow-md);
     background:
         linear-gradient(135deg, rgba(255,255,255,0.025) 0%, rgba(255,255,255,0.05) 100%),
         radial-gradient(circle at top right, rgba(212,175,55,0.08), transparent 42%);
@@ -1512,12 +1516,6 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--space-lg);
-}
-
-#decision-cards .tracking-framework-grid {
-    padding-left: clamp(0.45rem, 1.4vw, 0.85rem);
-    padding-right: clamp(0.45rem, 1.4vw, 0.85rem);
-    box-sizing: border-box;
 }
 
 .tracking-card {
@@ -1636,6 +1634,8 @@ body.light-mode .tracking-framework {
     background:
         linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(244,236,222,0.98) 100%),
         radial-gradient(circle at top right, rgba(156,116,16,0.08), transparent 44%);
+    border-color: rgba(156,116,16,0.14);
+    box-shadow: var(--shadow-sm);
 }
 
 body.light-mode .tracking-card {
@@ -3826,12 +3826,6 @@ footer .disclaimer {
     .decision-card-row {
         gap: 0.35rem;
         padding: 0.68rem 0;
-    }
-
-    #decision-cards .tracking-framework-grid {
-        padding-left: 0.95rem;
-        padding-right: 0.95rem;
-        box-sizing: border-box;
     }
 
     #decision-cards .tracking-card {
