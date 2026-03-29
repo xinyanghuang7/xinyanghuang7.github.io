@@ -91,6 +91,34 @@ foreach ($file in $postFiles) {
         Add-Issue "$rel missing canonical on 4fire.qzz.io"
     }
 
+    $dateMatch = [regex]::Match($rel, 'posts\\(?<year>\d{4})\\(?<month>\d{2})\\(?<day>\d{2})\.html$')
+    $enforceEnhancedSeo = $false
+    if ($dateMatch.Success) {
+        $dateIso = "{0}-{1}-{2}" -f $dateMatch.Groups['year'].Value, $dateMatch.Groups['month'].Value, $dateMatch.Groups['day'].Value
+        if ([datetime]::ParseExact($dateIso, 'yyyy-MM-dd', $null) -ge [datetime]'2026-03-26') {
+            $enforceEnhancedSeo = $true
+        }
+    }
+
+    if ($enforceEnhancedSeo -and ($content -notmatch '<meta\s+name="keywords"\s+content="[^"]+"')) {
+        Add-Issue "$rel missing meta keywords"
+    }
+
+    if ($enforceEnhancedSeo -and ($content -notmatch '<meta\s+property="og:image"\s+content="https://4fire\.qzz\.io/[^"]+"')) {
+        Add-Issue "$rel missing absolute production og:image"
+    }
+
+    if ($enforceEnhancedSeo -and ($content -notmatch '<meta\s+name="twitter:image"\s+content="https://4fire\.qzz\.io/[^"]+"')) {
+        Add-Issue "$rel missing absolute production twitter:image"
+    }
+
+    if ($enforceEnhancedSeo -and $dateMatch.Success) {
+        $datedOgAsset = "images/posts/$dateIso-value.jpg"
+        if ((Test-Path $datedOgAsset) -and ($content -match 'https://4fire\.qzz\.io/images/hero-bg\.jpg')) {
+            Add-Issue "$rel still uses generic hero og:image even though $datedOgAsset exists"
+        }
+    }
+
     $matches = [regex]::Matches($content, '(?:\.\./\.\./\.\./)?images/[^"''\) ]+')
     foreach ($m in $matches) {
         $asset = $m.Value -replace '^\.\./\.\./\.\./',''
@@ -123,10 +151,36 @@ if (Test-Path $indexPath) {
 if (Test-Path $courseManifestPath) {
     $courseManifest = Get-Content -Raw -Encoding UTF8 $courseManifestPath | ConvertFrom-Json
     $courseIndex = Test-CoursePage -path $optionsIndexPath -canonicalPath 'options/' -scriptPattern '<script src="\.\./js/main\.js(?:\?v=[^"'']+)?"></script>' -stylesheetPattern '<link rel="stylesheet" href="\.\./css/style\.css(?:\?v=[^"'']+)?">'
+    $publishedChapters = @($courseManifest | Where-Object { $_.status -eq 'published' } | Sort-Object { [int]$_.id })
+    $expectedPublishedFiles = New-Object 'System.Collections.Generic.HashSet[string]' ([System.StringComparer]::OrdinalIgnoreCase)
+    $chapterContents = @{}
 
-    foreach ($chapter in @($courseManifest | Where-Object { $_.status -eq 'published' })) {
+    foreach ($chapter in $publishedChapters) {
         $chapterPath = Join-Path $root $chapter.output_path
-        Test-CoursePage -path $chapterPath -canonicalPath ($chapter.output_path -replace '\\','/') -scriptPattern '<script src="\.\./js/main\.js(?:\?v=[^"'']+)?"></script>' -stylesheetPattern '<link rel="stylesheet" href="\.\./css/style\.css(?:\?v=[^"'']+)?">' | Out-Null
+        $null = $expectedPublishedFiles.Add(([System.IO.Path]::GetFileName($chapter.output_path)))
+        $chapterContents[$chapter.id] = Test-CoursePage -path $chapterPath -canonicalPath ($chapter.output_path -replace '\\','/') -scriptPattern '<script src="\.\./js/main\.js(?:\?v=[^"'']+)?"></script>' -stylesheetPattern '<link rel="stylesheet" href="\.\./css/style\.css(?:\?v=[^"'']+)?">'
+    }
+
+    foreach ($generatedChapterFile in Get-ChildItem (Join-Path $root 'options') -File -Filter '*.html' | Where-Object { $_.Name -ne 'index.html' }) {
+        if (-not $expectedPublishedFiles.Contains($generatedChapterFile.Name)) {
+            Add-Issue "options/$($generatedChapterFile.Name) exists but is not a currently published chapter in course-manifest.json"
+        }
+    }
+
+    for ($i = 0; $i -lt $publishedChapters.Count; $i++) {
+        $chapter = $publishedChapters[$i]
+        $content = $chapterContents[$chapter.id]
+        if (-not $content) { continue }
+
+        $expectedPrevHref = if ($i -eq 0) { './index.html' } else { './' + [System.IO.Path]::GetFileName($publishedChapters[$i - 1].output_path) }
+        $expectedNextHref = if ($i -eq $publishedChapters.Count - 1) { './index.html' } else { './' + [System.IO.Path]::GetFileName($publishedChapters[$i + 1].output_path) }
+
+        if ($content -notmatch ('href="' + [regex]::Escape($expectedPrevHref) + '"')) {
+            Add-Issue "options/$([System.IO.Path]::GetFileName($chapter.output_path)) missing expected previous-nav target $expectedPrevHref"
+        }
+        if ($content -notmatch ('href="' + [regex]::Escape($expectedNextHref) + '"')) {
+            Add-Issue "options/$([System.IO.Path]::GetFileName($chapter.output_path)) missing expected next-nav target $expectedNextHref"
+        }
     }
 
     $futureChapters = @($courseManifest | Where-Object { $_.status -in @('syncing', 'coming-soon') })
