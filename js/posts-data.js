@@ -2,19 +2,20 @@
 window.__POSTS__ = [
   {
     "date": "2026-03-29",
-    "title": "?? COIN ????????????????????",
-    "desc": "2026?3?29??????????????? COIN????????????????????????????????? META?NVDA?NBIS ?????????????",
+    "title": "别把高质量企业软件都当旧 SaaS，NOW 更像企业工作流收费平台",
+    "desc": "2026年3月29日美股观察：这次不再重复旧候选，改看 ServiceNow。重点拆它为什么更像高质量企业软件复利资产，同时回到 META、NVDA、NBIS 的最新周末动作框架。",
     "url": "posts/2026/03/29.html",
     "keywords": [
-      "??",
-      "????",
-      "COIN",
-      "Coinbase",
+      "美股",
+      "价值投资",
+      "NOW",
+      "ServiceNow",
       "META",
       "NVDA",
       "NBIS",
-      "???",
-      "????????"
+      "企业软件",
+      "SaaS",
+      "动作地图"
     ]
   },
   {
@@ -27,11 +28,7 @@ window.__POSTS__ = [
       "价值投资",
       "ETN",
       "Eaton",
-      "META",
-      "NVDA",
-      "NBIS",
-      "AI电力链",
-      "数据中心供电",
+      "投资研究",
       "组合管理"
     ]
   },
@@ -53,8 +50,8 @@ window.__POSTS__ = [
   },
   {
     "date": "2026-03-26",
-    "title": "2026年3月26日美股分析",
-    "desc": "2026年3月26日美股分析：Module 1 主角 ORCL，Oracle AI 数据库智能体与 Fusion Agentic Applications 更新；持仓 META/NVDA/NBIS 最新节点跟踪；组合动作地图",
+    "title": "2026骞?鏈?6鏃ョ編鑲″垎鏋?",
+    "desc": "2026骞?鏈?6鏃ョ編鑲″垎鏋愶細Module 1 涓昏 ORCL锛孫racle AI 鏁版嵁搴撴櫤鑳戒綋涓?Fusion Agentic Applications 鏇存柊锛涙寔浠?META/NVDA/NBIS 鏈€鏂拌妭鐐硅窡韪紱缁勫悎鍔ㄤ綔鍦板浘",
     "url": "posts/2026/03/26.html",
     "keywords": [
       "ORCL",
@@ -63,8 +60,8 @@ window.__POSTS__ = [
       "META",
       "NVDA",
       "NBIS",
-      "美股分析",
-      "持仓跟踪"
+      "缇庤偂鍒嗘瀽",
+      "鎸佷粨璺熻釜"
     ]
   },
   {
