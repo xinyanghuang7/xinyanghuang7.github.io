@@ -14,10 +14,42 @@ $postTemplatePath = Join-Path $root 'template\post-template.html'
 $optionsIndexPath = Join-Path $root 'options\index.html'
 $courseManifestPath = Join-Path $root 'options\course-manifest.json'
 $coursePublicPlaceholderPattern = '\{\{[^}]+\}\}|XXX\.XX|待填充|最新动态\.\.\.|新闻分析\.\.\.|基于调研数据|TODO|TBD'
+$encodingRiskPattern = '�|锟|锟斤拷|骞|鏈|鏃|鍒|浠|璇|銆|鈥|�\?|\?{2,}'
 
 function Add-Issue([string]$msg) {
     $issues.Add($msg)
     Write-Output "FAIL $msg"
+}
+
+function Test-ContentEncodingRisk([string]$content, [string]$rel) {
+    $replacementChar = [string][char]0xFFFD
+
+    if ($content.Contains($replacementChar)) {
+        Add-Issue "$rel contains Unicode replacement character (�)"
+    }
+
+    $titleMatch = [regex]::Match($content, '<title>(.*?)</title>', [System.Text.RegularExpressions.RegexOptions]::Singleline)
+    if ($titleMatch.Success) {
+        $titleText = $titleMatch.Groups[1].Value
+        if ($titleText.Contains($replacementChar) -or $titleText -match '\?{2,}') {
+            Add-Issue "$rel title appears garbled / question-polluted"
+        }
+    }
+
+    foreach ($prop in @('description','og:title','og:description','twitter:title','twitter:description')) {
+        $pattern = if ($prop -eq 'description') {
+            '<meta\s+name="description"\s+content="([^"]*)"'
+        } else {
+            '<meta\s+property="' + [regex]::Escape($prop) + '"\s+content="([^"]*)"'
+        }
+        $match = [regex]::Match($content, $pattern)
+        if ($match.Success) {
+            $fieldText = $match.Groups[1].Value
+            if ($fieldText.Contains($replacementChar) -or $fieldText -match '\?{2,}') {
+                Add-Issue "$rel meta field $prop appears garbled / question-polluted"
+            }
+        }
+    }
 }
 
 function Test-CoursePage([string]$path, [string]$canonicalPath, [string]$scriptPattern, [string]$stylesheetPattern) {
@@ -54,6 +86,8 @@ function Test-CoursePage([string]$path, [string]$canonicalPath, [string]$scriptP
         Add-Issue "$rel still contains legacy xinyanghuang7.github.io domain"
     }
 
+    Test-ContentEncodingRisk -content $content -rel $rel
+
     return $content
 }
 
@@ -62,6 +96,8 @@ Write-Output '== OpenClaw Blog QA =='
 foreach ($file in $postFiles) {
     $content = Get-Content -Raw -Encoding UTF8 $file.FullName
     $rel = $file.FullName.Substring($root.Length + 1)
+
+    Test-ContentEncodingRisk -content $content -rel $rel
 
     if ($content -notmatch '<script src="\.\./\.\./\.\./js/main\.js(?:\?v=[^"'']+)?"></script>') {
         Add-Issue "$rel missing main.js include"
@@ -130,6 +166,8 @@ foreach ($file in $postFiles) {
 
 if (Test-Path $indexPath) {
     $index = Get-Content -Raw -Encoding UTF8 $indexPath
+
+    Test-ContentEncodingRisk -content $index -rel 'index.html'
 
     if ($index -match '<meta name="author" content="[^"]*"\s*<meta') {
         Add-Issue 'index.html has malformed meta tag'
