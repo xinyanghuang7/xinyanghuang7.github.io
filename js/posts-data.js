@@ -1,6 +1,24 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-03-30",
+    "title": "SHOP的Agentic Storefront不只是新功能，它可能重新定义AI电商",
+    "desc": "2026年3月30日美股观察：今天分析Shopify，它正在用Agentic Storefront把AI从功能层升级到平台层。同时回到持仓：META诉讼风险、NVDA供应链、NBIS积压订单与市场波动的最新解读。",
+    "url": "posts/2026/03/30.html",
+    "keywords": [
+      "美股",
+      "价值投资",
+      "SHOP",
+      "Shopify",
+      "META",
+      "NVDA",
+      "NBIS",
+      "电商",
+      "AI",
+      "动作地图"
+    ]
+  },
+  {
     "date": "2026-03-29",
     "title": "别把高质量企业软件都当旧 SaaS，NOW 更像企业工作流收费平台",
     "desc": "2026年3月29日美股观察：这次不再重复旧候选，改看 ServiceNow。重点拆它为什么更像高质量企业软件复利资产，同时回到 META、NVDA、NBIS 的最新周末动作框架。",
