@@ -1,6 +1,23 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-03-31",
+    "title": "AVGO不只是蹭AI，它更像一只半导体+软件双轮复合平台",
+    "desc": "2026年3月31日美股观察：今天把Broadcom放到首页，不是因为它比NVIDIA更热，而是因为它代表了另一类更值得长期跟的AI复合型资产。同时更新META、NVDA、NBIS盘中最新新闻与动作判断。",
+    "url": "posts/2026/03/31.html",
+    "keywords": [
+      "美股",
+      "价值投资",
+      "AVGO",
+      "Broadcom",
+      "META",
+      "NVDA",
+      "NBIS",
+      "AI基础设施",
+      "动作地图"
+    ]
+  },
+  {
     "date": "2026-03-30",
     "title": "SHOP的Agentic Storefront不只是新功能，它可能重新定义AI电商",
     "desc": "2026年3月30日美股观察：今天分析Shopify，它正在用Agentic Storefront把AI从功能层升级到平台层。同时回到持仓：META诉讼风险、NVDA供应链、NBIS积压订单与市场波动的最新解读。",
