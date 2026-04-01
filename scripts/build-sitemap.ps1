@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop'
 
-$baseDir = Join-Path $PSScriptRoot '..'
+$baseDir = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
 $postsDir = Join-Path $baseDir 'posts'
 $outputFile = Join-Path $baseDir 'sitemap.xml'
 $baseUrl = 'https://4fire.qzz.io'
@@ -15,7 +15,7 @@ $urls += @{
 
 if (Test-Path $postsDir) {
     Get-ChildItem -Path $postsDir -Recurse -Filter '*.html' | ForEach-Object {
-        $relativePath = $_.FullName.Replace($baseDir, '').TrimStart([char[]]'\\/').Replace('\\', '/')
+        $relativePath = ($_.FullName.Replace($baseDir, '').TrimStart([char[]]'\\/')) -replace '\\', '/'
         $urls += @{
             loc = "$baseUrl/$relativePath"
             lastmod = $_.LastWriteTime.ToString('yyyy-MM-dd')
