@@ -39,9 +39,9 @@ def get_headers(token: str) -> dict[str, str]:
     }
 
 
-def push_file(headers: dict[str, str], remote_path: str, local_path: Path) -> tuple[bool, str]:
+def push_file(session: requests.Session, headers: dict[str, str], remote_path: str, local_path: Path) -> tuple[bool, str]:
     sha = None
-    lookup = requests.get(
+    lookup = session.get(
         f"https://api.github.com/repos/{OWNER}/{REPO}/contents/{remote_path}",
         headers=headers,
         timeout=30,
@@ -61,7 +61,7 @@ def push_file(headers: dict[str, str], remote_path: str, local_path: Path) -> tu
     if sha:
         body["sha"] = sha
 
-    resp = requests.put(
+    resp = session.put(
         f"https://api.github.com/repos/{OWNER}/{REPO}/contents/{remote_path}",
         headers=headers,
         data=json.dumps(body),
@@ -115,6 +115,8 @@ def main() -> int:
         return 1
 
     headers = get_headers(token)
+    session = requests.Session()
+    session.trust_env = False
     files = collect_files(args.date, args.paths)
     if not files:
         print("错误: 没有找到可部署的文件")
@@ -131,7 +133,7 @@ def main() -> int:
     for remote_path, local_path in files:
         print(f"推送: {remote_path} ...", end=" ")
         try:
-            _, sha_short = push_file(headers, remote_path, local_path)
+            _, sha_short = push_file(session, headers, remote_path, local_path)
             print(f"OK (SHA: {sha_short})")
             success += 1
         except requests.RequestException as exc:
