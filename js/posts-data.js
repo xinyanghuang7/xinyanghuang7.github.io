@@ -1,6 +1,24 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-04-01",
+    "title": "别把 AI 基建只理解成芯片，LIN 更像被低估的收费网络",
+    "desc": "2026年4月1日美股观察：把 Linde 放到首页，不是因为它最热，而是因为它更像被低估的工业基础设施收费网络。同时结合 4/1 上午公开层新数据，复核 META、NVDA、NBIS 的动作边界。",
+    "url": "posts/2026/04/01.html",
+    "keywords": [
+      "美股",
+      "价值投资",
+      "LIN",
+      "Linde",
+      "META",
+      "NVDA",
+      "NBIS",
+      "工业气体",
+      "AI基础设施",
+      "动作地图"
+    ]
+  },
+  {
     "date": "2026-03-31",
     "title": "AVGO不只是蹭AI，它更像一只半导体+软件双轮复合平台",
     "desc": "2026年3月31日美股观察：今天把Broadcom放到首页，不是因为它比NVIDIA更热，而是因为它代表了另一类更值得长期跟的AI复合型资产。同时更新META、NVDA、NBIS盘中最新新闻与动作判断。",
