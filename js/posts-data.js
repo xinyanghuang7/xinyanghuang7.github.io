@@ -1,5 +1,23 @@
-// Auto-generated from posts/**/*.html. Do not edit by hand.
+﻿// Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
+  {
+    "date": "2026-04-02",
+    "title": "别把稳定币只理解成 Visa 的敌人，它更可能是新轨道接进老网络的入口",
+    "desc": "2026年4月2日美股观察：把 Visa 放到首页，不是因为它最热，而是因为最新稳定币卡扩张节点让它更像能把新支付轨道吸进旧收费网络的全球支付基础设施。同时结合 3/31-4/2 最新可见节点，重写 META、NVDA、NBIS 的新闻与动作边界。",
+    "url": "posts/2026/04/02.html",
+    "keywords": [
+      "美股",
+      "价值投资",
+      "V",
+      "Visa",
+      "META",
+      "NVDA",
+      "NBIS",
+      "稳定币",
+      "支付网络",
+      "动作地图"
+    ]
+  },
   {
     "date": "2026-04-01",
     "title": "别把 AI 基建只理解成芯片，LIN 更像被低估的收费网络",
