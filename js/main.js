@@ -246,6 +246,18 @@ function initArticleQuickNav() {
         syncQuickNavScroll(activeLink);
     };
 
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            const targetId = link.dataset.sectionLink;
+            if (!targetId) {
+                return;
+            }
+
+            setActiveLink(targetId);
+            window.setTimeout(() => setActiveLink(targetId), 380);
+        });
+    });
+
     const observer = new IntersectionObserver((entries) => {
         const visible = entries
             .filter(entry => entry.isIntersecting)
@@ -260,6 +272,7 @@ function initArticleQuickNav() {
     });
 
     sections.forEach(section => observer.observe(section));
+    setActiveLink(sections[0]?.id);
 }
 
 function initArticleMeta() {
