@@ -12,6 +12,7 @@ from typing import Iterable
 from urllib.parse import quote
 
 from options_payoff_embed import expand_payoff_chart_tokens
+from options_source_figure_embed import expand_source_figure_lists, sync_source_figure_images
 
 SITE_ROOT = Path(__file__).resolve().parent.parent
 MANIFEST_PATH = SITE_ROOT / "options" / "course-manifest.json"
@@ -484,6 +485,8 @@ def build_site() -> list[Path]:
             raise BuildError(f"Source chapter does not exist: {source_path}")
         body_markdown = source_path.read_text(encoding="utf-8-sig")
         body_html = render_markdown(body_markdown)
+        body_html, source_figure_files = expand_source_figure_lists(body_html)
+        sync_source_figure_images(workspace_root, source_figure_files, SITE_ROOT)
         body_html = expand_payoff_chart_tokens(body_html, workspace_root)
         page_html = build_chapter_page(chapter, body_html, nav[chapter.id])
         output_path = SITE_ROOT / chapter.output_path

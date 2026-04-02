@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260402options2">
+    <link rel="stylesheet" href="../css/style.css?v=20260403options3">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -137,6 +137,49 @@
             border-left: 3px solid var(--accent-gold);
             background: rgba(201, 162, 39, 0.08);
             border-radius: 0 14px 14px 0;
+        }
+
+        .source-figure-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.25rem 0 1.75rem;
+        }
+
+        .source-figure-card {
+            margin: 0;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.03);
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+        }
+
+        .source-figure-link {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .source-figure-media {
+            padding: 0.75rem;
+            background: rgba(255,255,255,0.96);
+        }
+
+        .source-figure-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            object-fit: contain;
+            background: #fff;
+        }
+
+        .source-figure-caption {
+            padding: 0.9rem 1rem 1.1rem;
+            color: var(--text-secondary);
+            font-size: 0.96rem;
+            line-height: 1.7;
         }
 
         .chapter-nav-grid {
@@ -283,7 +326,7 @@
 <h1>《美股期权教材》</h1>
 <h2>第19章 Delta：为什么它既像“涨跌敏感度”，又像“到期进实值的概率尺”</h2>
 <blockquote><p>本章主要基于以下图片材料整理并扩写：</p>
-<ul><li><code>renamed/img11.jpg</code>：中级期权总纲，明确把 Delta 放在希腊字母部分的第一位；</li><li><code>renamed/img12.jpg</code>：Delta 的核心图，包含取值范围、与行权价关系、以及“Delta 近似到期实值概率”的直觉；</li><li><code>renamed/img23.jpg</code>：Covered Call 的 Delta 延伸应用，可作为本章最后的实战延展。</li></ul>
+<div class="source-figure-grid"><figure class="source-figure-card"><a class="source-figure-link" href="../images/options/source/img11.jpg" target="_blank" rel="noopener noreferrer"><div class="source-figure-media"><img class="source-figure-image" src="../images/options/source/img11.jpg" alt="中级期权总纲，明确把 Delta 放在希腊字母部分的第一位；" loading="lazy"></div><figcaption class="source-figure-caption">中级期权总纲，明确把 Delta 放在希腊字母部分的第一位；</figcaption></a></figure><figure class="source-figure-card"><a class="source-figure-link" href="../images/options/source/img12.jpg" target="_blank" rel="noopener noreferrer"><div class="source-figure-media"><img class="source-figure-image" src="../images/options/source/img12.jpg" alt="Delta 的核心图，包含取值范围、与行权价关系、以及“Delta 近似到期实值概率”的直觉；" loading="lazy"></div><figcaption class="source-figure-caption">Delta 的核心图，包含取值范围、与行权价关系、以及“Delta 近似到期实值概率”的直觉；</figcaption></a></figure><figure class="source-figure-card"><a class="source-figure-link" href="../images/options/source/img23.jpg" target="_blank" rel="noopener noreferrer"><div class="source-figure-media"><img class="source-figure-image" src="../images/options/source/img23.jpg" alt="Covered Call 的 Delta 延伸应用，可作为本章最后的实战延展。" loading="lazy"></div><figcaption class="source-figure-caption">Covered Call 的 Delta 延伸应用，可作为本章最后的实战延展。</figcaption></a></figure></div>
 <p>如果你只记一句话，那就是：</p>
 <blockquote><p><strong>Delta 先是“期权对股价变动有多敏感”的量尺，进一步才是“这张期权到期时有多大概率落在实值区间”的近似读法。</strong></p></blockquote>
 <p>很多新手学期权时，前面几章都能听懂：</p>
@@ -559,6 +602,6 @@
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260402options2"></script>
+    <script src="../js/main.js?v=20260403options3"></script>
 </body>
 </html>

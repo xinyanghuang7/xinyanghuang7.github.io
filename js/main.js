@@ -34,6 +34,7 @@ function initScrollReveal() {
 
     const root = document.documentElement;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isLongformQuickNavPage = Boolean(document.querySelector('.article-quick-nav'));
 
     const revealSection = (section) => {
         if (!section || section.classList.contains('visible')) {
@@ -51,7 +52,7 @@ function initScrollReveal() {
         section.classList.add('visible');
     };
 
-    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+    if (prefersReducedMotion || !('IntersectionObserver' in window) || isLongformQuickNavPage) {
         root.classList.remove('js-enhanced');
         sections.forEach(revealSection);
         return;

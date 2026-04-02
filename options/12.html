@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=20260402options2">
+    <link rel="stylesheet" href="../css/style.css?v=20260403options3">
     <style>
         .chapter-meta-bar {
             width: min(1100px, calc(100% - 2rem));
@@ -137,6 +137,49 @@
             border-left: 3px solid var(--accent-gold);
             background: rgba(201, 162, 39, 0.08);
             border-radius: 0 14px 14px 0;
+        }
+
+        .source-figure-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.25rem 0 1.75rem;
+        }
+
+        .source-figure-card {
+            margin: 0;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.03);
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+        }
+
+        .source-figure-link {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .source-figure-media {
+            padding: 0.75rem;
+            background: rgba(255,255,255,0.96);
+        }
+
+        .source-figure-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            object-fit: contain;
+            background: #fff;
+        }
+
+        .source-figure-caption {
+            padding: 0.9rem 1rem 1.1rem;
+            color: var(--text-secondary);
+            font-size: 0.96rem;
+            line-height: 1.7;
         }
 
         .chapter-nav-grid {
@@ -656,6 +699,6 @@
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260402options2"></script>
+    <script src="../js/main.js?v=20260403options3"></script>
 </body>
 </html>

@@ -26,9 +26,13 @@ class BuildOptionsCourseTests(unittest.TestCase):
         (temp_root / "options").mkdir()
 
         workspace_root = temp_root / "workspace"
-        chapters_source = mod.resolve_workspace_root() / "stock_option_class" / "chapters"
+        stock_option_root = mod.resolve_workspace_root() / "stock_option_class"
+        chapters_source = stock_option_root / "chapters"
         chapters_target = workspace_root / "stock_option_class" / "chapters"
         shutil.copytree(chapters_source, chapters_target)
+        renamed_source = stock_option_root / "renamed"
+        if renamed_source.exists():
+            shutil.copytree(renamed_source, workspace_root / "stock_option_class" / "renamed")
 
         for filename, updated_text in (chapter_edits or {}).items():
             (chapters_target / filename).write_text(updated_text, encoding="utf-8", newline="\n")
@@ -169,6 +173,16 @@ class BuildOptionsCourseTests(unittest.TestCase):
         self.assertIn('<svg', chapter_html)
         self.assertIn('Buy Call', chapter_html)
         self.assertNotIn('[payoff-chart:buy-call-basic]', chapter_html)
+
+    def test_build_site_expands_source_image_reference_lists_into_figure_gallery(self) -> None:
+        _, temp_root = self.build_site_in_temp()
+        chapter_html = (temp_root / "options" / "19.html").read_text(encoding="utf-8")
+        image_path = temp_root / "images" / "options" / "source" / "img11.jpg"
+
+        self.assertIn('class="source-figure-grid"', chapter_html)
+        self.assertIn('../images/options/source/img11.jpg', chapter_html)
+        self.assertIn('中级期权总纲', chapter_html)
+        self.assertTrue(image_path.exists())
 
     def test_generated_chapters_keep_navigation_slots_and_index_published_count_in_sync(self) -> None:
         _, temp_root = self.build_site_in_temp()
