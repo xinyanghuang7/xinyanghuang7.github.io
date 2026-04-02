@@ -143,6 +143,8 @@ function syncStickyOffsets() {
         body.classList.toggle('has-article-quick-nav', quickNavHeight > 0);
         body.classList.toggle('has-mobile-quick-nav', quickNavHeight > 0 && isMobileQuickNavLayout());
     }
+
+    applyBuildRefreshNoticeLayout();
 }
 
 function getAnchorScrollOffset(target) {
@@ -393,8 +395,37 @@ function getCurrentBuildId() {
     return builds[builds.length - 1];
 }
 
+function compareBuildIds(left, right) {
+    return String(left || '').localeCompare(String(right || ''), undefined, {
+        numeric: true,
+        sensitivity: 'base'
+    });
+}
+
+function applyBuildRefreshNoticeLayout(notice = document.getElementById('buildRefreshNotice')) {
+    if (!notice) {
+        return;
+    }
+
+    const hasMobileQuickNav = document.body?.classList.contains('has-mobile-quick-nav');
+
+    if (hasMobileQuickNav) {
+        notice.style.left = '12px';
+        notice.style.right = '12px';
+        notice.style.bottom = 'calc(var(--oc-quick-nav-height) + 1.65rem + env(safe-area-inset-bottom, 0px))';
+        notice.style.maxWidth = 'none';
+    } else {
+        notice.style.left = 'auto';
+        notice.style.right = '16px';
+        notice.style.bottom = '16px';
+        notice.style.maxWidth = '320px';
+    }
+}
+
 function showBuildRefreshNotice(remoteBuild) {
-    if (document.getElementById('buildRefreshNotice')) {
+    const existing = document.getElementById('buildRefreshNotice');
+    if (existing) {
+        applyBuildRefreshNoticeLayout(existing);
         return;
     }
 
@@ -403,10 +434,7 @@ function showBuildRefreshNotice(remoteBuild) {
     notice.setAttribute('role', 'status');
     notice.style.cssText = [
         'position:fixed',
-        'right:16px',
-        'bottom:16px',
         'z-index:9999',
-        'max-width:320px',
         'padding:12px 14px',
         'border-radius:14px',
         'background:rgba(12,12,12,0.94)',
@@ -438,6 +466,7 @@ function showBuildRefreshNotice(remoteBuild) {
     notice.appendChild(text);
     notice.appendChild(button);
     document.body.appendChild(notice);
+    applyBuildRefreshNoticeLayout(notice);
 }
 
 function redirectToBuild(remoteBuild) {
@@ -464,15 +493,13 @@ function cleanupBuildQueryParam(currentBuild) {
             return false;
         }
 
-        if (activeBuild === currentBuild) {
-            url.searchParams.delete(SITE_BUILD_QUERY_KEY);
-            window.history.replaceState({}, document.title, url.toString());
+        url.searchParams.delete(SITE_BUILD_QUERY_KEY);
+        window.history.replaceState({}, document.title, url.toString());
+
+        if (activeBuild === currentBuild || compareBuildIds(activeBuild, currentBuild) <= 0) {
             sessionStorage.removeItem(SITE_BUILD_RELOAD_KEY);
             return false;
         }
-
-        url.searchParams.delete(SITE_BUILD_QUERY_KEY);
-        window.history.replaceState({}, document.title, url.toString());
 
         const mismatchKey = `${url.pathname}|mismatch|${activeBuild}|${currentBuild}`;
         sessionStorage.setItem(SITE_BUILD_RELOAD_KEY, mismatchKey);
@@ -506,7 +533,7 @@ async function checkForSiteUpdate() {
             return;
         }
 
-        if (remoteBuild === currentBuild) {
+        if (compareBuildIds(remoteBuild, currentBuild) <= 0) {
             sessionStorage.removeItem(SITE_BUILD_RELOAD_KEY);
             const existingNotice = document.getElementById('buildRefreshNotice');
             if (existingNotice) {
