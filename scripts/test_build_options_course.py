@@ -3,6 +3,7 @@ from __future__ import annotations
 import importlib.util
 import json
 import re
+import shutil
 import sys
 import tempfile
 import unittest
@@ -18,17 +19,26 @@ spec.loader.exec_module(mod)
 
 
 class BuildOptionsCourseTests(unittest.TestCase):
-    def build_site_in_temp(self) -> tuple[list[Path], Path]:
+    def build_site_in_temp(self, chapter_edits: dict[str, str] | None = None) -> tuple[list[Path], Path]:
         temp_dir_ctx = tempfile.TemporaryDirectory()
         self.addCleanup(temp_dir_ctx.cleanup)
         temp_root = Path(temp_dir_ctx.name)
         (temp_root / "options").mkdir()
+
+        workspace_root = temp_root / "workspace"
+        chapters_source = mod.resolve_workspace_root() / "stock_option_class" / "chapters"
+        chapters_target = workspace_root / "stock_option_class" / "chapters"
+        shutil.copytree(chapters_source, chapters_target)
+
+        for filename, updated_text in (chapter_edits or {}).items():
+            (chapters_target / filename).write_text(updated_text, encoding="utf-8", newline="\n")
 
         original_site_root = mod.SITE_ROOT
         original_manifest_path = mod.MANIFEST_PATH
         original_index_template_path = mod.INDEX_TEMPLATE_PATH
         original_chapter_template_path = mod.CHAPTER_TEMPLATE_PATH
         original_homepage_path = getattr(mod, "HOMEPAGE_PATH", None)
+        original_resolve_workspace_root = mod.resolve_workspace_root
 
         homepage_html = (MODULE_PATH.parent.parent / "index.html").read_text(encoding="utf-8")
         (temp_root / "index.html").write_text(homepage_html, encoding="utf-8")
@@ -38,10 +48,12 @@ class BuildOptionsCourseTests(unittest.TestCase):
         mod.INDEX_TEMPLATE_PATH = original_index_template_path
         mod.CHAPTER_TEMPLATE_PATH = original_chapter_template_path
         mod.HOMEPAGE_PATH = temp_root / "index.html"
+        mod.resolve_workspace_root = lambda: workspace_root
         self.addCleanup(setattr, mod, "SITE_ROOT", original_site_root)
         self.addCleanup(setattr, mod, "MANIFEST_PATH", original_manifest_path)
         self.addCleanup(setattr, mod, "INDEX_TEMPLATE_PATH", original_index_template_path)
         self.addCleanup(setattr, mod, "CHAPTER_TEMPLATE_PATH", original_chapter_template_path)
+        self.addCleanup(setattr, mod, "resolve_workspace_root", original_resolve_workspace_root)
         if original_homepage_path is not None:
             self.addCleanup(setattr, mod, "HOMEPAGE_PATH", original_homepage_path)
 
@@ -143,6 +155,20 @@ class BuildOptionsCourseTests(unittest.TestCase):
         self.assertNotRegex(index_html, r"\{\{[^}]+\}\}")
         self.assertNotRegex(chapter_html, r"\{\{[^}]+\}\}")
         self.assertNotIn("课程首页只负责课程", index_html)
+
+    def test_build_site_expands_payoff_chart_tokens_into_svg_blocks(self) -> None:
+        chapter_path = next((mod.resolve_workspace_root() / "stock_option_class" / "chapters").glob("09-*.md"))
+        chapter_text = chapter_path.read_text(encoding="utf-8-sig")
+        marker = "## 9.1"
+        injected_text = chapter_text.replace(marker, "[payoff-chart:buy-call-basic]\n\n" + marker, 1)
+
+        _, temp_root = self.build_site_in_temp({chapter_path.name: injected_text})
+        chapter_html = (temp_root / "options" / "09.html").read_text(encoding="utf-8")
+
+        self.assertIn('class="payoff-chart-block"', chapter_html)
+        self.assertIn('<svg', chapter_html)
+        self.assertIn('Buy Call', chapter_html)
+        self.assertNotIn('[payoff-chart:buy-call-basic]', chapter_html)
 
     def test_generated_chapters_keep_navigation_slots_and_index_published_count_in_sync(self) -> None:
         _, temp_root = self.build_site_in_temp()

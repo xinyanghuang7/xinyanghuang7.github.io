@@ -5,10 +5,13 @@ import json
 import os
 import re
 from collections import defaultdict
+from datetime import datetime
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
 from urllib.parse import quote
+
+from options_payoff_embed import expand_payoff_chart_tokens
 
 SITE_ROOT = Path(__file__).resolve().parent.parent
 MANIFEST_PATH = SITE_ROOT / "options" / "course-manifest.json"
@@ -152,6 +155,15 @@ def status_label(status: str) -> str:
         "syncing": "同步中",
         "coming-soon": "即将上线",
     }.get(status, status)
+
+
+def last_sync_label(workspace_root: Path, published: list[Chapter]) -> str:
+    dates: list[str] = []
+    for chapter in published:
+        source_path = workspace_root / chapter.source_path
+        if source_path.exists():
+            dates.append(datetime.fromtimestamp(source_path.stat().st_mtime).strftime("%Y-%m-%d"))
+    return max(dates) if dates else NAV_DATE
 
 
 def next_unpublished_batch(chapters: list[Chapter]) -> str:
@@ -388,7 +400,7 @@ def fill_template(template: str, replacements: dict[str, str]) -> str:
     return output
 
 
-def build_index_page(chapters: list[Chapter], published: list[Chapter]) -> str:
+def build_index_page(chapters: list[Chapter], published: list[Chapter], nav_date: str) -> str:
     template = INDEX_TEMPLATE_PATH.read_text(encoding="utf-8")
     page_description = "把期权教材的基础认知、操作、买卖双方与价内价外结构整理成可持续迭代的课程页。"
     replacements = {
@@ -396,11 +408,11 @@ def build_index_page(chapters: list[Chapter], published: list[Chapter]) -> str:
         "PAGE_DESCRIPTION": page_description,
         "CANONICAL_URL": COURSE_URL,
         "OG_IMAGE_URL": OG_IMAGE_URL,
-        "NAV_DATE": NAV_DATE,
+        "NAV_DATE": nav_date,
         "HERO_EYEBROW": "Options Course",
         "HERO_TITLE": COURSE_TITLE,
         "HERO_TAGLINE": "从概念、操作到风险结构，把期权教材做成真正可回看、可扩展的课程区。",
-        "HERO_DESCRIPTION": "课程首页只负责课程，不混进博客流。学习路径、目录、同步进度和最近更新全部从 manifest 自动生成。",
+        "HERO_DESCRIPTION": "课程区只承载课程内容，不混进博客流。学习路径、目录、同步进度和最近更新全部从 manifest 自动生成。",
         "COURSE_INTRO": "这套课程面向刚接触美股期权、但不想被术语和碎片知识劝退的读者。先把合同本质讲清楚，再往操作、定价和策略推进。",
         "TARGET_AUDIENCE": "期权新手 / 想系统复习的人",
         "LEARNING_CADENCE": "先读 01-04，再按批次扩展",
@@ -460,7 +472,8 @@ def build_site() -> list[Path]:
     nav = build_navigation(published)
     outputs: list[Path] = []
 
-    index_html = build_index_page(chapters, published)
+    nav_date = last_sync_label(workspace_root, published)
+    index_html = build_index_page(chapters, published, nav_date)
     index_path = SITE_ROOT / "options" / "index.html"
     index_path.write_text(index_html, encoding="utf-8", newline="\n")
     outputs.append(index_path)
@@ -469,7 +482,9 @@ def build_site() -> list[Path]:
         source_path = workspace_root / chapter.source_path
         if not source_path.exists():
             raise BuildError(f"Source chapter does not exist: {source_path}")
-        body_html = render_markdown(source_path.read_text(encoding="utf-8-sig"))
+        body_markdown = source_path.read_text(encoding="utf-8-sig")
+        body_html = render_markdown(body_markdown)
+        body_html = expand_payoff_chart_tokens(body_html, workspace_root)
         page_html = build_chapter_page(chapter, body_html, nav[chapter.id])
         output_path = SITE_ROOT / chapter.output_path
         output_path.write_text(page_html, encoding="utf-8", newline="\n")
