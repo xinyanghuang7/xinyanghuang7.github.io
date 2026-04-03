@@ -1,5 +1,23 @@
-﻿// Auto-generated from posts/**/*.html. Do not edit by hand.
+// Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
+  {
+    "date": "2026-04-03",
+    "title": "别把 AI 基建只理解成买芯片，真正开始卡住价值的地方往往在网络层",
+    "desc": "2026年4月3日美股观察：把 Arista Networks 放到首页，不是为了追另一只 AI 热门股，而是因为最新可见的网络与液冷光模块节点提醒我们，AI 基建真正开始变贵、变难、也更值钱的地方，往往不是芯片本身，而是网络层能不能把算力真正跑起来。同时结合 4/2 美东收盘最新价格，重写 META、NVDA、NBIS 的新闻与动作边界。",
+    "url": "posts/2026/04/03.html",
+    "keywords": [
+      "美股",
+      "价值投资",
+      "ANET",
+      "Arista Networks",
+      "META",
+      "NVDA",
+      "NBIS",
+      "AI基建",
+      "网络层",
+      "动作地图"
+    ]
+  },
   {
     "date": "2026-04-02",
     "title": "别把稳定币只理解成 Visa 的敌人，它更可能是新轨道接进老网络的入口",
