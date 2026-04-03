@@ -322,5 +322,29 @@
     "output_path": "options/27.html",
     "nav_label": "PMCC",
     "update_order": 27
+  },
+  {
+    "id": "28",
+    "title": "Vertical Spread 实战应用",
+    "summary": "把 debit / credit、腿宽选择与退出纪律放回真实交易，讲清 vertical spread 到底在赚位移还是赚不穿线。",
+    "section_label": "实战应用篇",
+    "batch": "Batch 8",
+    "status": "published",
+    "source_path": "stock_option_class/chapters/28-Vertical Spread实战应用.md",
+    "output_path": "options/28.html",
+    "nav_label": "Vertical Spread",
+    "update_order": 28
+  },
+  {
+    "id": "29",
+    "title": "Short Strangle 与 Short Straddle",
+    "summary": "把卖波动率从名词入门推进到财报、IV Crush 与退出纪律，讲清高胜率收租为什么不等于低风险。",
+    "section_label": "实战应用篇",
+    "batch": "Batch 8",
+    "status": "published",
+    "source_path": "stock_option_class/chapters/29-Short Strangle与Short Straddle.md",
+    "output_path": "options/29.html",
+    "nav_label": "Short Strangle / Straddle",
+    "update_order": 29
   }
 ]

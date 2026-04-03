@@ -18,6 +18,7 @@ SITE_ROOT = Path(__file__).resolve().parent.parent
 MANIFEST_PATH = SITE_ROOT / "options" / "course-manifest.json"
 INDEX_TEMPLATE_PATH = SITE_ROOT / "template" / "options-course-index.html"
 CHAPTER_TEMPLATE_PATH = SITE_ROOT / "template" / "options-chapter.html"
+HOMEPAGE_PATH = SITE_ROOT / "index.html"
 SITE_BASE_URL = "https://4fire.qzz.io"
 COURSE_TITLE = "美股期权教材"
 COURSE_URL = f"{SITE_BASE_URL}/options/"
@@ -427,6 +428,50 @@ def build_index_page(chapters: list[Chapter], published: list[Chapter], nav_date
     return fill_template(template, replacements)
 
 
+def homepage_next_batch_copy(chapters: list[Chapter]) -> str:
+    next_batch = next_unpublished_batch(chapters)
+    if next_batch == "待定":
+        return "已全部上线"
+    remaining = sum(ch.status != "published" and ch.batch == next_batch for ch in chapters)
+    return f"{next_batch} 待上线 · {remaining} 章"
+
+
+def sync_homepage_course_entry(chapters: list[Chapter], published: list[Chapter]) -> Path | None:
+    if not HOMEPAGE_PATH.exists():
+        return None
+
+    homepage = HOMEPAGE_PATH.read_text(encoding="utf-8-sig")
+    replacement = (
+        '            <div class="homepage-course-entry">\n'
+        '                <div class="course-card-kicker">Options Course</div>\n'
+        '                <h3 class="course-entry-card-title">期权教材</h3>\n'
+        '                <p class="course-entry-card-desc">把美股期权的概念、操作、风险结构和策略框架拆成可回看、可持续更新的课程区。</p>\n'
+        '                <div class="course-directory-meta" aria-label="课程进度快照">\n'
+        f'                    <span class="course-directory-pill">总计 {len(chapters)} 章</span>\n'
+        f'                    <span class="course-status-pill course-status-published">已发布 {len(published)} 章</span>\n'
+        f'                    <span class="course-status-pill course-status-syncing">{homepage_next_batch_copy(chapters)}</span>\n'
+        f'                    <span class="course-directory-pill">下一批次：{next_unpublished_batch(chapters)}</span>\n'
+        '                </div>\n'
+        '                <div class="course-card-actions">\n'
+        '                    <a href="options/" class="course-action-link" aria-label="进入期权教材">进入教材 <span aria-hidden="true">→</span></a>\n'
+        '                </div>\n'
+        '            </div>'
+    )
+
+    start_token = '            <div class="homepage-course-entry">'
+    section_end_token = '\n        </section>'
+    start = homepage.find(start_token)
+    if start == -1:
+        raise BuildError("Could not locate homepage course entry start block to sync.")
+    end = homepage.find(section_end_token, start)
+    if end == -1:
+        raise BuildError("Could not locate homepage course entry section end to sync.")
+
+    updated = homepage[:start] + replacement + homepage[end:]
+    HOMEPAGE_PATH.write_text(updated, encoding="utf-8", newline="\n")
+    return HOMEPAGE_PATH
+
+
 def chapter_nav_slot(chapter: Chapter | None, fallback_label: str, helper: str) -> tuple[str, str, str]:
     if chapter is None:
         return "./index.html", fallback_label, helper
@@ -492,6 +537,10 @@ def build_site() -> list[Path]:
         output_path = SITE_ROOT / chapter.output_path
         output_path.write_text(page_html, encoding="utf-8", newline="\n")
         outputs.append(output_path)
+
+    homepage_path = sync_homepage_course_entry(chapters, published)
+    if homepage_path is not None:
+        outputs.append(homepage_path)
 
     return outputs
 

@@ -1,0 +1,579 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="把 debit / credit、腿宽选择与退出纪律放回真实交易，讲清 vertical spread 到底在赚位移还是赚不穿线。">
+    <meta name="author" content="ValueInvest">
+    <meta name="theme-color" content="#c9a227">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="canonical" href="https://4fire.qzz.io/options/28.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://4fire.qzz.io/options/28.html">
+    <meta property="og:title" content="Vertical Spread 实战应用 | 美股期权教材">
+    <meta property="og:description" content="把 debit / credit、腿宽选择与退出纪律放回真实交易，讲清 vertical spread 到底在赚位移还是赚不穿线。">
+    <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vertical Spread 实战应用 | 美股期权教材">
+    <meta name="twitter:description" content="把 debit / credit、腿宽选择与退出纪律放回真实交易，讲清 vertical spread 到底在赚位移还是赚不穿线。">
+    <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
+    <title>Vertical Spread 实战应用 | 美股期权教材</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css?v=20260403options3">
+    <style>
+        .chapter-meta-bar {
+            width: min(1100px, calc(100% - 2rem));
+            margin: -2.25rem auto 0;
+            padding: 1rem 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+            position: relative;
+            z-index: 2;
+        }
+
+        .chapter-meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-secondary);
+            background: rgba(201, 162, 39, 0.08);
+            font-size: 0.95rem;
+        }
+
+        .chapter-meta-link {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .chapter-meta-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .chapter-shell {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .chapter-shell > .section,
+        .chapter-shell .section-header,
+        .chapter-shell .section-title-group,
+        .chapter-summary-card,
+        .chapter-body-card,
+        .chapter-nav-card,
+        .chapter-nav-slot {
+            min-width: 0;
+        }
+
+        .chapter-summary-card,
+        .chapter-body-card,
+        .chapter-nav-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 1.75rem;
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+        }
+
+        .chapter-summary-card p,
+        .chapter-nav-card p {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card {
+            line-height: 1.9;
+            color: var(--text-primary);
+        }
+
+        .chapter-body-card h2,
+        .chapter-body-card h3,
+        .chapter-body-card h4,
+        .chapter-body-card h5,
+        .chapter-body-card h6 {
+            color: var(--text-primary);
+            margin-top: 1.6em;
+        }
+
+        .chapter-body-card p,
+        .chapter-body-card li,
+        .chapter-body-card blockquote {
+            color: var(--text-secondary);
+        }
+
+        .chapter-body-card p,
+        .chapter-body-card li,
+        .chapter-body-card blockquote,
+        .chapter-body-card h1,
+        .chapter-body-card h2,
+        .chapter-body-card h3,
+        .chapter-body-card h4,
+        .chapter-body-card h5,
+        .chapter-body-card h6,
+        .section-title,
+        .section-subtitle,
+        .chapter-nav-link,
+        .chapter-nav-card p {
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
+        .chapter-body-card ul,
+        .chapter-body-card ol {
+            padding-left: 1.2rem;
+        }
+
+        .chapter-body-card blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.25rem;
+            border-left: 3px solid var(--accent-gold);
+            background: rgba(201, 162, 39, 0.08);
+            border-radius: 0 14px 14px 0;
+        }
+
+        .source-figure-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.25rem 0 1.75rem;
+        }
+
+        .source-figure-card {
+            margin: 0;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.03);
+            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
+        }
+
+        .source-figure-link {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .source-figure-media {
+            padding: 0.75rem;
+            background: rgba(255,255,255,0.96);
+        }
+
+        .source-figure-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            object-fit: contain;
+            background: #fff;
+        }
+
+        .source-figure-caption {
+            padding: 0.9rem 1rem 1.1rem;
+            color: var(--text-secondary);
+            font-size: 0.96rem;
+            line-height: 1.7;
+        }
+
+        .chapter-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .chapter-nav-slot {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            min-height: 100%;
+            padding: 1rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(201, 162, 39, 0.06);
+        }
+
+        .chapter-nav-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .chapter-nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .chapter-nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        @media (max-width: 800px) {
+            .chapter-nav-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chapter-summary-card,
+            .chapter-body-card,
+            .chapter-nav-card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Vertical Spread 实战应用",
+        "description": "把 debit / credit、腿宽选择与退出纪律放回真实交易，讲清 vertical spread 到底在赚位移还是赚不穿线。",
+        "author": {
+            "@type": "Person",
+            "name": "ValueInvest"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ValueInvest",
+            "sameAs": "https://4fire.qzz.io/"
+        },
+        "mainEntityOfPage": "https://4fire.qzz.io/options/28.html",
+        "isPartOf": {
+            "@type": "Course",
+            "name": "美股期权教材",
+            "url": "https://4fire.qzz.io/options/"
+        },
+        "image": [
+            "https://4fire.qzz.io/images/hero-bg.jpg"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
+
+    <header id="header">
+        <div class="nav-container">
+            <a href="../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="期权章节页主导航">
+                <ul class="nav-links">
+                    <li><a href="../index.html">返回首页</a></li>
+                    <li><a href="./index.html">返回课程</a></li>
+                    <li><a href="#chapter-navigation">章节导航</a></li>
+                </ul>
+            </nav>
+            <div class="nav-date">第 28 章</div>
+        </div>
+    </header>
+
+    <section class="hero" role="banner">
+        <div class="hero-bg-pattern" style="background-image: url('../images/hero-bg.jpg');" aria-hidden="true"></div>
+        <div class="hero-content">
+            <div class="subtitle">实战应用篇</div>
+            <h1>第 28 章 · Vertical Spread 实战应用</h1>
+            <p class="tagline">实战应用篇 · Batch 8</p>
+            <p class="hero-description">把 debit / credit、腿宽选择与退出纪律放回真实交易，讲清 vertical spread 到底在赚位移还是赚不穿线。</p>
+        </div>
+        <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
+    </section>
+
+    <div class="chapter-meta-bar" aria-label="章节关键信息">
+        <div class="chapter-meta-pill">章节编号：第 28 章</div>
+        <div class="chapter-meta-pill">Section：实战应用篇</div>
+        <div class="chapter-meta-pill">Batch：Batch 8 · 已发布</div>
+        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
+    </div>
+
+    <nav class="article-quick-nav" aria-label="期权章节快速导航">
+        <a href="#chapter-summary" class="article-quick-nav-link is-active" data-section-link="chapter-summary">章节摘要</a>
+        <a href="#chapter-content" class="article-quick-nav-link" data-section-link="chapter-content">章节正文</a>
+        <a href="#chapter-navigation" class="article-quick-nav-link" data-section-link="chapter-navigation">章节导航</a>
+    </nav>
+
+    <main id="main" class="chapter-shell">
+        <section class="section" id="chapter-summary" aria-labelledby="chapter-summary-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">01</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
+                    <p class="section-subtitle">给读者一个先读懂框架、再深入正文的落点</p>
+                </div>
+            </div>
+
+            <div class="chapter-summary-card">
+                <p>把 debit / credit、腿宽选择与退出纪律放回真实交易，讲清 vertical spread 到底在赚位移还是赚不穿线。</p>
+            </div>
+        </section>
+
+        <section class="section" id="chapter-content" aria-labelledby="chapter-content-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">02</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-content-title">章节正文</h2>
+                    <p class="section-subtitle">正文按完整阅读链组织，建议先抓主结论，再回到分节例子逐段吃透。</p>
+                </div>
+            </div>
+
+            <article class="chapter-body-card">
+<h1>《美股期权教材》</h1>
+<h2>第28章 Vertical Spread 实战应用：什么时候该用 Debit，什么时候该用 Credit</h2>
+<blockquote><p>第15章我们已经把 vertical spread 的骨架讲清了：</p>
+<ul><li>Bull Call Spread</li><li>Bear Put Spread</li><li>Bull Put Spread</li><li>Bear Call Spread</li></ul>
+<p>但真正进到账户里，很多人还是会卡在三个地方：</p>
+<p>1. 我明明方向判断差不多，为什么有时该做 debit，有时该做 credit？ 2. 两条腿到底该拉多宽？宽一点、窄一点，差别到底在哪？ 3. vertical spread 到底该怎么管，什么时候到期等它自己结束，什么时候该提前走？</p>
+<p>所以这一章不再重讲“vertical spread 是什么”，而是把它放回真实交易场景里，讲清：</p>
+<p><strong>同样是有限风险、有限收益的方向仓，怎样把它做得更像一笔有纪律的交易，而不是一堆名词。</strong></p></blockquote>
+<hr>
+<h2>先看一张图：Bull Call Spread 的核心，不是赌无限上涨，而是赌“主要那一段”</h2>
+<p>很多人第一次做 spread，脑子里还在想单腿 Call：</p>
+<ul><li>看对就应该越涨越赚；</li><li>如果把第二条腿卖出去，会不会只是“把利润白白送掉”？</li></ul>
+<p>其实不是。</p>
+<p>vertical spread 的重点从来不是“我能不能吃到整段行情”，而是：</p>
+<ul><li>我到底想赌哪一段；</li><li>我愿不愿意放弃最远的尾巴，换更低成本或更清晰的风险边界。</li></ul>
+<p>下面这张图就是最典型的例子：</p>
+<div class="payoff-chart-block" data-payoff-title="Bull Call Spread 到期收益图">
+<style>
+.payoff-chart-block {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.92);
+  box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.35);
+}
+.payoff-chart-heading { margin-bottom: 0.9rem; }
+.payoff-chart-title { margin: 0; color: #f8fafc; font-size: 1.15rem; }
+.payoff-chart-subtitle { margin: 0.3rem 0 0; color: #94a3b8; font-size: 0.95rem; }
+.payoff-chart-svg { width: 100%; height: auto; display: block; border-radius: 14px; }
+.payoff-chart-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; margin-top: 0.9rem; }
+.payoff-stat { border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 0.85rem 0.95rem; background: rgba(255,255,255,0.03); }
+.payoff-stat-label { color: #94a3b8; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.payoff-stat-value { color: #f8fafc; font-size: 1rem; margin-top: 0.35rem; font-weight: 600; }
+.payoff-legs, .payoff-notes { margin: 0.95rem 0 0; padding-left: 1.2rem; color: #cbd5e1; }
+.payoff-legs li, .payoff-notes li { margin: 0.3rem 0; }
+@media (max-width: 720px) { .payoff-chart-grid { grid-template-columns: 1fr; } }
+</style>
+<div class="payoff-chart-heading">
+  <h3 class="payoff-chart-title">Bull Call Spread 到期收益图</h3>
+  <p class="payoff-chart-subtitle">第28章 · 用有限成本换取一段主要上涨区间，不追求无限上行</p>
+</div>
+<svg class="payoff-chart-svg" viewBox="0 0 960 560" role="img" aria-label="Bull Call Spread 到期收益图 收益图" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="960" height="560" rx="20" fill="#0f172a" /><line x1="177.75" y1="48" x2="177.75" y2="504" stroke="rgba(148, 163, 184, 0.18)" stroke-width="1" /><text x="177.75" y="528" fill="#94a3b8" font-size="12" text-anchor="middle">90.00</text><line x1="389.25" y1="48" x2="389.25" y2="504" stroke="rgba(148, 163, 184, 0.18)" stroke-width="1" /><text x="389.25" y="528" fill="#94a3b8" font-size="12" text-anchor="middle">100.00</text><line x1="600.75" y1="48" x2="600.75" y2="504" stroke="rgba(148, 163, 184, 0.18)" stroke-width="1" /><text x="600.75" y="528" fill="#94a3b8" font-size="12" text-anchor="middle">110.00</text><line x1="812.25" y1="48" x2="812.25" y2="504" stroke="rgba(148, 163, 184, 0.18)" stroke-width="1" /><text x="812.25" y="528" fill="#94a3b8" font-size="12" text-anchor="middle">120.00</text><line x1="72" y1="459.87" x2="918" y2="459.87" stroke="rgba(148, 163, 184, 0.18)" stroke-width="1" /><text x="60" y="463.87" fill="#94a3b8" font-size="12" text-anchor="end">-5.00</text><line x1="72" y1="276.00" x2="918" y2="276.00" stroke="rgba(148, 163, 184, 0.18)" stroke-width="1" /><text x="60" y="280.00" fill="#94a3b8" font-size="12" text-anchor="end">0.00</text><line x1="72" y1="92.13" x2="918" y2="92.13" stroke="rgba(148, 163, 184, 0.18)" stroke-width="1" /><text x="60" y="96.13" fill="#94a3b8" font-size="12" text-anchor="end">5.00</text><line x1="72" y1="276.00" x2="918" y2="276.00" stroke="rgba(226, 232, 240, 0.72)" stroke-width="1.5" /><line x1="72" y1="48" x2="72" y2="504" stroke="rgba(226, 232, 240, 0.72)" stroke-width="1.5" /><text x="480.00" y="550" fill="#e2e8f0" font-size="13" text-anchor="middle">到期股价</text><text x="18" y="280.00" fill="#e2e8f0" font-size="13" text-anchor="middle" transform="rotate(-90 18 280.00)">到期盈亏</text><line x1="389.25" y1="48" x2="389.25" y2="504" stroke="#60a5fa" stroke-width="1.4" stroke-dasharray="6 5" /><text x="389.25" y="36" fill="#60a5fa" font-size="12" text-anchor="middle">K=100.00</text><line x1="600.75" y1="48" x2="600.75" y2="504" stroke="#60a5fa" stroke-width="1.4" stroke-dasharray="6 5" /><text x="600.75" y="36" fill="#60a5fa" font-size="12" text-anchor="middle">K=110.00</text><circle cx="495.00" cy="276.00" r="4.5" fill="#f97316" /><text x="495.00" y="266.00" fill="#f97316" font-size="12" text-anchor="middle">BE1=105.00</text><polyline fill="none" stroke="#f8c84a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="72.00,459.87 74.11,459.87 76.23,459.87 78.34,459.87 80.46,459.87 82.58,459.87 84.69,459.87 86.81,459.87 88.92,459.87 91.04,459.87 93.15,459.87 95.26,459.87 97.38,459.87 99.49,459.87 101.61,459.87 103.72,459.87 105.84,459.87 107.96,459.87 110.07,459.87 112.19,459.87 114.30,459.87 116.41,459.87 118.53,459.87 120.64,459.87 122.76,459.87 124.88,459.87 126.99,459.87 129.11,459.87 131.22,459.87 133.34,459.87 135.45,459.87 137.56,459.87 139.68,459.87 141.79,459.87 143.91,459.87 146.02,459.87 148.14,459.87 150.26,459.87 152.37,459.87 154.49,459.87 156.60,459.87 158.71,459.87 160.83,459.87 162.94,459.87 165.06,459.87 167.18,459.87 169.29,459.87 171.41,459.87 173.52,459.87 175.64,459.87 177.75,459.87 179.86,459.87 181.98,459.87 184.09,459.87 186.21,459.87 188.32,459.87 190.44,459.87 192.56,459.87 194.67,459.87 196.79,459.87 198.90,459.87 201.01,459.87 203.13,459.87 205.24,459.87 207.36,459.87 209.47,459.87 211.59,459.87 213.71,459.87 215.82,459.87 217.94,459.87 220.05,459.87 222.16,459.87 224.28,459.87 226.39,459.87 228.51,459.87 230.62,459.87 232.74,459.87 234.86,459.87 236.97,459.87 239.09,459.87 241.20,459.87 243.31,459.87 245.43,459.87 247.54,459.87 249.66,459.87 251.78,459.87 253.89,459.87 256.01,459.87 258.12,459.87 260.24,459.87 262.35,459.87 264.46,459.87 266.58,459.87 268.69,459.87 270.81,459.87 272.92,459.87 275.04,459.87 277.16,459.87 279.27,459.87 281.39,459.87 283.50,459.87 285.61,459.87 287.73,459.87 289.84,459.87 291.96,459.87 294.08,459.87 296.19,459.87 298.31,459.87 300.42,459.87 302.54,459.87 304.65,459.87 306.76,459.87 308.88,459.87 310.99,459.87 313.11,459.87 315.23,459.87 317.34,459.87 319.46,459.87 321.57,459.87 323.69,459.87 325.80,459.87 327.91,459.87 330.03,459.87 332.14,459.87 334.26,459.87 336.38,459.87 338.49,459.87 340.61,459.87 342.72,459.87 344.84,459.87 346.95,459.87 349.06,459.87 351.18,459.87 353.29,459.87 355.41,459.87 357.53,459.87 359.64,459.87 361.76,459.87 363.87,459.87 365.99,459.87 368.10,459.87 370.21,459.87 372.33,459.87 374.44,459.87 376.56,459.87 378.68,459.87 380.79,459.87 382.91,459.87 385.02,459.87 387.14,459.87 389.25,459.87 391.36,456.19 393.48,452.52 395.59,448.84 397.71,445.16 399.82,441.48 401.94,437.81 404.06,434.13 406.17,430.45 408.29,426.77 410.40,423.10 412.51,419.42 414.63,415.74 416.74,412.06 418.86,408.39 420.97,404.71 423.09,401.03 425.21,397.35 427.32,393.68 429.44,390.00 431.55,386.32 433.66,382.65 435.78,378.97 437.89,375.29 440.01,371.61 442.12,367.94 444.24,364.26 446.36,360.58 448.47,356.90 450.59,353.23 452.70,349.55 454.81,345.87 456.93,342.19 459.04,338.52 461.16,334.84 463.28,331.16 465.39,327.48 467.51,323.81 469.62,320.13 471.74,316.45 473.85,312.77 475.96,309.10 478.08,305.42 480.19,301.74 482.31,298.06 484.43,294.39 486.54,290.71 488.66,287.03 490.77,283.35 492.89,279.68 495.00,276.00 497.11,272.32 499.23,268.65 501.34,264.97 503.46,261.29 505.57,257.61 507.69,253.94 509.81,250.26 511.92,246.58 514.04,242.90 516.15,239.23 518.26,235.55 520.38,231.87 522.50,228.19 524.61,224.52 526.72,220.84 528.84,217.16 530.96,213.48 533.07,209.81 535.19,206.13 537.30,202.45 539.41,198.77 541.53,195.10 543.64,191.42 545.76,187.74 547.88,184.06 549.99,180.39 552.11,176.71 554.22,173.03 556.34,169.35 558.45,165.68 560.56,162.00 562.68,158.32 564.79,154.65 566.91,150.97 569.03,147.29 571.14,143.61 573.25,139.94 575.37,136.26 577.49,132.58 579.60,128.90 581.71,125.23 583.83,121.55 585.94,117.87 588.06,114.19 590.18,110.52 592.29,106.84 594.41,103.16 596.52,99.48 598.64,95.81 600.75,92.13 602.86,92.13 604.98,92.13 607.09,92.13 609.21,92.13 611.32,92.13 613.44,92.13 615.56,92.13 617.67,92.13 619.79,92.13 621.90,92.13 624.01,92.13 626.13,92.13 628.25,92.13 630.36,92.13 632.48,92.13 634.59,92.13 636.71,92.13 638.82,92.13 640.94,92.13 643.05,92.13 645.16,92.13 647.28,92.13 649.39,92.13 651.51,92.13 653.62,92.13 655.74,92.13 657.86,92.13 659.97,92.13 662.09,92.13 664.20,92.13 666.31,92.13 668.43,92.13 670.54,92.13 672.66,92.13 674.77,92.13 676.89,92.13 679.00,92.13 681.12,92.13 683.24,92.13 685.35,92.13 687.46,92.13 689.58,92.13 691.69,92.13 693.81,92.13 695.93,92.13 698.04,92.13 700.16,92.13 702.27,92.13 704.39,92.13 706.50,92.13 708.61,92.13 710.73,92.13 712.84,92.13 714.96,92.13 717.07,92.13 719.19,92.13 721.31,92.13 723.42,92.13 725.54,92.13 727.65,92.13 729.76,92.13 731.88,92.13 734.00,92.13 736.11,92.13 738.23,92.13 740.34,92.13 742.46,92.13 744.57,92.13 746.69,92.13 748.80,92.13 750.91,92.13 753.03,92.13 755.15,92.13 757.26,92.13 759.38,92.13 761.49,92.13 763.61,92.13 765.72,92.13 767.84,92.13 769.95,92.13 772.06,92.13 774.18,92.13 776.30,92.13 778.41,92.13 780.52,92.13 782.64,92.13 784.75,92.13 786.87,92.13 788.99,92.13 791.10,92.13 793.21,92.13 795.33,92.13 797.45,92.13 799.56,92.13 801.68,92.13 803.79,92.13 805.91,92.13 808.02,92.13 810.14,92.13 812.25,92.13 814.36,92.13 816.48,92.13 818.60,92.13 820.71,92.13 822.82,92.13 824.94,92.13 827.06,92.13 829.17,92.13 831.29,92.13 833.40,92.13 835.51,92.13 837.63,92.13 839.75,92.13 841.86,92.13 843.98,92.13 846.09,92.13 848.21,92.13 850.32,92.13 852.44,92.13 854.55,92.13 856.66,92.13 858.78,92.13 860.90,92.13 863.01,92.13 865.12,92.13 867.24,92.13 869.36,92.13 871.47,92.13 873.59,92.13 875.70,92.13 877.81,92.13 879.93,92.13 882.05,92.13 884.16,92.13 886.27,92.13 888.39,92.13 890.50,92.13 892.62,92.13 894.74,92.13 896.85,92.13 898.96,92.13 901.08,92.13 903.20,92.13 905.31,92.13 907.43,92.13 909.54,92.13 911.66,92.13 913.77,92.13 915.89,92.13 918.00,92.13" /></svg>
+<div class="payoff-chart-grid"><div class="payoff-stat"><div class="payoff-stat-label">最大收益</div><div class="payoff-stat-value">5.00 /股 · 500.00 /张</div></div><div class="payoff-stat"><div class="payoff-stat-label">最大亏损</div><div class="payoff-stat-value">5.00 /股 · 500.00 /张</div></div><div class="payoff-stat"><div class="payoff-stat-label">盈亏平衡点</div><div class="payoff-stat-value">105.00</div></div></div>
+<ul class="payoff-legs"><li><strong>Long 100 Call</strong>：long call · K=100.00 · Premium=8.00</li><li><strong>Short 110 Call</strong>：short call · K=110.00 · Premium=3.00</li></ul>
+<ul class="payoff-notes"><li>Bull Call Spread 的关键不是追求无限上涨，而是用净权利金换一段更有把握的上行区间。</li><li>本例净成本 = 8 - 3 = 5；最大收益 = 10 - 5 = 5。</li></ul>
+</div>
+<p>这张图最值得看的，不是线条本身，而是它背后的交易态度：</p>
+<blockquote><p><strong>Bull Call Spread 不是“看涨不够坚定”，而是“我只想要中间最有把握的那段上涨，不想为最远那段梦想付太高门票”。</strong></p></blockquote>
+<p>把这句话吃透，后面 debit / credit、宽窄选择、成功率和赔率的取舍都会顺很多。</p>
+<hr>
+<h1>一、Vertical Spread 真正解决的，不是方向判断，而是“方向判断不完美”</h1>
+<h2>28.1 单腿最痛的地方，正是 spread 发挥作用的地方</h2>
+<p>单腿仓位的优点很干脆：</p>
+<ul><li>Long Call / Long Put 方向弹性大；</li><li>裸卖 Put / 裸卖 Call 收权利金直接；</li><li>仓位表达简单。</li></ul>
+<p>但单腿的问题也很明显：</p>
+<h3>单腿买方</h3>
+<ul><li>容易买贵；</li><li>时间价值压力大；</li><li>很多时候方向只是“对了一半”，但不够快、不够猛。</li></ul>
+<h3>单腿卖方</h3>
+<ul><li>一开始看起来很顺；</li><li>但遇到单边大行情时，风险管理会突然变成主问题；</li><li>保证金、心态、展期压力都会一起上来。</li></ul>
+<p>所以 vertical spread 的真正价值不是“更复杂”，而是：</p>
+<blockquote><p><strong>当你知道自己对行情的判断很可能只有 60–70 分，而不是 100 分时，spread 能帮你把仓位设计得更现实。</strong></p></blockquote>
+<p>这就是为什么它特别适合：</p>
+<ul><li>对方向有判断，但不想为极端行情买单的人；</li><li>愿意接受收益封顶，以换来更稳定体验的人；</li><li>不想把一笔方向交易做成情绪过山车的人。</li></ul>
+<hr>
+<h2>28.2 Debit 和 Credit 的选择，本质不是“看涨还是看跌”，而是“你想用哪种赚钱路径”</h2>
+<p>很多人会先背：</p>
+<ul><li>Bull Call / Bear Put = debit spread</li><li>Bull Put / Bear Call = credit spread</li></ul>
+<p>这没错，但只背这个没用。真正有用的是下一层：</p>
+<h3>Debit spread 在赚什么</h3>
+<p>它更像在赚：</p>
+<ul><li><strong>方向走对后的价格位移</strong>；</li><li>也就是说，市场要真往你判断的方向移动，你才会把仓位做得漂亮。</li></ul>
+<p>所以 debit spread 更像：</p>
+<blockquote><p><strong>我愿意先付钱，换一个干净、明确、有限风险的方向表达。</strong></p></blockquote>
+<h3>Credit spread 在赚什么</h3>
+<p>它更像在赚：</p>
+<ul><li><strong>市场没有穿过你的危险区</strong>；</li><li>也就是“别走坏”“别走太猛”的钱。</li></ul>
+<p>所以 credit spread 更像：</p>
+<blockquote><p><strong>我愿意先收钱，只要市场别穿线，我就能靠时间和概率把大部分钱留下。</strong></p></blockquote>
+<p>这个差别极其重要。</p>
+<p>同样是看涨：</p>
+<ul><li><strong>Bull Call Spread</strong> 在赌：股价往上走一段；</li><li><strong>Bull Put Spread</strong> 在赌：股价别跌穿我短 Put 的危险区。</li></ul>
+<p>同样是看跌：</p>
+<ul><li><strong>Bear Put Spread</strong> 在赌：股价往下走一段；</li><li><strong>Bear Call Spread</strong> 在赌：股价别涨穿我短 Call 的危险区。</li></ul>
+<p>所以真正的选择题不是：</p>
+<ul><li>“我看涨，应该选哪一个？”</li></ul>
+<p>而是：</p>
+<ul><li><strong>我想赚“位移的钱”，还是赚“没穿线的钱”？</strong></li></ul>
+<hr>
+<h1>二、什么时候更适合用 Debit Spread</h1>
+<h2>28.3 当你对方向有判断，但不想承受单腿那么重的时间和波动率压力</h2>
+<p>debit spread 最常见的舒服场景是：</p>
+<ul><li>你对方向相对明确；</li><li>但你又知道，直接买单腿很可能会买贵；</li><li>你想要的是“抓一段”，不是赌一整段趋势神话。</li></ul>
+<p>比如你看涨某只股票，觉得未来两三周有机会从 100 涨到 108–112，但你并不指望它一下冲到 130。</p>
+<p>那这时候：</p>
+<ul><li>直接买 100 Call，可能太贵；</li><li>做一个 100/110 Bull Call Spread，反而更符合你的真实判断。</li></ul>
+<p>因为你的核心判断不是“它会无限涨”，而是：</p>
+<blockquote><p><strong>它大概率会完成一段有限但明确的上行。</strong></p></blockquote>
+<p>这正是 debit spread 的舒适区。</p>
+<hr>
+<h2>28.4 Debit spread 更像“用更少的钱，买更高质量的方向表达”</h2>
+<p>很多人会误会：</p>
+<ul><li>spread 把利润封顶了，所以好像“不够猛”。</li></ul>
+<p>其实换个角度看，它做的事更像：</p>
+<ul><li>把你最想表达的那部分方向暴露保留下来；</li><li>把最贵、最远、最容易浪费的那部分梦想切掉。</li></ul>
+<p>所以从实战角度说，debit spread 很适合：</p>
+<ul><li>短中期有明确催化剂；</li><li>你预期会动，但不觉得会一路失控；</li><li>你不想把太多预算花在时间价值上。</li></ul>
+<p>这个思路尤其适合普通账户，因为普通账户最常见的问题，不是观点完全错误，而是：</p>
+<ul><li>想得差不多对；</li><li>但单腿买贵了，最后方向对了也没赚到手感。</li></ul>
+<p>spread 在这里，就是把表达做得更“像交易”，而不是更像彩票。</p>
+<hr>
+<h1>三、什么时候更适合用 Credit Spread</h1>
+<h2>28.5 Credit spread 更像“给市场划一条别碰的线”</h2>
+<p>credit spread 的舒服点，往往不是你觉得市场会大幅朝某方向走，而是：</p>
+<ul><li>你觉得它大概率不会走到那么夸张；</li><li>你愿意先收一笔钱，去赌这条线不会被碰穿。</li></ul>
+<p>比如：</p>
+<ul><li>你偏看涨，但只是觉得它不会大跌；</li><li>那么 Bull Put Spread 就很自然。</li></ul>
+<p>或者：</p>
+<ul><li>你偏看跌，但只是觉得它很难突然暴涨；</li><li>Bear Call Spread 就会比直接买 Put 更自然。</li></ul>
+<p>所以 credit spread 本质上更像：</p>
+<blockquote><p><strong>我不是在赌“必须走出来”，我是在赌“别走坏”。</strong></p></blockquote>
+<p>这个差别决定了它的账户体验会非常不同。</p>
+<hr>
+<h2>28.6 Credit spread 赚的是概率，但也更考验纪律</h2>
+<p>credit spread 很容易让人上头，因为：</p>
+<ul><li>开仓先收钱；</li><li>胜率常常看起来更舒服；</li><li>只要别穿线，仓位就显得“没什么大问题”。</li></ul>
+<p>但这里最容易出事的地方也正好在于：</p>
+<ul><li>很多看起来小概率的穿线，一旦真的发生，仓位恶化速度会很快；</li><li>你会很想拖、很想等、很想 roll；</li><li>最后不是策略逻辑没问题，而是执行纪律先崩了。</li></ul>
+<p>所以 credit spread 不是“更轻松”，只是：</p>
+<ul><li>它把很多痛苦从开仓时，挪到了持仓管理时；</li><li>你前面更轻松，后面就要更守纪律。</li></ul>
+<p>这也是为什么很多成熟交易者会把 vertical spread 理解成两种完全不同的赚钱路径：</p>
+<ul><li><strong>Debit：花钱买位移</strong></li><li><strong>Credit：收钱赌别穿线</strong></li></ul>
+<p>你一旦这样看，就不容易乱。</p>
+<hr>
+<h1>四、两条腿该拉多宽，决定的是这笔仓到底更像“单腿修正版”还是“区间押注”</h1>
+<h2>28.7 腿拉得越宽，组合越像单腿；腿拉得越窄，组合越像压缩后的区间交易</h2>
+<p>这是 vertical spread 最值得反复理解的一点。</p>
+<h3>宽 spread</h3>
+<p>如果你做的是：</p>
+<ul><li>买 100 Call</li><li>卖 120 Call</li></ul>
+<p>这时候第二条腿离得远。</p>
+<p>意味着：</p>
+<ul><li>你保留了第一条腿更多的弹性；</li><li>组合更像“便宜一点的 Long Call”；</li><li>但同时你也付出了更高成本，风险和波动体感更接近单腿。</li></ul>
+<h3>窄 spread</h3>
+<p>如果你做的是：</p>
+<ul><li>买 100 Call</li><li>卖 105 Call</li></ul>
+<p>这时候第二条腿靠得近。</p>
+<p>意味着：</p>
+<ul><li>你很快就把收益封顶；</li><li>组合更保守；</li><li>但它也更不像 Long Call，而像一笔“只赌某个有限区间”的方向仓。</li></ul>
+<p>所以宽窄的本质不是技术细节，而是在回答：</p>
+<blockquote><p><strong>你到底想保留多少单腿味道，又愿意拿多少弹性去换确定性。</strong></p></blockquote>
+<hr>
+<h2>28.8 宽一点和窄一点，没有谁更高级，只有谁更适合你的判断质量</h2>
+<p>如果你的方向判断很强，且催化剂也明确：</p>
+<ul><li>更宽的 spread 往往更能让你保留主要弹性。</li></ul>
+<p>如果你的判断只是“偏向某个方向，但没那么笃定”：</p>
+<ul><li>更窄一点，反而更诚实。</li></ul>
+<p>这其实是很多新手最该建立的习惯：</p>
+<ul><li>不要总把仓位做成“理论上最爽”；</li><li>要把仓位做成“和我的判断质量匹配”。</li></ul>
+<p>因为很多亏损，不是来自方向完全错，而是来自：</p>
+<ul><li>只有 60 分的判断，配了 95 分激进度的结构。</li></ul>
+<p>spread 的好处，就是允许你把这两者重新对齐。</p>
+<hr>
+<h1>五、Vertical Spread 的管理，重点不是“神奇操作”，而是别把一笔定义清楚的仓位拖烂</h1>
+<h2>28.9 最重要的一条：开仓时就要知道这笔仓准备怎么结束</h2>
+<p>vertical spread 很适合有计划的交易者，因为它天生就有明确边界：</p>
+<ul><li>最大收益大概在哪；</li><li>最大亏损大概在哪；</li><li>风险区在哪；</li><li>什么时候基本已经把仓位价值走完。</li></ul>
+<p>所以最好的做法不是到时候临场慌乱，而是开仓时先想：</p>
+<ul><li>我是准备吃大部分利润就走？</li><li>还是准备拿到接近到期？</li><li>如果价格快速触发危险区，我是止损、平仓，还是把仓位减掉？</li></ul>
+<p>这类问题如果开仓前不想，到仓位不利时通常只会更乱。</p>
+<hr>
+<h2>28.10 对 credit spread 来说，“赚到大部分就先收”经常比“榨干最后一点”更健康</h2>
+<p>这点在实战里非常重要。</p>
+<p>因为 credit spread 常见的尴尬是：</p>
+<ul><li>前面 70–80% 的收益，拿得很顺；</li><li>后面最后一点收益，看起来也不远；</li><li>但你为了那最后一点，反而把仓位继续暴露在临近到期的 Gamma 风险、跳空风险和事件风险里。</li></ul>
+<p>所以很多交易者会倾向：</p>
+<ul><li>收到大部分目标利润，就主动关掉；</li><li>不去硬赌“最后一点也一定归我”。</li></ul>
+<p>这不是保守过头，而是因为：</p>
+<blockquote><p><strong>最后那点收益，往往是在用不成比例的尾部风险去换。</strong></p></blockquote>
+<p>这类思路尤其适合普通账户。</p>
+<hr>
+<h2>28.11 对 debit spread 来说，最要防的不是“少赚一点”，而是“把时间拖成敌人”</h2>
+<p>debit spread 常见的问题则不一样。</p>
+<p>它最怕的不是你没有无限利润，而是：</p>
+<ul><li>市场迟迟不动；</li><li>原本该发生的行情拖着不来；</li><li>时间价值和催化剂窗口一起耗掉。</li></ul>
+<p>所以 debit spread 的管理重点常常是：</p>
+<ul><li>如果你赌的是某个窗口期，就别让仓位无限拖；</li><li>如果催化剂已经过去，而价格表现不对，仓位就要诚实处理；</li><li>不要把一笔“方向窗口交易”，慢慢拖成一笔“死耗时间的希望仓”。</li></ul>
+<p>这一点，其实和单腿买方是相通的，只是 spread 稍微温和一点而已。</p>
+<hr>
+<h1>六、本章小结：Vertical Spread 最值钱的地方，不是定义，而是它逼你把交易想清楚</h1>
+<p>这一章最值得带走的，不是再背四个名字，而是这几件事：</p>
+<h3>第一，debit 和 credit 赚的是不同的钱</h3>
+<ul><li>Debit spread：赚方向位移的钱；</li><li>Credit spread：赚别穿线的钱。</li></ul>
+<h3>第二，宽窄决定了仓位性格</h3>
+<ul><li>宽一点，更像单腿修正版；</li><li>窄一点，更像保守区间押注。</li></ul>
+<h3>第三，spread 不是让你更模糊，而是让你更诚实</h3>
+<ul><li>你真正判断到哪一步；</li><li>你愿意拿什么换什么；</li><li>你到底在赚什么钱。</li></ul>
+<h3>第四，管理比开仓名字更重要</h3>
+<ul><li>Credit spread 不要为了最后一点利润拖烂；</li><li>Debit spread 不要把时间拖成敌人；</li><li>开仓时就要知道自己准备怎么结束。</li></ul>
+<p>如果这一章最后只记一句，我希望是：</p>
+<blockquote><p><strong>Vertical spread 的高级感，不在于它有两条腿，而在于它逼你承认：我到底是想赚位移，还是想赚不穿线；我到底愿意拿多少弹性去换多少确定性。</strong></p></blockquote>
+<hr>
+<h2>一句话总结</h2>
+<blockquote><p><strong>Vertical spread 不是单腿的弱化版，而是把方向、赔率、成功率和风险边界重新做成一笔更诚实的交易。</strong></p></blockquote>
+<hr>
+<h2>自测题</h2>
+<p>1）为什么说 debit spread 和 credit spread 的差别，不只是“先付钱还是先收钱”？ 2）Bull Call Spread 和 Bull Put Spread 都能表达看涨，但它们分别在赚什么钱？ 3）为什么说两条腿拉得越宽，vertical spread 越像单腿修正版？ 4）为什么很多 credit spread 在赚到大部分利润后，会更适合提前关仓？ 5）debit spread 最该防的时间型错误是什么？</p>
+            </article>
+        </section>
+
+        <section class="section" id="chapter-navigation" aria-labelledby="chapter-navigation-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">03</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
+                    <p class="section-subtitle">读完本章后，可以继续前后章节，或回到课程目录按 section 与 batch 复习。</p>
+                </div>
+            </div>
+
+            <div class="chapter-nav-card">
+                <div class="chapter-nav-grid">
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">上一章</div>
+                        <a class="chapter-nav-link" href="./27.html">第 27 章 · PMCC</a>
+                        <p>理解 PMCC 如何用长期深度实值 Call 替代正股，并在节省前置资金的同时承受更讲究的 long leg 约束。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">返回课程</div>
+                        <a class="chapter-nav-link" href="./index.html">美股期权教材 目录</a>
+                        <p>返回课程目录，按 section 和 batch 查看全局进度。</p>
+                    </div>
+                    <div class="chapter-nav-slot">
+                        <div class="chapter-nav-label">下一章</div>
+                        <a class="chapter-nav-link" href="./29.html">第 29 章 · Short Strangle / Straddle</a>
+                        <p>把卖波动率从名词入门推进到财报、IV Crush 与退出纪律，讲清高胜率收租为什么不等于低风险。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>期权教材 · 结构化学习 · HTML 优先</p>
+        <p class="disclaimer">
+            免责声明：本教材页面仅供学习交流使用，不构成任何投资建议。期权交易涉及杠杆、时间损耗与流动性风险，务必结合自身情况独立判断。
+        </p>
+    </footer>
+
+    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
+
+    <script src="../js/main.js?v=20260403options3"></script>
+</body>
+</html>

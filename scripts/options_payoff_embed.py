@@ -5,13 +5,37 @@ import re
 import sys
 from functools import lru_cache
 from pathlib import Path
+import os
 
 PAYOFF_TOKEN_HTML_RE = re.compile(r"<p>\s*\[payoff-chart:([A-Za-z0-9._-]+)\]\s*</p>")
 
 
+def _resolve_workspace_root() -> Path:
+    candidates: list[Path] = []
+    for key in ("OPENCLAW_WORKSPACE_ROOT", "OPENCLAW_WORKSPACE", "WORKSPACE_ROOT"):
+        value = os.environ.get(key)
+        if value:
+            candidates.append(Path(value).expanduser())
+
+    repo = Path(__file__).resolve()
+    candidates.extend(repo.parents)
+    candidates.append(Path.home() / ".openclaw" / "workspace")
+
+    seen: set[Path] = set()
+    for candidate in candidates:
+        resolved = candidate.resolve()
+        if resolved in seen:
+            continue
+        seen.add(resolved)
+        if (resolved / "skills" / "options-payoff-diagrams" / "scripts" / "render_payoff_chart.py").exists():
+            return resolved
+
+    return (Path.home() / ".openclaw" / "workspace").resolve()
+
+
 @lru_cache(maxsize=1)
 def _load_renderer():
-    workspace_root = Path(__file__).resolve().parents[2]
+    workspace_root = _resolve_workspace_root()
     module_path = workspace_root / "skills" / "options-payoff-diagrams" / "scripts" / "render_payoff_chart.py"
     spec = importlib.util.spec_from_file_location("options_payoff_chart_renderer", module_path)
     if spec is None or spec.loader is None:
@@ -24,8 +48,9 @@ def _load_renderer():
 
 def spec_path_for_token(workspace_root: Path, token: str) -> Path:
     candidates = [
+        Path(__file__).resolve().parent.parent / "scripts" / "payoff-specs" / f"{token}.json",
         workspace_root / "skills" / "options-payoff-diagrams" / "assets" / "specs" / f"{token}.json",
-        Path(__file__).resolve().parents[2] / "skills" / "options-payoff-diagrams" / "assets" / "specs" / f"{token}.json",
+        _resolve_workspace_root() / "skills" / "options-payoff-diagrams" / "assets" / "specs" / f"{token}.json",
     ]
     for candidate in candidates:
         if candidate.exists():

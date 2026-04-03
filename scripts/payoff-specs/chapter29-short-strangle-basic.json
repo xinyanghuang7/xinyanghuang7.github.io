@@ -1,0 +1,50 @@
+{
+  "title": "Short Strangle 到期收益图",
+  "subtitle": "第29章 · 收两边 OTM 权利金，赌真实波动不要打穿危险区",
+  "contract_multiplier": 100,
+  "underlying_label": "到期股价",
+  "profit_label": "到期盈亏",
+  "legs": [
+    {
+      "kind": "put",
+      "side": "short",
+      "strike": 95,
+      "premium": 2.5,
+      "quantity": 1,
+      "label": "Short 95 Put"
+    },
+    {
+      "kind": "call",
+      "side": "short",
+      "strike": 105,
+      "premium": 2.5,
+      "quantity": 1,
+      "label": "Short 105 Call"
+    }
+  ],
+  "price_range": {
+    "min": 80,
+    "max": 120
+  },
+  "notes": [
+    "Short Strangle 赚的是市场没有跑出超预期的大波动，而不是押某个方向必胜。",
+    "本例总权利金 = 5；盈亏平衡点分别在 90 和 110。"
+  ],
+  "expected": {
+    "breakevens": [90, 110],
+    "max_profit": {
+      "type": "finite",
+      "value": 5
+    },
+    "max_loss": {
+      "type": "unbounded"
+    },
+    "checkpoints": [
+      {"price": 90, "profit": 0},
+      {"price": 95, "profit": 5},
+      {"price": 100, "profit": 5},
+      {"price": 110, "profit": 0},
+      {"price": 115, "profit": -5}
+    ]
+  }
+}

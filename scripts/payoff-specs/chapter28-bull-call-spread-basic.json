@@ -1,0 +1,51 @@
+{
+  "title": "Bull Call Spread 到期收益图",
+  "subtitle": "第28章 · 用有限成本换取一段主要上涨区间，不追求无限上行",
+  "contract_multiplier": 100,
+  "underlying_label": "到期股价",
+  "profit_label": "到期盈亏",
+  "legs": [
+    {
+      "kind": "call",
+      "side": "long",
+      "strike": 100,
+      "premium": 8,
+      "quantity": 1,
+      "label": "Long 100 Call"
+    },
+    {
+      "kind": "call",
+      "side": "short",
+      "strike": 110,
+      "premium": 3,
+      "quantity": 1,
+      "label": "Short 110 Call"
+    }
+  ],
+  "price_range": {
+    "min": 85,
+    "max": 125
+  },
+  "notes": [
+    "Bull Call Spread 的关键不是追求无限上涨，而是用净权利金换一段更有把握的上行区间。",
+    "本例净成本 = 8 - 3 = 5；最大收益 = 10 - 5 = 5。"
+  ],
+  "expected": {
+    "breakevens": [105],
+    "max_profit": {
+      "type": "finite",
+      "value": 5
+    },
+    "max_loss": {
+      "type": "finite",
+      "value": 5
+    },
+    "checkpoints": [
+      {"price": 95, "profit": -5},
+      {"price": 100, "profit": -5},
+      {"price": 105, "profit": 0},
+      {"price": 110, "profit": 5},
+      {"price": 120, "profit": 5}
+    ]
+  }
+}
