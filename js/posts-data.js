@@ -157,8 +157,8 @@ window.__POSTS__ = [
   },
   {
     "date": "2026-03-26",
-    "title": "2026骞?鏈?6鏃ョ編鑲″垎鏋?",
-    "desc": "2026骞?鏈?6鏃ョ編鑲″垎鏋愶細Module 1 涓昏 ORCL锛孫racle AI 鏁版嵁搴撴櫤鑳戒綋涓?Fusion Agentic Applications 鏇存柊锛涙寔浠?META/NVDA/NBIS 鏈€鏂拌妭鐐硅窡韪紱缁勫悎鍔ㄤ綔鍦板浘",
+    "title": "2026年3月26日美股分析：ORCL 智能体更新 + 持仓节点复核",
+    "desc": "2026年3月26日美股分析：今日聚焦 ORCL，讨论 Oracle 为什么可能从传统企业软件资产被重新定价为 AI 智能体基础设施受益者；同时复核 META、NVDA、NBIS 的最新节点与动作边界。",
     "url": "posts/2026/03/26.html",
     "keywords": [
       "ORCL",
@@ -167,8 +167,8 @@ window.__POSTS__ = [
       "META",
       "NVDA",
       "NBIS",
-      "缇庤偂鍒嗘瀽",
-      "鎸佷粨璺熻釜"
+      "美股分析",
+      "持仓跟踪"
     ]
   },
   {
