@@ -1,5 +1,25 @@
-﻿// Auto-generated from posts/**/*.html. Do not edit by hand.
+// Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
+  {
+    "date": "2026-04-07",
+    "title": "真正耐写的医疗宝藏标的，不一定靠最热单药，而是靠把多个产品入口做成平台",
+    "desc": "2026年4月7日美股观察：今天把 ABT 放到首页，不是因为医疗股突然变热，而是因为 Abbott 最近连续把肿瘤检测整合、Exact Sciences 收购和 Libre 数据这三条线摆到台前，让它更像一个多产品、多入口、低制度噪音的医疗平台。同时按 4/6 美股盘中价格重刷 META、NVDA、NBIS 的动作边界。",
+    "url": "posts/2026/04/07.html",
+    "keywords": [
+      "美股",
+      "价值投资",
+      "ABT",
+      "Abbott",
+      "医疗平台",
+      "精密肿瘤",
+      "Exact Sciences",
+      "Libre",
+      "META",
+      "NVDA",
+      "NBIS",
+      "动作地图"
+    ]
+  },
   {
     "date": "2026-04-06",
     "title": "真正值得重复写的好公司，不是因为更热，而是因为它刚跨过一条新的普及门槛",
