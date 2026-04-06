@@ -1,5 +1,25 @@
-// Auto-generated from posts/**/*.html. Do not edit by hand.
+﻿// Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
+  {
+    "date": "2026-04-06",
+    "title": "真正值得重复写的好公司，不是因为更热，而是因为它刚跨过一条新的普及门槛",
+    "desc": "2026年4月6日美股观察：今天把 LLY 重新放到首页，不是因为减重药赛道又突然变热，而是因为 4/2 的 Foundayo 口服 GLP-1 获批，把礼来的肥胖症故事从强产品线进一步推进到更低摩擦的真实普及路径。同时结合 4/2 美东常规盘这个节前最后一个有效收盘口径，重写 META、NVDA、NBIS 的新闻与动作边界。",
+    "url": "posts/2026/04/06.html",
+    "keywords": [
+      "美股",
+      "价值投资",
+      "LLY",
+      "Eli Lilly",
+      "Foundayo",
+      "orforglipron",
+      "META",
+      "NVDA",
+      "NBIS",
+      "口服GLP-1",
+      "减重药",
+      "动作地图"
+    ]
+  },
   {
     "date": "2026-04-05",
     "title": "市场越爱盯交易和波动，越该去看那些在数据、评级和指数里持续收费的金融基础设施",
