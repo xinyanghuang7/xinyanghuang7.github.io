@@ -1,6 +1,24 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-04-12",
+    "title": "2026年4月12日美股：GS 的高质量周期弹性，与 META / NVDA / NBIS 的周末动作边界",
+    "desc": "2026-04-12 周末复盘：为什么今天把 GS 放到首页；META、NVDA、NBIS 继续统一采用 2026-04-10 美东常规盘收盘，并把周末前最新可核查节点、价格快照和动作边界重新对齐。",
+    "url": "posts/2026/04/12.html",
+    "keywords": [
+      "美股",
+      "价值投资",
+      "GS",
+      "Goldman Sachs",
+      "META",
+      "NVDA",
+      "NBIS",
+      "周末复盘",
+      "组合管理",
+      "金融基础设施"
+    ]
+  },
+  {
     "date": "2026-04-11",
     "title": "2026年4月11日美股：WMT 的慢变量护城河，与 META / NVDA / NBIS 的最新动作边界",
     "desc": "2026-04-11 美股复盘：为什么今天把 WMT 放到首页；META、NVDA、NBIS 的最新硬节点、价格快照与动作边界；价格统一采用 2026-04-10 美东常规盘收盘。",
