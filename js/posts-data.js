@@ -1,6 +1,24 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-04-13",
+    "title": "2026年4月13日美股：WMT 的高频入口收费权，与 META / NVDA / NBIS 的周末新鲜度复核",
+    "desc": "2026-04-13 周末复盘：用 WMT 作为高频入口平台的研究入口，并把 META、NVDA、NBIS 在 2026-04-10 美东常规盘收盘口径下截至周末可核查的最新节点、新鲜度结论与动作边界重新写细。",
+    "url": "posts/2026/04/13.html",
+    "keywords": [
+      "美股",
+      "价值投资",
+      "WMT",
+      "Walmart",
+      "META",
+      "NVDA",
+      "NBIS",
+      "周末复盘",
+      "组合管理",
+      "零售平台"
+    ]
+  },
+  {
     "date": "2026-04-12",
     "title": "2026年4月12日美股：GS 的高质量周期弹性，与 META / NVDA / NBIS 的周末动作边界",
     "desc": "2026-04-12 周末复盘：用 GS 作为高质量周期弹性的研究入口，并把 META、NVDA、NBIS 在 2026-04-10 美东常规盘收盘口径下的最新可核查节点、价格解释力与下一步动作边界重新写细。",
