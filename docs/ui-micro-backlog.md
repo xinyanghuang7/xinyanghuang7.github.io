@@ -122,6 +122,21 @@ If the change is in shared CSS / JS, recheck both blog and options surfaces.
 
 ## Round Log
 
+### 2026-04-17 00:20 Asia/Shanghai — Shared button / link affordance contrast
+- **Issue:** shared interactive links on blog / options surfaces were a bit too close to plain text state; hover and keyboard focus mostly changed color, but the trigger feel was still weak.
+- **Why now:** after the sticky-offset audit stayed blocked, this was the next highest-value shared-surface fix with low structural risk: improve affordance clarity without touching layout or information architecture.
+- **Files touched:** `css/style.css`
+- **Local QA:** `powershell.exe -ExecutionPolicy Bypass -File scripts/qa-site.ps1` → PASS
+- **Publish:** committed `a7d602c` (`style: clarify shared link interaction states`) and pushed to `main`
+- **Live recheck pages:** `https://4fire.qzz.io/options/01.html`, `https://4fire.qzz.io/`, `https://4fire.qzz.io/options/`, `https://4fire.qzz.io/posts/2026/04/16.html`, `https://4fire.qzz.io/posts/2026/04/15.html`
+- **Garble check:** pass — titles and body text loaded normally on all sampled pages; no visible `�`, no obvious mojibake, and remote CSS matched the new affordance rules.
+- **Previous published pages rechecked:** yes
+- **Result:** pass — quick-nav hover/focus now has clearer border/background separation, and course action / nav links have a more obvious interactive state without turning into bright CTA blocks or disturbing layout.
+- **Next 3 candidates:**
+  1. Sticky offset consistency audit (debug root cause first)
+  2. Homepage archive card metadata hierarchy
+  3. Shared card spacing normalization
+
 ### 2026-04-17 00:00 Asia/Shanghai — Sticky offset consistency audit (inspection only, no publish)
 - **Issue:** verify whether sticky header + quick-nav anchor landing is actually stable before touching shared CSS again.
 - **Why now:** this was the next Priority A candidate after the quick-nav tap-target pass, but it is only worth changing if a concrete landing bug is reproduced.
