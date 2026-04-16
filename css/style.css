@@ -2094,7 +2094,7 @@ header .nav-links a:focus-visible {
     display: grid;
     grid-template-columns: 72px minmax(0, 1fr) 28px;
     align-items: center;
-    gap: var(--space-md);
+    gap: 1.15rem;
     padding: 1rem 1.1rem;
     text-decoration: none;
     background: rgba(20,20,20,0.88);
@@ -2113,37 +2113,47 @@ header .nav-links a:focus-visible {
 }
 
 .archive-item-date {
-    width: 56px;
-    height: 56px;
+    width: 54px;
+    height: 54px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-display);
-    font-size: 1.45rem;
+    font-size: 1.32rem;
     font-weight: 700;
     color: #111;
     background: linear-gradient(135deg, #f2cf69 0%, var(--accent-gold) 100%);
-    box-shadow: 0 8px 22px rgba(212,175,55,0.18);
+    box-shadow: 0 8px 18px rgba(212,175,55,0.16);
 }
 
 .archive-item-title {
     color: var(--text-primary);
-    font-size: 1.02rem;
+    font-size: 1.06rem;
+    line-height: 1.36;
     font-weight: 700;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.28rem;
 }
 
 .archive-item-desc {
-    color: var(--text-tertiary);
-    font-size: 0.95rem;
-    line-height: 1.7;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.66;
 }
 
 .archive-item-arrow {
     color: var(--accent-gold);
-    font-size: 1.25rem;
+    font-size: 1.18rem;
     text-align: right;
+    opacity: 0.58;
+    transform: translateX(0);
+    transition: opacity var(--transition-fast), transform var(--transition-fast), color var(--transition-fast);
+}
+
+.archive-item:hover .archive-item-arrow,
+.archive-item:focus-visible .archive-item-arrow {
+    opacity: 1;
+    transform: translateX(2px);
 }
 
 /* Post Detail Theme Compatibility */
