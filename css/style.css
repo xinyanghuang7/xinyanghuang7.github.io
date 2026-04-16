@@ -3773,12 +3773,13 @@ footer .disclaimer {
         right: auto;
         transform: translateX(-50%);
         margin: 0;
-        width: calc(100% - 1rem);
-        max-width: 32rem;
+        width: calc(100% - 0.8rem);
+        max-width: 33rem;
         justify-content: flex-start;
         overflow-x: auto;
         flex-wrap: nowrap;
-        padding: 0.55rem;
+        gap: 0.45rem;
+        padding: 0.62rem;
         z-index: var(--z-fixed);
         scrollbar-width: none;
         box-shadow: 0 20px 40px rgba(0,0,0,0.28);
@@ -3790,9 +3791,11 @@ footer .disclaimer {
 
     .article-quick-nav-link {
         flex: 0 0 auto;
-        min-height: 2.35rem;
-        padding: 0.64rem 0.88rem;
-        font-size: 0.76rem;
+        min-height: 2.65rem;
+        padding: 0.72rem 1rem;
+        font-size: 0.78rem;
+        line-height: 1.1;
+        touch-action: manipulation;
     }
 
     .article-quick-nav-link::after {
