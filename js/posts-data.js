@@ -1,6 +1,25 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-04-16",
+    "title": "2026年4月16日美股：UnitedHealth 真正值钱的，不只是防守，而是它把保险、服务、数据和流程改造拧成了一整套更难替代的医疗平台",
+    "desc": "2026-04-16 收盘后更新：把 UnitedHealth 重新放回首页，不是为了找一只更稳的医疗股，而是因为 4/21 财报验证点逼近、3/26 AI Companion 与最新 AI 治理口径一起，把它真正值钱的那层东西讲得更清楚了。持仓部分统一按 2026-04-15 美东收盘口径重刷 META、NVDA、NBIS 的最新节点与动作边界。",
+    "url": "posts/2026/04/16.html",
+    "keywords": [
+      "美股",
+      "价值投资",
+      "UNH",
+      "UnitedHealth",
+      "META",
+      "NVDA",
+      "NBIS",
+      "医疗平台",
+      "AI基础设施",
+      "组合管理",
+      "收盘复盘"
+    ]
+  },
+  {
     "date": "2026-04-15",
     "title": "2026年4月15日美股：Broadcom 真正值钱的，不只是 AI 芯片热度，而是它在帮大平台重写算力成本结构",
     "desc": "2026-04-15 盘中跟踪：把 Broadcom 重新放回首页，不是因为它又涨了，而是因为 4/14 Meta 联手 Broadcom 做多代 MTIA 芯片，把它在 AI 时代真正值钱的那层东西讲得更清楚了。持仓部分统一按 2026-04-15 美东盘中截点重刷 META、NVDA、NBIS 的最新节点与动作边界。",
