@@ -419,9 +419,11 @@ header.scrolled {
 .article-quick-nav-link:hover,
 .article-quick-nav-link:focus-visible {
     color: var(--accent-gold);
-    border-color: rgba(212,175,55,0.22);
-    background: rgba(212,175,55,0.08);
+    border-color: rgba(212,175,55,0.28);
+    background: rgba(212,175,55,0.11);
+    box-shadow: 0 0 0 1px rgba(212,175,55,0.08), 0 10px 22px rgba(0,0,0,0.14);
     transform: translateY(-1px);
+    outline: none;
 }
 
 .article-quick-nav-link.is-active {
@@ -2926,9 +2928,10 @@ body.light-mode .article-quick-nav-link {
 
 body.light-mode .article-quick-nav-link:hover,
 body.light-mode .article-quick-nav-link:focus-visible {
-    background: rgba(156,116,16,0.1);
-    border-color: rgba(122,91,10,0.16);
+    background: rgba(156,116,16,0.12);
+    border-color: rgba(122,91,10,0.22);
     color: var(--accent-gold-dark);
+    box-shadow: 0 0 0 1px rgba(122,91,10,0.08), 0 12px 24px rgba(103, 74, 18, 0.12);
 }
 
 body.light-mode .article-quick-nav-link.is-active {
@@ -3133,6 +3136,12 @@ body.light-mode .dark-mode-toggle:hover {
     font-weight: 700;
 }
 
+.course-action-link,
+.chapter-nav-link,
+.chapter-meta-link {
+    transition: color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
 .course-action-link:hover,
 .course-action-link:focus-visible,
 .chapter-nav-link:hover,
@@ -3140,6 +3149,16 @@ body.light-mode .dark-mode-toggle:hover {
 .chapter-meta-link:hover,
 .chapter-meta-link:focus-visible {
     color: var(--accent-gold-light);
+    background: rgba(212,175,55,0.08);
+    box-shadow: 0 0 0 1px rgba(212,175,55,0.14);
+    outline: none;
+}
+
+.course-action-link:hover,
+.course-action-link:focus-visible,
+.chapter-nav-link:hover,
+.chapter-nav-link:focus-visible {
+    transform: translateY(-1px);
 }
 
 .course-directory-meta {
@@ -3349,6 +3368,16 @@ body.light-mode .sync-status-pill,
 body.light-mode .chapter-meta-pill,
 body.light-mode .chapter-nav-slot {
     border-color: rgba(122,91,10,0.14);
+}
+
+body.light-mode .course-action-link:hover,
+body.light-mode .course-action-link:focus-visible,
+body.light-mode .chapter-nav-link:hover,
+body.light-mode .chapter-nav-link:focus-visible,
+body.light-mode .chapter-meta-link:hover,
+body.light-mode .chapter-meta-link:focus-visible {
+    background: rgba(122,91,10,0.1);
+    box-shadow: 0 0 0 1px rgba(122,91,10,0.12);
 }
 
 body.light-mode .course-callout {
