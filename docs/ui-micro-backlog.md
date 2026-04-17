@@ -122,6 +122,21 @@ If the change is in shared CSS / JS, recheck both blog and options surfaces.
 
 ## Round Log
 
+### 2026-04-17 15:25 Asia/Shanghai — Shared card spacing normalization
+- **Issue:** 共享层几类高频卡片虽然各自已经能用，但细看会发现节奏不完全在一个档位上：首页 archive cards、文章里的 stat / decision cards、以及 rating support card 的内边距和圆角有点各走各的，结果是页面切换时会有轻微的“这块更挤 / 那块更松”的感觉。
+- **Why now:** sticky offset 这轮已经收过，接下来最值钱、又适合继续落在共享 CSS 的，就是把这几类常见卡片的 spacing 往同一档靠。只动 padding / radius / margin，不动结构、不改内容，也不重新做卡片体系。
+- **Files touched:** `css/style.css`
+- **Local QA:** `powershell.exe -ExecutionPolicy Bypass -File scripts/qa-site.ps1` → PASS
+- **Publish:** pending
+- **Live recheck pages:** pending
+- **Garble check:** pending
+- **Previous published pages rechecked:** pending
+- **Result:** pending — 这轮把首页 archive item、正文里的 post stat card / decision detail card / article rating card 的 padding、圆角和竖向留白往 options 页那种较稳定的 `space-lg` 节奏靠了一格，让共享卡片在不同页面之间切换时不那么一块松一块紧。
+- **Next 3 candidates:**
+  1. Author / footer quieting pass
+  2. Mobile quick-nav tap target polish
+  3. Chapter prev/next navigation clarity
+
 ### 2026-04-17 15:00 Asia/Shanghai — Sticky offset consistency audit
 - **Issue:** 之前已经把 mobile quick nav 改成底部悬浮，但锚点落点仍沿用桌面口径的 `header + quick nav + gap` 统一 offset。结果是在手机上点 quick nav / 目录跳转时，页面会被“多推下去一截”，体感像落点不稳、章节没贴住预期位置。
 - **Why now:** 这是 backlog 里当前最值钱的共享层问题，而且这轮已经能确认根因，不再只是抽象 audit。最小修正就是只在 mobile breakpoint 下把 anchor offset 改回“只算顶部真正遮挡的 header + 小缓冲”，不去碰桌面 sticky quick nav 本身。

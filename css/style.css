@@ -2104,12 +2104,12 @@ header .nav-links a:focus-visible {
     display: grid;
     grid-template-columns: 72px minmax(0, 1fr) 28px;
     align-items: center;
-    gap: 1.15rem;
-    padding: 1rem 1.1rem;
+    gap: 1.1rem;
+    padding: 1.05rem 1.15rem;
     text-decoration: none;
     background: rgba(20,20,20,0.88);
     border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 14px;
+    border-radius: 15px;
     color: var(--text-primary);
     transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
 }
@@ -2179,8 +2179,8 @@ header .nav-links a:focus-visible {
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.08);
     box-shadow: 0 6px 20px rgba(0,0,0,0.18);
-    padding: 0.9rem 1.25rem;
-    border-radius: 12px;
+    padding: 1rem 1.15rem;
+    border-radius: 14px;
     min-width: 180px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -2294,8 +2294,8 @@ header .nav-links a:focus-visible {
 .decision-detail-card {
     background: rgba(255,255,255,0.035);
     border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px;
-    padding: 1rem;
+    border-radius: 14px;
+    padding: 1.05rem 1.1rem;
     transition: var(--transition-medium);
 }
 
@@ -2482,8 +2482,8 @@ header .nav-links a:focus-visible {
 .article-rating-card {
     background: linear-gradient(135deg, rgba(36,36,36,0.96) 0%, rgba(52,52,52,0.96) 100%);
     border-radius: 16px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
+    padding: 1.35rem 1.4rem;
+    margin-bottom: 1.35rem;
     border: 1px solid rgba(212,175,55,0.22);
     border-left: 4px solid var(--accent-gold);
     box-shadow: 0 8px 24px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.06);
