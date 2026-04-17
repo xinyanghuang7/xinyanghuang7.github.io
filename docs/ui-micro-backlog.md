@@ -122,6 +122,21 @@ If the change is in shared CSS / JS, recheck both blog and options surfaces.
 
 ## Round Log
 
+### 2026-04-17 20:45 Asia/Shanghai — Archive card metadata hierarchy
+- **Issue:** 首页 archive item 的基础结构已经能用，但 `日期徽章 / 标题 / 摘要 / 箭头` 之间还略有抢层级：日期金色圆徽章存在感偏强，标题虽然够重，但摘要和箭头的退场感还不够自然，导致卡片扫读时第一眼不总是最稳地落在标题上。
+- **Why now:** 这是 backlog 当前最值钱、且足够克制的首页微问题。只做归档卡片的 CSS 层级重排，不改首页内容、不改 archive 数据结构、不碰日历逻辑，也不顺手扩到 search panel。
+- **Files touched:** `css/style.css`
+- **Local QA:** `powershell.exe -ExecutionPolicy Bypass -File scripts/qa-site.ps1` → PASS
+- **Publish:** pending
+- **Live recheck pages:** `https://4fire.qzz.io/`, `https://4fire.qzz.io/options/`, `https://4fire.qzz.io/posts/2026/04/17.html`, `https://4fire.qzz.io/posts/2026/04/16.html`, `https://4fire.qzz.io/posts/2026/04/15.html`
+- **Garble check:** pending
+- **Previous published pages rechecked:** pending
+- **Result:** pending
+- **Next 3 candidates:**
+  1. Shared button / link affordance contrast（轻量复核）
+  2. Sticky offset consistency audit（只在复现后再改）
+  3. Search panel readability polish
+
 ### 2026-04-17 20:05 Asia/Shanghai — Article body width and paragraph rhythm tuning
 - **Issue:** 最近几篇长文的主体阅读面已经比早期稳定很多，但正文里几类高频文字块的行宽和段间节奏仍略微偏散：`section subtitle` 容易一口气铺太宽，`analysis-box / highlight-box / wisdom / news` 里的正文段落在桌面端也偶尔显得横向拉得太开，读起来不像“看不清”，而是会增加一点扫读疲劳。
 - **Why now:** 这是 backlog 当前最值钱、又足够安全的阅读体验微问题。只做共享 CSS 的文字宽度与段落节奏收口，不改任何文案、不改卡片结构、不碰首页和课程页的信息架构。
