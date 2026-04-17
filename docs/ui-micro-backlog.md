@@ -127,11 +127,11 @@ If the change is in shared CSS / JS, recheck both blog and options surfaces.
 - **Why now:** 这是 backlog 当前最值钱、又足够安全的阅读体验微问题。只做共享 CSS 的文字宽度与段落节奏收口，不改任何文案、不改卡片结构、不碰首页和课程页的信息架构。
 - **Files touched:** `css/style.css`
 - **Local QA:** `powershell.exe -ExecutionPolicy Bypass -File scripts/qa-site.ps1` → PASS
-- **Publish:** pending
+- **Publish:** committed `2219320` (`style: tighten article reading rhythm`) and pushed to `main`
 - **Live recheck pages:** `https://4fire.qzz.io/`, `https://4fire.qzz.io/options/`, `https://4fire.qzz.io/posts/2026/04/17.html`, `https://4fire.qzz.io/posts/2026/04/16.html`, `https://4fire.qzz.io/posts/2026/04/15.html`
-- **Garble check:** pending
-- **Previous published pages rechecked:** pending
-- **Result:** pending
+- **Garble check:** pass — all sampled live pages returned 200 with normal中文标题/正文，无 replacement char（`�`）或高风险 mojibake；cache-busted live `https://4fire.qzz.io/css/style.css?v=20260326review3&oc=2005c` 已命中新加的 `max-width: 62ch;`、`line-height: 1.78;` 与 `max-width: min(68ch, 100%);` 规则。
+- **Previous published pages rechecked:** yes
+- **Result:** pass — 这轮把文章页几类高频文字块的阅读宽度往里收了一格：section subtitle 不再横向摊太开，`analysis-box / highlight-box / wisdom / news perspective` 里的正文段落也更接近稳定的阅读行长；信息完全没变，但桌面端扫读更稳，长文连续阅读更不容易疲劳。
 - **Next 3 candidates:**
   1. Archive card metadata hierarchy
   2. Shared button / link affordance contrast（轻量复核）
