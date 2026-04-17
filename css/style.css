@@ -80,8 +80,8 @@ body.light-mode {
 
     --text-primary: #1f1b14;
     --text-secondary: rgba(31,27,20,0.92);
-    --text-tertiary: rgba(31,27,20,0.86);
-    --text-muted: rgba(31,27,20,0.76);
+    --text-tertiary: rgba(31,27,20,0.89);
+    --text-muted: rgba(31,27,20,0.82);
 
     --accent-gold: #7a5b0a;
     --accent-gold-light: #946f10;
@@ -2839,21 +2839,27 @@ body.light-mode .search-container::after {
 }
 
 body.light-mode .search-input {
-    background: linear-gradient(135deg, rgba(255,255,255,0.96) 0%, rgba(248,241,230,0.96) 100%);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.75), 0 10px 24px rgba(103, 74, 18, 0.08);
+    background: linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(248,241,230,0.98) 100%);
+    border-color: rgba(122,91,10,0.26);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.82), 0 10px 24px rgba(103, 74, 18, 0.1);
 }
 
 body.light-mode .search-shortcut-hint {
-    background: rgba(255,255,255,0.72);
-    border-color: rgba(122,91,10,0.12);
-    color: var(--text-muted);
+    background: rgba(255,255,255,0.84);
+    border-color: rgba(122,91,10,0.2);
+    color: var(--text-secondary);
+}
+
+body.light-mode .search-meta-row {
+    color: var(--text-secondary);
 }
 
 body.light-mode .search-meta-pill,
 body.light-mode .article-meta-chip {
-    background: rgba(255,255,255,0.76);
-    border-color: rgba(122,91,10,0.12);
+    background: rgba(255,255,255,0.88);
+    border-color: rgba(122,91,10,0.2);
     color: var(--text-secondary);
+    box-shadow: 0 8px 18px rgba(103, 74, 18, 0.08);
 }
 
 body.light-mode .article-meta-chip-accent {

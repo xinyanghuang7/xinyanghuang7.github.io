@@ -122,6 +122,66 @@ If the change is in shared CSS / JS, recheck both blog and options surfaces.
 
 ## Round Log
 
+### 2026-04-17 14:40 Asia/Shanghai — Light-mode contrast cleanup
+- **Issue:** 共享 light mode 里，搜索框、搜索状态行和文章 meta chips 虽然已经有浅色皮肤，但对比度还是偏保守：输入框边界有点虚，状态提示和 chips 在浅底上不够稳，扫读时“能看见”和“好读”之间还差一格。
+- **Why now:** backlog 里这是当前足够安全、又能继续落在共享 CSS 的一项小修；而 sticky offset 还没收敛出足够安全的根因，这轮先不碰全局锚点逻辑，转去做低风险高频面的可读性补强。
+- **Files touched:** `css/style.css`
+- **Local QA:** `powershell.exe -ExecutionPolicy Bypass -File scripts/qa-site.ps1` → PASS
+- **Publish:** pending
+- **Live recheck pages:** pending
+- **Garble check:** pending
+- **Previous published pages rechecked:** pending
+- **Result:** pending — 这轮先把 light mode 的共享文本与表面层次往上提一档：略微提高 `--text-tertiary / --text-muted` 对比度，增强搜索框边界和 light-mode shortcut hint / meta pills / article meta chips 的辨识度，目标是不改结构、只把浅色模式的“读感虚”收紧。
+- **Next 3 candidates:**
+  1. Sticky offset consistency audit（继续只做根因查验，不盲改共享 offset）
+  2. Shared card spacing normalization
+  3. Search panel readability polish
+
+### 2026-04-17 14:07 Asia/Shanghai — Options index overview card polish
+- **Issue:** `/options/` 上 overview cards / chapter directory cards 因为标题、描述、列表长度不同，内部节奏有点飘：有些卡片的 meta / action 区离正文太远，有些又显得更挤，扫读时层级不够稳。
+- **Why now:** backlog 里这是当前足够值钱、又能安全收口的一项小问题；而且这个页面本身带了局部 inline style，继续在共享 CSS 上硬压不合适，这轮改成页级 / template 里做最小修正更稳。
+- **Files touched:** `options/index.html`, `template/options-course-index.html`
+- **Local QA:** `powershell.exe -ExecutionPolicy Bypass -File scripts/qa-site.ps1` → PASS
+- **Publish:** committed `e7247e8` (`style: stabilize options index card rhythm`) and pushed to `main`
+- **Live recheck pages:** `https://4fire.qzz.io/options/`, `https://4fire.qzz.io/`, `https://4fire.qzz.io/options/01.html`, `https://4fire.qzz.io/options/27.html`
+- **Garble check:** pass — live `/options/` raw HTML contains the new rules (`margin-top: auto;`, `gap: 0.85rem;`, `margin: 0.15rem 0 0;`), sampled pages returned 200, and no replacement char (`�`) or high-risk mojibake tokens were detected in raw HTML checks
+- **Previous published pages rechecked:** yes
+- **Result:** pass — 这轮没有改内容和信息架构，只把 options index 卡片改成更稳定的纵向节奏：卡片内部统一用 column flow，列表/元信息更贴近正文，底部 action 区改为自动贴底，不同字数的卡片在同一排里更不容易一张松一张紧。
+- **Next 3 candidates:**
+  1. Sticky offset consistency audit（先把 hash 落点根因继续查清）
+  2. Shared card spacing normalization
+  3. Light-mode contrast cleanup
+
+### 2026-04-17 13:20 Asia/Shanghai — Homepage archive card metadata hierarchy (publish retry + live recheck)
+- **Issue:** homepage archive cards still needed the already-prepared hierarchy polish to actually land online: date badge and arrow were a bit too visually loud versus title and summary.
+- **Why now:** the previous round had already finished the safest CSS-only polish locally and passed QA, but publish was blocked by GitHub connectivity. The highest-value move this round was to ship that exact micro-fix instead of opening a new UI issue.
+- **Files touched:** none this round; shipped existing `css/style.css` change from commit `fc515b8` (`style: refine archive card hierarchy`)
+- **Local QA:** `powershell.exe -ExecutionPolicy Bypass -File scripts/qa-site.ps1` → PASS
+- **Publish:** `git push origin main` → PASS (`04f03bc..fc515b8`)
+- **Live recheck pages:** `https://4fire.qzz.io/`, `https://4fire.qzz.io/options/`, `https://4fire.qzz.io/posts/2026/04/16.html`, `https://4fire.qzz.io/posts/2026/04/15.html`, `https://4fire.qzz.io/options/01.html`
+- **Garble check:** pass — remote HTML / CSS fetches returned 200, no replacement char (`�`) and no high-risk mojibake tokens were detected in sampled pages or shared CSS
+- **Previous published pages rechecked:** yes
+- **Result:** pass — homepage archive cards now ship with slightly quieter date badges, a clearer title-vs-summary hierarchy, and a more secondary arrow treatment. Shared CSS on the live domain also contains the new archive hierarchy rules (`opacity: 0.58`, `font-size: 1.06rem`), so this round is now genuinely online rather than only local.
+- **Next 3 candidates:**
+  1. Sticky offset consistency audit (debug root cause first)
+  2. Shared card spacing normalization
+  3. Light-mode contrast cleanup
+
+### 2026-04-17 00:40 Asia/Shanghai — Homepage archive card metadata hierarchy
+- **Issue:** homepage archive cards made the date badge and arrow feel a bit too visually loud versus title and summary; this round narrowed to hierarchy polish only.
+- **Why now:** after the shared affordance pass, this was the next safest high-value homepage micro-fix that could stay inside shared CSS without touching markup or information architecture.
+- **Files touched:** `css/style.css`
+- **Local QA:** `powershell.exe -ExecutionPolicy Bypass -File scripts/qa-site.ps1` → PASS
+- **Publish:** local commit created `fc515b8` (`style: refine archive card hierarchy`), but push to `origin/main` failed twice due to GitHub connectivity (`Recv failure: Connection was reset` / `Could not connect to server`)
+- **Live recheck pages:** not run — publish did not complete, so remote verification would be misleading
+- **Garble check:** local QA pass; live garble check pending because this round is unpublished
+- **Previous published pages rechecked:** no — blocked before publish
+- **Result:** blocked / not shipped — local CSS now de-emphasizes the date badge slightly, lifts title readability, quiets summary text, and makes the arrow feel more like a secondary affordance, but none of this counts as complete until push + live recheck succeed.
+- **Next 3 candidates:**
+  1. Retry publish and full live recheck for this archive hierarchy pass
+  2. Sticky offset consistency audit (debug root cause first)
+  3. Shared card spacing normalization
+
 ### 2026-04-17 00:20 Asia/Shanghai — Shared button / link affordance contrast
 - **Issue:** shared interactive links on blog / options surfaces were a bit too close to plain text state; hover and keyboard focus mostly changed color, but the trigger feel was still weak.
 - **Why now:** after the sticky-offset audit stayed blocked, this was the next highest-value shared-surface fix with low structural risk: improve affordance clarity without touching layout or information architecture.
