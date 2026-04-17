@@ -3375,6 +3375,36 @@ body.light-mode .dark-mode-toggle:hover {
     background: rgba(212,175,55,0.08);
 }
 
+.chapter-body-card a:not(.source-figure-link):not(.chapter-nav-link) {
+    color: var(--accent-gold-light);
+    font-weight: 600;
+    text-decoration-line: underline;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.16em;
+    text-decoration-color: rgba(212,175,55,0.42);
+    transition:
+        color var(--transition-fast),
+        text-decoration-color var(--transition-fast),
+        text-shadow var(--transition-fast);
+}
+
+.chapter-body-card a:not(.source-figure-link):not(.chapter-nav-link):visited {
+    color: var(--accent-gold-light);
+}
+
+.chapter-body-card a:not(.source-figure-link):not(.chapter-nav-link):hover,
+.chapter-body-card a:not(.source-figure-link):not(.chapter-nav-link):focus-visible {
+    color: var(--accent-gold);
+    text-decoration-color: rgba(212,175,55,0.92);
+    text-shadow: 0 0 18px rgba(212,175,55,0.16);
+}
+
+.chapter-body-card a:not(.source-figure-link):not(.chapter-nav-link):focus-visible {
+    outline: 2px solid rgba(212,175,55,0.32);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
 .chapter-body-card code {
     font-family: Consolas, 'SFMono-Regular', monospace;
     font-size: 0.92em;
