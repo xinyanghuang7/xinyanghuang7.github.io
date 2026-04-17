@@ -127,11 +127,11 @@ If the change is in shared CSS / JS, recheck both blog and options surfaces.
 - **Why now:** backlog 里这是当前足够安全、又能继续落在共享 CSS 的一项小修；而 sticky offset 还没收敛出足够安全的根因，这轮先不碰全局锚点逻辑，转去做低风险高频面的可读性补强。
 - **Files touched:** `css/style.css`
 - **Local QA:** `powershell.exe -ExecutionPolicy Bypass -File scripts/qa-site.ps1` → PASS
-- **Publish:** pending
-- **Live recheck pages:** pending
-- **Garble check:** pending
-- **Previous published pages rechecked:** pending
-- **Result:** pending — 这轮先把 light mode 的共享文本与表面层次往上提一档：略微提高 `--text-tertiary / --text-muted` 对比度，增强搜索框边界和 light-mode shortcut hint / meta pills / article meta chips 的辨识度，目标是不改结构、只把浅色模式的“读感虚”收紧。
+- **Publish:** committed `a1f4715` (`style: tighten light-mode contrast surfaces`) and pushed to `main`
+- **Live recheck pages:** `https://4fire.qzz.io/`, `https://4fire.qzz.io/options/`, `https://4fire.qzz.io/posts/2026/04/17.html`, `https://4fire.qzz.io/posts/2026/04/16.html`, `https://4fire.qzz.io/posts/2026/04/15.html`
+- **Garble check:** pass — all sampled live pages returned 200 with no replacement char (`�`) or high-risk mojibake tokens; live `https://4fire.qzz.io/css/style.css` contains the new light-mode rules for `search-meta-row`, stronger search border, and brighter shortcut / meta chip surfaces.
+- **Previous published pages rechecked:** yes
+- **Result:** pass — 这轮把 light mode 的共享文本与表面层次往上提了一档：略微提高 `--text-tertiary / --text-muted` 对比度，增强搜索框边界和 light-mode shortcut hint / meta pills / article meta chips 的辨识度；没有改结构，只把浅色模式的“读感虚”收紧。
 - **Next 3 candidates:**
   1. Sticky offset consistency audit（继续只做根因查验，不盲改共享 offset）
   2. Shared card spacing normalization
