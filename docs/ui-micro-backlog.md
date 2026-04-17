@@ -127,11 +127,11 @@ If the change is in shared CSS / JS, recheck both blog and options surfaces.
 - **Why now:** 这是 backlog 里当前最值钱的共享层问题，而且这轮已经能确认根因，不再只是抽象 audit。最小修正就是只在 mobile breakpoint 下把 anchor offset 改回“只算顶部真正遮挡的 header + 小缓冲”，不去碰桌面 sticky quick nav 本身。
 - **Files touched:** `css/style.css`
 - **Local QA:** `powershell.exe -ExecutionPolicy Bypass -File scripts/qa-site.ps1` → PASS
-- **Publish:** pending
-- **Live recheck pages:** pending
-- **Garble check:** pending
-- **Previous published pages rechecked:** pending
-- **Result:** pending — 这轮把根因收敛到了一个很小的共享变量修正：在 `@media (max-width: 768px)` 下，把 `--oc-anchor-offset` 从桌面逻辑改成 `header + 18px`，让移动端的锚点落点不再把底部 quick nav 也误算成顶部遮挡。
+- **Publish:** committed `b952384` (`style: tune mobile anchor offset`) and pushed to `main`
+- **Live recheck pages:** `https://4fire.qzz.io/`, `https://4fire.qzz.io/options/`, `https://4fire.qzz.io/posts/2026/04/17.html`, `https://4fire.qzz.io/options/01.html`, `https://4fire.qzz.io/options/27.html`
+- **Garble check:** pass — all sampled live pages returned 200 with no replacement char (`�`) or high-risk mojibake tokens; cache-busted live `https://4fire.qzz.io/css/style.css?oc=1500c` contains the mobile `calc(var(--oc-header-height) + 18px)` anchor-offset override together with the shared `scroll-margin-top` rule.
+- **Previous published pages rechecked:** yes
+- **Result:** pass — 这轮把根因收敛到了一个很小的共享变量修正：在 `@media (max-width: 768px)` 下，把 `--oc-anchor-offset` 从桌面逻辑改成 `header + 18px`，让移动端的锚点落点不再把底部 quick nav 也误算成顶部遮挡。
 - **Next 3 candidates:**
   1. Shared card spacing normalization
   2. Author / footer quieting pass
