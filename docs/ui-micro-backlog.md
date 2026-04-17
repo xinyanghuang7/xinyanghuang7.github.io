@@ -122,6 +122,21 @@ If the change is in shared CSS / JS, recheck both blog and options surfaces.
 
 ## Round Log
 
+### 2026-04-17 17:25 Asia/Shanghai — Hero text density rebalance
+- **Issue:** 首页 hero 的 `subtitle / 标题 / 引语 / 描述` 都是对的，但首屏纵向堆叠有点重：标题宽度偏散、引语和说明都在抢第二层级，读起来像一层层往下压，而不是先抓主标题再自然落到说明。
+- **Why now:** 这是 backlog 当前最值钱的首页微问题，而且可以继续用最小共享层改动收口。只动 `css/style.css` 里的 hero 节奏与层级，不改首页内容，不改信息架构，也不顺手扩到 about / archive 区。
+- **Files touched:** `css/style.css`
+- **Local QA:** `powershell.exe -ExecutionPolicy Bypass -File scripts/qa-site.ps1` → PASS
+- **Publish:** committed `ff2faa7` (`style: rebalance homepage hero density`) and pushed to `main`
+- **Live recheck pages:** `https://4fire.qzz.io/`, `https://4fire.qzz.io/options/`, `https://4fire.qzz.io/posts/2026/04/17.html`, `https://4fire.qzz.io/posts/2026/04/16.html`, `https://4fire.qzz.io/options/01.html`
+- **Garble check:** pass — all sampled live pages returned 200 with no replacement char (`�`) or high-risk mojibake tokens; cache-busted live `https://4fire.qzz.io/css/style.css?v=20260404fix1&oc=1725b` contains the new hero eyebrow / title width / tagline width / description width rules.
+- **Previous published pages rechecked:** yes
+- **Result:** pass — 这轮把首页 hero 的层级收紧了一格：subtitle 变成更轻的 eyebrow，主标题行宽更集中，引语和正文说明的宽度与间距也更克制；整体信息没变，但首屏更像“先抓标题，再落到方法和定位”，不再显得一层层堆太满。
+- **Next 3 candidates:**
+  1. Article body width and paragraph rhythm tuning
+  2. Shared button / link affordance contrast（轻量复核）
+  3. Archive card metadata hierarchy
+
 ### 2026-04-17 17:05 Asia/Shanghai — Chapter prev/next navigation clarity
 - **Issue:** 期权章节页底部的 `上一章 / 返回课程 / 下一章` 三栏导航虽然信息齐全，但标题、主链接、说明文字的层级还不够利落；尤其在手机上，三栏并排时更像三个相近文本块，扫读和点按都不够从容。
 - **Why now:** 这是 backlog 当前最值钱、且适合继续留在共享 CSS 的 options 微问题。只做 `chapter nav` 的层级和 mobile 布局收紧，不改 HTML，不动课程结构，也不顺手扩成别的卡片修饰。
