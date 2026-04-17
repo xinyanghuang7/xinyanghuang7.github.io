@@ -301,21 +301,33 @@ header.scrolled {
 }
 
 .hero-content {
-    max-width: 1000px;
+    max-width: 920px;
     position: relative;
     z-index: 1;
     opacity: 0;
     animation: fadeInUp 1.2s var(--ease-smooth) 0.3s forwards;
 }
 
+.hero-content > * {
+    text-wrap: pretty;
+}
+
 .hero .subtitle {
-    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    padding: 0.45rem 0.95rem;
+    border-radius: 999px;
+    border: 1px solid rgba(212,175,55,0.18);
+    background: rgba(212,175,55,0.08);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+    font-size: 0.78rem;
     color: var(--accent-gold);
-    letter-spacing: 0.35em;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
-    margin-bottom: var(--space-lg);
-    font-weight: 500;
-    display: block;
+    margin-bottom: 1.15rem;
+    font-weight: 600;
     animation: fadeIn 1s ease 0.6s backwards;
 }
 
@@ -324,30 +336,31 @@ header.scrolled {
     font-size: clamp(2.5rem, 7vw, 4.5rem);
     font-weight: 400;
     color: var(--text-primary);
-    margin-bottom: var(--space-lg);
-    letter-spacing: 0.03em;
-    line-height: 1.1;
+    max-width: 11ch;
+    margin: 0 auto 1rem;
+    letter-spacing: 0.02em;
+    line-height: 1.04;
     animation: fadeInUp 1s var(--ease-smooth) 0.9s backwards;
 }
 
 .hero .tagline {
     font-family: var(--font-display);
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-size: clamp(1.08rem, 2.4vw, 1.42rem);
     font-style: italic;
     color: var(--text-secondary);
     font-weight: 300;
-    max-width: 800px;
-    margin: 0 auto var(--space-xl);
-    line-height: 1.6;
+    max-width: 42rem;
+    margin: 0 auto 1.1rem;
+    line-height: 1.5;
     animation: fadeIn 1s ease 1.2s backwards;
 }
 
 .hero-description {
     color: var(--text-tertiary);
-    max-width: 700px;
+    max-width: 39rem;
     margin: 0 auto;
-    font-size: 1rem;
-    line-height: 1.8;
+    font-size: 0.98rem;
+    line-height: 1.72;
     animation: fadeIn 1s ease 1.5s backwards;
 }
 
@@ -3691,8 +3704,8 @@ footer .disclaimer {
     }
 
     .hero {
-        min-height: 56vh;
-        padding: calc(var(--space-3xl) + 0.5rem) var(--space-md) var(--space-2xl);
+        min-height: 54vh;
+        padding: calc(var(--space-3xl) + 0.35rem) var(--space-md) calc(var(--space-2xl) - 0.35rem);
     }
 
     .hero-content {
@@ -3700,13 +3713,29 @@ footer .disclaimer {
     }
 
     .hero .subtitle {
-        letter-spacing: 0.18em;
-        margin-bottom: 0.85rem;
+        padding: 0.42rem 0.82rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        margin-bottom: 0.72rem;
     }
 
-    .hero-description,
+    .hero h1 {
+        max-width: 8ch;
+        margin-bottom: 0.82rem;
+        line-height: 1.02;
+    }
+
     .hero .tagline {
-        max-width: 100%;
+        max-width: 19.5rem;
+        margin-bottom: 0.92rem;
+        font-size: 1rem;
+        line-height: 1.42;
+    }
+
+    .hero-description {
+        max-width: 22.5rem;
+        font-size: 0.95rem;
+        line-height: 1.66;
     }
 
     .hero-thesis-strip {
