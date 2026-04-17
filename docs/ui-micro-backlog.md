@@ -122,6 +122,21 @@ If the change is in shared CSS / JS, recheck both blog and options surfaces.
 
 ## Round Log
 
+### 2026-04-17 17:05 Asia/Shanghai — Chapter prev/next navigation clarity
+- **Issue:** 期权章节页底部的 `上一章 / 返回课程 / 下一章` 三栏导航虽然信息齐全，但标题、主链接、说明文字的层级还不够利落；尤其在手机上，三栏并排时更像三个相近文本块，扫读和点按都不够从容。
+- **Why now:** 这是 backlog 当前最值钱、且适合继续留在共享 CSS 的 options 微问题。只做 `chapter nav` 的层级和 mobile 布局收紧，不改 HTML，不动课程结构，也不顺手扩成别的卡片修饰。
+- **Files touched:** `css/style.css`
+- **Local QA:** `powershell.exe -ExecutionPolicy Bypass -File scripts/qa-site.ps1` → PASS
+- **Publish:** committed `7f4b407` (`style: clarify chapter nav rhythm`) and pushed to `main`
+- **Live recheck pages:** `https://4fire.qzz.io/`, `https://4fire.qzz.io/options/`, `https://4fire.qzz.io/options/01.html`, `https://4fire.qzz.io/options/02.html`, `https://4fire.qzz.io/options/27.html`, `https://4fire.qzz.io/posts/2026/04/17.html`
+- **Garble check:** pass — all sampled live pages returned 200 with no replacement char (`�`) or high-risk mojibake tokens; cache-busted live `https://4fire.qzz.io/css/style.css?v=20260326review3&oc=1705a` contains the new `chapter-nav-grid` / `chapter-nav-link` mobile-stack and touch-target rules.
+- **Previous published pages rechecked:** yes
+- **Result:** pass — 这轮把章节底部导航的标题-链接-说明层级拉开了一点：link 本身更像可点主动作，说明文字行长更稳，slot 背景与内边距更统一；同时在 mobile breakpoint 下改成单列堆叠，让 `上一章 / 返回课程 / 下一章` 不再挤在一排里，扫读和拇指点按都更顺。
+- **Next 3 candidates:**
+  1. Hero text density rebalance
+  2. Article body width and paragraph rhythm tuning
+  3. Shared button / link affordance contrast（第二轮只做轻量复核）
+
 ### 2026-04-17 16:05 Asia/Shanghai — Mobile quick-nav tap target polish
 - **Issue:** 底部悬浮 quick nav 已经能用，但在手机上仍有一点“能点到，但不够从容”的感觉：pill 之间间隙偏紧、左右边缘缓冲不够，短手势下更容易点偏或蹭到相邻项。
 - **Why now:** 这是 backlog 当前最值钱的共享层问题，而且 sticky offset 之前已经单独收过；这轮只做 mobile breakpoint 下的触控面积和滚动缓冲增强，不碰桌面端，不改结构，不动锚点逻辑。
