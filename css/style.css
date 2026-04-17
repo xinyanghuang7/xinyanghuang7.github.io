@@ -1746,11 +1746,11 @@ header .nav-links a:focus-visible {
     grid-template-columns: 120px minmax(0, 1fr);
     gap: var(--space-lg);
     align-items: center;
-    background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.06) 100%);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: linear-gradient(135deg, rgba(255,255,255,0.025) 0%, rgba(255,255,255,0.045) 100%);
+    border: 1px solid rgba(255,255,255,0.06);
     border-radius: var(--radius-lg);
-    padding: var(--space-xl);
-    box-shadow: var(--shadow-sm);
+    padding: 1.35rem 1.45rem;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.12);
 }
 
 .author-avatar {
@@ -1765,8 +1765,8 @@ header .nav-links a:focus-visible {
     font-weight: 600;
     color: #111;
     background: radial-gradient(circle at 30% 30%, #f4cf57 0%, var(--accent-gold) 55%, #8d6f15 100%);
-    box-shadow: 0 12px 30px rgba(212,175,55,0.22);
-    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 10px 22px rgba(212,175,55,0.16);
+    border: 1px solid rgba(255,255,255,0.12);
 }
 
 .author-info h3 {
@@ -1778,18 +1778,18 @@ header .nav-links a:focus-visible {
 }
 
 .author-title {
-    color: var(--accent-gold);
-    font-size: 0.92rem;
-    letter-spacing: 0.16em;
+    color: rgba(212,175,55,0.88);
+    font-size: 0.88rem;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
-    margin: 0.35rem 0 0.8rem;
+    margin: 0.3rem 0 0.7rem;
     font-weight: 700;
 }
 
 .author-info p {
     margin: 0;
-    color: var(--text-secondary);
-    line-height: 1.9;
+    color: var(--text-tertiary);
+    line-height: 1.82;
 }
 
 .search-container {
@@ -3431,32 +3431,33 @@ body.light-mode .course-callout-warning {
 /* Footer */
 footer {
     background: var(--bg-secondary);
-    padding: var(--space-3xl) var(--space-lg);
+    padding: 2.6rem var(--space-lg) 2.35rem;
     text-align: center;
     position: relative;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(255,255,255,0.04);
 }
 
 footer::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 2px;
+    height: 1px;
+    opacity: 0.72;
     background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
 }
 
 footer p {
-    font-size: 0.9rem;
-    letter-spacing: 0.1em;
+    font-size: 0.87rem;
+    letter-spacing: 0.06em;
     color: var(--text-tertiary);
-    margin-bottom: var(--space-sm);
+    margin-bottom: 0.42rem;
 }
 
 footer .disclaimer {
-    max-width: 900px;
-    margin: var(--space-lg) auto 0;
-    font-size: 0.85rem;
-    line-height: 1.8;
+    max-width: 780px;
+    margin: 0.9rem auto 0;
+    font-size: 0.82rem;
+    line-height: 1.72;
     color: var(--text-muted);
     text-align: left;
 }
