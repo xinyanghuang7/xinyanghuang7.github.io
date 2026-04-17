@@ -5,6 +5,7 @@
 - Cadence: **one UI micro-fix per 20 minutes**
 - Publish policy: **publish immediately after pass**
 - Scope rule: **no new content, no large layout rewrite, no blind online edits**
+- **User override (2026-04-17 21:21 Asia/Shanghai): next 3 UI rounds prioritize options surfaces first, especially any chapter / course page where content appears black, invisible, or unreadable.**
 - Acceptance gate:
   1. local QA must pass
   2. live changed page must be checked
@@ -121,6 +122,21 @@ If the change is in shared CSS / JS, recheck both blog and options surfaces.
 - **Next 3 candidates:**
 
 ## Round Log
+
+### 2026-04-17 22:45 Asia/Shanghai — Options body link readability
+- **Issue:** 期权章节正文里的普通文字链接（尤其参考来源区的裸 URL / 外链）一直没有课程页自己的 link 样式，容易退回浏览器默认蓝紫链接；在暗色正文卡片里虽然不至于完全看不见，但层级和可点感都偏游离，和整套 options 页面语言不一致。
+- **Why now:** 这轮按用户 override 优先收口 options surface，而且这是一个足够值钱又足够克制的共享层问题：只动正文链接的可读性与 focus/hover 状态，不改结构、不改文案、不碰课程章节布局。
+- **Files touched:** `css/style.css`
+- **Local QA:** `powershell.exe -ExecutionPolicy Bypass -File scripts/qa-site.ps1` → PASS
+- **Publish:** committed `bbad567` (`style: clarify options body links`) and pushed to `main`
+- **Live recheck pages:** `https://4fire.qzz.io/`, `https://4fire.qzz.io/options/`, `https://4fire.qzz.io/options/01.html`, `https://4fire.qzz.io/options/02.html`, `https://4fire.qzz.io/options/27.html`
+- **Garble check:** pass — all sampled live pages returned 200 with normal titles and no replacement char (`�`); cache-busted live `https://4fire.qzz.io/css/style.css?oc=2245a` contains the new `.chapter-body-card a:not(.source-figure-link):not(.chapter-nav-link)` rules and no mojibake.
+- **Previous published pages rechecked:** yes
+- **Result:** pass — options 章节正文里的普通外链现在不再掉回浏览器默认 link 颜色，而是进入课程自己的金色层级：正文里更容易一眼看出“这是引用/参考链接”，hover 和键盘 focus 也更清楚，但没有把它们做成太吵的 CTA。
+- **Next 3 candidates:**
+  1. Options chapter content table readability（只做表头 / 行间层级，不改内容）
+  2. Search panel readability polish（如果首页搜索仍有边角噪音，再做轻量收口）
+  3. Archive card metadata hierarchy（若首页卡片层级还有回退再复核）
 
 ### 2026-04-17 21:05 Asia/Shanghai — Shared button / link affordance contrast
 - **Issue:** 共享层里几类高频可点击 link 已经可用，但 hover / focus 的“可点感”还不完全在一个档位上：quick-nav pills 主要靠金色发光提示，options 页 `course-action-link / chapter-nav-link / chapter-meta-link` 也更像“文字变金了”，而不是一眼能看出这是交互目标。问题不是看不见，而是 affordance 还偏轻、偏散。
