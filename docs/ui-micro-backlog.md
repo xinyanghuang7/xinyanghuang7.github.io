@@ -127,11 +127,11 @@ If the change is in shared CSS / JS, recheck both blog and options surfaces.
 - **Why now:** 这是 backlog 当前最值钱、且足够克制的首页微问题。只做归档卡片的 CSS 层级重排，不改首页内容、不改 archive 数据结构、不碰日历逻辑，也不顺手扩到 search panel。
 - **Files touched:** `css/style.css`
 - **Local QA:** `powershell.exe -ExecutionPolicy Bypass -File scripts/qa-site.ps1` → PASS
-- **Publish:** pending
+- **Publish:** committed `1d2e9ac` (`style: clarify archive card hierarchy`) and pushed to `main`
 - **Live recheck pages:** `https://4fire.qzz.io/`, `https://4fire.qzz.io/options/`, `https://4fire.qzz.io/posts/2026/04/17.html`, `https://4fire.qzz.io/posts/2026/04/16.html`, `https://4fire.qzz.io/posts/2026/04/15.html`
-- **Garble check:** pending
-- **Previous published pages rechecked:** pending
-- **Result:** pending
+- **Garble check:** pass — all sampled live pages returned 200 with正常中文标题/正文，未见 replacement char（`�`）或高风险 mojibake；cache-busted live `https://4fire.qzz.io/css/style.css?oc=2045a` 已命中新加的 archive card hierarchy 规则（`64px / 24px` 栅格、柔化日期徽章、`archive-item-content` 与 `max-width: 62ch;` 等）。
+- **Previous published pages rechecked:** yes
+- **Result:** pass — 这轮把首页 archive card 的层级拉开了一格：日期从“抢眼金色圆徽章”退到更像 metadata，标题继续当第一视觉落点，摘要行长更稳，箭头则更像辅助动作而不是并列主元素；信息没变，但首页扫读顺序更清楚。
 - **Next 3 candidates:**
   1. Shared button / link affordance contrast（轻量复核）
   2. Sticky offset consistency audit（只在复现后再改）
