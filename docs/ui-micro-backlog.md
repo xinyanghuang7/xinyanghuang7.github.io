@@ -127,11 +127,11 @@ If the change is in shared CSS / JS, recheck both blog and options surfaces.
 - **Why now:** sticky offset 这轮已经收过，接下来最值钱、又适合继续落在共享 CSS 的，就是把这几类常见卡片的 spacing 往同一档靠。只动 padding / radius / margin，不动结构、不改内容，也不重新做卡片体系。
 - **Files touched:** `css/style.css`
 - **Local QA:** `powershell.exe -ExecutionPolicy Bypass -File scripts/qa-site.ps1` → PASS
-- **Publish:** pending
-- **Live recheck pages:** pending
-- **Garble check:** pending
-- **Previous published pages rechecked:** pending
-- **Result:** pending — 这轮把首页 archive item、正文里的 post stat card / decision detail card / article rating card 的 padding、圆角和竖向留白往 options 页那种较稳定的 `space-lg` 节奏靠了一格，让共享卡片在不同页面之间切换时不那么一块松一块紧。
+- **Publish:** committed `3468b8b` (`style: normalize shared card spacing`) and pushed to `main`
+- **Live recheck pages:** `https://4fire.qzz.io/`, `https://4fire.qzz.io/options/`, `https://4fire.qzz.io/posts/2026/04/17.html`, `https://4fire.qzz.io/posts/2026/04/16.html`, `https://4fire.qzz.io/posts/2026/04/15.html`
+- **Garble check:** pass — all sampled live pages returned 200 with no replacement char (`�`) or high-risk mojibake tokens; cache-busted live `https://4fire.qzz.io/css/style.css?oc=1525b` contains the new archive / stat / decision / rating card spacing rules.
+- **Previous published pages rechecked:** yes
+- **Result:** pass — 这轮把首页 archive item、正文里的 post stat card / decision detail card / article rating card 的 padding、圆角和竖向留白往 options 页那种较稳定的 `space-lg` 节奏靠了一格，让共享卡片在不同页面之间切换时不那么一块松一块紧。
 - **Next 3 candidates:**
   1. Author / footer quieting pass
   2. Mobile quick-nav tap target polish
