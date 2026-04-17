@@ -122,6 +122,21 @@ If the change is in shared CSS / JS, recheck both blog and options surfaces.
 
 ## Round Log
 
+### 2026-04-17 16:05 Asia/Shanghai — Mobile quick-nav tap target polish
+- **Issue:** 底部悬浮 quick nav 已经能用，但在手机上仍有一点“能点到，但不够从容”的感觉：pill 之间间隙偏紧、左右边缘缓冲不够，短手势下更容易点偏或蹭到相邻项。
+- **Why now:** 这是 backlog 当前最值钱的共享层问题，而且 sticky offset 之前已经单独收过；这轮只做 mobile breakpoint 下的触控面积和滚动缓冲增强，不碰桌面端，不改结构，不动锚点逻辑。
+- **Files touched:** `css/style.css`
+- **Local QA:** `powershell.exe -ExecutionPolicy Bypass -File scripts/qa-site.ps1` → PASS
+- **Publish:** committed `5581ca5` (`style: improve mobile quick nav tap targets`) and pushed to `main`
+- **Live recheck pages:** `https://4fire.qzz.io/`, `https://4fire.qzz.io/options/`, `https://4fire.qzz.io/posts/2026/04/17.html`, `https://4fire.qzz.io/options/01.html`, `https://4fire.qzz.io/posts/2026/04/16.html`, `https://4fire.qzz.io/options/27.html`
+- **Garble check:** pass — all sampled live pages returned 200 with no replacement char (`�`) or high-risk mojibake tokens; cache-busted live `https://4fire.qzz.io/css/style.css?v=20260326review3&oc=1605a` contains the new mobile quick-nav width / gap / touch-target rules.
+- **Previous published pages rechecked:** yes
+- **Result:** pass — 这轮把 mobile quick nav 的可点区域和边缘缓冲抬了一档：nav 容器更贴近屏宽但保留安全边距，pill 之间留出更稳的触控缝隙，link 的最小高度和横向 padding 也更大一点；整体还是原设计，只是手机上更不容易误触。
+- **Next 3 candidates:**
+  1. Chapter prev/next navigation clarity
+  2. Hero text density rebalance
+  3. Article body width and paragraph rhythm tuning
+
 ### 2026-04-17 15:45 Asia/Shanghai — Author / footer quieting pass
 - **Issue:** 最近几轮已经把 shared cards、search、anchor offset 这类高频交互面收紧了，但文章尾部的 support info 还略显抢戏：author block 的金色头像和底板存在感偏强，全站 footer 的顶部金线、padding 和免责声明块也比正文收尾更“喊”。内容没错，只是尾声没有足够安静。
 - **Why now:** 这项是 backlog 里当前最值钱、又足够安全的共享层小问题。只做 `css/style.css` 里的 author / footer 降噪，不改任何 HTML，不碰正文节奏，也不去重做尾部组件。
