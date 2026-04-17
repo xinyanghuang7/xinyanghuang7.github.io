@@ -127,11 +127,11 @@ If the change is in shared CSS / JS, recheck both blog and options surfaces.
 - **Why now:** backlog 里这项是当前最安全、最适合继续落在共享 CSS 的小问题；刚做完 light-mode 对比度补强，这轮顺着同一块表面继续把结果列表的可扫读性往上提一档，不碰信息架构也不碰搜索逻辑。
 - **Files touched:** `css/style.css`
 - **Local QA:** `powershell.exe -ExecutionPolicy Bypass -File scripts/qa-site.ps1` → PASS
-- **Publish:** pending
-- **Live recheck pages:** pending
-- **Garble check:** pending
-- **Previous published pages rechecked:** pending
-- **Result:** pending — 这轮先把 search result item 改成更稳定的纵向节奏：轻微加大结果项内间距，压实日期 / 标题 / 摘要的层级，给空结果态补上更像组件的底板；同时略增强 light-mode 下 active result 的边界和阴影，让“当前结果”更容易被一眼扫到。
+- **Publish:** committed `dcf3b3e` (`style: polish search panel readability`) and pushed to `main`
+- **Live recheck pages:** `https://4fire.qzz.io/`, `https://4fire.qzz.io/options/`, `https://4fire.qzz.io/posts/2026/04/17.html`, `https://4fire.qzz.io/posts/2026/04/16.html`, `https://4fire.qzz.io/posts/2026/04/15.html`
+- **Garble check:** pass — all sampled live pages returned 200 with no replacement char (`�`) or high-risk mojibake tokens; cache-busted live `https://4fire.qzz.io/css/style.css?oc=1458` contains the new search-result spacing / `text-wrap: pretty` / `max-width: 60ch` / `search-no-results` rules.
+- **Previous published pages rechecked:** yes
+- **Result:** pass — 这轮把 search result item 改成了更稳定的纵向节奏：轻微加大结果项内间距，压实日期 / 标题 / 摘要的层级，给空结果态补上更像组件的底板；同时略增强 light-mode 下 active result 的边界和阴影，让“当前结果”更容易被一眼扫到。
 - **Next 3 candidates:**
   1. Sticky offset consistency audit（继续只做根因查验，不盲改共享 offset）
   2. Shared card spacing normalization
