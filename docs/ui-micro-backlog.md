@@ -122,6 +122,21 @@ If the change is in shared CSS / JS, recheck both blog and options surfaces.
 
 ## Round Log
 
+### 2026-04-17 21:05 Asia/Shanghai — Shared button / link affordance contrast
+- **Issue:** 共享层里几类高频可点击 link 已经可用，但 hover / focus 的“可点感”还不完全在一个档位上：quick-nav pills 主要靠金色发光提示，options 页 `course-action-link / chapter-nav-link / chapter-meta-link` 也更像“文字变金了”，而不是一眼能看出这是交互目标。问题不是看不见，而是 affordance 还偏轻、偏散。
+- **Why now:** 这是 backlog 当前最值钱、且仍然足够克制的共享层小问题。只做共享 CSS 的 hover / focus contrast 重排，不改结构、不改文案、不重做按钮体系，也不顺手扩成卡片或首页 hero 调整。
+- **Files touched:** `css/style.css`
+- **Local QA:** `powershell.exe -ExecutionPolicy Bypass -File scripts/qa-site.ps1` → PASS
+- **Publish:** pending
+- **Live recheck pages:** `https://4fire.qzz.io/`, `https://4fire.qzz.io/options/`, `https://4fire.qzz.io/posts/2026/04/17.html`, `https://4fire.qzz.io/options/01.html`, `https://4fire.qzz.io/posts/2026/04/16.html`
+- **Garble check:** pending
+- **Previous published pages rechecked:** pending
+- **Result:** pending
+- **Next 3 candidates:**
+  1. Sticky offset consistency audit（只在复现后再改）
+  2. Search panel readability polish（若还有残余边角再做轻量二次收口）
+  3. Options index overview card polish
+
 ### 2026-04-17 20:45 Asia/Shanghai — Archive card metadata hierarchy
 - **Issue:** 首页 archive item 的基础结构已经能用，但 `日期徽章 / 标题 / 摘要 / 箭头` 之间还略有抢层级：日期金色圆徽章存在感偏强，标题虽然够重，但摘要和箭头的退场感还不够自然，导致卡片扫读时第一眼不总是最稳地落在标题上。
 - **Why now:** 这是 backlog 当前最值钱、且足够克制的首页微问题。只做归档卡片的 CSS 层级重排，不改首页内容、不改 archive 数据结构、不碰日历逻辑，也不顺手扩到 search panel。

@@ -431,10 +431,10 @@ header.scrolled {
 
 .article-quick-nav-link:hover,
 .article-quick-nav-link:focus-visible {
-    color: var(--accent-gold);
-    border-color: rgba(212,175,55,0.28);
-    background: rgba(212,175,55,0.11);
-    box-shadow: 0 0 0 1px rgba(212,175,55,0.08), 0 10px 22px rgba(0,0,0,0.14);
+    color: var(--accent-gold-light);
+    border-color: rgba(212,175,55,0.34);
+    background: linear-gradient(180deg, rgba(212,175,55,0.14) 0%, rgba(212,175,55,0.08) 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 0 0 1px rgba(212,175,55,0.1), 0 8px 18px rgba(0,0,0,0.12);
     transform: translateY(-1px);
     outline: none;
 }
@@ -2995,10 +2995,10 @@ body.light-mode .article-quick-nav-link {
 
 body.light-mode .article-quick-nav-link:hover,
 body.light-mode .article-quick-nav-link:focus-visible {
-    background: rgba(156,116,16,0.12);
-    border-color: rgba(122,91,10,0.22);
+    background: linear-gradient(180deg, rgba(156,116,16,0.14) 0%, rgba(156,116,16,0.08) 100%);
+    border-color: rgba(122,91,10,0.28);
     color: var(--accent-gold-dark);
-    box-shadow: 0 0 0 1px rgba(122,91,10,0.08), 0 12px 24px rgba(103, 74, 18, 0.12);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.58), 0 0 0 1px rgba(122,91,10,0.08), 0 10px 20px rgba(103, 74, 18, 0.1);
 }
 
 body.light-mode .article-quick-nav-link.is-active {
@@ -3212,12 +3212,15 @@ body.light-mode .dark-mode-toggle:hover {
     color: var(--accent-gold);
     text-decoration: none;
     font-weight: 700;
+    padding: 0.34rem 0.62rem;
+    margin: -0.34rem -0.14rem;
+    border-radius: 999px;
 }
 
 .course-action-link,
 .chapter-nav-link,
 .chapter-meta-link {
-    transition: color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+    transition: color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
 }
 
 .course-action-link:hover,
@@ -3227,8 +3230,8 @@ body.light-mode .dark-mode-toggle:hover {
 .chapter-meta-link:hover,
 .chapter-meta-link:focus-visible {
     color: var(--accent-gold-light);
-    background: rgba(212,175,55,0.08);
-    box-shadow: 0 0 0 1px rgba(212,175,55,0.14);
+    background: linear-gradient(180deg, rgba(212,175,55,0.12) 0%, rgba(212,175,55,0.06) 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 0 0 1px rgba(212,175,55,0.12);
     outline: none;
 }
 
@@ -3245,6 +3248,7 @@ body.light-mode .dark-mode-toggle:hover {
     min-height: 44px;
     padding: 0.35rem 0.5rem 0.35rem 0;
     border-radius: 0.7rem;
+    border: 1px solid transparent;
     font-size: 1.04rem;
     line-height: 1.45;
     font-weight: 800;
@@ -3315,6 +3319,9 @@ body.light-mode .dark-mode-toggle:hover {
 .chapter-meta-link {
     color: inherit;
     text-decoration: none;
+    padding: 0.24rem 0.48rem;
+    margin: -0.24rem -0.08rem;
+    border-radius: 999px;
 }
 
 .chapter-shell {
@@ -3498,8 +3505,8 @@ body.light-mode .chapter-nav-link:hover,
 body.light-mode .chapter-nav-link:focus-visible,
 body.light-mode .chapter-meta-link:hover,
 body.light-mode .chapter-meta-link:focus-visible {
-    background: rgba(122,91,10,0.1);
-    box-shadow: 0 0 0 1px rgba(122,91,10,0.12);
+    background: linear-gradient(180deg, rgba(122,91,10,0.1) 0%, rgba(122,91,10,0.05) 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.56), 0 0 0 1px rgba(122,91,10,0.12);
 }
 
 body.light-mode .course-callout {
