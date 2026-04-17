@@ -786,6 +786,9 @@ main {
     font-size: 0.9rem;
     color: var(--text-tertiary);
     font-style: italic;
+    max-width: 62ch;
+    line-height: 1.78;
+    text-wrap: pretty;
 }
 
 .section-date {
@@ -1007,6 +1010,22 @@ main {
     margin-bottom: var(--space-xl);
     position: relative;
     z-index: 1;
+}
+
+.wisdom-content p,
+.stock-card .analysis-box p,
+.stock-card .highlight-box p,
+.stock-detail-card .analysis-box p,
+.stock-detail-card .news-content,
+.stock-detail-card .news-perspective {
+    max-width: min(68ch, 100%);
+}
+
+.wisdom-content p + p,
+.stock-card .analysis-box p + p,
+.stock-card .highlight-box p + p,
+.stock-detail-card .analysis-box p + p {
+    margin-top: 0.95rem;
 }
 
 .wisdom-image {

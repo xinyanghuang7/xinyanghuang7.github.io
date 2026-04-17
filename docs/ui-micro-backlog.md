@@ -122,6 +122,21 @@ If the change is in shared CSS / JS, recheck both blog and options surfaces.
 
 ## Round Log
 
+### 2026-04-17 20:05 Asia/Shanghai — Article body width and paragraph rhythm tuning
+- **Issue:** 最近几篇长文的主体阅读面已经比早期稳定很多，但正文里几类高频文字块的行宽和段间节奏仍略微偏散：`section subtitle` 容易一口气铺太宽，`analysis-box / highlight-box / wisdom / news` 里的正文段落在桌面端也偶尔显得横向拉得太开，读起来不像“看不清”，而是会增加一点扫读疲劳。
+- **Why now:** 这是 backlog 当前最值钱、又足够安全的阅读体验微问题。只做共享 CSS 的文字宽度与段落节奏收口，不改任何文案、不改卡片结构、不碰首页和课程页的信息架构。
+- **Files touched:** `css/style.css`
+- **Local QA:** `powershell.exe -ExecutionPolicy Bypass -File scripts/qa-site.ps1` → PASS
+- **Publish:** pending
+- **Live recheck pages:** `https://4fire.qzz.io/`, `https://4fire.qzz.io/options/`, `https://4fire.qzz.io/posts/2026/04/17.html`, `https://4fire.qzz.io/posts/2026/04/16.html`, `https://4fire.qzz.io/posts/2026/04/15.html`
+- **Garble check:** pending
+- **Previous published pages rechecked:** pending
+- **Result:** pending
+- **Next 3 candidates:**
+  1. Archive card metadata hierarchy
+  2. Shared button / link affordance contrast（轻量复核）
+  3. Sticky offset consistency audit（只在复现后再改）
+
 ### 2026-04-17 17:25 Asia/Shanghai — Hero text density rebalance
 - **Issue:** 首页 hero 的 `subtitle / 标题 / 引语 / 描述` 都是对的，但首屏纵向堆叠有点重：标题宽度偏散、引语和说明都在抢第二层级，读起来像一层层往下压，而不是先抓主标题再自然落到说明。
 - **Why now:** 这是 backlog 当前最值钱的首页微问题，而且可以继续用最小共享层改动收口。只动 `css/style.css` 里的 hero 节奏与层级，不改首页内容，不改信息架构，也不顺手扩到 about / archive 区。
