@@ -122,6 +122,21 @@ If the change is in shared CSS / JS, recheck both blog and options surfaces.
 
 ## Round Log
 
+### 2026-04-17 15:45 Asia/Shanghai — Author / footer quieting pass
+- **Issue:** 最近几轮已经把 shared cards、search、anchor offset 这类高频交互面收紧了，但文章尾部的 support info 还略显抢戏：author block 的金色头像和底板存在感偏强，全站 footer 的顶部金线、padding 和免责声明块也比正文收尾更“喊”。内容没错，只是尾声没有足够安静。
+- **Why now:** 这项是 backlog 里当前最值钱、又足够安全的共享层小问题。只做 `css/style.css` 里的 author / footer 降噪，不改任何 HTML，不碰正文节奏，也不去重做尾部组件。
+- **Files touched:** `css/style.css`
+- **Local QA:** `powershell.exe -ExecutionPolicy Bypass -File scripts/qa-site.ps1` → PASS
+- **Publish:** committed `e5de242` (`style: quiet author and footer surfaces`) and pushed to `main`
+- **Live recheck pages:** `https://4fire.qzz.io/`, `https://4fire.qzz.io/options/`, `https://4fire.qzz.io/posts/2026/04/17.html`, `https://4fire.qzz.io/posts/2026/04/16.html`, `https://4fire.qzz.io/options/01.html`
+- **Garble check:** pass — all sampled live pages returned 200 with no replacement char (`�`) or high-risk mojibake tokens; cache-busted live `https://4fire.qzz.io/css/style.css?v=20260326review3&oc=1545d` contains the new quieter author / footer rules.
+- **Previous published pages rechecked:** yes
+- **Result:** pass — 这轮把 author block 和全站 footer 的视觉音量往下收了一格：author 卡片底板、边框和头像高光更克制，footer 的顶部金线、内边距、字距和免责声明块也更安静；support info 还在，但不再和正文争层级。
+- **Next 3 candidates:**
+  1. Mobile quick-nav tap target polish
+  2. Chapter prev/next navigation clarity
+  3. Hero text density rebalance
+
 ### 2026-04-17 15:25 Asia/Shanghai — Shared card spacing normalization
 - **Issue:** 共享层几类高频卡片虽然各自已经能用，但细看会发现节奏不完全在一个档位上：首页 archive cards、文章里的 stat / decision cards、以及 rating support card 的内边距和圆角有点各走各的，结果是页面切换时会有轻微的“这块更挤 / 那块更松”的感觉。
 - **Why now:** sticky offset 这轮已经收过，接下来最值钱、又适合继续落在共享 CSS 的，就是把这几类常见卡片的 spacing 往同一档靠。只动 padding / radius / margin，不动结构、不改内容，也不重新做卡片体系。
