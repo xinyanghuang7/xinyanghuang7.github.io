@@ -122,6 +122,21 @@ If the change is in shared CSS / JS, recheck both blog and options surfaces.
 
 ## Round Log
 
+### 2026-04-17 15:00 Asia/Shanghai — Sticky offset consistency audit
+- **Issue:** 之前已经把 mobile quick nav 改成底部悬浮，但锚点落点仍沿用桌面口径的 `header + quick nav + gap` 统一 offset。结果是在手机上点 quick nav / 目录跳转时，页面会被“多推下去一截”，体感像落点不稳、章节没贴住预期位置。
+- **Why now:** 这是 backlog 里当前最值钱的共享层问题，而且这轮已经能确认根因，不再只是抽象 audit。最小修正就是只在 mobile breakpoint 下把 anchor offset 改回“只算顶部真正遮挡的 header + 小缓冲”，不去碰桌面 sticky quick nav 本身。
+- **Files touched:** `css/style.css`
+- **Local QA:** `powershell.exe -ExecutionPolicy Bypass -File scripts/qa-site.ps1` → PASS
+- **Publish:** pending
+- **Live recheck pages:** pending
+- **Garble check:** pending
+- **Previous published pages rechecked:** pending
+- **Result:** pending — 这轮把根因收敛到了一个很小的共享变量修正：在 `@media (max-width: 768px)` 下，把 `--oc-anchor-offset` 从桌面逻辑改成 `header + 18px`，让移动端的锚点落点不再把底部 quick nav 也误算成顶部遮挡。
+- **Next 3 candidates:**
+  1. Shared card spacing normalization
+  2. Author / footer quieting pass
+  3. Mobile quick-nav tap target polish
+
 ### 2026-04-17 14:58 Asia/Shanghai — Search panel readability polish
 - **Issue:** 首页 archive search 虽然结构已经完整，但结果项扫读节奏还是有点散：日期、标题、摘要之间的层级不够稳，空结果态也有点像一段裸文字；整体属于“能用，但还不够顺眼”。
 - **Why now:** backlog 里这项是当前最安全、最适合继续落在共享 CSS 的小问题；刚做完 light-mode 对比度补强，这轮顺着同一块表面继续把结果列表的可扫读性往上提一档，不碰信息架构也不碰搜索逻辑。

@@ -3568,6 +3568,10 @@ footer .disclaimer {
 
 /* Responsive Typography */
 @media (max-width: 768px) {
+    :root {
+        --oc-anchor-offset: calc(var(--oc-header-height) + 18px);
+    }
+
     body {
         font-size: 1rem;
         line-height: 1.72;
