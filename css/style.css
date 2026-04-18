@@ -6795,6 +6795,61 @@ body.dark-mode .course-filter-input {
     }
 }
 
+/* 20260418comfort2: mobile clipping + small-text contrast refinement */
+.section-header {
+    overflow: visible;
+}
+
+.section-number {
+    display: inline-flex;
+    align-items: flex-start;
+    flex-shrink: 0;
+    padding-inline: 0.03em 0.18em;
+    margin-inline-start: -0.03em;
+    overflow: visible;
+}
+
+.hero-description,
+.section-subtitle,
+.search-status-text,
+footer .disclaimer,
+.wisdom-image p {
+    color: var(--text-secondary);
+}
+
+.article-meta-chip,
+.course-stat-label,
+.course-card-kicker,
+.course-update-date,
+.chapter-nav-label,
+.stock-meta-label,
+.wisdom-theme,
+.editorial-band-label,
+.news-panel-kicker,
+.news-meta-pill,
+.news-source-link {
+    color: color-mix(in srgb, var(--text-secondary) 88%, var(--accent-gold-dark) 12%);
+}
+
+footer .disclaimer {
+    font-size: 0.86rem;
+}
+
+@media (max-width: 768px) {
+    .section-header {
+        gap: 0.55rem;
+    }
+
+    .section-number {
+        max-width: none;
+        min-width: max-content;
+        width: max-content;
+        font-size: 2.3rem;
+        padding-inline: 0.04em 0.22em;
+        margin-bottom: 0.24rem;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

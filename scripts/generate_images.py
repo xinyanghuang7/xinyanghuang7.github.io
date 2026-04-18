@@ -13,6 +13,7 @@ from datetime import datetime
 from pathlib import Path
 
 import requests
+from PIL import Image, ImageOps
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 IMAGES_DIR = BASE_DIR / "images"
@@ -136,6 +137,25 @@ def poll_generation_result(task_id: str, token: str, output_file: Path) -> bool:
     return False
 
 
+def optimize_output_image(output_file: Path, max_width: int = 1200, quality: int = 82) -> None:
+    """统一把输出图片规范成真实 JPEG，并尽量压缩到更适合网页分发的体积。"""
+    with Image.open(output_file) as img:
+        img = ImageOps.exif_transpose(img)
+        if img.width > max_width:
+            ratio = max_width / float(img.width)
+            resized_height = max(1, round(img.height * ratio))
+            img = img.resize((max_width, resized_height), Image.Resampling.LANCZOS)
+
+        if img.mode not in ("RGB", "L"):
+            img = img.convert("RGB")
+        elif img.mode == "L":
+            img = img.convert("RGB")
+
+        temp_path = output_file.with_suffix(output_file.suffix + ".tmp")
+        img.save(temp_path, format="JPEG", quality=quality, optimize=True, progressive=True)
+        temp_path.replace(output_file)
+
+
 def generate_image(prompt: str, output_file: Path, model: str = "Qwen/Qwen-Image") -> bool:
     """调用 ModelScope API 生成单张图片。"""
     token = get_modelscope_token()
@@ -144,7 +164,10 @@ def generate_image(prompt: str, output_file: Path, model: str = "Qwen/Qwen-Image
     print(f"  Prompt: {prompt[:80]}...")
     task_id = submit_generation_task(prompt, model, token)
     print(f"  任务ID: {task_id}")
-    return poll_generation_result(task_id, token, output_file)
+    ok = poll_generation_result(task_id, token, output_file)
+    if ok:
+        optimize_output_image(output_file)
+    return ok
 
 
 def copy_fallback_image(kind: str, output_file: Path) -> bool:
@@ -154,6 +177,7 @@ def copy_fallback_image(kind: str, output_file: Path) -> bool:
         return False
 
     shutil.copyfile(fallback, output_file)
+    optimize_output_image(output_file)
     file_size = output_file.stat().st_size
     print(f"  [FALLBACK] 已回退到保底图: {output_file.name} ({file_size:,} bytes)")
     return True

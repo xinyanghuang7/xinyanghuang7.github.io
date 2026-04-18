@@ -308,28 +308,29 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
     price_display = f"${current_price:.2f}" if current_price else "待更新"
     target_display = f"${target_price:.2f}" if target_price else "待更新"
     upside = f"+{((target_price - current_price) / current_price * 100):.1f}%" if current_price and target_price else "待更新"
+    meta_description = f"{date_str} 跟踪笔记：为什么继续看 {focus_stock}，核心盯公司质量、thesis 兑现路径与真正会改变组合动作的变量。"
     
     html = f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{date_str} 美股分析: {focus_stock} 深度研究">
+    <meta name="description" content="{meta_description}">
     <meta name="theme-color" content="#ECE9E0">
     <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
     <link rel="canonical" href="https://4fire.qzz.io/posts/{date_obj.year}/{date_obj.month:02d}/{date_obj.day:02d}.html">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://4fire.qzz.io/posts/{date_obj.year}/{date_obj.month:02d}/{date_obj.day:02d}.html">
     <meta property="og:title" content="{date_str} 美股分析: {focus_stock} | 美股价值投资笔记">
-    <meta property="og:description" content="{date_str} 美股分析: {focus_stock} 深度研究">
+    <meta property="og:description" content="{meta_description}">
     <meta property="og:image" content="https://4fire.qzz.io/images/posts/{date_str}-value.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{date_str} 美股分析: {focus_stock} | 美股价值投资笔记">
-    <meta name="twitter:description" content="{date_str} 美股分析: {focus_stock} 深度研究">
+    <meta name="twitter:description" content="{meta_description}">
     <meta name="twitter:image" content="https://4fire.qzz.io/images/posts/{date_str}-value.jpg">
     <meta name="keywords" content="美股,{focus_stock},价值投资,长期持有,股票分析">
     <title>{date_str} 美股分析: {focus_stock} | 美股价值投资笔记</title>
-    <link rel="stylesheet" href="../../../css/style.css?v=20260418comfort1">
+    <link rel="stylesheet" href="../../../css/style.css?v=20260418comfort2">
 </head>
 <body>
     <!-- Scroll Progress Bar -->
@@ -413,7 +414,7 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
                     <p>生成文章时，这里优先写一个能复用的判断框架：这家公司真正值钱的是什么，哪些证据能强化 thesis，哪些变量会让结论反转。避免再用空泛名言充当内容。</p>
                 </div>
                 <div class="wisdom-image">
-                    <img src="../../../images/posts/{date_str}-value.jpg" alt="价值投资">
+                    <img src="../../../images/posts/{date_str}-value.jpg" alt="价值投资认知配图" width="768" height="1280" loading="lazy" decoding="async">
                 </div>
                 <div class="wisdom-rules">
                     <h4>可落地执行规则</h4>
@@ -438,7 +439,7 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
             
             <div class="market-grid market-grid-comfort">
                 <div style="grid-column: 1 / -1; margin-bottom: 1rem;">
-                    <img src="../../../images/posts/{date_str}-tech.jpg" alt="组合观察与市场结构" style="width:100%;height:300px;object-fit:cover; border-radius:18px;">
+                    <img src="../../../images/posts/{date_str}-tech.jpg" alt="组合观察与市场结构" width="768" height="1280" style="width:100%;height:300px;object-fit:cover; border-radius:18px;" loading="lazy" decoding="async">
                 </div>
                 <div class="editorial-band market-editorial-band" style="grid-column: 1 / -1; margin-bottom: 0.9rem;">
                     <div class="editorial-band-main">
@@ -494,7 +495,7 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
         <p>美股长期价值投资 · 研究先于动作 · 长期主义优先</p>
     </footer>
     
-    <script src="../../../js/main.js?v=20260418comfort1"></script>
+    <script src="../../../js/main.js?v=20260418comfort2"></script>
 </body>
 </html>"""
     

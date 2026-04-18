@@ -12,6 +12,8 @@ from pathlib import Path
 from typing import Iterable
 from urllib.parse import quote
 
+from PIL import Image
+
 SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
@@ -297,6 +299,30 @@ def render_markdown(markdown_text: str) -> str:
     return "\n".join(out)
 
 
+def inject_local_image_dimensions(html_text: str, page_path: Path) -> str:
+    def replace(match: re.Match[str]) -> str:
+        tag = match.group(0)
+        src = match.group(1)
+        if src.startswith(("http://", "https://", "data:")):
+            return tag
+        if " width=" in tag and " height=" in tag:
+            return tag
+
+        image_path = (page_path.parent / src).resolve()
+        if not image_path.exists() or not image_path.is_file():
+            return tag
+
+        try:
+            with Image.open(image_path) as img:
+                width, height = img.size
+        except Exception:
+            return tag
+
+        return tag.replace("<img", f'<img width="{width}" height="{height}"', 1)
+
+    return re.sub(r'<img\b[^>]*src="([^"]+)"[^>]*>', replace, html_text)
+
+
 def build_navigation(published: list[Chapter]) -> dict[str, dict[str, Chapter | None]]:
     nav: dict[str, dict[str, Chapter | None]] = {}
     for index, chapter in enumerate(published):
@@ -552,6 +578,7 @@ def build_site() -> list[Path]:
         body_html = expand_payoff_chart_tokens(body_html, workspace_root)
         page_html = build_chapter_page(chapter, body_html, nav[chapter.id])
         output_path = SITE_ROOT / chapter.output_path
+        page_html = inject_local_image_dimensions(page_html, output_path)
         output_path.write_text(page_html, encoding="utf-8", newline="\n")
         outputs.append(output_path)
 
