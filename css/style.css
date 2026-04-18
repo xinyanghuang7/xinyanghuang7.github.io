@@ -6072,6 +6072,90 @@ footer,
     gap: 1rem;
 }
 
+.editorial-band {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(300px, 0.95fr);
+    gap: 1.1rem;
+    margin-top: 1.35rem;
+    padding: 1.35rem;
+    border-radius: 30px;
+    border: 1px solid rgba(112, 90, 46, 0.14);
+    background: linear-gradient(135deg, rgba(255, 252, 247, 0.96), rgba(247, 240, 228, 0.88));
+    box-shadow: 0 20px 48px rgba(118, 85, 27, 0.08);
+}
+
+.editorial-band-main,
+.editorial-band-side,
+.editorial-band-item {
+    display: grid;
+    gap: 0.65rem;
+}
+
+.editorial-band-main {
+    align-content: start;
+}
+
+.editorial-band-side {
+    align-content: start;
+}
+
+.editorial-band-kicker,
+.editorial-band-label {
+    font-size: 0.76rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+.editorial-band h3 {
+    margin: 0;
+    font-size: clamp(1.34rem, 2vw, 1.7rem);
+    line-height: 1.28;
+    color: var(--text-primary);
+}
+
+.editorial-band p {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--text-secondary);
+    line-height: 1.86;
+}
+
+.editorial-band-item {
+    padding: 0.95rem 1rem;
+    border-radius: 20px;
+    border: 1px solid rgba(112, 90, 46, 0.12);
+    background: rgba(255, 255, 255, 0.64);
+}
+
+.editorial-band-item strong {
+    color: var(--text-primary);
+    font-size: 1rem;
+    line-height: 1.62;
+    font-weight: 700;
+}
+
+.course-preview-band,
+.course-editorial-band,
+.chapter-reading-rail {
+    position: relative;
+    overflow: hidden;
+}
+
+.course-preview-band::after,
+.course-editorial-band::after,
+.chapter-reading-rail::after {
+    content: '';
+    position: absolute;
+    inset: auto -5% -38% auto;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(217, 119, 87, 0.13), rgba(217, 119, 87, 0));
+    pointer-events: none;
+}
+
 .research-card,
 .course-toolkit-card,
 .chapter-method-card {
@@ -6193,7 +6277,8 @@ footer,
     .research-grid,
     .course-toolkit-grid,
     .chapter-method-grid,
-    .payoff-chart-grid {
+    .payoff-chart-grid,
+    .editorial-band {
         grid-template-columns: 1fr;
     }
 
@@ -6232,8 +6317,17 @@ footer,
     .payoff-chart-block,
     .research-card,
     .course-toolkit-card,
-    .chapter-method-card {
+    .chapter-method-card,
+    .editorial-band {
         padding: 1.2rem;
+    }
+
+    .editorial-band h3 {
+        font-size: 1.26rem;
+    }
+
+    .editorial-band-item strong {
+        font-size: 0.98rem;
     }
 
     .payoff-chart-tooltip {
