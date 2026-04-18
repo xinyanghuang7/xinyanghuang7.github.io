@@ -1,4 +1,7 @@
-﻿:root {
+@import url("./anthropic/fonts/fonts.css");
+@import url("./anthropic/base.css");
+
+:root {
     /* Core Colors - Deep Luxury */
     --bg-primary: #0a0a0a;
     --bg-secondary: #141414;
@@ -4795,5 +4798,679 @@ body.light-mode .loading-skeleton {
     .chapter-body-card code,
     code {
         border-width: 2px;
+    }
+}
+
+/* ============================================
+   13. 2026-04-18 Recovery Layer
+   Unify the site onto one Anthropic-style editorial system.
+   ============================================ */
+:root {
+    --bg-primary: var(--color-bg-base);
+    --bg-secondary: var(--color-bg-raised);
+    --bg-tertiary: #E4DFD2;
+    --bg-card: rgba(253, 252, 248, 0.96);
+    --bg-card-hover: rgba(255, 254, 250, 0.99);
+
+    --text-primary: var(--color-text-primary);
+    --text-secondary: var(--color-text-secondary);
+    --text-tertiary: #555148;
+    --text-muted: #7C786F;
+
+    --accent-gold: var(--color-accent-orange);
+    --accent-gold-light: #E39A7B;
+    --accent-gold-dark: var(--color-accent-warm);
+    --accent-emerald: var(--color-success);
+    --accent-amber: var(--color-warning);
+    --accent-crimson: var(--color-error);
+
+    --font-display: var(--font-display-cn);
+    --font-body: var(--font-body-cn);
+    --font-heading-site: var(--font-heading-cn);
+
+    --shadow-sm: 0 10px 30px rgba(20, 20, 19, 0.07);
+    --shadow-md: 0 18px 44px rgba(20, 20, 19, 0.10);
+    --shadow-lg: 0 28px 64px rgba(20, 20, 19, 0.13);
+    --shadow-gold: 0 16px 38px rgba(217, 119, 87, 0.18);
+}
+
+body.light-mode,
+body:not(.dark-mode) {
+    --bg-primary: var(--color-bg-base);
+    --bg-secondary: var(--color-bg-raised);
+    --bg-tertiary: #E4DFD2;
+    --bg-card: rgba(253, 252, 248, 0.96);
+    --bg-card-hover: rgba(255, 254, 250, 0.99);
+    --text-primary: var(--color-text-primary);
+    --text-secondary: var(--color-text-secondary);
+    --text-tertiary: #555148;
+    --text-muted: #7C786F;
+    --accent-gold: var(--color-accent-orange);
+    --accent-gold-light: #E39A7B;
+    --accent-gold-dark: var(--color-accent-warm);
+    --accent-emerald: var(--color-success);
+    --accent-amber: var(--color-warning);
+    --accent-crimson: var(--color-error);
+}
+
+body.dark-mode {
+    --bg-primary: #1A1916;
+    --bg-secondary: #222119;
+    --bg-tertiary: #2B2922;
+    --bg-card: rgba(34, 33, 25, 0.96);
+    --bg-card-hover: rgba(42, 40, 31, 0.99);
+    --text-primary: #EAE7DC;
+    --text-secondary: #C1BDAF;
+    --text-tertiary: #A39E92;
+    --text-muted: #807A6E;
+    --accent-gold: #D97757;
+    --accent-gold-light: #E7A184;
+    --accent-gold-dark: #C96442;
+    --accent-emerald: #7E9D60;
+    --accent-amber: #D2A453;
+    --accent-crimson: #DA6A5B;
+    --shadow-sm: 0 10px 30px rgba(0, 0, 0, 0.28);
+    --shadow-md: 0 20px 48px rgba(0, 0, 0, 0.34);
+    --shadow-lg: 0 32px 72px rgba(0, 0, 0, 0.42);
+    --shadow-gold: 0 16px 38px rgba(217, 119, 87, 0.16);
+}
+
+html {
+    background: var(--bg-primary);
+}
+
+body {
+    background:
+        radial-gradient(circle at top left, rgba(217, 119, 87, 0.09), transparent 30%),
+        radial-gradient(circle at top right, rgba(106, 155, 204, 0.06), transparent 24%),
+        var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: var(--text-cn-base);
+    line-height: var(--leading-cn-normal);
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+p,
+li,
+.article-body,
+.chapter-body,
+.course-intro-card,
+.course-grid-card,
+.course-update-card,
+.course-note-card,
+.stock-meta-value,
+.analysis-box p {
+    font-family: var(--font-body);
+    line-height: var(--leading-cn-normal);
+}
+
+header {
+    background: rgba(236, 233, 224, 0.86);
+    border-bottom: 1px solid rgba(155, 152, 144, 0.28);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: none;
+}
+
+body.dark-mode header {
+    background: rgba(26, 25, 22, 0.86);
+    border-bottom-color: rgba(157, 154, 145, 0.18);
+}
+
+header.scrolled {
+    box-shadow: var(--shadow-sm);
+    border-bottom-color: rgba(201, 100, 66, 0.28);
+}
+
+.nav-container {
+    max-width: 1240px;
+    padding: 18px clamp(20px, 4vw, 40px);
+    gap: 24px;
+}
+
+.logo {
+    font-family: var(--font-heading-site);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+}
+
+.logo:hover,
+.logo:hover span,
+.nav-links a:hover,
+.course-action-link,
+.course-action-link:hover,
+.search-result-item:hover .search-result-title,
+.archive-item:hover .archive-item-title {
+    color: var(--accent-gold-dark);
+}
+
+.logo::after,
+.nav-links a::before {
+    background: var(--accent-gold);
+}
+
+.logo span,
+.nav-links a,
+.nav-date,
+.section-subtitle,
+.archive-item-desc,
+.course-entry-card-desc,
+.hero-description,
+.search-meta-text {
+    color: var(--text-secondary);
+}
+
+.nav-links a {
+    font-family: var(--font-heading-site);
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+}
+
+.hero {
+    position: relative;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: clamp(88px, 12vw, 144px) clamp(20px, 4vw, 48px) clamp(56px, 8vw, 96px);
+    min-height: auto;
+    border-bottom: none;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: auto 20px 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(155, 152, 144, 0.5), transparent);
+}
+
+.hero-bg-pattern {
+    opacity: 0.08;
+    filter: grayscale(100%);
+    mix-blend-mode: multiply;
+}
+
+body.dark-mode .hero-bg-pattern {
+    opacity: 0.12;
+    mix-blend-mode: screen;
+}
+
+.hero-content {
+    max-width: 920px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero .subtitle,
+.section-number,
+.article-meta-chip,
+.course-card-kicker,
+.course-stat-label,
+.course-update-date,
+.stock-meta-label,
+.wisdom-theme,
+.decision-card-kicker {
+    font-family: var(--font-heading-site);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.hero .subtitle {
+    color: var(--accent-gold-dark);
+    font-size: 0.85rem;
+    margin-bottom: 14px;
+}
+
+.hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    max-width: 18ch;
+    margin-bottom: 20px;
+}
+
+.hero .tagline {
+    max-width: 50ch;
+    font-size: clamp(1.12rem, 2vw, 1.42rem);
+    color: var(--text-secondary);
+}
+
+.hero-description {
+    max-width: 56ch;
+    font-size: 1.02rem;
+}
+
+.scroll-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 28px;
+    color: var(--accent-gold-dark);
+    font-family: var(--font-heading-site);
+    font-size: 0.86rem;
+    letter-spacing: 0.08em;
+}
+
+main {
+    max-width: 1240px;
+    padding: 0 clamp(20px, 4vw, 48px) 120px;
+}
+
+.section {
+    margin-bottom: clamp(56px, 8vw, 96px);
+}
+
+.section-header {
+    align-items: flex-start;
+    gap: 18px;
+}
+
+.section-number,
+.section-date {
+    color: var(--accent-gold-dark);
+}
+
+.section-title,
+.analysis-title,
+.wisdom-title,
+.course-entry-card-title,
+.stock-detail-ticker,
+.stock-ticker,
+.archive-item-title,
+.search-result-title {
+    font-family: var(--font-display);
+    color: var(--text-primary);
+}
+
+.section-title {
+    font-size: clamp(1.9rem, 3vw, 2.7rem);
+    line-height: var(--leading-cn-snug);
+}
+
+.author-profile,
+.highlight-box,
+.stock-card,
+.wisdom-card,
+.stock-detail-card,
+.rating-card,
+.analysis-box,
+.homepage-course-entry,
+.course-intro-card,
+.course-grid-card,
+.course-update-card,
+.course-note-card,
+.chapter-body-card,
+.article-body,
+.search-results,
+.archive-item,
+.calendar-section,
+.course-directory-pill,
+.article-meta-chip,
+.decision-card-row,
+.stock-meta-item,
+.news-item,
+.market-grid > article,
+.market-grid > div,
+.stock-ratings-grid > article {
+    background: var(--bg-card);
+    border: 1px solid rgba(155, 152, 144, 0.22);
+    box-shadow: var(--shadow-sm);
+}
+
+body.dark-mode .author-profile,
+body.dark-mode .highlight-box,
+body.dark-mode .stock-card,
+body.dark-mode .wisdom-card,
+body.dark-mode .stock-detail-card,
+body.dark-mode .rating-card,
+body.dark-mode .analysis-box,
+body.dark-mode .homepage-course-entry,
+body.dark-mode .course-intro-card,
+body.dark-mode .course-grid-card,
+body.dark-mode .course-update-card,
+body.dark-mode .course-note-card,
+body.dark-mode .chapter-body-card,
+body.dark-mode .article-body,
+body.dark-mode .search-results,
+body.dark-mode .archive-item,
+body.dark-mode .calendar-section,
+body.dark-mode .course-directory-pill,
+body.dark-mode .article-meta-chip,
+body.dark-mode .decision-card-row,
+body.dark-mode .stock-meta-item,
+body.dark-mode .news-item,
+body.dark-mode .market-grid > article,
+body.dark-mode .market-grid > div,
+body.dark-mode .stock-ratings-grid > article {
+    border-color: rgba(157, 154, 145, 0.16);
+}
+
+.highlight-box,
+.analysis-box,
+.news-item,
+.stock-meta-item,
+.decision-card-row,
+.course-directory-pill,
+.article-meta-chip {
+    border-radius: 16px;
+}
+
+.author-profile,
+.stock-card,
+.wisdom-card,
+.stock-detail-card,
+.rating-card,
+.homepage-course-entry,
+.course-intro-card,
+.course-grid-card,
+.course-update-card,
+.course-note-card,
+.chapter-body-card,
+.article-body,
+.calendar-section {
+    border-radius: 24px;
+}
+
+.highlight-box {
+    padding: 22px 24px;
+}
+
+.highlight-box.tip {
+    background: rgba(217, 119, 87, 0.08);
+    border-color: rgba(217, 119, 87, 0.28);
+}
+
+.highlight-box.positive {
+    background: rgba(107, 143, 71, 0.08);
+    border-color: rgba(107, 143, 71, 0.26);
+}
+
+.highlight-box.warning {
+    background: rgba(201, 148, 58, 0.09);
+    border-color: rgba(201, 148, 58, 0.30);
+}
+
+.article-meta-bar,
+.course-directory-meta,
+.stock-meta,
+.course-card-actions,
+.search-meta-row {
+    gap: 10px;
+}
+
+.article-meta-chip,
+.course-directory-pill,
+.search-meta-pill {
+    color: var(--text-secondary);
+    padding: 0.55rem 0.9rem;
+}
+
+.article-meta-chip-accent,
+.search-meta-pill,
+.course-status-pill.course-status-published,
+.course-status-pill.course-status-syncing,
+.tracking-badge-core {
+    background: rgba(217, 119, 87, 0.12);
+    border-color: rgba(217, 119, 87, 0.28);
+    color: var(--accent-gold-dark);
+}
+
+.course-status-pill,
+.tracking-badge,
+.stock-exchange,
+.author-title,
+.news-source,
+.stock-name,
+.stock-detail-name {
+    color: var(--text-secondary);
+}
+
+.analysis-box,
+.article-body,
+.chapter-body-card,
+.wisdom-card,
+.stock-card,
+.stock-detail-card,
+.rating-card {
+    padding: clamp(22px, 3vw, 34px);
+}
+
+.analysis-box h3,
+.wisdom-card h3,
+.stock-card h3,
+.stock-detail-card h3,
+.rating-card h3,
+.chapter-body-card h2,
+.article-body h2,
+.article-body h3,
+.article-body h4 {
+    font-family: var(--font-display);
+    line-height: var(--leading-cn-snug);
+}
+
+.article-body,
+.chapter-body-card {
+    max-width: 860px;
+    margin-inline: auto;
+}
+
+.article-body p,
+.chapter-body-card p,
+.wisdom-content p,
+.news-content,
+.news-perspective,
+.stock-meta-value,
+.analysis-box p,
+.course-card-desc,
+.course-update-desc,
+.archive-item-desc {
+    font-size: 1rem;
+    line-height: 1.82;
+    color: var(--text-secondary);
+}
+
+.article-body strong,
+.chapter-body-card strong,
+.analysis-box strong,
+.news-perspective strong,
+.highlight-box strong {
+    color: var(--text-primary);
+}
+
+.article-body a,
+.chapter-body-card a,
+footer a,
+.search-result-item,
+.archive-item,
+.course-action-link {
+    text-underline-offset: 0.2em;
+}
+
+.article-body blockquote,
+.chapter-body-card blockquote {
+    margin: 28px 0;
+    padding: 18px 22px;
+    border-left: 3px solid var(--accent-gold);
+    background: rgba(217, 119, 87, 0.08);
+    color: var(--text-primary);
+    border-radius: 0 16px 16px 0;
+}
+
+.article-body code,
+.chapter-body-card code,
+code {
+    background: rgba(20, 20, 19, 0.06);
+    border: 1px solid rgba(155, 152, 144, 0.18);
+    color: var(--text-primary);
+}
+
+body.dark-mode .article-body code,
+body.dark-mode .chapter-body-card code,
+body.dark-mode code {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(157, 154, 145, 0.16);
+}
+
+.article-body pre,
+.chapter-body-card pre,
+pre {
+    background: rgba(20, 20, 19, 0.9);
+    color: #F5F3EC;
+    border-radius: 18px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+.article-quick-nav {
+    top: calc(var(--oc-header-height) + 10px);
+    background: rgba(253, 252, 248, 0.82);
+    border: 1px solid rgba(155, 152, 144, 0.22);
+    border-radius: 999px;
+    box-shadow: var(--shadow-sm);
+}
+
+body.dark-mode .article-quick-nav {
+    background: rgba(34, 33, 25, 0.88);
+    border-color: rgba(157, 154, 145, 0.18);
+}
+
+.article-quick-nav-link,
+.search-shortcut-hint,
+.calendar-nav,
+.calendar-today,
+.back-to-top,
+.dark-mode-toggle {
+    font-family: var(--font-heading-site);
+}
+
+.article-quick-nav-link,
+.calendar-nav,
+.calendar-today,
+.back-to-top,
+.dark-mode-toggle {
+    border: 1px solid rgba(155, 152, 144, 0.2);
+    background: rgba(253, 252, 248, 0.92);
+    box-shadow: none;
+}
+
+body.dark-mode .article-quick-nav-link,
+body.dark-mode .calendar-nav,
+body.dark-mode .calendar-today,
+body.dark-mode .back-to-top,
+body.dark-mode .dark-mode-toggle {
+    background: rgba(42, 40, 31, 0.95);
+    border-color: rgba(157, 154, 145, 0.16);
+}
+
+.article-quick-nav-link:hover,
+.article-quick-nav-link.is-active,
+.calendar-nav:hover,
+.calendar-today:hover,
+.back-to-top:hover,
+.dark-mode-toggle:hover,
+.archive-item:hover,
+.search-result-item:hover,
+.course-grid-card:hover,
+.course-update-card:hover,
+.stock-detail-card:hover,
+.rating-card:hover,
+.homepage-course-entry:hover {
+    border-color: rgba(217, 119, 87, 0.30);
+    box-shadow: var(--shadow-gold);
+    transform: translateY(-2px);
+}
+
+.article-quick-nav-link.is-active,
+.calendar-day.has-post,
+.search-result-item.is-active {
+    background: rgba(217, 119, 87, 0.12);
+    color: var(--accent-gold-dark);
+}
+
+.search-input,
+.calendar-month-select {
+    background: rgba(253, 252, 248, 0.9);
+    border: 1px solid rgba(155, 152, 144, 0.22);
+    color: var(--text-primary);
+}
+
+body.dark-mode .search-input,
+body.dark-mode .calendar-month-select {
+    background: rgba(42, 40, 31, 0.96);
+    border-color: rgba(157, 154, 145, 0.16);
+    color: var(--text-primary);
+}
+
+.search-input::placeholder {
+    color: var(--text-muted);
+}
+
+.calendar-title,
+.archive-year-title,
+.archive-month-title,
+.search-result-title {
+    font-family: var(--font-display);
+}
+
+.archive-item-arrow,
+.search-result-arrow,
+.course-action-link span,
+.scroll-indicator::after {
+    color: var(--accent-gold-dark);
+}
+
+footer {
+    border-top: 1px solid rgba(155, 152, 144, 0.20);
+    background: transparent;
+    color: var(--text-secondary);
+}
+
+.disclaimer {
+    color: var(--text-muted);
+}
+
+img {
+    border-radius: 18px;
+}
+
+@media (max-width: 900px) {
+    .nav-container {
+        align-items: flex-start;
+    }
+
+    .hero h1 {
+        max-width: none;
+    }
+
+    .article-quick-nav {
+        border-radius: 18px;
+    }
+}
+
+@media (max-width: 720px) {
+    .nav-container {
+        gap: 14px;
+    }
+
+    .nav-links {
+        gap: 14px;
+    }
+
+    .article-body,
+    .chapter-body-card,
+    .analysis-box,
+    .stock-card,
+    .wisdom-card,
+    .stock-detail-card,
+    .rating-card {
+        padding: 20px;
+    }
+
+    .hero {
+        padding-top: 88px;
     }
 }

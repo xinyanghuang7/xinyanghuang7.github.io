@@ -1,4 +1,4 @@
-﻿// ============================================
+// ============================================
 // Premium Frontend Interactions
 // ============================================
 
@@ -321,8 +321,8 @@ function scrollToTop() {
 // Theme toggle
 const THEME_STORAGE_KEY = 'valueinvest-theme';
 const THEME_COLORS = {
-    dark: '#0a0a0a',
-    light: '#f6efe2'
+    dark: '#1A1916',
+    light: '#ECE9E0'
 };
 
 function updateThemeMeta(theme) {
@@ -354,7 +354,7 @@ function applyTheme(theme) {
 
 function getStoredTheme() {
     const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-    return storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : 'dark';
+    return storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : 'light';
 }
 
 function initDarkMode() {

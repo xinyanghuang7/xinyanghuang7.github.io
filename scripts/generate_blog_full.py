@@ -169,19 +169,45 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{date_str} 美股分析: {focus_stock} 深度研究">
+    <meta name="theme-color" content="#ECE9E0">
+    <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+    <link rel="canonical" href="https://4fire.qzz.io/posts/{date_obj.year}/{date_obj.month:02d}/{date_obj.day:02d}.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://4fire.qzz.io/posts/{date_obj.year}/{date_obj.month:02d}/{date_obj.day:02d}.html">
+    <meta property="og:title" content="{date_str} 美股分析: {focus_stock} | 美股价值投资笔记">
+    <meta property="og:description" content="{date_str} 美股分析: {focus_stock} 深度研究">
+    <meta property="og:image" content="https://4fire.qzz.io/images/posts/{date_str}-value.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{date_str} 美股分析: {focus_stock} | 美股价值投资笔记">
+    <meta name="twitter:description" content="{date_str} 美股分析: {focus_stock} 深度研究">
+    <meta name="twitter:image" content="https://4fire.qzz.io/images/posts/{date_str}-value.jpg">
+    <meta name="keywords" content="美股,{focus_stock},价值投资,长期持有,股票分析">
     <title>{date_str} 美股分析: {focus_stock} | 美股价值投资笔记</title>
-    <link rel="stylesheet" href="../../../css/style.css?v=20260418">
+    <link rel="stylesheet" href="../../../css/style.css?v=20260418recovery1">
 </head>
 <body>
-    <header>
-        <div class="nav-date">{display_date}</div>
+    <!-- Scroll Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <header id="header">
+        <div class="nav-container">
+            <a href="../../../index.html" class="logo">Value<span>Invest</span></a>
+            <ul class="nav-links">
+                <li><a href="../../../index.html#about">关于</a></li>
+                <li><a href="../../../index.html#archive">文章目录</a></li>
+            </ul>
+            <div class="nav-date">{display_date}</div>
+        </div>
     </header>
-    
+
     <section class="hero">
+        <div class="hero-bg-pattern" style="background-image: url('../../../images/hero-bg.jpg');"></div>
         <div class="hero-content">
             <div class="subtitle">美股每日财经分析</div>
             <h1>{focus_stock} 深度解析</h1>
+            <p class="tagline">"数据驱动 · 长期价值 · 独立思考"</p>
         </div>
+        <a href="#stock-pick" class="scroll-indicator">向下滚动</a>
     </section>
     
     <main>
@@ -334,6 +360,8 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
     <footer>
         <p>美股长期价值投资 · 数据驱动 · 独立思考</p>
     </footer>
+    
+    <script src="../../../js/main.js?v=20260418recovery1"></script>
 </body>
 </html>"""
     
