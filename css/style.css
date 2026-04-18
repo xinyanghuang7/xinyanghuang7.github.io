@@ -7963,6 +7963,157 @@ body.light-mode .rating-card-badge-positive {
     }
 }
 
+/* 2026-04-19 geometry polish: softer rectangles + safer text insets */
+:root {
+    --comfort-card-inset: clamp(1.06rem, 0.96rem + 0.35vw, 1.24rem);
+    --comfort-card-inset-lg: clamp(1.16rem, 1.02rem + 0.45vw, 1.4rem);
+    --comfort-radius-soft: 14px;
+    --comfort-radius-panel: 18px;
+}
+
+.stock-exchange {
+    border-radius: 999px;
+    padding: 0.34rem 0.86rem;
+}
+
+.article-figure img,
+.figure-image-inline,
+.holding-market-hero img,
+.section-cover-image {
+    border-radius: var(--comfort-radius-panel);
+}
+
+.highlight-box,
+.analysis-box,
+.market-reading-note,
+.portfolio-viewpoint,
+.rich-note-box,
+.portfolio-alert,
+.article-rating-card,
+.rating-source-panel,
+.stock-detail-card {
+    border-radius: var(--comfort-radius-panel);
+}
+
+.highlight-box,
+.analysis-box,
+.market-reading-note,
+.portfolio-viewpoint,
+.rich-note-box {
+    padding-left: var(--comfort-card-inset-lg);
+    padding-right: var(--comfort-card-inset-lg);
+}
+
+.highlight-box {
+    border-left-width: 3px;
+    padding-top: 1.05rem;
+    padding-bottom: 1.05rem;
+}
+
+.analysis-box {
+    padding-top: 1.15rem;
+    padding-bottom: 1.15rem;
+}
+
+.market-reading-note,
+.portfolio-viewpoint,
+.rich-note-box {
+    border-left-width: 3px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.news-item {
+    padding: 0.95rem var(--comfort-card-inset) 1rem calc(var(--comfort-card-inset) + 0.08rem);
+    border-radius: var(--comfort-radius-soft);
+}
+
+.news-item:hover {
+    margin: 0;
+    padding: 0.95rem var(--comfort-card-inset) 1rem calc(var(--comfort-card-inset) + 0.08rem);
+    transform: translateX(4px);
+}
+
+.news-perspective {
+    padding-left: 1.05rem;
+    margin-left: 0.08rem;
+}
+
+.portfolio-alert,
+.article-rating-card,
+.rating-source-panel {
+    padding-left: var(--comfort-card-inset-lg);
+    padding-right: var(--comfort-card-inset-lg);
+}
+
+.portfolio-alert-panel,
+.portfolio-holding-card,
+.rating-metric-box {
+    border-radius: var(--comfort-radius-soft);
+    padding: 1rem 1.05rem;
+}
+
+.portfolio-alert-panel {
+    padding-left: 1.1rem;
+}
+
+.portfolio-alert-pill {
+    padding: 0.36rem 0.9rem;
+    border-radius: 999px;
+}
+
+.inline-rating-shell {
+    border-radius: 16px;
+    padding: 1rem 1.05rem;
+}
+
+.inline-rating-shell-metrics {
+    gap: 0.65rem;
+}
+
+.inline-rating-cell {
+    border-radius: 12px;
+    padding: 0.68rem 0.58rem;
+}
+
+.inline-rating-shell-note {
+    border-radius: 12px;
+    padding: 0.72rem 0.82rem;
+}
+
+.rating-source-title,
+.portfolio-alert-title {
+    padding-left: 0.08rem;
+}
+
+@media (max-width: 760px) {
+    .highlight-box,
+    .analysis-box,
+    .market-reading-note,
+    .portfolio-viewpoint,
+    .rich-note-box,
+    .portfolio-alert,
+    .article-rating-card,
+    .rating-source-panel,
+    .stock-detail-card {
+        border-radius: 16px;
+    }
+
+    .news-item {
+        padding: 0.88rem 0.95rem 0.92rem 1rem;
+    }
+
+    .news-item:hover {
+        padding: 0.88rem 0.95rem 0.92rem 1rem;
+        transform: none;
+    }
+
+    .inline-rating-cell {
+        border-radius: 10px;
+        padding: 0.62rem 0.48rem;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
