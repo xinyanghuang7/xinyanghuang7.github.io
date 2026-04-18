@@ -409,7 +409,7 @@ def fill_template(template: str, replacements: dict[str, str]) -> str:
 
 def build_index_page(chapters: list[Chapter], published: list[Chapter], nav_date: str) -> str:
     template = INDEX_TEMPLATE_PATH.read_text(encoding="utf-8")
-    page_description = "把期权教材的基础认知、操作、买卖双方与价内价外结构整理成可持续迭代的课程页。"
+    page_description = "把美股期权里最容易碎片化的概念、风险、操作顺序和 payoff 结构，整理成一套可以反复回看的课程区。"
     replacements = {
         "PAGE_TITLE": COURSE_TITLE,
         "PAGE_DESCRIPTION": page_description,
@@ -418,11 +418,11 @@ def build_index_page(chapters: list[Chapter], published: list[Chapter], nav_date
         "NAV_DATE": nav_date,
         "HERO_EYEBROW": "Options Course",
         "HERO_TITLE": COURSE_TITLE,
-        "HERO_TAGLINE": "从概念、操作到风险结构，把期权教材做成真正可回看、可扩展的课程区。",
-        "HERO_DESCRIPTION": "课程区只承载课程内容，不混进博客流。学习路径、目录、同步进度和最近更新全部从 manifest 自动生成。",
-        "COURSE_INTRO": "这套课程面向刚接触美股期权、但不想被术语和碎片知识劝退的读者。先把合同本质讲清楚，再往操作、定价和策略推进。",
-        "TARGET_AUDIENCE": "期权新手 / 想系统复习的人",
-        "LEARNING_CADENCE": "先读 01-04，再按批次扩展",
+        "HERO_TAGLINE": "从概念、操作到 payoff 结构，把期权教材收成一套真正能复读、能回查、能拿来复盘的课程区。",
+        "HERO_DESCRIPTION": "这里不混博客流，不靠章节堆砌。学习路径、章节目录、同步进度和最近更新都围绕同一份 manifest 组织，方便长期维护，也方便读者从任何一章重新接上。",
+        "COURSE_INTRO": "这套课程写给刚接触美股期权、但不想被术语和零散策略绕晕的人。先把合同本质和风险边界讲清楚，再往定价、策略和执行推进；看不懂的时候，先回到 payoff 图和边界条件，不要先死背名词。",
+        "TARGET_AUDIENCE": "期权新手 / 想系统复盘的人",
+        "LEARNING_CADENCE": "先读 01-04，再按 section 扩展",
         "LAST_SYNC_LABEL": f"已发布至第 {published[-1].id} 章" if published else "尚未发布",
         "COURSE_SUMMARY_STATS": render_stats(chapters, published),
         "LEARNING_PATH_BLOCKS": render_learning_paths(chapters),
@@ -450,7 +450,7 @@ def sync_homepage_course_entry(chapters: list[Chapter], published: list[Chapter]
         '            <div class="homepage-course-entry">\n'
         '                <div class="course-card-kicker">Options Course</div>\n'
         '                <h3 class="course-entry-card-title">期权教材</h3>\n'
-        '                <p class="course-entry-card-desc">把美股期权的概念、操作、风险结构和策略框架拆成可回看、可持续更新的课程区。</p>\n'
+        '                <p class="course-entry-card-desc">把美股期权里最容易碎片化的概念、风险、执行顺序和 payoff 结构，整理成一套真正能复读的课程区。</p>\n'
         '                <div class="course-directory-meta" aria-label="课程进度快照">\n'
         f'                    <span class="course-directory-pill">总计 {len(chapters)} 章</span>\n'
         f'                    <span class="course-status-pill course-status-published">已发布 {len(published)} 章</span>\n'

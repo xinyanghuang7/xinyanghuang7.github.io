@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="把期权教材的基础认知、操作、买卖双方与价内价外结构整理成可持续迭代的课程页。">
+    <meta name="description" content="把美股期权里最容易碎片化的概念、风险、操作顺序和 payoff 结构，整理成一套可以反复回看的课程区。">
     <meta name="keywords" content="美股期权,期权教材,期权课程,Options Course,ValueInvest">
     <meta name="author" content="ValueInvest">
     <meta name="theme-color" content="#ECE9E0">
@@ -12,21 +12,21 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://4fire.qzz.io/options/">
     <meta property="og:title" content="美股期权教材 | ValueInvest">
-    <meta property="og:description" content="把期权教材的基础认知、操作、买卖双方与价内价外结构整理成可持续迭代的课程页。">
+    <meta property="og:description" content="把美股期权里最容易碎片化的概念、风险、操作顺序和 payoff 结构，整理成一套可以反复回看的课程区。">
     <meta property="og:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="美股期权教材 | ValueInvest">
-    <meta name="twitter:description" content="把期权教材的基础认知、操作、买卖双方与价内价外结构整理成可持续迭代的课程页。">
+    <meta name="twitter:description" content="把美股期权里最容易碎片化的概念、风险、操作顺序和 payoff 结构，整理成一套可以反复回看的课程区。">
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <title>美股期权教材 | ValueInvest</title>
     <!-- Fonts removed for performance -->
-    <link rel="stylesheet" href="../css/style.css?v=20260418polish1">
+    <link rel="stylesheet" href="../css/style.css?v=20260418upgrade2">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Course",
         "name": "美股期权教材",
-        "description": "把期权教材的基础认知、操作、买卖双方与价内价外结构整理成可持续迭代的课程页。",
+        "description": "把美股期权里最容易碎片化的概念、风险、操作顺序和 payoff 结构，整理成一套可以反复回看的课程区。",
         "provider": {
             "@type": "Organization",
             "name": "ValueInvest",
@@ -46,6 +46,7 @@
             <nav aria-label="期权教材主导航">
                 <ul class="nav-links">
                     <li><a href="../index.html">返回首页</a></li>
+                    <li><a href="#course-toolkit">学习工具</a></li>
                     <li><a href="#learning-paths">学习路径</a></li>
                     <li><a href="#chapter-directory">章节目录</a></li>
                 </ul>
@@ -59,14 +60,15 @@
         <div class="hero-content">
             <div class="subtitle">Options Course</div>
             <h1>美股期权教材</h1>
-            <p class="tagline">从概念、操作到风险结构，把期权教材做成真正可回看、可扩展的课程区。</p>
-            <p class="hero-description">课程区只承载课程内容，不混进博客流。学习路径、目录、同步进度和最近更新全部从 manifest 自动生成。</p>
+            <p class="tagline">从概念、操作到 payoff 结构，把期权教材收成一套真正能复读、能回查、能拿来复盘的课程区。</p>
+            <p class="hero-description">这里不混博客流，不靠章节堆砌。学习路径、章节目录、同步进度和最近更新都围绕同一份 manifest 组织，方便长期维护，也方便读者从任何一章重新接上。</p>
         </div>
         <a href="#course-overview" class="scroll-indicator" aria-label="向下滚动到课程概览">向下滚动</a>
     </section>
 
     <nav class="article-quick-nav" aria-label="期权课程首页快速导航">
         <a href="#course-overview" class="article-quick-nav-link is-active" data-section-link="course-overview">课程总览</a>
+        <a href="#course-toolkit" class="article-quick-nav-link" data-section-link="course-toolkit">学习工具</a>
         <a href="#learning-paths" class="article-quick-nav-link" data-section-link="learning-paths">学习路径</a>
         <a href="#chapter-directory" class="article-quick-nav-link" data-section-link="chapter-directory">章节目录</a>
         <a href="#sync-progress" class="article-quick-nav-link" data-section-link="sync-progress">同步进度</a>
@@ -79,15 +81,15 @@
                 <div class="section-number" aria-hidden="true">01</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="course-overview-title">课程总览</h2>
-                    <p class="section-subtitle">先讲清这套期权教材适合谁、覆盖什么，以及现在已经同步到哪一步</p>
+                    <p class="section-subtitle">先把这套教材适合谁、怎么读、已经同步到哪里讲清楚，再决定从哪一章开始进入</p>
                 </div>
             </div>
 
             <div class="course-intro-card">
-                <p>这套课程面向刚接触美股期权、但不想被术语和碎片知识劝退的读者。先把合同本质讲清楚，再往操作、定价和策略推进。</p>
+                <p>这套课程写给刚接触美股期权、但不想被术语和零散策略绕晕的人。先把合同本质和风险边界讲清楚，再往定价、策略和执行推进；看不懂的时候，先回到 payoff 图和边界条件，不要先死背名词。</p>
                 <div class="course-directory-meta">
-                    <span class="course-directory-pill">适合对象：期权新手 / 想系统复习的人</span>
-                    <span class="course-directory-pill">学习节奏：先读 01-04，再按批次扩展</span>
+                    <span class="course-directory-pill">适合对象：期权新手 / 想系统复盘的人</span>
+                    <span class="course-directory-pill">学习节奏：先读 01-04，再按 section 扩展</span>
                     <span class="course-directory-pill">最后同步：已发布至第 29 章</span>
                 </div>
             </div>
@@ -100,9 +102,37 @@
             </div>
         </section>
 
-        <section class="section" id="learning-paths" aria-labelledby="learning-paths-title">
+        <section class="section" id="course-toolkit" aria-labelledby="course-toolkit-title">
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">02</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="course-toolkit-title">学习工具</h2>
+                    <p class="section-subtitle">先把读期权最容易卡住的三个节点收好：先看 payoff，再看风险边界，最后再谈策略动作</p>
+                </div>
+            </div>
+
+            <div class="course-toolkit-grid">
+                <article class="course-toolkit-card">
+                    <div class="course-card-kicker">Payoff First</div>
+                    <h3>先用图看懂盈亏轮廓</h3>
+                    <p>每章里出现 payoff 图时，先看最大收益、最大亏损和平衡点，再去读腿结构和正文细节，理解速度会快很多。</p>
+                </article>
+                <article class="course-toolkit-card">
+                    <div class="course-card-kicker">Risk Framing</div>
+                    <h3>永远先问风险在哪一侧失控</h3>
+                    <p>不要先背策略名称，先问这套结构最怕什么：方向错、波动错、时间流逝，还是流动性和执行成本。</p>
+                </article>
+                <article class="course-toolkit-card">
+                    <div class="course-card-kicker">Execution</div>
+                    <h3>把“会不会做”拆成“什么时候做”</h3>
+                    <p>真正难的不是把策略概念背下来，而是知道什么环境适合做、什么环境更该空仓或继续等确认。</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="learning-paths" aria-labelledby="learning-paths-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="learning-paths-title">学习路径</h2>
                     <p class="section-subtitle">按阶段拆开，方便新手循序进入，也方便复习时快速回到关键节点</p>
@@ -121,7 +151,7 @@
 
         <section class="section" id="chapter-directory" aria-labelledby="chapter-directory-title">
             <div class="section-header">
-                <div class="section-number" aria-hidden="true">03</div>
+                <div class="section-number" aria-hidden="true">04</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="chapter-directory-title">章节目录</h2>
                     <p class="section-subtitle">按章节顺序展开，方便你从头系统学习，也方便按主题快速跳转到对应内容页。</p>
@@ -163,7 +193,7 @@
 
         <section class="section" id="sync-progress" aria-labelledby="sync-progress-title">
             <div class="section-header">
-                <div class="section-number" aria-hidden="true">04</div>
+                <div class="section-number" aria-hidden="true">05</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="sync-progress-title">同步进度</h2>
                     <p class="section-subtitle">按 batch 看当前发布完成度，方便判断这套课已经学到哪里、还差哪些模块。</p>
@@ -184,7 +214,7 @@
 
         <section class="section" id="recent-updates" aria-labelledby="recent-updates-title">
             <div class="section-header">
-                <div class="section-number" aria-hidden="true">05</div>
+                <div class="section-number" aria-hidden="true">06</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="recent-updates-title">最近更新</h2>
                     <p class="section-subtitle">优先看最新上线或刚修订的章节，适合老读者快速补课，也方便从最近更新处继续读。</p>
@@ -235,6 +265,6 @@
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260418polish1"></script>
+    <script src="../js/main.js?v=20260418upgrade2"></script>
 </body>
 </html>

@@ -183,7 +183,7 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
     <meta name="twitter:image" content="https://4fire.qzz.io/images/posts/{date_str}-value.jpg">
     <meta name="keywords" content="美股,{focus_stock},价值投资,长期持有,股票分析">
     <title>{date_str} 美股分析: {focus_stock} | 美股价值投资笔记</title>
-    <link rel="stylesheet" href="../../../css/style.css?v=20260418recovery1">
+    <link rel="stylesheet" href="../../../css/style.css?v=20260418upgrade2">
 </head>
 <body>
     <!-- Scroll Progress Bar -->
@@ -203,9 +203,9 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
     <section class="hero">
         <div class="hero-bg-pattern" style="background-image: url('../../../images/hero-bg.jpg');"></div>
         <div class="hero-content">
-            <div class="subtitle">美股每日财经分析</div>
-            <h1>{focus_stock} 深度解析</h1>
-            <p class="tagline">"数据驱动 · 长期价值 · 独立思考"</p>
+            <div class="subtitle">Daily Research Note</div>
+            <h1>{focus_stock} 跟踪笔记</h1>
+            <p class="tagline">先把事实和判断讲清楚，再决定这家公司值不值得继续放在前台跟踪。</p>
         </div>
         <a href="#stock-pick" class="scroll-indicator">向下滚动</a>
     </section>
@@ -242,8 +242,8 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
                 </div>
                 
                 <div class="highlight-box tip">
-                    <h4>长期持有建议</h4>
-                    <p>建议持有周期 3-5 年，仓位 3%-5%。</p>
+                    <h4>研究 / 观察结论</h4>
+                    <p>这里默认输出研究结论与动作边界，不直接生成固定仓位建议。是否进入组合、何时动作，仍取决于证据强度、赔率和用户自己的组合结构。</p>
                 </div>
                 
                 {portfolio_view}
@@ -261,10 +261,10 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
             </div>
             
             <div class="wisdom-card">
-                <div class="wisdom-theme">长期持有的艺术</div>
-                <h3 class="wisdom-title">用时间换取复利的奇迹</h3>
+                <div class="wisdom-theme">真正有用的投资认知，不是金句，而是可以复用的判断框架</div>
+                <h3 class="wisdom-title">这一部分默认沉淀“为什么继续看 / 为什么先别急着动”</h3>
                 <div class="wisdom-content">
-                    <p>巴菲特说: "如果你不愿意持有一只股票十年，那就不要持有它十分钟。"</p>
+                    <p>生成文章时，这里优先写一个能复用的判断框架：这家公司真正值钱的是什么，哪些证据能强化 thesis，哪些变量会让结论反转。避免再用空泛名言充当内容。</p>
                 </div>
                 <div class="wisdom-image">
                     <img src="../../../images/posts/{date_str}-value.jpg" alt="价值投资">
@@ -272,27 +272,27 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
                 <div class="wisdom-rules">
                     <h4>可落地执行规则</h4>
                     <ol>
-                        <li><strong>用永久资金投资:</strong> 只投入长期不用的钱</li>
-                        <li><strong>区分价格波动和价值变化:</strong> 关注企业基本面</li>
-                        <li><strong>建立持有清单:</strong> 写下买入核心理由</li>
+                        <li><strong>先分清事实和判断：</strong> 没有硬证据时，不把情绪变化写成结论变化。</li>
+                        <li><strong>把质量和赔率拆开：</strong> 公司再好，也要单独判断现在是不是好价格。</li>
+                        <li><strong>只保留动作边界：</strong> 真正会影响仓位的变量才值得留到正文里。</li>
                     </ol>
                 </div>
             </div>
         </section>
         
-        <!-- Module 3: 持仓动态 -->
+        <!-- Module 3: 组合观察 -->
         <section class="section" id="market">
             <div class="section-header">
                 <div class="section-number">03</div>
                 <div class="section-title-group">
-                    <h2 class="section-title">持仓动态追踪</h2>
+                    <h2 class="section-title">组合观察</h2>
                 </div>
                 <div class="section-date">{date_short}</div>
             </div>
             
             <div class="market-grid">
                 <div style="grid-column: 1 / -1; margin-bottom: 1rem;">
-                    <img src="../../../images/posts/{date_str}-tech.jpg" alt="市场分析" style="width:100%;height:300px;object-fit:cover;">
+                    <img src="../../../images/posts/{date_str}-tech.jpg" alt="组合观察与市场结构" style="width:100%;height:300px;object-fit:cover;">
                 </div>
 """
     
@@ -311,7 +311,7 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
                     </div>
                     <div class="portfolio-viewpoint" style="background:rgba(212,175,55,0.1);padding:0.75rem;margin-top:0.5rem;border-left:3px solid #d4af37;">
                         <strong style="color:#d4af37;">【持仓视角】</strong>
-                        持有 {h['shares']} 股，成本 ${h['avg_cost']:.2f}，继续关注长期价值。
+                        持有 {h['shares']} 股，成本 ${h['avg_cost']:.2f}。这里默认只写需要继续跟踪的关键变量，不把每次波动都升级成必须动作。
                     </div>
                 </div>
 """
@@ -320,7 +320,7 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
         html += """
                 <div class="analysis-box" style="grid-column: 1 / -1;">
                     <h3 class="analysis-title">当前无持仓</h3>
-                    <p>建议根据推荐标的建立初始仓位。</p>
+                    <p>当前没有公开持仓需要跟踪时，这一部分保持为空，不强行制造动作建议。</p>
                 </div>
 """
     
@@ -330,7 +330,7 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
         
         <!-- 分析师评级 -->
         <section class="analysis-box">
-            <h3 class="analysis-title">华尔街分析师评级</h3>
+            <h3 class="analysis-title">分析师参考</h3>
             <div class="stock-ratings-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;">
 """
     
@@ -358,10 +358,10 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
     </main>
     
     <footer>
-        <p>美股长期价值投资 · 数据驱动 · 独立思考</p>
+        <p>美股长期价值投资 · 研究先于动作 · 长期主义优先</p>
     </footer>
     
-    <script src="../../../js/main.js?v=20260418recovery1"></script>
+    <script src="../../../js/main.js?v=20260418upgrade2"></script>
 </body>
 </html>"""
     

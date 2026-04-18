@@ -5812,6 +5812,436 @@ img {
     }
 }
 
+/* 2026-04-18 official-grade refinement layer */
+:root {
+    --font-display: 'Fraunces', 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    --font-body: 'Manrope', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei UI', sans-serif;
+    --font-reading: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+}
+
+body {
+    font-size: 1.08rem;
+    line-height: 1.82;
+    letter-spacing: 0.01em;
+}
+
+body.light-mode {
+    background:
+        radial-gradient(circle at top right, rgba(199, 146, 83, 0.18), transparent 26%),
+        radial-gradient(circle at left 12%, rgba(214, 191, 132, 0.18), transparent 20%),
+        linear-gradient(180deg, #f7f1e6 0%, #f4eddf 42%, #efe7d8 100%);
+}
+
+body.light-mode::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(88, 73, 42, 0.07) 0.6px, transparent 0.6px);
+    background-size: 9px 9px;
+    opacity: 0.12;
+    z-index: 0;
+}
+
+header,
+.hero,
+main,
+footer,
+.article-meta-bar,
+.chapter-meta-bar,
+.article-quick-nav {
+    position: relative;
+    z-index: 1;
+}
+
+.nav-container {
+    max-width: 1240px;
+    padding: 1rem 1.75rem;
+}
+
+.logo {
+    font-size: 1.42rem;
+    letter-spacing: 0.18em;
+}
+
+.nav-links a,
+.nav-date,
+.subtitle,
+.course-card-kicker,
+.course-directory-pill,
+.course-status-pill,
+.search-meta-pill,
+.article-meta-chip,
+.chapter-meta-pill,
+.payoff-stat-label {
+    font-family: var(--font-body);
+}
+
+.hero {
+    min-height: min(86vh, 780px);
+    padding: 8rem 0 5rem;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0;
+    height: 32%;
+    background: linear-gradient(180deg, transparent 0%, rgba(10, 10, 10, 0.22) 100%);
+    pointer-events: none;
+}
+
+.hero-content {
+    max-width: 1120px;
+    padding: 0 1.75rem;
+}
+
+.hero h1 {
+    max-width: 940px;
+    font-size: clamp(2.8rem, 7vw, 5.6rem);
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+}
+
+.hero .tagline {
+    max-width: 860px;
+    font-size: clamp(1.08rem, 2vw, 1.42rem);
+    line-height: 1.76;
+    color: var(--text-secondary);
+}
+
+.hero-description {
+    max-width: 760px;
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--text-muted);
+}
+
+.section {
+    max-width: 1240px;
+    padding: 0 1.75rem;
+    margin: 0 auto 6rem;
+}
+
+.section-header {
+    margin-bottom: 1.8rem;
+    align-items: end;
+}
+
+.section-number {
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    font-weight: 300;
+    opacity: 0.58;
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+    max-width: 860px;
+    font-size: 0.98rem;
+    line-height: 1.78;
+    color: var(--text-muted);
+}
+
+.author-profile,
+.highlight-box,
+.homepage-course-entry,
+.course-grid-card,
+.course-update-card,
+.course-intro-card,
+.course-note-card,
+.chapter-summary-card,
+.chapter-body-card,
+.chapter-nav-card,
+.stock-card,
+.wisdom-card,
+.stock-detail-card,
+.analysis-box,
+.research-card,
+.course-toolkit-card,
+.chapter-method-card,
+.payoff-chart-block {
+    border: 1px solid rgba(112, 90, 46, 0.12);
+    background: linear-gradient(180deg, rgba(255, 251, 244, 0.96), rgba(249, 242, 231, 0.94));
+    box-shadow: 0 18px 44px rgba(118, 85, 27, 0.08);
+}
+
+.author-profile,
+.homepage-course-entry,
+.course-intro-card,
+.chapter-summary-card,
+.chapter-body-card,
+.chapter-nav-card,
+.stock-card,
+.wisdom-card,
+.stock-detail-card,
+.analysis-box,
+.payoff-chart-block {
+    border-radius: 26px;
+}
+
+.highlight-box {
+    border-radius: 22px;
+    padding: 1.25rem 1.35rem;
+}
+
+.author-profile,
+.homepage-course-entry,
+.course-intro-card,
+.chapter-summary-card,
+.chapter-nav-card,
+.stock-card,
+.wisdom-card,
+.analysis-box {
+    padding: 1.55rem;
+}
+
+.author-info p,
+.highlight-box li,
+.homepage-course-entry p,
+.course-card-desc,
+.course-update-desc,
+.course-intro-card p,
+.course-note-card p,
+.chapter-summary-card p,
+.chapter-body-card p,
+.chapter-body-card li,
+.stock-card p,
+.stock-card li,
+.wisdom-card p,
+.wisdom-card li,
+.stock-detail-card p,
+.analysis-box p,
+.archive-item-desc,
+.search-meta-text {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: var(--text-secondary);
+}
+
+.article-meta-bar,
+.chapter-meta-bar {
+    max-width: 1240px;
+    margin: 0 auto 2rem;
+    padding: 0 1.75rem;
+}
+
+.article-meta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+}
+
+.article-meta-chip,
+.chapter-meta-pill {
+    border-radius: 999px;
+    border: 1px solid rgba(112, 90, 46, 0.14);
+    background: rgba(255, 250, 244, 0.84);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.45;
+    box-shadow: 0 12px 24px rgba(118, 85, 27, 0.05);
+}
+
+.article-quick-nav {
+    border: 1px solid rgba(112, 90, 46, 0.12);
+    background: rgba(255, 249, 240, 0.84);
+    box-shadow: 0 14px 34px rgba(118, 85, 27, 0.08);
+}
+
+.article-quick-nav-link {
+    font-size: 0.92rem;
+    letter-spacing: 0.02em;
+}
+
+.search-container,
+.calendar-section {
+    border: 1px solid rgba(112, 90, 46, 0.12);
+    background: linear-gradient(180deg, rgba(255, 251, 244, 0.95), rgba(250, 245, 236, 0.94));
+    box-shadow: 0 18px 44px rgba(118, 85, 27, 0.08);
+}
+
+.research-grid,
+.course-toolkit-grid,
+.chapter-method-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.research-card,
+.course-toolkit-card,
+.chapter-method-card {
+    border-radius: 24px;
+    padding: 1.35rem;
+}
+
+.research-card h3,
+.course-toolkit-card h3,
+.chapter-method-card h3 {
+    margin: 0 0 0.7rem;
+    font-size: 1.18rem;
+    line-height: 1.45;
+    color: var(--text-primary);
+}
+
+.research-card p,
+.course-toolkit-card p,
+.chapter-method-card p {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.82;
+}
+
+.research-card .course-card-kicker,
+.course-toolkit-card .course-card-kicker,
+.chapter-method-card .course-card-kicker {
+    margin-bottom: 0.7rem;
+}
+
+.payoff-chart-block {
+    margin: 2.25rem 0;
+    padding: 1.35rem;
+}
+
+.payoff-chart-title {
+    font-size: 1.3rem;
+}
+
+.payoff-chart-subtitle {
+    max-width: 760px;
+}
+
+.payoff-chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.payoff-chart-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    border: 1px solid rgba(112, 90, 46, 0.14);
+    background: rgba(255, 252, 247, 0.92);
+    color: var(--text-secondary);
+}
+
+.payoff-chart-chip-strike {
+    border-color: rgba(90, 137, 184, 0.22);
+}
+
+.payoff-chart-chip-breakeven {
+    border-color: rgba(201, 148, 58, 0.22);
+}
+
+.payoff-chart-surface {
+    display: grid;
+    gap: 0.85rem;
+}
+
+.payoff-chart-svg-wrap {
+    position: relative;
+}
+
+.payoff-chart-svg {
+    box-shadow: inset 0 0 0 1px rgba(112, 90, 46, 0.08);
+}
+
+.payoff-chart-tooltip {
+    position: absolute;
+    min-width: 168px;
+    transform: translate(-50%, -120%);
+    padding: 0.8rem 0.9rem;
+    border-radius: 18px;
+    border: 1px solid rgba(112, 90, 46, 0.14);
+    background: rgba(255, 252, 247, 0.96);
+    box-shadow: 0 18px 36px rgba(118, 85, 27, 0.18);
+    pointer-events: none;
+}
+
+.payoff-chart-tooltip-label {
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.payoff-chart-tooltip-value {
+    margin-top: 0.25rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.payoff-chart-tooltip-secondary,
+.payoff-chart-live {
+    margin-top: 0.24rem;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 980px) {
+    .research-grid,
+    .course-toolkit-grid,
+    .chapter-method-grid,
+    .payoff-chart-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content,
+    .section,
+    .article-meta-bar,
+    .chapter-meta-bar {
+        padding-left: 1.1rem;
+        padding-right: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: auto;
+        padding: 7rem 0 4rem;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.4rem, 10vw, 3.4rem);
+        line-height: 1.08;
+    }
+
+    .section {
+        margin-bottom: 4rem;
+    }
+
+    .author-profile,
+    .homepage-course-entry,
+    .course-intro-card,
+    .chapter-summary-card,
+    .chapter-nav-card,
+    .stock-card,
+    .wisdom-card,
+    .analysis-box,
+    .payoff-chart-block,
+    .research-card,
+    .course-toolkit-card,
+    .chapter-method-card {
+        padding: 1.2rem;
+    }
+
+    .payoff-chart-tooltip {
+        min-width: 150px;
+        transform: translate(-50%, -112%);
+    }
+}
+
 @media print {
     .nav-container,
     .article-quick-nav,

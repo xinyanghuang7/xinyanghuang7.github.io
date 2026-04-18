@@ -710,6 +710,105 @@ function applyReducedMotionFallback() {
     });
 }
 
+function initPayoffChartExplorer() {
+    const chartBlocks = Array.from(document.querySelectorAll('.payoff-chart-block'));
+    if (!chartBlocks.length) return;
+
+    const formatNumber = (value) => {
+        const numeric = Number(value || 0);
+        return Number.isFinite(numeric)
+            ? new Intl.NumberFormat('zh-CN', { maximumFractionDigits: 2 }).format(numeric)
+            : '--';
+    };
+
+    chartBlocks.forEach((block) => {
+        const svg = block.querySelector('.payoff-chart-svg');
+        const tooltip = block.querySelector('.payoff-chart-tooltip');
+        const tooltipLabel = tooltip?.querySelector('.payoff-chart-tooltip-label');
+        const tooltipValue = tooltip?.querySelector('.payoff-chart-tooltip-value');
+        const tooltipSecondary = tooltip?.querySelector('.payoff-chart-tooltip-secondary');
+        const liveRegion = block.querySelector('.payoff-chart-live');
+        const dataNode = block.querySelector('.payoff-chart-data');
+        const focusLine = svg?.querySelector('.payoff-chart-focus-line');
+        const focusDot = svg?.querySelector('.payoff-chart-focus-dot');
+        const wrap = block.querySelector('.payoff-chart-svg-wrap');
+
+        if (!svg || !tooltip || !tooltipLabel || !tooltipValue || !tooltipSecondary || !liveRegion || !dataNode || !focusLine || !focusDot || !wrap) {
+            return;
+        }
+
+        let payload;
+        try {
+            payload = JSON.parse(dataNode.textContent || '{}');
+        } catch {
+            return;
+        }
+
+        const points = Array.isArray(payload.points) ? payload.points : [];
+        const viewBox = payload.viewBox || {};
+        const viewWidth = Number(viewBox.width) || 960;
+        const viewHeight = Number(viewBox.height) || 560;
+        if (!points.length) return;
+
+        const setActivePoint = (point) => {
+            const x = Number(point.x || 0);
+            const y = Number(point.y || 0);
+            focusLine.setAttribute('x1', String(x));
+            focusLine.setAttribute('x2', String(x));
+            focusLine.setAttribute('visibility', 'visible');
+            focusDot.setAttribute('cx', String(x));
+            focusDot.setAttribute('cy', String(y));
+            focusDot.setAttribute('visibility', 'visible');
+
+            tooltip.hidden = false;
+            tooltip.style.left = `${(x / viewWidth) * 100}%`;
+            tooltip.style.top = `${Math.max(6, (y / viewHeight) * 100 - 3)}%`;
+            tooltipLabel.textContent = payload.underlyingLabel || '到期股价';
+            tooltipValue.textContent = formatNumber(point.price);
+            tooltipSecondary.textContent = `${payload.profitLabel || '到期盈亏'}：${formatNumber(point.profit)}`;
+            liveRegion.textContent = `${payload.underlyingLabel || '到期股价'} ${formatNumber(point.price)}，${payload.profitLabel || '到期盈亏'} ${formatNumber(point.profit)}`;
+        };
+
+        const nearestPoint = (clientX) => {
+            const rect = wrap.getBoundingClientRect();
+            const relativeX = ((clientX - rect.left) / rect.width) * viewWidth;
+            let best = points[0];
+            let bestDistance = Math.abs(relativeX - Number(best.x || 0));
+            for (let index = 1; index < points.length; index += 1) {
+                const candidate = points[index];
+                const distance = Math.abs(relativeX - Number(candidate.x || 0));
+                if (distance < bestDistance) {
+                    best = candidate;
+                    bestDistance = distance;
+                }
+            }
+            return best;
+        };
+
+        const reset = () => {
+            tooltip.hidden = true;
+            focusLine.setAttribute('visibility', 'hidden');
+            focusDot.setAttribute('visibility', 'hidden');
+            liveRegion.textContent = '拖动或悬停图表，可直接查看不同到期股价下的盈亏变化。';
+        };
+
+        const handlePointer = (event) => {
+            const clientX = event.clientX ?? event.touches?.[0]?.clientX ?? event.changedTouches?.[0]?.clientX;
+            if (typeof clientX !== 'number') return;
+            const point = nearestPoint(clientX);
+            setActivePoint(point);
+        };
+
+        wrap.addEventListener('pointermove', handlePointer);
+        wrap.addEventListener('pointerenter', handlePointer);
+        wrap.addEventListener('pointerleave', reset);
+        wrap.addEventListener('touchstart', handlePointer, { passive: true });
+        wrap.addEventListener('touchmove', handlePointer, { passive: true });
+
+        setActivePoint(points[Math.floor(points.length / 2)]);
+    });
+}
+
 function initPage() {
     decorateSectionsForReveal();
     syncStickyOffsets();
@@ -718,6 +817,7 @@ function initPage() {
     initArticleQuickNav();
     initArticleMeta();
     initChapterInlineOutline();
+    initPayoffChartExplorer();
     initLazyLoading();
     initDarkMode();
     initSearch();
