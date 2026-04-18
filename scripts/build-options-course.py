@@ -4,12 +4,17 @@ import html
 import json
 import os
 import re
+import sys
 from collections import defaultdict
 from datetime import datetime
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
 from urllib.parse import quote
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
 
 from options_payoff_embed import expand_payoff_chart_tokens
 from options_source_figure_embed import expand_source_figure_lists, sync_source_figure_images

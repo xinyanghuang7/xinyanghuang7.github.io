@@ -276,6 +276,44 @@ function initArticleQuickNav() {
     setActiveLink(sections[0]?.id);
 }
 
+
+function initChapterInlineOutline() {
+    const outlineRoot = document.getElementById('chapterInlineOutline');
+    const chapterBody = document.querySelector('.chapter-body-card');
+
+    if (!outlineRoot || !chapterBody) {
+        return;
+    }
+
+    const headings = Array.from(chapterBody.querySelectorAll('h2, h3'))
+        .filter((heading) => (heading.textContent || '').trim())
+        .slice(0, 10);
+
+    if (!headings.length) {
+        outlineRoot.hidden = true;
+        return;
+    }
+
+    const items = headings.map((heading, index) => {
+        if (!heading.id) {
+            heading.id = `chapter-heading-${index + 1}`;
+        }
+
+        return `
+            <a class="chapter-inline-outline-link" href="#${heading.id}">
+                <span class="chapter-inline-outline-index">${String(index + 1).padStart(2, '0')}</span>
+                <span class="chapter-inline-outline-label">${heading.textContent.trim()}</span>
+            </a>
+        `;
+    }).join('');
+
+    outlineRoot.innerHTML = `
+        <div class="chapter-inline-outline-eyebrow">章节索引</div>
+        <div class="chapter-inline-outline-list">${items}</div>
+    `;
+    outlineRoot.hidden = false;
+}
+
 function initArticleMeta() {
     const readTimeEl = document.getElementById('articleReadTime');
     const main = document.getElementById('main');
@@ -679,6 +717,7 @@ function initPage() {
     initSmoothScroll();
     initArticleQuickNav();
     initArticleMeta();
+    initChapterInlineOutline();
     initLazyLoading();
     initDarkMode();
     initSearch();

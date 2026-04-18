@@ -19,214 +19,7 @@
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <title>期权的三大基本作用 | 美股期权教材</title>
     <!-- Fonts removed for performance -->
-    <link rel="stylesheet" href="../css/style.css?v=20260418recovery1">
-    <style>
-        .chapter-meta-bar {
-            width: min(1100px, calc(100% - 2rem));
-            margin: -2.25rem auto 0;
-            padding: 1rem 1.25rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            background: var(--bg-card);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 18px;
-            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
-            position: relative;
-            z-index: 2;
-        }
-
-        .chapter-meta-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            padding: 0.4rem 0.85rem;
-            border-radius: 999px;
-            border: 1px solid rgba(255,255,255,0.08);
-            color: var(--text-secondary);
-            background: rgba(201, 162, 39, 0.08);
-            font-size: 0.95rem;
-        }
-
-        .chapter-meta-link {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .chapter-meta-link:hover {
-            color: var(--accent-gold);
-        }
-
-        .chapter-shell {
-            display: grid;
-            gap: 2rem;
-        }
-
-        .chapter-shell > .section,
-        .chapter-shell .section-header,
-        .chapter-shell .section-title-group,
-        .chapter-summary-card,
-        .chapter-body-card,
-        .chapter-nav-card,
-        .chapter-nav-slot {
-            min-width: 0;
-        }
-
-        .chapter-summary-card,
-        .chapter-body-card,
-        .chapter-nav-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 18px;
-            padding: 1.75rem;
-            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
-        }
-
-        .chapter-summary-card p,
-        .chapter-nav-card p {
-            color: var(--text-secondary);
-        }
-
-        .chapter-body-card {
-            line-height: 1.9;
-            color: var(--text-primary);
-        }
-
-        .chapter-body-card h2,
-        .chapter-body-card h3,
-        .chapter-body-card h4,
-        .chapter-body-card h5,
-        .chapter-body-card h6 {
-            color: var(--text-primary);
-            margin-top: 1.6em;
-        }
-
-        .chapter-body-card p,
-        .chapter-body-card li,
-        .chapter-body-card blockquote {
-            color: var(--text-secondary);
-        }
-
-        .chapter-body-card p,
-        .chapter-body-card li,
-        .chapter-body-card blockquote,
-        .chapter-body-card h1,
-        .chapter-body-card h2,
-        .chapter-body-card h3,
-        .chapter-body-card h4,
-        .chapter-body-card h5,
-        .chapter-body-card h6,
-        .section-title,
-        .section-subtitle,
-        .chapter-nav-link,
-        .chapter-nav-card p {
-            overflow-wrap: anywhere;
-            word-break: break-word;
-        }
-
-        .chapter-body-card ul,
-        .chapter-body-card ol {
-            padding-left: 1.2rem;
-        }
-
-        .chapter-body-card blockquote {
-            margin: 1.5rem 0;
-            padding: 1rem 1.25rem;
-            border-left: 3px solid var(--accent-gold);
-            background: rgba(201, 162, 39, 0.08);
-            border-radius: 0 14px 14px 0;
-        }
-
-        .source-figure-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1rem;
-            margin: 1.25rem 0 1.75rem;
-        }
-
-        .source-figure-card {
-            margin: 0;
-            border-radius: 18px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.08);
-            background: rgba(255,255,255,0.03);
-            box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.28);
-        }
-
-        .source-figure-link {
-            display: block;
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .source-figure-media {
-            padding: 0.75rem;
-            background: rgba(255,255,255,0.96);
-        }
-
-        .source-figure-image {
-            display: block;
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            object-fit: contain;
-            background: #fff;
-        }
-
-        .source-figure-caption {
-            padding: 0.9rem 1rem 1.1rem;
-            color: var(--text-secondary);
-            font-size: 0.96rem;
-            line-height: 1.7;
-        }
-
-        .chapter-nav-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 1rem;
-        }
-
-        .chapter-nav-slot {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-            min-height: 100%;
-            padding: 1rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.08);
-            background: rgba(201, 162, 39, 0.06);
-        }
-
-        .chapter-nav-label {
-            font-size: 0.8rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-        }
-
-        .chapter-nav-link {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 1.05rem;
-            font-weight: 600;
-        }
-
-        .chapter-nav-link:hover {
-            color: var(--accent-gold);
-        }
-
-        @media (max-width: 800px) {
-            .chapter-nav-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .chapter-summary-card,
-            .chapter-body-card,
-            .chapter-nav-card {
-                padding: 1.25rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../css/style.css?v=20260418polish1">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -307,7 +100,9 @@
             </div>
 
             <div class="chapter-summary-card">
+                <div class="chapter-summary-eyebrow">本章先看</div>
                 <p>从对冲风险、提高弹性和获取现金流三个角度，建立使用期权的功能性视角。</p>
+                <div id="chapterInlineOutline" class="chapter-inline-outline" hidden></div>
             </div>
         </section>
 
@@ -687,6 +482,6 @@
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260418recovery1"></script>
+    <script src="../js/main.js?v=20260418polish1"></script>
 </body>
 </html>
