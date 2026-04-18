@@ -54,7 +54,7 @@ $stockRisks = @'
 
 $wisdomContent = @'
                     <p>Replace with real framework content. Separate verified facts from personal judgment.</p>
-                    <p style="margin-top: 1rem;">If the evidence is soft, say so clearly instead of pretending certainty.</p>
+                    <p class="flow-gap-md">If the evidence is soft, say so clearly instead of pretending certainty.</p>
 '@
 
 $wisdomRules = @'
@@ -65,8 +65,8 @@ $wisdomRules = @'
 
 $wisdomCase = @'
                     <p>Replace with a real case and real numbers.</p>
-                    <p style="margin-top: 0.8rem;">Do not leave this as slogan-only content.</p>
-                    <p style="margin-top: 0.8rem;"><strong>Key takeaway:</strong> Turn the case into a usable decision rule.</p>
+                    <p class="flow-gap-sm">Do not leave this as slogan-only content.</p>
+                    <p class="flow-gap-sm"><strong>Key takeaway:</strong> Turn the case into a usable decision rule.</p>
 '@
 
 $marketStocks = @'

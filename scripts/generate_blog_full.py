@@ -179,7 +179,7 @@ def build_news_cards(tracked_assets, thesis_hint=''):
                     f'<div class="news-interpretation-item">'
                     f'<h4>这条新闻为什么值得看</h4>'
                     f'<p>{html_lib.escape(interpretation)}</p>'
-                    f'<p style="margin-top:0.55rem;">如果 {html_lib.escape(symbol)} 后续继续围绕这类主题反复出现，真正要确认的不是标题热度，而是它有没有进一步强化兑现路径、预算承接或平台边界。</p>'
+                    f'<p class="flow-gap-sm">如果 {html_lib.escape(symbol)} 后续继续围绕这类主题反复出现，真正要确认的不是标题热度，而是它有没有进一步强化兑现路径、预算承接或平台边界。</p>'
                     f'</div>'
                 )
             news_block = ''.join(news_html)
@@ -205,7 +205,7 @@ def build_news_cards(tracked_assets, thesis_hint=''):
             f'<div><div class="stock-detail-ticker">{html_lib.escape(symbol)}</div>'
             f'<div class="stock-detail-name">{html_lib.escape(company_name)}</div></div>'
             f'</div>'
-            f'<div class="highlight-box tip" style="margin:1rem 0 1.25rem;">'
+            f'<div class="highlight-box tip block-gap-md">'
             f'<strong>跟踪边界：</strong> {html_lib.escape(position_note)}'
             f'</div>'
             f'<div class="news-signal-grid">'
@@ -272,7 +272,7 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
     if in_portfolio:
         h = next(x for x in holdings if x["code"] == focus_stock)
         portfolio_view = f"""
-        <div class="highlight-box portfolio" style="border-left-color: #d4af37;">
+        <div class="highlight-box portfolio">
             <h4>我的持仓视角</h4>
             <p><strong>当前持仓:</strong> {h['shares']}股 @ ${h['avg_cost']:.2f}</p>
             <p><strong>策略建议:</strong> 根据当前价格和基本面，建议继续持有并关注长期价值。</p>
@@ -330,7 +330,7 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
     <meta name="twitter:image" content="https://4fire.qzz.io/images/posts/{date_str}-value.jpg">
     <meta name="keywords" content="美股,{focus_stock},价值投资,长期持有,股票分析">
     <title>{date_str} 美股分析: {focus_stock} | 美股价值投资笔记</title>
-    <link rel="stylesheet" href="../../../css/style.css?v=20260418comfort3">
+    <link rel="stylesheet" href="../../../css/style.css?v=20260418cohesion1">
 </head>
 <body>
     <!-- Scroll Progress Bar -->
@@ -348,7 +348,7 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
     </header>
 
     <section class="hero">
-        <div class="hero-bg-pattern" style="background-image: url('../../../images/hero-bg.jpg');"></div>
+        <div class="hero-bg-pattern" class="hero-bg-post"></div>
         <div class="hero-content">
             <div class="subtitle">Daily Research Note</div>
             <h1>{focus_stock} 跟踪笔记</h1>
@@ -439,10 +439,10 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
             </div>
             
             <div class="market-grid market-grid-comfort">
-                <div style="grid-column: 1 / -1; margin-bottom: 1rem;">
-                    <img src="../../../images/posts/{date_str}-tech.jpg" alt="组合观察与市场结构" width="768" height="1280" style="width:100%;height:300px;object-fit:cover; border-radius:18px;" loading="lazy" decoding="async">
+                <div class="section-media-frame">
+                    <img src="../../../images/posts/{date_str}-tech.jpg" alt="组合观察与市场结构" width="768" height="1280" class="section-cover-image" loading="lazy" decoding="async">
                 </div>
-                <div class="editorial-band market-editorial-band" style="grid-column: 1 / -1; margin-bottom: 0.9rem;">
+                <div class="editorial-band market-editorial-band section-band-full">
                     <div class="editorial-band-main">
                         <div class="editorial-band-kicker">News Discipline</div>
                         <h3>第三部分强制拆成两层：新闻内容 + 专属解读。</h3>
@@ -466,23 +466,23 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
         <!-- 分析师评级 -->
         <section class="analysis-box">
             <h3 class="analysis-title">动作地图 / 评级参考</h3>
-            <div class="stock-ratings-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;">
+            <div class="stock-ratings-grid">
 """
     
     # 推荐标的评级卡
     html += f"""
-                <div class="rating-card" style="background:rgba(255,255,255,0.05);padding:1.25rem;border-left:4px solid #22c55e;">
-                    <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
-                        <strong style="font-size:1.15rem;color:#fff;">{focus_stock}</strong>
-                        <span style="background:#22c55e;padding:0.3rem 0.8rem;border-radius:4px;font-size:0.85rem;">买入</span>
+                <div class="rating-card">
+                    <div class="rating-card-header">
+                        <strong class="rating-card-title">{focus_stock}</strong>
+                        <span class="rating-card-badge rating-card-badge-positive">买入</span>
                     </div>
-                    <div style="margin:0.5rem 0;">
-                        <span style="color:rgba(255,255,255,0.7);">当前价</span>
-                        <strong style="color:#fff;">{price_display}</strong>
+                    <div class="rating-card-row">
+                        <span class="rating-card-label">当前价</span>
+                        <strong class="rating-card-value">{price_display}</strong>
                     </div>
-                    <div style="margin:0.5rem 0;">
-                        <span style="color:rgba(255,255,255,0.7);">目标价</span>
-                        <strong style="color:#22c55e;">{target_display} ({upside})</strong>
+                    <div class="rating-card-row">
+                        <span class="rating-card-label">目标价</span>
+                        <strong class="rating-card-value rating-card-value-positive">{target_display} ({upside})</strong>
                     </div>
                 </div>
 """
@@ -496,7 +496,7 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
         <p>美股长期价值投资 · 研究先于动作 · 长期主义优先</p>
     </footer>
     
-    <script src="../../../js/main.js?v=20260418comfort3"></script>
+    <script src="../../../js/main.js?v=20260418cohesion1"></script>
 </body>
 </html>"""
     
