@@ -364,8 +364,20 @@ def render_directory_cards(chapters: list[Chapter]) -> str:
             action = f'<a class="course-action-link" href="./{Path(chapter.output_path).name}">阅读本章 →</a>'
         else:
             action = f'<span class="course-action-link" aria-disabled="true">{html.escape(status_label(chapter.status))}</span>'
+
+        search_blob = " ".join([
+            f"第 {chapter.id} 章",
+            chapter.id,
+            chapter.title,
+            chapter.section_label,
+            chapter.batch,
+            status_label(chapter.status),
+            chapter.summary,
+        ])
+
         cards.append(
-            f'<article class="course-grid-card"><div class="course-card-kicker">第 {chapter.id} 章 · {html.escape(chapter.section_label)}</div>'
+            f'<article class="course-grid-card" data-course-card data-course-search="{html.escape(search_blob)}">'
+            f'<div class="course-card-kicker">第 {chapter.id} 章 · {html.escape(chapter.section_label)}</div>'
             f'<h3 class="course-card-title">{html.escape(chapter.title)}</h3>'
             f'<p class="course-card-desc">{html.escape(chapter.summary)}</p>'
             f'<div class="course-directory-meta"><span class="course-directory-pill">{html.escape(chapter.batch)}</span>'

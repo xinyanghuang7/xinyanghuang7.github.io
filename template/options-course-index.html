@@ -20,7 +20,7 @@
     <meta name="twitter:image" content="{{OG_IMAGE_URL}}">
     <title>{{PAGE_TITLE}} | ValueInvest</title>
     <!-- Fonts removed for performance -->
-    <link rel="stylesheet" href="../css/style.css?v=20260418upgrade4">
+    <link rel="stylesheet" href="../css/style.css?v=20260418comfort1">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -172,8 +172,25 @@
                 </div>
             </div>
 
-            <div class="chapter-directory-grid">
+            <div class="course-filter-panel" aria-label="章节检索工具">
+                <div class="course-filter-panel-main">
+                    <div class="course-card-kicker">Comfort Search</div>
+                    <h3>按章节号、标题、主题词或 batch 快速定位课程内容</h3>
+                    <p>课程已经够长了，不应该再靠肉眼从头翻到底。先搜你要找的概念，再决定回哪一章复读。</p>
+                </div>
+                <div class="course-filter-controls">
+                    <label class="sr-only" for="courseChapterSearch">搜索课程章节</label>
+                    <input type="search" id="courseChapterSearch" class="course-filter-input" placeholder="搜索章节号 / 标题 / 主题 / Batch" aria-describedby="courseChapterSearchStatus" autocomplete="off">
+                    <div class="course-filter-status" id="courseChapterSearchStatus" aria-live="polite">默认显示全部章节</div>
+                </div>
+            </div>
+
+            <div class="chapter-directory-grid" id="chapterDirectoryGrid">
                 {{CHAPTER_DIRECTORY_CARDS}}
+            </div>
+            <div class="course-empty-state" id="courseChapterEmptyState" hidden>
+                <strong>没有找到匹配章节</strong>
+                <p>换一个关键词再试，或直接输入章节号（例如 09 / 18 / 29）。</p>
             </div>
         </section>
 
@@ -216,6 +233,6 @@
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/main.js?v=20260418upgrade2"></script>
+    <script src="../js/main.js?v=20260418comfort1"></script>
 </body>
 </html>

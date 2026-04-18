@@ -6426,6 +6426,375 @@ footer,
     }
 }
 
+/* -------------------------------------------------
+   Comfort-first refinement layer (2026-04-18)
+   Warm editorial polish, softer motion, better cards,
+   safer section headers, and structured news surfaces.
+-------------------------------------------------- */
+
+.section-header {
+    overflow: clip;
+}
+
+.section-number {
+    flex: 0 0 auto;
+    max-width: 5.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    letter-spacing: 0.04em;
+}
+
+body.light-mode {
+    --bg-primary: #f7f1e6;
+    --bg-secondary: #fcf7ef;
+    --bg-tertiary: #ede2ce;
+    --bg-card: rgba(255, 252, 246, 0.98);
+    --bg-card-hover: rgba(255, 255, 252, 1);
+    --text-primary: #1f1a14;
+    --text-secondary: rgba(31, 26, 20, 0.95);
+    --text-tertiary: rgba(31, 26, 20, 0.88);
+    --text-muted: rgba(31, 26, 20, 0.78);
+    --shadow-sm: 0 18px 40px rgba(110, 84, 28, 0.08);
+    --shadow-md: 0 24px 48px rgba(110, 84, 28, 0.12);
+    --shadow-lg: 0 30px 70px rgba(110, 84, 28, 0.16);
+}
+
+.hero,
+.course-intro-card,
+.homepage-course-entry,
+.author-profile,
+.highlight-box,
+.analysis-box,
+.stock-card,
+.stock-detail-card,
+.wisdom-card,
+.course-grid-card,
+.course-toolkit-card,
+.research-card,
+.editorial-band,
+.chapter-summary-card,
+.chapter-nav-card,
+.course-filter-panel,
+.course-empty-state {
+    border-radius: 24px;
+}
+
+.comfort-hover-surface {
+    position: relative;
+    isolation: isolate;
+    transition: transform 220ms var(--ease-smooth), box-shadow 220ms var(--ease-smooth), border-color 220ms var(--ease-smooth), background 220ms var(--ease-smooth);
+}
+
+.comfort-hover-surface::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(circle at var(--comfort-x, 50%) var(--comfort-y, 50%), rgba(244, 207, 87, 0.16), transparent 42%);
+    opacity: 0;
+    transition: opacity 220ms var(--ease-smooth);
+    z-index: -1;
+}
+
+.comfort-hover-surface:hover,
+.comfort-hover-surface:focus-within {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.comfort-hover-surface:hover::after,
+.comfort-hover-surface:focus-within::after {
+    opacity: 1;
+}
+
+body.light-mode .section-subtitle,
+body.light-mode .hero-description,
+body.light-mode .course-card-desc,
+body.light-mode .course-update-desc,
+body.light-mode .search-meta-text,
+body.light-mode .editorial-band p,
+body.light-mode .analysis-box p,
+body.light-mode .stock-detail-card p,
+body.light-mode .wisdom-content p,
+body.light-mode .course-filter-panel p {
+    color: rgba(31, 26, 20, 0.86);
+}
+
+body.light-mode .article-meta-chip,
+body.light-mode .course-directory-pill,
+body.light-mode .course-status-pill,
+body.light-mode .editorial-band-item,
+body.light-mode .hero .subtitle {
+    box-shadow: 0 10px 24px rgba(110, 84, 28, 0.08);
+}
+
+.article-quick-nav {
+    border-radius: 22px;
+    padding: 0.72rem;
+}
+
+.article-quick-nav-link {
+    min-height: 2.65rem;
+    border-radius: 16px;
+}
+
+.search-input,
+.course-filter-input {
+    border-radius: 18px;
+}
+
+.market-grid-comfort {
+    gap: 1.4rem;
+}
+
+.market-editorial-band {
+    margin-top: 0.2rem;
+}
+
+.news-evidence-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.news-signal-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 1rem;
+    margin-top: 1.1rem;
+}
+
+.news-stream-panel,
+.news-interpretation-panel {
+    min-height: 100%;
+    padding: 1rem 1.05rem;
+    border-radius: 20px;
+    border: 1px solid rgba(212,175,55,0.16);
+    background: linear-gradient(180deg, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0.02) 100%);
+}
+
+body.light-mode .news-stream-panel,
+body.light-mode .news-interpretation-panel {
+    background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(247,241,230,0.92) 100%);
+    border-color: rgba(122,91,10,0.14);
+}
+
+.news-panel-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-bottom: 0.8rem;
+    padding: 0.42rem 0.72rem;
+    border-radius: 999px;
+    background: rgba(212,175,55,0.12);
+    border: 1px solid rgba(212,175,55,0.18);
+    color: var(--accent-gold-dark);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.news-bullet-list {
+    display: grid;
+    gap: 0.85rem;
+}
+
+.news-bullet {
+    padding: 0.92rem 0.96rem;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.035);
+}
+
+body.light-mode .news-bullet {
+    background: rgba(255,255,255,0.88);
+    border-color: rgba(122,91,10,0.09);
+}
+
+.news-bullet h4,
+.news-interpretation-panel h4 {
+    margin: 0 0 0.45rem;
+    font-size: 1rem;
+    line-height: 1.45;
+    color: var(--text-primary);
+}
+
+.news-bullet p,
+.news-interpretation-panel p {
+    margin: 0;
+    line-height: 1.72;
+}
+
+.news-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 0.7rem;
+}
+
+.news-meta-pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.9rem;
+    padding: 0.35rem 0.68rem;
+    border-radius: 999px;
+    background: rgba(212,175,55,0.1);
+    border: 1px solid rgba(212,175,55,0.16);
+    color: var(--accent-gold-dark);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.news-source-link {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(212,175,55,0.28);
+}
+
+.news-source-link:hover {
+    color: var(--accent-gold-dark);
+}
+
+.news-interpretation-list {
+    display: grid;
+    gap: 0.9rem;
+}
+
+.news-interpretation-item {
+    padding: 0.9rem 0.95rem;
+    border-radius: 18px;
+    background: rgba(212,175,55,0.08);
+    border: 1px solid rgba(212,175,55,0.14);
+}
+
+body.light-mode .news-interpretation-item {
+    background: rgba(122,91,10,0.05);
+    border-color: rgba(122,91,10,0.12);
+}
+
+.course-filter-panel {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 1rem;
+    margin-bottom: 1.15rem;
+    padding: 1.3rem 1.35rem;
+    border: 1px solid rgba(212,175,55,0.16);
+    background: linear-gradient(135deg, rgba(255,255,255,0.045) 0%, rgba(212,175,55,0.08) 100%);
+}
+
+.course-filter-panel h3 {
+    margin: 0.1rem 0 0.45rem;
+    font-size: 1.25rem;
+    line-height: 1.35;
+}
+
+.course-filter-controls {
+    display: grid;
+    align-content: center;
+    gap: 0.7rem;
+}
+
+.course-filter-input {
+    width: 100%;
+    min-height: 3.2rem;
+    padding: 0.95rem 1rem;
+    border: 1px solid rgba(212,175,55,0.16);
+    background: rgba(255,255,255,0.9);
+    color: var(--text-primary);
+    font-size: 0.96rem;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.36), 0 12px 28px rgba(0,0,0,0.08);
+}
+
+body.dark-mode .course-filter-input {
+    background: rgba(24,24,24,0.88);
+    color: var(--text-primary);
+}
+
+.course-filter-input:focus {
+    outline: none;
+    border-color: rgba(212,175,55,0.45);
+    box-shadow: 0 0 0 4px rgba(212,175,55,0.12);
+}
+
+.course-filter-status {
+    color: var(--text-muted);
+    font-size: 0.86rem;
+}
+
+.course-grid-card.is-filter-hit {
+    border-color: rgba(212,175,55,0.28);
+    box-shadow: var(--shadow-gold);
+}
+
+.course-empty-state {
+    margin-top: 1rem;
+    padding: 1.25rem 1.3rem;
+    border: 1px dashed rgba(212,175,55,0.26);
+    background: rgba(212,175,55,0.07);
+}
+
+.course-empty-state strong {
+    display: block;
+    margin-bottom: 0.35rem;
+}
+
+@media (max-width: 980px) {
+    .news-signal-grid,
+    .course-filter-panel {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-header {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        align-items: start;
+    }
+
+    .section-number {
+        max-width: 4rem;
+        font-size: 2.25rem;
+        margin-bottom: 0.15rem;
+    }
+
+    .article-quick-nav {
+        width: min(100%, calc(100% - 1rem));
+        padding: 0.55rem;
+        gap: 0.45rem;
+        border-radius: 20px;
+    }
+
+    .article-quick-nav-link {
+        min-height: 2.45rem;
+        padding: 0.62rem 0.78rem;
+        font-size: 0.74rem;
+        letter-spacing: 0.06em;
+    }
+
+    .news-stream-panel,
+    .news-interpretation-panel,
+    .course-filter-panel,
+    .course-empty-state {
+        padding: 1rem;
+        border-radius: 20px;
+    }
+
+    .news-bullet,
+    .news-interpretation-item {
+        padding: 0.85rem 0.88rem;
+        border-radius: 16px;
+    }
+
+    .course-filter-input {
+        min-height: 3rem;
+        font-size: 0.92rem;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

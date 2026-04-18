@@ -809,6 +809,96 @@ function initPayoffChartExplorer() {
     });
 }
 
+function initCourseChapterFilter() {
+    const searchInput = document.getElementById('courseChapterSearch');
+    const statusEl = document.getElementById('courseChapterSearchStatus');
+    const emptyState = document.getElementById('courseChapterEmptyState');
+    const cards = Array.from(document.querySelectorAll('[data-course-card]'));
+
+    if (!searchInput || !statusEl || !cards.length) {
+        return;
+    }
+
+    const normalize = (value) => String(value || '')
+        .toLowerCase()
+        .replace(/[\s\u3000]+/g, ' ')
+        .trim();
+
+    const applyFilter = () => {
+        const query = normalize(searchInput.value);
+        let visibleCount = 0;
+
+        cards.forEach((card) => {
+            const haystack = normalize(card.getAttribute('data-course-search'));
+            const isVisible = !query || haystack.includes(query);
+            card.hidden = !isVisible;
+            card.classList.toggle('is-filter-hit', Boolean(query) && isVisible);
+            if (isVisible) {
+                visibleCount += 1;
+            }
+        });
+
+        if (!query) {
+            statusEl.textContent = `默认显示全部章节（共 ${cards.length} 章）`;
+        } else {
+            statusEl.textContent = `找到 ${visibleCount} / ${cards.length} 个匹配章节`;
+        }
+
+        if (emptyState) {
+            emptyState.hidden = visibleCount !== 0;
+        }
+    };
+
+    searchInput.addEventListener('input', applyFilter);
+    applyFilter();
+}
+
+function initComfortInteractions() {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+        return;
+    }
+
+    const selectors = [
+        '.highlight-box',
+        '.analysis-box',
+        '.stock-card',
+        '.stock-detail-card',
+        '.wisdom-card',
+        '.course-grid-card',
+        '.course-toolkit-card',
+        '.research-card',
+        '.homepage-course-entry',
+        '.editorial-band',
+        '.chapter-summary-card',
+        '.chapter-nav-card',
+        '.course-filter-panel'
+    ];
+
+    const cards = Array.from(document.querySelectorAll(selectors.join(',')));
+    cards.forEach((card) => {
+        if (card.dataset.comfortBound === 'true') {
+            return;
+        }
+
+        card.dataset.comfortBound = 'true';
+        card.classList.add('comfort-hover-surface');
+
+        card.addEventListener('pointermove', (event) => {
+            const rect = card.getBoundingClientRect();
+            const x = ((event.clientX - rect.left) / rect.width) * 100;
+            const y = ((event.clientY - rect.top) / rect.height) * 100;
+            card.style.setProperty('--comfort-x', `${x.toFixed(2)}%`);
+            card.style.setProperty('--comfort-y', `${y.toFixed(2)}%`);
+        });
+
+        card.addEventListener('pointerleave', () => {
+            card.style.removeProperty('--comfort-x');
+            card.style.removeProperty('--comfort-y');
+        });
+    });
+}
+
 function initPage() {
     decorateSectionsForReveal();
     syncStickyOffsets();
@@ -818,6 +908,8 @@ function initPage() {
     initArticleMeta();
     initChapterInlineOutline();
     initPayoffChartExplorer();
+    initCourseChapterFilter();
+    initComfortInteractions();
     initLazyLoading();
     initDarkMode();
     initSearch();

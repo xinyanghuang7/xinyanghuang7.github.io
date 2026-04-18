@@ -20,7 +20,7 @@
     <meta name="twitter:image" content="https://4fire.qzz.io/images/posts/{{DATE_ISO}}-value.jpg">
     <title>{{TITLE}} | 美股价值投资笔记</title>
     <!-- Fonts removed for performance -->
-    <link rel="stylesheet" href="../../../css/style.css?v=20260418upgrade4">
+    <link rel="stylesheet" href="../../../css/style.css?v=20260418comfort1">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -74,7 +74,7 @@
     <nav class="article-quick-nav" aria-label="文章快速导览">
         <a href="#stock-pick" class="article-quick-nav-link is-active" data-section-link="stock-pick">宝藏标的</a>
         <a href="#wisdom" class="article-quick-nav-link" data-section-link="wisdom">故事/经验</a>
-        <a href="#market" class="article-quick-nav-link" data-section-link="market">新闻解读</a>
+        <a href="#market" class="article-quick-nav-link" data-section-link="market">新闻 + 解读</a>
         <a href="#decision-cards" class="article-quick-nav-link" data-section-link="decision-cards">动作地图</a>
     </nav>
 
@@ -185,19 +185,32 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="market-title">新闻解读</h2>
-                    <p class="section-subtitle">按股票逐一写清当日异动、触发新闻、硬事实和我的分析，再决定动作边界有没有变化</p>
+                    <h2 class="section-title" id="market-title">新闻 + 解读</h2>
+                    <p class="section-subtitle">新闻必须和解读分开写：先交代最新且最重要的事实，再明确这条新闻会不会真的改变 thesis、节奏和动作边界。</p>
                 </div>
                 <div class="section-date">{{DATE_SHORT}}</div>
             </div>
 
-            <div class="market-grid">
+            <div class="market-grid market-grid-comfort">
                 <div style="grid-column: 1 / -1; margin-bottom: 1rem;">
-                    <img src="../../../images/posts/{{DATE_ISO}}-tech.jpg" alt="市场与持仓分析配图" style="width:100%;height:300px;object-fit:cover; border-radius: 10px;" loading="lazy" decoding="async">
+                    <img src="../../../images/posts/{{DATE_ISO}}-tech.jpg" alt="市场与持仓分析配图" style="width:100%;height:300px;object-fit:cover; border-radius: 18px;" loading="lazy" decoding="async">
                 </div>
-                <div class="analysis-box" style="grid-column: 1 / -1; margin-bottom: 0.5rem;">
-                    <h3 class="analysis-title">第三部分的证据边界</h3>
-                    <p><strong>默认按同一套顺序写：</strong>价格异动 → 触发新闻 / 事件 → 关键事实 → 我的分析 → 动作含义。没有把“为什么涨跌”和“这会不会改变 thesis”区分开，就不算完成。</p>
+                <div class="editorial-band market-editorial-band" style="grid-column: 1 / -1; margin-bottom: 0.9rem;" aria-label="新闻模块阅读说明">
+                    <div class="editorial-band-main">
+                        <div class="editorial-band-kicker">News Discipline</div>
+                        <h3>每条新闻都强制拆成两层：先写最新事实，再写这件事为什么重要。</h3>
+                        <p>第三部分默认使用“新闻内容 + 专属解读”双板块。新闻区只放最新、最重要、最可能改变判断的事件；解读区只回答一个问题：这条新闻对 thesis、节奏和动作边界到底意味着什么。</p>
+                    </div>
+                    <div class="editorial-band-side">
+                        <div class="editorial-band-item">
+                            <span class="editorial-band-label">先看什么</span>
+                            <strong>先读新闻事实，再决定要不要读我的判断</strong>
+                        </div>
+                        <div class="editorial-band-item">
+                            <span class="editorial-band-label">不允许什么</span>
+                            <strong>不把新闻标题本身直接写成解读，也不把情绪涨跌冒充证据</strong>
+                        </div>
+                    </div>
                 </div>
 {{MARKET_STOCKS}}
             </div>
@@ -239,7 +252,7 @@
     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="切换深色模式" title="切换深色模式">🌓</button>
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../../../js/main.js?v=20260418upgrade2"></script>
+    <script src="../../../js/main.js?v=20260418comfort1"></script>
 </body>
 </html>
 

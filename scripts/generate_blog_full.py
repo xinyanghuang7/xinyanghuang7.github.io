@@ -9,8 +9,11 @@ import argparse
 import subprocess
 import sys
 import os
+import html as html_lib
 from pathlib import Path
 from datetime import datetime
+
+import requests
 
 # ============ 路径配置 ============
 BASE_DIR = Path(__file__).parent.parent
@@ -96,6 +99,124 @@ def get_finnhub_data(symbol):
         print(f"Finnhub 错误: {e}", file=sys.stderr)
         return None
 
+def get_tavily_news(symbol, company_name="", thesis_hint="", max_items=2):
+    """获取最新且最重要的新闻，供“新闻内容 + 专属解读”双板块使用。"""
+    api_key = (os.environ.get('TAVILY_API_KEY') or '').strip()
+    if not api_key:
+        return []
+
+    query_parts = [symbol]
+    if company_name:
+        query_parts.append(company_name)
+    if thesis_hint:
+        query_parts.append(thesis_hint)
+    query_parts.extend([
+        'latest important stock news',
+        'thesis risk catalyst',
+    ])
+
+    body = {
+        'api_key': api_key,
+        'query': ' '.join(part for part in query_parts if part),
+        'topic': 'news',
+        'time_range': 'week',
+        'search_depth': 'basic',
+        'count': max_items,
+        'include_answer': False,
+        'include_raw_content': False,
+    }
+
+    try:
+        resp = requests.post('https://api.tavily.com/search', json=body, timeout=20)
+        resp.raise_for_status()
+        payload = resp.json()
+    except Exception as exc:
+        print(f"Tavily 新闻检索失败 ({symbol}): {exc}", file=sys.stderr)
+        return []
+
+    results = []
+    for item in payload.get('results', [])[:max_items]:
+        title = (item.get('title') or '').strip()
+        snippet = (item.get('snippet') or '').strip()
+        url = (item.get('url') or '').strip()
+        site = (item.get('siteName') or '').strip()
+        if not title or not url:
+            continue
+        results.append({
+            'title': title,
+            'snippet': snippet,
+            'url': url,
+            'site': site or '来源链接',
+        })
+    return results
+
+
+def build_news_cards(tracked_assets, thesis_hint=''):
+    """构建第三部分：新闻内容 + 专属解读双板块。"""
+    cards = []
+    for asset in tracked_assets:
+        symbol = asset.get('symbol') or ''
+        company_name = asset.get('name') or symbol
+        position_note = asset.get('position_note') or '保持跟踪，不把一天波动直接升级成动作。'
+        interpretation = asset.get('interpretation') or '更重要的不是 headline 本身，而是它有没有改变 thesis 的兑现路径。'
+        news_items = get_tavily_news(symbol, company_name, thesis_hint=thesis_hint, max_items=2)
+
+        if news_items:
+            news_html = []
+            interp_html = []
+            for index, item in enumerate(news_items, start=1):
+                news_html.append(
+                    f'<article class="news-bullet">'
+                    f'<h4>{html_lib.escape(item["title"])}</h4>'
+                    f'<p>{html_lib.escape(item["snippet"] or "这条新闻目前最值得先记住标题和来源，再看它会不会改变更长期的判断。")} </p>'
+                    f'<div class="news-meta-row">'
+                    f'<span class="news-meta-pill">最新要点 {index}</span>'
+                    f'<span class="news-meta-pill"><a class="news-source-link" href="{html_lib.escape(item["url"])}">{html_lib.escape(item["site"])} ↗</a></span>'
+                    f'</div>'
+                    f'</article>'
+                )
+                interp_html.append(
+                    f'<div class="news-interpretation-item">'
+                    f'<h4>这条新闻为什么值得看</h4>'
+                    f'<p>{html_lib.escape(interpretation)}</p>'
+                    f'<p style="margin-top:0.55rem;">如果 {html_lib.escape(symbol)} 后续继续围绕这类主题反复出现，真正要确认的不是标题热度，而是它有没有进一步强化兑现路径、预算承接或平台边界。</p>'
+                    f'</div>'
+                )
+            news_block = ''.join(news_html)
+            interp_block = ''.join(interp_html)
+        else:
+            news_block = (
+                '<article class="news-bullet">'
+                '<h4>暂未抓到足够新的高权重新闻</h4>'
+                '<p>当检索不到高质量结果时，不强行用旧闻凑数；这一格只保留需要继续跟踪的核心变量。</p>'
+                '<div class="news-meta-row"><span class="news-meta-pill">等待更新</span></div>'
+                '</article>'
+            )
+            interp_block = (
+                '<div class="news-interpretation-item">'
+                '<h4>当前更该盯什么</h4>'
+                f'<p>{html_lib.escape(interpretation)}</p>'
+                '</div>'
+            )
+
+        cards.append(
+            f'<article class="stock-detail-card news-evidence-card">'
+            f'<div class="stock-detail-header">'
+            f'<div><div class="stock-detail-ticker">{html_lib.escape(symbol)}</div>'
+            f'<div class="stock-detail-name">{html_lib.escape(company_name)}</div></div>'
+            f'</div>'
+            f'<div class="highlight-box tip" style="margin:1rem 0 1.25rem;">'
+            f'<strong>跟踪边界：</strong> {html_lib.escape(position_note)}'
+            f'</div>'
+            f'<div class="news-signal-grid">'
+            f'<section class="news-stream-panel"><div class="news-panel-kicker">Latest News</div><div class="news-bullet-list">{news_block}</div></section>'
+            f'<section class="news-interpretation-panel"><div class="news-panel-kicker">What It Means</div><div class="news-interpretation-list">{interp_block}</div></section>'
+            f'</div>'
+            f'</article>'
+        )
+    return ''.join(cards)
+
+
 def generate_images(date_str, focus_stock):
     """生成配图"""
     value_img = IMAGES_DIR / "posts" / f"{date_str}-value.jpg"
@@ -158,6 +279,31 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
         </div>
 """
     
+    tracked_assets = []
+    seen_symbols = set()
+    thesis_hint = 'platform execution capital allocation latest important news'
+    for holding in holdings[:3]:
+        ticker = holding.get('code') or ''
+        if not ticker or ticker in seen_symbols:
+            continue
+        seen_symbols.add(ticker)
+        tracked_assets.append({
+            'symbol': ticker,
+            'name': holding.get('name', ticker),
+            'position_note': f"持有 {holding.get('shares', '--')} 股，成本 ${holding.get('avg_cost', 0):.2f}。先看最新高权重新闻有没有真的改变长期 thesis，再决定是否调整。",
+            'interpretation': f"{ticker} 现在更值得盯的是最新高权重新闻会不会改变兑现速度、预算承接或平台边界，而不是只把 headline 本身翻译成短线动作。",
+        })
+
+    if not tracked_assets:
+        tracked_assets.append({
+            'symbol': focus_stock,
+            'name': company_name,
+            'position_note': '当前无公开持仓时，也要保留一张前台跟踪卡，先盯最新且最重要的新闻，再决定是否提升研究优先级。',
+            'interpretation': f'{focus_stock} 更该被拆成“最新事实”和“为什么重要”两层，而不是只看当天热度。',
+        })
+
+    market_cards_html = build_news_cards(tracked_assets, thesis_hint=thesis_hint)
+
     # 价格显示
     price_display = f"${current_price:.2f}" if current_price else "待更新"
     target_display = f"${target_price:.2f}" if target_price else "待更新"
@@ -183,7 +329,7 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
     <meta name="twitter:image" content="https://4fire.qzz.io/images/posts/{date_str}-value.jpg">
     <meta name="keywords" content="美股,{focus_stock},价值投资,长期持有,股票分析">
     <title>{date_str} 美股分析: {focus_stock} | 美股价值投资笔记</title>
-    <link rel="stylesheet" href="../../../css/style.css?v=20260418upgrade4">
+    <link rel="stylesheet" href="../../../css/style.css?v=20260418comfort1">
 </head>
 <body>
     <!-- Scroll Progress Bar -->
@@ -285,46 +431,33 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
             <div class="section-header">
                 <div class="section-number">03</div>
                 <div class="section-title-group">
-                    <h2 class="section-title">组合观察</h2>
+                    <h2 class="section-title">新闻 + 解读</h2>
                 </div>
                 <div class="section-date">{date_short}</div>
             </div>
             
-            <div class="market-grid">
+            <div class="market-grid market-grid-comfort">
                 <div style="grid-column: 1 / -1; margin-bottom: 1rem;">
-                    <img src="../../../images/posts/{date_str}-tech.jpg" alt="组合观察与市场结构" style="width:100%;height:300px;object-fit:cover;">
+                    <img src="../../../images/posts/{date_str}-tech.jpg" alt="组合观察与市场结构" style="width:100%;height:300px;object-fit:cover; border-radius:18px;">
                 </div>
-"""
-    
-    # 持仓标的卡片
-    holding_tickers = [h["code"] for h in holdings]
-    for ticker in holding_tickers[:3]:  # 最多显示3个
-        h = next(x for x in holdings if x["code"] == ticker)
-        html += f"""
-                <div class="stock-detail-card">
-                    <div class="stock-detail-header">
-                        <div class="stock-detail-ticker">{ticker}</div>
-                        <div class="stock-detail-name">{h.get('name', ticker)}</div>
-                        <div class="stock-price">
-                            <div class="price-value">${h['avg_cost']:.2f}</div>
+                <div class="editorial-band market-editorial-band" style="grid-column: 1 / -1; margin-bottom: 0.9rem;">
+                    <div class="editorial-band-main">
+                        <div class="editorial-band-kicker">News Discipline</div>
+                        <h3>第三部分强制拆成两层：新闻内容 + 专属解读。</h3>
+                        <p>只写最新、最重要、最可能改变判断的新闻；解读区只回答一个问题：这件事对 thesis、节奏和动作边界到底意味着什么。</p>
+                    </div>
+                    <div class="editorial-band-side">
+                        <div class="editorial-band-item">
+                            <span class="editorial-band-label">先看</span>
+                            <strong>先读新闻事实，再看判断有没有必要升级</strong>
+                        </div>
+                        <div class="editorial-band-item">
+                            <span class="editorial-band-label">避免</span>
+                            <strong>不把新闻标题直接写成结论，也不把情绪当证据</strong>
                         </div>
                     </div>
-                    <div class="portfolio-viewpoint" style="background:rgba(212,175,55,0.1);padding:0.75rem;margin-top:0.5rem;border-left:3px solid #d4af37;">
-                        <strong style="color:#d4af37;">【持仓视角】</strong>
-                        持有 {h['shares']} 股，成本 ${h['avg_cost']:.2f}。这里默认只写需要继续跟踪的关键变量，不把每次波动都升级成必须动作。
-                    </div>
                 </div>
-"""
-    
-    if not holding_tickers:
-        html += """
-                <div class="analysis-box" style="grid-column: 1 / -1;">
-                    <h3 class="analysis-title">当前无持仓</h3>
-                    <p>当前没有公开持仓需要跟踪时，这一部分保持为空，不强行制造动作建议。</p>
-                </div>
-"""
-    
-    html += """
+                {market_cards_html}
             </div>
         </section>
         
@@ -361,7 +494,7 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
         <p>美股长期价值投资 · 研究先于动作 · 长期主义优先</p>
     </footer>
     
-    <script src="../../../js/main.js?v=20260418upgrade2"></script>
+    <script src="../../../js/main.js?v=20260418comfort1"></script>
 </body>
 </html>"""
     
