@@ -364,6 +364,7 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
                 <div class="section-number">01</div>
                 <div class="section-title-group">
                     <h2 class="section-title">今日宝藏标的</h2>
+                    <p class="section-subtitle">第一部分默认按 5+2 展开：行业、商业模式、管理层、财报、估值、投资逻辑、投资风险。不是薄亮点清单，而是一份能复读的研究笔记。</p>
                 </div>
                 <div class="section-date">{date_short}</div>
             </div>
@@ -408,10 +409,10 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
             </div>
             
             <div class="wisdom-card">
-                <div class="wisdom-theme">真正有用的投资认知，不是金句，而是可以复用的判断框架</div>
-                <h3 class="wisdom-title">这一部分默认沉淀“为什么继续看 / 为什么先别急着动”</h3>
+                <div class="wisdom-theme">真正有用的投资认知，不是金句，而是一个真实、可带走、可复用的小故事</div>
+                <h3 class="wisdom-title">这一部分默认沉淀“为什么继续看 / 为什么先别急着动”，最后收成一句真正值得带走的话</h3>
                 <div class="wisdom-content">
-                    <p>生成文章时，这里优先写一个能复用的判断框架：这家公司真正值钱的是什么，哪些证据能强化 thesis，哪些变量会让结论反转。避免再用空泛名言充当内容。</p>
+                    <p>生成文章时，这里优先写一个真实、可复用的投资故事或经验：它必须有事实基础，有边界感，最后能沉成一句真正能带走的话，而不是靠口号撑场面。</p>
                 </div>
                 <div class="wisdom-image">
                     <img src="../../../images/posts/{date_str}-value.jpg" alt="价值投资认知配图" width="768" height="1280" loading="lazy" decoding="async">
@@ -445,7 +446,7 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
                     <div class="editorial-band-main">
                         <div class="editorial-band-kicker">News Discipline</div>
                         <h3>第三部分强制拆成两层：新闻内容 + 专属解读。</h3>
-                        <p>只写最新、最重要、最可能改变判断的新闻；解读区只回答一个问题：这件事对 thesis、节奏和动作边界到底意味着什么。</p>
+                        <p>只写最新、最重要、最可能改变判断的新闻；排序默认先最新、再重要等级。解读区只回答一个问题：这件事对 thesis、节奏和动作边界到底意味着什么。</p>
                     </div>
                     <div class="editorial-band-side">
                         <div class="editorial-band-item">
@@ -464,7 +465,7 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
         
         <!-- 分析师评级 -->
         <section class="analysis-box">
-            <h3 class="analysis-title">分析师参考</h3>
+            <h3 class="analysis-title">动作地图 / 评级参考</h3>
             <div class="stock-ratings-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;">
 """
     
