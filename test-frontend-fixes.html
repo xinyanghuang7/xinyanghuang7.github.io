@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前端修复测试页面</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .test-section {
+            margin: 2rem auto;
+            max-width: 1200px;
+            padding: 2rem;
+            background: var(--bg-card);
+            border-radius: 16px;
+        }
+        .test-title {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+        .test-item {
+            margin: 1rem 0;
+            padding: 1rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-section">
+        <h1 class="test-title">前端修复测试 - 2026-04-18</h1>
+        
+        <div class="test-item">
+            <h2>1. 文本对比度测试</h2>
+            <p style="color: var(--text-primary);">主要文本 (text-primary) - 应该是纯白色</p>
+            <p style="color: var(--text-secondary);">次要文本 (text-secondary) - 应该是 0.92 透明度</p>
+            <p style="color: var(--text-tertiary);">三级文本 (text-tertiary) - 应该是 0.86 透明度</p>
+            <p style="color: var(--text-muted);">弱化文本 (text-muted) - 应该是 0.78 透明度</p>
+        </div>
+
+        <div class="test-item">
+            <h2>2. 代码块可读性测试</h2>
+            <p>内联代码：<code>const value = 100;</code> 应该有明显的背景和边框</p>
+            <pre><code>// 代码块测试
+function testFunction() {
+    return "应该有更深的背景和边框";
+}</code></pre>
+        </div>
+
+        <div class="test-item">
+            <h2>3. 搜索结果样式测试</h2>
+            <div class="search-result-item">
+                <div class="search-result-title">测试搜索结果标题</div>
+                <div class="search-result-desc">悬停时应该向右平移并显示金色边框</div>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <h2>4. 卡片悬停测试</h2>
+            <div class="course-grid-card" style="padding: 1rem; background: var(--bg-card); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px;">
+                <h3>测试卡片</h3>
+                <p>悬停时应该向上平移 2px 并显示金色边框</p>
+            </div>
+        </div>
+
+        <div class="test-item">
+            <h2>5. 表格滚动提示测试（移动端）</h2>
+            <div class="course-table-wrap" style="overflow-x: auto;">
+                <table style="min-width: 800px; width: 100%; border-collapse: collapse;">
+                    <tr>
+                        <th style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);">列1</th>
+                        <th style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);">列2</th>
+                        <th style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);">列3</th>
+                        <th style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);">列4</th>
+                        <th style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);">列5</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);">数据1</td>
+                        <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);">数据2</td>
+                        <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);">数据3</td>
+                        <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);">数据4</td>
+                        <td style="padding: 0.5rem; border: 1px solid rgba(255,255,255,0.1);">数据5</td>
+                    </tr>
+                </table>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">
+                移动端应该在表格下方显示"← 滑动查看更多 →"提示
+            </p>
+        </div>
+
+        <div class="test-item">
+            <h2>6. 焦点状态测试</h2>
+            <button style="padding: 0.5rem 1rem; background: var(--accent-gold); color: #000; border: none; border-radius: 4px; cursor: pointer;">
+                点击或用 Tab 键聚焦测试
+            </button>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">
+                聚焦时应该显示 2px 金色轮廓
+            </p>
+        </div>
+
+        <div class="test-item">
+            <h2>7. 加载骨架屏测试</h2>
+            <div class="loading-skeleton" style="height: 60px; margin: 1rem 0;"></div>
+            <div class="loading-skeleton" style="height: 40px; width: 70%; margin: 1rem 0;"></div>
+            <div class="loading-skeleton" style="height: 40px; width: 50%; margin: 1rem 0;"></div>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">
+                应该看到渐变动画效果
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // 测试脚本
+        console.log('前端修复测试页面已加载');
+        console.log('CSS 变量值:');
+        const root = getComputedStyle(document.documentElement);
+        console.log('--text-secondary:', root.getPropertyValue('--text-secondary'));
+        console.log('--text-tertiary:', root.getPropertyValue('--text-tertiary'));
+        console.log('--text-muted:', root.getPropertyValue('--text-muted'));
+    </script>
+</body>
+</html>
