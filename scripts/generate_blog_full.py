@@ -183,7 +183,7 @@ def build_html(date_obj, recommendation_data, finnhub_data, portfolio):
     <meta name="twitter:image" content="https://4fire.qzz.io/images/posts/{date_str}-value.jpg">
     <meta name="keywords" content="美股,{focus_stock},价值投资,长期持有,股票分析">
     <title>{date_str} 美股分析: {focus_stock} | 美股价值投资笔记</title>
-    <link rel="stylesheet" href="../../../css/style.css?v=20260418upgrade2">
+    <link rel="stylesheet" href="../../../css/style.css?v=20260418upgrade4">
 </head>
 <body>
     <!-- Scroll Progress Bar -->

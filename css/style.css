@@ -6273,12 +6273,70 @@ footer,
     color: var(--text-secondary);
 }
 
+.payoff-reading-rail {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.9fr);
+    gap: 0.95rem;
+    margin-top: 1rem;
+    padding: 1rem 1.05rem;
+    border-radius: 22px;
+    border: 1px solid rgba(112, 90, 46, 0.14);
+    background: linear-gradient(135deg, rgba(255, 252, 247, 0.96), rgba(247, 240, 228, 0.9));
+}
+
+.payoff-reading-rail-main,
+.payoff-reading-rail-side,
+.payoff-reading-rail-item {
+    display: grid;
+    gap: 0.55rem;
+}
+
+.payoff-reading-rail-kicker,
+.payoff-reading-rail-item span {
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+.payoff-reading-rail h4 {
+    margin: 0;
+    font-size: 1.08rem;
+    line-height: 1.45;
+    color: var(--text-primary);
+}
+
+.payoff-reading-rail p {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.78;
+}
+
+.payoff-reading-rail-item {
+    padding: 0.78rem 0.88rem;
+    border-radius: 18px;
+    border: 1px solid rgba(112, 90, 46, 0.12);
+    background: rgba(255, 255, 255, 0.64);
+}
+
+.payoff-reading-rail-item strong {
+    color: var(--text-primary);
+    font-size: 0.96rem;
+    line-height: 1.58;
+}
+
+.archive-editorial-band {
+    margin-bottom: 1rem;
+}
+
 @media (max-width: 980px) {
     .research-grid,
     .course-toolkit-grid,
     .chapter-method-grid,
     .payoff-chart-grid,
-    .editorial-band {
+    .editorial-band,
+    .payoff-reading-rail {
         grid-template-columns: 1fr;
     }
 
@@ -6333,6 +6391,14 @@ footer,
     .payoff-chart-tooltip {
         min-width: 150px;
         transform: translate(-50%, -112%);
+    }
+
+    .payoff-reading-rail h4 {
+        font-size: 1rem;
+    }
+
+    .payoff-reading-rail-item strong {
+        font-size: 0.93rem;
     }
 }
 
