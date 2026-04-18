@@ -1,139 +1,208 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-生成 AI 配图（使用 ModelScope API）
+生成博客配图（优先使用 ModelScope API；失败时自动回退到本地保底图）
 """
 
+from __future__ import annotations
+
 import os
-import base64
-import requests
+import shutil
 import time
 from datetime import datetime
 from pathlib import Path
 
-BASE_DIR = Path(__file__).parent.parent
+import requests
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 IMAGES_DIR = BASE_DIR / "images"
+POST_IMAGES_DIR = IMAGES_DIR / "posts"
+DEFAULT_FALLBACKS = {
+    "value": IMAGES_DIR / "value-investing.jpg",
+    "tech": IMAGES_DIR / "tech-analysis.jpg",
+}
 
-def ensure_images_dir():
-    IMAGES_DIR.mkdir(parents=True, exist_ok=True)
+PROMPTS = {
+    "value": (
+        "Professional financial investment concept, vintage leather ledger with gold pen, "
+        "golden calculator, warm golden hour lighting, dark wood desk, "
+        "luxury gold and deep navy blue color scheme, editorial magazine photography style"
+    ),
+    "tech": (
+        "Modern AI tech infrastructure visualization, holographic data charts floating in dark space, "
+        "glowing blue energy flows merging with power grid, futuristic neon accents, "
+        "high-tech financial data center atmosphere, dark navy background with golden particles"
+    ),
+}
 
-def generate_image(prompt, output_file, model="Qwen/Qwen-Image"):
-    """调用 ModelScope API 生成图片"""
-    
-    token = os.environ.get('MODELSCOPE_TOKEN')
+
+class ModelScopeAuthError(RuntimeError):
+    """Raised when MODELSCOPE_TOKEN is missing or invalid."""
+
+
+class ModelScopeRequestError(RuntimeError):
+    """Raised when ModelScope API returns an unexpected response."""
+
+
+def ensure_images_dir() -> None:
+    POST_IMAGES_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def get_output_path(date_str: str, kind: str) -> Path:
+    return POST_IMAGES_DIR / f"{date_str}-{kind}.jpg"
+
+
+def get_modelscope_token() -> str:
+    token = (os.environ.get("MODELSCOPE_TOKEN") or "").strip()
     if not token:
-        print(f"错误: 未设置 MODELSCOPE_TOKEN 环境变量")
-        print(f"请设置: export MODELSCOPE_TOKEN='your_token'")
-        return False
-    
+        raise ModelScopeAuthError("未设置 MODELSCOPE_TOKEN 环境变量")
+    return token
+
+
+def submit_generation_task(prompt: str, model: str, token: str) -> str:
     headers = {
-        'Authorization': f'Bearer {token}',
-        'Content-Type': 'application/json'
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json",
+        "X-ModelScope-Async-Mode": "true",
     }
-    
-    print(f"生成图片: {output_file.name}")
-    print(f"  Prompt: {prompt[:80]}...")
-    
-    # Step 1: 提交异步生成任务
-    body = {
-        "model": model,
-        "prompt": prompt
-    }
-    
+    body = {"model": model, "prompt": prompt}
+
+    resp = requests.post(
+        "https://api-inference.modelscope.cn/v1/images/generations",
+        headers=headers,
+        json=body,
+        timeout=30,
+    )
+
+    if resp.status_code == 401:
+        raise ModelScopeAuthError("MODELSCOPE_TOKEN 无效、过期，或当前账户无权调用该接口")
+
     try:
-        resp = requests.post(
-            "https://api-inference.modelscope.cn/v1/images/generations",
-            headers=headers,
-            json=body,
-            timeout=30
-        )
         resp.raise_for_status()
-        task_id = resp.json()["task_id"]
-        print(f"  任务ID: {task_id}")
-    except Exception as e:
-        print(f"  提交失败: {e}")
-        return False
-    
-    # Step 2: 轮询等待结果（最多30次，每次5秒）
-    poll_headers = {
-        'Authorization': f'Bearer {token}',
-        'X-ModelScope-Task-Type': 'image_generation'
+    except requests.HTTPError as exc:
+        raise ModelScopeRequestError(f"提交任务失败: {exc}; body={resp.text[:400]}") from exc
+
+    payload = resp.json()
+    task_id = payload.get("task_id")
+    if not task_id:
+        raise ModelScopeRequestError(f"提交任务成功但未返回 task_id: {payload}")
+    return str(task_id)
+
+
+def poll_generation_result(task_id: str, token: str, output_file: Path) -> bool:
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "X-ModelScope-Task-Type": "image_generation",
     }
-    
+
     for i in range(1, 31):
         time.sleep(5)
+        resp = requests.get(
+            f"https://api-inference.modelscope.cn/v1/tasks/{task_id}",
+            headers=headers,
+            timeout=10,
+        )
+
+        if resp.status_code == 401:
+            raise ModelScopeAuthError("轮询任务时鉴权失败：MODELSCOPE_TOKEN 已失效或权限不足")
+
         try:
-            resp = requests.get(
-                f"https://api-inference.modelscope.cn/v1/tasks/{task_id}",
-                headers=poll_headers,
-                timeout=10
-            )
             resp.raise_for_status()
-            status = resp.json()["task_status"]
-            print(f"  轮询 {i}/30: 状态={status}", end="\r")
-            
-            if status == "SUCCEED":
-                image_url = resp.json()["output_images"][0]
-                # 下载图片
-                img_resp = requests.get(image_url, timeout=30)
-                img_resp.raise_for_status()
-                
-                with open(output_file, 'wb') as f:
-                    f.write(img_resp.content)
-                
-                file_size = output_file.stat().st_size
-                print(f"\n  ✓ 图片已保存: {output_file.name} ({file_size:,} bytes)")
-                return True
-                
-            elif status in ["FAILED", "CANCELED"]:
-                print(f"\n  ✗ 任务失败: {status}")
-                return False
-                
-        except Exception as e:
-            print(f"\n  轮询错误: {e}")
-            continue
-    
-    print("\n  ✗ 超时未完成")
+        except requests.HTTPError as exc:
+            raise ModelScopeRequestError(f"轮询任务失败: {exc}; body={resp.text[:400]}") from exc
+
+        payload = resp.json()
+        status = payload.get("task_status")
+        print(f"  轮询 {i}/30: 状态={status}", end="\r")
+
+        if status == "SUCCEED":
+            output_images = payload.get("output_images") or []
+            if not output_images:
+                raise ModelScopeRequestError(f"任务成功但未返回 output_images: {payload}")
+
+            image_url = output_images[0]
+            img_resp = requests.get(image_url, timeout=30)
+            img_resp.raise_for_status()
+            output_file.write_bytes(img_resp.content)
+            file_size = output_file.stat().st_size
+            print(f"\n  [OK] 图片已保存: {output_file.name} ({file_size:,} bytes)")
+            return True
+
+        if status in {"FAILED", "CANCELED"}:
+            print(f"\n  [FAIL] 任务失败: {status}")
+            return False
+
+    print("\n  [FAIL] 超时未完成")
     return False
 
-def generate_all_images(date):
-    """生成一对图片"""
-    
+
+def generate_image(prompt: str, output_file: Path, model: str = "Qwen/Qwen-Image") -> bool:
+    """调用 ModelScope API 生成单张图片。"""
+    token = get_modelscope_token()
+
+    print(f"生成图片: {output_file.name}")
+    print(f"  Prompt: {prompt[:80]}...")
+    task_id = submit_generation_task(prompt, model, token)
+    print(f"  任务ID: {task_id}")
+    return poll_generation_result(task_id, token, output_file)
+
+
+def copy_fallback_image(kind: str, output_file: Path) -> bool:
+    fallback = DEFAULT_FALLBACKS.get(kind)
+    if not fallback or not fallback.exists():
+        print(f"  [FAIL] 回退失败: 未找到保底图 {fallback}")
+        return False
+
+    shutil.copyfile(fallback, output_file)
+    file_size = output_file.stat().st_size
+    print(f"  [FALLBACK] 已回退到保底图: {output_file.name} ({file_size:,} bytes)")
+    return True
+
+
+def generate_all_images(date: str, allow_fallback: bool = True) -> bool:
+    """生成两张博客配图；若 API 不可用则自动回退到稳定保底图。"""
     ensure_images_dir()
-    
     date_str = str(date)
-    
-    prompts = {
-        IMAGES_DIR / f"{date_str}-value.jpg": 
-            "Professional financial investment concept, vintage leather ledger with gold pen, "
-            "golden calculator, warm golden hour lighting, dark wood desk, "
-            "luxury gold and deep navy blue color scheme, editorial magazine photography style",
-        
-        IMAGES_DIR / f"{date_str}-tech.jpg":
-            "Modern AI tech infrastructure visualization, holographic data charts floating in dark space, "
-            "glowing blue energy flows merging with power grid, futuristic neon accents, "
-            "high-tech financial data center atmosphere, dark navy background with golden particles"
-    }
-    
+
     success = 0
-    for img_path, prompt in prompts.items():
-        if img_path.exists():
-            print(f"跳过已存在: {img_path.name}")
+    auth_blocked = False
+
+    for kind, prompt in PROMPTS.items():
+        output_file = get_output_path(date_str, kind)
+
+        if output_file.exists():
+            print(f"跳过已存在: {output_file.name}")
             success += 1
             continue
-        
-        if generate_image(prompt, img_path):
+
+        try:
+            if auth_blocked:
+                raise ModelScopeAuthError("前一次请求已确认鉴权失效，直接使用保底图")
+            if generate_image(prompt, output_file):
+                success += 1
+                continue
+        except ModelScopeAuthError as exc:
+            auth_blocked = True
+            print(f"  ! 鉴权不可用: {exc}")
+        except Exception as exc:
+            print(f"  ! 生成失败: {exc}")
+
+        if allow_fallback and copy_fallback_image(kind, output_file):
             success += 1
         else:
-            print(f"失败: {img_path.name}")
-    
-    print(f"\n完成: {success}/{len(prompts)} 张图片生成成功")
-    return success == len(prompts)
+            print(f"失败: {output_file.name}")
 
-if __name__ == '__main__':
+    print(f"\n完成: {success}/{len(PROMPTS)} 张图片准备成功")
+    return success == len(PROMPTS)
+
+
+if __name__ == "__main__":
     import argparse
+
     parser = argparse.ArgumentParser()
-    parser.add_argument('--date', default=datetime.now().strftime('%Y-%m-%d'))
+    parser.add_argument("--date", default=datetime.now().strftime("%Y-%m-%d"))
+    parser.add_argument("--no-fallback", action="store_true", help="禁用保底图回退")
     args = parser.parse_args()
-    
-    generate_all_images(args.date)
+
+    ok = generate_all_images(args.date, allow_fallback=not args.no_fallback)
+    raise SystemExit(0 if ok else 1)

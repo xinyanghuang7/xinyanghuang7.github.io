@@ -17,7 +17,7 @@ PORTFOLIO_FILE = Path.home() / ".openclaw" / "skills" / "portfolio-tracker" / "d
 STOCK_RECOMMENDER_SCRIPT = Path.home() / ".openclaw" / "skills" / "stock-recommender" / "scripts" / "recommender.py"
 IMAGES_DIR = BASE_DIR / "images"
 POSTS_DIR = BASE_DIR / "posts"
-GENERATE_IMAGE_SCRIPT = BASE_DIR / "skills" / "us-stock-blog" / "scripts" / "generate_image.py"
+GENERATE_IMAGE_SCRIPT = BASE_DIR / "scripts" / "generate_images.py"
 DEPLOY_SCRIPT = BASE_DIR / "scripts" / "deploy.py"
 SYNC_SCRIPT = BASE_DIR / "scripts" / "sync-site-data.py"
 QA_SCRIPT = BASE_DIR / "scripts" / "qa-site.ps1"
@@ -85,8 +85,8 @@ def determine_focus(user_stock):
 
 def generate_images(date_str, focus_stock):
     """生成配图"""
-    value_img = IMAGES_DIR / f"{date_str}-value.jpg"
-    tech_img = IMAGES_DIR / f"{date_str}-tech.jpg"
+    value_img = IMAGES_DIR / "posts" / f"{date_str}-value.jpg"
+    tech_img = IMAGES_DIR / "posts" / f"{date_str}-tech.jpg"
     
     if value_img.exists() and tech_img.exists():
         print("图片已存在")
@@ -97,9 +97,12 @@ def generate_images(date_str, focus_stock):
         return False
     
     print("正在生成图片...")
-    # 这里应该调用 generate_image.py
-    # 简化：只检查是否存在
-    return False
+    code, out, err = run_cmd([sys.executable, str(GENERATE_IMAGE_SCRIPT), "--date", date_str], timeout=420)
+    if out:
+        print(out)
+    if err:
+        print(err)
+    return code == 0 and value_img.exists() and tech_img.exists()
 
 def contains_placeholders(html):
     placeholders = ["XXX.XX", "待填充", "最新动态...", "新闻分析...", "基于调研数据"]

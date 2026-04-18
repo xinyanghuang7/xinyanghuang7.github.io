@@ -18,6 +18,11 @@ POSTS_DATA_FILE = ROOT / "js" / "posts-data.js"
 TITLE_RE = re.compile(r"<title>(.*?)\s*\|", re.IGNORECASE | re.DOTALL)
 META_RE_TEMPLATE = r'<meta\s+{kind}="{name}"\s+content="([^"]*)"'
 TICKER_RE = re.compile(r'class="stock-ticker"[^>]*>([A-Z]{1,5})<', re.IGNORECASE)
+CANONICAL_RE = re.compile(r'<link\s+rel="canonical"\s+href="([^"]+)"', re.IGNORECASE)
+JSONLD_BLOCK_RE = re.compile(
+    r'(?P<indent>[ \t]*)<script\s+type="application/ld\+json">\s*(?P<payload>.*?)\s*</script>',
+    re.IGNORECASE | re.DOTALL,
+)
 
 
 def clean_text(value: str) -> str:
@@ -45,9 +50,21 @@ def split_keywords(value: str) -> list[str]:
     return result
 
 
+def resolve_relative_post_url(path: Path) -> str:
+    try:
+        return path.relative_to(ROOT).as_posix()
+    except ValueError:
+        marker = "posts"
+        parts = list(path.parts)
+        if marker in parts:
+            idx = parts.index(marker)
+            return "/".join(parts[idx:])
+        return path.name
+
+
 def extract_post(path: Path) -> dict:
     text = path.read_text(encoding="utf-8-sig")
-    relative_url = path.relative_to(ROOT).as_posix()
+    relative_url = resolve_relative_post_url(path)
     year, month, day = path.parts[-3], path.parts[-2], path.stem
     date = f"{year}-{month}-{day}"
 
@@ -69,10 +86,86 @@ def extract_post(path: Path) -> dict:
     }
 
 
-def load_posts() -> list[dict]:
-    posts = [extract_post(path) for path in POSTS_DIR.rglob("*.html")]
+def build_jsonld_payload(path: Path, text: str) -> dict:
+    relative_url = resolve_relative_post_url(path)
+    year, month, day = path.parts[-3], path.parts[-2], path.stem
+    date = f"{year}-{month}-{day}"
+    default_canonical = f"https://4fire.qzz.io/{relative_url}"
+    default_image = f"https://4fire.qzz.io/images/posts/{date}-value.jpg"
+
+    title = extract_first(TITLE_RE, text) or f"{year}年{int(month)}月{int(day)}日美股分析"
+    description = extract_first(meta_pattern("description"), text) or "点击查看详细分析"
+    canonical = extract_first(CANONICAL_RE, text) or default_canonical
+    image = extract_first(meta_pattern("og:image", kind="property"), text) or default_image
+
+    jsonld_type = "Article"
+    date_modified = date
+
+    jsonld_match = JSONLD_BLOCK_RE.search(text)
+    if jsonld_match:
+        try:
+            existing = json.loads(jsonld_match.group("payload"))
+            if isinstance(existing, dict):
+                existing_type = existing.get("@type")
+                existing_date_modified = existing.get("dateModified")
+                if isinstance(existing_type, str) and existing_type.strip():
+                    jsonld_type = existing_type.strip()
+                if isinstance(existing_date_modified, str) and existing_date_modified.strip():
+                    date_modified = clean_text(existing_date_modified)
+        except json.JSONDecodeError:
+            pass
+
+    return {
+        "@context": "https://schema.org",
+        "@type": jsonld_type,
+        "headline": title,
+        "description": description,
+        "author": {
+            "@type": "Person",
+            "name": "ValueInvest",
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ValueInvest Blog",
+        },
+        "datePublished": date,
+        "dateModified": date_modified,
+        "mainEntityOfPage": canonical,
+        "image": [image],
+    }
+
+
+def sync_post_jsonld(path: Path) -> bool:
+    text = path.read_text(encoding="utf-8-sig")
+    match = JSONLD_BLOCK_RE.search(text)
+    if not match:
+        return False
+
+    payload = build_jsonld_payload(path, text)
+    indent = match.group("indent")
+    payload_lines = json.dumps(payload, ensure_ascii=False, indent=4).splitlines()
+    replacement = "\n".join(
+        [f"{indent}<script type=\"application/ld+json\">"]
+        + [f"{indent}{line}" for line in payload_lines]
+        + [f"{indent}</script>"]
+    )
+    updated = text[: match.start()] + replacement + text[match.end() :]
+    if updated == text:
+        return False
+
+    path.write_text(updated, encoding="utf-8")
+    return True
+
+
+def load_posts() -> tuple[list[dict], int]:
+    posts: list[dict] = []
+    repaired = 0
+    for path in POSTS_DIR.rglob("*.html"):
+        if sync_post_jsonld(path):
+            repaired += 1
+        posts.append(extract_post(path))
     posts.sort(key=lambda item: item["date"], reverse=True)
-    return posts
+    return posts, repaired
 
 
 def shorten(value: str, limit: int = 60) -> str:
@@ -139,13 +232,15 @@ def sync_posts_data(posts: list[dict]) -> None:
 
 
 def main() -> int:
-    posts = load_posts()
+    posts, repaired = load_posts()
     if not posts:
         raise SystemExit("No posts found under posts/")
 
     sync_index(posts)
     sync_posts_data(posts)
 
+    if repaired:
+        print(f"Repaired {repaired} JSON-LD block(s)")
     print(f"Synced {len(posts)} posts -> index.html + js/posts-data.js")
     return 0
 

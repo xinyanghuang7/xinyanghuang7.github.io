@@ -52,6 +52,19 @@ function Test-ContentEncodingRisk([string]$content, [string]$rel) {
     }
 }
 
+function Test-JsonLd([string]$content, [string]$rel) {
+    $matches = [regex]::Matches($content, '<script\s+type="application/ld\+json">\s*(.*?)\s*</script>', [System.Text.RegularExpressions.RegexOptions]::Singleline)
+    foreach ($match in $matches) {
+        $payload = $match.Groups[1].Value
+        try {
+            $null = $payload | ConvertFrom-Json -ErrorAction Stop
+        }
+        catch {
+            Add-Issue "$rel has invalid JSON-LD: $($_.Exception.Message)"
+        }
+    }
+}
+
 function Test-CoursePage([string]$path, [string]$canonicalPath, [string]$scriptPattern, [string]$stylesheetPattern) {
     if (-not (Test-Path $path)) {
         $relMissing = $path.Substring($root.Length + 1)
@@ -87,6 +100,7 @@ function Test-CoursePage([string]$path, [string]$canonicalPath, [string]$scriptP
     }
 
     Test-ContentEncodingRisk -content $content -rel $rel
+    Test-JsonLd -content $content -rel $rel
 
     return $content
 }
@@ -98,6 +112,7 @@ foreach ($file in $postFiles) {
     $rel = $file.FullName.Substring($root.Length + 1)
 
     Test-ContentEncodingRisk -content $content -rel $rel
+    Test-JsonLd -content $content -rel $rel
 
     if ($content -notmatch '<script src="\.\./\.\./\.\./js/main\.js(?:\?v=[^"'']+)?"></script>') {
         Add-Issue "$rel missing main.js include"
@@ -168,6 +183,7 @@ if (Test-Path $indexPath) {
     $index = Get-Content -Raw -Encoding UTF8 $indexPath
 
     Test-ContentEncodingRisk -content $index -rel 'index.html'
+    Test-JsonLd -content $index -rel 'index.html'
 
     if ($index -match '<meta name="author" content="[^"]*"\s*<meta') {
         Add-Issue 'index.html has malformed meta tag'

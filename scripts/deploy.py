@@ -108,10 +108,10 @@ def main() -> int:
     parser.add_argument("--path", action="append", dest="paths", default=[], help="额外推送的仓库相对路径，可重复使用")
     args = parser.parse_args()
 
-    token = os.environ.get("GITHUB_TOKEN")
+    token = os.environ.get("gh_token") or os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
     if not token:
-        print("错误: 未设置 GITHUB_TOKEN 环境变量")
-        print("请设置: export GITHUB_TOKEN='your_token' 或 $env:GITHUB_TOKEN='your_token'")
+        print("错误: 未设置 gh_token / GH_TOKEN / GITHUB_TOKEN 环境变量")
+        print("请设置: $env:gh_token='your_token'（优先），或兼容使用 $env:GH_TOKEN / $env:GITHUB_TOKEN")
         return 1
 
     headers = get_headers(token)
