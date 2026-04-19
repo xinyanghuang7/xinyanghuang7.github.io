@@ -36,6 +36,23 @@ Default execution chain:
 - Do not let a visually nicer page bypass live verification.
 - Do not let options-course polish drift into a second visual system unrelated to the blog.
 
+## 0.5 Daily learning / teaching rule
+
+The daily blog is not only a publishing surface. It is also a **daily learning surface** for the user.
+
+That means every post should help the reader do at least one of these:
+- learn one new reusable investing idea
+- sharpen one existing judgment boundary
+- see how one method maps into a real holding / watchlist / action decision
+- gradually build a more personal investing framework instead of passively consuming updates
+
+Default expression rule:
+- **Module 2 teaches the method**
+- **Module 3 shows how that method helps explain today's holdings / debate / news**
+- **Module 4 reduces it to action boundary and next move**
+
+If a post only updates what happened today but does not help the reader think better next time, it is incomplete.
+
 ## 1. Four-part frozen contract
 
 Every daily post must contain all 4 parts. No silent downgrade.
@@ -55,6 +72,8 @@ Every daily post must contain all 4 parts. No silent downgrade.
 ### Module 2 — 真实可带走的小故事
 - Must be a **real, evidence-based, reusable** lesson.
 - Must leave the reader with **one clear takeaway sentence**.
+- Must help the reader understand **how to think**, not just what happened.
+- Should preferably make one judgment move explicit: what to look at first, what not to overread, and where the boundary is.
 - No fake fable, empty slogan, or generic AI moralizing.
 
 ### Module 3 — 新闻内容 + 专属解读
@@ -106,8 +125,12 @@ The homepage, article pages, and options-course pages should feel like one produ
 
 ### Premium article visual hard gates
 - Rounded info cards / topic cards / question cards must be large enough to fully contain their copy on desktop and mobile; clipping, cramped multiline squeeze, and text overflow are blockers.
+- Default to **fewer, larger, calmer rounded surfaces**. Do not stack extra rounded rectangles unless they create real hierarchy.
+- Card copy must keep clear inner padding on all sides; if the text feels glued to the curved edge, the layout is still broken.
 - The reading surface must feel centered and balanced; avoid obvious left-heavy layouts that leave a large dead band on the right when the section is meant to be a card/grid surface.
+- Heading width and prose width should feel like one system; do not allow a very wide title shell above a much narrower body column unless there is a deliberate editorial reason.
 - Module 4 / 动作地图 must look like an intentional card system, not a generic fallback column layout.
+- Typography must keep an obvious hierarchy: section title > card / module title > body copy. If they read as the same size, the page is not closed.
 - If one premium post exposes a structural defect that is likely shared (meta-bar collision, small cards, card-surface regression, sticky UI obstruction), sample nearby recent posts and the shared CSS/template layer before calling the work closed.
 
 ### Premium options-course hard gates
@@ -115,6 +138,8 @@ The homepage, article pages, and options-course pages should feel like one produ
 - Learning-path cards, toolkit cards, and chapter-directory cards must have clear hierarchy, enough breathing room, and obvious CTA landing points.
 - Chapter pages must keep a stable reading ladder: **summary → reading rail →正文 → chapter navigation**.
 - Quick-nav and chapter-meta bars may be sticky, but must not visually overpower the content or feel heavier than the chapter body.
+- If quick-nav or header tabs get crowded, prefer wrap / horizontal scroll / simpler labels over squeezed overlap.
+- Chapter-body prose width, chapter titles, payoff notes, and blockquotes must feel like the same reading system; wide titles with a much narrower正文 strip are a hard fail.
 - Payoff charts, source figures, and blockquotes need deliberate spacing so the page reads like a premium lesson, not a template export.
 - Prev/next / return-to-course navigation must feel like part of one calm learning path, not a loose set of utility links.
 - If the options-course homepage gets better but chapter pages still feel flatter / harsher / more template-like, the job is not finished.
