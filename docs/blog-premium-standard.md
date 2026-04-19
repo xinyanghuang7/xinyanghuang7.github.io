@@ -2,7 +2,7 @@
 
 Single source of truth for the public blog / options-course output standard.
 
-Last updated: 2026-04-18
+Last updated: 2026-04-19
 Public domain: `https://4fire.qzz.io/`
 
 ## 1. Four-part frozen contract
@@ -69,6 +69,13 @@ The homepage, article pages, and options-course pages should feel like one produ
 - `section-number` must not clip on mobile.
 - section title / subtitle / date must stay aligned and readable.
 - small text must maintain comfortable contrast.
+- quick-nav / article-meta-bar / section-header must never overlap or visually collide after scroll / anchor jumps.
+
+### Premium article visual hard gates
+- Rounded info cards / topic cards / question cards must be large enough to fully contain their copy on desktop and mobile; clipping, cramped multiline squeeze, and text overflow are blockers.
+- The reading surface must feel centered and balanced; avoid obvious left-heavy layouts that leave a large dead band on the right when the section is meant to be a card/grid surface.
+- Module 4 / 动作地图 must look like an intentional card system, not a generic fallback column layout.
+- If one premium post exposes a structural defect that is likely shared (meta-bar collision, small cards, card-surface regression, sticky UI obstruction), sample nearby recent posts and the shared CSS/template layer before calling the work closed.
 
 ### Image standard
 - Article images should include intrinsic `width` / `height`.
