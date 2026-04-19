@@ -9108,3 +9108,383 @@ body.dark-mode .payoff-chart-svg-wrap {
         padding: 1rem;
     }
 }
+
+/* 2026-04-19 layout coherence overhaul: wider shells, consistent nav rhythm, unified grid density */
+:root {
+    --layout-shell-max: 1320px;
+    --layout-nav-max: 1220px;
+    --layout-reading-card-max: 1060px;
+    --layout-reading-measure: 78ch;
+    --layout-surface-gap: clamp(1rem, 1.8vw, 1.4rem);
+    --layout-section-gap: clamp(2.35rem, 4vw, 3.6rem);
+    --layout-surface-radius: 22px;
+}
+
+body main,
+body .course-shell,
+body .chapter-shell {
+    max-width: min(var(--layout-shell-max), calc(100% - clamp(2rem, 5vw, 6rem)));
+    margin-inline: auto;
+}
+
+body main {
+    padding-inline: 0;
+}
+
+body .section {
+    margin-bottom: var(--layout-section-gap);
+}
+
+body .section-header {
+    align-items: flex-start;
+    gap: clamp(0.9rem, 1.8vw, 1.4rem);
+    margin-bottom: clamp(1.4rem, 2.5vw, 2.15rem);
+}
+
+body .section-title-group {
+    min-width: min(100%, 44rem);
+}
+
+body .section-subtitle {
+    max-width: 70ch;
+}
+
+body .article-quick-nav,
+body .chapter-meta-bar,
+body .article-meta-bar {
+    width: min(var(--layout-nav-max), calc(100% - clamp(1.25rem, 4vw, 3rem)));
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body .article-quick-nav {
+    top: calc(var(--oc-header-height) + env(safe-area-inset-top, 0px) + 0.8rem);
+    margin-top: clamp(1rem, 1.8vw, 1.45rem);
+    margin-bottom: clamp(1.9rem, 3vw, 2.8rem);
+    padding: 0.82rem 0.95rem;
+    gap: 0.75rem;
+    border-radius: 26px;
+}
+
+body .article-quick-nav-link {
+    min-height: 2.75rem;
+    padding-inline: 1rem;
+}
+
+body .chapter-meta-bar,
+body .article-meta-bar {
+    margin-top: clamp(1rem, 1.6vw, 1.35rem);
+    margin-bottom: clamp(0.9rem, 1.8vw, 1.4rem);
+    padding: 0.9rem 1rem;
+    border-radius: 24px;
+}
+
+body .course-shell > .section:first-child,
+body .chapter-shell > .section:first-child,
+body main > .section:first-child {
+    padding-top: clamp(0.35rem, 0.8vw, 0.8rem);
+}
+
+body .stock-card,
+body .wisdom-card,
+body .chapter-summary-card,
+body .chapter-body-card,
+body .chapter-nav-card,
+body .course-intro-card,
+body .course-grid-card,
+body .course-update-card,
+body .course-toolkit-card,
+body .chapter-method-card,
+body .course-filter-panel,
+body .editorial-band,
+body .analysis-box,
+body .highlight-box,
+body .homepage-course-entry,
+body .course-note-card,
+body .course-empty-state {
+    border-radius: var(--layout-surface-radius);
+    padding: clamp(1.18rem, 2vw, 1.65rem);
+}
+
+body .stock-card,
+body .wisdom-card,
+body .chapter-summary-card,
+body .course-intro-card,
+body .course-filter-panel,
+body .editorial-band,
+body .homepage-course-entry,
+body .analysis-box,
+body .highlight-box,
+body .course-note-card,
+body .course-empty-state {
+    width: 100%;
+}
+
+body .chapter-body-card {
+    width: 100%;
+    max-width: min(var(--layout-reading-card-max), 100%);
+    margin-inline: auto;
+    padding-inline: clamp(1.45rem, 2.5vw, 2rem);
+}
+
+body .article-body,
+body .chapter-body-card {
+    max-width: min(var(--layout-reading-card-max), 100%);
+}
+
+body .chapter-body-card > p,
+body .chapter-body-card > ul,
+body .chapter-body-card > ol,
+body .chapter-body-card > blockquote,
+body .chapter-body-card > h1,
+body .chapter-body-card > h2,
+body .chapter-body-card > h3,
+body .chapter-body-card > h4,
+body .chapter-body-card > hr,
+body .chapter-body-card > table,
+body .chapter-body-card > .course-table-wrap,
+body .chapter-body-card > pre {
+    max-width: min(var(--layout-reading-measure), 100%);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body .chapter-body-card > .source-figure-grid,
+body .chapter-body-card > .source-figure-card,
+body .chapter-body-card > figure,
+body .chapter-body-card > .payoff-chart-block,
+body .chapter-body-card > .payoff-reading-rail,
+body .chapter-body-card > .payoff-chart-shell,
+body .chapter-body-card > .source-figure-grid + p {
+    max-width: min(100%, 92ch);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body .course-grid-card,
+body .course-update-card,
+body .course-toolkit-card,
+body .chapter-method-card,
+body .chapter-summary-card,
+body .course-intro-card,
+body .editorial-band-item {
+    min-height: 100%;
+}
+
+body .course-grid-card,
+body .course-update-card,
+body .course-toolkit-card,
+body .chapter-method-card,
+body .chapter-summary-card,
+body .course-intro-card,
+body .chapter-nav-card,
+body .course-note-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+body .course-grid-card .course-card-actions,
+body .course-update-card .course-card-actions,
+body .chapter-nav-card .chapter-nav-links {
+    margin-top: auto;
+}
+
+body .editorial-band {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.95fr);
+    gap: var(--layout-surface-gap);
+    align-items: stretch;
+}
+
+body .editorial-band-main,
+body .editorial-band-side {
+    min-width: 0;
+}
+
+body .editorial-band-side {
+    display: grid;
+    gap: var(--layout-surface-gap);
+}
+
+body .course-summary-grid,
+body .course-toolkit-grid,
+body .chapter-method-grid,
+body .learning-path-grid,
+body .chapter-directory-grid,
+body .sync-progress-grid,
+body .recent-updates-grid,
+body .framework-steps-grid,
+body .five-plus-grid,
+body .topic-question-grid,
+body .post-0418 .post-0418-decision-grid {
+    gap: var(--layout-surface-gap);
+}
+
+body .course-summary-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+body .course-toolkit-grid,
+body .chapter-method-grid,
+body .framework-steps-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+body .learning-path-grid,
+body .sync-progress-grid,
+body .recent-updates-grid,
+body .chapter-directory-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+body .five-plus-grid,
+body .topic-question-grid,
+body .tracking-framework-grid.decision-grid-enhanced,
+body .post-0418 .post-0418-decision-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+body .chapter-directory-grid {
+    align-items: stretch;
+}
+
+body .five-plus-grid > :last-child:nth-child(odd),
+body .topic-question-grid > :last-child:nth-child(odd),
+body .tracking-framework-grid.decision-grid-enhanced > :last-child:nth-child(odd),
+body .post-0418 .post-0418-decision-grid > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+}
+
+body .course-grid-card ul,
+body .course-update-card ul,
+body .chapter-body-card ul,
+body .chapter-body-card ol {
+    margin-top: 0;
+}
+
+body .chapter-body-card p,
+body .chapter-body-card li,
+body .chapter-body-card td,
+body .chapter-body-card th,
+body .course-grid-card p,
+body .course-update-card p,
+body .course-toolkit-card p,
+body .chapter-method-card p,
+body .editorial-band p {
+    line-height: 1.92;
+}
+
+body .chapter-body-card p,
+body .chapter-body-card li,
+body .chapter-body-card td,
+body .chapter-body-card th {
+    font-size: 1.05rem;
+}
+
+body .course-grid-card p,
+body .course-update-card p,
+body .course-toolkit-card p,
+body .chapter-method-card p,
+body .editorial-band p {
+    font-size: 1rem;
+}
+
+body .course-grid-card h3,
+body .course-update-card h3,
+body .course-toolkit-card h3,
+body .chapter-method-card h3,
+body .editorial-band h3,
+body .chapter-body-card h1,
+body .chapter-body-card h2,
+body .chapter-body-card h3,
+body .chapter-body-card h4 {
+    text-wrap: balance;
+}
+
+@media (max-width: 1280px) {
+    body .course-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    body .course-toolkit-grid,
+    body .chapter-method-grid,
+    body .learning-path-grid,
+    body .chapter-directory-grid,
+    body .sync-progress-grid,
+    body .recent-updates-grid,
+    body .framework-steps-grid,
+    body .five-plus-grid,
+    body .topic-question-grid,
+    body .tracking-framework-grid.decision-grid-enhanced,
+    body .post-0418 .post-0418-decision-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 1024px) {
+    body main,
+    body .course-shell,
+    body .chapter-shell {
+        max-width: min(var(--layout-shell-max), calc(100% - 1.5rem));
+    }
+
+    body .editorial-band {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 760px) {
+    body .article-quick-nav,
+    body .chapter-meta-bar,
+    body .article-meta-bar {
+        width: min(var(--layout-nav-max), calc(100% - 1rem));
+    }
+
+    body .article-quick-nav {
+        margin-top: 0.9rem;
+        margin-bottom: 1.45rem;
+        padding: 0.72rem;
+    }
+
+    body .course-summary-grid,
+    body .course-toolkit-grid,
+    body .chapter-method-grid,
+    body .learning-path-grid,
+    body .chapter-directory-grid,
+    body .sync-progress-grid,
+    body .recent-updates-grid,
+    body .framework-steps-grid,
+    body .five-plus-grid,
+    body .topic-question-grid,
+    body .tracking-framework-grid.decision-grid-enhanced,
+    body .post-0418 .post-0418-decision-grid {
+        grid-template-columns: 1fr;
+    }
+
+    body .chapter-body-card {
+        max-width: 100%;
+        padding-inline: 1rem;
+    }
+
+    body .chapter-body-card > p,
+    body .chapter-body-card > ul,
+    body .chapter-body-card > ol,
+    body .chapter-body-card > blockquote,
+    body .chapter-body-card > h1,
+    body .chapter-body-card > h2,
+    body .chapter-body-card > h3,
+    body .chapter-body-card > h4,
+    body .chapter-body-card > hr,
+    body .chapter-body-card > table,
+    body .chapter-body-card > .course-table-wrap,
+    body .chapter-body-card > pre,
+    body .chapter-body-card > .source-figure-grid,
+    body .chapter-body-card > figure,
+    body .chapter-body-card > .payoff-chart-block,
+    body .chapter-body-card > .payoff-reading-rail,
+    body .chapter-body-card > .payoff-chart-shell,
+    body .chapter-body-card > .source-figure-grid + p {
+        max-width: 100%;
+    }
+}
