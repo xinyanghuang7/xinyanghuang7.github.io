@@ -8124,3 +8124,740 @@ body.light-mode .rating-card-badge-positive {
         scroll-behavior: auto !important;
     }
 }
+
+/* 2026-04-19 reading comfort system: looser prose, unified panels, calmer payoff graphics */
+:root {
+    --reading-prose-leading: 1.96;
+    --reading-card-leading: 1.82;
+    --reading-tight-leading: 1.7;
+    --reading-measure: 68ch;
+    --reading-heading-measure: 24ch;
+    --reading-panel-padding: clamp(1.18rem, 1rem + 0.5vw, 1.5rem);
+    --reading-panel-padding-lg: clamp(1.34rem, 1.08rem + 0.9vw, 1.9rem);
+    --reading-panel-radius: 22px;
+    --reading-panel-radius-soft: 18px;
+    --reading-panel-border: rgba(186, 156, 92, 0.17);
+    --reading-panel-shadow: 0 22px 44px rgba(0, 0, 0, 0.14);
+    --reading-panel-bg: linear-gradient(180deg, rgba(255, 252, 247, 0.92), rgba(247, 240, 229, 0.88));
+    --reading-panel-bg-soft: rgba(255, 255, 255, 0.68);
+    --reading-panel-bg-elevated: rgba(255, 252, 247, 0.9);
+    --reading-chart-frame-bg: linear-gradient(180deg, rgba(255, 252, 247, 0.92), rgba(249, 242, 232, 0.98));
+}
+
+body.dark-mode {
+    --reading-panel-border: rgba(212, 175, 55, 0.16);
+    --reading-panel-shadow: 0 20px 48px rgba(0, 0, 0, 0.34);
+    --reading-panel-bg: linear-gradient(180deg, rgba(28, 27, 25, 0.95), rgba(20, 20, 19, 0.93));
+    --reading-panel-bg-soft: rgba(255, 248, 235, 0.04);
+    --reading-panel-bg-elevated: rgba(255, 248, 235, 0.05);
+    --reading-chart-frame-bg: linear-gradient(180deg, rgba(27, 25, 23, 0.96), rgba(18, 17, 16, 0.98));
+}
+
+body.light-mode {
+    --reading-panel-border: rgba(122, 91, 10, 0.16);
+    --reading-panel-shadow: 0 18px 40px rgba(103, 74, 18, 0.12);
+    --reading-panel-bg: linear-gradient(180deg, rgba(255, 251, 244, 0.98), rgba(247, 240, 229, 0.96));
+    --reading-panel-bg-soft: rgba(255, 255, 255, 0.7);
+    --reading-panel-bg-elevated: rgba(255, 252, 247, 0.9);
+    --reading-chart-frame-bg: linear-gradient(180deg, rgba(255, 252, 247, 0.98), rgba(247, 240, 229, 0.96));
+}
+
+body {
+    letter-spacing: 0.008em;
+}
+
+.section-subtitle,
+.course-card-desc,
+.course-update-desc,
+.course-note-card p,
+.course-intro-card p,
+.chapter-summary-card p,
+.chapter-nav-card p,
+.payoff-chart-subtitle,
+.payoff-chart-live,
+.payoff-chart-tooltip-secondary,
+.rating-source-note,
+.portfolio-alert-intro,
+.portfolio-alert-note,
+.news-perspective,
+.news-content {
+    line-height: 1.8;
+    letter-spacing: 0.004em;
+}
+
+.article-body,
+.chapter-body-card {
+    max-width: min(74ch, 100%);
+}
+
+.article-body > p,
+.article-body > ul,
+.article-body > ol,
+.article-body > blockquote,
+.article-body > h1,
+.article-body > h2,
+.article-body > h3,
+.article-body > h4,
+.article-body > table,
+.chapter-body-card > p,
+.chapter-body-card > ul,
+.chapter-body-card > ol,
+.chapter-body-card > blockquote,
+.chapter-body-card > h1,
+.chapter-body-card > h2,
+.chapter-body-card > h3,
+.chapter-body-card > h4,
+.chapter-body-card > hr,
+.chapter-body-card > .course-table-wrap,
+.chapter-body-card > table {
+    max-width: 100%;
+}
+
+.article-body > p,
+.article-body > ul,
+.article-body > ol,
+.article-body > blockquote,
+.chapter-body-card > p,
+.chapter-body-card > ul,
+.chapter-body-card > ol,
+.chapter-body-card > blockquote {
+    max-width: var(--reading-measure);
+}
+
+.article-body > h1,
+.article-body > h2,
+.article-body > h3,
+.article-body > h4,
+.chapter-body-card > h1,
+.chapter-body-card > h2,
+.chapter-body-card > h3,
+.chapter-body-card > h4 {
+    max-width: var(--reading-heading-measure);
+}
+
+.article-body p,
+.article-body li,
+.article-body td,
+.article-body th,
+.chapter-body-card p,
+.chapter-body-card li,
+.chapter-body-card td,
+.chapter-body-card th,
+.payoff-reading-rail p,
+.payoff-reading-rail-item strong,
+.course-grid-card p,
+.course-update-card p,
+.course-toolkit-card p,
+.chapter-method-card p,
+.research-card p,
+.analysis-box p,
+.highlight-box p,
+.portfolio-alert-panel,
+.rating-source-grid {
+    font-size: clamp(1.04rem, 1rem + 0.14vw, 1.1rem);
+    line-height: var(--reading-prose-leading);
+    letter-spacing: 0.004em;
+}
+
+.article-body p + p,
+.chapter-body-card p + p {
+    margin-top: 1.12em;
+}
+
+.chapter-body-card h1,
+.chapter-body-card h2,
+.chapter-body-card h3,
+.chapter-body-card h4,
+.article-body h2,
+.article-body h3,
+.article-body h4,
+.payoff-chart-title,
+.course-grid-card h3,
+.course-update-card h3,
+.course-toolkit-card h3,
+.chapter-method-card h3,
+.editorial-band h3 {
+    line-height: 1.32;
+    letter-spacing: 0.01em;
+}
+
+.chapter-summary-card,
+.chapter-body-card,
+.chapter-nav-card,
+.course-grid-card,
+.course-update-card,
+.course-toolkit-card,
+.chapter-method-card,
+.course-filter-panel,
+.course-empty-state,
+.editorial-band,
+.research-card,
+.course-intro-card,
+.course-update-card,
+.course-note-card,
+.payoff-chart-block,
+.portfolio-alert,
+.rating-source-panel,
+.article-rating-card,
+.inline-rating-shell,
+.highlight-box,
+.analysis-box,
+.market-reading-note,
+.portfolio-viewpoint,
+.rich-note-box,
+.stock-detail-card,
+.news-item {
+    border: 1px solid var(--reading-panel-border);
+    background: var(--reading-panel-bg);
+    box-shadow: var(--reading-panel-shadow);
+}
+
+.chapter-summary-card,
+.chapter-body-card,
+.chapter-nav-card,
+.payoff-chart-block,
+.portfolio-alert,
+.rating-source-panel,
+.article-rating-card,
+.highlight-box,
+.analysis-box,
+.market-reading-note,
+.portfolio-viewpoint,
+.rich-note-box,
+.stock-detail-card {
+    border-radius: var(--reading-panel-radius);
+    padding: var(--reading-panel-padding-lg);
+}
+
+.course-grid-card,
+.course-update-card,
+.course-toolkit-card,
+.chapter-method-card,
+.course-filter-panel,
+.course-empty-state,
+.editorial-band,
+.research-card,
+.course-intro-card,
+.course-note-card,
+.inline-rating-shell,
+.news-item {
+    border-radius: var(--reading-panel-radius-soft);
+    padding: var(--reading-panel-padding);
+}
+
+.course-grid-card,
+.course-update-card,
+.course-toolkit-card,
+.chapter-method-card,
+.research-card,
+.editorial-band,
+.course-filter-panel,
+.course-empty-state {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.course-card-actions,
+.course-directory-meta {
+    margin-top: auto;
+}
+
+.learning-path-grid,
+.sync-progress-grid,
+.recent-updates-grid,
+.course-toolkit-grid,
+.chapter-method-grid,
+.chapter-directory-grid,
+.course-summary-grid {
+    gap: 1.1rem;
+    align-items: stretch;
+}
+
+.course-card-kicker,
+.course-update-date,
+.course-stat-label,
+.chapter-nav-label,
+.chapter-summary-eyebrow,
+.editorial-band-label,
+.editorial-band-kicker,
+.payoff-reading-rail-kicker,
+.payoff-reading-rail-item span,
+.payoff-chart-tooltip-label {
+    line-height: 1.34;
+    letter-spacing: 0.12em;
+}
+
+.course-grid-card ul,
+.course-update-card ul,
+.course-toolkit-card ul,
+.chapter-method-card ul,
+.chapter-body-card ul,
+.chapter-body-card ol {
+    display: grid;
+    gap: 0.44rem;
+}
+
+.chapter-body-card blockquote,
+.article-body blockquote,
+.course-callout {
+    border-radius: 0 18px 18px 0;
+    padding: 1rem 1.15rem;
+    background: linear-gradient(180deg, rgba(217, 119, 87, 0.11), rgba(217, 119, 87, 0.07));
+}
+
+.chapter-meta-pill,
+.course-directory-pill,
+.article-meta-chip,
+.search-meta-pill,
+.course-status-pill,
+.sync-status-pill,
+.tracking-badge,
+.payoff-chart-chip,
+.portfolio-alert-pill {
+    padding: 0.5rem 0.94rem;
+}
+
+.news-item {
+    padding-inline: calc(var(--reading-panel-padding) + 0.08rem);
+}
+
+.news-item:hover {
+    padding-inline: calc(var(--reading-panel-padding) + 0.08rem);
+}
+
+.portfolio-alert-panel,
+.portfolio-holding-card,
+.rating-metric-box,
+.inline-rating-cell,
+.inline-rating-shell-note,
+.rating-source-note,
+.payoff-stat,
+.payoff-reading-rail-item {
+    border-radius: 14px;
+    background: var(--reading-panel-bg-soft);
+}
+
+.payoff-chart-block {
+    margin: 2.5rem 0;
+}
+
+.payoff-chart-heading {
+    display: grid;
+    gap: 0.42rem;
+    margin-bottom: 1rem;
+}
+
+.payoff-chart-title {
+    font-size: clamp(1.34rem, 1.14rem + 0.45vw, 1.62rem);
+}
+
+.payoff-chart-subtitle {
+    max-width: 62ch;
+}
+
+.payoff-chart-legend {
+    gap: 0.82rem;
+    margin-bottom: 1.08rem;
+}
+
+.payoff-chart-surface {
+    gap: 1rem;
+}
+
+.payoff-chart-svg-wrap {
+    padding: clamp(0.72rem, 0.6rem + 0.3vw, 0.98rem);
+    border-radius: var(--reading-panel-radius-soft);
+    background: var(--reading-chart-frame-bg);
+    border: 1px solid var(--reading-panel-border);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+.payoff-chart-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+}
+
+.payoff-chart-svg text {
+    font-family: var(--font-body) !important;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.payoff-chart-svg text[font-size='12'] {
+    font-size: 13px !important;
+}
+
+.payoff-chart-svg text[font-size='13'] {
+    font-size: 14px !important;
+}
+
+body.dark-mode .payoff-chart-svg rect:first-child {
+    fill: #171513 !important;
+}
+
+body.dark-mode .payoff-chart-svg text[fill='#6B6860'],
+body.dark-mode .payoff-chart-svg text[fill='#181613'] {
+    fill: rgba(245, 239, 228, 0.92) !important;
+}
+
+body.dark-mode .payoff-chart-svg line[stroke*='122, 116, 106'],
+body.dark-mode .payoff-chart-svg rect[stroke*='122, 116, 106'] {
+    stroke: rgba(255, 245, 224, 0.12) !important;
+}
+
+body.dark-mode .payoff-chart-svg line[stroke*='63, 56, 45'] {
+    stroke: rgba(255, 245, 224, 0.42) !important;
+}
+
+body.dark-mode .payoff-chart-svg .payoff-chart-focus-dot {
+    stroke: #171513 !important;
+}
+
+.payoff-chart-tooltip {
+    min-width: 182px;
+    padding: 0.88rem 0.96rem;
+}
+
+.payoff-chart-tooltip-value {
+    line-height: 1.28;
+}
+
+.payoff-reading-rail {
+    grid-template-columns: minmax(0, 1.45fr) minmax(290px, 0.95fr);
+    gap: 1rem;
+    padding: var(--reading-panel-padding);
+    border-radius: var(--reading-panel-radius);
+    background: var(--reading-panel-bg);
+    border: 1px solid var(--reading-panel-border);
+}
+
+.payoff-reading-rail h4 {
+    font-size: 1.08rem;
+    line-height: 1.52;
+}
+
+.payoff-reading-rail p {
+    line-height: 1.86;
+}
+
+.payoff-chart-grid {
+    gap: 0.9rem;
+}
+
+.payoff-stat {
+    padding: 0.92rem 0.96rem;
+}
+
+.payoff-stat-label {
+    line-height: 1.42;
+}
+
+.payoff-stat-value {
+    line-height: 1.38;
+}
+
+body.light-mode .chapter-summary-card,
+body.light-mode .chapter-body-card,
+body.light-mode .chapter-nav-card,
+body.light-mode .course-grid-card,
+body.light-mode .course-update-card,
+body.light-mode .course-toolkit-card,
+body.light-mode .chapter-method-card,
+body.light-mode .course-filter-panel,
+body.light-mode .course-empty-state,
+body.light-mode .editorial-band,
+body.light-mode .research-card,
+body.light-mode .course-intro-card,
+body.light-mode .course-note-card,
+body.light-mode .payoff-chart-block,
+body.light-mode .portfolio-alert,
+body.light-mode .rating-source-panel,
+body.light-mode .article-rating-card,
+body.light-mode .inline-rating-shell,
+body.light-mode .highlight-box,
+body.light-mode .analysis-box,
+body.light-mode .market-reading-note,
+body.light-mode .portfolio-viewpoint,
+body.light-mode .rich-note-box,
+body.light-mode .stock-detail-card,
+body.light-mode .news-item {
+    box-shadow: var(--reading-panel-shadow);
+}
+
+@media (max-width: 900px) {
+    .article-body,
+    .chapter-body-card {
+        max-width: min(72ch, 100%);
+    }
+
+    .chapter-summary-card,
+    .chapter-body-card,
+    .chapter-nav-card,
+    .payoff-chart-block,
+    .portfolio-alert,
+    .rating-source-panel,
+    .article-rating-card {
+        padding: 1.18rem;
+    }
+
+    .course-grid-card,
+    .course-update-card,
+    .course-toolkit-card,
+    .chapter-method-card,
+    .course-filter-panel,
+    .editorial-band,
+    .course-empty-state,
+    .research-card,
+    .inline-rating-shell,
+    .news-item {
+        padding: 1.04rem;
+    }
+}
+
+@media (max-width: 760px) {
+    :root {
+        --reading-prose-leading: 1.88;
+    }
+
+    .article-body,
+    .chapter-body-card {
+        max-width: 100%;
+    }
+
+    .article-body p,
+    .article-body li,
+    .chapter-body-card p,
+    .chapter-body-card li,
+    .course-grid-card p,
+    .course-update-card p,
+    .course-toolkit-card p,
+    .chapter-method-card p,
+    .payoff-reading-rail p,
+    .payoff-reading-rail-item strong {
+        font-size: 1rem;
+    }
+
+    .chapter-summary-card,
+    .chapter-body-card,
+    .chapter-nav-card,
+    .payoff-chart-block,
+    .portfolio-alert,
+    .rating-source-panel,
+    .article-rating-card,
+    .highlight-box,
+    .analysis-box,
+    .market-reading-note,
+    .portfolio-viewpoint,
+    .rich-note-box,
+    .stock-detail-card {
+        border-radius: 18px;
+        padding: 1rem;
+    }
+
+    .course-grid-card,
+    .course-update-card,
+    .course-toolkit-card,
+    .chapter-method-card,
+    .course-filter-panel,
+    .course-empty-state,
+    .editorial-band,
+    .research-card,
+    .course-intro-card,
+    .course-note-card,
+    .inline-rating-shell,
+    .news-item {
+        border-radius: 16px;
+        padding: 0.96rem;
+    }
+
+    .payoff-chart-svg-wrap {
+        padding: 0.5rem;
+    }
+
+    .payoff-chart-legend {
+        gap: 0.52rem;
+    }
+
+    .payoff-chart-chip,
+    .chapter-meta-pill,
+    .course-directory-pill,
+    .portfolio-alert-pill {
+        padding: 0.42rem 0.78rem;
+    }
+
+    .payoff-reading-rail {
+        padding: 0.96rem;
+    }
+
+    .payoff-stat {
+        padding: 0.84rem 0.88rem;
+    }
+
+    .news-item,
+    .news-item:hover {
+        padding: 0.9rem 0.96rem 0.94rem 1rem;
+    }
+}
+
+/* 2026-04-19 editorial cohesion pass: calmer accents, safer chip wrapping, stronger chart legibility */
+:root {
+    --reading-prose-leading: 2.02;
+    --reading-card-leading: 1.9;
+    --reading-measure: 69ch;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+.article-body p,
+.article-body li,
+.article-body td,
+.article-body th,
+.chapter-body-card p,
+.chapter-body-card li,
+.chapter-body-card td,
+.chapter-body-card th,
+.analysis-box p,
+.analysis-box li,
+.highlight-box p,
+.highlight-box li,
+.stock-detail-name,
+.stock-meta-value,
+.news-bullet p,
+.editorial-band p,
+.payoff-reading-rail p,
+.payoff-reading-rail-item strong {
+    line-height: var(--reading-prose-leading);
+}
+
+.article-meta-bar {
+    align-items: flex-start;
+    row-gap: 0.72rem;
+}
+
+.article-meta-chip {
+    flex: 0 1 auto;
+    max-width: min(100%, 34rem);
+    min-height: auto;
+    align-items: flex-start;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.5;
+}
+
+.highlight-box,
+.highlight-box.positive,
+.highlight-box.warning,
+.highlight-box.tip {
+    background: var(--reading-panel-bg) !important;
+    border: 1px solid var(--reading-panel-border);
+    border-left-width: 3px;
+    box-shadow: var(--reading-panel-shadow);
+}
+
+.highlight-box:hover,
+.news-item:hover {
+    transform: none;
+}
+
+.highlight-box h4 {
+    margin-bottom: 0.9rem;
+}
+
+.highlight-box ul,
+.highlight-box ol {
+    display: grid;
+    gap: 0.72rem;
+}
+
+.stock-detail-header {
+    margin-bottom: 1rem;
+    padding-bottom: 0.95rem;
+}
+
+.stock-detail-name {
+    max-width: min(62ch, 100%);
+    color: var(--text-secondary);
+}
+
+.stock-meta-item,
+.payoff-stat,
+.portfolio-alert-panel,
+.inline-rating-cell,
+.editorial-band-item {
+    min-height: 100%;
+    align-content: start;
+}
+
+body.light-mode .highlight-box,
+body.light-mode .highlight-box.positive,
+body.light-mode .highlight-box.warning,
+body.light-mode .highlight-box.tip {
+    background: linear-gradient(180deg, rgba(255, 251, 244, 0.98), rgba(247, 240, 229, 0.96)) !important;
+}
+
+body.dark-mode .highlight-box,
+body.dark-mode .highlight-box.positive,
+body.dark-mode .highlight-box.warning,
+body.dark-mode .highlight-box.tip {
+    background: linear-gradient(180deg, rgba(28, 27, 25, 0.96), rgba(19, 18, 17, 0.94)) !important;
+}
+
+.payoff-chart-chip {
+    line-height: 1.42;
+}
+
+body.dark-mode .payoff-chart-chip {
+    background: rgba(255, 248, 235, 0.08);
+    border-color: rgba(212, 175, 55, 0.18);
+    color: rgba(245, 239, 228, 0.9);
+}
+
+.payoff-chart-svg text {
+    font-weight: 650;
+}
+
+.payoff-chart-svg text[font-size='12'] {
+    font-size: 14px !important;
+}
+
+.payoff-chart-svg text[font-size='13'] {
+    font-size: 15px !important;
+}
+
+.payoff-chart-svg text[fill='#6B6860'] {
+    fill: rgba(84, 70, 48, 0.8) !important;
+}
+
+.payoff-chart-svg text[fill='#181613'] {
+    fill: rgba(39, 31, 21, 0.9) !important;
+}
+
+body.dark-mode .payoff-chart-svg text[fill='#6B6860'],
+body.dark-mode .payoff-chart-svg text[fill='#181613'] {
+    fill: rgba(245, 239, 228, 0.94) !important;
+}
+
+body.light-mode .payoff-chart-svg-wrap {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.56), 0 12px 26px rgba(120, 87, 31, 0.08);
+}
+
+body.dark-mode .payoff-chart-svg-wrap {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 14px 30px rgba(0, 0, 0, 0.34);
+}
+
+@media (max-width: 760px) {
+    .article-meta-chip {
+        max-width: 100%;
+    }
+
+    .stock-detail-name {
+        max-width: 100%;
+    }
+}
