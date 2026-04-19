@@ -5,6 +5,37 @@ Single source of truth for the public blog / options-course output standard.
 Last updated: 2026-04-19
 Public domain: `https://4fire.qzz.io/`
 
+## 0. Shared workflow / shared product rule
+
+The public blog, homepage, and options-course are **one product surface**, not three unrelated outputs.
+
+Default execution chain:
+1. **refresh upstream truth**
+   - investing-system state
+   - holdings / action truth
+   - current-move ranking from `real-time-thesis-monitor` when freshness matters
+2. **draft / revise the page**
+   - blog post via `us-stock-blog`
+   - course / options page via shared frontend layer
+3. **specialist review before release wording hardens**
+   - `blog-reviewer` for fact / compliance / investment-logic errors
+   - `blog-semantic-reviewer` for thin explanation / template-feel / weak prose load-bearing
+4. **shared frontend close**
+   - mobile + desktop
+   - light + dark
+   - quick-nav / meta bar / sticky UI / card containment / visual balance
+5. **publish + verify live**
+   - local QA
+   - GitHub remote updated
+   - live domain updated
+   - final pass through `strict-site-reviewer`
+
+### Default anti-drift rule
+- Do not let drafting skip upstream truth refresh.
+- Do not let reviewer skills silently replace each other.
+- Do not let a visually nicer page bypass live verification.
+- Do not let options-course polish drift into a second visual system unrelated to the blog.
+
 ## 1. Four-part frozen contract
 
 Every daily post must contain all 4 parts. No silent downgrade.
@@ -78,6 +109,15 @@ The homepage, article pages, and options-course pages should feel like one produ
 - The reading surface must feel centered and balanced; avoid obvious left-heavy layouts that leave a large dead band on the right when the section is meant to be a card/grid surface.
 - Module 4 / 动作地图 must look like an intentional card system, not a generic fallback column layout.
 - If one premium post exposes a structural defect that is likely shared (meta-bar collision, small cards, card-surface regression, sticky UI obstruction), sample nearby recent posts and the shared CSS/template layer before calling the work closed.
+
+### Premium options-course hard gates
+- The course index must read like an **editorial syllabus**, not a raw chapter dump.
+- Learning-path cards, toolkit cards, and chapter-directory cards must have clear hierarchy, enough breathing room, and obvious CTA landing points.
+- Chapter pages must keep a stable reading ladder: **summary → reading rail →正文 → chapter navigation**.
+- Quick-nav and chapter-meta bars may be sticky, but must not visually overpower the content or feel heavier than the chapter body.
+- Payoff charts, source figures, and blockquotes need deliberate spacing so the page reads like a premium lesson, not a template export.
+- Prev/next / return-to-course navigation must feel like part of one calm learning path, not a loose set of utility links.
+- If the options-course homepage gets better but chapter pages still feel flatter / harsher / more template-like, the job is not finished.
 
 ### Image standard
 - Article images should include intrinsic `width` / `height`.
