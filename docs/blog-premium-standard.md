@@ -31,15 +31,17 @@ Every daily post must contain all 4 parts. No silent downgrade.
   - **Latest News**
   - **What It Means**
 - Ranking rule:
-  1. newest genuinely relevant item first
-  2. then higher-signal older item(s) if needed
-  3. explicitly explain exceptions when a slightly older item matters more
+  1. **price-explanation power / action relevance first**
+  2. then **latest genuinely relevant** item(s)
+  3. then older but higher-signal driver(s) when they better explain the current move or current action boundary
+  4. explicitly explain exceptions when a slightly older item matters more
 - Every news item must include:
   - source
   - concrete fact / event
   - why it matters
   - detailed interpretation
-- Priority is **freshness first**, then **importance / signal strength**.
+- Default workflow is: **`real-time-thesis-monitor` for latest-vs-important ranking → official / high-quality sources for evidence hardening → blog expression**.
+- Do **not** default to Tavily or a raw news search as the first ranking layer.
 - Never ship Module 3 as a vague news roundup.
 
 ### Module 4 — 持仓地图 / 动作地图
@@ -113,5 +115,22 @@ If there is tension between "more features" and "more reliable quality", choose 
 - clearer structure
 - better compatibility
 - higher one-shot publish reliability
+
+## 6. Golden reference and one-command target
+
+- `posts/2026/04/18.html` is the current **golden-reference post** for premium daily-blog finish quality.
+- "Use 0418 as template" does **not** mean copy its topic; it means inherit its bar for:
+  - 4-part module closure
+  - balanced card density
+  - clear prose load-bearing capacity (not bullet-only)
+  - strong Module 3 explanation sequencing
+  - polished Module 4 card quality
+- The long-term target is: **one simple publish command should be enough to generate a near-finished premium post**.
+- To get there, the upstream stack must already be wired before drafting:
+  1. investing-system state refreshed
+  2. Module 3 ranking inherited from `real-time-thesis-monitor`
+  3. public evidence hardened with official / high-quality sources
+  4. layout closed against shared frontend gates
+  5. publish + live verification completed before calling success
 
 This file is the control tower for future blog-output / options-course polish work.
