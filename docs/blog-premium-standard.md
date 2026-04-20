@@ -172,7 +172,7 @@ The homepage, article pages, and options-course pages should feel like one produ
 - Card copy must keep clear inner padding on all sides; if the text feels glued to the curved edge, the layout is still broken.
 - The reading surface must feel centered and balanced; avoid obvious left-heavy layouts that leave a large dead band on the right when the section is meant to be a card/grid surface.
 - Heading width and prose width should feel like one system; do not allow a very wide title shell above a much narrower body column unless there is a deliberate editorial reason.
-- At the top of a page, do not stack multiple competing horizontal rails that do nearly the same thing. If quick-nav already exists, collapse or remove the extra meta strip instead of keeping both.
+- At the top of a page, do not stack multiple competing horizontal rails that do nearly the same thing. The current default is simpler: do not ship a separate sticky module quick-nav tab bar on premium posts or options pages. If section anchors are still useful, keep them as ordinary links inside the normal header or body instead of a second sticky rail.
 - Module 4 / 动作地图 must look like an intentional card system, not a generic fallback column layout.
 - Typography must keep an obvious hierarchy: section title > card / module title > body copy. If they read as the same size, the page is not closed.
 - If one premium post exposes a structural defect that is likely shared (meta-bar collision, small cards, card-surface regression, sticky UI obstruction), sample nearby recent posts and the shared CSS/template layer before calling the work closed.
