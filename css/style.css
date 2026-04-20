@@ -10067,3 +10067,305 @@ body .chapter-meta-bar {
         max-width: 100%;
     }
 }
+
+/* 2026-04-20 options chapter cleanup: thinner chrome, faster path into real prose, consistent reading widths */
+:root {
+    --layout-reading-card-max: 1160px;
+    --layout-reading-measure: 96ch;
+}
+
+body .chapter-shell .section-title-group {
+    min-width: 0;
+    max-width: min(96ch, 100%);
+}
+
+body .chapter-shell .section-subtitle {
+    max-width: min(88ch, 100%);
+}
+
+body .chapter-shell .chapter-summary-card,
+body .chapter-shell .chapter-nav-card,
+body .chapter-shell .chapter-body-card {
+    width: 100%;
+    max-width: min(var(--layout-reading-card-max), 100%);
+    margin-inline: auto;
+}
+
+body .chapter-shell .article-quick-nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+body .chapter-summary-card {
+    display: grid;
+    gap: 0.95rem;
+    padding: clamp(1.28rem, 1.1rem + 0.7vw, 1.8rem);
+}
+
+body .chapter-summary-card > p,
+body .chapter-summary-note,
+body .chapter-inline-outline {
+    max-width: min(var(--layout-reading-measure), 100%);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body .chapter-summary-note {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: clamp(1rem, 0.96rem + 0.12vw, 1.08rem);
+    line-height: 1.9;
+}
+
+body .chapter-inline-outline {
+    margin-top: 0.15rem;
+}
+
+body .chapter-inline-outline-list {
+    display: grid;
+    gap: 0.72rem;
+}
+
+body .chapter-inline-outline-link {
+    padding: 0.9rem 1rem;
+    border-radius: 18px;
+    background: var(--reading-panel-bg-soft);
+    border: 1px solid var(--reading-panel-border);
+}
+
+body .chapter-body-card {
+    padding: clamp(1.72rem, 3vw, 2.6rem);
+    border-radius: 24px;
+}
+
+body .chapter-body-card > h1 {
+    font-size: clamp(1.7rem, 1.46rem + 0.62vw, 2.14rem);
+    line-height: 1.24;
+}
+
+body .chapter-body-card > h2 {
+    font-size: clamp(1.42rem, 1.24rem + 0.46vw, 1.78rem);
+    line-height: 1.32;
+}
+
+body .chapter-body-card > h3 {
+    font-size: clamp(1.18rem, 1.08rem + 0.26vw, 1.34rem);
+    line-height: 1.46;
+}
+
+body .chapter-body-card > p,
+body .chapter-body-card > ul,
+body .chapter-body-card > ol,
+body .chapter-body-card > blockquote,
+body .chapter-body-card > h1,
+body .chapter-body-card > h2,
+body .chapter-body-card > h3,
+body .chapter-body-card > h4,
+body .chapter-body-card > hr,
+body .chapter-body-card > table,
+body .chapter-body-card > .course-table-wrap,
+body .chapter-body-card > pre,
+body .chapter-body-card > .source-figure-grid,
+body .chapter-body-card > .source-figure-card,
+body .chapter-body-card > figure,
+body .chapter-body-card > .payoff-chart-block,
+body .chapter-body-card > .payoff-reading-rail,
+body .chapter-body-card > .payoff-chart-shell,
+body .chapter-body-card > .source-figure-grid + p {
+    max-width: min(var(--layout-reading-measure), 100%);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body .chapter-body-card > p,
+body .chapter-body-card > li,
+body .chapter-body-card li,
+body .chapter-body-card blockquote p,
+body .chapter-body-card td,
+body .chapter-body-card th {
+    font-size: clamp(1.08rem, 1.02rem + 0.14vw, 1.16rem);
+    line-height: 1.96;
+}
+
+body .chapter-body-card blockquote,
+body .source-figure-card,
+body .payoff-reading-rail,
+body .payoff-chart-block {
+    border-radius: 20px;
+}
+
+body.post-0419 .article-quick-nav {
+    margin-bottom: 1.55rem;
+}
+
+@media (max-width: 900px) {
+    body .chapter-shell .article-quick-nav {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 760px) {
+    body .chapter-summary-card,
+    body .chapter-nav-card,
+    body .chapter-body-card {
+        border-radius: 20px;
+    }
+
+    body .chapter-inline-outline-link {
+        padding: 0.82rem 0.9rem;
+    }
+}
+
+/* 2026-04-20 closure pass: single top rail + calmer options reading geometry */
+:root {
+    --layout-reading-card-max: 1080px;
+    --layout-reading-measure: 82ch;
+}
+
+body .chapter-meta-bar {
+    display: none !important;
+}
+
+body .article-meta-bar:has(+ .article-quick-nav) {
+    display: none !important;
+}
+
+body .article-quick-nav {
+    margin-top: 0.15rem;
+    margin-bottom: 1.7rem;
+}
+
+body .chapter-shell {
+    width: min(1120px, calc(100% - 2rem));
+    margin-inline: auto;
+}
+
+body .chapter-shell > .section:first-child {
+    padding-top: 0.15rem;
+}
+
+body .chapter-summary-card,
+body .chapter-body-card,
+body .chapter-nav-card,
+body .stock-card {
+    max-width: min(var(--layout-reading-card-max), 100%);
+    margin-inline: auto;
+}
+
+body .chapter-summary-card,
+body .chapter-body-card,
+body .chapter-nav-card {
+    padding-left: clamp(1.35rem, 1.05rem + 0.9vw, 2.15rem);
+    padding-right: clamp(1.35rem, 1.05rem + 0.9vw, 2.15rem);
+}
+
+body .chapter-summary-card > p,
+body .chapter-summary-note,
+body .chapter-inline-outline,
+body .chapter-body-card > p,
+body .chapter-body-card > ul,
+body .chapter-body-card > ol,
+body .chapter-body-card > blockquote,
+body .chapter-body-card > h1,
+body .chapter-body-card > h2,
+body .chapter-body-card > h3,
+body .chapter-body-card > h4,
+body .chapter-body-card > hr,
+body .chapter-body-card > table,
+body .chapter-body-card > .course-table-wrap,
+body .chapter-body-card > pre,
+body .chapter-body-card > .source-figure-grid,
+body .chapter-body-card > .source-figure-card,
+body .chapter-body-card > figure,
+body .chapter-body-card > .payoff-chart-block,
+body .chapter-body-card > .payoff-reading-rail,
+body .chapter-body-card > .payoff-chart-shell,
+body .chapter-body-card > .source-figure-grid + p,
+body .chapter-nav-card > p,
+body .chapter-nav-card .chapter-nav-grid {
+    max-width: min(var(--layout-reading-measure), 100%);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body .chapter-body-card {
+    padding-top: clamp(1.7rem, 1.35rem + 1vw, 2.55rem);
+    padding-bottom: clamp(1.9rem, 1.45rem + 1.1vw, 2.8rem);
+}
+
+body .chapter-body-card > h1,
+body .chapter-body-card > h2,
+body .chapter-body-card > h3,
+body .chapter-body-card > h4 {
+    text-wrap: pretty;
+}
+
+body .chapter-body-card > h1 {
+    font-size: clamp(1.42rem, 1.22rem + 0.5vw, 1.78rem);
+    line-height: 1.34;
+    margin-top: 2.7rem;
+}
+
+body .chapter-body-card > h2 {
+    font-size: clamp(1.22rem, 1.1rem + 0.36vw, 1.5rem);
+    line-height: 1.42;
+    margin-top: 2.15rem;
+}
+
+body .chapter-body-card > h3,
+body .chapter-body-card > h4 {
+    font-size: clamp(1.08rem, 1.01rem + 0.2vw, 1.2rem);
+    line-height: 1.56;
+    margin-top: 1.65rem;
+}
+
+body .chapter-body-card > p,
+body .chapter-body-card li,
+body .chapter-body-card td,
+body .chapter-body-card th,
+body .chapter-summary-card p,
+body .chapter-nav-card p {
+    font-size: clamp(1.02rem, 0.99rem + 0.16vw, 1.1rem);
+    line-height: 1.92;
+}
+
+body .chapter-body-card p + p {
+    margin-top: 0.95rem;
+}
+
+body .chapter-body-card ul,
+body .chapter-body-card ol {
+    padding-left: 1.35rem;
+}
+
+body .chapter-body-card blockquote {
+    padding: 1.12rem 1.2rem;
+}
+
+@media (max-width: 900px) {
+    body .chapter-shell {
+        width: min(100%, calc(100% - 1rem));
+    }
+}
+
+@media (max-width: 760px) {
+    :root {
+        --layout-reading-card-max: 100%;
+        --layout-reading-measure: 100%;
+    }
+
+    body .article-quick-nav {
+        margin-bottom: 1.2rem;
+    }
+
+    body .chapter-summary-card,
+    body .chapter-body-card,
+    body .chapter-nav-card,
+    body .stock-card {
+        border-radius: 18px;
+    }
+
+    body .chapter-body-card {
+        padding-top: 1.2rem;
+        padding-bottom: 1.5rem;
+    }
+}

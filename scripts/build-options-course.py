@@ -188,6 +188,7 @@ def render_markdown(markdown_text: str) -> str:
     out: list[str] = []
     paragraph_lines: list[str] = []
     bullet_items: list[str] = []
+    ordered_items: list[str] = []
     blockquote_lines: list[str] = []
     i = 0
 
@@ -215,6 +216,12 @@ def render_markdown(markdown_text: str) -> str:
             out.append("<ul>" + "".join(f"<li>{render_inline(item)}</li>" for item in bullet_items) + "</ul>")
             bullet_items = []
 
+    def flush_ordered() -> None:
+        nonlocal ordered_items
+        if ordered_items:
+            out.append("<ol>" + "".join(f"<li>{render_inline(item)}</li>" for item in ordered_items) + "</ol>")
+            ordered_items = []
+
     def flush_blockquote() -> None:
         nonlocal blockquote_lines
         if not blockquote_lines:
@@ -239,13 +246,13 @@ def render_markdown(markdown_text: str) -> str:
         stripped = line.strip()
 
         if not stripped:
-            flush_paragraph(); flush_bullets(); flush_blockquote()
+            flush_paragraph(); flush_bullets(); flush_ordered(); flush_blockquote()
             i += 1
             continue
 
         table_ahead = "|" in stripped and i + 1 < len(lines) and is_table_divider(lines[i + 1])
         if table_ahead:
-            flush_paragraph(); flush_bullets(); flush_blockquote()
+            flush_paragraph(); flush_bullets(); flush_ordered(); flush_blockquote()
             headers = split_table_row(lines[i])
             rows: list[list[str]] = []
             i += 2
@@ -265,7 +272,7 @@ def render_markdown(markdown_text: str) -> str:
 
         heading_match = re.match(r"^(#{1,6})\s+(.*)$", stripped)
         if heading_match:
-            flush_paragraph(); flush_bullets(); flush_blockquote()
+            flush_paragraph(); flush_bullets(); flush_ordered(); flush_blockquote()
             level = len(heading_match.group(1))
             heading_text = render_inline(heading_match.group(2))
             out.append(f"<h{level}>{heading_text}</h{level}>")
@@ -273,29 +280,36 @@ def render_markdown(markdown_text: str) -> str:
             continue
 
         if re.fullmatch(r"-{3,}|\*{3,}", stripped):
-            flush_paragraph(); flush_bullets(); flush_blockquote()
+            flush_paragraph(); flush_bullets(); flush_ordered(); flush_blockquote()
             out.append("<hr>")
             i += 1
             continue
 
         bullet_match = re.match(r"^[-*+]\s+(.*)$", stripped)
         if bullet_match:
-            flush_paragraph(); flush_blockquote()
+            flush_paragraph(); flush_ordered(); flush_blockquote()
             bullet_items.append(bullet_match.group(1))
             i += 1
             continue
 
+        ordered_match = re.match(r"^\d+\.\s+(.*)$", stripped)
+        if ordered_match:
+            flush_paragraph(); flush_bullets(); flush_blockquote()
+            ordered_items.append(ordered_match.group(1))
+            i += 1
+            continue
+
         if stripped.startswith(">"):
-            flush_paragraph(); flush_bullets()
+            flush_paragraph(); flush_bullets(); flush_ordered()
             blockquote_lines.append(stripped[1:].strip())
             i += 1
             continue
 
-        flush_bullets(); flush_blockquote()
+        flush_bullets(); flush_ordered(); flush_blockquote()
         paragraph_lines.append(stripped)
         i += 1
 
-    flush_paragraph(); flush_bullets(); flush_blockquote()
+    flush_paragraph(); flush_bullets(); flush_ordered(); flush_blockquote()
     return "\n".join(out)
 
 
@@ -554,6 +568,26 @@ def build_chapter_page(chapter: Chapter, body_html: str, nav: dict[str, Chapter 
     return fill_template(template, replacements)
 
 
+def normalize_chapter_markdown(markdown_text: str, chapter: Chapter) -> str:
+    lines = markdown_text.replace("\r\n", "\n").replace("\ufeff", "").split("\n")
+
+    while lines and not lines[0].strip():
+        lines.pop(0)
+
+    if lines and lines[0].strip() == "# 《美股期权教材》":
+        lines.pop(0)
+        while lines and not lines[0].strip():
+            lines.pop(0)
+
+    chapter_heading_re = re.compile(rf"^##\s*第\s*0*{int(chapter.id)}\s*章\b")
+    if lines and chapter_heading_re.match(lines[0].strip()):
+        lines.pop(0)
+        while lines and not lines[0].strip():
+            lines.pop(0)
+
+    return "\n".join(lines)
+
+
 def build_site() -> list[Path]:
     workspace_root = resolve_workspace_root()
     chapters = load_manifest(MANIFEST_PATH)
@@ -572,6 +606,7 @@ def build_site() -> list[Path]:
         if not source_path.exists():
             raise BuildError(f"Source chapter does not exist: {source_path}")
         body_markdown = source_path.read_text(encoding="utf-8-sig")
+        body_markdown = normalize_chapter_markdown(body_markdown, chapter)
         body_html = render_markdown(body_markdown)
         body_html, source_figure_files = expand_source_figure_lists(body_html)
         sync_source_figure_images(workspace_root, source_figure_files, SITE_ROOT)

@@ -19,7 +19,7 @@
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <title>经典组合与期权平价 | 美股期权教材</title>
     <!-- Fonts removed for performance -->
-    <link rel="stylesheet" href="../css/style.css?v=20260420layout5">
+    <link rel="stylesheet" href="../css/style.css?v=20260420layout7">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -58,7 +58,8 @@
                 <ul class="nav-links">
                     <li><a href="../index.html">返回首页</a></li>
                     <li><a href="./index.html">返回课程</a></li>
-                    <li><a href="#chapter-method">阅读方式</a></li>
+                    <li><a href="#chapter-summary">章节摘要</a></li>
+                    <li><a href="#chapter-content">章节正文</a></li>
                     <li><a href="#chapter-navigation">章节导航</a></li>
                 </ul>
             </nav>
@@ -77,16 +78,8 @@
         <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
     </section>
 
-    <div class="chapter-meta-bar" aria-label="章节关键信息">
-        <div class="chapter-meta-pill">章节编号：第 13 章</div>
-        <div class="chapter-meta-pill">Section：进阶结构与波动率篇</div>
-        <div class="chapter-meta-pill">Batch：Batch 4 · 已发布</div>
-        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
-    </div>
-
     <nav class="article-quick-nav" aria-label="期权章节快速导航">
         <a href="#chapter-summary" class="article-quick-nav-link is-active" data-section-link="chapter-summary">章节摘要</a>
-        <a href="#chapter-method" class="article-quick-nav-link" data-section-link="chapter-method">阅读方式</a>
         <a href="#chapter-content" class="article-quick-nav-link" data-section-link="chapter-content">章节正文</a>
         <a href="#chapter-navigation" class="article-quick-nav-link" data-section-link="chapter-navigation">章节导航</a>
     </nav>
@@ -97,85 +90,34 @@
                 <div class="section-number" aria-hidden="true">01</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
-                    <p class="section-subtitle">先把这一章到底在解决什么问题讲清楚，再带着问题回到正文，效率会高很多</p>
+                    <p class="section-subtitle">先把这一章真正要解决的问题钉住，再顺着章节索引进入正文；真正有营养的解释放在正文里，不停留在摘要口号上。</p>
                 </div>
             </div>
 
             <div class="chapter-summary-card">
                 <div class="chapter-summary-eyebrow">本章先看</div>
                 <p>通过 Covered Call、Protective Put 等经典结构，理解不同策略为何会呈现相近的风险收益形状。</p>
+                <p class="chapter-summary-note">先用这一段确认本章任务，再直接看下面的章节索引和正文展开。期权章节不追求“短句总结很多”，而是追求把概念、例子、边界和实战误区讲透。</p>
                 <div id="chapterInlineOutline" class="chapter-inline-outline" hidden></div>
-            </div>
-
-            <div class="editorial-band chapter-reading-rail" aria-label="本章阅读导轨">
-                <div class="editorial-band-main">
-                    <div class="editorial-band-kicker">Chapter Rail</div>
-                    <h3>这章先看“哪里最容易出错”，再看“为什么结构会这样长”</h3>
-                    <p>期权章节最容易失焦的地方，是一上来就陷进术语、腿结构和策略名字。更好的读法是先确定这章主要在讲概念、风险还是执行，再带着这个问题去读正文和 payoff 图。</p>
-                </div>
-                <div class="editorial-band-side">
-                    <div class="editorial-band-item">
-                        <span class="editorial-band-label">第一步</span>
-                        <strong>看摘要和目录，先确定本章任务</strong>
-                    </div>
-                    <div class="editorial-band-item">
-                        <span class="editorial-band-label">第二步</span>
-                        <strong>看到 payoff 时，先找最大亏损最容易扩大的区域</strong>
-                    </div>
-                    <div class="editorial-band-item">
-                        <span class="editorial-band-label">第三步</span>
-                        <strong>最后再问这套结构适不适合当前市场环境</strong>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="chapter-method" aria-labelledby="chapter-method-title">
-            <div class="section-header">
-                <div class="section-number" aria-hidden="true">02</div>
-                <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-method-title">阅读方式</h2>
-                    <p class="section-subtitle">期权最容易卡在名词和策略名上，所以这套教材默认按“先轮廓、再风险、后执行”来读</p>
-                </div>
-            </div>
-
-            <div class="chapter-method-grid">
-                <article class="chapter-method-card">
-                    <div class="course-card-kicker">Step 1</div>
-                    <h3>先抓住这章想解决的问题</h3>
-                    <p>先读摘要和小目录，确认这章是在讲概念、定价、风险还是执行，不要一上来就陷进公式或策略名称。</p>
-                </article>
-                <article class="chapter-method-card">
-                    <div class="course-card-kicker">Step 2</div>
-                    <h3>看到 payoff 图时先看边界</h3>
-                    <p>先看最大收益、最大亏损、平衡点和亏损最容易扩大的区域，再回头理解每一条腿到底在做什么。</p>
-                </article>
-                <article class="chapter-method-card">
-                    <div class="course-card-kicker">Step 3</div>
-                    <h3>最后再问什么时候该用</h3>
-                    <p>策略理解完成后，才去判断它更适合什么市场环境、什么波动结构，以及什么时候宁可不做。</p>
-                </article>
             </div>
         </section>
 
         <section class="section" id="chapter-content" aria-labelledby="chapter-content-title">
             <div class="section-header">
-                <div class="section-number" aria-hidden="true">03</div>
+                <div class="section-number" aria-hidden="true">02</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="chapter-content-title">章节正文</h2>
-                    <p class="section-subtitle">正文按完整阅读链组织，建议先抓主结论，再回到分节例子逐段吃透。</p>
+                    <p class="section-subtitle">正文按完整阅读链组织：先把主问题讲清，再用分节例子、图示和边界把理解压实。</p>
                 </div>
             </div>
 
             <article class="chapter-body-card">
-<h1>《美股期权教材》</h1>
-<h2>第13章 经典组合与期权平价：为什么 Covered Call、Protective Put、Short Put、Long Call 会互相“长得像”</h2>
 <blockquote><p>本章新增前端配图（基于原始讲义图）：</p>
 <div class="source-figure-grid"><figure class="source-figure-card"><a class="source-figure-link" href="../images/options/source/img08.jpg" target="_blank" rel="noopener noreferrer"><div class="source-figure-media"><img width="1440" height="1086" class="source-figure-image" src="../images/options/source/img08.jpg" alt="Covered Call、Protective Put 与 Put-Call Parity 放在同一张图上，非常适合拿来说明这些结构为什么会互相“长得像”。" loading="lazy"></div><figcaption class="source-figure-caption">Covered Call、Protective Put 与 Put-Call Parity 放在同一张图上，非常适合拿来说明这些结构为什么会互相“长得像”。</figcaption></a></figure></div>
 <p>这张图本身就是本章的骨架图，放在前面能明显降低后文推导的抽象感。</p></blockquote>
 <blockquote><p>这一章一定要贴着图片看。</p>
 <p>因为你这组图其实给了一个非常好的学习顺序：</p>
-<p>1. 先看 <strong>Covered Call</strong> 到底是什么； 2. 再看它在真实账户里的几种常见用法； 3. 再看 <strong>Protective Put</strong> 是怎么给持仓上保险的； 4. 最后再回到一个更高阶的结论：</p>
+<ol><li>先看 <strong>Covered Call</strong> 到底是什么；</li><li>再看它在真实账户里的几种常见用法；</li><li>再看 <strong>Protective Put</strong> 是怎么给持仓上保险的；</li><li>最后再回到一个更高阶的结论：</li></ol>
 <ul><li>为什么 Covered Call 很像 Short Put；</li><li>为什么 Protective Put 很像 Long Call；</li><li>为什么买 Call + 卖 Put 又会像直接持股。</li></ul>
 <p>也就是说，这章最重要的不是背公式，而是建立一种新的视角：</p>
 <blockquote><p><strong>表面上动作不同、名字不同的策略，最后的风险收益结构，可能非常接近。</strong></p></blockquote>
@@ -191,7 +133,7 @@
 <p>因为这一章真正要你学会的，不是公式本身，而是这件事：</p>
 <blockquote><p><strong>不同零件拼出来的仓位，最后可能在风险收益上非常接近。</strong></p></blockquote>
 <p>第一遍读的时候，你只要能回答下面三个问题，就已经抓到主干了：</p>
-<p>1. Covered Call 到底是在拿什么换权利金？ 2. Protective Put 到底是在花什么钱买什么保护？ 3. 为什么 Covered Call 和 Short Put、Protective Put 和 Long Call，看起来部件不同，结果却会很像？</p>
+<ol><li>Covered Call 到底是在拿什么换权利金？</li><li>Protective Put 到底是在花什么钱买什么保护？</li><li>为什么 Covered Call 和 Short Put、Protective Put 和 Long Call，看起来部件不同，结果却会很像？</li></ol>
 <p>第二遍再去补：</p>
 <ul><li>Put-Call Parity 的严格表达；</li><li>Synthetic Long 为什么会越来越像持股；</li><li>这些结构等价在实战中意味着什么。</li></ul>
 <p>这样你会更像是在搭骨架，而不是一上来就被公式压住。</p>
@@ -618,7 +560,7 @@
 
         <section class="section" id="chapter-navigation" aria-labelledby="chapter-navigation-title">
             <div class="section-header">
-                <div class="section-number" aria-hidden="true">04</div>
+                <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
                     <p class="section-subtitle">读完本章后，可以继续前后章节，或回到课程目录按 section 与 batch 复习。</p>

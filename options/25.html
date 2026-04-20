@@ -19,7 +19,7 @@
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <title>Covered Call 深化应用 | 美股期权教材</title>
     <!-- Fonts removed for performance -->
-    <link rel="stylesheet" href="../css/style.css?v=20260420layout5">
+    <link rel="stylesheet" href="../css/style.css?v=20260420layout7">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -58,7 +58,8 @@
                 <ul class="nav-links">
                     <li><a href="../index.html">返回首页</a></li>
                     <li><a href="./index.html">返回课程</a></li>
-                    <li><a href="#chapter-method">阅读方式</a></li>
+                    <li><a href="#chapter-summary">章节摘要</a></li>
+                    <li><a href="#chapter-content">章节正文</a></li>
                     <li><a href="#chapter-navigation">章节导航</a></li>
                 </ul>
             </nav>
@@ -77,16 +78,8 @@
         <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
     </section>
 
-    <div class="chapter-meta-bar" aria-label="章节关键信息">
-        <div class="chapter-meta-pill">章节编号：第 25 章</div>
-        <div class="chapter-meta-pill">Section：实战应用篇</div>
-        <div class="chapter-meta-pill">Batch：Batch 7 · 已发布</div>
-        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
-    </div>
-
     <nav class="article-quick-nav" aria-label="期权章节快速导航">
         <a href="#chapter-summary" class="article-quick-nav-link is-active" data-section-link="chapter-summary">章节摘要</a>
-        <a href="#chapter-method" class="article-quick-nav-link" data-section-link="chapter-method">阅读方式</a>
         <a href="#chapter-content" class="article-quick-nav-link" data-section-link="chapter-content">章节正文</a>
         <a href="#chapter-navigation" class="article-quick-nav-link" data-section-link="chapter-navigation">章节导航</a>
     </nav>
@@ -97,79 +90,28 @@
                 <div class="section-number" aria-hidden="true">01</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
-                    <p class="section-subtitle">先把这一章到底在解决什么问题讲清楚，再带着问题回到正文，效率会高很多</p>
+                    <p class="section-subtitle">先把这一章真正要解决的问题钉住，再顺着章节索引进入正文；真正有营养的解释放在正文里，不停留在摘要口号上。</p>
                 </div>
             </div>
 
             <div class="chapter-summary-card">
                 <div class="chapter-summary-eyebrow">本章先看</div>
                 <p>把 Covered Call 拆成收租、止盈、降成本与弱对冲四种任务，讲清行权价和 Delta 选择。</p>
+                <p class="chapter-summary-note">先用这一段确认本章任务，再直接看下面的章节索引和正文展开。期权章节不追求“短句总结很多”，而是追求把概念、例子、边界和实战误区讲透。</p>
                 <div id="chapterInlineOutline" class="chapter-inline-outline" hidden></div>
-            </div>
-
-            <div class="editorial-band chapter-reading-rail" aria-label="本章阅读导轨">
-                <div class="editorial-band-main">
-                    <div class="editorial-band-kicker">Chapter Rail</div>
-                    <h3>这章先看“哪里最容易出错”，再看“为什么结构会这样长”</h3>
-                    <p>期权章节最容易失焦的地方，是一上来就陷进术语、腿结构和策略名字。更好的读法是先确定这章主要在讲概念、风险还是执行，再带着这个问题去读正文和 payoff 图。</p>
-                </div>
-                <div class="editorial-band-side">
-                    <div class="editorial-band-item">
-                        <span class="editorial-band-label">第一步</span>
-                        <strong>看摘要和目录，先确定本章任务</strong>
-                    </div>
-                    <div class="editorial-band-item">
-                        <span class="editorial-band-label">第二步</span>
-                        <strong>看到 payoff 时，先找最大亏损最容易扩大的区域</strong>
-                    </div>
-                    <div class="editorial-band-item">
-                        <span class="editorial-band-label">第三步</span>
-                        <strong>最后再问这套结构适不适合当前市场环境</strong>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="chapter-method" aria-labelledby="chapter-method-title">
-            <div class="section-header">
-                <div class="section-number" aria-hidden="true">02</div>
-                <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-method-title">阅读方式</h2>
-                    <p class="section-subtitle">期权最容易卡在名词和策略名上，所以这套教材默认按“先轮廓、再风险、后执行”来读</p>
-                </div>
-            </div>
-
-            <div class="chapter-method-grid">
-                <article class="chapter-method-card">
-                    <div class="course-card-kicker">Step 1</div>
-                    <h3>先抓住这章想解决的问题</h3>
-                    <p>先读摘要和小目录，确认这章是在讲概念、定价、风险还是执行，不要一上来就陷进公式或策略名称。</p>
-                </article>
-                <article class="chapter-method-card">
-                    <div class="course-card-kicker">Step 2</div>
-                    <h3>看到 payoff 图时先看边界</h3>
-                    <p>先看最大收益、最大亏损、平衡点和亏损最容易扩大的区域，再回头理解每一条腿到底在做什么。</p>
-                </article>
-                <article class="chapter-method-card">
-                    <div class="course-card-kicker">Step 3</div>
-                    <h3>最后再问什么时候该用</h3>
-                    <p>策略理解完成后，才去判断它更适合什么市场环境、什么波动结构，以及什么时候宁可不做。</p>
-                </article>
             </div>
         </section>
 
         <section class="section" id="chapter-content" aria-labelledby="chapter-content-title">
             <div class="section-header">
-                <div class="section-number" aria-hidden="true">03</div>
+                <div class="section-number" aria-hidden="true">02</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="chapter-content-title">章节正文</h2>
-                    <p class="section-subtitle">正文按完整阅读链组织，建议先抓主结论，再回到分节例子逐段吃透。</p>
+                    <p class="section-subtitle">正文按完整阅读链组织：先把主问题讲清，再用分节例子、图示和边界把理解压实。</p>
                 </div>
             </div>
 
             <article class="chapter-body-card">
-<h1>《美股期权教材》</h1>
-<h2>第25章 Covered Call 深化应用：收租、止盈、降成本与弱对冲</h2>
 <blockquote><p>本章主要基于以下图片材料整理并扩写：</p>
 <div class="source-figure-grid"><figure class="source-figure-card"><a class="source-figure-link" href="../images/options/source/img19.jpg" target="_blank" rel="noopener noreferrer"><div class="source-figure-media"><img width="1440" height="1402" class="source-figure-image" src="../images/options/source/img19.jpg" alt="Covered Call 的基本结构、收益线、最大收益与盈亏平衡点；" loading="lazy"></div><figcaption class="source-figure-caption">Covered Call 的基本结构、收益线、最大收益与盈亏平衡点；</figcaption></a></figure><figure class="source-figure-card"><a class="source-figure-link" href="../images/options/source/img20.jpg" target="_blank" rel="noopener noreferrer"><div class="source-figure-media"><img width="1440" height="1119" class="source-figure-image" src="../images/options/source/img20.jpg" alt="Covered Call 作为“收租”策略时，标的、到期日、行权价与到期处理；" loading="lazy"></div><figcaption class="source-figure-caption">Covered Call 作为“收租”策略时，标的、到期日、行权价与到期处理；</figcaption></a></figure><figure class="source-figure-card"><a class="source-figure-link" href="../images/options/source/img21.jpg" target="_blank" rel="noopener noreferrer"><div class="source-figure-media"><img width="1440" height="1026" class="source-figure-image" src="../images/options/source/img21.jpg" alt="Covered Call 的四种应用场景里，重点展开止盈与降低开仓成本；" loading="lazy"></div><figcaption class="source-figure-caption">Covered Call 的四种应用场景里，重点展开止盈与降低开仓成本；</figcaption></a></figure><figure class="source-figure-card"><a class="source-figure-link" href="../images/options/source/img22.jpg" target="_blank" rel="noopener noreferrer"><div class="source-figure-media"><img width="1424" height="1406" class="source-figure-image" src="../images/options/source/img22.jpg" alt="Covered Call 作为弱对冲工具，与 Protective Put 的保护强弱对比；" loading="lazy"></div><figcaption class="source-figure-caption">Covered Call 作为弱对冲工具，与 Protective Put 的保护强弱对比；</figcaption></a></figure><figure class="source-figure-card"><a class="source-figure-link" href="../images/options/source/img23.jpg" target="_blank" rel="noopener noreferrer"><div class="source-figure-media"><img width="1440" height="1339" class="source-figure-image" src="../images/options/source/img23.jpg" alt="从 Delta 理解 Covered Call 的本质——选行权价，本质上就是选 Delta。" loading="lazy"></div><figcaption class="source-figure-caption">从 Delta 理解 Covered Call 的本质——选行权价，本质上就是选 Delta。</figcaption></a></figure></div>
 <p>如果你只记一句话，那就是：</p>
@@ -485,12 +427,12 @@
 <blockquote><p><strong>我不是在选一个数字，我是在选一套 Delta 性格。</strong></p></blockquote>
 <h1>九、把这一章收住：Covered Call 的真正难点，不在结构，而在目的</h1>
 <h2>25.23 本章你最该带走的七句话</h2>
-<p>1. <strong>Covered Call = 持有正股 + 卖出 Call，本质上是在卖掉一部分上涨空间。</strong> 2. <strong>它的最大收益是封顶的，下跌也只有有限缓冲。</strong> 3. <strong>它最适合用在你本来就愿意持有、而且不短期看坏的股票上。</strong> 4. <strong>收租、止盈、降低开仓成本、弱对冲，是四种不同任务，别混着做。</strong> 5. <strong>到期时间决定管理频率和 Gamma 压力，不能只看权利金大小。</strong> 6. <strong>选择行权价，本质上是在选 Delta，也是在选自己还要保留多少看涨暴露。</strong> 7. <strong>该不该被行权、该不该 roll，答案不在市场上，而在你开仓时到底想完成什么任务。</strong></p>
+<ol><li><strong>Covered Call = 持有正股 + 卖出 Call，本质上是在卖掉一部分上涨空间。</strong></li><li><strong>它的最大收益是封顶的，下跌也只有有限缓冲。</strong></li><li><strong>它最适合用在你本来就愿意持有、而且不短期看坏的股票上。</strong></li><li><strong>收租、止盈、降低开仓成本、弱对冲，是四种不同任务，别混着做。</strong></li><li><strong>到期时间决定管理频率和 Gamma 压力，不能只看权利金大小。</strong></li><li><strong>选择行权价，本质上是在选 Delta，也是在选自己还要保留多少看涨暴露。</strong></li><li><strong>该不该被行权、该不该 roll，答案不在市场上，而在你开仓时到底想完成什么任务。</strong></li></ol>
 <p>Covered Call 之所以常被误用，不是因为它太复杂， 而是因为它太像一个“顺手就能做”的动作。</p>
 <p>真正成熟的使用方式，是先把目的讲清楚，再开仓。</p>
 <p>否则你收的不是租，常常只是未来后悔的预付款。</p>
 <h1>十、自测题</h1>
-<p>1. 为什么 Covered Call 的最大风险不能简单理解成“几乎没有风险”？ 2. 同样是卖 Call，收租、止盈和对冲这三种场景的核心任务分别有什么不同？ 3. 为什么说 OTM、ATM、ITM Covered Call 的区别，本质上是 Delta 性格的区别？ 4. 如果股价上涨导致卖出 Call 的绝对 Delta 变大，为什么你的组合看涨程度会下降？ 5. 什么时候你应该接受被行权，什么时候更适合买回或 roll？ 6. 如果你真正担心的是大跌，为什么 Protective Put 往往比 Covered Call 更对题？</p>
+<ol><li>为什么 Covered Call 的最大风险不能简单理解成“几乎没有风险”？</li><li>同样是卖 Call，收租、止盈和对冲这三种场景的核心任务分别有什么不同？</li><li>为什么说 OTM、ATM、ITM Covered Call 的区别，本质上是 Delta 性格的区别？</li><li>如果股价上涨导致卖出 Call 的绝对 Delta 变大，为什么你的组合看涨程度会下降？</li><li>什么时候你应该接受被行权，什么时候更适合买回或 roll？</li><li>如果你真正担心的是大跌，为什么 Protective Put 往往比 Covered Call 更对题？</li></ol>
 <h1>本章一句话总结</h1>
 <blockquote><p><strong>Covered Call 真正高明的地方，不是多收了一笔权利金，而是你能不能在开仓前就说清：我到底是在卖上涨、卖时间，还是在卖掉自己未来的后悔空间。</strong></p></blockquote>
 <h2>下一章预告：Sell Put 与 Cash-Secured Put——看涨建仓、收租与接股纪律</h2>
@@ -503,7 +445,7 @@
 
         <section class="section" id="chapter-navigation" aria-labelledby="chapter-navigation-title">
             <div class="section-header">
-                <div class="section-number" aria-hidden="true">04</div>
+                <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
                     <p class="section-subtitle">读完本章后，可以继续前后章节，或回到课程目录按 section 与 batch 复习。</p>

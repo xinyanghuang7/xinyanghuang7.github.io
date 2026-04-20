@@ -19,7 +19,7 @@
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <title>Vega | 美股期权教材</title>
     <!-- Fonts removed for performance -->
-    <link rel="stylesheet" href="../css/style.css?v=20260420layout5">
+    <link rel="stylesheet" href="../css/style.css?v=20260420layout7">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -58,7 +58,8 @@
                 <ul class="nav-links">
                     <li><a href="../index.html">返回首页</a></li>
                     <li><a href="./index.html">返回课程</a></li>
-                    <li><a href="#chapter-method">阅读方式</a></li>
+                    <li><a href="#chapter-summary">章节摘要</a></li>
+                    <li><a href="#chapter-content">章节正文</a></li>
                     <li><a href="#chapter-navigation">章节导航</a></li>
                 </ul>
             </nav>
@@ -77,16 +78,8 @@
         <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
     </section>
 
-    <div class="chapter-meta-bar" aria-label="章节关键信息">
-        <div class="chapter-meta-pill">章节编号：第 22 章</div>
-        <div class="chapter-meta-pill">Section：Greeks 与仓位行为篇</div>
-        <div class="chapter-meta-pill">Batch：Batch 6 · 已发布</div>
-        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
-    </div>
-
     <nav class="article-quick-nav" aria-label="期权章节快速导航">
         <a href="#chapter-summary" class="article-quick-nav-link is-active" data-section-link="chapter-summary">章节摘要</a>
-        <a href="#chapter-method" class="article-quick-nav-link" data-section-link="chapter-method">阅读方式</a>
         <a href="#chapter-content" class="article-quick-nav-link" data-section-link="chapter-content">章节正文</a>
         <a href="#chapter-navigation" class="article-quick-nav-link" data-section-link="chapter-navigation">章节导航</a>
     </nav>
@@ -97,79 +90,28 @@
                 <div class="section-number" aria-hidden="true">01</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
-                    <p class="section-subtitle">先把这一章到底在解决什么问题讲清楚，再带着问题回到正文，效率会高很多</p>
+                    <p class="section-subtitle">先把这一章真正要解决的问题钉住，再顺着章节索引进入正文；真正有营养的解释放在正文里，不停留在摘要口号上。</p>
                 </div>
             </div>
 
             <div class="chapter-summary-card">
                 <div class="chapter-summary-eyebrow">本章先看</div>
                 <p>理解隐含波动率变化如何重新定价期权，以及事件前后 Vega 暴露为何会显著影响盈亏。</p>
+                <p class="chapter-summary-note">先用这一段确认本章任务，再直接看下面的章节索引和正文展开。期权章节不追求“短句总结很多”，而是追求把概念、例子、边界和实战误区讲透。</p>
                 <div id="chapterInlineOutline" class="chapter-inline-outline" hidden></div>
-            </div>
-
-            <div class="editorial-band chapter-reading-rail" aria-label="本章阅读导轨">
-                <div class="editorial-band-main">
-                    <div class="editorial-band-kicker">Chapter Rail</div>
-                    <h3>这章先看“哪里最容易出错”，再看“为什么结构会这样长”</h3>
-                    <p>期权章节最容易失焦的地方，是一上来就陷进术语、腿结构和策略名字。更好的读法是先确定这章主要在讲概念、风险还是执行，再带着这个问题去读正文和 payoff 图。</p>
-                </div>
-                <div class="editorial-band-side">
-                    <div class="editorial-band-item">
-                        <span class="editorial-band-label">第一步</span>
-                        <strong>看摘要和目录，先确定本章任务</strong>
-                    </div>
-                    <div class="editorial-band-item">
-                        <span class="editorial-band-label">第二步</span>
-                        <strong>看到 payoff 时，先找最大亏损最容易扩大的区域</strong>
-                    </div>
-                    <div class="editorial-band-item">
-                        <span class="editorial-band-label">第三步</span>
-                        <strong>最后再问这套结构适不适合当前市场环境</strong>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="chapter-method" aria-labelledby="chapter-method-title">
-            <div class="section-header">
-                <div class="section-number" aria-hidden="true">02</div>
-                <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-method-title">阅读方式</h2>
-                    <p class="section-subtitle">期权最容易卡在名词和策略名上，所以这套教材默认按“先轮廓、再风险、后执行”来读</p>
-                </div>
-            </div>
-
-            <div class="chapter-method-grid">
-                <article class="chapter-method-card">
-                    <div class="course-card-kicker">Step 1</div>
-                    <h3>先抓住这章想解决的问题</h3>
-                    <p>先读摘要和小目录，确认这章是在讲概念、定价、风险还是执行，不要一上来就陷进公式或策略名称。</p>
-                </article>
-                <article class="chapter-method-card">
-                    <div class="course-card-kicker">Step 2</div>
-                    <h3>看到 payoff 图时先看边界</h3>
-                    <p>先看最大收益、最大亏损、平衡点和亏损最容易扩大的区域，再回头理解每一条腿到底在做什么。</p>
-                </article>
-                <article class="chapter-method-card">
-                    <div class="course-card-kicker">Step 3</div>
-                    <h3>最后再问什么时候该用</h3>
-                    <p>策略理解完成后，才去判断它更适合什么市场环境、什么波动结构，以及什么时候宁可不做。</p>
-                </article>
             </div>
         </section>
 
         <section class="section" id="chapter-content" aria-labelledby="chapter-content-title">
             <div class="section-header">
-                <div class="section-number" aria-hidden="true">03</div>
+                <div class="section-number" aria-hidden="true">02</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="chapter-content-title">章节正文</h2>
-                    <p class="section-subtitle">正文按完整阅读链组织，建议先抓主结论，再回到分节例子逐段吃透。</p>
+                    <p class="section-subtitle">正文按完整阅读链组织：先把主问题讲清，再用分节例子、图示和边界把理解压实。</p>
                 </div>
             </div>
 
             <article class="chapter-body-card">
-<h1>《美股期权教材》</h1>
-<h2>第22章 Vega：IV 变化与波动率冲击</h2>
 <blockquote><p>本章主要基于以下图片材料整理并扩写：</p>
 <div class="source-figure-grid"><figure class="source-figure-card"><a class="source-figure-link" href="../images/options/source/img11.jpg" target="_blank" rel="noopener noreferrer"><div class="source-figure-media"><img width="838" height="1032" class="source-figure-image" src="../images/options/source/img11.jpg" alt="Greeks 总纲，说明 Vega 是理解期权价格波动来源的关键变量之一；" loading="lazy"></div><figcaption class="source-figure-caption">Greeks 总纲，说明 Vega 是理解期权价格波动来源的关键变量之一；</figcaption></a></figure><figure class="source-figure-card"><a class="source-figure-link" href="../images/options/source/img15.jpg" target="_blank" rel="noopener noreferrer"><div class="source-figure-media"><img width="1440" height="536" class="source-figure-image" src="../images/options/source/img15.jpg" alt="Vega 主图，强调“IV 每变化 1 个百分点，期权价格会如何变化”、Vega 在 ATM 附近更大、到期越近 Vega 往往越小，以及财报后的 IV Crush。" loading="lazy"></div><figcaption class="source-figure-caption">Vega 主图，强调“IV 每变化 1 个百分点，期权价格会如何变化”、Vega 在 ATM 附近更大、到期越近 Vega 往往越小，以及财报后的 IV Crush。</figcaption></a></figure></div>
 <p>如果你只记一句话，那就是：</p>
@@ -184,7 +126,7 @@
 <h2>阅读导航：第一次读先抓“IV 改价”，第二次读再补事件场景</h2>
 <p>这一章第一次读，最容易误会的是：Vega 好像只属于波动率高手。</p>
 <p>其实你第一遍只要先抓两句：</p>
-<p>1. <strong>Vega 衡量的是 IV 变化，会把期权价格推多远。</strong> 2. <strong>方向对，不代表一定赚钱，因为 IV 也会重新定价。</strong></p>
+<ol><li><strong>Vega 衡量的是 IV 变化，会把期权价格推多远。</strong></li><li><strong>方向对，不代表一定赚钱，因为 IV 也会重新定价。</strong></li></ol>
 <p>这两句先站稳，很多财报前后的困惑就有解释了。</p>
 <p>第二遍再去补：</p>
 <ul><li>为什么 ATM、长天期往往 Vega 更重；</li><li>为什么财报后常见 IV Crush；</li><li>为什么很多人其实在“不知不觉地承受 Vega”。</li></ul>
@@ -337,11 +279,11 @@
 <ul><li>有些仓位 Vega 暴露大；</li><li>有些仓位 Vega 暴露小；</li><li>有些人有意识地在做波动率；</li><li>更多人则是在“不知不觉地承受波动率变化”。</li></ul>
 <h1>七、把这一章收住：Vega 是你理解“为什么方向没错，结果却不如预期”的关键补丁</h1>
 <h2>22.15 本章你最该带走的五句话</h2>
-<p>1. <strong>Vega 衡量的是 IV 每变化 1 个百分点，期权价格理论上会变化多少。</strong> 2. <strong>买方通常是正 Vega，卖方通常是负 Vega。</strong> 3. <strong>ATM 附近、期限更长的期权，Vega 往往更明显。</strong> 4. <strong>越接近到期，Vega 一般越弱；但财报等事件前后，它依然可能很关键。</strong> 5. <strong>方向对不代表一定赚钱，因为期权价格还会被 IV 的重新定价影响。</strong></p>
+<ol><li><strong>Vega 衡量的是 IV 每变化 1 个百分点，期权价格理论上会变化多少。</strong></li><li><strong>买方通常是正 Vega，卖方通常是负 Vega。</strong></li><li><strong>ATM 附近、期限更长的期权，Vega 往往更明显。</strong></li><li><strong>越接近到期，Vega 一般越弱；但财报等事件前后，它依然可能很关键。</strong></li><li><strong>方向对不代表一定赚钱，因为期权价格还会被 IV 的重新定价影响。</strong></li></ol>
 <p>如果 Theta 让你意识到“时间会不会先把你磨掉”， 那 Vega 就是在提醒你：</p>
 <ul><li>市场对未来波动的想法一变；</li><li>你的期权也会被重新估值；</li><li>这件事有时和方向本身一样重要。</li></ul>
 <h1>八、自测题</h1>
-<p>1. 一张期权 Vega 是 0.12，IV 从 30% 升到 31% 时，这个数字该怎么直觉理解？ 2. 为什么很多 ATM 期权的 Vega 比深 ITM、深 OTM 更显眼？ 3. 为什么长天期合约通常比短天期合约更需要关心 Vega？ 4. 什么是 IV Crush？为什么它常在财报后让买方感到很挫败？ 5. 如果你做的是方向性 Call，而不是波动率策略，为什么仍然不能忽略 Vega？</p>
+<ol><li>一张期权 Vega 是 0.12，IV 从 30% 升到 31% 时，这个数字该怎么直觉理解？</li><li>为什么很多 ATM 期权的 Vega 比深 ITM、深 OTM 更显眼？</li><li>为什么长天期合约通常比短天期合约更需要关心 Vega？</li><li>什么是 IV Crush？为什么它常在财报后让买方感到很挫败？</li><li>如果你做的是方向性 Call，而不是波动率策略，为什么仍然不能忽略 Vega？</li></ol>
 <h1>本章一句话总结</h1>
 <blockquote><p><strong>Vega 真正教你的，是别把期权只当成“方向押注”，因为市场对未来波动的定价一变，整张合约的价格就可能跟着换一套逻辑。</strong></p></blockquote>
 <h2>下一章预告：单腿买方策略应用——Long Call / Long Put / LEAP Call 什么时候值得用</h2>
@@ -353,7 +295,7 @@
 
         <section class="section" id="chapter-navigation" aria-labelledby="chapter-navigation-title">
             <div class="section-header">
-                <div class="section-number" aria-hidden="true">04</div>
+                <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
                     <p class="section-subtitle">读完本章后，可以继续前后章节，或回到课程目录按 section 与 batch 复习。</p>

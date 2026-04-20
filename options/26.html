@@ -19,7 +19,7 @@
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <title>Sell Put 与 Cash-Secured Put | 美股期权教材</title>
     <!-- Fonts removed for performance -->
-    <link rel="stylesheet" href="../css/style.css?v=20260420layout5">
+    <link rel="stylesheet" href="../css/style.css?v=20260420layout7">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -58,7 +58,8 @@
                 <ul class="nav-links">
                     <li><a href="../index.html">返回首页</a></li>
                     <li><a href="./index.html">返回课程</a></li>
-                    <li><a href="#chapter-method">阅读方式</a></li>
+                    <li><a href="#chapter-summary">章节摘要</a></li>
+                    <li><a href="#chapter-content">章节正文</a></li>
                     <li><a href="#chapter-navigation">章节导航</a></li>
                 </ul>
             </nav>
@@ -77,16 +78,8 @@
         <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
     </section>
 
-    <div class="chapter-meta-bar" aria-label="章节关键信息">
-        <div class="chapter-meta-pill">章节编号：第 26 章</div>
-        <div class="chapter-meta-pill">Section：实战应用篇</div>
-        <div class="chapter-meta-pill">Batch：Batch 7 · 已发布</div>
-        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
-    </div>
-
     <nav class="article-quick-nav" aria-label="期权章节快速导航">
         <a href="#chapter-summary" class="article-quick-nav-link is-active" data-section-link="chapter-summary">章节摘要</a>
-        <a href="#chapter-method" class="article-quick-nav-link" data-section-link="chapter-method">阅读方式</a>
         <a href="#chapter-content" class="article-quick-nav-link" data-section-link="chapter-content">章节正文</a>
         <a href="#chapter-navigation" class="article-quick-nav-link" data-section-link="chapter-navigation">章节导航</a>
     </nav>
@@ -97,79 +90,28 @@
                 <div class="section-number" aria-hidden="true">01</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
-                    <p class="section-subtitle">先把这一章到底在解决什么问题讲清楚，再带着问题回到正文，效率会高很多</p>
+                    <p class="section-subtitle">先把这一章真正要解决的问题钉住，再顺着章节索引进入正文；真正有营养的解释放在正文里，不停留在摘要口号上。</p>
                 </div>
             </div>
 
             <div class="chapter-summary-card">
                 <div class="chapter-summary-eyebrow">本章先看</div>
                 <p>把卖 Put 讲成价格型建仓承诺，讲清接股纪律、盈亏平衡点与现金担保的健康打开方式。</p>
+                <p class="chapter-summary-note">先用这一段确认本章任务，再直接看下面的章节索引和正文展开。期权章节不追求“短句总结很多”，而是追求把概念、例子、边界和实战误区讲透。</p>
                 <div id="chapterInlineOutline" class="chapter-inline-outline" hidden></div>
-            </div>
-
-            <div class="editorial-band chapter-reading-rail" aria-label="本章阅读导轨">
-                <div class="editorial-band-main">
-                    <div class="editorial-band-kicker">Chapter Rail</div>
-                    <h3>这章先看“哪里最容易出错”，再看“为什么结构会这样长”</h3>
-                    <p>期权章节最容易失焦的地方，是一上来就陷进术语、腿结构和策略名字。更好的读法是先确定这章主要在讲概念、风险还是执行，再带着这个问题去读正文和 payoff 图。</p>
-                </div>
-                <div class="editorial-band-side">
-                    <div class="editorial-band-item">
-                        <span class="editorial-band-label">第一步</span>
-                        <strong>看摘要和目录，先确定本章任务</strong>
-                    </div>
-                    <div class="editorial-band-item">
-                        <span class="editorial-band-label">第二步</span>
-                        <strong>看到 payoff 时，先找最大亏损最容易扩大的区域</strong>
-                    </div>
-                    <div class="editorial-band-item">
-                        <span class="editorial-band-label">第三步</span>
-                        <strong>最后再问这套结构适不适合当前市场环境</strong>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="chapter-method" aria-labelledby="chapter-method-title">
-            <div class="section-header">
-                <div class="section-number" aria-hidden="true">02</div>
-                <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-method-title">阅读方式</h2>
-                    <p class="section-subtitle">期权最容易卡在名词和策略名上，所以这套教材默认按“先轮廓、再风险、后执行”来读</p>
-                </div>
-            </div>
-
-            <div class="chapter-method-grid">
-                <article class="chapter-method-card">
-                    <div class="course-card-kicker">Step 1</div>
-                    <h3>先抓住这章想解决的问题</h3>
-                    <p>先读摘要和小目录，确认这章是在讲概念、定价、风险还是执行，不要一上来就陷进公式或策略名称。</p>
-                </article>
-                <article class="chapter-method-card">
-                    <div class="course-card-kicker">Step 2</div>
-                    <h3>看到 payoff 图时先看边界</h3>
-                    <p>先看最大收益、最大亏损、平衡点和亏损最容易扩大的区域，再回头理解每一条腿到底在做什么。</p>
-                </article>
-                <article class="chapter-method-card">
-                    <div class="course-card-kicker">Step 3</div>
-                    <h3>最后再问什么时候该用</h3>
-                    <p>策略理解完成后，才去判断它更适合什么市场环境、什么波动结构，以及什么时候宁可不做。</p>
-                </article>
             </div>
         </section>
 
         <section class="section" id="chapter-content" aria-labelledby="chapter-content-title">
             <div class="section-header">
-                <div class="section-number" aria-hidden="true">03</div>
+                <div class="section-number" aria-hidden="true">02</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="chapter-content-title">章节正文</h2>
-                    <p class="section-subtitle">正文按完整阅读链组织，建议先抓主结论，再回到分节例子逐段吃透。</p>
+                    <p class="section-subtitle">正文按完整阅读链组织：先把主问题讲清，再用分节例子、图示和边界把理解压实。</p>
                 </div>
             </div>
 
             <article class="chapter-body-card">
-<h1>《美股期权教材》</h1>
-<h2>第26章 Sell Put 与 Cash-Secured Put：看涨建仓、收租与接股纪律</h2>
 <blockquote><p>本章主要基于以下图片材料整理并扩写：</p>
 <div class="source-figure-grid"><figure class="source-figure-card"><a class="source-figure-link" href="../images/options/source/img24.jpg" target="_blank" rel="noopener noreferrer"><div class="source-figure-media"><img width="1440" height="1072" class="source-figure-image" src="../images/options/source/img24.jpg" alt="Sell Put 的核心图，强调它本质上是看涨策略、最大收益/最大亏损、盈亏平衡点、Delta 维度如何选行权价，以及经典应用场景。" loading="lazy"></div><figcaption class="source-figure-caption">Sell Put 的核心图，强调它本质上是看涨策略、最大收益/最大亏损、盈亏平衡点、Delta 维度如何选行权价，以及经典应用场景。</figcaption></a></figure></div>
 <p>同时参考了投资者教育资料中的基础定义与现金担保卖 Put 的标准表述：</p>
@@ -452,14 +394,14 @@
 <ul><li>我现在还想不想拥有这只股票？</li><li>我还愿不愿意在这个有效成本继续承接？</li></ul>
 <h1>九、把这一章收住：Sell Put 的本质不是赌股价别跌，而是提前决定“我愿意在哪里买”</h1>
 <h2>26.20 本章你最该带走的七句话</h2>
-<p>1. <strong>Sell Put 是看涨或至少不看坏的策略，不是看空策略。</strong> 2. <strong>对普通投资者来说，更适合先从 Cash-Secured Put 理解它。</strong> 3. <strong>最大收益 = 权利金；盈亏平衡点 = 行权价 - 权利金。</strong> 4. <strong>真正的关键不是有没有被指派，而是这个有效成本是不是你本来就愿意买的价位。</strong> 5. <strong>适合卖 Put 的标的，应该是你愿意长期拥有、基本面过关、期权流动性不错的股票。</strong> 6. <strong>行权价选择本质上是在选 Delta，也是在选你到底有多想接股。</strong> 7. <strong>Sell Put 和 Covered Call 是镜像结构：一个更像价格敏感建仓，一个更像持股经营。</strong></p>
+<ol><li><strong>Sell Put 是看涨或至少不看坏的策略，不是看空策略。</strong></li><li><strong>对普通投资者来说，更适合先从 Cash-Secured Put 理解它。</strong></li><li><strong>最大收益 = 权利金；盈亏平衡点 = 行权价 - 权利金。</strong></li><li><strong>真正的关键不是有没有被指派，而是这个有效成本是不是你本来就愿意买的价位。</strong></li><li><strong>适合卖 Put 的标的，应该是你愿意长期拥有、基本面过关、期权流动性不错的股票。</strong></li><li><strong>行权价选择本质上是在选 Delta，也是在选你到底有多想接股。</strong></li><li><strong>Sell Put 和 Covered Call 是镜像结构：一个更像价格敏感建仓，一个更像持股经营。</strong></li></ol>
 <p>学完这一章之后，你再回头看第13章那句：</p>
 <ul><li>Covered Call ≈ Short Put</li></ul>
 <p>就不会只把它当成公式了。</p>
 <p>你会开始真正理解：</p>
 <ul><li>为什么同样是收权利金；</li><li>有时你是在经营持股；</li><li>有时你是在等待建仓；</li><li>两者骨架很像，但任务完全不同。</li></ul>
 <h1>十、自测题</h1>
-<p>1. 为什么说 Sell Put 更准确的理解是“愿意更低价接货”，而不是“赌它别跌”？ 2. Cash-Secured Put 相比裸卖 Put，为什么更适合作为普通投资者的教材起点？ 3. 盈亏平衡点为什么要用“行权价 - 权利金”来看，而不是只看行权价？ 4. 为什么高权利金并不自动意味着更好，而可能意味着更高接股概率或更差标的？ 5. Covered Call 和 Cash-Secured Put 在结构很像的前提下，任务为什么又经常不同？ 6. roll 一张 Sell Put 之前，最应该重新确认的两个问题是什么？</p>
+<ol><li>为什么说 Sell Put 更准确的理解是“愿意更低价接货”，而不是“赌它别跌”？</li><li>Cash-Secured Put 相比裸卖 Put，为什么更适合作为普通投资者的教材起点？</li><li>盈亏平衡点为什么要用“行权价 - 权利金”来看，而不是只看行权价？</li><li>为什么高权利金并不自动意味着更好，而可能意味着更高接股概率或更差标的？</li><li>Covered Call 和 Cash-Secured Put 在结构很像的前提下，任务为什么又经常不同？</li><li>roll 一张 Sell Put 之前，最应该重新确认的两个问题是什么？</li></ol>
 <h1>本章一句话总结</h1>
 <blockquote><p><strong>Sell Put 真正高质量的打开方式，不是把它当成胜率游戏，而是把它当成一张“如果价格回到这里，我愿意认真接手这家公司”的承诺书。</strong></p></blockquote>
 <h2>下一章预告：PMCC——为什么有人用一张长期深实值 Call 来“替代”正股</h2>
@@ -474,7 +416,7 @@
 
         <section class="section" id="chapter-navigation" aria-labelledby="chapter-navigation-title">
             <div class="section-header">
-                <div class="section-number" aria-hidden="true">04</div>
+                <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
                     <p class="section-subtitle">读完本章后，可以继续前后章节，或回到课程目录按 section 与 batch 复习。</p>

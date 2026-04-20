@@ -2,8 +2,29 @@
 
 Single source of truth for the public blog / options-course output standard.
 
-Last updated: 2026-04-19
+Last updated: 2026-04-20
 Public domain: `https://4fire.qzz.io/`
+
+## 0.0419 style freeze
+
+The current **0419/0420 premium visual language** is now the default public-site standard, not a one-off rescue.
+
+That means future blog posts, homepage surfaces, and options-course chapters should inherit the same closure principles:
+- calm, spacious reading geometry
+- fewer but larger and more stable rounded surfaces
+- obvious spacing between rounded rectangles / cards
+- heading width and正文 width behaving like one reading system
+- quick-nav / tabs simplified when crowded instead of being forced into overlap
+- the page should feel like it is teaching one coherent idea, not dumping many tiny fragments
+
+Use the current 0419 article style as the baseline for:
+- card density
+- title/body proportion
+- section pacing
+- visual calmness
+- “useful knowledge first” writing rhythm
+
+Do not regress into dense patchwork layouts, over-nested rounded rectangles, or short empty filler lines that look like content without carrying real thought.
 
 ## 0. Shared workflow / shared product rule
 
@@ -36,6 +57,21 @@ Default execution chain:
 - Do not let a visually nicer page bypass live verification.
 - Do not let options-course polish drift into a second visual system unrelated to the blog.
 
+## 0.3 Shared-brain / full-knowledge rule
+
+The blog system, the investing system, the learning system, and the options-course are part of one shared knowledge product.
+
+Mandatory rule:
+- before writing, revising, or making action language more concrete, reuse **all relevant existing knowledge**, not just the newest fragment found fastest
+- previously learned frameworks, ticker notes, portfolio context, method notes, and options-course concepts should be treated as reusable upstream assets
+- do not write as if today's page lives alone; it must connect to the broader investing workflow and help the user see that workflow more clearly
+- if a new article reveals a durable framework or better decision boundary, write it back into the shared system instead of letting it stay trapped inside one post
+
+Hard failure patterns:
+- ignoring older but still-relevant knowledge because the latest note is easier to use
+- producing a page that sounds smooth but is disconnected from the investing workflow
+- turning the blog into a pile of standalone observations instead of a compounding knowledge system
+
 ## 0.5 Daily learning / teaching rule
 
 The daily blog is not only a publishing surface. It is also a **daily learning surface** for the user.
@@ -50,6 +86,11 @@ Default expression rule:
 - **Module 2 teaches the method**
 - **Module 3 shows how that method helps explain today's holdings / debate / news**
 - **Module 4 reduces it to action boundary and next move**
+
+Writing-quality rule:
+- the site is for **teaching useful investing knowledge**, not producing decorative short lines
+- avoid empty motivational phrasing, low-information micro-sentences, and paragraphing that looks premium but says little
+- every major section should leave the reader with something reusable: a method, a boundary, a comparison lens, a workflow step, or a decision rule
 
 If a post only updates what happened today but does not help the reader think better next time, it is incomplete.
 
@@ -129,16 +170,21 @@ The homepage, article pages, and options-course pages should feel like one produ
 - Card copy must keep clear inner padding on all sides; if the text feels glued to the curved edge, the layout is still broken.
 - The reading surface must feel centered and balanced; avoid obvious left-heavy layouts that leave a large dead band on the right when the section is meant to be a card/grid surface.
 - Heading width and prose width should feel like one system; do not allow a very wide title shell above a much narrower body column unless there is a deliberate editorial reason.
+- At the top of a page, do not stack multiple competing horizontal rails that do nearly the same thing. If quick-nav already exists, collapse or remove the extra meta strip instead of keeping both.
 - Module 4 / 动作地图 must look like an intentional card system, not a generic fallback column layout.
 - Typography must keep an obvious hierarchy: section title > card / module title > body copy. If they read as the same size, the page is not closed.
 - If one premium post exposes a structural defect that is likely shared (meta-bar collision, small cards, card-surface regression, sticky UI obstruction), sample nearby recent posts and the shared CSS/template layer before calling the work closed.
 
 ### Premium options-course hard gates
+- All options chapters should be rewritten toward the same premium reading system as the blog; the goal is content consistency plus a full formatting rebuild, not minor patchwork.
+- Keep the core content aligned with existing online/offline versions, but replace the current ugly or template-feel presentation with calmer structure and more deliberate teaching rhythm.
+- Chapter pages should teach through real prose and well-spaced examples, not through stacks of thin decorative boxes.
 - The course index must read like an **editorial syllabus**, not a raw chapter dump.
 - Learning-path cards, toolkit cards, and chapter-directory cards must have clear hierarchy, enough breathing room, and obvious CTA landing points.
-- Chapter pages must keep a stable reading ladder: **summary → reading rail →正文 → chapter navigation**.
+- Chapter pages must keep a stable reading ladder: **summary / chapter index →正文 → chapter navigation**.
 - Quick-nav and chapter-meta bars may be sticky, but must not visually overpower the content or feel heavier than the chapter body.
 - If quick-nav or header tabs get crowded, prefer wrap / horizontal scroll / simpler labels over squeezed overlap.
+- Do not let options chapters lean on repeated thin summary / method cards as fake depth; readers should reach chapter-specific正文 quickly.
 - Chapter-body prose width, chapter titles, payoff notes, and blockquotes must feel like the same reading system; wide titles with a much narrower正文 strip are a hard fail.
 - Payoff charts, source figures, and blockquotes need deliberate spacing so the page reads like a premium lesson, not a template export.
 - Prev/next / return-to-course navigation must feel like part of one calm learning path, not a loose set of utility links.
@@ -197,5 +243,20 @@ If there is tension between "more features" and "more reliable quality", choose 
   3. public evidence hardened with official / high-quality sources
   4. layout closed against shared frontend gates
   5. publish + live verification completed before calling success
+
+## 7. Workflow hardening target
+
+The long-term workflow target is not just “generate a page”, but:
+1. absorb prior knowledge
+2. connect it to the current investing workflow
+3. express one or more reusable ideas clearly
+4. close the shared frontend cleanly
+5. keep blog + options-course + homepage in the same product language
+
+When there is tension, prefer:
+- more knowledge density over empty elegance
+- calmer layout over crowded card tricks
+- shared-system consistency over isolated page optimization
+- one coherent teaching arc over many disconnected snippets
 
 This file is the control tower for future blog-output / options-course polish work.

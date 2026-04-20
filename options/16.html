@@ -19,7 +19,7 @@
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <title>波动率策略入门 | 美股期权教材</title>
     <!-- Fonts removed for performance -->
-    <link rel="stylesheet" href="../css/style.css?v=20260420layout5">
+    <link rel="stylesheet" href="../css/style.css?v=20260420layout7">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -58,7 +58,8 @@
                 <ul class="nav-links">
                     <li><a href="../index.html">返回首页</a></li>
                     <li><a href="./index.html">返回课程</a></li>
-                    <li><a href="#chapter-method">阅读方式</a></li>
+                    <li><a href="#chapter-summary">章节摘要</a></li>
+                    <li><a href="#chapter-content">章节正文</a></li>
                     <li><a href="#chapter-navigation">章节导航</a></li>
                 </ul>
             </nav>
@@ -77,16 +78,8 @@
         <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
     </section>
 
-    <div class="chapter-meta-bar" aria-label="章节关键信息">
-        <div class="chapter-meta-pill">章节编号：第 16 章</div>
-        <div class="chapter-meta-pill">Section：进阶结构与波动率篇</div>
-        <div class="chapter-meta-pill">Batch：Batch 5 · 已发布</div>
-        <div class="chapter-meta-pill">所属课程：<a class="chapter-meta-link" href="./index.html">美股期权教材</a></div>
-    </div>
-
     <nav class="article-quick-nav" aria-label="期权章节快速导航">
         <a href="#chapter-summary" class="article-quick-nav-link is-active" data-section-link="chapter-summary">章节摘要</a>
-        <a href="#chapter-method" class="article-quick-nav-link" data-section-link="chapter-method">阅读方式</a>
         <a href="#chapter-content" class="article-quick-nav-link" data-section-link="chapter-content">章节正文</a>
         <a href="#chapter-navigation" class="article-quick-nav-link" data-section-link="chapter-navigation">章节导航</a>
     </nav>
@@ -97,79 +90,28 @@
                 <div class="section-number" aria-hidden="true">01</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="chapter-summary-title">章节摘要</h2>
-                    <p class="section-subtitle">先把这一章到底在解决什么问题讲清楚，再带着问题回到正文，效率会高很多</p>
+                    <p class="section-subtitle">先把这一章真正要解决的问题钉住，再顺着章节索引进入正文；真正有营养的解释放在正文里，不停留在摘要口号上。</p>
                 </div>
             </div>
 
             <div class="chapter-summary-card">
                 <div class="chapter-summary-eyebrow">本章先看</div>
                 <p>从方向交易转向波动幅度交易，理解 Straddle、Strangle 等波动率策略的核心逻辑。</p>
+                <p class="chapter-summary-note">先用这一段确认本章任务，再直接看下面的章节索引和正文展开。期权章节不追求“短句总结很多”，而是追求把概念、例子、边界和实战误区讲透。</p>
                 <div id="chapterInlineOutline" class="chapter-inline-outline" hidden></div>
-            </div>
-
-            <div class="editorial-band chapter-reading-rail" aria-label="本章阅读导轨">
-                <div class="editorial-band-main">
-                    <div class="editorial-band-kicker">Chapter Rail</div>
-                    <h3>这章先看“哪里最容易出错”，再看“为什么结构会这样长”</h3>
-                    <p>期权章节最容易失焦的地方，是一上来就陷进术语、腿结构和策略名字。更好的读法是先确定这章主要在讲概念、风险还是执行，再带着这个问题去读正文和 payoff 图。</p>
-                </div>
-                <div class="editorial-band-side">
-                    <div class="editorial-band-item">
-                        <span class="editorial-band-label">第一步</span>
-                        <strong>看摘要和目录，先确定本章任务</strong>
-                    </div>
-                    <div class="editorial-band-item">
-                        <span class="editorial-band-label">第二步</span>
-                        <strong>看到 payoff 时，先找最大亏损最容易扩大的区域</strong>
-                    </div>
-                    <div class="editorial-band-item">
-                        <span class="editorial-band-label">第三步</span>
-                        <strong>最后再问这套结构适不适合当前市场环境</strong>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="chapter-method" aria-labelledby="chapter-method-title">
-            <div class="section-header">
-                <div class="section-number" aria-hidden="true">02</div>
-                <div class="section-title-group">
-                    <h2 class="section-title" id="chapter-method-title">阅读方式</h2>
-                    <p class="section-subtitle">期权最容易卡在名词和策略名上，所以这套教材默认按“先轮廓、再风险、后执行”来读</p>
-                </div>
-            </div>
-
-            <div class="chapter-method-grid">
-                <article class="chapter-method-card">
-                    <div class="course-card-kicker">Step 1</div>
-                    <h3>先抓住这章想解决的问题</h3>
-                    <p>先读摘要和小目录，确认这章是在讲概念、定价、风险还是执行，不要一上来就陷进公式或策略名称。</p>
-                </article>
-                <article class="chapter-method-card">
-                    <div class="course-card-kicker">Step 2</div>
-                    <h3>看到 payoff 图时先看边界</h3>
-                    <p>先看最大收益、最大亏损、平衡点和亏损最容易扩大的区域，再回头理解每一条腿到底在做什么。</p>
-                </article>
-                <article class="chapter-method-card">
-                    <div class="course-card-kicker">Step 3</div>
-                    <h3>最后再问什么时候该用</h3>
-                    <p>策略理解完成后，才去判断它更适合什么市场环境、什么波动结构，以及什么时候宁可不做。</p>
-                </article>
             </div>
         </section>
 
         <section class="section" id="chapter-content" aria-labelledby="chapter-content-title">
             <div class="section-header">
-                <div class="section-number" aria-hidden="true">03</div>
+                <div class="section-number" aria-hidden="true">02</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="chapter-content-title">章节正文</h2>
-                    <p class="section-subtitle">正文按完整阅读链组织，建议先抓主结论，再回到分节例子逐段吃透。</p>
+                    <p class="section-subtitle">正文按完整阅读链组织：先把主问题讲清，再用分节例子、图示和边界把理解压实。</p>
                 </div>
             </div>
 
             <article class="chapter-body-card">
-<h1>《美股期权教材》</h1>
-<h2>第16章 波动率策略入门：当你赌的不是涨跌，而是“到底会不会闹大”</h2>
 <blockquote><div class="source-figure-grid"><figure class="source-figure-card"><a class="source-figure-link" href="../images/options/source/img38.jpg" target="_blank" rel="noopener noreferrer"><div class="source-figure-media"><img width="1440" height="1156" class="source-figure-image" src="../images/options/source/img38.jpg" alt="Long Straddle / Long Strangle 对比图，适合讲多头波动率策略的成本、舒适区与盈亏结构差异。" loading="lazy"></div><figcaption class="source-figure-caption">Long Straddle / Long Strangle 对比图，适合讲多头波动率策略的成本、舒适区与盈亏结构差异。</figcaption></a></figure><figure class="source-figure-card"><a class="source-figure-link" href="../images/options/source/img39.jpg" target="_blank" rel="noopener noreferrer"><div class="source-figure-media"><img width="1440" height="864" class="source-figure-image" src="../images/options/source/img39.jpg" alt="Short Straddle / Short Strangle 及其向 Iron Butterfly / Iron Condor 过渡的风险收窄图，适合承接卖波动与风险封顶结构。" loading="lazy"></div><figcaption class="source-figure-caption">Short Straddle / Short Strangle 及其向 Iron Butterfly / Iron Condor 过渡的风险收窄图，适合承接卖波动与风险封顶结构。</figcaption></a></figure></div></blockquote>
 <blockquote><p>这一章一定要配着你图片里的那组 <code>Straddle / Strangle / Iron Butterfly / Iron Condor</code> 一起看。</p>
 <p>因为图片在讲的，其实不是一堆陌生名词，而是一条非常清楚的主线：</p>
@@ -183,7 +125,7 @@
 <p>这一章第一次读，最容易把人读晕的，不是逻辑太难，而是名字一下变多了。</p>
 <p>所以第一遍你先别急着背 Straddle、Strangle、Butterfly、Condor 的所有细节。</p>
 <p>先抓两层最关键的分法：</p>
-<p>1. <strong>Long 系列 = 我赌会出大动静。</strong> 2. <strong>Short 系列 = 我赌别出那么大动静。</strong></p>
+<ol><li><strong>Long 系列 = 我赌会出大动静。</strong></li><li><strong>Short 系列 = 我赌别出那么大动静。</strong></li></ol>
 <p>等这两层先站稳，第二遍再去补：</p>
 <ul><li>Straddle 和 Strangle 到底差在哪；</li><li>Butterfly 和 Condor 为什么本质上是加了护栏的 short 结构；</li><li>为什么很多波动率策略真正赌的，是“市场预期”和“真实结果”之间的落差。</li></ul>
 <p>这样读，会比一上来就被四个名字压住顺很多。</p>
@@ -392,7 +334,7 @@
 <p>这就是 IV Crush 的主场之一。</p>
 <p>图片里写得很清楚：</p>
 <ul><li>IV 陡增时，Short Strangle 和 Short Straddle 是很典型的思路；</li><li>因为：</li></ul>
-<p>1. 期权费更贵； 2. IV 后面可能回归； 3. 无方向性，只赚 IV 回落的钱； 4. 资金使用率高。</p>
+<ol><li>期权费更贵；</li><li>IV 后面可能回归；</li><li>无方向性，只赚 IV 回落的钱；</li><li>资金使用率高。</li></ol>
 <p>翻成人话非常简单：</p>
 <blockquote><p><strong>当市场很紧张、期权很贵时，Short 系列在卖的是一份被市场夸张定价的恐慌。</strong></p></blockquote>
 <p>如果后面发生什么？</p>
@@ -468,7 +410,7 @@
 
         <section class="section" id="chapter-navigation" aria-labelledby="chapter-navigation-title">
             <div class="section-header">
-                <div class="section-number" aria-hidden="true">04</div>
+                <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="chapter-navigation-title">章节导航</h2>
                     <p class="section-subtitle">读完本章后，可以继续前后章节，或回到课程目录按 section 与 batch 复习。</p>
