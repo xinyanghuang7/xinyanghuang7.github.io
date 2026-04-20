@@ -25,17 +25,16 @@ If the change is in shared CSS / JS, recheck both blog and options surfaces.
 
 ## Priority A — Shared Surfaces First
 
-### 1) Mobile quick-nav tap target polish
-- **Target files:** `css/style.css`, maybe `js/main.js`
-- **Surface:** blog + options shared quick nav
-- **Expected outcome:** mobile nav links become easier to tap, less accidental misses, no overlap with sticky header offset
-- **Regression pages:** `/`, `/options/`, one recent blog post, one recent options chapter
+### 1) Legacy quick-nav cleanup — retired on 2026-04-21
+- **Status:** done / obsolete
+- **Reason:** module quick-nav tab has been removed site-wide from published HTML and templates; follow-up work should focus on deleting residual dead CSS/JS rather than polishing the old rail.
+- **Regression pages:** `/posts/2026/04/20.html`, `/posts/2026/04/19.html`, `/options/01.html`, `/options/index.html`
 
 ### 2) Sticky offset consistency audit
-- **Target files:** `css/style.css`
-- **Surface:** sticky header + anchor landing offsets
-- **Expected outcome:** anchor jumps no longer land under sticky header / quick nav
-- **Regression pages:** `/options/`, recent blog post with quick nav, recent options chapter
+- **Target files:** `css/style.css`, `js/main.js`
+- **Surface:** sticky header + anchor landing offsets after quick-nav removal
+- **Expected outcome:** anchor jumps no longer land under sticky header, without depending on any quick-nav-specific offset logic
+- **Regression pages:** `/options/`, recent blog post, recent options chapter
 
 ### 3) Shared card spacing normalization
 - **Target files:** `css/style.css`

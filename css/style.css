@@ -65,9 +65,9 @@
 
     /* Sticky layout offsets */
     --oc-header-height: 72px;
-    --oc-quick-nav-height: 62px;
-    --oc-quick-nav-gap: 24px;
-    --oc-anchor-offset: calc(var(--oc-header-height) + var(--oc-quick-nav-height) + var(--oc-quick-nav-gap));
+    --oc-quick-nav-height: 0px;
+    --oc-quick-nav-gap: 0px;
+    --oc-anchor-offset: calc(var(--oc-header-height) + 24px);
 }
 
 body.dark-mode {
@@ -10377,12 +10377,7 @@ body .chapter-shell {
 }
 
 body .article-quick-nav {
-    width: min(1040px, calc(100% - 2rem));
-    padding: 0.72rem;
-    border-radius: 28px;
-    border-color: rgba(207, 185, 136, 0.18);
-    background: linear-gradient(180deg, rgba(252, 249, 243, 0.9), rgba(247, 240, 228, 0.76));
-    box-shadow: 0 16px 40px rgba(73, 55, 25, 0.08);
+    display: none !important;
 }
 
 body.dark-mode .article-quick-nav {

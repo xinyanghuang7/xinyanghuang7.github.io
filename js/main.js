@@ -34,7 +34,6 @@ function initScrollReveal() {
 
     const root = document.documentElement;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isLongformQuickNavPage = Boolean(document.querySelector('.article-quick-nav'));
 
     const revealSection = (section) => {
         if (!section || section.classList.contains('visible')) {
@@ -52,7 +51,7 @@ function initScrollReveal() {
         section.classList.add('visible');
     };
 
-    if (prefersReducedMotion || !('IntersectionObserver' in window) || isLongformQuickNavPage) {
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
         root.classList.remove('js-enhanced');
         sections.forEach(revealSection);
         return;
@@ -108,53 +107,25 @@ function getStickyHeaderHeight() {
     return header ? header.getBoundingClientRect().height : 80;
 }
 
-function getQuickNavHeight() {
-    const quickNav = document.querySelector('.article-quick-nav');
-    return quickNav ? quickNav.getBoundingClientRect().height : 0;
-}
-
-function isMobileQuickNavLayout() {
-    return window.matchMedia('(max-width: 768px)').matches;
-}
-
-function targetUsesQuickNav(target) {
-    if (!target?.id) {
-        return false;
-    }
-
-    const quickNav = document.querySelector('.article-quick-nav');
-    return Boolean(quickNav?.querySelector(`[data-section-link="${target.id}"]`));
-}
-
 function syncStickyOffsets() {
     const root = document.documentElement;
-    const body = document.body;
     const headerHeight = Math.max(64, Math.ceil(getStickyHeaderHeight()));
-    const quickNavHeight = Math.max(0, Math.ceil(getQuickNavHeight()));
-    const topDockedQuickNav = quickNavHeight > 0 && !isMobileQuickNavLayout();
-    const quickNavGap = topDockedQuickNav ? 24 : 0;
-    const anchorOffset = headerHeight + 24 + (topDockedQuickNav ? quickNavHeight : 0);
+    const anchorOffset = headerHeight + 24;
 
     root.style.setProperty('--oc-header-height', `${headerHeight}px`);
-    root.style.setProperty('--oc-quick-nav-height', `${quickNavHeight}px`);
-    root.style.setProperty('--oc-quick-nav-gap', `${quickNavGap}px`);
+    root.style.setProperty('--oc-quick-nav-height', '0px');
+    root.style.setProperty('--oc-quick-nav-gap', '0px');
     root.style.setProperty('--oc-anchor-offset', `${anchorOffset}px`);
 
-    if (body) {
-        body.classList.toggle('has-article-quick-nav', quickNavHeight > 0);
-        body.classList.toggle('has-mobile-quick-nav', quickNavHeight > 0 && isMobileQuickNavLayout());
+    if (document.body) {
+        document.body.classList.remove('has-article-quick-nav', 'has-mobile-quick-nav');
     }
 
     applyBuildRefreshNoticeLayout();
 }
 
-function getAnchorScrollOffset(target) {
-    let offset = getStickyHeaderHeight() + 24;
-
-    if (!isMobileQuickNavLayout() && targetUsesQuickNav(target)) {
-        offset += getQuickNavHeight();
-    }
-
+function getAnchorScrollOffset() {
+    const offset = getStickyHeaderHeight() + 24;
     return Math.max(88, Math.round(offset));
 }
 
@@ -199,81 +170,6 @@ function initSmoothScroll() {
             });
         }
     }
-}
-
-function initArticleQuickNav() {
-    const quickNav = document.querySelector('.article-quick-nav');
-    if (!quickNav) {
-        return;
-    }
-
-    const links = Array.from(quickNav.querySelectorAll('[data-section-link]'));
-    const sections = links
-        .map(link => document.getElementById(link.dataset.sectionLink))
-        .filter(Boolean);
-
-    if (!links.length || !sections.length) {
-        return;
-    }
-
-    const syncQuickNavScroll = (activeLink) => {
-        if (!activeLink || quickNav.scrollWidth <= quickNav.clientWidth + 4) {
-            return;
-        }
-
-        const targetLeft = activeLink.offsetLeft - Math.max(0, (quickNav.clientWidth - activeLink.offsetWidth) / 2);
-        const maxLeft = Math.max(0, quickNav.scrollWidth - quickNav.clientWidth);
-        const nextLeft = Math.min(maxLeft, Math.max(0, targetLeft));
-
-        quickNav.scrollTo({
-            left: nextLeft,
-            behavior: 'smooth'
-        });
-    };
-
-    const setActiveLink = (id) => {
-        let activeLink = null;
-
-        links.forEach(link => {
-            const isActive = link.dataset.sectionLink === id;
-            link.classList.toggle('is-active', isActive);
-            link.setAttribute('aria-current', isActive ? 'true' : 'false');
-
-            if (isActive) {
-                activeLink = link;
-            }
-        });
-
-        syncQuickNavScroll(activeLink);
-    };
-
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            const targetId = link.dataset.sectionLink;
-            if (!targetId) {
-                return;
-            }
-
-            setActiveLink(targetId);
-            window.setTimeout(() => setActiveLink(targetId), 380);
-        });
-    });
-
-    const observer = new IntersectionObserver((entries) => {
-        const visible = entries
-            .filter(entry => entry.isIntersecting)
-            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (visible?.target?.id) {
-            setActiveLink(visible.target.id);
-        }
-    }, {
-        rootMargin: '-24% 0px -58% 0px',
-        threshold: [0.2, 0.35, 0.55]
-    });
-
-    sections.forEach(section => observer.observe(section));
-    setActiveLink(sections[0]?.id);
 }
 
 
@@ -459,19 +355,10 @@ function applyBuildRefreshNoticeLayout(notice = document.getElementById('buildRe
         return;
     }
 
-    const hasMobileQuickNav = document.body?.classList.contains('has-mobile-quick-nav');
-
-    if (hasMobileQuickNav) {
-        notice.style.left = '12px';
-        notice.style.right = '12px';
-        notice.style.bottom = 'calc(var(--oc-quick-nav-height) + 1.65rem + env(safe-area-inset-bottom, 0px))';
-        notice.style.maxWidth = 'none';
-    } else {
-        notice.style.left = 'auto';
-        notice.style.right = '16px';
-        notice.style.bottom = '16px';
-        notice.style.maxWidth = '320px';
-    }
+    notice.style.left = 'auto';
+    notice.style.right = '16px';
+    notice.style.bottom = '16px';
+    notice.style.maxWidth = '320px';
 }
 
 function showBuildRefreshNotice(remoteBuild) {
@@ -904,7 +791,6 @@ function initPage() {
     syncStickyOffsets();
     initScrollReveal();
     initSmoothScroll();
-    initArticleQuickNav();
     initArticleMeta();
     initChapterInlineOutline();
     initPayoffChartExplorer();
