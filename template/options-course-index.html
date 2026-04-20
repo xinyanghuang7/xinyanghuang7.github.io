@@ -20,7 +20,7 @@
     <meta name="twitter:image" content="{{OG_IMAGE_URL}}">
     <title>{{PAGE_TITLE}} | ValueInvest</title>
     <!-- Fonts removed for performance -->
-    <link rel="stylesheet" href="../css/style.css?v=20260420layout7">
+    <link rel="stylesheet" href="../css/style.css?v=20260420layout8">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -62,6 +62,11 @@
             <h1>{{HERO_TITLE}}</h1>
             <p class="tagline">{{HERO_TAGLINE}}</p>
             <p class="hero-description">{{HERO_DESCRIPTION}}</p>
+            <div class="course-hero-meta" aria-label="课程阅读信息">
+                <span class="chapter-hero-pill">29 章结构化课程</span>
+                <span class="chapter-hero-pill">按 payoff / 风险 / 执行组织</span>
+                <span class="chapter-hero-pill">课程首页支持检索与批次复盘</span>
+            </div>
         </div>
         <a href="#course-overview" class="scroll-indicator" aria-label="向下滚动到课程概览">向下滚动</a>
     </section>
@@ -216,6 +221,13 @@
                 </div>
             </div>
 
+            <div class="course-directory-intro">
+                <div>
+                    <div class="course-card-kicker">Editorial Directory</div>
+                    <p>目录不只是跳转列表，而是你复盘期权体系时的中控台：可以按章节顺读，也可以按关键词、section、batch 回到需要重新压实的节点。</p>
+                </div>
+                <p class="course-directory-intro-note">如果刚学完某章，优先回到同一 section 连续读；如果是复习，直接搜索 payoff、Greeks、spread、IV 等主题词会更快。</p>
+            </div>
             <div class="chapter-directory-grid" id="chapterDirectoryGrid">
                 {{CHAPTER_DIRECTORY_CARDS}}
             </div>
@@ -234,6 +246,12 @@
                 </div>
             </div>
 
+            <div class="course-directory-intro sync-progress-intro">
+                <div>
+                    <div class="course-card-kicker">Batch View</div>
+                    <p>这里按批次看课程推进，适合判断整套课已经同步到哪里，也适合编辑时快速检查某个 batch 是否出现风格漂移。</p>
+                </div>
+            </div>
             <div class="sync-progress-grid">
                 {{SYNC_PROGRESS_BLOCKS}}
             </div>

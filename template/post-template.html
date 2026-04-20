@@ -78,13 +78,21 @@
         <a href="#decision-cards" class="article-quick-nav-link" data-section-link="decision-cards">动作地图</a>
     </nav>
 
+    <div class="article-meta-bar article-meta-bar-compact" aria-label="文章阅读信息">
+        <div class="article-meta-chip article-meta-chip-accent">{{DISPLAY_DATE}} · Premium 0419 · upstream truth first</div>
+        <div class="article-meta-chip">固定链路：upstream truth → draft → reviewer → frontend close → publish/live verify</div>
+        <div class="article-meta-chip">写作要求：教学型输出、拒绝空短句、尽量串联投资系统 / 学习系统 / 期权系统</div>
+    </div>
+
+    <!-- WORKFLOW_GUARDRAIL: refresh upstream truth before drafting; then reviewer + frontend close + publish/live verify -->
+    <!-- HUMANIZER_REQUIRED: final Chinese copy must be polished against humanizer-zh before publish -->
     <main id="main">
         <section class="section" id="stock-pick" aria-labelledby="stock-pick-title">
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">01</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="stock-pick-title">今日宝藏标的</h2>
-                    <p class="section-subtitle">第一部分默认按 5+2 展开：行业、商业模式、管理层、财报、估值、投资逻辑、投资风险，先把公司为什么值得看讲透，再谈动作边界。</p>
+                    <p class="section-subtitle">第一部分默认按 5+2 展开：行业、商业模式、管理层、财报、估值、投资逻辑、投资风险。先查候选池与去重，再把为什么是它讲透，而不是先写漂亮结论。</p>
                 </div>
                 <div class="section-date">{{DATE_SHORT}}</div>
             </div>
@@ -143,7 +151,7 @@
                 <div class="section-number" aria-hidden="true">02</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="wisdom-title">故事 / 经验分享</h2>
-                    <p class="section-subtitle">第二部分默认写一个真实、可带走、可复用的小故事：有事实依据、有边界感，最后能沉成一句真正值得带走的话。</p>
+                    <p class="section-subtitle">第二部分默认写一个真实、可带走、可复用的小故事：有事实依据、有边界感，最后能沉成一句真正值得带走的话，并显式告诉读者以后再遇到类似情况该先怎么看。</p>
                 </div>
                 <div class="section-date">{{DATE_SHORT}}</div>
             </div>
@@ -179,7 +187,7 @@
                 <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="market-title">新闻 + 解读</h2>
-                    <p class="section-subtitle">新闻必须和解读分开写：排序默认先最新、再重要等级；每条都要标来源、交代事实，并把为什么重要讲细，不能只剩 headline。</p>
+                    <p class="section-subtitle">新闻必须和解读分开写：先完成最新候选集核查，再按“新鲜度 + 价格解释力”排序；每条都要标来源、交代事实，并把为什么重要讲细，不能只剩 headline。</p>
                 </div>
                 <div class="section-date">{{DATE_SHORT}}</div>
             </div>
@@ -192,7 +200,7 @@
                     <div class="editorial-band-main">
                         <div class="editorial-band-kicker">News Discipline</div>
                         <h3>每条新闻都强制拆成两层：先写最新事实，再写这件事为什么重要。</h3>
-                        <p>第三部分默认使用“新闻内容 + 专属解读”双板块。新闻区只放最新、最重要、最可能改变判断的事件；解读区只回答一个问题：这条新闻对 thesis、节奏和动作边界到底意味着什么。</p>
+                        <p>第三部分默认使用“新闻内容 + 专属解读”双板块。新闻区只放最新候选集中真正值得保留、且最可能改变判断的事件；解读区只回答一个问题：这条新闻对 thesis、节奏和动作边界到底意味着什么。</p>
                     </div>
                     <div class="editorial-band-side">
                         <div class="editorial-band-item">
@@ -219,15 +227,8 @@
                 <div class="section-date">{{DATE_SHORT}}</div>
             </div>
 
-            <div class="analysis-grid">
-                <div class="analysis-column opportunity">
-                    <h4>优先研究 / 适合给增量资金</h4>
-{{ANALYSIS_OPPORTUNITY}}
-                </div>
-                <div class="analysis-column risk">
-                    <h4>当前更该保守 / 继续等待验证</h4>
-{{ANALYSIS_RISK}}
-                </div>
+            <div class="tracking-framework-grid decision-grid-enhanced">
+{{DECISION_CARDS}}
             </div>
 
             <div class="analysis-box">

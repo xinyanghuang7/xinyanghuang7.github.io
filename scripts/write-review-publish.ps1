@@ -29,6 +29,7 @@ if (!(Test-Path $fullPath)) {
 
 Write-Host ""
 Write-Host "✏️  请编辑文件: $postPath" -ForegroundColor Green
+Write-Host "在继续前，默认先完成：upstream truth 刷新 → draft。尤其是 candidate-pool / daily-stock-picks / ticker files / real-time-thesis-monitor（当 Module 3 需要最新驱动排序时）。" -ForegroundColor DarkGray
 Write-Host "编辑完成后，按 Enter 继续..." -ForegroundColor Yellow
 Read-Host
 
@@ -37,6 +38,7 @@ if (!$SkipReview) {
     Write-Host "🔍 Phase 2: 内容审核..." -ForegroundColor Yellow
     & "$PSScriptRoot\review-content.ps1" -ContentFile $postPath
     Write-Host ""
+    Write-Host "默认 reviewer 链路：blog-reviewer → blog-semantic-reviewer → shared frontend close。请完成这条链后再继续。" -ForegroundColor DarkGray
     Write-Host "请完成 reviewer 审核与必要修改后，按 Enter 继续..." -ForegroundColor Yellow
     Read-Host
 }
@@ -53,12 +55,16 @@ Write-Host ""
 Write-Host "🧪 Phase 5: 本地 QA..." -ForegroundColor Yellow
 & "$PSScriptRoot\qa-site.ps1"
 
+Write-Host ""
+Write-Host "🧠 Phase 6: 共享大脑回写校验..." -ForegroundColor Yellow
+python "$baseDir\..\scripts\investing\validate_blog_backprop_diff.py" --base-ref HEAD
+
 if ($AutoDeploy) {
     Write-Host ""
-    Write-Host "🚀 Phase 6: 部署到 GitHub..." -ForegroundColor Yellow
+    Write-Host "🚀 Phase 7: 部署到 GitHub..." -ForegroundColor Yellow
     python "$PSScriptRoot\deploy.py" --date $Date
     Write-Host ""
-    Write-Host "🎉 工作流完成！" -ForegroundColor Green
+    Write-Host "✅ 部署命令完成。请继续验证 GitHub 远端、https://4fire.qzz.io/ 页面内容与实际浏览器渲染，再宣布成功。" -ForegroundColor Green
     Write-Host "文章: https://4fire.qzz.io/$postPath" -ForegroundColor Cyan
 } else {
     Write-Host ""

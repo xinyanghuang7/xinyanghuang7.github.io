@@ -46,7 +46,8 @@ Default execution chain:
    - light + dark
    - quick-nav / meta bar / sticky UI / card containment / visual balance
 5. **publish + verify live**
-   - local QA
+   - local QA (`xinyanghuang7.github.io/scripts/qa-site.ps1`)
+   - shared-brain back-propagation gate (`python scripts/investing/validate_blog_backprop_diff.py --base-ref HEAD` when blog HTML changed)
    - GitHub remote updated
    - live domain updated
    - final pass through `strict-site-reviewer`
@@ -56,6 +57,7 @@ Default execution chain:
 - Do not let reviewer skills silently replace each other.
 - Do not let a visually nicer page bypass live verification.
 - Do not let options-course polish drift into a second visual system unrelated to the blog.
+- Do not let changed blog HTML skip shared-brain back-propagation validation.
 
 ## 0.3 Shared-brain / full-knowledge rule
 
@@ -237,6 +239,7 @@ If there is tension between "more features" and "more reliable quality", choose 
   - strong Module 3 explanation sequencing
   - polished Module 4 card quality
 - The long-term target is: **one simple publish command should be enough to generate a near-finished premium post**.
+- The default template should already ship the 0419 quick-nav + article-meta-bar + premium Module 4 decision-card scaffold, so future posts start from the premium baseline instead of rebuilding closure manually.
 - To get there, the upstream stack must already be wired before drafting:
   1. investing-system state refreshed
   2. Module 3 ranking inherited from `real-time-thesis-monitor`

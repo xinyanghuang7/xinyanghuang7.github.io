@@ -13,6 +13,7 @@ $newPostPath = Join-Path $root 'scripts\new-post.ps1'
 $postTemplatePath = Join-Path $root 'template\post-template.html'
 $optionsIndexPath = Join-Path $root 'options\index.html'
 $courseManifestPath = Join-Path $root 'options\course-manifest.json'
+$blogBackpropValidatorPath = Join-Path $root '..\scripts\investing\validate_blog_backprop_diff.py'
 $coursePublicPlaceholderPattern = '\{\{[^}]+\}\}|XXX\.XX|待填充|最新动态\.\.\.|新闻分析\.\.\.|基于调研数据|TODO|TBD'
 $encodingRiskPattern = '�|锟|锟斤拷|骞|鏈|鏃|鍒|浠|璇|銆|鈥|�\?|\?{2,}'
 
@@ -126,8 +127,26 @@ foreach ($file in $postFiles) {
         Add-Issue "$rel missing progress bar"
     }
 
+    $enforce0419WorkflowScaffold = $false
+
+    $dateMatch = [regex]::Match($rel, 'posts\\(?<year>\d{4})\\(?<month>\d{2})\\(?<day>\d{2})\.html$')
+    if ($dateMatch.Success) {
+        $dateIso = "{0}-{1}-{2}" -f $dateMatch.Groups['year'].Value, $dateMatch.Groups['month'].Value, $dateMatch.Groups['day'].Value
+        if ([datetime]::ParseExact($dateIso, 'yyyy-MM-dd', $null) -ge [datetime]'2026-04-20') {
+            $enforce0419WorkflowScaffold = $true
+        }
+    }
+
+    if ($enforce0419WorkflowScaffold -and $content -notmatch 'article-meta-bar') {
+        Add-Issue "$rel missing article meta bar"
+    }
+
     if ($content -match 'XXX\.XX|待填充|最新动态\.\.\.|新闻分析\.\.\.|基于调研数据') {
         Add-Issue "$rel still contains placeholder content"
+    }
+
+    if ($content -match 'HUMANIZER_REQUIRED|WORKFLOW_GUARDRAIL|upstream truth first') {
+        Add-Issue "$rel still contains scaffold workflow guardrail text/comments"
     }
 
     if ($content -match 'xinyanghuang7\.github\.io') {
@@ -146,7 +165,10 @@ foreach ($file in $postFiles) {
         Add-Issue "$rel missing canonical on 4fire.qzz.io"
     }
 
-    $dateMatch = [regex]::Match($rel, 'posts\\(?<year>\d{4})\\(?<month>\d{2})\\(?<day>\d{2})\.html$')
+    if ($enforce0419WorkflowScaffold -and $content -match 'id="decision-cards"' -and $content -notmatch 'tracking-framework-grid\s+decision-grid-enhanced') {
+        Add-Issue "$rel Module 4 missing premium decision-card grid"
+    }
+
     $enforceEnhancedSeo = $false
     if ($dateMatch.Success) {
         $dateIso = "{0}-{1}-{2}" -f $dateMatch.Groups['year'].Value, $dateMatch.Groups['month'].Value, $dateMatch.Groups['day'].Value
@@ -282,6 +304,15 @@ if (-not (Test-Path $postTemplatePath)) {
     if ($postTemplate -notmatch '<body class="post-0419">') {
         Add-Issue 'template/post-template.html missing post-0419 premium body class'
     }
+    if ($postTemplate -notmatch 'article-meta-bar') {
+        Add-Issue 'template/post-template.html missing article meta bar scaffold'
+    }
+    if ($postTemplate -notmatch 'tracking-framework-grid\s+decision-grid-enhanced') {
+        Add-Issue 'template/post-template.html missing premium decision-card grid scaffold'
+    }
+    if ($postTemplate -notmatch '\{\{DECISION_CARDS\}\}') {
+        Add-Issue 'template/post-template.html missing decision-card placeholder scaffold'
+    }
 }
 
 if (Test-Path $optionsIndexPath) {
@@ -289,6 +320,15 @@ if (Test-Path $optionsIndexPath) {
     if ($optionsIndex -notmatch 'id="system-linkage"') {
         Add-Issue 'options/index.html missing system-linkage section'
     }
+}
+
+if (Test-Path $blogBackpropValidatorPath) {
+    $validatorOutput = & python $blogBackpropValidatorPath --base-ref HEAD 2>&1
+    if ($LASTEXITCODE -ne 0) {
+        Add-Issue ("blog back-propagation diff gate failed: " + (($validatorOutput -join ' ') -replace '\s+', ' ').Trim())
+    }
+} else {
+    Add-Issue 'scripts/investing/validate_blog_backprop_diff.py missing'
 }
 
 if (Test-Path $mainJsPath) {

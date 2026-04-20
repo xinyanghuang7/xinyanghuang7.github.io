@@ -89,18 +89,29 @@ $marketStocks = @'
                 </article>
 '@
 
-$analysisOpportunity = @'
-                        <div class="analysis-item">
-                            <strong>Priority research name</strong>
-                            <p>Explain why this deserves incremental capital now.</p>
-                        </div>
-'@
-
-$analysisRisk = @'
-                        <div class="analysis-item">
-                            <strong>Wait for more proof</strong>
-                            <p>Explain what has not been validated yet.</p>
-                        </div>
+$decisionCards = @'
+                <article class="tracking-card tracking-card-core">
+                    <div class="tracking-card-header">
+                        <span class="tracking-card-ticker">HOLDING1</span>
+                        <span class="tracking-badge tracking-badge-core">核心 holding</span>
+                    </div>
+                    <div class="tracking-row">
+                        <span class="tracking-label">当前桶位</span>
+                        <span class="tracking-value tracking-value-core">Replace with the real bucket / posture and make sure it matches Module 3.</span>
+                    </div>
+                    <div class="tracking-row">
+                        <span class="tracking-label">核心变量</span>
+                        <span class="tracking-value tracking-value-core">Replace with the single most important thing to watch now.</span>
+                    </div>
+                    <div class="tracking-row">
+                        <span class="tracking-label">不要误读</span>
+                        <span class="tracking-value tracking-value-core">Replace with the key trap / false signal / overread warning.</span>
+                    </div>
+                    <div class="tracking-row">
+                        <span class="tracking-label">下一步</span>
+                        <span class="tracking-value tracking-value-core">Replace with the next action boundary and evidence path.</span>
+                    </div>
+                </article>
 '@
 
 $replacements = [ordered]@{
@@ -129,8 +140,7 @@ $replacements = [ordered]@{
     '{{WISDOM_CASE}}' = $wisdomCase
     '{{WISDOM_TAKEAWAY}}' = 'Replace with the one-sentence takeaway.'
     '{{MARKET_STOCKS}}' = $marketStocks
-    '{{ANALYSIS_OPPORTUNITY}}' = $analysisOpportunity
-    '{{ANALYSIS_RISK}}' = $analysisRisk
+    '{{DECISION_CARDS}}' = $decisionCards
     '{{ANALYSIS_SUMMARY}}' = '<strong>Summary:</strong> Replace with the real action summary and evidence boundary.'
 }
 
@@ -147,8 +157,12 @@ Write-Host ''
 Write-Host 'Post scaffold created.' -ForegroundColor Green
 Write-Host ("  File: " + $postFile) -ForegroundColor Cyan
 Write-Host ''
-Write-Host 'Next steps:' -ForegroundColor Yellow
-Write-Host ('  1. Edit ' + $postFile + ' with real content') -ForegroundColor Gray
-Write-Host '  2. Run python .\scripts\sync-site-data.py' -ForegroundColor Gray
-Write-Host '  3. Run .\scripts\qa-site.ps1' -ForegroundColor Gray
-Write-Host ('  4. Run python .\scripts\deploy.py --date ' + $Date) -ForegroundColor Gray
+Write-Host 'Default premium workflow:' -ForegroundColor Yellow
+Write-Host '  1. Refresh upstream truth (command-center / portfolio / candidate-pool / ticker files / real-time-thesis-monitor when Module 3 is freshness-sensitive)' -ForegroundColor Gray
+Write-Host ('  2. Draft ' + $postFile + ' with teaching-first prose and no filler short lines') -ForegroundColor Gray
+Write-Host '  3. Run reviewer chain: blog-reviewer -> blog-semantic-reviewer -> frontend close' -ForegroundColor Gray
+Write-Host '  4. Run python .\scripts\sync-site-data.py' -ForegroundColor Gray
+Write-Host '  5. Run .\scripts\qa-site.ps1' -ForegroundColor Gray
+Write-Host ('  6. Run python .\scripts\investing\validate_blog_backprop_diff.py --base-ref HEAD') -ForegroundColor Gray
+Write-Host ('  7. Run python .\scripts\deploy.py --date ' + $Date) -ForegroundColor Gray
+Write-Host '  8. Verify GitHub + live domain + browser render before calling it done' -ForegroundColor Gray
