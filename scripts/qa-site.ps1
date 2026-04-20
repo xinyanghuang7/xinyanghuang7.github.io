@@ -118,6 +118,10 @@ foreach ($file in $postFiles) {
         Add-Issue "$rel missing main.js include"
     }
 
+    if ($content -notmatch '<body class="[^"]*post-041(?:8|9)[^"]*">') {
+        Add-Issue "$rel missing premium post body class"
+    }
+
     if ($content -notmatch 'id="progressBar"') {
         Add-Issue "$rel missing progress bar"
     }
@@ -273,6 +277,18 @@ if (-not (Test-Path $newPostPath)) {
 
 if (-not (Test-Path $postTemplatePath)) {
     Add-Issue 'template/post-template.html missing'
+} else {
+    $postTemplate = Get-Content -Raw -Encoding UTF8 $postTemplatePath
+    if ($postTemplate -notmatch '<body class="post-0419">') {
+        Add-Issue 'template/post-template.html missing post-0419 premium body class'
+    }
+}
+
+if (Test-Path $optionsIndexPath) {
+    $optionsIndex = Get-Content -Raw -Encoding UTF8 $optionsIndexPath
+    if ($optionsIndex -notmatch 'id="system-linkage"') {
+        Add-Issue 'options/index.html missing system-linkage section'
+    }
 }
 
 if (Test-Path $mainJsPath) {
