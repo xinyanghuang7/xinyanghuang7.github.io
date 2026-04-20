@@ -20,7 +20,7 @@
     <meta name="twitter:image" content="{{OG_IMAGE_URL}}">
     <title>{{PAGE_TITLE}} | ValueInvest</title>
     <!-- Fonts removed for performance -->
-    <link rel="stylesheet" href="../css/style.css?v=20260420layout8">
+    <link rel="stylesheet" href="../css/style.css?v=20260421editorial2">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -36,7 +36,7 @@
     }
     </script>
 </head>
-<body>
+<body class="options-course-page">
     <a href="#main" class="skip-link">跳转到主内容</a>
     <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
 
@@ -67,6 +67,25 @@
                 <span class="chapter-hero-pill">按 payoff / 风险 / 执行组织</span>
                 <span class="chapter-hero-pill">课程首页支持检索与批次复盘</span>
             </div>
+            <div class="hero-insight-grid" aria-label="课程入口线索">
+                <article class="hero-insight-card">
+                    <div class="hero-insight-label">先学什么</div>
+                    <p>先用 01-04 建概念骨架，再回到 09-10 建 payoff 直觉，后面学策略才不容易碎掉。</p>
+                </article>
+                <article class="hero-insight-card">
+                    <div class="hero-insight-label">这套课怎么用</div>
+                    <p>把概念、图形、风险边界和执行顺序读成一条链，而不是把每章当独立技巧卡片。</p>
+                </article>
+                <article class="hero-insight-card">
+                    <div class="hero-insight-label">真正目标</div>
+                    <p>不是记住更多策略名，而是知道什么情况下值得做、什么情况下宁可不做。</p>
+                </article>
+            </div>
+            <div class="hero-action-row" aria-label="课程快捷入口">
+                <a class="hero-action-link hero-action-link-primary" href="#learning-paths">先看学习路径</a>
+                <a class="hero-action-link" href="#chapter-directory">直接查章节</a>
+                <a class="hero-action-link" href="../index.html">返回研究站首页</a>
+            </div>
         </div>
         <a href="#course-overview" class="scroll-indicator" aria-label="向下滚动到课程概览">向下滚动</a>
     </section>
@@ -81,13 +100,24 @@
                 </div>
             </div>
 
-            <div class="course-intro-card">
-                <p>{{COURSE_INTRO}}</p>
-                <div class="course-directory-meta">
-                    <span class="course-directory-pill">适合对象：{{TARGET_AUDIENCE}}</span>
-                    <span class="course-directory-pill">学习节奏：{{LEARNING_CADENCE}}</span>
-                    <span class="course-directory-pill">最后同步：{{LAST_SYNC_LABEL}}</span>
+            <div class="course-overview-layout">
+                <div class="course-intro-card">
+                    <p>{{COURSE_INTRO}}</p>
+                    <div class="course-directory-meta">
+                        <span class="course-directory-pill">适合对象：{{TARGET_AUDIENCE}}</span>
+                        <span class="course-directory-pill">学习节奏：{{LEARNING_CADENCE}}</span>
+                        <span class="course-directory-pill">最后同步：{{LAST_SYNC_LABEL}}</span>
+                    </div>
                 </div>
+                <aside class="course-note-card course-overview-sidecard" aria-label="课程阅读提示">
+                    <div class="course-card-kicker">Editorial Syllabus</div>
+                    <h3>先建立读法，再追求覆盖率</h3>
+                    <ul class="course-overview-list">
+                        <li>第一次学：按 payoff / 风险 / 执行线索走，不急着横跳。</li>
+                        <li>第二次学：用目录和搜索回到最容易混的概念对照阅读。</li>
+                        <li>真正在实战里有用的，是边界感，不是策略名数量。</li>
+                    </ul>
+                </aside>
             </div>
 
             <div class="course-summary-grid">
@@ -275,3 +305,4 @@
     <script src="../js/main.js?v=20260418cohesion1"></script>
 </body>
 </html>
+

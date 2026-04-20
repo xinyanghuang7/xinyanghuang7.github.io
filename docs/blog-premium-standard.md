@@ -2,10 +2,21 @@
 
 Single source of truth for the public blog / options-course output standard.
 
-Last updated: 2026-04-20
+Last updated: 2026-04-21
 Public domain: `https://4fire.qzz.io/`
 
 ## 0.0419 style freeze
+
+## 0.0421 editorial-material refinement
+
+The next refinement layer is not “more decoration”. It is a more intentional **editorial-material** direction inspired by high-finish frontend references:
+- stronger hero silhouette and first-screen identity
+- clearer visual motif / texture / atmosphere
+- calmer but more dimensional material cards
+- richer navigation hover / CTA affordance
+- options chapters should feel like premium lesson pages, not template exports
+
+Hard rule: learn from strong references, but do **not** mechanically clone them. Absorb the quality of hierarchy, materials, spacing, and interaction details while keeping the site’s own investment / teaching tone.
 
 The current **0419/0420 premium visual language** is now the default public-site standard, not a one-off rescue.
 

@@ -19,7 +19,7 @@
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <title>Delta | 美股期权教材</title>
     <!-- Fonts removed for performance -->
-    <link rel="stylesheet" href="../css/style.css?v=20260420layout8">
+    <link rel="stylesheet" href="../css/style.css?v=20260421editorial2">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -47,7 +47,7 @@
     }
     </script>
 </head>
-<body>
+<body class="options-chapter-page">
     <a href="#main" class="skip-link">跳转到主内容</a>
     <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
 
@@ -79,6 +79,25 @@
                 <span class="chapter-hero-pill">Batch 6 · 已发布</span>
                 <span class="chapter-hero-pill">慢读优先 · payoff / 风险 / 执行</span>
             </div>
+            <div class="hero-insight-grid" aria-label="章节阅读线索">
+                <article class="hero-insight-card">
+                    <div class="hero-insight-label">本章任务</div>
+                    <p>理解 Delta 如何同时刻画价格敏感度、位置手感与期权更像股票还是赔率仓的差异。</p>
+                </article>
+                <article class="hero-insight-card">
+                    <div class="hero-insight-label">推荐顺序</div>
+                    <p>先顺着正文标题索引抓主线，再看图示 / payoff / 例子，最后回到章节导航做前后章对照。</p>
+                </article>
+                <article class="hero-insight-card">
+                    <div class="hero-insight-label">真正收口</div>
+                    <p>别只背术语；读完后至少能用自己的话说清 payoff、风险边界，以及什么场景下才值得用。</p>
+                </article>
+            </div>
+            <div class="hero-action-row" aria-label="章节快捷入口">
+                <a class="hero-action-link hero-action-link-primary" href="#chapter-summary">先看摘要</a>
+                <a class="hero-action-link" href="#chapter-content">直接看正文</a>
+                <a class="hero-action-link" href="./index.html">返回课程目录</a>
+            </div>
         </div>
         <a href="#chapter-summary" class="scroll-indicator" aria-label="向下滚动到章节摘要">向下滚动</a>
     </section>
@@ -93,15 +112,26 @@
                 </div>
             </div>
 
-            <div class="chapter-summary-card">
-                <div class="chapter-summary-eyebrow">本章先看</div>
-                <p>理解 Delta 如何同时刻画价格敏感度、位置手感与期权更像股票还是赔率仓的差异。</p>
-                <div class="chapter-summary-meta" aria-label="章节阅读建议">
-                    <span class="chapter-summary-pill">建议顺序：先看 payoff，再看风险边界</span>
-                    <span class="chapter-summary-pill">适合复读：正文标题会自动生成索引</span>
+            <div class="chapter-summary-layout">
+                <div class="chapter-summary-card">
+                    <div class="chapter-summary-eyebrow">本章先看</div>
+                    <p>理解 Delta 如何同时刻画价格敏感度、位置手感与期权更像股票还是赔率仓的差异。</p>
+                    <div class="chapter-summary-meta" aria-label="章节阅读建议">
+                        <span class="chapter-summary-pill">建议顺序：先看 payoff，再看风险边界</span>
+                        <span class="chapter-summary-pill">适合复读：正文标题会自动生成索引</span>
+                    </div>
+                    <p class="chapter-summary-note">先用这一段确认本章任务，再直接看下面的章节索引和正文展开。期权章节不追求“短句总结很多”，而是追求把概念、例子、边界和实战误区讲透。</p>
+                    <div id="chapterInlineOutline" class="chapter-inline-outline" hidden></div>
                 </div>
-                <p class="chapter-summary-note">先用这一段确认本章任务，再直接看下面的章节索引和正文展开。期权章节不追求“短句总结很多”，而是追求把概念、例子、边界和实战误区讲透。</p>
-                <div id="chapterInlineOutline" class="chapter-inline-outline" hidden></div>
+                <aside class="course-note-card chapter-summary-sidecard" aria-label="章节阅读提醒">
+                    <div class="course-card-kicker">How to Read This Chapter</div>
+                    <h3>先抓一条主线，再补术语和公式</h3>
+                    <ul class="chapter-reading-points">
+                        <li>第一遍先确认概念到底在解决什么问题。</li>
+                        <li>图示、表格和例子只服务于理解，不要本末倒置。</li>
+                        <li>读完后最好回前后章节对照：这个概念是 payoff、风险，还是执行问题？</li>
+                    </ul>
+                </aside>
             </div>
         </section>
 
@@ -399,3 +429,4 @@
     <script src="../js/main.js?v=20260418cohesion1"></script>
 </body>
 </html>
+
