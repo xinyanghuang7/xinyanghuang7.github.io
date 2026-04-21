@@ -15146,3 +15146,161 @@ body.options-chapter-page .chapter-inline-outline-link {
         grid-template-columns: 1fr;
     }
 }
+
+/* ===== 2026-04-22 screenshot-driven premium tightening ===== */
+body.post-page .hero-content {
+    grid-template-columns: minmax(0, 1.22fr) minmax(240px, 0.42fr);
+    width: min(1320px, calc(100% - 1.4rem));
+    max-width: none;
+    margin-left: clamp(0.55rem, 1.9vw, 1.9rem);
+    margin-right: auto;
+    padding-left: clamp(0.1rem, 0.8vw, 0.35rem);
+    padding-right: 0;
+    column-gap: clamp(1.4rem, 3vw, 2.8rem);
+}
+
+body.post-page .hero-content::after {
+    justify-self: start;
+    align-self: end;
+    width: min(100%, 272px);
+    padding: 1.08rem 0.95rem 1rem 1.15rem;
+    border-radius: 18px;
+    line-height: 1.82;
+    letter-spacing: 0.16em;
+    background:
+        linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.035)),
+        repeating-linear-gradient(180deg, rgba(255,255,255,0.038) 0, rgba(255,255,255,0.038) 1px, transparent 1px, transparent 28px);
+}
+
+body.post-page .hero h1 {
+    width: min(100%, 14.2em);
+    max-width: 14.2em;
+    text-wrap: balance;
+}
+
+body.post-page .hero .tagline {
+    max-width: 40rem;
+}
+
+body.post-page .hero-description {
+    max-width: 43rem;
+}
+
+body.site-home-page .archive-editorial-band {
+    grid-template-columns: minmax(0, 1.24fr) minmax(280px, 0.76fr);
+    align-items: start;
+}
+
+body.site-home-page .archive-editorial-band .editorial-band-main {
+    max-width: 58ch;
+}
+
+body.site-home-page .search-container {
+    max-width: 1080px;
+    padding: clamp(1.2rem, 1rem + 0.6vw, 1.65rem);
+}
+
+body.site-home-page .search-meta-row {
+    margin-top: 0.95rem;
+    padding-top: 0.78rem;
+    border-top: 1px solid rgba(92, 70, 42, 0.12);
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.68rem 0.9rem;
+}
+
+body.site-home-page .search-meta-pill {
+    min-height: 2.15rem;
+    padding-inline: 0.88rem;
+}
+
+body.site-home-page .archive-item {
+    position: relative;
+    grid-template-columns: 72px minmax(0, 1fr) 28px;
+    align-items: start;
+    gap: 1.05rem;
+    padding: 1.12rem 1.22rem 1.08rem 1rem;
+}
+
+body.site-home-page .archive-item::before,
+body.options-course-page .course-summary-grid .course-grid-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 1rem;
+    right: 1rem;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(183, 121, 53, 0.72), transparent);
+}
+
+body.site-home-page .archive-item-date {
+    width: 56px;
+    height: 56px;
+    border-radius: 18px;
+    font-size: 1.22rem;
+}
+
+body.site-home-page .archive-item-title {
+    max-width: 34ch;
+    font-size: 1.08rem;
+    line-height: 1.38;
+}
+
+body.site-home-page .archive-item-desc {
+    max-width: 74ch;
+}
+
+body.options-course-page .course-summary-grid {
+    gap: 0.92rem;
+}
+
+body.options-course-page .course-summary-grid .course-grid-card {
+    position: relative;
+    padding: 1.28rem 1.22rem 1.16rem;
+    justify-content: space-between;
+    gap: 0.42rem;
+}
+
+body.options-course-page .course-stat-label {
+    color: var(--vi-accent-deep);
+    letter-spacing: 0.18em;
+}
+
+body.options-course-page .course-stat-value {
+    font-size: clamp(1.95rem, 2.4vw, 2.72rem);
+    line-height: 1.02;
+}
+
+body.options-course-page .course-summary-grid .course-grid-card:last-child .course-stat-value {
+    font-size: clamp(1.28rem, 1.55vw, 1.66rem);
+    letter-spacing: 0.01em;
+}
+
+body.options-course-page .course-editorial-band {
+    grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.84fr);
+}
+
+body.options-course-page .course-toolkit-grid,
+body.options-course-page .learning-path-grid,
+body.options-course-page .chapter-directory-grid {
+    gap: 1rem;
+}
+
+@media (max-width: 1280px) {
+    body.post-page .hero-content {
+        width: min(100%, calc(100% - 1.25rem));
+        margin-left: 0.4rem;
+        grid-template-columns: minmax(0, 1.16fr) minmax(220px, 0.4fr);
+    }
+}
+
+@media (max-width: 980px) {
+    body.site-home-page .archive-editorial-band,
+    body.options-course-page .course-editorial-band {
+        grid-template-columns: 1fr;
+    }
+
+    body.site-home-page .search-container {
+        max-width: none;
+    }
+}
