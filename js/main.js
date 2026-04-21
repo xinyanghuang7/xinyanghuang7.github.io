@@ -224,26 +224,19 @@ function initArticleMeta() {
     readTimeEl.textContent = `阅读约 ${estimatedMinutes} 分钟`;
 }
 
-// Back to top and dark mode toggle visibility
+// Back to top visibility
 function updateFloatingButtons() {
     const backToTop = document.getElementById('backToTop');
-    const darkModeToggle = document.getElementById('darkModeToggle');
     const scrollY = window.pageYOffset;
-    
-    if (backToTop) {
-        if (scrollY > 500) {
-            backToTop.classList.add('visible');
-        } else {
-            backToTop.classList.remove('visible');
-        }
+
+    if (!backToTop) {
+        return;
     }
-    
-    if (darkModeToggle) {
-        if (scrollY > 300) {
-            darkModeToggle.classList.add('visible');
-        } else {
-            darkModeToggle.classList.remove('visible');
-        }
+
+    if (scrollY > 500) {
+        backToTop.classList.add('visible');
+    } else {
+        backToTop.classList.remove('visible');
     }
 }
 
@@ -252,59 +245,19 @@ function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Theme toggle
-const THEME_STORAGE_KEY = 'valueinvest-theme';
-const THEME_COLORS = {
-    dark: '#1A1916',
-    light: '#ECE9E0'
-};
+// Single-theme editorial surface
+const SITE_THEME_COLOR = '#ECE9E0';
 
-function updateThemeMeta(theme) {
+function initEditorialTheme() {
+    document.body.classList.remove('dark-mode');
+    document.body.classList.add('light-mode');
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.style.colorScheme = 'light';
+
     const metaThemeColor = document.querySelector('meta[name="theme-color"]');
     if (metaThemeColor) {
-        metaThemeColor.setAttribute('content', THEME_COLORS[theme]);
+        metaThemeColor.setAttribute('content', SITE_THEME_COLOR);
     }
-    document.documentElement.style.colorScheme = theme;
-}
-
-function updateThemeToggle(theme) {
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    if (!darkModeToggle) return;
-
-    const nextTheme = theme === 'dark' ? 'light' : 'dark';
-    darkModeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
-    darkModeToggle.setAttribute('aria-label', nextTheme === 'light' ? '切换到浅色模式' : '切换到深色模式');
-    darkModeToggle.setAttribute('title', nextTheme === 'light' ? '切换到浅色模式' : '切换到深色模式');
-}
-
-function applyTheme(theme) {
-    const normalizedTheme = theme === 'light' ? 'light' : 'dark';
-    document.body.classList.toggle('dark-mode', normalizedTheme === 'dark');
-    document.body.classList.toggle('light-mode', normalizedTheme === 'light');
-    document.documentElement.setAttribute('data-theme', normalizedTheme);
-    updateThemeMeta(normalizedTheme);
-    updateThemeToggle(normalizedTheme);
-}
-
-function getStoredTheme() {
-    const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-    return storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : 'light';
-}
-
-function initDarkMode() {
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    applyTheme(getStoredTheme());
-
-    if (!darkModeToggle || darkModeToggle.dataset.themeBound === 'true') {
-        return;
-    }
-
-    darkModeToggle.dataset.themeBound = 'true';
-    darkModeToggle.addEventListener('click', () => {
-        const nextTheme = document.body.classList.contains('light-mode') ? 'dark' : 'light';
-        applyTheme(nextTheme);
-        localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
-    });
 }
 
 // Build/version self-healing for GitHub Pages 10-minute cache windows
@@ -797,7 +750,7 @@ function initPage() {
     initCourseChapterFilter();
     initComfortInteractions();
     initLazyLoading();
-    initDarkMode();
+    initEditorialTheme();
     initSearch();
     updateProgressBar();
     updateHeader();
