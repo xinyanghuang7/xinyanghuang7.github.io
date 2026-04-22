@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -19,7 +19,7 @@
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <title>期权价格的解剖学 | 美股期权教材</title>
     <!-- Fonts removed for performance -->
-    <link rel="stylesheet" href="../css/style.css?v=20260422editorial19">
+    <link rel="stylesheet" href="../css/style.css?v=20260423editorial20">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -73,7 +73,7 @@
             <div class="subtitle">价值与时间篇</div>
             <h1>第 05 章 · 期权价格的解剖学</h1>
             <p class="tagline">价值与时间篇 · Batch 2</p>
-            <p class="hero-description">拆解期权报价的来源，区分内在价值与时间价值，建立理解权利金的底层框架。</p>
+            <p class="hero-description">这一章要拆开一个新手最容易混淆的对象：你买到的期权价格到底在买什么。权利金不是凭空来的情绪数字，它至少可以被拆成内在价值和时间价值两层，再往下才轮到波动率和供需去重新定价。</p>
             <div class="chapter-hero-meta" aria-label="章节阅读信息">
                 <span class="chapter-hero-pill">第 05 章</span>
                 <span class="chapter-hero-pill">Batch 2 · 已发布</span>
@@ -85,12 +85,12 @@
                     <p>拆解期权报价的来源，区分内在价值与时间价值，建立理解权利金的底层框架。</p>
                 </article>
                 <article class="hero-insight-card">
-                    <div class="hero-insight-label">推荐顺序</div>
-                    <p>先顺着正文标题索引抓主线，再看图示 / payoff / 例子，最后回到章节导航做前后章对照。</p>
+                    <div class="hero-insight-label">最容易误解</div>
+                    <p>最典型的误区，是把权利金只理解成“市场觉得它会涨”，或者只理解成“离行权价越近越值钱”。如果不把内在价值和时间价值分开，你后面会很难看懂为什么方向看对了，合约价格却不一定按你想象那样上涨。</p>
                 </article>
                 <article class="hero-insight-card">
-                    <div class="hero-insight-label">真正收口</div>
-                    <p>别只背术语；读完后至少能用自己的话说清 payoff、风险边界，以及什么场景下才值得用。</p>
+                    <div class="hero-insight-label">先用这个例子进</div>
+                    <p>例如股票现价 120，一张行权价 110 的 Call 报价 14，那么至少有 10 是内在价值，剩下 4 更像你为时间和不确定性支付的额外价格。另一张同到期、行权价 120 的 Call 如果报价 6，表面上更便宜，但它的全部价格都更像时间价值。两者的“便宜/贵”完全不是一个意思。</p>
                 </article>
             </div>
             <div class="hero-action-row" aria-label="章节快捷入口">
@@ -116,6 +116,7 @@
                 <div class="chapter-summary-card">
                     <div class="chapter-summary-eyebrow">本章先看</div>
                     <p>拆解期权报价的来源，区分内在价值与时间价值，建立理解权利金的底层框架。</p>
+                    <p class="chapter-summary-note">这一章要拆开一个新手最容易混淆的对象：你买到的期权价格到底在买什么。权利金不是凭空来的情绪数字，它至少可以被拆成内在价值和时间价值两层，再往下才轮到波动率和供需去重新定价。</p>
                     <div class="chapter-summary-meta" aria-label="章节阅读建议">
                         <span class="chapter-summary-pill">建议顺序：先看 payoff，再看风险边界</span>
                         <span class="chapter-summary-pill">适合复读：正文标题会自动生成索引</span>
@@ -132,6 +133,24 @@
                         <li>读完后最好回前后章节对照：这个概念是 payoff、风险，还是执行问题？</li>
                     </ul>
                 </aside>
+            </div>
+
+            <div class="chapter-method-grid" aria-label="本章阅读加速卡">
+                <article class="chapter-method-card">
+                    <div class="course-card-kicker">导语强化</div>
+                    <h3>这一章真正要解决什么问题</h3>
+                    <p>这一章要拆开一个新手最容易混淆的对象：你买到的期权价格到底在买什么。权利金不是凭空来的情绪数字，它至少可以被拆成内在价值和时间价值两层，再往下才轮到波动率和供需去重新定价。</p>
+                </article>
+                <article class="chapter-method-card">
+                    <div class="course-card-kicker">误区先拆</div>
+                    <h3>先把最容易踩错的直觉拆掉</h3>
+                    <p>最典型的误区，是把权利金只理解成“市场觉得它会涨”，或者只理解成“离行权价越近越值钱”。如果不把内在价值和时间价值分开，你后面会很难看懂为什么方向看对了，合约价格却不一定按你想象那样上涨。</p>
+                </article>
+                <article class="chapter-method-card">
+                    <div class="course-card-kicker">例子先行</div>
+                    <h3>先用一个完整例子把骨架串起来</h3>
+                    <p>例如股票现价 120，一张行权价 110 的 Call 报价 14，那么至少有 10 是内在价值，剩下 4 更像你为时间和不确定性支付的额外价格。另一张同到期、行权价 120 的 Call 如果报价 6，表面上更便宜，但它的全部价格都更像时间价值。两者的“便宜/贵”完全不是一个意思。</p>
+                </article>
             </div>
         </section>
 

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -19,7 +19,7 @@
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <title>Gamma | 美股期权教材</title>
     <!-- Fonts removed for performance -->
-    <link rel="stylesheet" href="../css/style.css?v=20260422editorial19">
+    <link rel="stylesheet" href="../css/style.css?v=20260423editorial20">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -73,7 +73,7 @@
             <div class="subtitle">Greeks 与仓位行为篇</div>
             <h1>第 20 章 · Gamma</h1>
             <p class="tagline">Greeks 与仓位行为篇 · Batch 6</p>
-            <p class="hero-description">理解 Gamma 作为 Delta 的变化速度，为什么仓位越接近关键位置越容易突然变脸。</p>
+            <p class="hero-description">这一章要讲的是仓位为什么会突然变脸。Gamma 不是另一个抽象字母，它是在告诉你：当标的靠近关键位置、到期又越来越近时，Delta 本身会变化得多快。</p>
             <div class="chapter-hero-meta" aria-label="章节阅读信息">
                 <span class="chapter-hero-pill">第 20 章</span>
                 <span class="chapter-hero-pill">Batch 6 · 已发布</span>
@@ -85,12 +85,12 @@
                     <p>理解 Gamma 作为 Delta 的变化速度，为什么仓位越接近关键位置越容易突然变脸。</p>
                 </article>
                 <article class="hero-insight-card">
-                    <div class="hero-insight-label">推荐顺序</div>
-                    <p>先顺着正文标题索引抓主线，再看图示 / payoff / 例子，最后回到章节导航做前后章对照。</p>
+                    <div class="hero-insight-label">最容易误解</div>
+                    <p>很多人以为 Delta 会稳稳跟着价格一点点动，于是低估了临近关键位时仓位响应加速的程度。Gamma 高的仓位，可能昨天看起来还温和，今天就突然变得很凶。</p>
                 </article>
                 <article class="hero-insight-card">
-                    <div class="hero-insight-label">真正收口</div>
-                    <p>别只背术语；读完后至少能用自己的话说清 payoff、风险边界，以及什么场景下才值得用。</p>
+                    <div class="hero-insight-label">先用这个例子进</div>
+                    <p>最直观的场景，是临近到期的 ATM Call：股价每多动一点，Delta 就会更快往 1 靠拢；反过来跌下去，Delta 也会迅速衰减。再把它和远月、深度实值合约对比，你会明显感到哪类仓位更容易“突然变脸”。</p>
                 </article>
             </div>
             <div class="hero-action-row" aria-label="章节快捷入口">
@@ -116,6 +116,7 @@
                 <div class="chapter-summary-card">
                     <div class="chapter-summary-eyebrow">本章先看</div>
                     <p>理解 Gamma 作为 Delta 的变化速度，为什么仓位越接近关键位置越容易突然变脸。</p>
+                    <p class="chapter-summary-note">这一章要讲的是仓位为什么会突然变脸。Gamma 不是另一个抽象字母，它是在告诉你：当标的靠近关键位置、到期又越来越近时，Delta 本身会变化得多快。</p>
                     <div class="chapter-summary-meta" aria-label="章节阅读建议">
                         <span class="chapter-summary-pill">建议顺序：先看 payoff，再看风险边界</span>
                         <span class="chapter-summary-pill">适合复读：正文标题会自动生成索引</span>
@@ -132,6 +133,24 @@
                         <li>读完后最好回前后章节对照：这个概念是 payoff、风险，还是执行问题？</li>
                     </ul>
                 </aside>
+            </div>
+
+            <div class="chapter-method-grid" aria-label="本章阅读加速卡">
+                <article class="chapter-method-card">
+                    <div class="course-card-kicker">导语强化</div>
+                    <h3>这一章真正要解决什么问题</h3>
+                    <p>这一章要讲的是仓位为什么会突然变脸。Gamma 不是另一个抽象字母，它是在告诉你：当标的靠近关键位置、到期又越来越近时，Delta 本身会变化得多快。</p>
+                </article>
+                <article class="chapter-method-card">
+                    <div class="course-card-kicker">误区先拆</div>
+                    <h3>先把最容易踩错的直觉拆掉</h3>
+                    <p>很多人以为 Delta 会稳稳跟着价格一点点动，于是低估了临近关键位时仓位响应加速的程度。Gamma 高的仓位，可能昨天看起来还温和，今天就突然变得很凶。</p>
+                </article>
+                <article class="chapter-method-card">
+                    <div class="course-card-kicker">例子先行</div>
+                    <h3>先用一个完整例子把骨架串起来</h3>
+                    <p>最直观的场景，是临近到期的 ATM Call：股价每多动一点，Delta 就会更快往 1 靠拢；反过来跌下去，Delta 也会迅速衰减。再把它和远月、深度实值合约对比，你会明显感到哪类仓位更容易“突然变脸”。</p>
+                </article>
             </div>
         </section>
 

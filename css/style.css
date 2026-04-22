@@ -15732,3 +15732,175 @@ body.options-chapter-page .chapter-nav-link {
         width: min(100%, calc(100% - 0.72rem));
     }
 }
+
+/* ===== 2026-04-23 final balance pass: wider editorial measures + chapter guidance cards ===== */
+:root {
+    --post-reading-measure-wide: 76ch;
+    --course-reading-measure-wide: 88ch;
+}
+
+body.post-page .hero-content,
+body.post-page main {
+    max-width: min(1120px, calc(100% - 2rem));
+}
+
+body.post-page .hero h1 {
+    max-width: min(18.5em, 100%);
+}
+
+body.post-page .hero .tagline,
+body.post-page .hero-description {
+    max-width: min(56rem, 100%);
+}
+
+body.post-page .section-header,
+body.post-page .market-grid,
+body.post-page .analysis-box,
+body.post-page .wisdom-card,
+body.post-page .article-meta-bar {
+    max-width: min(1100px, 100%);
+}
+
+body.post-page .section-title-group,
+body.post-page .section-title,
+body.post-page .section-subtitle,
+body.post-page .stock-detail-name,
+body.post-page .analysis-box > :not(.analysis-title),
+body.post-page .wisdom-card > *,
+body.post-page .news-bullet > *,
+body.post-page .news-interpretation-item > *,
+body.post-page .highlight-box > *,
+body.post-page .tracking-card > * {
+    max-width: none;
+}
+
+body.post-page .analysis-box p,
+body.post-page .analysis-box li,
+body.post-page .wisdom-card p,
+body.post-page .wisdom-card li,
+body.post-page .stock-detail-card p,
+body.post-page .stock-detail-card li,
+body.post-page .tracking-card p,
+body.post-page .tracking-card li,
+body.post-page .highlight-box p,
+body.post-page .highlight-box li {
+    max-width: var(--post-reading-measure-wide);
+}
+
+body.post-page .news-bullet-list,
+body.post-page .news-interpretation-list {
+    align-content: start;
+}
+
+body.post-page .stock-detail-card,
+body.post-page .analysis-box,
+body.post-page .wisdom-card,
+body.post-page .tracking-card,
+body.post-page .highlight-box {
+    padding-inline: clamp(1.2rem, 1rem + 0.9vw, 1.95rem);
+}
+
+body.options-chapter-page .hero-content,
+body.options-chapter-page .chapter-shell {
+    max-width: min(1140px, calc(100% - 1.6rem));
+}
+
+body.options-chapter-page .hero h1 {
+    max-width: min(18em, 100%);
+}
+
+body.options-chapter-page .hero .tagline,
+body.options-chapter-page .hero-description {
+    max-width: min(58rem, 100%);
+}
+
+body.options-chapter-page .section-title-group,
+body.options-chapter-page .section-title,
+body.options-chapter-page .section-subtitle {
+    max-width: none;
+}
+
+body.options-chapter-page .chapter-summary-layout {
+    grid-template-columns: minmax(0, 2.15fr) minmax(290px, 1fr);
+}
+
+body.options-chapter-page .chapter-summary-card,
+body.options-chapter-page .chapter-nav-card,
+body.options-chapter-page .chapter-body-card {
+    max-width: min(1120px, 100%);
+}
+
+body.options-chapter-page .chapter-summary-card > p,
+body.options-chapter-page .chapter-summary-note,
+body.options-chapter-page .chapter-nav-card > p,
+body.options-chapter-page .chapter-method-card p,
+body.options-chapter-page .chapter-reading-points li,
+body.options-chapter-page .chapter-nav-slot p {
+    max-width: 72ch;
+}
+
+body.options-chapter-page .chapter-method-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+}
+
+body.options-chapter-page .chapter-method-card {
+    min-height: 100%;
+}
+
+body.options-chapter-page .chapter-body-card > p,
+body.options-chapter-page .chapter-body-card li,
+body.options-chapter-page .chapter-body-card td,
+body.options-chapter-page .chapter-body-card th {
+    max-width: var(--course-reading-measure-wide);
+}
+
+body.options-chapter-page .chapter-body-card > ul,
+body.options-chapter-page .chapter-body-card > ol,
+body.options-chapter-page .chapter-body-card > blockquote,
+body.options-chapter-page .chapter-body-card > .course-table-wrap,
+body.options-chapter-page .chapter-body-card > .source-figure-grid,
+body.options-chapter-page .chapter-body-card > figure,
+body.options-chapter-page .chapter-body-card > .payoff-chart-block,
+body.options-chapter-page .chapter-body-card > .payoff-reading-rail,
+body.options-chapter-page .chapter-body-card > .payoff-chart-shell {
+    max-width: min(96ch, 100%);
+}
+
+@media (max-width: 980px) {
+    body.options-chapter-page .chapter-method-grid,
+    body.options-chapter-page .chapter-summary-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 760px) {
+    body.post-page .hero-content,
+    body.post-page main,
+    body.options-chapter-page .hero-content,
+    body.options-chapter-page .chapter-shell {
+        max-width: min(100%, calc(100% - 1rem));
+    }
+
+    body.post-page .section-header,
+    body.options-chapter-page .section-header {
+        grid-template-columns: 1fr;
+    }
+
+    body.options-chapter-page .chapter-method-grid {
+        grid-template-columns: 1fr;
+    }
+
+    body.options-chapter-page .chapter-body-card > p,
+    body.options-chapter-page .chapter-body-card li,
+    body.options-chapter-page .chapter-body-card td,
+    body.options-chapter-page .chapter-body-card th,
+    body.post-page .analysis-box p,
+    body.post-page .analysis-box li,
+    body.post-page .wisdom-card p,
+    body.post-page .wisdom-card li,
+    body.post-page .stock-detail-card p,
+    body.post-page .stock-detail-card li {
+        max-width: 100%;
+    }
+}

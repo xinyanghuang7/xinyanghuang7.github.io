@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -19,7 +19,7 @@
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <title>Short Strangle 与 Short Straddle | 美股期权教材</title>
     <!-- Fonts removed for performance -->
-    <link rel="stylesheet" href="../css/style.css?v=20260422editorial19">
+    <link rel="stylesheet" href="../css/style.css?v=20260423editorial20">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -73,7 +73,7 @@
             <div class="subtitle">实战应用篇</div>
             <h1>第 29 章 · Short Strangle 与 Short Straddle</h1>
             <p class="tagline">实战应用篇 · Batch 8</p>
-            <p class="hero-description">把卖波动率从名词入门推进到财报、IV Crush 与退出纪律，讲清高胜率收租为什么不等于低风险。</p>
+            <p class="hero-description">这一章讲的是一类看起来胜率很高、但一旦出错代价可能很重的结构：Short Strangle 和 Short Straddle。它们本质上是在卖波动率、卖尾部风险，并赌市场未来不会超出你收来的权利金区间太远。</p>
             <div class="chapter-hero-meta" aria-label="章节阅读信息">
                 <span class="chapter-hero-pill">第 29 章</span>
                 <span class="chapter-hero-pill">Batch 8 · 已发布</span>
@@ -85,12 +85,12 @@
                     <p>把卖波动率从名词入门推进到财报、IV Crush 与退出纪律，讲清高胜率收租为什么不等于低风险。</p>
                 </article>
                 <article class="hero-insight-card">
-                    <div class="hero-insight-label">推荐顺序</div>
-                    <p>先顺着正文标题索引抓主线，再看图示 / payoff / 例子，最后回到章节导航做前后章对照。</p>
+                    <div class="hero-insight-label">最容易误解</div>
+                    <p>最危险的误区，是把高胜率直接等同于低风险。短波动率策略很多时候像慢慢捡硬币：大多数日子都好看，但真正该关注的，是少数极端日子会不会把前面的权利金几乎一次吐回去。</p>
                 </article>
                 <article class="hero-insight-card">
-                    <div class="hero-insight-label">真正收口</div>
-                    <p>别只背术语；读完后至少能用自己的话说清 payoff、风险边界，以及什么场景下才值得用。</p>
+                    <div class="hero-insight-label">先用这个例子进</div>
+                    <p>财报前最经典：IV 很高，你卖出一组 Strangle，赌财报后波动回落且价格别跑出上下两边太远。若结果真如预期，权利金衰减很快；但若公司给出超预期指引、股价跳空穿出区间，亏损扩张也会非常快。这个例子能直接说明为什么“收租”从来不是无脑轻松活。</p>
                 </article>
             </div>
             <div class="hero-action-row" aria-label="章节快捷入口">
@@ -116,6 +116,7 @@
                 <div class="chapter-summary-card">
                     <div class="chapter-summary-eyebrow">本章先看</div>
                     <p>把卖波动率从名词入门推进到财报、IV Crush 与退出纪律，讲清高胜率收租为什么不等于低风险。</p>
+                    <p class="chapter-summary-note">这一章讲的是一类看起来胜率很高、但一旦出错代价可能很重的结构：Short Strangle 和 Short Straddle。它们本质上是在卖波动率、卖尾部风险，并赌市场未来不会超出你收来的权利金区间太远。</p>
                     <div class="chapter-summary-meta" aria-label="章节阅读建议">
                         <span class="chapter-summary-pill">建议顺序：先看 payoff，再看风险边界</span>
                         <span class="chapter-summary-pill">适合复读：正文标题会自动生成索引</span>
@@ -132,6 +133,24 @@
                         <li>读完后最好回前后章节对照：这个概念是 payoff、风险，还是执行问题？</li>
                     </ul>
                 </aside>
+            </div>
+
+            <div class="chapter-method-grid" aria-label="本章阅读加速卡">
+                <article class="chapter-method-card">
+                    <div class="course-card-kicker">导语强化</div>
+                    <h3>这一章真正要解决什么问题</h3>
+                    <p>这一章讲的是一类看起来胜率很高、但一旦出错代价可能很重的结构：Short Strangle 和 Short Straddle。它们本质上是在卖波动率、卖尾部风险，并赌市场未来不会超出你收来的权利金区间太远。</p>
+                </article>
+                <article class="chapter-method-card">
+                    <div class="course-card-kicker">误区先拆</div>
+                    <h3>先把最容易踩错的直觉拆掉</h3>
+                    <p>最危险的误区，是把高胜率直接等同于低风险。短波动率策略很多时候像慢慢捡硬币：大多数日子都好看，但真正该关注的，是少数极端日子会不会把前面的权利金几乎一次吐回去。</p>
+                </article>
+                <article class="chapter-method-card">
+                    <div class="course-card-kicker">例子先行</div>
+                    <h3>先用一个完整例子把骨架串起来</h3>
+                    <p>财报前最经典：IV 很高，你卖出一组 Strangle，赌财报后波动回落且价格别跑出上下两边太远。若结果真如预期，权利金衰减很快；但若公司给出超预期指引、股价跳空穿出区间，亏损扩张也会非常快。这个例子能直接说明为什么“收租”从来不是无脑轻松活。</p>
+                </article>
             </div>
         </section>
 

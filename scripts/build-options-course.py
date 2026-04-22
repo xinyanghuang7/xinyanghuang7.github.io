@@ -23,6 +23,7 @@ from options_source_figure_embed import expand_source_figure_lists, sync_source_
 
 SITE_ROOT = Path(__file__).resolve().parent.parent
 MANIFEST_PATH = SITE_ROOT / "options" / "course-manifest.json"
+ENHANCEMENT_PATH = SITE_ROOT / "options" / "course-enhancements.json"
 INDEX_TEMPLATE_PATH = SITE_ROOT / "template" / "options-course-index.html"
 CHAPTER_TEMPLATE_PATH = SITE_ROOT / "template" / "options-chapter.html"
 HOMEPAGE_PATH = SITE_ROOT / "index.html"
@@ -57,6 +58,9 @@ class Chapter:
     output_path: str
     nav_label: str
     update_order: int
+    intro: str = ""
+    misconception: str = ""
+    example: str = ""
 
 
 class BuildError(RuntimeError):
@@ -96,16 +100,26 @@ def resolve_workspace_root() -> Path:
     )
 
 
-def load_manifest(path: Path) -> list[Chapter]:
+def load_enhancements(path: Path) -> dict[str, dict[str, str]]:
+    if not path.exists():
+        return {}
+    data = json.loads(path.read_text(encoding="utf-8-sig"))
+    return {str(key): value for key, value in data.items() if isinstance(value, dict)}
+
+
+def load_manifest(path: Path, enhancements: dict[str, dict[str, str]] | None = None) -> list[Chapter]:
     items = json.loads(path.read_text(encoding="utf-8-sig"))
     chapters: list[Chapter] = []
+    enhancement_map = enhancements or {}
     for raw in items:
         if raw.get("status") == "published":
             missing = [field for field in REQUIRED_PUBLISHED_FIELDS if not raw.get(field)]
             if missing:
                 raise BuildError(f"Published chapter {raw.get('id', '<unknown>')} is missing required fields: {', '.join(missing)}")
+        chapter_id = str(raw["id"])
+        extra = enhancement_map.get(chapter_id, {})
         chapters.append(Chapter(
-            id=str(raw["id"]),
+            id=chapter_id,
             title=raw["title"],
             summary=raw.get("summary", ""),
             section_label=raw.get("section_label", ""),
@@ -115,6 +129,9 @@ def load_manifest(path: Path) -> list[Chapter]:
             output_path=raw.get("output_path", ""),
             nav_label=raw.get("nav_label", raw["title"]),
             update_order=int(raw.get("update_order", 0)),
+            intro=extra.get("intro", raw.get("summary", "")),
+            misconception=extra.get("misconception", "先确认这章在解决什么问题，再判断哪些直觉是错的。"),
+            example=extra.get("example", "先用一个最小例子把 payoff、成本和风险边界串起来，再回到正文细读。"),
         ))
     return chapters
 
@@ -554,6 +571,9 @@ def build_chapter_page(chapter: Chapter, body_html: str, nav: dict[str, Chapter 
         "CHAPTER_NUMBER": chapter.id,
         "CHAPTER_TAGLINE": f"{chapter.section_label} · {chapter.batch}",
         "CHAPTER_SUMMARY": chapter.summary,
+        "CHAPTER_INTRO": chapter.intro,
+        "CHAPTER_MISCONCEPTION": chapter.misconception,
+        "CHAPTER_EXAMPLE": chapter.example,
         "BATCH_LABEL": f"{chapter.batch} · {status_label(chapter.status)}",
         "CHAPTER_BODY_HTML": body_html,
         "PREV_CHAPTER_URL": prev_url,
@@ -590,7 +610,8 @@ def normalize_chapter_markdown(markdown_text: str, chapter: Chapter) -> str:
 
 def build_site() -> list[Path]:
     workspace_root = resolve_workspace_root()
-    chapters = load_manifest(MANIFEST_PATH)
+    enhancements = load_enhancements(ENHANCEMENT_PATH)
+    chapters = load_manifest(MANIFEST_PATH, enhancements)
     published = [chapter for chapter in chapters if chapter.status == "published"]
     nav = build_navigation(published)
     outputs: list[Path] = []
