@@ -15304,3 +15304,158 @@ body.options-course-page .chapter-directory-grid {
         max-width: none;
     }
 }
+
+/* ===== 2026-04-22 centered heading + title rhythm pass ===== */
+body .hero-content {
+    max-width: min(980px, calc(100% - 2rem));
+    margin-inline: auto;
+    text-align: center;
+}
+
+body .hero h1 {
+    max-width: min(14.8em, 100%);
+    margin-inline: auto;
+    line-height: 1.16;
+    letter-spacing: 0.012em;
+    text-wrap: balance;
+}
+
+body .hero .tagline {
+    max-width: 46rem;
+    margin-inline: auto;
+    line-height: 1.72;
+}
+
+body .hero-description {
+    max-width: 50rem;
+    margin-inline: auto;
+    line-height: 1.84;
+}
+
+body .section-header {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    text-align: center;
+    gap: 0.95rem;
+}
+
+body .section-header::before {
+    left: 50%;
+    top: auto;
+    bottom: -0.25rem;
+    width: min(180px, 48vw);
+    height: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent, rgba(143, 98, 34, 0.34), transparent);
+}
+
+body .section-number,
+body .section-date {
+    justify-self: center;
+}
+
+body .section-title-group {
+    max-width: min(76ch, 100%);
+    margin-inline: auto;
+}
+
+body .section-title {
+    max-width: min(20ch, 100%);
+    margin-inline: auto;
+    line-height: 1.18;
+    text-wrap: balance;
+}
+
+body .section-subtitle {
+    max-width: min(74ch, 100%);
+    margin-inline: auto;
+    line-height: 1.82;
+}
+
+body .course-card-title,
+body .research-card h3,
+body .course-toolkit-card h3,
+body .analysis-title,
+body .wisdom-title,
+body .archive-item-title {
+    line-height: 1.24;
+    text-wrap: balance;
+}
+
+body.post-page .hero {
+    min-height: min(86vh, 900px);
+}
+
+body.post-page .hero-content {
+    display: block;
+    width: min(980px, calc(100% - 1.8rem));
+    max-width: min(980px, calc(100% - 1.8rem));
+    margin-inline: auto;
+    padding-inline: 0;
+    text-align: center;
+}
+
+body.post-page .hero-content::after {
+    display: none;
+}
+
+body.post-page .hero .subtitle,
+body.post-page .hero h1,
+body.post-page .hero .tagline,
+body.post-page .hero-description {
+    grid-column: auto;
+    text-align: center;
+    margin-inline: auto;
+}
+
+body.post-page .hero .subtitle {
+    justify-self: center;
+}
+
+body.post-page .hero h1 {
+    width: min(100%, 12.8em);
+    max-width: min(12.8em, 100%);
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+}
+
+body.post-page .hero .tagline {
+    max-width: 41rem;
+    line-height: 1.82;
+}
+
+body.post-page .hero-description {
+    max-width: 44rem;
+    line-height: 1.86;
+}
+
+body.post-page .article-meta-bar {
+    width: min(1080px, calc(100% - 1.2rem));
+    margin-inline: auto;
+    margin-top: -1.4rem;
+}
+
+body.post-page .section-title,
+body.post-page .analysis-title,
+body.post-page .wisdom-title {
+    max-width: min(22ch, 100%);
+}
+
+@media (max-width: 760px) {
+    body .hero h1,
+    body.post-page .hero h1 {
+        max-width: 100%;
+        width: 100%;
+        line-height: 1.2;
+        text-wrap: pretty;
+    }
+
+    body .section-title {
+        max-width: 100%;
+    }
+
+    body.post-page .article-meta-bar {
+        margin-top: -0.9rem;
+    }
+}
