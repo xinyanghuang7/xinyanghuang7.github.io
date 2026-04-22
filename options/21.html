@@ -19,7 +19,7 @@
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <title>Theta | 美股期权教材</title>
     <!-- Fonts removed for performance -->
-    <link rel="stylesheet" href="../css/style.css?v=20260423editorial20">
+    <link rel="stylesheet" href="../css/style.css?v=20260423editorial22">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -112,8 +112,8 @@
                 </div>
             </div>
 
-            <div class="chapter-summary-layout">
-                <div class="chapter-summary-card">
+            <div class="chapter-summary-layout chapter-summary-layout-simple">
+                <div class="chapter-summary-card chapter-summary-card-single">
                     <div class="chapter-summary-eyebrow">本章先看</div>
                     <p>理解时间损耗如何持续侵蚀期权价值，并把买方与卖方放在不同的时间压力下观察。</p>
                     <p class="chapter-summary-note">这一章要把 Theta 从“课本里那条会衰减的线”变成时间压力的真实体验：期权不是静止资产，哪怕标的不动，仓位价值也可能因为时间流逝而不断被重估。</p>
@@ -121,36 +121,13 @@
                         <span class="chapter-summary-pill">建议顺序：先看 payoff，再看风险边界</span>
                         <span class="chapter-summary-pill">适合复读：正文标题会自动生成索引</span>
                     </div>
+                    <div class="chapter-summary-rail" aria-label="章节摘要补充">
+                        <div class="chapter-summary-rail-item"><strong>最容易误解：</strong>常见误区，是把 Theta 想成一个很慢、可以忽略的小损耗。实际上，尤其对近月买方来说，时间损耗可能是你最稳定、最确定的对手；它不需要股价逆着你走，也能持续拖累仓位。</div>
+                        <div class="chapter-summary-rail-item"><strong>先用这个例子过：</strong>比如你买了一张还有 7 天到期的 ATM Put，就算正股横盘不动，合约价值也可能每天明显缩水；而如果你卖出的是同样期限的 Put，只要风险没有快速放大，时间本身就在帮你。把这两个场景并排看，Theta 就不再只是定义，而是站队。</div>
+                    </div>
                     <p class="chapter-summary-note">先用这一段确认本章任务，再直接看下面的章节索引和正文展开。期权章节不追求“短句总结很多”，而是追求把概念、例子、边界和实战误区讲透。</p>
                     <div id="chapterInlineOutline" class="chapter-inline-outline" hidden></div>
                 </div>
-                <aside class="course-note-card chapter-summary-sidecard" aria-label="章节阅读提醒">
-                    <div class="course-card-kicker">How to Read This Chapter</div>
-                    <h3>先抓一条主线，再补术语和公式</h3>
-                    <ul class="chapter-reading-points">
-                        <li>第一遍先确认概念到底在解决什么问题。</li>
-                        <li>图示、表格和例子只服务于理解，不要本末倒置。</li>
-                        <li>读完后最好回前后章节对照：这个概念是 payoff、风险，还是执行问题？</li>
-                    </ul>
-                </aside>
-            </div>
-
-            <div class="chapter-method-grid" aria-label="本章阅读加速卡">
-                <article class="chapter-method-card">
-                    <div class="course-card-kicker">导语强化</div>
-                    <h3>这一章真正要解决什么问题</h3>
-                    <p>这一章要把 Theta 从“课本里那条会衰减的线”变成时间压力的真实体验：期权不是静止资产，哪怕标的不动，仓位价值也可能因为时间流逝而不断被重估。</p>
-                </article>
-                <article class="chapter-method-card">
-                    <div class="course-card-kicker">误区先拆</div>
-                    <h3>先把最容易踩错的直觉拆掉</h3>
-                    <p>常见误区，是把 Theta 想成一个很慢、可以忽略的小损耗。实际上，尤其对近月买方来说，时间损耗可能是你最稳定、最确定的对手；它不需要股价逆着你走，也能持续拖累仓位。</p>
-                </article>
-                <article class="chapter-method-card">
-                    <div class="course-card-kicker">例子先行</div>
-                    <h3>先用一个完整例子把骨架串起来</h3>
-                    <p>比如你买了一张还有 7 天到期的 ATM Put，就算正股横盘不动，合约价值也可能每天明显缩水；而如果你卖出的是同样期限的 Put，只要风险没有快速放大，时间本身就在帮你。把这两个场景并排看，Theta 就不再只是定义，而是站队。</p>
-                </article>
             </div>
         </section>
 

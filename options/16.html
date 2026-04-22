@@ -19,7 +19,7 @@
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <title>波动率策略入门 | 美股期权教材</title>
     <!-- Fonts removed for performance -->
-    <link rel="stylesheet" href="../css/style.css?v=20260423editorial20">
+    <link rel="stylesheet" href="../css/style.css?v=20260423editorial22">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -112,8 +112,8 @@
                 </div>
             </div>
 
-            <div class="chapter-summary-layout">
-                <div class="chapter-summary-card">
+            <div class="chapter-summary-layout chapter-summary-layout-simple">
+                <div class="chapter-summary-card chapter-summary-card-single">
                     <div class="chapter-summary-eyebrow">本章先看</div>
                     <p>从方向交易转向波动幅度交易，理解 Straddle、Strangle 等波动率策略的核心逻辑。</p>
                     <p class="chapter-summary-note">这一章要把交易视角从“猜方向”切换到“赌波动”：有些时候，真正值得下注的不是涨还是跌，而是接下来会不会大动、会不会比市场想得更平。波动率策略就是处理这个任务的工具箱。</p>
@@ -121,36 +121,13 @@
                         <span class="chapter-summary-pill">建议顺序：先看 payoff，再看风险边界</span>
                         <span class="chapter-summary-pill">适合复读：正文标题会自动生成索引</span>
                     </div>
+                    <div class="chapter-summary-rail" aria-label="章节摘要补充">
+                        <div class="chapter-summary-rail-item"><strong>最容易误解：</strong>很多人一听 Straddle、Strangle 就只记住“财报前买波动”，却忽视了时间损耗和 IV 定价本身。波动率交易不是“看不懂方向时乱用的替代品”，反而更需要你知道市场已经把多少预期写进价格。</div>
+                        <div class="chapter-summary-rail-item"><strong>先用这个例子过：</strong>最直观的是财报前的 Long Straddle：你同时买 Call 和 Put，赌财报后会出现大幅位移。但如果市场早已把超大波动定价进去，最终股价虽动了，幅度却不够大，你照样可能亏钱。这个例子能帮你看清“赌波动”与“赌方向”的差别。</div>
+                    </div>
                     <p class="chapter-summary-note">先用这一段确认本章任务，再直接看下面的章节索引和正文展开。期权章节不追求“短句总结很多”，而是追求把概念、例子、边界和实战误区讲透。</p>
                     <div id="chapterInlineOutline" class="chapter-inline-outline" hidden></div>
                 </div>
-                <aside class="course-note-card chapter-summary-sidecard" aria-label="章节阅读提醒">
-                    <div class="course-card-kicker">How to Read This Chapter</div>
-                    <h3>先抓一条主线，再补术语和公式</h3>
-                    <ul class="chapter-reading-points">
-                        <li>第一遍先确认概念到底在解决什么问题。</li>
-                        <li>图示、表格和例子只服务于理解，不要本末倒置。</li>
-                        <li>读完后最好回前后章节对照：这个概念是 payoff、风险，还是执行问题？</li>
-                    </ul>
-                </aside>
-            </div>
-
-            <div class="chapter-method-grid" aria-label="本章阅读加速卡">
-                <article class="chapter-method-card">
-                    <div class="course-card-kicker">导语强化</div>
-                    <h3>这一章真正要解决什么问题</h3>
-                    <p>这一章要把交易视角从“猜方向”切换到“赌波动”：有些时候，真正值得下注的不是涨还是跌，而是接下来会不会大动、会不会比市场想得更平。波动率策略就是处理这个任务的工具箱。</p>
-                </article>
-                <article class="chapter-method-card">
-                    <div class="course-card-kicker">误区先拆</div>
-                    <h3>先把最容易踩错的直觉拆掉</h3>
-                    <p>很多人一听 Straddle、Strangle 就只记住“财报前买波动”，却忽视了时间损耗和 IV 定价本身。波动率交易不是“看不懂方向时乱用的替代品”，反而更需要你知道市场已经把多少预期写进价格。</p>
-                </article>
-                <article class="chapter-method-card">
-                    <div class="course-card-kicker">例子先行</div>
-                    <h3>先用一个完整例子把骨架串起来</h3>
-                    <p>最直观的是财报前的 Long Straddle：你同时买 Call 和 Put，赌财报后会出现大幅位移。但如果市场早已把超大波动定价进去，最终股价虽动了，幅度却不够大，你照样可能亏钱。这个例子能帮你看清“赌波动”与“赌方向”的差别。</p>
-                </article>
             </div>
         </section>
 

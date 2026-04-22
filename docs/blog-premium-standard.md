@@ -203,6 +203,12 @@ The homepage, article pages, and options-course pages should feel like one produ
 - Prev/next / return-to-course navigation must feel like part of one calm learning path, not a loose set of utility links.
 - If the options-course homepage gets better but chapter pages still feel flatter / harsher / more template-like, the job is not finished.
 
+### Encoding / generation hard gate
+- Any mojibake, `�`, malformed Chinese punctuation, broken closing tag, or JSON-LD quote corruption in public HTML is a blocker.
+- Generated pages must be checked at four layers before publish: **head/meta**, **JSON-LD**, **nav labels / CTA text**, and **visible body copy**.
+- If an automated rewrite introduces encoding damage, restore the clean UTF-8 file first and then reapply the intended change with the smallest safe edit surface.
+- Do not call a release finished if the page body looks okay but the head / schema / generated options pages are already broken.
+
 ### Image standard
 - Article images should include intrinsic `width` / `height`.
 - Public article images should be compressed for delivery.
@@ -274,3 +280,22 @@ When there is tension, prefer:
 - one coherent teaching arc over many disconnected snippets
 
 This file is the control tower for future blog-output / options-course polish work.
+
+
+## 2026-04-23 anti-regression addendum
+
+### 首页与研究库
+- 首页 archive / research 文案块若出现明显右侧死白，优先通过版心、grid ratio、文本测度与卡片密度收口；不要默认继续加更多圆角壳去“填空”。
+- 首页的定位文案要强调“研究库 / 可回看 / 可按公司和主题调取”，不是简单日期堆文；同时这一句本身必须在视觉上吃到足够宽度，不能被保守 `max-width` 压成左重右空。
+
+### Premium daily（Module 1~4）
+- Module 1 必须在页面层真正落成 5+2：行业、商业模式、管理层、财报健康度、估值、投资逻辑、投资风险。不能再退回 stock-meta + highlights fallback。
+- Module 2 默认采用能把故事、图片、规则、案例放进同一阅读节奏的 editorial layout；不接受标题过窄、图片缩在一角、右侧大片空白的半成品双栏。
+- Module 3 默认优先“事实 + 为什么重要 + 动作边界”同卡阅读；除非内容强到必须拆层，否则不要再做机械的左右双板块新闻模板。
+- Module 3 配图必须先确认完整主体 / 文字不会被 `cover` 裁掉；如果图是竖版、带字、海报式构图，优先完整展示。
+- Module 4 标题与动作地图之间必须有明确 breathing room；最后的“今日组合动作总结”只允许一张 calm summary panel，不允许重叠、贴头、套娃卡。
+
+### 期权教材
+- 章节摘要区优先减少壳层：一张主摘要卡 + 少量辅助信息即可，禁止再堆多块玩具化加速卡。
+- 章节正文必须确保标题宽度与正文宽度属于同一 reading rail；若正文是 78~82ch，标题也应在同一系统里，而不是整卡铺满。
+- 配色要有克制的 tonal variation，不能所有章节都只剩同一种米黄表面。
