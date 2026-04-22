@@ -15388,11 +15388,11 @@ body.post-page .hero {
 
 body.post-page .hero-content {
     display: block;
-    width: min(980px, calc(100% - 1.8rem));
-    max-width: min(980px, calc(100% - 1.8rem));
+    width: min(1040px, calc(100% - 1.8rem));
+    max-width: min(1040px, calc(100% - 1.8rem));
     margin-inline: auto;
     padding-inline: 0;
-    text-align: center;
+    text-align: left;
 }
 
 body.post-page .hero-content::after {
@@ -15404,30 +15404,30 @@ body.post-page .hero h1,
 body.post-page .hero .tagline,
 body.post-page .hero-description {
     grid-column: auto;
-    text-align: center;
-    margin-inline: auto;
+    text-align: left;
+    margin-inline: 0;
 }
 
 body.post-page .hero .subtitle {
-    justify-self: center;
+    justify-self: start;
 }
 
 body.post-page .hero h1 {
-    width: min(100%, 12.8em);
-    max-width: min(12.8em, 100%);
-    line-height: 1.15;
-    letter-spacing: 0.01em;
+    width: min(100%, 17.2em);
+    max-width: min(17.2em, 100%);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
     text-wrap: balance;
 }
 
 body.post-page .hero .tagline {
-    max-width: 41rem;
-    line-height: 1.82;
+    max-width: 49rem;
+    line-height: 1.9;
 }
 
 body.post-page .hero-description {
-    max-width: 44rem;
-    line-height: 1.86;
+    max-width: 50rem;
+    line-height: 1.92;
 }
 
 body.post-page .article-meta-bar {
@@ -15436,10 +15436,65 @@ body.post-page .article-meta-bar {
     margin-top: -1.4rem;
 }
 
+body.post-page .section-header {
+    grid-template-columns: auto minmax(0, 1fr);
+    justify-items: start;
+    align-items: end;
+    text-align: left;
+    gap: 0.7rem 1rem;
+}
+
+body.post-page .section-header::before {
+    left: 0;
+    bottom: -0.28rem;
+    width: min(220px, 58vw);
+    transform: none;
+    background: linear-gradient(90deg, rgba(143, 98, 34, 0.4), rgba(143, 98, 34, 0.14), transparent);
+}
+
+body.post-page .section-number,
+body.post-page .section-date {
+    justify-self: start;
+}
+
+body.post-page .section-title-group,
+body.post-page .section-title,
+body.post-page .section-subtitle {
+    max-width: none;
+    margin-inline: 0;
+    text-align: left;
+}
+
 body.post-page .section-title,
 body.post-page .analysis-title,
 body.post-page .wisdom-title {
-    max-width: min(22ch, 100%);
+    max-width: min(30ch, 100%);
+}
+
+body.post-page .section-title {
+    line-height: 1.12;
+}
+
+body.post-page .five-plus-card h3,
+body.post-page .framework-step-card h4,
+body.post-page .highlight-box h4,
+body.post-page .news-bullet h4,
+body.post-page .news-interpretation-item h4,
+body.post-page .stock-detail-name {
+    max-width: none;
+    width: 100%;
+    text-wrap: pretty;
+}
+
+body.post-page .news-bullet,
+body.post-page .news-interpretation-item {
+    padding: 1.12rem 1.12rem 1.16rem;
+}
+
+body.post-page .news-bullet h4,
+body.post-page .news-interpretation-item h4 {
+    line-height: 1.36;
+    margin-bottom: 0.55rem;
 }
 
 @media (max-width: 760px) {
@@ -15447,15 +15502,25 @@ body.post-page .wisdom-title {
     body.post-page .hero h1 {
         max-width: 100%;
         width: 100%;
-        line-height: 1.2;
+        line-height: 1.18;
         text-wrap: pretty;
     }
 
-    body .section-title {
+    body .section-title,
+    body.post-page .section-title {
         max-width: 100%;
     }
 
     body.post-page .article-meta-bar {
         margin-top: -0.9rem;
+    }
+
+    body.post-page .section-header {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    body.post-page .section-header::before {
+        width: min(160px, 56vw);
     }
 }
