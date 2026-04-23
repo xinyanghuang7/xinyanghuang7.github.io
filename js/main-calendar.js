@@ -143,7 +143,7 @@ const CalendarArchive = {
             const isToday = dateStr === todayStr;
             
             let classes = 'calendar-day';
-            let content = day;
+            let content = `<div class="calendar-day-number">${day}</div>`;
             let attrs = '';
             
             if (hasPost) {
@@ -154,15 +154,16 @@ const CalendarArchive = {
                     attrs += ` data-count="${posts.length}"`;
                 }
                 
-                // Add tooltip with post title
                 const post = posts[0];
-                const tooltip = `
-                    <div class="calendar-tooltip">
-                        <div class="calendar-tooltip-title">${this.escapeHtml(post.title)}</div>
-                        <div class="calendar-tooltip-desc">${this.escapeHtml(post.summary || '点击查看全文')}</div>
+                const safeTitle = this.escapeHtml(post.title || '未命名文章');
+                const safeDesc = this.escapeHtml(post.desc || post.summary || '点击进入全文，查看当日完整研究与动作地图。');
+                const compactTitle = safeTitle.replace(/^\d{4}年\d{1,2}月\d{1,2}日美股[:：]?\s*/u, '');
+                content += `
+                    <div class="calendar-entry-card">
+                        <div class="calendar-entry-title">${compactTitle}</div>
+                        <div class="calendar-entry-desc">${safeDesc}</div>
                     </div>
                 `;
-                content += tooltip;
             } else {
                 classes += ' empty';
             }

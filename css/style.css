@@ -388,7 +388,7 @@ header.scrolled {
 }
 
 .scroll-indicator::after {
-    content: '�?;
+    content: '�?;
     display: block;
     margin-top: 0.5rem;
     font-size: 1.1rem;
@@ -1543,7 +1543,7 @@ main {
 }
 
 /* Technical rating */
-.rating-card div[style*="TradingView 技术指�?] {
+.rating-card div[style*="TradingView 技术指�?] {
     margin-top: var(--space-sm);
     padding-top: var(--space-sm);
     border-top: 1px solid rgba(255,255,255,0.08);
@@ -9488,7 +9488,7 @@ body .chapter-body-card h4 {
     }
 }
 
-/* 2026-04-19 �?premium options-course closing layer */
+/* 2026-04-19 �?premium options-course closing layer */
 body .course-shell,
 body .chapter-shell {
     gap: clamp(2.4rem, 4vw, 3.6rem);
@@ -16974,6 +16974,269 @@ body.velvet-loaded .site-loader {
 
     .hero::after {
         font-size: clamp(4rem, 25vw, 8rem);
+    }
+}
+
+/* ============================================
+   2026-04-24 refinement pass: overlap / entry-density / readability
+   ============================================ */
+
+body.post-page .hero-action-row,
+body.options-course-page .hero-action-row,
+body.site-home-page .hero-action-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+body.post-page .hero-action-link,
+body.options-course-page .hero-action-link,
+body.site-home-page .hero-action-link {
+    min-height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 1.2rem;
+}
+
+body.post-page .article-meta-bar,
+body.post-page .article-meta-bar.article-meta-bar-compact {
+    position: relative;
+    z-index: 3;
+    margin-top: 1.5rem;
+    margin-bottom: 3.25rem;
+    border-radius: 0 !important;
+}
+
+body.post-page .section:first-of-type,
+body.options-course-page .section:first-of-type,
+body.site-home-page #archive {
+    scroll-margin-top: calc(var(--oc-header-height) + 26px);
+}
+
+body.post-page .section-header,
+body.options-course-page .section-header,
+body.site-home-page .section-header {
+    row-gap: 0.9rem;
+}
+
+body.post-page .section-title,
+body.options-course-page .section-title,
+body.site-home-page .section-title {
+    line-height: 1.02;
+}
+
+body.post-page .section-subtitle,
+body.options-course-page .section-subtitle,
+body.site-home-page .section-subtitle {
+    max-width: 72rem;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+body.post-page .stock-meta,
+body.post-page .topic-question-grid,
+body.post-page .framework-steps-grid,
+body.options-course-page .course-summary-grid,
+body.options-course-page .learning-path-grid,
+body.options-course-page .course-toolkit-grid {
+    gap: 1rem;
+}
+
+body.post-page .stock-meta-item,
+body.post-page .framework-step-card,
+body.post-page .highlight-box,
+body.post-page .analysis-box,
+body.post-page .five-plus-card,
+body.post-page .wisdom-rules,
+body.post-page .wisdom-case,
+body.options-course-page .course-grid-card,
+body.options-course-page .course-toolkit-card,
+body.options-course-page .course-intro-card,
+body.options-course-page .course-note-card {
+    padding: 1.35rem 1.4rem;
+}
+
+body.post-page .analysis-title,
+body.post-page .wisdom-title,
+body.post-page .stock-name,
+body.options-course-page .course-card-title,
+body.options-chapter-page .chapter-title {
+    font-size: clamp(1.45rem, 2.4vw, 2.15rem);
+    line-height: 1.12;
+}
+
+body.post-page p,
+body.options-course-page p,
+body.options-chapter-page p,
+body.site-home-page p,
+body.post-page li,
+body.options-course-page li,
+body.options-chapter-page li,
+body.site-home-page li {
+    font-size: 1rem;
+    line-height: 1.82;
+}
+
+body.site-home-page .calendar-section {
+    overflow: visible;
+}
+
+body.site-home-page .calendar-grid {
+    gap: 0.7rem;
+}
+
+body.site-home-page .calendar-day {
+    min-height: 206px;
+    padding: 0.9rem 0.9rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+body.site-home-page .calendar-day.empty,
+body.site-home-page .calendar-day.other-month {
+    min-height: 112px;
+    justify-content: flex-start;
+}
+
+body.site-home-page .calendar-day-number {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    color: rgba(240, 214, 161, 0.78);
+    margin-bottom: 0.9rem;
+}
+
+body.site-home-page .calendar-entry-card {
+    width: 100%;
+    display: grid;
+    gap: 0.6rem;
+}
+
+body.site-home-page .calendar-entry-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1rem;
+    line-height: 1.35;
+    color: #f3e4c4;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+body.site-home-page .calendar-entry-desc {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: rgba(239, 226, 201, 0.74);
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+body.site-home-page .calendar-day.has-post:hover {
+    transform: translateY(-3px);
+}
+
+body.site-home-page .calendar-day .calendar-tooltip {
+    display: none !important;
+}
+
+body.site-home-page .search-result-item {
+    display: grid;
+    gap: 0.45rem;
+    padding: 1rem 1.05rem;
+}
+
+body.site-home-page .search-result-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.08rem;
+    line-height: 1.35;
+}
+
+body.site-home-page .search-result-desc {
+    font-size: 0.92rem;
+    line-height: 1.66;
+    color: rgba(239, 226, 201, 0.7);
+}
+
+body.site-home-page .search-result-keywords {
+    margin-top: 0.2rem;
+}
+
+@media (max-width: 980px) {
+    body.post-page .article-meta-bar,
+    body.post-page .article-meta-bar.article-meta-bar-compact {
+        margin-top: 0.75rem;
+        margin-bottom: 2.5rem;
+    }
+
+    body.site-home-page .calendar-day {
+        min-height: 170px;
+    }
+
+    body.site-home-page .calendar-entry-desc {
+        -webkit-line-clamp: 3;
+    }
+}
+
+@media (max-width: 720px) {
+    body.post-page .article-meta-bar,
+    body.post-page .article-meta-bar.article-meta-bar-compact {
+        margin-top: 0.5rem;
+        margin-bottom: 2.1rem;
+    }
+
+    body.post-page .hero-action-row,
+    body.options-course-page .hero-action-row,
+    body.site-home-page .hero-action-row {
+        gap: 0.65rem;
+    }
+
+    body.post-page .hero-action-link,
+    body.options-course-page .hero-action-link,
+    body.site-home-page .hero-action-link {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    body.site-home-page .calendar-grid {
+        gap: 0.55rem;
+    }
+
+    body.site-home-page .calendar-day {
+        min-height: 152px;
+        padding: 0.8rem;
+    }
+
+    body.site-home-page .calendar-entry-title {
+        font-size: 0.92rem;
+        -webkit-line-clamp: 2;
+    }
+
+    body.site-home-page .calendar-entry-desc {
+        font-size: 0.82rem;
+        line-height: 1.52;
+        -webkit-line-clamp: 3;
+    }
+
+    body.post-page .stock-meta-item,
+    body.post-page .framework-step-card,
+    body.post-page .highlight-box,
+    body.post-page .analysis-box,
+    body.post-page .five-plus-card,
+    body.post-page .wisdom-rules,
+    body.post-page .wisdom-case,
+    body.options-course-page .course-grid-card,
+    body.options-course-page .course-toolkit-card,
+    body.options-course-page .course-intro-card,
+    body.options-course-page .course-note-card {
+        padding: 1.05rem 1rem;
     }
 }
 
