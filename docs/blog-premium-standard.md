@@ -111,6 +111,16 @@ If a post only updates what happened today but does not help the reader think be
 
 Every daily post must contain all 4 parts. No silent downgrade.
 
+### 1.0 Pre-push structure gate
+Before any blog page is pushed, do one explicit structure pass on the final HTML and confirm:
+- the 4 modules appear in the fixed order: Module 1 → Module 2 → Module 3 → Module 4
+- Module 1 still shows the full 5+2 backbone
+- Module 2 still carries one reusable takeaway sentence and a concrete judgment rule
+- Module 3 still writes holdings only and keeps source links whenever available
+- Module 4 still uses the decision-card / holding-map scaffold and includes 当前桶位 / 核心变量 / 不要误读 / 下一步 / 当前最重要的一件事
+
+If any of these regress, the page is not publish-ready.
+
 ### Module 1 — 今日宝藏标的
 - Must use the full **5+2** structure:
   1. 行业分析

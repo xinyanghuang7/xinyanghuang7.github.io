@@ -16084,6 +16084,28 @@ body.post-page .wisdom-card > .highlight-box.tip::before {
     display: none;
 }
 
+body.post-page .wisdom-card.wisdom-card-single {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+}
+
+body.post-page .wisdom-card.wisdom-card-single > .wisdom-content,
+body.post-page .wisdom-card.wisdom-card-single > .wisdom-story-grid,
+body.post-page .wisdom-card.wisdom-card-single > .highlight-box.tip,
+body.post-page .wisdom-card.wisdom-card-single > .analysis-box {
+    grid-column: 1;
+}
+
+body.post-page .wisdom-story-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.95rem;
+}
+
+body.post-page .wisdom-story-grid > * {
+    min-width: 0;
+}
+
 body.post-page .market-editorial-band {
     grid-template-columns: minmax(0, 1.78fr) minmax(235px, 0.86fr);
     gap: 0.95rem;
@@ -16302,7 +16324,8 @@ body.options-chapter-page .chapter-body-card > .payoff-chart-shell {
     body.site-home-page .research-grid,
     body.site-home-page .archive-editorial-band,
     body.options-chapter-page .chapter-summary-card-single .chapter-summary-rail,
-    body.post-page .news-node-grid {
+    body.post-page .news-node-grid,
+    body.post-page .wisdom-story-grid {
         grid-template-columns: 1fr;
     }
 
