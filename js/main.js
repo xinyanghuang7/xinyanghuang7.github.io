@@ -342,7 +342,7 @@ function showBuildRefreshNotice(remoteBuild) {
 
     const button = document.createElement('button');
     button.type = 'button';
-    button.textContent = '刷新到最新版本';
+    button.textContent = '刷新到最新版';
     button.style.cssText = [
         'margin-top:10px',
         'padding:8px 12px',
@@ -739,7 +739,42 @@ function initComfortInteractions() {
     });
 }
 
+function ensureVelvetLoader() {
+    if (!document.body || document.querySelector('.site-loader')) {
+        return;
+    }
+
+    const loader = document.createElement('div');
+    loader.className = 'site-loader';
+    loader.setAttribute('aria-hidden', 'true');
+    loader.innerHTML = `
+        <div class="site-loader__inner">
+            <div class="site-loader__eyebrow">ValueInvest After Hours</div>
+            <div class="site-loader__title">Velvet Research</div>
+            <div class="site-loader__line"></div>
+        </div>
+    `;
+
+    document.body.prepend(loader);
+}
+
+function completeVelvetLoader() {
+    if (!document.body) {
+        return;
+    }
+
+    document.body.classList.add('velvet-loaded');
+
+    window.setTimeout(() => {
+        const loader = document.querySelector('.site-loader');
+        if (loader) {
+            loader.remove();
+        }
+    }, 900);
+}
+
 function initPage() {
+    ensureVelvetLoader();
     decorateSectionsForReveal();
     syncStickyOffsets();
     initScrollReveal();
@@ -763,9 +798,12 @@ function initPage() {
     if (document.fonts?.ready) {
         document.fonts.ready.then(() => {
             window.requestAnimationFrame(syncStickyOffsets);
+            completeVelvetLoader();
         }).catch(() => {
-            // ignore font readiness failures
+            completeVelvetLoader();
         });
+    } else {
+        completeVelvetLoader();
     }
 
     // Restore reading position after DOM ready
@@ -778,6 +816,7 @@ window.addEventListener('resize', debounce(syncStickyOffsets, 80));
 window.addEventListener('load', () => {
     syncStickyOffsets();
     document.body.style.opacity = '1';
+    completeVelvetLoader();
 });
 
 // Console greeting
@@ -1092,6 +1131,7 @@ function initSearch() {
         }
     }, 120));
 }
+
 
 
 

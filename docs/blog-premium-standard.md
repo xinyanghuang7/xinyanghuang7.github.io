@@ -2,40 +2,41 @@
 
 Single source of truth for the public blog / options-course output standard.
 
-Last updated: 2026-04-21
+Last updated: 2026-04-24
 Public domain: `https://4fire.qzz.io/`
 
-## 0.0419 style freeze
+## 0.0424 velvet-note style freeze
 
-## 0.0421 editorial-material refinement
+The public site has now moved from the earlier 0419/0420 premium closure into a stricter **Velvet Note** finish layer.
 
-The next refinement layer is not “more decoration”. It is a more intentional **editorial-material** direction inspired by high-finish frontend references:
-- stronger hero silhouette and first-screen identity
-- clearer visual motif / texture / atmosphere
-- calmer but more dimensional material cards
-- richer navigation hover / CTA affordance
-- options chapters should feel like premium lesson pages, not template exports
+This is a style-system upgrade, **not** a content-system rewrite.
+The following must stay unchanged unless the user explicitly asks otherwise:
+- homepage information architecture
+- the frozen daily blog 4-module contract
+- the 5+2 depth requirement inside Module 1
+- the existing investing-system / blog / options-course / knowledge-routing relationship
+- the teaching-first writing rhythm already established by 0419 / 0423 quality passes
 
-Hard rule: learn from strong references, but do **not** mechanically clone them. Absorb the quality of hierarchy, materials, spacing, and interaction details while keeping the site’s own investment / teaching tone.
+What changes at 0424 is the surface language:
+- matte-black stage-like background
+- shallow ivory / parchment reading accents
+- gold hierarchy accents
+- burgundy interaction states
+- sharper, calmer geometry with **far fewer rounded rectangles**
+- more immersive hero treatment, richer texture/grain, and stronger first-screen identity
+- premium lesson-page feel for options chapters while keeping the same knowledge standard
 
-The current **0419/0420 premium visual language** is now the default public-site standard, not a one-off rescue.
+Hard rule: learn from strong references, but do **not** mechanically clone them. Absorb hierarchy, atmosphere, materials, motion, and spacing quality while keeping the site’s own investment / teaching tone.
 
-That means future blog posts, homepage surfaces, and options-course chapters should inherit the same closure principles:
+The current default public-site style should now inherit these closure principles:
 - calm, spacious reading geometry
-- fewer but larger and more stable rounded surfaces
-- obvious spacing between rounded rectangles / cards
-- heading width and正文 width behaving like one reading system
-- quick-nav / tabs simplified when crowded instead of being forced into overlap
+- fewer, larger, flatter / sharper surfaces instead of nested rounded cards
+- strong title/body hierarchy
+- obvious section rhythm and edge spacing
+- interaction polish without gimmick overload
 - the page should feel like it is teaching one coherent idea, not dumping many tiny fragments
 
-Use the current 0419 article style as the baseline for:
-- card density
-- title/body proportion
-- section pacing
-- visual calmness
-- “useful knowledge first” writing rhythm
-
-Do not regress into dense patchwork layouts, over-nested rounded rectangles, or short empty filler lines that look like content without carrying real thought.
+Do not regress into dense patchwork layouts, over-nested rounded rectangles, decorative card spam, or stylish-but-empty filler lines.
 
 ## 0. Shared workflow / shared product rule
 
@@ -268,7 +269,7 @@ If there is tension between "more features" and "more reliable quality", choose 
   - strong Module 3 explanation sequencing
   - polished Module 4 card quality
 - The long-term target is: **one simple publish command should be enough to generate a near-finished premium post**.
-- The default template should already ship the 0419 quick-nav + article-meta-bar + premium Module 4 decision-card scaffold, so future posts start from the premium baseline instead of rebuilding closure manually.
+- The default template should already ship the premium quick-nav / article-meta-bar / Module 4 decision-card scaffold, but under the 0424 style freeze that scaffold must render in the new sharper cinematic visual system instead of the older softer rounded-card language.
 - To get there, the upstream stack must already be wired before drafting:
   1. investing-system state refreshed
   2. Module 3 ranking inherited from `real-time-thesis-monitor`
