@@ -135,39 +135,38 @@ If any of these regress, the page is not publish-ready.
 - Must be detailed, not a thin 3-bullets summary.
 - Must respect dedup / revisit rules.
 
-### Module 2 — 真实可带走的小故事
-- Must be a **real, evidence-based, reusable** lesson.
-- Must leave the reader with **one clear takeaway sentence**.
-- Must help the reader understand **how to think**, not just what happened.
-- Should preferably make one judgment move explicit: what to look at first, what not to overread, and where the boundary is.
-- No fake fable, empty slogan, or generic AI moralizing.
+### Module 2 — 一句话硬核投资实战干货
+- 必须是**真实、可核对、有事实依据**的投资经验 / 实战技能；禁止鸡汤、泛谈、伪故事。
+- 核心内容必须先压缩成**一句可直接落地的结论**。
+- 核心句后只允许补**极简依据说明**，默认不超过 2 段短说明，用来证明为什么这句话成立。
+- 目标不是讲一个好听故事，而是让读者一眼拿走一个可执行判断规则。
+- 如果 Module 2 还能被拉长成大段散文，说明还没收紧到位。
 
-### Module 3 — 新闻内容 + 专属解读
-- Must use the split structure:
-  - **Latest News**
-  - **What It Means**
-- Ranking rule:
-  1. **price-explanation power / action relevance first**
-  2. then **latest genuinely relevant** item(s)
-  3. then older but higher-signal driver(s) when they better explain the current move or current action boundary
-  4. explicitly explain exceptions when a slightly older item matters more
-- Every news item must include:
-  - source
-  - concrete fact / event
-  - why it matters
-  - detailed interpretation
-- Default workflow is: **`real-time-thesis-monitor` for latest-vs-important ranking → official / high-quality sources for evidence hardening → blog expression**.
-- Do **not** default to Tavily or a raw news search as the first ranking layer.
+### Module 3 — 持仓标的当日最新新闻 & 深度解读
+- 严格只写**用户真实持仓标的**，不要混入非持仓名字。
+- 每个持仓默认筛选 **3 条最重要的当日 / 近窗最新权威信息**，优先级是：
+  1. 官方公告 / 公司 newsroom / SEC / 监管 / 财报原文
+  2. 行业高权威数据或合作方官方原文
+  3. 只有在前两类不足时，才用高质量二手来源补强
+- 每条新闻必须同时包含：
+  - **新闻核心原文信息**
+  - **权威发布来源**
+  - **精准发布时间**
+  - **对持仓的影响解读**（利好/利空/中性、影响量级、短期/长期逻辑、对操作的参考价值）
+- 禁止用“窗口备注 / 组合角色 / 我自己的总结句”冒充新闻条目。
+- 默认工作流仍是：`real-time-thesis-monitor` 排最新与最重要顺序 → 官方 / 高质量来源加固证据 → 博客表达。
 - Never ship Module 3 as a vague news roundup.
 
-### Module 4 — 持仓地图 / 动作地图
-- Must remain compatible with the site's decision-card / holding-map standard.
-- Must state:
-  - 当前桶位
-  - 核心变量
-  - 不要误读
-  - 下一步
-  - 当前最重要的一件事
+### Module 4 — 持仓动作卡片 + 当日最高优先级事项
+- 必须保持卡片化表达，但字段改为更明确的动作语言。
+- 每张卡片至少要有：
+  - **持仓标的**
+  - **当日持仓状态**
+  - **建议操作动作**
+  - **动作执行阈值**
+  - **风控止损 / 止盈线**
+- 如果缺乏可靠价格/成交量阈值，必须明确写成**经营 / 事件触发阈值**，不能用空泛词代替。
+- 卡片下方必须单列 **当日最高优先级事项**，默认 1-3 条，按优先级排序。
 - Should reuse existing rating / target-price / public-evidence query paths whenever available.
 - Must stay clearly separated from non-holdings unless explicitly labeled.
 
