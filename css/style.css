@@ -18873,3 +18873,453 @@ body.options-chapter-page .chapter-reading-points {
         letter-spacing: -0.018em !important;
     }
 }
+
+/* ===== 2026-04-24 round5 targeted QA fixes: search/nav/cards/options ===== */
+:root {
+    --vi-card-radius-lg: 30px;
+    --vi-card-radius-md: 24px;
+}
+
+/* Search: keep the panel visible, readable, and above the archive/calendar stack. */
+body.site-home-page .search-container {
+    position: relative !important;
+    z-index: 80 !important;
+    overflow: visible !important;
+}
+
+body.site-home-page .search-results {
+    display: block;
+    position: absolute !important;
+    top: calc(100% + 0.7rem) !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 999 !important;
+    max-height: min(31rem, 64vh) !important;
+    overflow-y: auto !important;
+    padding: 0.6rem !important;
+    border-radius: 24px !important;
+    border: 1px solid rgba(124, 89, 45, 0.18) !important;
+    background: linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(246, 236, 222, 0.98)) !important;
+    box-shadow: 0 24px 70px rgba(88, 62, 35, 0.18), 0 8px 24px rgba(88, 62, 35, 0.10) !important;
+    color: var(--vi-ink, #2a2118) !important;
+}
+
+body.site-home-page .search-results[hidden] {
+    display: none !important;
+}
+
+body.site-home-page .search-result-item,
+body.site-home-page .search-no-results {
+    color: var(--vi-ink, #2a2118) !important;
+    background: rgba(255, 255, 255, 0.58) !important;
+    border: 1px solid rgba(124, 89, 45, 0.11) !important;
+    border-radius: 18px !important;
+    margin: 0 0 0.5rem !important;
+    box-shadow: none !important;
+}
+
+body.site-home-page .search-result-item:hover,
+body.site-home-page .search-result-item:focus-visible,
+body.site-home-page .search-result-item.is-active,
+body.site-home-page .search-result-item.active {
+    background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(244,235,221,0.92)) !important;
+    border-color: rgba(138, 83, 41, 0.26) !important;
+}
+
+body.site-home-page .search-result-title {
+    color: var(--vi-ink, #2a2118) !important;
+    font-family: var(--font-display) !important;
+    font-size: 1.08rem !important;
+    line-height: 1.42 !important;
+}
+
+body.site-home-page .search-result-desc,
+body.site-home-page .search-result-date {
+    color: var(--vi-ink-soft, #695844) !important;
+}
+
+/* Home research cards: no clipped headline, no artificial narrow column inside the rounded card. */
+body.site-home-page .research-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    align-items: stretch !important;
+}
+
+body.site-home-page .research-card {
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: 0 !important;
+    min-height: 100% !important;
+    padding: clamp(1.25rem, 2vw, 1.55rem) !important;
+    overflow: visible !important;
+}
+
+body.site-home-page .research-card h3,
+body.site-home-page .research-card p,
+body.site-home-page .research-card .course-card-kicker {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: normal !important;
+}
+
+body.site-home-page .research-card h3 {
+    display: block !important;
+    font-size: clamp(1.25rem, 1.8vw, 1.54rem) !important;
+    line-height: 1.34 !important;
+    letter-spacing: 0.01em !important;
+    text-wrap: pretty !important;
+}
+
+body.site-home-page .research-card p {
+    margin-top: 0.7rem !important;
+    line-height: 1.82 !important;
+}
+
+/* Calendar: remove the faint square plate inside the rounded paper surface. */
+body.site-home-page .calendar-section,
+body.site-home-page .calendar-container,
+body.site-home-page .calendar-shell {
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: var(--vi-card-radius-lg) !important;
+    background: linear-gradient(180deg, rgba(255,252,246,0.92), rgba(243,232,217,0.88)) !important;
+}
+
+body.site-home-page .calendar-section::before,
+body.site-home-page .calendar-section::after,
+body.site-home-page .calendar-container::before,
+body.site-home-page .calendar-container::after,
+body.site-home-page .calendar-shell::before,
+body.site-home-page .calendar-shell::after {
+    display: none !important;
+}
+
+body.site-home-page .calendar-grid,
+body.site-home-page .calendar-weekdays {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Article module cards: keep badges readable, titles consistent, and card internals full-width. */
+body.post-page .five-plus-card,
+body.post-page .analysis-box,
+body.post-page .wisdom-card,
+body.post-page .stock-detail-card,
+body.post-page .news-node-card {
+    overflow: visible !important;
+    border-radius: var(--vi-card-radius-md) !important;
+}
+
+body.post-page .five-plus-card h3,
+body.post-page .analysis-title,
+body.post-page .wisdom-title,
+body.post-page .stock-detail-name,
+body.post-page .news-node-card h4,
+body.post-page .news-node-card h5,
+body.post-page .market-editorial-band h3 {
+    max-width: none !important;
+    width: 100% !important;
+    overflow: visible !important;
+    white-space: normal !important;
+    text-overflow: clip !important;
+    text-wrap: pretty !important;
+    color: var(--vi-ink, #2a2118) !important;
+}
+
+body.post-page .five-plus-kicker,
+body.post-page .news-node-kicker,
+body.post-page .stock-detail-ticker,
+body.post-page .wisdom-theme {
+    display: inline-flex !important;
+    width: fit-content !important;
+    max-width: 100% !important;
+    align-items: center !important;
+    border-radius: 999px !important;
+    white-space: normal !important;
+}
+
+body.post-page .five-plus-kicker,
+body.post-page .news-node-kicker {
+    font-size: 0.78rem !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.08em !important;
+    padding: 0.42rem 0.68rem !important;
+    background: rgba(126, 82, 39, 0.10) !important;
+    color: var(--vi-accent-deep, #7f4f24) !important;
+}
+
+body.post-page .stock-detail-ticker {
+    font-size: clamp(0.92rem, 1.15vw, 1.05rem) !important;
+    line-height: 1 !important;
+    letter-spacing: 0.10em !important;
+    padding: 0.5rem 0.72rem !important;
+}
+
+body.post-page .stock-detail-name {
+    margin-top: 0.7rem !important;
+    font-family: var(--font-display) !important;
+    font-size: clamp(1.28rem, 1.65vw, 1.58rem) !important;
+    line-height: 1.38 !important;
+}
+
+body.post-page .wisdom-theme {
+    font-size: clamp(0.95rem, 1.15vw, 1.08rem) !important;
+    line-height: 1.58 !important;
+    padding: 0.58rem 0.86rem !important;
+    letter-spacing: 0.04em !important;
+}
+
+body.post-page .wisdom-title {
+    font-size: clamp(1.55rem, 2.25vw, 2.05rem) !important;
+    line-height: 1.42 !important;
+}
+
+body.post-page .market-editorial-band {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.9rem !important;
+}
+
+body.post-page .market-editorial-band .editorial-band-main,
+body.post-page .market-editorial-band .editorial-band-side {
+    min-width: 0 !important;
+    width: 100% !important;
+}
+
+body.post-page .market-editorial-band .editorial-band-side {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+body.post-page .market-editorial-band h3 {
+    font-family: var(--font-display) !important;
+    font-size: clamp(1.5rem, 2.1vw, 1.95rem) !important;
+    line-height: 1.34 !important;
+}
+
+body.post-page .news-node-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr)) !important;
+}
+
+body.post-page .news-node-card h4,
+body.post-page .news-node-card h5 {
+    font-family: var(--font-display) !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.01em !important;
+}
+
+body.post-page .news-node-card h4 {
+    font-size: clamp(1.15rem, 1.42vw, 1.34rem) !important;
+    line-height: 1.42 !important;
+}
+
+body.post-page .news-node-card h5 {
+    font-size: clamp(1.02rem, 1.18vw, 1.15rem) !important;
+    line-height: 1.48 !important;
+}
+
+body.post-page .news-node-card p {
+    font-size: 0.98rem !important;
+    line-height: 1.86 !important;
+}
+
+/* Course homepage: remove stacked-card feeling, keep long headings on one calm line where space allows. */
+body.options-course-page .course-overview-layout,
+body.options-course-page .course-summary-grid,
+body.options-course-page .course-toolkit-grid,
+body.options-course-page .learning-path-grid {
+    align-items: stretch !important;
+}
+
+body.options-course-page .course-intro-card,
+body.options-course-page .course-note-card,
+body.options-course-page .course-grid-card,
+body.options-course-page .course-toolkit-card,
+body.options-course-page .learning-path-card,
+body.options-course-page .course-filter-panel,
+body.options-course-page .course-directory-intro {
+    border-radius: var(--vi-card-radius-md) !important;
+    overflow: visible !important;
+}
+
+body.options-course-page .course-overview-layout {
+    grid-template-columns: minmax(0, 1.24fr) minmax(330px, 0.76fr) !important;
+    gap: clamp(1rem, 2vw, 1.35rem) !important;
+}
+
+body.options-course-page .course-summary-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 0.9rem !important;
+}
+
+body.options-course-page .course-toolkit-grid,
+body.options-course-page #system-linkage .learning-path-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+body.options-course-page .course-toolkit-card h3,
+body.options-course-page .course-grid-card h3,
+body.options-course-page .course-card-title,
+body.options-course-page .course-filter-panel h3 {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+    white-space: normal !important;
+    text-overflow: clip !important;
+    text-wrap: pretty !important;
+    font-size: clamp(1.16rem, 1.55vw, 1.42rem) !important;
+    line-height: 1.34 !important;
+}
+
+body.options-course-page .course-toolkit-card:nth-child(3) h3,
+body.options-course-page #system-linkage .course-grid-card h3 {
+    white-space: nowrap !important;
+    font-size: clamp(1.02rem, 1.28vw, 1.28rem) !important;
+    letter-spacing: 0 !important;
+}
+
+/* Chapter pages: direct hash navigation must never leave a section invisible/black. */
+body.options-chapter-page .section,
+body.options-chapter-page .chapter-body-card,
+body.options-chapter-page .chapter-body-card > * {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+body.options-chapter-page .chapter-body-card {
+    color: var(--vi-ink, #2a2118) !important;
+    background: linear-gradient(180deg, rgba(255,252,246,0.98), rgba(246,237,224,0.98)) !important;
+}
+
+body.options-chapter-page .chapter-body-card h1,
+body.options-chapter-page .chapter-body-card h2,
+body.options-chapter-page .chapter-body-card h3,
+body.options-chapter-page .chapter-body-card h4,
+body.options-chapter-page .chapter-body-card p,
+body.options-chapter-page .chapter-body-card li,
+body.options-chapter-page .chapter-body-card td,
+body.options-chapter-page .chapter-body-card th {
+    color: var(--vi-ink, #2a2118) !important;
+}
+
+@media (max-width: 980px) {
+    body.site-home-page .research-grid,
+    body.options-course-page .course-toolkit-grid,
+    body.options-course-page #system-linkage .learning-path-grid,
+    body.options-course-page .course-summary-grid,
+    body.post-page .market-editorial-band .editorial-band-side {
+        grid-template-columns: 1fr !important;
+    }
+
+    body.options-course-page .course-overview-layout {
+        grid-template-columns: 1fr !important;
+    }
+
+    body.options-course-page .course-toolkit-card:nth-child(3) h3,
+    body.options-course-page #system-linkage .course-grid-card h3 {
+        white-space: normal !important;
+    }
+}
+
+/* ===== 2026-04-24 round5b visibility and news density fixes ===== */
+body.site-home-page .section,
+body.post-page .section,
+body.options-course-page .section,
+body.options-chapter-page .section {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+}
+
+body.site-home-page .section *,
+body.post-page .section *,
+body.options-course-page .section *,
+body.options-chapter-page .section * {
+    visibility: visible !important;
+}
+
+body.post-page .section-title,
+body.post-page .section-subtitle,
+body.post-page .section-date,
+body.post-page .wisdom-card,
+body.post-page .wisdom-card p,
+body.post-page .market-editorial-band,
+body.post-page .market-editorial-band p,
+body.post-page .stock-detail-card,
+body.post-page .stock-detail-card p,
+body.post-page .news-node-card,
+body.post-page .news-node-card p {
+    opacity: 1 !important;
+}
+
+body.post-page .section-title {
+    color: var(--vi-ink, #2a2118) !important;
+}
+
+body.post-page .section-subtitle,
+body.post-page .section-date {
+    color: var(--vi-ink-soft, #695844) !important;
+}
+
+body.post-page .market-grid-comfort {
+    display: grid !important;
+    grid-template-columns: minmax(0, 0.52fr) minmax(0, 1fr) !important;
+    gap: clamp(1rem, 2vw, 1.35rem) !important;
+    align-items: start !important;
+}
+
+body.post-page .market-grid-comfort .section-media-frame {
+    position: sticky !important;
+    top: calc(var(--oc-header-height, 88px) + 1rem) !important;
+    align-self: start !important;
+    margin: 0 !important;
+}
+
+body.post-page .market-grid-comfort .section-cover-image {
+    max-height: 520px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+}
+
+body.post-page .market-grid-comfort .market-editorial-band,
+body.post-page .market-grid-comfort .stock-detail-card {
+    grid-column: 2 !important;
+}
+
+body.post-page .market-grid-comfort .section-media-frame {
+    grid-column: 1 !important;
+    grid-row: 1 / span 3 !important;
+}
+
+body.post-page .news-evidence-card {
+    padding: clamp(1.15rem, 2vw, 1.45rem) !important;
+}
+
+body.post-page .news-node-card {
+    padding: 1.15rem 1.18rem 1.2rem !important;
+}
+
+@media (max-width: 980px) {
+    body.post-page .market-grid-comfort {
+        grid-template-columns: 1fr !important;
+    }
+
+    body.post-page .market-grid-comfort .section-media-frame,
+    body.post-page .market-grid-comfort .market-editorial-band,
+    body.post-page .market-grid-comfort .stock-detail-card {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+    }
+
+    body.post-page .market-grid-comfort .section-media-frame {
+        position: relative !important;
+        top: auto !important;
+    }
+
+    body.post-page .market-grid-comfort .section-cover-image {
+        max-height: 420px !important;
+    }
+}

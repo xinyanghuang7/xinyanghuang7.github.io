@@ -134,6 +134,9 @@ function scrollToAnchorTarget(target, { behavior = 'smooth', updateHash = true }
         return;
     }
 
+    target.classList.add('visible');
+    target.querySelectorAll('.fade-child').forEach((child) => child.classList.add('visible'));
+
     const elementPosition = target.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - getAnchorScrollOffset(target);
 
@@ -163,6 +166,8 @@ function initSmoothScroll() {
     if (window.location.hash) {
         const initialTarget = document.querySelector(window.location.hash);
         if (initialTarget) {
+            initialTarget.classList.add('visible');
+            initialTarget.querySelectorAll('.fade-child').forEach((child) => child.classList.add('visible'));
             window.requestAnimationFrame(() => {
                 window.requestAnimationFrame(() => {
                     scrollToAnchorTarget(initialTarget, { behavior: 'auto', updateHash: false });
@@ -830,6 +835,10 @@ console.log('%c Long-term Thinking, High-contrast Design ', 'color: #888; font-s
 // Article database (auto-generated from posts/**/*.html via js/posts-data.js)
 const articles = Array.isArray(window.__POSTS__) ? window.__POSTS__ : [];
 
+function getArticleData() {
+    return Array.isArray(window.__POSTS__) ? window.__POSTS__ : articles;
+}
+
 function normalizeSearchText(value) {
     return String(value || '')
         .toLowerCase()
@@ -852,7 +861,7 @@ function buildArticleSearchFields(article) {
         `${year}-${numericMonth}-${numericDay}`,
         `${year}/${numericMonth}/${numericDay}`,
         `${year}年${numericMonth}月${numericDay}日`,
-        ...article.keywords
+        ...(Array.isArray(article.keywords) ? article.keywords : [])
     ].map(normalizeSearchText);
 }
 
@@ -864,7 +873,7 @@ function searchArticles(query) {
         return [];
     }
 
-    return articles.filter(article => {
+    return getArticleData().filter(article => {
         const searchableFields = buildArticleSearchFields(article);
         return searchableFields.some(field => field.includes(normalizedQuery));
     });
@@ -951,7 +960,7 @@ function initSearch() {
     let isComposing = false;
 
     if (searchLibraryCount) {
-        searchLibraryCount.textContent = String(articles.length);
+        searchLibraryCount.textContent = String(getArticleData().length);
     }
 
     const setSearchOpenState = (isOpen) => {
