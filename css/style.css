@@ -18414,3 +18414,375 @@ html::before {
     z-index: 2147483647 !important;
     pointer-events: none !important;
 }
+
+
+/* ============================================
+   2026-04-24 paper recovery pass v8: spacing, post cards, options grids
+   ============================================ */
+
+:root {
+    --paper-sage-final: #7d8a68;
+    --paper-clay-final: #b0704d;
+    --paper-rose-final: #b86a73;
+    --paper-sand-panel: rgba(255, 250, 241, 0.96);
+    --paper-cream-panel: rgba(255, 253, 248, 0.98);
+}
+
+body.site-home-page .hero,
+body.options-course-page .hero {
+    min-height: clamp(660px, 78vh, 850px) !important;
+    margin-bottom: clamp(1.35rem, 2.4vw, 2.35rem) !important;
+    padding-bottom: clamp(2.2rem, 4vw, 3.35rem) !important;
+}
+
+body.site-home-page main,
+body.options-course-page main.course-shell {
+    padding-top: clamp(0.8rem, 1.6vw, 1.45rem) !important;
+}
+
+body.site-home-page .scroll-indicator,
+body.options-course-page .scroll-indicator {
+    position: relative !important;
+    z-index: 3 !important;
+    margin-top: 1rem !important;
+    margin-bottom: 1.3rem !important;
+    transform: none !important;
+}
+
+body.site-home-page .section:first-of-type,
+body.options-course-page .course-shell > .section:first-child {
+    margin-top: clamp(0.6rem, 1.5vw, 1.2rem) !important;
+}
+
+body.site-home-page #about {
+    padding-top: clamp(3rem, 4.8vw, 4.2rem) !important;
+}
+
+body.site-home-page .hero + main .section:first-child,
+body.options-course-page .hero + main .section:first-child {
+    border-top: 1px solid rgba(112, 78, 42, 0.08) !important;
+}
+
+/* Post quick metadata: three soft rounded chips, not one chopped rectangle */
+body.post-page .article-meta-bar,
+body.post-page .article-meta-bar.article-meta-bar-compact {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 0.85rem !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    max-width: min(1120px, calc(100% - 2rem)) !important;
+    margin-top: 1.05rem !important;
+    margin-bottom: 1.7rem !important;
+}
+
+body.post-page .article-meta-chip,
+body.post-page .article-meta-chip-accent {
+    border: 1px solid rgba(112, 78, 42, 0.15) !important;
+    border-right: 1px solid rgba(112, 78, 42, 0.15) !important;
+    border-radius: 22px !important;
+    background:
+        linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(249, 239, 225, 0.92)) !important;
+    color: var(--paper-ink-final) !important;
+    box-shadow: 0 14px 34px rgba(85, 56, 27, 0.075) !important;
+    padding: 0.95rem 1rem !important;
+    min-height: auto !important;
+    line-height: 1.55 !important;
+}
+
+body.post-page .article-meta-chip-accent {
+    background:
+        linear-gradient(135deg, rgba(124, 36, 52, 0.12), rgba(255, 249, 239, 0.98)) !important;
+    color: var(--paper-burgundy-final) !important;
+    border-color: rgba(124, 36, 52, 0.20) !important;
+}
+
+/* Remove accidental right-side voids inside long post cards */
+body.post-page .analysis-box p,
+body.post-page .analysis-box li,
+body.post-page .five-plus-card p,
+body.post-page .five-plus-card li,
+body.post-page .wisdom-card p,
+body.post-page .wisdom-card li,
+body.post-page .wisdom-content,
+body.post-page .stock-detail-card p,
+body.post-page .stock-detail-card li,
+body.post-page .news-node-card p,
+body.post-page .news-node-card li,
+body.post-page .tracking-card p,
+body.post-page .tracking-card li,
+body.post-page .highlight-box p,
+body.post-page .highlight-box li {
+    max-width: min(98ch, 100%) !important;
+    width: 100% !important;
+}
+
+body.post-page .five-plus-card.is-risk,
+body.post-page .wisdom-card.wisdom-card-single,
+body.post-page .market-editorial-band,
+body.post-page .news-node-card,
+body.post-page .tracking-framework {
+    background:
+        radial-gradient(circle at 10% 0%, rgba(184, 106, 115, 0.10), transparent 34%),
+        linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(250, 240, 228, 0.94)) !important;
+}
+
+body.post-page .five-plus-card.is-risk h3,
+body.post-page .wisdom-card.wisdom-card-single .wisdom-title,
+body.post-page .analysis-title {
+    max-width: none !important;
+}
+
+body.post-page .wisdom-card.wisdom-card-single {
+    gap: 0.95rem !important;
+}
+
+body.post-page .wisdom-card.wisdom-card-single .wisdom-theme {
+    color: var(--paper-clay-final) !important;
+}
+
+/* News module: softer explanation band, no square/straight-bottom blocks */
+body.post-page .market-editorial-band {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 1rem !important;
+    padding: clamp(1.1rem, 2vw, 1.55rem) !important;
+    border-radius: 30px !important;
+    border-color: rgba(124, 36, 52, 0.16) !important;
+}
+
+body.post-page .market-editorial-band .editorial-band-main,
+body.post-page .market-editorial-band .editorial-band-side {
+    max-width: none !important;
+    width: 100% !important;
+}
+
+body.post-page .market-editorial-band .editorial-band-side {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.85rem !important;
+}
+
+body.post-page .market-editorial-band .editorial-band-item {
+    border-radius: 22px !important;
+    padding: 0.95rem 1rem !important;
+    border: 1px solid rgba(112, 78, 42, 0.13) !important;
+    background: rgba(255, 249, 239, 0.82) !important;
+    box-shadow: none !important;
+    min-height: 0 !important;
+}
+
+body.post-page .market-editorial-band .editorial-band-item:nth-child(1) {
+    background: rgba(157, 113, 55, 0.12) !important;
+}
+
+body.post-page .market-editorial-band .editorial-band-item:nth-child(2) {
+    background: rgba(124, 36, 52, 0.10) !important;
+}
+
+body.post-page .market-editorial-band h3 {
+    font-size: clamp(1.55rem, 2.4vw, 2.18rem) !important;
+    line-height: 1.28 !important;
+}
+
+body.post-page .stock-detail-name {
+    font-size: clamp(2rem, 4vw, 3.35rem) !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.02em !important;
+}
+
+body.post-page .stock-detail-ticker,
+body.post-page .news-source-tag,
+body.post-page .news-date-tag {
+    font-size: 0.88rem !important;
+    letter-spacing: 0.12em !important;
+}
+
+body.post-page .news-node-card {
+    border-radius: 28px !important;
+    border-color: rgba(112, 78, 42, 0.16) !important;
+}
+
+body.post-page .news-node-card:nth-child(3n + 1) {
+    background:
+        radial-gradient(circle at 0% 0%, rgba(157, 113, 55, 0.12), transparent 36%),
+        var(--paper-cream-panel) !important;
+}
+
+body.post-page .news-node-card:nth-child(3n + 2) {
+    background:
+        radial-gradient(circle at 100% 0%, rgba(125, 138, 104, 0.13), transparent 36%),
+        var(--paper-cream-panel) !important;
+}
+
+body.post-page .news-node-card:nth-child(3n) {
+    background:
+        radial-gradient(circle at 0% 100%, rgba(184, 106, 115, 0.10), transparent 36%),
+        var(--paper-cream-panel) !important;
+}
+
+body.post-page .news-node-fact,
+body.post-page .news-node-view {
+    border-radius: 22px !important;
+    background: rgba(255, 249, 239, 0.74) !important;
+}
+
+/* Options course: make sections use the canvas instead of narrow islands */
+body.options-course-page .course-shell {
+    width: min(1240px, calc(100% - 3rem)) !important;
+    max-width: 1240px !important;
+}
+
+body.options-course-page .course-overview-layout,
+body.options-course-page .course-summary-grid,
+body.options-course-page .course-toolkit-grid,
+body.options-course-page #system-linkage .learning-path-grid,
+body.options-course-page #learning-paths .learning-path-grid,
+body.options-course-page .chapter-directory-grid,
+body.options-course-page .course-editorial-band {
+    width: 100% !important;
+    max-width: min(1120px, 100%) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+body.options-course-page .course-overview-layout {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr) !important;
+    gap: 1rem !important;
+}
+
+body.options-course-page .course-summary-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+body.options-course-page .course-toolkit-grid,
+body.options-course-page #system-linkage .learning-path-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 1rem !important;
+}
+
+body.options-course-page #learning-paths .learning-path-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 1rem !important;
+}
+
+body.options-course-page .course-grid-card,
+body.options-course-page .course-toolkit-card,
+body.options-course-page .course-intro-card,
+body.options-course-page .course-note-card,
+body.options-course-page .course-editorial-band,
+body.options-course-page .course-filter-panel,
+body.options-course-page .course-directory-intro,
+body.options-course-page .course-directory-card {
+    border-radius: 28px !important;
+    border: 1px solid rgba(112, 78, 42, 0.16) !important;
+    background:
+        linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(249, 239, 225, 0.93)) !important;
+    box-shadow: 0 18px 44px rgba(85, 56, 27, 0.085) !important;
+    min-width: 0 !important;
+}
+
+body.options-course-page .course-grid-card:nth-child(3n + 1),
+body.options-course-page .course-toolkit-card:nth-child(3n + 1) {
+    background:
+        radial-gradient(circle at 12% 0%, rgba(157, 113, 55, 0.12), transparent 38%),
+        linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(249, 239, 225, 0.94)) !important;
+}
+
+body.options-course-page .course-grid-card:nth-child(3n + 2),
+body.options-course-page .course-toolkit-card:nth-child(3n + 2) {
+    background:
+        radial-gradient(circle at 88% 0%, rgba(125, 138, 104, 0.12), transparent 38%),
+        linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(248, 240, 229, 0.94)) !important;
+}
+
+body.options-course-page .course-grid-card:nth-child(3n),
+body.options-course-page .course-toolkit-card:nth-child(3n) {
+    background:
+        radial-gradient(circle at 12% 100%, rgba(184, 106, 115, 0.10), transparent 38%),
+        linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(250, 241, 229, 0.94)) !important;
+}
+
+body.options-course-page .course-editorial-band {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) !important;
+    gap: 1rem !important;
+    padding: clamp(1.1rem, 2vw, 1.5rem) !important;
+}
+
+body.options-course-page .course-editorial-band .editorial-band-side {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+}
+
+body.options-course-page .course-editorial-band .editorial-band-item {
+    border-radius: 20px !important;
+    background: rgba(255, 249, 239, 0.82) !important;
+    border: 1px solid rgba(112, 78, 42, 0.12) !important;
+    min-height: 0 !important;
+}
+
+@media (max-width: 980px) {
+    body.post-page .article-meta-bar,
+    body.post-page .article-meta-bar.article-meta-bar-compact,
+    body.options-course-page .course-overview-layout,
+    body.options-course-page .course-summary-grid,
+    body.options-course-page .course-toolkit-grid,
+    body.options-course-page #system-linkage .learning-path-grid,
+    body.options-course-page #learning-paths .learning-path-grid,
+    body.options-course-page .course-editorial-band {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+
+/* 2026-04-24 paper recovery pass v9: keep scroll cue out of hero buttons */
+body.site-home-page .hero-action-row,
+body.options-course-page .hero-action-row,
+body.post-page .hero-action-row {
+    margin-bottom: 1.15rem !important;
+}
+
+body.site-home-page .scroll-indicator,
+body.options-course-page .scroll-indicator,
+body.post-page .scroll-indicator {
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: fit-content !important;
+    margin: 0.25rem auto 0 !important;
+    clear: both !important;
+}
+
+body.site-home-page .scroll-indicator:hover,
+body.options-course-page .scroll-indicator:hover,
+body.post-page .scroll-indicator:hover {
+    transform: translateY(-2px) !important;
+}
+
+
+/* 2026-04-24 paper recovery pass v10: center scroll cue under hero */
+body.site-home-page .hero > .scroll-indicator,
+body.options-course-page .hero > .scroll-indicator,
+body.post-page .hero > .scroll-indicator {
+    align-self: center !important;
+}
+
+
+/* 2026-04-24 paper recovery pass v11: truly center scroll cue */
+body.site-home-page .hero > .scroll-indicator,
+body.options-course-page .hero > .scroll-indicator,
+body.post-page .hero > .scroll-indicator {
+    display: flex !important;
+}
