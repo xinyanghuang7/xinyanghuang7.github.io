@@ -18786,3 +18786,90 @@ body.options-course-page .hero > .scroll-indicator,
 body.post-page .hero > .scroll-indicator {
     display: flex !important;
 }
+
+
+/* 2026-04-24 paper recovery pass v12: final polish for mobile titles, meta chips and long stock names */
+body.post-page .article-meta-chip,
+body.post-page .article-meta-chip-accent {
+    font-size: clamp(0.86rem, 0.78rem + 0.16vw, 0.94rem) !important;
+    letter-spacing: 0.045em !important;
+    word-break: normal !important;
+    overflow-wrap: anywhere !important;
+}
+
+body.post-page .stock-detail-name {
+    font-size: clamp(1.72rem, 3.1vw, 2.76rem) !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.015em !important;
+}
+
+body.post-page .stock-detail-ticker {
+    font-size: 0.98rem !important;
+    letter-spacing: 0.16em !important;
+    color: var(--paper-clay-final) !important;
+}
+
+body.post-page .news-node-source,
+body.post-page .news-node-title,
+body.post-page .news-node-card h3 {
+    text-wrap: balance !important;
+}
+
+body.options-chapter-page .chapter-summary-card {
+    display: grid !important;
+    gap: 1.05rem !important;
+}
+
+body.options-chapter-page .chapter-summary-card > p {
+    max-width: min(78ch, 100%) !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+body.options-chapter-page .chapter-summary-card .chapter-reading-points,
+body.options-chapter-page .chapter-reading-points {
+    width: 100% !important;
+}
+
+@media (max-width: 760px) {
+    body.site-home-page .hero h1,
+    body.options-course-page .hero h1,
+    body.post-page .hero h1,
+    body.options-chapter-page .hero h1 {
+        max-width: 100% !important;
+        text-wrap: balance !important;
+    }
+
+    body.post-page .hero h1 {
+        font-size: clamp(3.2rem, 14.6vw, 4.35rem) !important;
+        line-height: 1.04 !important;
+    }
+
+    body.post-page .stock-detail-name {
+        font-size: clamp(1.72rem, 8.2vw, 2.45rem) !important;
+        line-height: 1.12 !important;
+    }
+
+    body.post-page .article-meta-bar,
+    body.post-page .article-meta-bar.article-meta-bar-compact {
+        grid-template-columns: 1fr !important;
+        gap: 0.65rem !important;
+        max-width: min(100%, calc(100% - 1.2rem)) !important;
+    }
+
+    body.options-course-page .course-shell,
+    body.options-chapter-page .chapter-shell {
+        width: min(100%, calc(100% - 0.75rem)) !important;
+    }
+}
+
+
+/* 2026-04-24 paper recovery pass v13: reduce mobile post hero title weight */
+@media (max-width: 760px) {
+    body.post-page .hero h1 {
+        font-size: clamp(2.55rem, 11.4vw, 3.35rem) !important;
+        line-height: 1.08 !important;
+        letter-spacing: -0.018em !important;
+    }
+}
