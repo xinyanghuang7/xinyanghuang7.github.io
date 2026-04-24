@@ -17342,3 +17342,1045 @@ body.options-chapter-page .chapter-nav-slot {
     box-shadow: 0 20px 48px rgba(82, 54, 24, 0.08);
 }
 
+
+
+/* ============================================
+   2026-04-24 paper recovery pass v2: remove dark-theme residue across public pages
+   ============================================ */
+
+:root {
+    --paper-bg-final: #f4eadb;
+    --paper-bg-soft-final: #fbf5ea;
+    --paper-panel-final: rgba(255, 251, 243, 0.94);
+    --paper-panel-strong-final: rgba(255, 253, 247, 0.98);
+    --paper-border-final: rgba(112, 78, 42, 0.16);
+    --paper-border-strong-final: rgba(112, 78, 42, 0.26);
+    --paper-ink-final: #21160f;
+    --paper-ink-soft-final: #4f3828;
+    --paper-ink-muted-final: #775b41;
+    --paper-gold-final: #9d7137;
+    --paper-burgundy-final: #7c2434;
+    --paper-radius-final: 28px;
+    --paper-radius-small-final: 18px;
+    --paper-shadow-final: 0 22px 56px rgba(85, 56, 27, 0.10);
+    --paper-shadow-hover-final: 0 30px 72px rgba(85, 56, 27, 0.14);
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--oc-header-height, 80px) + 22px);
+    background: var(--paper-bg-final) !important;
+}
+
+body,
+body.light-mode,
+body.site-home-page,
+body.options-course-page,
+body.options-chapter-page,
+body.post-page {
+    --bg-primary: var(--paper-bg-final);
+    --bg-secondary: #efe0c9;
+    --bg-tertiary: #e6d2b7;
+    --bg-card: var(--paper-panel-final);
+    --bg-card-hover: var(--paper-panel-strong-final);
+    --text-primary: var(--paper-ink-final);
+    --text-secondary: var(--paper-ink-soft-final);
+    --text-tertiary: var(--paper-ink-muted-final);
+    --text-muted: rgba(79, 56, 40, 0.72);
+    --accent-gold: var(--paper-gold-final);
+    --accent-gold-light: #c99a55;
+    --accent-gold-dark: #6d4b25;
+    --accent-crimson: var(--paper-burgundy-final);
+    --shadow-sm: 0 14px 36px rgba(85, 56, 27, 0.08);
+    --shadow-md: var(--paper-shadow-final);
+    --shadow-lg: var(--paper-shadow-hover-final);
+    background:
+        radial-gradient(circle at 18% -8%, rgba(195, 151, 83, 0.20), transparent 33%),
+        radial-gradient(circle at 88% 12%, rgba(124, 36, 52, 0.08), transparent 26%),
+        linear-gradient(180deg, #fbf3e5 0%, #f5ead9 42%, #efe0c9 100%) !important;
+    color: var(--paper-ink-final) !important;
+    color-scheme: light !important;
+}
+
+body::before,
+body::after {
+    opacity: 0.035 !important;
+    mix-blend-mode: multiply !important;
+}
+
+body::before {
+    background-size: 160px 160px, 160px 160px !important;
+}
+
+.site-loader {
+    background: rgba(247, 237, 221, 0.92) !important;
+    color: var(--paper-ink-final) !important;
+    transition: opacity 260ms ease, visibility 260ms ease !important;
+}
+
+.site-loader__title,
+.site-loader__eyebrow {
+    color: var(--paper-ink-final) !important;
+}
+
+header,
+body.light-mode header,
+header.scrolled,
+body.light-mode header.scrolled {
+    background: rgba(255, 248, 237, 0.88) !important;
+    border-bottom: 1px solid rgba(112, 78, 42, 0.16) !important;
+    box-shadow: 0 10px 30px rgba(85, 56, 27, 0.08) !important;
+    backdrop-filter: blur(18px) saturate(118%) !important;
+}
+
+.nav-container {
+    gap: 1.1rem !important;
+}
+
+.logo,
+.logo a,
+.nav-date,
+.nav-links a,
+.nav-links a:visited,
+header .nav-links a,
+header .nav-links a:visited,
+body.light-mode header .nav-links a,
+body.light-mode header .nav-links a:visited {
+    color: var(--paper-ink-final) !important;
+}
+
+.logo {
+    min-width: 168px;
+    margin-right: 0.45rem;
+}
+
+.nav-links {
+    gap: 0.55rem !important;
+}
+
+.nav-links a,
+header .nav-links a,
+body.light-mode header .nav-links a {
+    background: rgba(255, 253, 247, 0.78) !important;
+    border: 1px solid rgba(112, 78, 42, 0.14) !important;
+    border-radius: 999px !important;
+    padding: 0.54rem 0.82rem !important;
+    text-shadow: none !important;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible,
+header .nav-links a:hover,
+header .nav-links a:focus-visible {
+    background: rgba(124, 36, 52, 0.09) !important;
+    color: var(--paper-burgundy-final) !important;
+    transform: translateY(-1px);
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, var(--paper-burgundy-final), var(--paper-gold-final)) !important;
+    height: 3px !important;
+}
+
+.hero,
+body.site-home-page .hero,
+body.post-page .hero,
+body.options-course-page .hero,
+body.options-chapter-page .hero {
+    background:
+        radial-gradient(circle at 18% 16%, rgba(185, 133, 64, 0.20), transparent 30%),
+        radial-gradient(circle at 82% 12%, rgba(124, 36, 52, 0.10), transparent 28%),
+        linear-gradient(180deg, rgba(255, 249, 238, 0.98), rgba(244, 232, 213, 0.96)) !important;
+    color: var(--paper-ink-final) !important;
+    min-height: clamp(620px, 76vh, 820px) !important;
+    border-bottom: 1px solid rgba(112, 78, 42, 0.12);
+}
+
+.hero::before,
+.hero::after {
+    opacity: 0.10 !important;
+    color: rgba(124, 36, 52, 0.18) !important;
+}
+
+.hero h1,
+.hero .subtitle,
+.hero-description,
+.hero-insight-card,
+.hero-insight-card p,
+.hero-insight-label,
+.hero-kicker,
+.section-title,
+.section-subtitle,
+.section-number,
+.section-date {
+    color: var(--paper-ink-final) !important;
+    text-shadow: none !important;
+}
+
+.hero-description,
+.section-subtitle,
+.hero-insight-card p {
+    color: var(--paper-ink-soft-final) !important;
+}
+
+.hero-insight-grid {
+    gap: 1rem !important;
+}
+
+.hero-insight-card,
+.hero-action-link,
+.course-action-link,
+.article-quick-nav-link,
+body.light-mode .article-quick-nav-link {
+    background: rgba(255, 253, 247, 0.86) !important;
+    color: var(--paper-ink-final) !important;
+    border: 1px solid var(--paper-border-final) !important;
+    border-radius: 999px !important;
+    box-shadow: 0 14px 34px rgba(85, 56, 27, 0.09) !important;
+    text-shadow: none !important;
+}
+
+.hero-insight-card {
+    border-radius: 24px !important;
+}
+
+.hero-action-link-primary,
+.course-action-link,
+.article-quick-nav-link.is-active,
+body.light-mode .article-quick-nav-link.is-active {
+    background: linear-gradient(135deg, var(--paper-burgundy-final), #9a4b43) !important;
+    color: #fff8ea !important;
+    border-color: rgba(124, 36, 52, 0.32) !important;
+}
+
+.hero-action-link:hover,
+.course-action-link:hover,
+.article-quick-nav-link:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: var(--paper-shadow-hover-final) !important;
+}
+
+.scroll-indicator,
+body.light-mode .scroll-indicator {
+    color: var(--paper-ink-soft-final) !important;
+    background: rgba(255, 253, 247, 0.72) !important;
+    border: 1px solid var(--paper-border-final) !important;
+    border-radius: 999px !important;
+    padding: 0.7rem 1rem !important;
+}
+
+.section {
+    padding-top: clamp(4.5rem, 7vw, 6.5rem) !important;
+    padding-bottom: clamp(4.5rem, 7vw, 6.5rem) !important;
+}
+
+body.post-page .section {
+    padding-top: clamp(3.8rem, 5.5vw, 5.2rem) !important;
+    padding-bottom: clamp(3.8rem, 5.5vw, 5.2rem) !important;
+}
+
+body.post-page #wisdom,
+body.post-page #market,
+body.post-page #decision-cards {
+    margin-top: 0 !important;
+}
+
+.section-header {
+    margin-bottom: clamp(1.6rem, 3vw, 2.4rem) !important;
+    align-items: center !important;
+}
+
+.author-profile,
+.highlight-box,
+.research-card,
+.homepage-course-entry,
+.archive-editorial-band,
+.search-container,
+.calendar-section,
+.archive-list,
+.article-meta-bar,
+.article-meta-bar-compact,
+.stock-card,
+.stock-detail-card,
+.analysis-box,
+.five-plus-card,
+.wisdom-card,
+.wisdom-rules,
+.wisdom-case,
+.news-node-card,
+.decision-card,
+.tracking-framework,
+.course-overview-card,
+.course-intro-card,
+.course-note-card,
+.course-grid-card,
+.course-toolkit-card,
+.course-summary-card,
+.chapter-summary-card,
+.chapter-nav-card,
+.chapter-body-card,
+.chapter-nav-slot,
+.chapter-summary-rail-item {
+    background: var(--paper-panel-final) !important;
+    color: var(--paper-ink-final) !important;
+    border: 1px solid var(--paper-border-final) !important;
+    border-radius: var(--paper-radius-final) !important;
+    box-shadow: var(--paper-shadow-final) !important;
+    text-shadow: none !important;
+}
+
+.author-profile,
+.homepage-course-entry,
+.archive-editorial-band,
+.search-container,
+.calendar-section,
+.article-meta-bar,
+.article-meta-bar-compact,
+.stock-card,
+.wisdom-card,
+.stock-detail-card,
+.tracking-framework,
+.chapter-body-card {
+    max-width: min(1180px, calc(100% - 2rem)) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.author-profile {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    gap: clamp(1.2rem, 2.4vw, 2rem) !important;
+    align-items: center !important;
+    padding: clamp(1.35rem, 2.4vw, 2.1rem) !important;
+}
+
+.author-avatar {
+    width: clamp(72px, 8vw, 96px) !important;
+    height: clamp(72px, 8vw, 96px) !important;
+    border-radius: 24px !important;
+    margin: 0 !important;
+    background: linear-gradient(135deg, var(--paper-burgundy-final), var(--paper-gold-final)) !important;
+    color: #fff8ea !important;
+    box-shadow: 0 18px 38px rgba(124, 36, 52, 0.18) !important;
+}
+
+.author-info h3,
+.author-title,
+.author-info p,
+.highlight-box h4,
+.highlight-box p,
+.highlight-box li,
+.research-card h3,
+.research-card p,
+.homepage-course-entry h3,
+.homepage-course-entry p,
+.course-card-kicker,
+.course-entry-card-title,
+.course-entry-card-desc,
+.editorial-band h3,
+.editorial-band p,
+.editorial-band-item,
+.editorial-band-item strong,
+.editorial-band-label,
+.search-meta-pill,
+.search-meta-text,
+.calendar-title,
+.calendar-year,
+.calendar-month,
+.calendar-weekdays,
+.calendar-weekdays div,
+.archive-year-title,
+.archive-month-title,
+.archive-item-title,
+.archive-item-desc,
+.stock-name,
+.stock-detail-name,
+.stock-exchange,
+.analysis-title,
+.five-plus-card h3,
+.five-plus-card p,
+.wisdom-title,
+.wisdom-theme,
+.wisdom-content p,
+.news-node-card h4,
+.news-node-card h5,
+.news-node-card p,
+.news-node-kicker,
+.decision-card,
+.decision-card-row,
+.decision-card-row-label,
+.decision-card-row-value,
+.chapter-title,
+.chapter-card-title,
+.course-card-title,
+.course-card-desc {
+    color: var(--paper-ink-final) !important;
+    text-shadow: none !important;
+}
+
+.author-info p,
+.highlight-box li,
+.research-card p,
+.homepage-course-entry p,
+.archive-item-desc,
+.five-plus-card p,
+.wisdom-content p,
+.news-node-card p,
+.decision-card-row-value,
+.course-card-desc,
+.chapter-body-card p,
+.chapter-body-card li,
+.chapter-summary-card p,
+.chapter-summary-note {
+    color: var(--paper-ink-soft-final) !important;
+}
+
+.course-card-kicker,
+.five-plus-kicker,
+.stock-ticker,
+.stock-detail-ticker,
+.news-source-tag,
+.news-date-tag,
+.news-node-kicker,
+.decision-card-kicker,
+.editorial-band-kicker,
+.editorial-band-label,
+.calendar-day-number,
+.chapter-summary-eyebrow,
+.chapter-nav-label {
+    color: var(--paper-gold-final) !important;
+}
+
+.homepage-course-entry {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    text-align: center !important;
+    padding: clamp(1.8rem, 3vw, 2.6rem) !important;
+}
+
+.homepage-course-entry > * {
+    max-width: 920px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.course-directory-meta,
+.course-card-actions {
+    justify-content: center !important;
+}
+
+body.options-course-page .course-overview-layout,
+body.options-course-page .course-summary-grid,
+body.options-course-page .learning-path-grid,
+body.options-course-page .course-toolkit-grid,
+body.options-course-page .course-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 1rem !important;
+    align-items: stretch !important;
+}
+
+body.options-course-page .course-overview-layout > *,
+body.options-course-page .course-summary-grid > *,
+body.options-course-page .learning-path-grid > *,
+body.options-course-page .course-toolkit-grid > *,
+body.options-course-page .course-grid > * {
+    min-width: 0 !important;
+    height: 100% !important;
+}
+
+.archive-editorial-band {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+}
+
+.archive-editorial-band .editorial-band-side {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 0.85rem !important;
+}
+
+.archive-editorial-band .editorial-band-item,
+.search-meta-pill,
+.course-directory-pill,
+.course-status-pill {
+    background: rgba(255, 248, 236, 0.86) !important;
+    border: 1px solid rgba(112, 78, 42, 0.14) !important;
+    border-radius: 18px !important;
+    color: var(--paper-ink-final) !important;
+}
+
+.search-input,
+input,
+textarea,
+select,
+.calendar-month-select {
+    background: rgba(255, 253, 247, 0.94) !important;
+    color: var(--paper-ink-final) !important;
+    border: 1px solid var(--paper-border-final) !important;
+    border-radius: 999px !important;
+}
+
+.search-input::placeholder,
+input::placeholder,
+textarea::placeholder {
+    color: rgba(79, 56, 40, 0.58) !important;
+}
+
+.calendar-section {
+    max-width: min(1180px, calc(100% - 2rem)) !important;
+    padding: clamp(1.2rem, 2vw, 1.65rem) !important;
+}
+
+.calendar-header,
+.calendar-title-wrap {
+    color: var(--paper-ink-final) !important;
+}
+
+.calendar-nav,
+.calendar-today {
+    background: rgba(255, 253, 247, 0.9) !important;
+    color: var(--paper-ink-final) !important;
+    border: 1px solid var(--paper-border-final) !important;
+    border-radius: 16px !important;
+}
+
+.calendar-grid {
+    gap: 0.7rem !important;
+    align-items: stretch !important;
+}
+
+.calendar-day,
+.calendar-empty,
+body.site-home-page .calendar-day,
+body.site-home-page .calendar-empty,
+body.site-home-page .calendar-day.has-post,
+body.site-home-page .calendar-day.empty,
+body.site-home-page .calendar-day.other-month {
+    min-height: 142px !important;
+    height: 142px !important;
+    padding: 0.75rem !important;
+    background: rgba(255, 253, 247, 0.88) !important;
+    color: var(--paper-ink-final) !important;
+    border: 1px solid rgba(112, 78, 42, 0.13) !important;
+    border-radius: 20px !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+}
+
+body.site-home-page .calendar-day.has-post {
+    background: linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(250, 241, 226, 0.94)) !important;
+    border-color: rgba(124, 36, 52, 0.20) !important;
+}
+
+.calendar-entry-title,
+body.site-home-page .calendar-entry-title {
+    color: var(--paper-ink-final) !important;
+    font-size: 0.9rem !important;
+    line-height: 1.32 !important;
+    -webkit-line-clamp: 2 !important;
+}
+
+.calendar-entry-desc,
+body.site-home-page .calendar-entry-desc {
+    color: var(--paper-ink-soft-final) !important;
+    font-size: 0.78rem !important;
+    line-height: 1.42 !important;
+    -webkit-line-clamp: 2 !important;
+}
+
+.archive-item {
+    background: rgba(255, 253, 247, 0.88) !important;
+    border: 1px solid rgba(112, 78, 42, 0.13) !important;
+    border-radius: 20px !important;
+    color: var(--paper-ink-final) !important;
+}
+
+.article-meta-bar,
+.article-meta-bar-compact {
+    margin-top: 1.25rem !important;
+    margin-bottom: 2rem !important;
+    overflow: hidden !important;
+    border-radius: 24px !important;
+}
+
+.article-meta-chip,
+.article-meta-chip-accent {
+    background: rgba(255, 253, 247, 0.88) !important;
+    color: var(--paper-ink-final) !important;
+    border-right: 1px solid rgba(112, 78, 42, 0.13) !important;
+}
+
+.article-meta-chip-accent {
+    background: rgba(124, 36, 52, 0.08) !important;
+    color: var(--paper-burgundy-final) !important;
+}
+
+.article-quick-nav,
+body.light-mode .article-quick-nav {
+    background: rgba(255, 248, 237, 0.92) !important;
+    border: 1px solid rgba(112, 78, 42, 0.13) !important;
+    box-shadow: 0 16px 42px rgba(85, 56, 27, 0.10) !important;
+}
+
+.market-grid,
+.market-grid-comfort,
+.news-node-grid,
+.five-plus-grid,
+.tracking-framework-grid {
+    gap: 1rem !important;
+}
+
+.market-grid-comfort {
+    grid-template-columns: 1fr !important;
+}
+
+body.post-page .market-grid-comfort .section-media-frame {
+    max-width: min(760px, 100%) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.section-media-frame {
+    background: var(--paper-panel-final) !important;
+    border: 1px solid var(--paper-border-final) !important;
+    border-radius: var(--paper-radius-final) !important;
+    box-shadow: var(--paper-shadow-final) !important;
+}
+
+.section-cover-image {
+    border-radius: 22px !important;
+}
+
+.wisdom-card,
+.wisdom-card.wisdom-card-single {
+    grid-template-columns: 1fr !important;
+    text-align: left !important;
+    gap: 1rem !important;
+}
+
+.wisdom-title {
+    max-width: none !important;
+    font-size: clamp(1.45rem, 2.6vw, 2.25rem) !important;
+    line-height: 1.28 !important;
+}
+
+.stock-detail-card,
+.news-node-card,
+.decision-card,
+.analysis-box,
+.five-plus-card {
+    border-radius: 24px !important;
+}
+
+.news-node-card {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: 1rem !important;
+}
+
+.news-node-fact,
+.news-node-view,
+.decision-card-row {
+    background: rgba(255, 248, 236, 0.62) !important;
+    border: 1px solid rgba(112, 78, 42, 0.10) !important;
+    border-radius: 18px !important;
+    color: var(--paper-ink-final) !important;
+}
+
+.decision-card-row {
+    padding: 0.8rem 0.9rem !important;
+}
+
+.decision-card.is-risk,
+.decision-card.decision-reduce,
+.decision-card.decision-wait,
+.five-plus-card.is-risk {
+    background: linear-gradient(180deg, rgba(255, 250, 242, 0.96), rgba(249, 234, 224, 0.94)) !important;
+    border-color: rgba(124, 36, 52, 0.22) !important;
+}
+
+.decision-card.is-risk *,
+.decision-card.decision-reduce *,
+.decision-card.decision-wait *,
+.five-plus-card.is-risk * {
+    color: var(--paper-ink-final) !important;
+}
+
+@media (max-width: 900px) {
+    .author-profile,
+    .archive-editorial-band .editorial-band-side,
+    .news-node-card,
+    .article-meta-bar,
+    .article-meta-bar-compact {
+        grid-template-columns: 1fr !important;
+    }
+
+    .calendar-day,
+    .calendar-empty,
+    body.site-home-page .calendar-day,
+    body.site-home-page .calendar-empty,
+    body.site-home-page .calendar-day.has-post,
+    body.site-home-page .calendar-day.empty,
+    body.site-home-page .calendar-day.other-month {
+        min-height: 124px !important;
+        height: 124px !important;
+    }
+}
+
+
+/* ============================================
+   2026-04-24 paper recovery pass v3: nav contrast, post rhythm, news card expansion
+   ============================================ */
+
+.nav-links a,
+.nav-links a:visited,
+header .nav-links a,
+header .nav-links a:visited,
+body.light-mode .nav-links a,
+body.light-mode header .nav-links a,
+body.light-mode header .nav-links a:visited,
+body.options-course-page .nav-links a,
+body.options-chapter-page .nav-links a,
+body.post-page .nav-links a,
+body.site-home-page .nav-links a {
+    color: #24170f !important;
+    opacity: 1 !important;
+    mix-blend-mode: normal !important;
+    filter: none !important;
+    font-weight: 800 !important;
+    background: rgba(255, 253, 247, 0.96) !important;
+    border-color: rgba(112, 78, 42, 0.20) !important;
+}
+
+.nav-date,
+body.light-mode .nav-date {
+    color: #24170f !important;
+    opacity: 1 !important;
+    mix-blend-mode: normal !important;
+    font-weight: 800 !important;
+}
+
+.hero .tagline,
+.hero p,
+body.post-page .hero .tagline,
+body.post-page .hero p,
+body.options-course-page .hero p,
+body.options-chapter-page .hero p,
+body.site-home-page .hero p {
+    color: #4f3828 !important;
+    opacity: 1 !important;
+    mix-blend-mode: normal !important;
+    filter: none !important;
+    text-shadow: none !important;
+}
+
+body.post-page .article-meta-bar,
+body.post-page .article-meta-bar.article-meta-bar-compact {
+    margin-top: 1rem !important;
+    margin-bottom: 1.35rem !important;
+    max-width: min(1080px, calc(100% - 2rem)) !important;
+}
+
+body.post-page .section {
+    padding-top: clamp(2.4rem, 3.8vw, 3.4rem) !important;
+    padding-bottom: clamp(2.8rem, 4.5vw, 4.2rem) !important;
+}
+
+body.post-page .section + .section {
+    margin-top: 0 !important;
+}
+
+body.post-page .section-header {
+    margin-bottom: 1.35rem !important;
+}
+
+body.post-page .stock-card {
+    display: grid !important;
+    gap: 1.05rem !important;
+    padding: clamp(1.2rem, 2.2vw, 1.8rem) !important;
+}
+
+body.post-page .stock-header {
+    margin-bottom: 0 !important;
+    min-height: 0 !important;
+}
+
+body.post-page .stock-card > .analysis-box,
+body.post-page .stock-card > .five-plus-grid,
+body.post-page .stock-card > .evidence-box {
+    margin-top: 0 !important;
+}
+
+body.post-page .analysis-box {
+    padding: clamp(1.05rem, 2vw, 1.55rem) !important;
+}
+
+body.post-page .analysis-title {
+    font-size: clamp(1.35rem, 2.25vw, 2rem) !important;
+    line-height: 1.24 !important;
+}
+
+body.post-page .wisdom-card,
+body.post-page .wisdom-card.wisdom-card-single {
+    padding: clamp(1.35rem, 2.3vw, 2rem) !important;
+    max-width: min(1080px, calc(100% - 2rem)) !important;
+}
+
+body.post-page .wisdom-title {
+    font-size: clamp(1.45rem, 2.3vw, 2rem) !important;
+    line-height: 1.36 !important;
+    letter-spacing: -0.01em !important;
+}
+
+body.post-page .market-grid,
+body.post-page .market-grid-comfort {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    max-width: min(1120px, calc(100% - 2rem)) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+body.post-page .market-editorial-band {
+    grid-template-columns: 1fr !important;
+    max-width: 100% !important;
+}
+
+body.post-page .news-node-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+}
+
+body.post-page .news-node-card {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    align-items: stretch !important;
+    padding: 1rem !important;
+}
+
+body.post-page .news-node-fact,
+body.post-page .news-node-view {
+    padding: 1rem !important;
+}
+
+body.post-page .news-node-card h4,
+body.post-page .news-node-card h5 {
+    font-size: clamp(1.05rem, 1.6vw, 1.28rem) !important;
+    line-height: 1.35 !important;
+}
+
+body.post-page .news-node-card p {
+    font-size: 0.96rem !important;
+    line-height: 1.72 !important;
+}
+
+body.post-page .tracking-framework,
+body.post-page .tracking-framework-grid {
+    max-width: min(1120px, calc(100% - 2rem)) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+body.post-page .tracking-framework-grid,
+body.post-page .tracking-framework-grid.decision-grid-enhanced {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: 1rem !important;
+}
+
+body.post-page .decision-card {
+    padding: 1.1rem !important;
+}
+
+@media (max-width: 860px) {
+    body.post-page .news-node-card {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+
+/* ============================================
+   2026-04-24 paper recovery pass v4: anchor offset, top strip, archive consistency
+   ============================================ */
+
+html {
+    scroll-behavior: smooth !important;
+    scroll-padding-top: calc(var(--oc-header-height, 80px) + 8px) !important;
+    background: var(--paper-bg-final) !important;
+}
+
+html,
+body,
+body.light-mode,
+body.site-home-page,
+body.options-course-page,
+body.options-chapter-page,
+body.post-page {
+    background-color: var(--paper-bg-final) !important;
+}
+
+.progress-bar {
+    top: 0 !important;
+    height: 2px !important;
+    opacity: 0.65 !important;
+    box-shadow: none !important;
+}
+
+header {
+    box-shadow: 0 8px 24px rgba(85, 56, 27, 0.06) !important;
+}
+
+.article-quick-nav-link,
+.article-quick-nav-link:visited,
+body.light-mode .article-quick-nav-link,
+body.post-page .article-quick-nav-link {
+    color: #24170f !important;
+    background: rgba(255, 253, 247, 0.94) !important;
+    border-color: rgba(112, 78, 42, 0.16) !important;
+    text-shadow: none !important;
+}
+
+.article-quick-nav-link:hover,
+.article-quick-nav-link:focus-visible,
+body.post-page .article-quick-nav-link:hover,
+body.post-page .article-quick-nav-link:focus-visible {
+    color: var(--paper-burgundy-final) !important;
+    background: rgba(255, 247, 238, 0.98) !important;
+}
+
+.article-quick-nav-link.is-active,
+body.post-page .article-quick-nav-link.is-active {
+    color: #fff9f0 !important;
+    background: linear-gradient(135deg, var(--paper-burgundy-final), #9a4755) !important;
+    border-color: rgba(124, 36, 52, 0.30) !important;
+}
+
+main .section[id],
+body.post-page .section,
+body.post-0419 .section,
+body.post-0418 .section,
+body.site-home-page .section,
+body.options-course-page .section,
+body.options-chapter-page .section {
+    scroll-margin-top: calc(var(--oc-header-height, 80px) + 10px) !important;
+}
+
+body.post-page .hero {
+    min-height: clamp(560px, 72vh, 760px) !important;
+}
+
+body.post-page .article-meta-bar,
+body.post-page .article-meta-bar.article-meta-bar-compact {
+    margin-top: 0.85rem !important;
+    margin-bottom: 1.35rem !important;
+}
+
+body.post-page .section {
+    padding-top: clamp(2rem, 3.1vw, 2.7rem) !important;
+    padding-bottom: clamp(2.35rem, 3.7vw, 3.2rem) !important;
+    margin-bottom: 0 !important;
+}
+
+body.post-page .section-header {
+    margin-bottom: 1rem !important;
+}
+
+body.post-page .market-grid,
+body.post-page .market-grid-comfort,
+body.post-page .tracking-framework,
+body.post-page .tracking-framework-grid,
+body.post-page .tracking-framework-grid.decision-grid-enhanced {
+    max-width: min(1160px, calc(100% - 2rem)) !important;
+}
+
+body.post-page .news-node-card {
+    gap: 0.85rem !important;
+    border-radius: 26px !important;
+}
+
+body.post-page .news-node-fact,
+body.post-page .news-node-view {
+    min-height: 0 !important;
+}
+
+body.site-home-page .archive-editorial-band,
+body.site-home-page .search-container,
+body.site-home-page .calendar-section {
+    max-width: min(1180px, calc(100% - 2rem)) !important;
+}
+
+body.site-home-page .archive-editorial-band,
+body.site-home-page .search-container,
+body.site-home-page .calendar-section,
+body.site-home-page .archive-list {
+    border-radius: 28px !important;
+}
+
+body.site-home-page .calendar-grid {
+    gap: 0.8rem !important;
+}
+
+body.site-home-page .calendar-day,
+body.site-home-page .calendar-day.has-post,
+body.site-home-page .calendar-day.empty,
+body.site-home-page .calendar-day.other-month {
+    min-height: 136px !important;
+    height: 136px !important;
+}
+
+body.site-home-page .calendar-entry-title {
+    font-size: 0.88rem !important;
+    line-height: 1.3 !important;
+}
+
+body.site-home-page .calendar-entry-desc {
+    font-size: 0.76rem !important;
+    line-height: 1.36 !important;
+}
+
+@media (max-width: 900px) {
+    body.post-page .hero {
+        min-height: auto !important;
+    }
+
+    body.post-page .section,
+    body.post-0419 .section,
+    body.post-0418 .section {
+        scroll-margin-top: calc(var(--oc-header-height, 80px) + 8px) !important;
+    }
+
+    body.site-home-page .calendar-day,
+    body.site-home-page .calendar-day.has-post,
+    body.site-home-page .calendar-day.empty,
+    body.site-home-page .calendar-day.other-month {
+        min-height: 118px !important;
+        height: 118px !important;
+    }
+}
+
+
+/* ============================================
+   2026-04-24 paper recovery pass v5: homepage/options section rhythm tightening
+   ============================================ */
+
+body.site-home-page .section,
+body.options-course-page .section,
+body.options-chapter-page .section {
+    padding-top: clamp(2.1rem, 3.2vw, 2.9rem) !important;
+    padding-bottom: clamp(2.45rem, 3.8vw, 3.3rem) !important;
+    margin-bottom: 0 !important;
+}
+
+body.site-home-page .section-header,
+body.options-course-page .section-header,
+body.options-chapter-page .section-header {
+    margin-bottom: 1.1rem !important;
+}
+
+body.site-home-page .homepage-course-entry,
+body.options-course-page .course-overview-card,
+body.options-course-page .course-intro-card {
+    padding-top: clamp(1.6rem, 2.5vw, 2.2rem) !important;
+    padding-bottom: clamp(1.6rem, 2.5vw, 2.2rem) !important;
+}
