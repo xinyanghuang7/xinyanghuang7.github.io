@@ -388,7 +388,7 @@ header.scrolled {
 }
 
 .scroll-indicator::after {
-    content: '�?;
+    content: '↓';
     display: block;
     margin-top: 0.5rem;
     font-size: 1.1rem;
@@ -1543,7 +1543,7 @@ main {
 }
 
 /* Technical rating */
-.rating-card div[style*="TradingView 技术指�?] {
+.rating-card div[style*="TradingView 技术指标"] {
     margin-top: var(--space-sm);
     padding-top: var(--space-sm);
     border-top: 1px solid rgba(255,255,255,0.08);
@@ -17238,5 +17238,107 @@ body.site-home-page .search-result-keywords {
     body.options-course-page .course-note-card {
         padding: 1.05rem 1rem;
     }
+}
+
+/* ============================================
+   2026-04-24 readability pass: keep dark-hero drama, restore light-card contrast
+   ============================================ */
+
+body.post-page .stock-card,
+body.post-page .analysis-box,
+body.post-page .five-plus-card,
+body.post-page .wisdom-rules,
+body.post-page .wisdom-case,
+body.post-page .stock-meta-item,
+body.post-page .framework-step-card,
+body.post-page .highlight-box,
+body.options-chapter-page .chapter-summary-card,
+body.options-chapter-page .chapter-nav-card,
+body.options-chapter-page .chapter-body-card,
+body.options-chapter-page .chapter-summary-rail-item,
+body.options-chapter-page .chapter-nav-slot {
+    color: #3f2d22;
+}
+
+body.post-page .stock-card .stock-name,
+body.post-page .analysis-box .analysis-title,
+body.post-page .five-plus-card h3,
+body.post-page .wisdom-rules h4,
+body.post-page .wisdom-case h4,
+body.post-page .framework-step-card h4,
+body.post-page .highlight-box h4,
+body.options-chapter-page .chapter-summary-card h3,
+body.options-chapter-page .chapter-body-card h1,
+body.options-chapter-page .chapter-body-card h2,
+body.options-chapter-page .chapter-body-card h3,
+body.options-chapter-page .chapter-body-card h4,
+body.options-chapter-page .chapter-nav-card h3,
+body.options-chapter-page .chapter-nav-link,
+body.options-chapter-page .chapter-summary-rail-item strong {
+    color: #23160f;
+}
+
+body.post-page .analysis-box p,
+body.post-page .analysis-box li,
+body.post-page .five-plus-card p,
+body.post-page .wisdom-card p,
+body.post-page .wisdom-card li,
+body.post-page .stock-card p,
+body.post-page .stock-card li,
+body.post-page .stock-meta-item,
+body.post-page .framework-step-card p,
+body.post-page .highlight-box p,
+body.options-chapter-page .chapter-summary-card > p,
+body.options-chapter-page .chapter-summary-note,
+body.options-chapter-page .chapter-summary-card p,
+body.options-chapter-page .chapter-nav-card > p,
+body.options-chapter-page .chapter-nav-slot p,
+body.options-chapter-page .chapter-body-card p,
+body.options-chapter-page .chapter-body-card li,
+body.options-chapter-page .chapter-body-card td,
+body.options-chapter-page .chapter-body-card th,
+body.options-chapter-page .chapter-summary-rail-item {
+    color: rgba(63, 45, 34, 0.9);
+}
+
+body.options-chapter-page .chapter-summary-eyebrow,
+body.options-chapter-page .chapter-nav-label,
+body.options-chapter-page .chapter-nav-index,
+body.options-chapter-page .chapter-inline-outline-eyebrow,
+body.options-chapter-page .chapter-inline-outline-index,
+body.options-chapter-page .chapter-summary-pill,
+body.post-page .five-plus-kicker,
+body.post-page .stock-ticker,
+body.post-page .stock-detail-ticker {
+    color: #8a6437;
+}
+
+body.options-chapter-page .chapter-summary-pill {
+    background: rgba(255, 248, 236, 0.78);
+    border-color: rgba(138, 100, 55, 0.16);
+}
+
+body.options-chapter-page .chapter-inline-outline,
+body.options-chapter-page .chapter-inline-outline-link,
+body.options-chapter-page .chapter-inline-outline-label {
+    color: #3f2d22;
+}
+
+body.options-chapter-page .chapter-inline-outline-link {
+    background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(248,240,228,0.92));
+    box-shadow: 0 16px 36px rgba(82, 54, 24, 0.08);
+}
+
+body.post-page .analysis-box,
+body.post-page .five-plus-card,
+body.post-page .wisdom-rules,
+body.post-page .wisdom-case,
+body.post-page .highlight-box,
+body.options-chapter-page .chapter-summary-card,
+body.options-chapter-page .chapter-nav-card,
+body.options-chapter-page .chapter-body-card,
+body.options-chapter-page .chapter-summary-rail-item,
+body.options-chapter-page .chapter-nav-slot {
+    box-shadow: 0 20px 48px rgba(82, 54, 24, 0.08);
 }
 
