@@ -18384,3 +18384,16 @@ body.options-course-page .course-intro-card {
     padding-top: clamp(1.6rem, 2.5vw, 2.2rem) !important;
     padding-bottom: clamp(1.6rem, 2.5vw, 2.2rem) !important;
 }
+
+
+/* ============================================
+   2026-04-24 paper recovery pass v6: remove misleading top progress strip
+   ============================================ */
+
+.progress-bar,
+#progressBar {
+    display: none !important;
+    height: 0 !important;
+    opacity: 0 !important;
+    box-shadow: none !important;
+}
