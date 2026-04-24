@@ -100,6 +100,29 @@ function Test-CoursePage([string]$path, [string]$canonicalPath, [string]$scriptP
         Add-Issue "$rel still contains legacy xinyanghuang7.github.io domain"
     }
 
+    if ($rel -match '^options\\') {
+        foreach ($expectedHref in @('../index.html#about', '../index.html#research-standards', './index.html', '../index.html#archive')) {
+            if ($content -notmatch ('href="' + [regex]::Escape($expectedHref) + '"')) {
+                Add-Issue "$rel missing expected options header link $expectedHref"
+            }
+        }
+        foreach ($badHref in @('href="index.html#about"', 'href="index.html#research-standards"', 'href="index.html#archive"', 'href="options/"')) {
+            if ($content -match [regex]::Escape($badHref)) {
+                Add-Issue "$rel contains broken options header href $badHref"
+            }
+        }
+        if ($content -notmatch '<section class="section" id="chapter-content"' -and $rel -ne 'options\index.html') {
+            Add-Issue "$rel missing chapter-content section"
+        }
+        if ($rel -ne 'options\index.html') {
+            $plainText = [regex]::Replace($content, '<script[\s\S]*?</script>|<style[\s\S]*?</style>|<[^>]+>', ' ')
+            $plainText = [regex]::Replace($plainText, '\s+', '')
+            if ($plainText.Length -lt 1800) {
+                Add-Issue "$rel chapter body appears too thin or blank after stripping markup"
+            }
+        }
+    }
+
     Test-ContentEncodingRisk -content $content -rel $rel
     Test-JsonLd -content $content -rel $rel
 

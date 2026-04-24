@@ -20,6 +20,7 @@ venv/
 # Local scratch / evidence / temporary payloads
 _tmp/
 tmp/
+artifacts/
 payload*.json
 base64*.txt
 b64_*.txt

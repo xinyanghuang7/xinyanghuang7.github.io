@@ -215,6 +215,13 @@ The homepage, article pages, and options-course pages should feel like one produ
 - Prev/next / return-to-course navigation must feel like part of one calm learning path, not a loose set of utility links.
 - If the options-course homepage gets better but chapter pages still feel flatter / harsher / more template-like, the job is not finished.
 
+### Options-course all-chapter closeout gate
+- Any change to `template/options-chapter.html`, `template/options-course-index.html`, `scripts/build-options-course.py`, `css/style.css`, or shared navigation must be treated as a **1-29 chapter risk**, not a one-page risk.
+- Before publish, sample every generated chapter `options/01.html` through `options/29.html` for: visible正文, no black / blank screen, readable light and dark mode, no mojibake, stable header links, working prev / next / return-to-course links, and no extreme width / overflow.
+- Header links inside `options/` must resolve from the options folder: `../index.html#about`, `../index.html#research-standards`, `./index.html`, `../index.html#archive`. Never ship `href="options/"` or `href="index.html#about"` from inside an options page.
+- `scripts/qa-site.ps1` is responsible for the static part of this gate; `scripts/qa-render-cdp.mjs` can run the local rendered audit across Module 3 plus `options/01.html`-`options/29.html` when a localhost server is available.
+- Visual screenshots are still required before calling a remote course update complete.
+
 ### Encoding / generation hard gate
 - Any mojibake, `�`, malformed Chinese punctuation, broken closing tag, or JSON-LD quote corruption in public HTML is a blocker.
 - Generated pages must be checked at four layers before publish: **head/meta**, **JSON-LD**, **nav labels / CTA text**, and **visible body copy**.
