@@ -17776,3 +17776,420 @@ body.options-chapter-page .chapter-body-card {
         padding-inline: clamp(0.95rem, 4.6vw, 1.25rem) !important;
     }
 }
+
+/* Learning Notes public surface — AI-only daily notebook */
+body.learning-notes-page {
+    --learning-amber: #c88b2c;
+    --learning-wine: #7e2f2b;
+    --learning-ink: #2b2118;
+    --learning-paper: #f7efe0;
+    --learning-mist: rgba(255, 250, 239, 0.76);
+    background:
+        radial-gradient(circle at 14% 12%, rgba(200, 139, 44, 0.18), transparent 34%),
+        radial-gradient(circle at 88% 10%, rgba(126, 47, 43, 0.18), transparent 32%),
+        linear-gradient(180deg, #17110d 0%, #211810 44%, #efe3cf 44%, #f7efe0 100%);
+}
+
+body.learning-notes-page .hero.learning-hero {
+    min-height: 92vh;
+}
+
+body.learning-notes-page .hero.learning-hero::after {
+    content: "";
+    position: absolute;
+    inset: auto 8vw 8vh auto;
+    width: min(360px, 38vw);
+    aspect-ratio: 1;
+    border: 1px solid rgba(236, 213, 169, 0.24);
+    border-radius: 42% 58% 54% 46%;
+    background: radial-gradient(circle at 32% 28%, rgba(255, 238, 193, 0.22), transparent 45%);
+    filter: blur(0.2px);
+    pointer-events: none;
+}
+
+body.learning-notes-page .learning-shell {
+    width: min(1180px, calc(100% - 2rem));
+    margin: 0 auto;
+}
+
+.homepage-learning-entry {
+    border-color: rgba(200, 139, 44, 0.34) !important;
+    background:
+        linear-gradient(135deg, rgba(255, 249, 236, 0.96), rgba(240, 223, 194, 0.92)),
+        radial-gradient(circle at 80% 18%, rgba(126, 47, 43, 0.18), transparent 34%) !important;
+}
+
+.homepage-learning-entry::after {
+    content: "AI NOTE";
+    position: absolute;
+    right: clamp(1rem, 3vw, 2.2rem);
+    top: clamp(1rem, 2.4vw, 1.8rem);
+    font-size: clamp(1.6rem, 5vw, 4.8rem);
+    font-family: Georgia, serif;
+    letter-spacing: 0.14em;
+    color: rgba(126, 47, 43, 0.08);
+    pointer-events: none;
+}
+
+.learning-overview-layout,
+.learning-stat-grid,
+.learning-framework-grid,
+.learning-category-grid {
+    display: grid;
+    gap: clamp(1rem, 2vw, 1.35rem);
+}
+
+.learning-overview-layout {
+    grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.9fr);
+    align-items: stretch;
+}
+
+.learning-manifest-card,
+.learning-sync-card,
+.learning-stat-card,
+.learning-framework-card,
+.learning-category-card,
+.learning-note-card {
+    position: relative;
+    border: 1px solid rgba(87, 59, 33, 0.16);
+    border-radius: 28px;
+    background: linear-gradient(180deg, rgba(255, 252, 244, 0.96), rgba(244, 234, 216, 0.94));
+    box-shadow: 0 22px 60px rgba(48, 32, 16, 0.13);
+    color: var(--learning-ink);
+    overflow: hidden;
+}
+
+.learning-manifest-card,
+.learning-sync-card {
+    padding: clamp(1.25rem, 2.6vw, 2rem);
+}
+
+.learning-manifest-card h3,
+.learning-sync-card h3,
+.learning-framework-card h3,
+.learning-category-card h3,
+.learning-note-card h3 {
+    color: #24180f;
+    line-height: 1.18;
+    text-wrap: pretty;
+}
+
+.learning-manifest-card p,
+.learning-sync-card li,
+.learning-framework-card p,
+.learning-category-card p,
+.learning-note-card p {
+    color: rgba(43, 33, 24, 0.78);
+    line-height: 1.78;
+}
+
+.learning-source-row,
+.learning-note-meta,
+.learning-note-foot,
+.learning-chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    align-items: center;
+}
+
+.learning-source-row span,
+.learning-chip,
+.learning-note-meta span,
+.learning-note-foot span,
+.learning-filter {
+    border: 1px solid rgba(126, 47, 43, 0.16);
+    border-radius: 999px;
+    background: rgba(255, 250, 239, 0.72);
+    color: rgba(67, 42, 24, 0.82);
+    padding: 0.44rem 0.72rem;
+    font-size: 0.78rem;
+}
+
+.learning-stat-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 1.15rem;
+}
+
+.learning-stat-card {
+    padding: 1.05rem;
+    min-height: 116px;
+}
+
+.learning-stat-value {
+    font-family: Georgia, serif;
+    font-size: clamp(1.45rem, 2.8vw, 2.35rem);
+    color: var(--learning-wine);
+    line-height: 1;
+}
+
+.learning-stat-label {
+    margin-top: 0.55rem;
+    color: rgba(43, 33, 24, 0.64);
+    font-size: 0.84rem;
+}
+
+.learning-framework-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.learning-framework-card {
+    padding: clamp(1.12rem, 2vw, 1.55rem);
+    animation: learningCardIn 680ms ease both;
+    animation-delay: var(--delay, 0ms);
+}
+
+.learning-card-index {
+    position: absolute;
+    right: 1rem;
+    top: 0.8rem;
+    font-family: Georgia, serif;
+    font-size: 2.5rem;
+    color: rgba(126, 47, 43, 0.09);
+}
+
+.learning-applies {
+    margin-top: 1rem;
+    color: rgba(126, 47, 43, 0.82);
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.learning-category-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.learning-category-card {
+    padding: 1.18rem;
+}
+
+.learning-category-count {
+    width: 3.1rem;
+    height: 3.1rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(126, 47, 43, 0.1);
+    color: var(--learning-wine);
+    font-family: Georgia, serif;
+    font-size: 1.35rem;
+    margin-bottom: 0.8rem;
+}
+
+.learning-notes-toolbar {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: flex-start;
+    border: 1px solid rgba(87, 59, 33, 0.14);
+    border-radius: 24px;
+    padding: 1rem;
+    background: rgba(255, 250, 239, 0.72);
+    margin-bottom: 1rem;
+}
+
+.learning-filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+.learning-filter {
+    cursor: pointer;
+    transition: transform 160ms ease, background 160ms ease, color 160ms ease;
+}
+
+.learning-filter:hover,
+.learning-filter.active {
+    transform: translateY(-1px);
+    background: var(--learning-wine);
+    color: #fff8ec;
+}
+
+.learning-notes-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.learning-note-card {
+    padding: 1.16rem;
+}
+
+.learning-note-card h3 {
+    margin: 0.72rem 0 0.45rem;
+    font-size: clamp(1.05rem, 1.5vw, 1.28rem);
+}
+
+.learning-note-foot {
+    margin-top: 0.9rem;
+    opacity: 0.82;
+}
+
+.learning-editorial-band {
+    border-color: rgba(126, 47, 43, 0.18);
+}
+
+.learning-empty {
+    grid-column: 1 / -1;
+    padding: 1.4rem;
+    border-radius: 20px;
+    background: rgba(255, 250, 239, 0.72);
+}
+
+@keyframes learningCardIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+body.light-mode.learning-notes-page {
+    background:
+        radial-gradient(circle at 15% 8%, rgba(200, 139, 44, 0.16), transparent 34%),
+        linear-gradient(180deg, #f5ecda 0%, #fffaf0 100%);
+}
+
+body.light-mode .learning-manifest-card,
+body.light-mode .learning-sync-card,
+body.light-mode .learning-stat-card,
+body.light-mode .learning-framework-card,
+body.light-mode .learning-category-card,
+body.light-mode .learning-note-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(248, 239, 224, 0.96));
+    color: #281b12;
+}
+
+@media (max-width: 980px) {
+    .learning-overview-layout,
+    .learning-framework-grid,
+    .learning-category-grid,
+    .learning-notes-list {
+        grid-template-columns: 1fr;
+    }
+
+    .learning-stat-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .learning-notes-toolbar {
+        flex-direction: column;
+    }
+
+    .learning-filter-row {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 760px) {
+    html:has(body.learning-notes-page),
+    body.learning-notes-page {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    body.learning-notes-page #header,
+    body.learning-notes-page .hero,
+    body.learning-notes-page main,
+    body.learning-notes-page .section {
+        overflow-x: hidden;
+    }
+
+    body.learning-notes-page .nav-container {
+        width: 100%;
+        max-width: 100%;
+        padding-inline: 0.65rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    body.learning-notes-page .logo {
+        width: 100%;
+        text-align: center;
+    }
+
+    body.learning-notes-page .nav-links {
+        width: 100% !important;
+        max-width: calc(100vw - 1rem) !important;
+        display: grid !important;
+        grid-template-columns: repeat(3, max-content) !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 0.42rem !important;
+        overflow-x: hidden !important;
+        padding: 0.2rem 0 0.45rem !important;
+        scrollbar-width: none;
+    }
+
+    body.learning-notes-page .nav-links a {
+        padding: 0.56rem 0.62rem !important;
+        font-size: 0.76rem !important;
+        white-space: nowrap !important;
+    }
+
+    body.learning-notes-page .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    body.learning-notes-page header nav {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    body.learning-notes-page .nav-date {
+        display: none;
+    }
+
+    body.learning-notes-page .hero-content {
+        width: min(100%, calc(100vw - 2rem)) !important;
+        max-width: min(100%, calc(100vw - 2rem)) !important;
+        margin-inline: auto !important;
+        padding-inline: clamp(0.65rem, 3.5vw, 1rem) !important;
+    }
+
+    body.learning-notes-page .hero .tagline,
+    body.learning-notes-page .hero-description {
+        max-width: 100% !important;
+        overflow-wrap: anywhere;
+    }
+
+    body.learning-notes-page .hero-insight-grid,
+    body.learning-notes-page .hero-action-row {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    body.learning-notes-page .hero-insight-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    body.learning-notes-page .hero-insight-card,
+    body.learning-notes-page .hero-action-link {
+        max-width: 100% !important;
+        overflow-wrap: anywhere;
+    }
+
+    body.learning-notes-page .learning-shell,
+    body.learning-notes-page .section {
+        width: min(100%, calc(100vw - 1rem)) !important;
+        max-width: min(100%, calc(100vw - 1rem)) !important;
+        margin-inline: auto !important;
+    }
+
+    .learning-stat-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .learning-source-row span,
+    .learning-chip,
+    .learning-note-meta span,
+    .learning-note-foot span,
+    .learning-filter {
+        font-size: 0.72rem;
+    }
+
+    .homepage-learning-entry::after {
+        display: none;
+    }
+}
