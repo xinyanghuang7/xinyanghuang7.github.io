@@ -1,6 +1,25 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-04-25",
+    "title": "2026年4月25日美股：RSG 的核心价值不是\"收垃圾\"，而是嵌在社区里的环境服务收费网络",
+    "desc": "2026-04-25 美股跟踪：用 RSG（Republic Services）作为今日宝藏标的，拆环境服务收费网络；持仓新闻覆盖 META、NVDA、NBIS 与 BOXX，并把动作边界写清楚。",
+    "url": "posts/2026/04/25.html",
+    "keywords": [
+      "美股",
+      "价值投资",
+      "RSG",
+      "Republic Services",
+      "META",
+      "NVDA",
+      "NBIS",
+      "环境服务",
+      "收费网络",
+      "投资研究",
+      "组合管理"
+    ]
+  },
+  {
     "date": "2026-04-24",
     "title": "2026年4月24日美股：MSCI 的价值，不是指数名字好听，而是它嵌在全球资产管理工作流里收费",
     "desc": "2026-04-24 美股跟踪：用 MSCI 作为今日宝藏标的，拆金融工作流收费平台；持仓新闻只覆盖 META、NVDA、NBIS 与 BOXX，并把动作边界写清楚。",
