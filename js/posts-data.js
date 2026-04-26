@@ -1,6 +1,25 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-04-26",
+    "title": "2026年4月26日美股：CNI 的价值，不是铁路很稳，而是它拥有一张很难重建的北美硬网络",
+    "desc": "2026-04-26 美股跟踪：用 CNI（Canadian National Railway）作为今日宝藏标的，拆北美铁路硬网络资产；持仓新闻只覆盖 META、NVDA、NBIS，并把价格快照、新闻新鲜度和动作边界写清楚。",
+    "url": "posts/2026/04/26.html",
+    "keywords": [
+      "美股",
+      "价值投资",
+      "CNI",
+      "Canadian National Railway",
+      "META",
+      "NVDA",
+      "NBIS",
+      "铁路",
+      "硬网络基础设施",
+      "投资研究",
+      "组合管理"
+    ]
+  },
+  {
     "date": "2026-04-25",
     "title": "2026年4月25日美股：RSG 的核心价值不是\"收垃圾\"，而是嵌在社区里的环境服务收费网络",
     "desc": "2026-04-25 美股跟踪：用 RSG（Republic Services）作为今日宝藏标的，拆环境服务收费网络；持仓新闻覆盖 META、NVDA、NBIS 与 BOXX，并把动作边界写清楚。",
