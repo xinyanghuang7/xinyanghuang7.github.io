@@ -1,55 +1,70 @@
 window.__LEARNING_NOTES__ = {
-  "schema": "learning-notes-public.v1",
-  "updatedAt": "2026-04-26 Asia/Shanghai",
+  "schema": "learning-notes-public.v2",
+  "updatedAt": "2026-04-27 01:24 Asia/Shanghai",
   "sourceFiles": [
     "knowledge/investing/automation/feishu-deep-study-manifest.json",
     "knowledge/investing/automation/feishu-deep-study-synthesis.md",
     "knowledge/investing/automation/feishu-deep-study-notes.md",
     "knowledge/investing/creators/meitou-learning.md"
   ],
-  "topicCount": 180,
-  "newest": "2026-04-19 10:45 Asia/Shanghai",
+  "topicCount": 181,
+  "newest": "2026-04-27 01:25 Asia/Shanghai",
   "oldest": "2026-04-17 14:00 Asia/Shanghai",
+  "displayRecentCount": 10,
   "categories": [
     {
       "name": "需求验证 / 收入质量 / 护城河真假",
+      "plainName": "商业质量与护城河",
       "count": 80,
-      "description": "别把增长、客户、生态、采用率直接翻译成更强商业质量。"
+      "description": "这些笔记在提醒我：增长、客户、生态、采用率不能直接翻译成更强生意，要先看需求和利润质量。",
+      "localPath": "knowledge/investing/automation/feishu-deep-study-catalog.md"
     },
     {
       "name": "财务质量 / 会计口径 / 资本配置",
-      "count": 41,
-      "description": "别把数字更好看直接翻译成企业更优秀或股东回报更强。"
+      "plainName": "财务质量与资本配置",
+      "count": 42,
+      "description": "这些笔记在拆：现金流、毛利率、回购、ROIC、资本开支变化，到底是主业变强，还是口径/周期更好看。",
+      "localPath": "knowledge/investing/automation/feishu-deep-study-catalog.md"
     },
     {
       "name": "组织 / 战略动作 / 执行变化",
+      "plainName": "组织变化与执行兑现",
       "count": 14,
-      "description": "别把管理层表态、组织动作、战略包装直接当成执行力已兑现。"
+      "description": "这些笔记在看：管理层、组织、激励、合作、裁员等动作，是否真的能变成经营兑现。",
+      "localPath": "knowledge/investing/automation/feishu-deep-study-catalog.md"
     },
     {
       "name": "组合方法 / 估值纪律 / 风险框架",
+      "plainName": "组合方法与风险纪律",
       "count": 25,
-      "description": "把学习结果压回持仓、候选、估值与风险的组合语言。"
+      "description": "这些笔记服务于仓位、估值、风险、赔率和复盘，目的是把学习压回可执行的组合语言。",
+      "localPath": "knowledge/investing/automation/feishu-deep-study-catalog.md"
     },
     {
       "name": "证据质量 / 来源层级 / 反方验证",
+      "plainName": "证据质量与反方验证",
       "count": 4,
-      "description": "先看证据硬度、定义口径和可验证性，再决定结论强度。"
+      "description": "这些笔记专门检查证据硬度：来源是否可靠、口径是否可审计、反方有没有被认真处理。",
+      "localPath": "knowledge/investing/automation/feishu-deep-study-catalog.md"
     },
     {
       "name": "其他 / 待归类",
+      "plainName": "待归类观察",
       "count": 16,
-      "description": "仍有价值但还需要进一步归入更稳定的母框架。"
+      "description": "这些内容暂时有价值，但还没稳定到足够明确的母框架，后续会继续归并。",
+      "localPath": "knowledge/investing/automation/feishu-deep-study-catalog.md"
     }
   ],
   "motherFrameworks": [
     {
-      "title": "需求 headline ≠ 需求质量",
-      "takeaway": "先确认有量，再确认有质，最后才确认长期价值。",
+      "title": "看到好消息，先问它是不是高质量需求",
+      "shortName": "需求质量检查",
+      "takeaway": "增长、客户变多、渗透率提升，都只是起点；真正要判断的是这批需求能不能持续、能不能赚钱、会不会被提前透支。",
+      "detail": "适合用在收入高增、客户集中度下降、会员增长、适应症扩张、订单或 backlog 增加这些场景。不要直接把“量变多”写成“生意变好”，要继续拆收入质量、客户质量和需求来源。",
       "checks": [
-        "可持续性",
-        "收入质量",
-        "是否只是时点前置或表面扩张"
+        "需求是否可持续",
+        "新增客户/订单质量",
+        "有没有提前拉单或一次性因素"
       ],
       "appliesTo": [
         "META",
@@ -58,27 +73,36 @@ window.__LEARNING_NOTES__ = {
         "AVGO",
         "TSM",
         "NBIS"
-      ]
+      ],
+      "updatedAt": "2026-04-27 Asia/Shanghai",
+      "localPath": "knowledge/investing/frameworks/core-frameworks.md"
     },
     {
-      "title": "护城河 headline ≠ 价值捕获能力",
-      "takeaway": "看起来更核心，不等于最后更赚钱；关键看控制权、切换成本和利润池落点。",
+      "title": "看到护城河叙事，先问它能不能捕获利润",
+      "shortName": "护城河兑现检查",
+      "takeaway": "网络更密、品牌更强、默认入口更靠前，不等于最后更赚钱；关键是控制权、切换成本和利润池落点。",
+      "detail": "适合用在收费网络、数据平台、金融基础设施、行业标准、品牌信任等公司。它帮我把“看起来很核心”和“真的有定价权”分开。",
       "checks": [
-        "控制权",
-        "切换成本",
-        "利润池归属"
+        "控制权在哪里",
+        "客户为什么难切换",
+        "利润池最后归谁"
       ],
       "appliesTo": [
         "META",
         "MSFT",
         "V",
         "SPGI",
-        "CME"
-      ]
+        "CME",
+        "WM"
+      ],
+      "updatedAt": "2026-04-27 Asia/Shanghai",
+      "localPath": "knowledge/investing/frameworks/core-frameworks.md"
     },
     {
-      "title": "财务改善 headline ≠ 商业质量改善",
-      "takeaway": "数字更好看，先别急着说生意更好了。",
+      "title": "看到财务改善，先问它是不是商业质量改善",
+      "shortName": "财务质量检查",
+      "takeaway": "毛利率、现金流、ROIC、回购、资本开支变化都可能只是阶段性更好看；要拆是不是主业质量真的变强。",
+      "detail": "适合用在财报季、利润率目标上调、FCF 改善、回购加速、资本开支下降等场景。它避免我把会计口径或周期顺风误当成长期复利能力。",
       "checks": [
         "结构性还是一次性",
         "营运资金/会计口径",
@@ -90,11 +114,15 @@ window.__LEARNING_NOTES__ = {
         "TSM",
         "UNH",
         "WMT"
-      ]
+      ],
+      "updatedAt": "2026-04-27 Asia/Shanghai",
+      "localPath": "knowledge/investing/frameworks/financial-statement-deep-dive.md"
     },
     {
-      "title": "资本配置 headline ≠ 股东回报更强",
-      "takeaway": "资本动作本身不是答案，关键是有没有增加每股长期价值。",
+      "title": "看到资本动作，先问它有没有增加每股长期价值",
+      "shortName": "资本配置检查",
+      "takeaway": "回购、分红、降杠杆、并购、分拆都不是答案本身；关键是估值位置、替代用途和风险是否只是后移。",
+      "detail": "适合用在 buyback、M&A、资产剥离、债务再融资、资本开支调整这些事件。它帮我把“公司做了动作”和“股东真的更好”分开。",
       "checks": [
         "估值位置",
         "替代用途",
@@ -105,26 +133,34 @@ window.__LEARNING_NOTES__ = {
         "GOOGL",
         "BRK.B",
         "COST"
-      ]
+      ],
+      "updatedAt": "2026-04-27 Asia/Shanghai",
+      "localPath": "knowledge/investing/frameworks/core-frameworks.md"
     },
     {
-      "title": "组织与战略动作 ≠ 执行力已经变强",
-      "takeaway": "换了人、换了图、换了说法，不等于问题已经解决。",
+      "title": "看到组织变化，先问执行力有没有真的变强",
+      "shortName": "执行兑现检查",
+      "takeaway": "换 CEO、重组、裁员、激励调整、战略合作，都可能只是说法变了；要看权责、激励和经营兑现。",
+      "detail": "适合用在管理层更替、组织扁平化、董事会换血、裁员增效、战略合作等场景。它避免我把“组织动作”过早当成 turnaround。",
       "checks": [
-        "权责",
-        "激励",
-        "经营层兑现"
+        "权责是否更清楚",
+        "激励是否对齐",
+        "经营层是否兑现"
       ],
       "appliesTo": [
         "UNH",
         "NBIS",
         "PLTR",
         "GOOGL"
-      ]
+      ],
+      "updatedAt": "2026-04-27 Asia/Shanghai",
+      "localPath": "knowledge/investing/frameworks/core-frameworks.md"
     },
     {
-      "title": "学习最终要回到组合语言",
-      "takeaway": "学习不是终点，组合映射才是终点。",
+      "title": "所有学习最后都要回到组合语言",
+      "shortName": "组合映射检查",
+      "takeaway": "学习不是为了堆笔记，而是为了回答：它改变了哪只股票、哪个候选、哪个风险边界、哪篇博客的表达。",
+      "detail": "这是学习系统和投资系统之间的总闸门。只要一条学习不能帮助我更新持仓含义、候选排序、研究优先级或风险边界，它就只能先留在学习层。",
       "checks": [
         "持仓含义",
         "候选排序",
@@ -136,10 +172,20 @@ window.__LEARNING_NOTES__ = {
         "NVDA",
         "NBIS",
         "候选池"
-      ]
+      ],
+      "updatedAt": "2026-04-27 Asia/Shanghai",
+      "localPath": "knowledge/investing/command-center.md"
     }
   ],
   "recent": [
+    {
+      "timestamp": "2026-04-27 01:25 Asia/Shanghai",
+      "title": "财务规划不等于投资体系完整",
+      "method": "先拆目标期限、风险预算和复盘纠错",
+      "category": "财务质量 / 会计口径 / 资本配置",
+      "source": "Feishu 深度学习 lane",
+      "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
+    },
     {
       "timestamp": "2026-04-19 10:45 Asia/Shanghai",
       "title": "客户集中度下降不等于收入质量自动更强",
@@ -211,33 +257,17 @@ window.__LEARNING_NOTES__ = {
       "category": "需求验证 / 收入质量 / 护城河真假",
       "source": "Feishu 深度学习 lane",
       "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
-    },
-    {
-      "timestamp": "2026-04-19 06:55 Asia/Shanghai",
-      "title": "赔付率 / medical cost ratio 稳定不等于保险质量自动更强",
-      "method": "先拆定价滞后、风险选择和监管回收",
-      "category": "其他 / 待归类",
-      "source": "Feishu 深度学习 lane",
-      "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
-    },
-    {
-      "timestamp": "2026-04-19 06:45 Asia/Shanghai",
-      "title": "好公司不等于好赔率",
-      "method": "先拆质量溢价、催化剂距离和回撤吸收",
-      "category": "组合方法 / 估值纪律 / 风险框架",
-      "source": "Feishu 深度学习 lane",
-      "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
-    },
-    {
-      "timestamp": "2026-04-19 06:35 Asia/Shanghai",
-      "title": "合规牌照 / 合规入口不等于利润池自动更厚",
-      "method": "先拆牌照稀缺性、延展能力和合规成本",
-      "category": "需求验证 / 收入质量 / 护城河真假",
-      "source": "Feishu 深度学习 lane",
-      "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
     }
   ],
   "fallbackRecent": [
+    {
+      "timestamp": "2026-04-27 01:25 Asia/Shanghai",
+      "title": "财务规划不等于投资体系完整",
+      "method": "先拆目标期限、风险预算和复盘纠错",
+      "category": "财务质量 / 会计口径 / 资本配置",
+      "source": "Feishu 深度学习 lane",
+      "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
+    },
     {
       "timestamp": "2026-04-19 10:45 Asia/Shanghai",
       "title": "客户集中度下降不等于收入质量自动更强",
@@ -253,26 +283,40 @@ window.__LEARNING_NOTES__ = {
       "category": "需求验证 / 收入质量 / 护城河真假",
       "source": "Feishu 深度学习 lane",
       "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
-    },
-    {
-      "timestamp": "2026-04-19 10:25 Asia/Shanghai",
-      "title": "Medicare Advantage 渗透率提升不等于护城河自动更深",
-      "method": "先拆新增人群质量、风险调整和监管回收",
-      "category": "需求验证 / 收入质量 / 护城河真假",
-      "source": "Feishu 深度学习 lane",
-      "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
     }
   ],
-  "thinAreas": [
-    "证据质量 / 来源层级 / 反方验证",
-    "组织 / 战略动作 / 执行变化",
-    "学习笔记前端摘要与本地系统 promotion 的同步自动化"
-  ],
-  "localIntegration": [
-    "学习正文保存在 knowledge/investing/creators/meitou-learning.md",
-    "摘要保存在 knowledge/investing/automation/feishu-deep-study-notes.md",
-    "目录/manifest 由 build_feishu_deep_study_catalog.py 生成",
-    "可复用结论继续 promotion 到 frameworks / tickers / candidate-pool / command-center",
-    "前端学习笔记由 build_learning_notes_site.py 同步生成"
+  "featuredLatest": {
+    "title": "财务规划不等于投资体系完整",
+    "timestamp": "2026-04-27 01:25 Asia/Shanghai",
+    "category": "财务质量 / 会计口径 / 资本配置",
+    "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md",
+    "source": "美投 / 本地学习系统",
+    "summary": "这次学习来自美投《如何建立一套完整的投资体系？》。我把它压成一个更适合当前系统的结论：投资体系不是多几个策略、指标或股票池，而是先有财务目标，再把目标期限翻译成风险预算，最后用复盘机制持续纠错。比如三年内要用的钱，不能用十年复利资产的语言来管理；如果没有复盘，就不知道一次亏损到底是系统问题、判断问题，还是运气问题。对我的系统来说，这条会直接影响候选研究和博客表达：以后不能只问“这家公司好不好”，还要问“这条判断适合放在哪个时间期限、风险预算和复盘节奏里”。"
+  },
+  "statCards": [
+    {
+      "label": "学习总数",
+      "value": 181,
+      "note": "本地学习 lane 已沉淀的主题总量",
+      "path": "knowledge/investing/automation/feishu-deep-study-catalog.md"
+    },
+    {
+      "label": "最新展示",
+      "value": 10,
+      "note": "前端只展示最近 10 条，避免信息过载",
+      "path": "xinyanghuang7.github.io/js/learning-notes-data.js"
+    },
+    {
+      "label": "母框架",
+      "value": 6,
+      "note": "可以反复复用的判断骨架",
+      "path": "knowledge/investing/frameworks/core-frameworks.md"
+    },
+    {
+      "label": "最近更新",
+      "value": "2026-04-27 01:25 Asia/Shanghai",
+      "note": "最新一条学习进入系统的时间",
+      "path": "knowledge/investing/automation/feishu-deep-study-topic-log.md"
+    }
   ]
 };

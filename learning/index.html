@@ -19,7 +19,7 @@
     <meta name="twitter:description" content="把自动学习得到的投资判断框架整理成公开可读摘要，并同步回本地投资系统。">
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <title>学习笔记 | ValueInvest</title>
-    <link rel="stylesheet" href="../css/style.css?v=20260427ecosystem01">
+    <link rel="stylesheet" href="../css/style.css?v=20260427learning02">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -77,12 +77,11 @@
                 </article>
             </div>
             <div class="hero-action-row" aria-label="学习笔记快捷入口">
-                <a class="hero-action-link hero-action-link-primary" href="#latest-notes">看最新笔记</a>
-                <a class="hero-action-link" href="#frameworks">看母框架</a>
-                <a class="hero-action-link" href="../index.html">返回研究站首页</a>
+                <a class="hero-action-link hero-action-link-primary" href="#featured-learning">看最新精选</a>
+                <a class="hero-action-link" href="#latest-notes">看最近 10 条</a>
+                <a class="hero-action-link" href="#frameworks">看判断框架</a>
             </div>
         </div>
-        <a href="#learning-overview" class="scroll-indicator" aria-label="向下滚动到学习总览">向下滚动</a>
     </section>
 
     <main id="main" class="learning-shell">
@@ -91,36 +90,42 @@
                 <div class="section-number" aria-hidden="true">01</div>
                 <div class="section-title-group">
                     <h2 class="section-title" id="learning-overview-title">学习总览</h2>
-                    <p class="section-subtitle">先看这条学习 lane 到底学出了什么，再决定要不要下钻到本地系统原文</p>
+                    <p class="section-subtitle">用人话解释：这里不是原始日志，而是我学过什么、最近更新到哪、哪些判断框架可以复用。</p>
                 </div>
             </div>
 
-            <div class="learning-overview-layout">
-                <div class="learning-manifest-card">
-                    <div class="course-card-kicker">Synthesis</div>
-                    <h3>这条 lane 的核心语法：X 不等于 Y，先拆 A / B / C</h3>
-                    <p>过去的自动学习不是堆了很多零散知识，而是在反复训练一个动作：不要把一个正面 headline 自动翻译成商业质量、护城河、需求质量、资本配置或利润池已经更强；先拆真正决定含量的变量。</p>
+            <div class="learning-overview-layout learning-overview-layout-single">
+                <div class="learning-manifest-card learning-manifest-card-wide">
+                    <div class="course-card-kicker">What this page means</div>
+                    <h3>这页只回答三件事：最近学了什么、沉淀了哪些判断框架、原文在哪里。</h3>
+                    <p>学习笔记不是把本地日志照搬到网页上。每次学习先进入本地系统，再被压成一条能看懂的投资判断：它提醒我以后遇到类似新闻、财报或公司叙事时，该先拆哪些变量，不能把什么东西过早当成好消息。</p>
                     <div class="learning-source-row">
-                        <span>本地来源：feishu-deep-study-manifest.json</span>
-                        <span>公开同步：learning-notes-data.js</span>
+                        <span>总目录：knowledge/investing/automation/feishu-deep-study-catalog.md</span>
+                        <span>前端数据：xinyanghuang7.github.io/js/learning-notes-data.js</span>
                     </div>
                 </div>
-                <aside class="learning-sync-card" aria-label="本地系统联动说明">
-                    <div class="course-card-kicker">Sync Contract</div>
-                    <h3>不是网页先行，而是本地系统先行</h3>
-                    <ul id="integrationList"></ul>
-                </aside>
             </div>
 
-            <div class="learning-stat-grid" id="learningStats" aria-label="学习统计"></div>
+            <div class="learning-stat-grid learning-stat-grid-readable" id="learningStats" aria-label="学习统计"></div>
+        </section>
+
+        <section class="section" id="featured-learning" aria-labelledby="featured-learning-title">
+            <div class="section-header">
+                <div class="section-number" aria-hidden="true">02</div>
+                <div class="section-title-group">
+                    <h2 class="section-title" id="featured-learning-title">最新一篇重点学习</h2>
+                    <p class="section-subtitle">每轮学习会选一条最新内容写成长摘要：先告诉你学到了什么，再给出本地记录路径。</p>
+                </div>
+            </div>
+            <div id="featuredLearning"></div>
         </section>
 
         <section class="section" id="frameworks" aria-labelledby="frameworks-title">
             <div class="section-header">
-                <div class="section-number" aria-hidden="true">02</div>
+                <div class="section-number" aria-hidden="true">03</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="frameworks-title">已经学出的母框架</h2>
-                    <p class="section-subtitle">这些不是单条笔记，而是以后写博客、看持仓、筛候选时可以反复调用的判断骨架</p>
+                    <h2 class="section-title" id="frameworks-title">可复用判断框架</h2>
+                    <p class="section-subtitle">“母框架”改成人话就是：以后遇到类似公司叙事时，可以反复使用的检查清单。每张卡都写了更新日期、具体内容和本地路径。</p>
                 </div>
             </div>
             <div class="learning-framework-grid" id="frameworkGrid"></div>
@@ -128,10 +133,10 @@
 
         <section class="section" id="coverage" aria-labelledby="coverage-title">
             <div class="section-header">
-                <div class="section-number" aria-hidden="true">03</div>
+                <div class="section-number" aria-hidden="true">04</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="coverage-title">覆盖地图</h2>
-                    <p class="section-subtitle">看学习内容主要集中在哪些判断区域，哪些地方还需要继续补</p>
+                    <h2 class="section-title" id="coverage-title">学习覆盖地图</h2>
+                    <p class="section-subtitle">这里的数字表示每类主题已经沉淀了多少条。它用来判断我学得偏不偏、下一步该补哪类内容。</p>
                 </div>
             </div>
             <div class="learning-category-grid" id="categoryGrid"></div>
@@ -139,16 +144,16 @@
 
         <section class="section" id="latest-notes" aria-labelledby="latest-notes-title">
             <div class="section-header">
-                <div class="section-number" aria-hidden="true">04</div>
+                <div class="section-number" aria-hidden="true">05</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="latest-notes-title">最新学习笔记</h2>
-                    <p class="section-subtitle">每条都先压成一句可复用 takeaway，再保留最小方法提示和本地记录入口</p>
+                    <h2 class="section-title" id="latest-notes-title">最近 10 条学习笔记</h2>
+                    <p class="section-subtitle">只显示最近 10 条，避免信息过载；完整总数和本地目录路径放在上方总览里。</p>
                 </div>
             </div>
 
             <div class="learning-notes-toolbar">
                 <div>
-                    <div class="course-card-kicker">Recent Notes</div>
+                    <div class="course-card-kicker">Recent 10 Notes</div>
                     <strong><span id="visibleNoteStatus">正在加载学习笔记</span><span id="visibleNoteCount" aria-live="polite">…</span></strong>
                 </div>
                 <div class="learning-filter-row" id="categoryFilters" aria-label="按分类筛选学习笔记"></div>
@@ -172,37 +177,6 @@
             </div>
         </section>
 
-        <section class="section" id="local-system" aria-labelledby="local-system-title">
-            <div class="section-header">
-                <div class="section-number" aria-hidden="true">05</div>
-                <div class="section-title-group">
-                    <h2 class="section-title" id="local-system-title">本地系统联动</h2>
-                    <p class="section-subtitle">公开页只负责让你看见我学了什么，真正的知识仍回到本地投资系统</p>
-                </div>
-            </div>
-
-            <div class="editorial-band learning-editorial-band">
-                <div class="editorial-band-main">
-                    <div class="editorial-band-kicker">Local Brain</div>
-                    <h3>学习笔记不是另起炉灶，而是本地投资系统的可视化窗口。</h3>
-                    <p>每次学习先进入自动学习 lane 和 creator learning 历史；如果它变成可复用方法，就进入 frameworks；如果它改变某只股票，就进入 ticker；如果它改变候选或组合动作，就进入 candidate pool / command center。公开页只显示整理后的摘要。</p>
-                </div>
-                <div class="editorial-band-side">
-                    <div class="editorial-band-item">
-                        <span class="editorial-band-label">学习记录</span>
-                        <strong>automation notes + creators/meitou-learning</strong>
-                    </div>
-                    <div class="editorial-band-item">
-                        <span class="editorial-band-label">投资联动</span>
-                        <strong>frameworks / tickers / candidate-pool / command-center</strong>
-                    </div>
-                    <div class="editorial-band-item">
-                        <span class="editorial-band-label">公开展示</span>
-                        <strong>learning-notes-data.js → learning/index.html</strong>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer>
@@ -211,8 +185,8 @@
 
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/learning-notes-data.js?v=20260427ecosystem01"></script>
-    <script src="../js/learning-notes.js?v=20260427ecosystem01"></script>
+    <script src="../js/learning-notes-data.js?v=20260427learning02"></script>
+    <script src="../js/learning-notes.js?v=20260427learning02"></script>
     <script src="../js/main.js?v=20260424round5fix14"></script>
 </body>
 </html>
