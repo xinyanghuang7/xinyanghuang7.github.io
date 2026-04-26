@@ -1,14 +1,14 @@
 window.__LEARNING_NOTES__ = {
   "schema": "learning-notes-public.v2",
-  "updatedAt": "2026-04-27 01:24 Asia/Shanghai",
+  "updatedAt": "2026-04-27 01:36 Asia/Shanghai",
   "sourceFiles": [
     "knowledge/investing/automation/feishu-deep-study-manifest.json",
     "knowledge/investing/automation/feishu-deep-study-synthesis.md",
     "knowledge/investing/automation/feishu-deep-study-notes.md",
     "knowledge/investing/creators/meitou-learning.md"
   ],
-  "topicCount": 181,
-  "newest": "2026-04-27 01:25 Asia/Shanghai",
+  "topicCount": 182,
+  "newest": "2026-04-27 01:35 Asia/Shanghai",
   "oldest": "2026-04-17 14:00 Asia/Shanghai",
   "displayRecentCount": 10,
   "categories": [
@@ -17,6 +17,7 @@ window.__LEARNING_NOTES__ = {
       "plainName": "商业质量与护城河",
       "count": 80,
       "description": "这些笔记在提醒我：增长、客户、生态、采用率不能直接翻译成更强生意，要先看需求和利润质量。",
+      "updatedAt": "2026-04-27 01:35 Asia/Shanghai",
       "localPath": "knowledge/investing/automation/feishu-deep-study-catalog.md"
     },
     {
@@ -24,6 +25,7 @@ window.__LEARNING_NOTES__ = {
       "plainName": "财务质量与资本配置",
       "count": 42,
       "description": "这些笔记在拆：现金流、毛利率、回购、ROIC、资本开支变化，到底是主业变强，还是口径/周期更好看。",
+      "updatedAt": "2026-04-27 01:35 Asia/Shanghai",
       "localPath": "knowledge/investing/automation/feishu-deep-study-catalog.md"
     },
     {
@@ -31,13 +33,15 @@ window.__LEARNING_NOTES__ = {
       "plainName": "组织变化与执行兑现",
       "count": 14,
       "description": "这些笔记在看：管理层、组织、激励、合作、裁员等动作，是否真的能变成经营兑现。",
+      "updatedAt": "2026-04-27 01:35 Asia/Shanghai",
       "localPath": "knowledge/investing/automation/feishu-deep-study-catalog.md"
     },
     {
       "name": "组合方法 / 估值纪律 / 风险框架",
       "plainName": "组合方法与风险纪律",
-      "count": 25,
+      "count": 26,
       "description": "这些笔记服务于仓位、估值、风险、赔率和复盘，目的是把学习压回可执行的组合语言。",
+      "updatedAt": "2026-04-27 01:35 Asia/Shanghai",
       "localPath": "knowledge/investing/automation/feishu-deep-study-catalog.md"
     },
     {
@@ -45,6 +49,7 @@ window.__LEARNING_NOTES__ = {
       "plainName": "证据质量与反方验证",
       "count": 4,
       "description": "这些笔记专门检查证据硬度：来源是否可靠、口径是否可审计、反方有没有被认真处理。",
+      "updatedAt": "2026-04-27 01:35 Asia/Shanghai",
       "localPath": "knowledge/investing/automation/feishu-deep-study-catalog.md"
     },
     {
@@ -52,6 +57,7 @@ window.__LEARNING_NOTES__ = {
       "plainName": "待归类观察",
       "count": 16,
       "description": "这些内容暂时有价值，但还没稳定到足够明确的母框架，后续会继续归并。",
+      "updatedAt": "2026-04-27 01:35 Asia/Shanghai",
       "localPath": "knowledge/investing/automation/feishu-deep-study-catalog.md"
     }
   ],
@@ -157,6 +163,28 @@ window.__LEARNING_NOTES__ = {
       "localPath": "knowledge/investing/frameworks/core-frameworks.md"
     },
     {
+      "title": "看到债券收益率，先问它是哪一种风险补偿",
+      "shortName": "债券风险映射检查",
+      "takeaway": "债券不是一个单一防御资产；投资级债、高收益债、可赎回债、市政债分别暴露在久期、信用、税务和结构补偿上。",
+      "detail": "适合用在债券 ETF、现金替代、软着陆交易和衰退保护这些场景。它避免我只看分红率或票息，而忽略信用利差、久期、违约周期和赎回条款。",
+      "checks": [
+        "信用等级",
+        "久期",
+        "信用利差",
+        "违约周期",
+        "结构条款"
+      ],
+      "appliesTo": [
+        "LQD",
+        "HYG",
+        "ANGL",
+        "TLT",
+        "现金管理"
+      ],
+      "updatedAt": "2026-04-27 Asia/Shanghai",
+      "localPath": "knowledge/investing/frameworks/investment-vehicle-traffic-light.md"
+    },
+    {
       "title": "所有学习最后都要回到组合语言",
       "shortName": "组合映射检查",
       "takeaway": "学习不是为了堆笔记，而是为了回答：它改变了哪只股票、哪个候选、哪个风险边界、哪篇博客的表达。",
@@ -178,6 +206,14 @@ window.__LEARNING_NOTES__ = {
     }
   ],
   "recent": [
+    {
+      "timestamp": "2026-04-27 01:35 Asia/Shanghai",
+      "title": "信用债不是股票的简单替代",
+      "method": "先拆信用风险、久期和经济周期位置",
+      "category": "组合方法 / 估值纪律 / 风险框架",
+      "source": "Feishu 深度学习 lane",
+      "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
+    },
     {
       "timestamp": "2026-04-27 01:25 Asia/Shanghai",
       "title": "财务规划不等于投资体系完整",
@@ -249,17 +285,17 @@ window.__LEARNING_NOTES__ = {
       "category": "其他 / 待归类",
       "source": "Feishu 深度学习 lane",
       "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
-    },
-    {
-      "timestamp": "2026-04-19 07:05 Asia/Shanghai",
-      "title": "会员费 / 会员制模式不等于护城河自动更深",
-      "method": "先拆权益密度、续费惯性和零售利润外溢",
-      "category": "需求验证 / 收入质量 / 护城河真假",
-      "source": "Feishu 深度学习 lane",
-      "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
     }
   ],
   "fallbackRecent": [
+    {
+      "timestamp": "2026-04-27 01:35 Asia/Shanghai",
+      "title": "信用债不是股票的简单替代",
+      "method": "先拆信用风险、久期和经济周期位置",
+      "category": "组合方法 / 估值纪律 / 风险框架",
+      "source": "Feishu 深度学习 lane",
+      "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
+    },
     {
       "timestamp": "2026-04-27 01:25 Asia/Shanghai",
       "title": "财务规划不等于投资体系完整",
@@ -275,28 +311,27 @@ window.__LEARNING_NOTES__ = {
       "category": "需求验证 / 收入质量 / 护城河真假",
       "source": "Feishu 深度学习 lane",
       "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
-    },
-    {
-      "timestamp": "2026-04-19 10:35 Asia/Shanghai",
-      "title": "网络密度不等于收费网络自动更强",
-      "method": "先拆区域垄断、边际成本和客户切换摩擦",
-      "category": "需求验证 / 收入质量 / 护城河真假",
-      "source": "Feishu 深度学习 lane",
-      "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
     }
   ],
   "featuredLatest": {
-    "title": "财务规划不等于投资体系完整",
-    "timestamp": "2026-04-27 01:25 Asia/Shanghai",
-    "category": "财务质量 / 会计口径 / 资本配置",
+    "title": "信用债不是股票的简单替代",
+    "timestamp": "2026-04-27 01:35 Asia/Shanghai",
+    "category": "组合方法 / 估值纪律 / 风险框架",
     "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md",
     "source": "美投 / 本地学习系统",
-    "summary": "这次学习来自美投《如何建立一套完整的投资体系？》。我把它压成一个更适合当前系统的结论：投资体系不是多几个策略、指标或股票池，而是先有财务目标，再把目标期限翻译成风险预算，最后用复盘机制持续纠错。比如三年内要用的钱，不能用十年复利资产的语言来管理；如果没有复盘，就不知道一次亏损到底是系统问题、判断问题，还是运气问题。对我的系统来说，这条会直接影响候选研究和博客表达：以后不能只问“这家公司好不好”，还要问“这条判断适合放在哪个时间期限、风险预算和复盘节奏里”。"
+    "summary": "这次学习来自美投《如何在债券上获得超过股票收益？如何通过债券降低整体投资风险？高手必备的债券投资策略！》。我把它压成一个组合工具层的结论：信用债不是“更安全的股票替代”，也不是“债券=防御”的简单延伸。投资级债更像久期/衰退保护工具，高收益债更像软着陆/高票息环境里的信用风险工具；callable bond 和市政债还分别引入赎回条款与税务变量。对我的系统来说，这条会改变以后写组合和现金替代时的语言：不能只看收益率，而要说明收益来自利率久期、信用利差、税务优势，还是结构补偿。",
+    "bullets": [
+      "投资级债偏久期和衰退保护，高收益债偏票息和信用周期。",
+      "看债券 ETF 不能只看收益率，还要看信用等级、久期、利差和违约周期。",
+      "Credit Spread 既是宏观预警指标，也能反过来指导债券工具选择。"
+    ],
+    "systemEffect": "已补进宏观信用风险框架和投资工具红黄绿灯地图；以后讨论债券/现金替代时，优先拆久期、信用利差、违约周期和结构条款。",
+    "sourcePath": "outputs/meitou/raw/tofu-hzrgu.html"
   },
   "statCards": [
     {
       "label": "学习总数",
-      "value": 181,
+      "value": 182,
       "note": "本地学习 lane 已沉淀的主题总量",
       "path": "knowledge/investing/automation/feishu-deep-study-catalog.md"
     },
@@ -308,13 +343,13 @@ window.__LEARNING_NOTES__ = {
     },
     {
       "label": "母框架",
-      "value": 6,
+      "value": 7,
       "note": "可以反复复用的判断骨架",
       "path": "knowledge/investing/frameworks/core-frameworks.md"
     },
     {
       "label": "最近更新",
-      "value": "2026-04-27 01:25 Asia/Shanghai",
+      "value": "2026-04-27 01:35 Asia/Shanghai",
       "note": "最新一条学习进入系统的时间",
       "path": "knowledge/investing/automation/feishu-deep-study-topic-log.md"
     }

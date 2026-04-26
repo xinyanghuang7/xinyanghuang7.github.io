@@ -54,8 +54,16 @@
         </div>
         <h3>${escapeHtml(item.title)}</h3>
         <p>${escapeHtml(item.summary)}</p>
+        <div class="learning-featured-insights" aria-label="这篇学习沉淀出的关键结论">
+          ${(item.bullets || []).map((bullet) => `<div class="learning-featured-insight"><span>•</span><strong>${escapeHtml(bullet)}</strong></div>`).join('')}
+        </div>
+        <div class="learning-featured-effect">
+          <span>系统变化</span>
+          <p>${escapeHtml(item.systemEffect || '已进入本地学习系统，后续按需晋升到 canonical 文件。')}</p>
+        </div>
         <div class="learning-source-row">
           <span>${escapeHtml(item.source || '学习系统')}</span>
+          ${pathChip(item.sourcePath)}
           ${pathChip(item.localRecord)}
         </div>
       </article>
@@ -87,7 +95,7 @@
     el.innerHTML = (data.categories || []).map((item) => `
       <article class="learning-category-card">
         <div class="learning-category-count">${escapeHtml(item.count)}</div>
-        <div class="learning-category-label">已学 ${escapeHtml(item.count)} 条</div>
+        <div class="learning-category-label">已学 ${escapeHtml(item.count)} 条 · 最近 ${escapeHtml(item.updatedAt || data.newest || '待同步')}</div>
         <h3>${escapeHtml(item.plainName || item.name)}</h3>
         <p>${escapeHtml(item.description)}</p>
         ${pathChip(item.localPath)}
