@@ -237,6 +237,32 @@ window.__LEARNING_NOTES__ = {
       "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
     }
   ],
+  "fallbackRecent": [
+    {
+      "timestamp": "2026-04-19 10:45 Asia/Shanghai",
+      "title": "客户集中度下降不等于收入质量自动更强",
+      "method": "先拆头部客户质量、预算相关性和新增客户含金量",
+      "category": "需求验证 / 收入质量 / 护城河真假",
+      "source": "Feishu 深度学习 lane",
+      "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
+    },
+    {
+      "timestamp": "2026-04-19 10:35 Asia/Shanghai",
+      "title": "网络密度不等于收费网络自动更强",
+      "method": "先拆区域垄断、边际成本和客户切换摩擦",
+      "category": "需求验证 / 收入质量 / 护城河真假",
+      "source": "Feishu 深度学习 lane",
+      "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
+    },
+    {
+      "timestamp": "2026-04-19 10:25 Asia/Shanghai",
+      "title": "Medicare Advantage 渗透率提升不等于护城河自动更深",
+      "method": "先拆新增人群质量、风险调整和监管回收",
+      "category": "需求验证 / 收入质量 / 护城河真假",
+      "source": "Feishu 深度学习 lane",
+      "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
+    }
+  ],
   "thinAreas": [
     "证据质量 / 来源层级 / 反方验证",
     "组织 / 战略动作 / 执行变化",

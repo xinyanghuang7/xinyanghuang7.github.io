@@ -60,6 +60,20 @@
     `).join('');
   }
 
+  function fallbackNotes() {
+    if (Array.isArray(data.fallbackRecent) && data.fallbackRecent.length) {
+      return data.fallbackRecent;
+    }
+    return (data.motherFrameworks || []).slice(0, 3).map((item) => ({
+      timestamp: data.updatedAt || '待同步',
+      title: item.title,
+      method: item.takeaway,
+      category: '母框架 fallback',
+      source: 'learning-notes-data.js fallback',
+      localRecord: 'knowledge/investing/automation/feishu-deep-study-notes.md'
+    }));
+  }
+
   function noteTemplate(item) {
     return `
       <article class="learning-note-card" data-category="${escapeHtml(item.category)}">
@@ -80,13 +94,17 @@
   function renderNotes(filterValue) {
     const el = $('#notesList');
     if (!el) return;
-    const notes = data.recent || [];
+    const recent = Array.isArray(data.recent) ? data.recent : [];
+    const notes = recent.length ? recent : fallbackNotes();
     const filtered = filterValue && filterValue !== 'all'
       ? notes.filter(item => item.category === filterValue)
       : notes;
-    el.innerHTML = filtered.map(noteTemplate).join('') || '<p class="learning-empty">没有匹配的学习笔记。</p>';
+    const hasPrimaryData = recent.length > 0;
+    el.innerHTML = filtered.map(noteTemplate).join('') || '<p class="learning-empty">没有匹配的学习笔记；可以切回“全部”，或回到本地学习系统查看 raw notes。</p>';
     const count = $('#visibleNoteCount');
-    if (count) count.textContent = String(filtered.length);
+    const status = $('#visibleNoteStatus');
+    if (count) count.textContent = `${filtered.length} 条`;
+    if (status) status.textContent = hasPrimaryData ? '当前显示 ' : 'fallback 显示 ';
   }
 
   function renderFilters() {

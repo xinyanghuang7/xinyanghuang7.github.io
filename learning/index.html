@@ -19,7 +19,7 @@
     <meta name="twitter:description" content="把自动学习得到的投资判断框架整理成公开可读摘要，并同步回本地投资系统。">
     <meta name="twitter:image" content="https://4fire.qzz.io/images/hero-bg.jpg">
     <title>学习笔记 | ValueInvest</title>
-    <link rel="stylesheet" href="../css/style.css?v=20260426learning01">
+    <link rel="stylesheet" href="../css/style.css?v=20260427ecosystem01">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -149,12 +149,27 @@
             <div class="learning-notes-toolbar">
                 <div>
                     <div class="course-card-kicker">Recent Notes</div>
-                    <strong>当前显示 <span id="visibleNoteCount">0</span> 条</strong>
+                    <strong><span id="visibleNoteStatus">正在加载学习笔记</span><span id="visibleNoteCount" aria-live="polite">…</span></strong>
                 </div>
                 <div class="learning-filter-row" id="categoryFilters" aria-label="按分类筛选学习笔记"></div>
             </div>
 
-            <div class="learning-notes-list" id="notesList"></div>
+            <div class="learning-notes-list" id="notesList">
+                <article class="learning-note-card learning-note-loading" aria-live="polite">
+                    <div class="learning-note-meta"><span>Loading</span><span>Local First</span></div>
+                    <h3>正在读取本地学习系统同步过来的摘要</h3>
+                    <p>公开页只展示整理后的 takeaway / method / category；raw scratch notes 和 durable truth 仍保留在本地投资系统。</p>
+                    <div class="learning-note-foot"><span>如果脚本暂时不可用，请回到本地 learning lane</span><span>knowledge/investing/automation</span></div>
+                </article>
+                <noscript>
+                    <article class="learning-note-card">
+                        <div class="learning-note-meta"><span>No JavaScript</span><span>Fallback</span></div>
+                        <h3>学习笔记需要 JavaScript 渲染完整列表</h3>
+                        <p>当前静态 fallback 只说明边界：公开页不是 raw scratch notes，完整学习记录仍在本地投资系统。</p>
+                        <div class="learning-note-foot"><span>本地记录</span><span>knowledge/investing/automation/feishu-deep-study-notes.md</span></div>
+                    </article>
+                </noscript>
+            </div>
         </section>
 
         <section class="section" id="local-system" aria-labelledby="local-system-title">
@@ -196,8 +211,8 @@
 
     <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
 
-    <script src="../js/learning-notes-data.js?v=20260426learning01"></script>
-    <script src="../js/learning-notes.js?v=20260426learning01"></script>
+    <script src="../js/learning-notes-data.js?v=20260427ecosystem01"></script>
+    <script src="../js/learning-notes.js?v=20260427ecosystem01"></script>
     <script src="../js/main.js?v=20260424round5fix14"></script>
 </body>
 </html>
