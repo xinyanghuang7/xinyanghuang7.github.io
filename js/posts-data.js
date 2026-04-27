@@ -1,6 +1,24 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-04-27",
+    "title": "2026年4月27日美股：MELI 的价值，不是拉美版电商，而是电商、支付、物流和信用一起转的飞轮",
+    "desc": "2026-04-27 美股跟踪：用 MELI 拆平台飞轮与信用风险边界；持仓新闻只覆盖 META、NVDA、NBIS，并把价格快照、新闻新鲜度和动作边界写清楚。",
+    "url": "posts/2026/04/27.html",
+    "keywords": [
+      "美股",
+      "价值投资",
+      "MELI",
+      "MercadoLibre",
+      "META",
+      "NVDA",
+      "NBIS",
+      "平台飞轮",
+      "投资研究",
+      "组合管理"
+    ]
+  },
+  {
     "date": "2026-04-26",
     "title": "2026年4月26日美股：CNI 的价值，不是铁路很稳，而是它拥有一张很难重建的北美硬网络",
     "desc": "2026-04-26 美股跟踪：用 CNI（Canadian National Railway）作为今日宝藏标的，拆北美铁路硬网络资产；持仓新闻只覆盖 META、NVDA、NBIS，并把价格快照、新闻新鲜度和动作边界写清楚。",
