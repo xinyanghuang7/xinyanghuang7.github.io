@@ -18622,6 +18622,7 @@ body.post-page .creator-digest-board {
 
 body.post-page .creator-card {
     position: relative;
+    align-self: start;
     overflow: hidden;
     padding: clamp(1.15rem, 2.1vw, 1.65rem);
     border-radius: 28px;
