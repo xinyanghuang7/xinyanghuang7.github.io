@@ -18617,6 +18617,7 @@ body.post-page .creator-digest-board {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
     gap: 1rem;
+    align-items: start;
 }
 
 body.post-page .creator-card {
