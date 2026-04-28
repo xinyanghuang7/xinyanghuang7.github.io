@@ -202,7 +202,11 @@ foreach ($file in $postFiles) {
     }
 
     if ($enforce0419WorkflowScaffold -and $content -match 'id="creator-digest"') {
-        foreach ($creatorToken in @('data-source="meitoujiang"', 'data-source="meitoukx"', 'data-source="local-meitou"', 'data-source="rhino-finance"')) {
+        $hasMeitouNews = ($content -match [regex]::Escape('data-source="meitou-news"')) -or (($content -match [regex]::Escape('data-source="meitoujiang"')) -and ($content -match [regex]::Escape('data-source="meitoukx"')))
+        if (-not $hasMeitouNews) {
+            Add-Issue "$rel Module 3 creator digest missing required source marker data-source=`"meitou-news`" or both legacy meitoujiang+meitoukx markers"
+        }
+        foreach ($creatorToken in @('data-source="local-meitou"', 'data-source="rhino-finance"')) {
             if ($content -notmatch [regex]::Escape($creatorToken)) {
                 Add-Issue "$rel Module 3 creator digest missing required source marker $creatorToken"
             }
