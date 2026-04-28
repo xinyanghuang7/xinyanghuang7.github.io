@@ -1,6 +1,25 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-04-29",
+    "title": "2026年4月29日美股:COIN 不是炒币入口,而是加密世界的合规收费基础设施",
+    "desc": "2026-04-29 美股跟踪:用 COIN 拆加密基础设施收费网络;创作者摘要覆盖美投君、美投侃新闻、环球视野财经;持仓新闻只覆盖 META、NVDA、NBIS。",
+    "url": "posts/2026/04/29.html",
+    "keywords": [
+      "美股",
+      "价值投资",
+      "COIN",
+      "Coinbase",
+      "META",
+      "NVDA",
+      "NBIS",
+      "加密基础设施",
+      "稳定币",
+      "投资研究",
+      "组合管理"
+    ]
+  },
+  {
     "date": "2026-04-28",
     "title": "2026年4月28日美股：ADP 的价值，不是发工资软件，而是企业后台最不敢换的收费通道",
     "desc": "2026-04-28 美股跟踪：用 ADP 拆企业 payroll / HCM 工作流收费网络；新增创作者摘要模块；持仓新闻只覆盖 META、NVDA、NBIS，并把价格快照、新闻新鲜度和动作边界写清楚。",
