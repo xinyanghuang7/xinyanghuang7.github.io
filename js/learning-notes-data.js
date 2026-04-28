@@ -207,6 +207,14 @@ window.__LEARNING_NOTES__ = {
   ],
   "recent": [
     {
+      "timestamp": "2026-04-29 01:15 Asia/Shanghai",
+      "title": "加密基础设施收费网络识别法",
+      "method": "先问谁都需要、切换成本高不高、收费模式稳不稳",
+      "category": "基础设施识别 / 收费网络 / 合规护城河",
+      "source": "0429 博客 Module 3 创作者摘要",
+      "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
+    },
+    {
       "timestamp": "2026-04-28 10:49 Asia/Shanghai",
       "title": "博客创作者摘要不是一次性展示",
       "method": "先拆来源数字、学习归档和前端联动证据",
@@ -340,19 +348,19 @@ window.__LEARNING_NOTES__ = {
     }
   ],
   "featuredLatest": {
-    "title": "博客创作者摘要不是一次性展示",
-    "timestamp": "2026-04-28 10:49 Asia/Shanghai",
-    "category": "证据质量 / 来源层级 / 反方验证",
+    "title": "加密基础设施收费网络识别法",
+    "timestamp": "2026-04-29 01:15 Asia/Shanghai",
+    "category": "基础设施识别 / 收费网络 / 合规护城河",
     "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md",
-    "source": "美投 / 本地学习系统",
-    "summary": "这次学习来自 2026-04-28 每日博客 Module 3【关注博主YouTube每日更新摘要】。我把它压成一个系统联动结论：创作者摘要不是一次性信息栏，而是从 YouTube / 本地美投抓取进入学习系统的入口。环球视野财经这次已经补入纳指近 +2%、标普 +0.8%、NVDA 208/212、TSM 400/398/516、LLY 701-778 等数字；以后这类数字摘要要同步进入学习笔记前端和本地学习文档，避免博客、学习系统和技能规则三套口径漂移。",
+    "source": "0429 博客 Module 3 创作者摘要",
+    "summary": "这次学习来自 2026-04-29 每日博客 Module 3 和 Module 1 的联动。美投讲美股讨论特斯拉三大变动和进场时机，美投侃新闻讨论滞胀和微软护城河变化，环球视野财经讨论半导体 ETF 见顶、NVDA 新高和 MSFT 财报波动。核心学习点：识别基础设施平台时，先问它是不是不管谁赢都收费；公司变动多时先分清愿景 vs 现金流；宏观恶化时 AI 故事不能当护身符。",
     "bullets": [
-      "Module 3 是学习素材入口，不是一次性信息栏。",
-      "创作者摘要能拿到价格、支撑位、压力位、指数涨跌就必须写具体数字。",
-      "前端验收要同时看博客卡片、学习笔记页面、本地学习文档和技能规则。"
+      "基础设施平台识别法：谁都需要、切换成本高、收费模式稳。",
+      "公司变动多时先分清愿景更大 vs 现金流更硬。",
+      "半导体 ETF 见顶讨论是短期风险信号，NVDA 新高不等于追涨理由。"
     ],
-    "systemEffect": "已把每日博客 Module 3 写入本地学习文档和公开学习笔记前端联动层；以后每日博客生成后，必须同步刷新学习 notes 数据、保留数字摘要，并截图验收学习页兼容性。",
-    "sourcePath": "xinyanghuang7.github.io/posts/2026/04/28.html#creator-digest"
+    "systemEffect": "已把 0429 博客 Module 3 创作者摘要同步到学习系统；以后每日博客生成后，必须同步刷新学习 notes 数据、保留数字摘要，并截图验收学习页兼容性。",
+    "sourcePath": "xinyanghuang7.github.io/posts/2026/04/29.html#creator-digest"
   },
   "statCards": [
     {
@@ -375,7 +383,7 @@ window.__LEARNING_NOTES__ = {
     },
     {
       "label": "最近更新",
-      "value": "2026-04-28 10:49 Asia/Shanghai",
+      "value": "2026-04-29 01:15 Asia/Shanghai",
       "note": "最新一条学习进入系统的时间",
       "path": "knowledge/investing/automation/feishu-deep-study-topic-log.md"
     }
