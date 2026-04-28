@@ -14,6 +14,7 @@ $postTemplatePath = Join-Path $root 'template\post-template.html'
 $optionsIndexPath = Join-Path $root 'options\index.html'
 $courseManifestPath = Join-Path $root 'options\course-manifest.json'
 $blogBackpropValidatorPath = Join-Path $root '..\scripts\investing\validate_blog_backprop_diff.py'
+$creatorDigestRequiredDate = [datetime]'2026-04-28'
 $coursePublicPlaceholderPattern = '\{\{[^}]+\}\}|XXX\.XX|待填充|最新动态\.\.\.|新闻分析\.\.\.|基于调研数据|TODO|TBD'
 $encodingRiskPattern = '�|锟|锟斤拷|骞|鏈|鏃|鍒|浠|璇|銆|鈥|�\?|\?{2,}'
 
@@ -164,6 +165,18 @@ foreach ($file in $postFiles) {
         Add-Issue "$rel missing article meta bar"
     }
 
+    $enforceCreatorDigest = $false
+    if ($dateMatch.Success) {
+        $dateIso = "{0}-{1}-{2}" -f $dateMatch.Groups['year'].Value, $dateMatch.Groups['month'].Value, $dateMatch.Groups['day'].Value
+        if ([datetime]::ParseExact($dateIso, 'yyyy-MM-dd', $null) -ge $creatorDigestRequiredDate) {
+            $enforceCreatorDigest = $true
+        }
+    }
+
+    if ($enforceCreatorDigest -and $content -notmatch 'id="creator-digest"') {
+        Add-Issue "$rel missing Module 3 creator digest section"
+    }
+
     if ($content -match 'XXX\.XX|待填充|最新动态\.\.\.|新闻分析\.\.\.|基于调研数据') {
         Add-Issue "$rel still contains placeholder content"
     }
@@ -188,8 +201,16 @@ foreach ($file in $postFiles) {
         Add-Issue "$rel missing canonical on 4fire.qzz.io"
     }
 
+    if ($enforce0419WorkflowScaffold -and $content -match 'id="creator-digest"') {
+        foreach ($creatorToken in @('data-source="meitoujiang"', 'data-source="meitoukx"', 'data-source="local-meitou"', 'data-source="rhino-finance"')) {
+            if ($content -notmatch [regex]::Escape($creatorToken)) {
+                Add-Issue "$rel Module 3 creator digest missing required source marker $creatorToken"
+            }
+        }
+    }
+
     if ($enforce0419WorkflowScaffold -and $content -match 'id="decision-cards"' -and $content -notmatch 'tracking-framework-grid\s+decision-grid-enhanced') {
-        Add-Issue "$rel Module 4 missing premium decision-card grid"
+        Add-Issue "$rel Module 5 missing premium decision-card grid"
     }
 
     $enforceEnhancedSeo = $false

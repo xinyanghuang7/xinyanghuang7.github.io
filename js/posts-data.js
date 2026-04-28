@@ -1,6 +1,26 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-04-28",
+    "title": "2026年4月28日美股：ADP 的价值，不是发工资软件，而是企业后台最不敢换的收费通道",
+    "desc": "2026-04-28 美股跟踪：用 ADP 拆企业 payroll / HCM 工作流收费网络；新增创作者摘要模块；持仓新闻只覆盖 META、NVDA、NBIS，并把价格快照、新闻新鲜度和动作边界写清楚。",
+    "url": "posts/2026/04/28.html",
+    "keywords": [
+      "美股",
+      "价值投资",
+      "ADP",
+      "Automatic Data Processing",
+      "META",
+      "NVDA",
+      "NBIS",
+      "Payroll",
+      "HCM",
+      "企业工作流",
+      "投资研究",
+      "组合管理"
+    ]
+  },
+  {
     "date": "2026-04-27",
     "title": "2026年4月27日美股：MELI 的价值，不是拉美版电商，而是电商、支付、物流和信用一起转的飞轮",
     "desc": "2026-04-27 美股跟踪：用 MELI 拆平台飞轮与信用风险边界；持仓新闻只覆盖 META、NVDA、NBIS，并把价格快照、新闻新鲜度和动作边界写清楚。",

@@ -12,7 +12,7 @@ The public site has now moved from the earlier 0419/0420 premium closure into a 
 This is a style-system upgrade, **not** a content-system rewrite.
 The following must stay unchanged unless the user explicitly asks otherwise:
 - homepage information architecture
-- the frozen daily blog 4-module contract
+- the frozen daily blog 5-module contract
 - the 5+2 depth requirement inside Module 1
 - the existing investing-system / blog / options-course / knowledge-routing relationship
 - the teaching-first writing rhythm already established by 0419 / 0423 quality passes
@@ -98,8 +98,9 @@ That means every post should help the reader do at least one of these:
 
 Default expression rule:
 - **Module 2 teaches the method**
-- **Module 3 shows how that method helps explain today's holdings / debate / news**
-- **Module 4 reduces it to action boundary and next move**
+- **Module 3 pulls in the creator / meitou update layer that feeds the learning system**
+- **Module 4 shows how that method helps explain today's holdings / debate / news**
+- **Module 5 reduces it to action boundary and next move**
 
 Writing-quality rule:
 - the site is for **teaching useful investing knowledge**, not producing decorative short lines
@@ -109,17 +110,18 @@ Writing-quality rule:
 
 If a post only updates what happened today but does not help the reader think better next time, it is incomplete.
 
-## 1. Four-part frozen contract
+## 1. Five-part frozen contract
 
-Every daily post must contain all 4 parts. No silent downgrade.
+Every daily post must contain all 5 parts. No silent downgrade.
 
 ### 1.0 Pre-push structure gate
 Before any blog page is pushed, do one explicit structure pass on the final HTML and confirm:
-- the 4 modules appear in the fixed order: Module 1 → Module 2 → Module 3 → Module 4
+- the 5 modules appear in the fixed order: Module 1 → Module 2 → Module 3 → Module 4 → Module 5
 - Module 1 still shows the full 5+2 backbone
 - Module 2 still carries one reusable takeaway sentence and a concrete judgment rule
-- Module 3 still writes holdings only and keeps source links whenever available
-- Module 4 still uses the decision-card / holding-map scaffold and includes 当前桶位 / 核心变量 / 不要误读 / 下一步 / 当前最重要的一件事
+- Module 3 still covers the fixed creator / local-meitou digest layer
+- Module 4 still writes holdings only and keeps source links whenever available
+- Module 5 still uses the decision-card / holding-map scaffold and includes 当前桶位 / 核心变量 / 不要误读 / 下一步 / 当前最重要的一件事
 
 If any of these regress, the page is not publish-ready.
 
@@ -142,7 +144,14 @@ If any of these regress, the page is not publish-ready.
 - 目标不是讲一个好听故事，而是让读者一眼拿走一个可执行判断规则。
 - 如果 Module 2 还能被拉长成大段散文，说明还没收紧到位。
 
-### Module 3 — 持仓标的当日最新新闻 & 深度解读
+### Module 3 — 关注博主 YouTube / 本地美投每日摘要
+- 固定覆盖：`美投君 / 美投侃新闻`、`本地美投更新`、`视野环球财经`
+- 每个对象都必须显式出现；无更新时写 `无`
+- YouTube 条目至少要有：最新视频标题、链接、2-5 句摘要
+- 本地美投条目至少要有：本轮最新日报/宏观/交易页变化 + 为什么值得看
+- 这一段既是博客模块，也是学习系统输入层；若沉出 durable 方法，必须回写共享知识层
+
+### Module 4 — 持仓标的当日最新新闻 & 深度解读
 - 严格只写**用户真实持仓标的**，不要混入非持仓名字。
 - 每个持仓默认筛选 **3 条最重要的当日 / 近窗最新权威信息**，优先级是：
   1. 官方公告 / 公司 newsroom / SEC / 监管 / 财报原文
@@ -157,7 +166,7 @@ If any of these regress, the page is not publish-ready.
 - 默认工作流仍是：`real-time-thesis-monitor` 排最新与最重要顺序 → 官方 / 高质量来源加固证据 → 博客表达。
 - Never ship Module 3 as a vague news roundup.
 
-### Module 4 — 持仓动作卡片 + 当日最高优先级事项
+### Module 5 — 持仓动作卡片 + 当日最高优先级事项
 - 必须保持卡片化表达，但字段改为更明确的动作语言。
 - 每张卡片至少要有：
   - **持仓标的**
