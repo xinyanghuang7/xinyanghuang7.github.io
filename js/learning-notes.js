@@ -38,6 +38,33 @@
     `).join('');
   }
 
+
+  function renderLearningLanes() {
+    const el = $('#learningLinkageLanes');
+    if (!el) return;
+    const lanes = Array.isArray(data.learningLanes) ? data.learningLanes : [];
+    if (!lanes.length) {
+      el.innerHTML = '<p class="learning-empty">联动板块待同步；请先运行 build_learning_notes_site.py。</p>';
+      return;
+    }
+    el.innerHTML = lanes.map((item, index) => `
+      <article class="learning-lane-card" style="--delay:${index * 80}ms">
+        <div class="learning-lane-top">
+          <span class="learning-lane-index">0${index + 1}</span>
+          <span class="learning-lane-tag">${escapeHtml(item.tag)}</span>
+        </div>
+        <h3>${escapeHtml(item.title)}</h3>
+        <p class="learning-framework-takeaway">${escapeHtml(item.takeaway)}</p>
+        <p>${escapeHtml(item.detail)}</p>
+        <div class="learning-featured-effect">
+          <span>前端联动</span>
+          <p>${escapeHtml(item.frontEnd)}</p>
+        </div>
+        ${pathChip(item.localPath)}
+      </article>
+    `).join('');
+  }
+
   function renderFeatured() {
     const el = $('#featuredLearning');
     if (!el) return;
@@ -172,6 +199,7 @@
   }
 
   renderStats();
+  renderLearningLanes();
   renderFeatured();
   renderFrameworks();
   renderCategories();

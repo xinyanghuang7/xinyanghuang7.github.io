@@ -18845,3 +18845,72 @@ body.post-page .analysis-box-plain {
     }
 }
 
+/* 2026-04-28 learning-system linkage lanes */
+body.learning-notes-page .learning-lane-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1rem, 2vw, 1.35rem);
+}
+
+body.learning-notes-page .learning-lane-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 100%;
+    padding: clamp(1.18rem, 2vw, 1.55rem);
+    border-radius: 30px;
+    border: 1px solid rgba(87, 59, 33, 0.16);
+    background:
+        radial-gradient(circle at top right, rgba(200, 139, 44, 0.16), transparent 36%),
+        linear-gradient(180deg, rgba(255, 251, 244, 0.97), rgba(248, 239, 224, 0.95));
+    box-shadow: 0 18px 44px rgba(82, 53, 25, 0.10);
+    animation: learningCardIn 680ms ease both;
+    animation-delay: var(--delay, 0ms);
+}
+
+body.learning-notes-page .learning-lane-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 5px;
+    background: linear-gradient(180deg, var(--learning-amber), var(--learning-wine));
+}
+
+body.learning-notes-page .learning-lane-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.8rem;
+    align-items: center;
+    margin-bottom: 0.85rem;
+}
+
+body.learning-notes-page .learning-lane-index,
+body.learning-notes-page .learning-lane-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid rgba(126, 47, 43, 0.15);
+    background: rgba(126, 47, 43, 0.07);
+    color: var(--learning-wine);
+    font-weight: 900;
+    font-size: 0.78rem;
+    padding: 0.32rem 0.66rem;
+}
+
+body.learning-notes-page .learning-lane-card h3 {
+    margin: 0 0 0.62rem;
+    color: var(--learning-ink);
+    line-height: 1.22;
+}
+
+body.learning-notes-page .learning-lane-card p {
+    color: rgba(43, 33, 24, 0.78);
+    line-height: 1.76;
+}
+
+@media (max-width: 980px) {
+    body.learning-notes-page .learning-lane-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
