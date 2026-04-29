@@ -1,6 +1,32 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-04-30",
+    "title": "2026年4月30日美股:CBOE 不是普通交易所,而是市场波动的收费闸口",
+    "desc": "2026-04-30 美股跟踪:用 CBOE 拆市场波动收费网络;Module 2 扩展基础设施收费平台方法;Module 3 详细记录环球视野财经关于 OpenAI、半导体、SOXX、SMH、AMD、MSFT、AMZN、GOOG、META 的关键数字;持仓新闻只覆盖 META、NVDA、NBIS。",
+    "url": "posts/2026/04/30.html",
+    "keywords": [
+      "美股",
+      "价值投资",
+      "CBOE",
+      "Cboe",
+      "META",
+      "NVDA",
+      "NBIS",
+      "SOXX",
+      "SMH",
+      "AMD",
+      "MSFT",
+      "GOOG",
+      "AMZN",
+      "OpenAI",
+      "0DTE",
+      "SPX期权",
+      "投资研究",
+      "组合管理"
+    ]
+  },
+  {
     "date": "2026-04-29",
     "title": "2026年4月29日美股:COIN 不是炒币入口,而是加密世界的合规收费基础设施",
     "desc": "2026-04-29 美股跟踪:用 COIN 拆加密基础设施收费网络;创作者摘要覆盖美投君、美投侃新闻、环球视野财经;持仓新闻只覆盖 META、NVDA、NBIS。",

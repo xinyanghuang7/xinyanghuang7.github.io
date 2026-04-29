@@ -1,14 +1,14 @@
 window.__LEARNING_NOTES__ = {
   "schema": "learning-notes-public.v2",
-  "updatedAt": "2026-04-29 22:36 Asia/Shanghai",
+  "updatedAt": "2026-04-30 00:58 Asia/Shanghai",
   "sourceFiles": [
     "knowledge/investing/automation/feishu-deep-study-manifest.json",
     "knowledge/investing/automation/feishu-deep-study-synthesis.md",
     "knowledge/investing/automation/feishu-deep-study-notes.md",
     "knowledge/investing/creators/meitou-learning.md"
   ],
-  "topicCount": 186,
-  "newest": "2026-04-29 21:45 Asia/Shanghai",
+  "topicCount": 187,
+  "newest": "2026-04-30 00:58 Asia/Shanghai",
   "oldest": "2026-04-17 14:00 Asia/Shanghai",
   "displayRecentCount": 10,
   "categories": [
@@ -39,9 +39,9 @@ window.__LEARNING_NOTES__ = {
     {
       "name": "组合方法 / 估值纪律 / 风险框架",
       "plainName": "组合方法与风险纪律",
-      "count": 28,
+      "count": 29,
       "description": "这些笔记服务于仓位、估值、风险、赔率和复盘，目的是把学习压回可执行的组合语言。",
-      "updatedAt": "2026-04-29 21:45 Asia/Shanghai",
+      "updatedAt": "2026-04-30 00:58 Asia/Shanghai",
       "localPath": "knowledge/investing/automation/feishu-deep-study-catalog.md"
     },
     {
@@ -207,6 +207,14 @@ window.__LEARNING_NOTES__ = {
   ],
   "recent": [
     {
+      "timestamp": "2026-04-30 00:58 Asia/Shanghai",
+      "title": "半导体高位回撤要看压力带,不是只看涨跌情绪",
+      "method": "来源层：环球视野财经 05yoQ-glkHI 本地转写；事实层：SOXX 450-460、SMH 499-508、AMD 335-348 是反弹压力带，MSFT 425±30、AMZN 260±19、GOOG 350±20、META 670±50 是财报期权波动地图；判断层：高位 AI/半导体要用压力带 + 大科技 capex ROI 做验证。",
+      "category": "组合方法 / 估值纪律 / 风险框架",
+      "source": "YouTube 创作者摘要 lane",
+      "localRecord": "artifacts/0430-rhino-video/05yoQ-glkHI-transcript.txt"
+    },
+    {
       "timestamp": "2026-04-29 21:45 Asia/Shanghai",
       "title": "CBOE 是美股最稀缺的“市场越动荡越赚钱”标的",
       "method": "来源层：美投长文 / 本地 consolidation；事实层：SPX 指数期权与 VIX 交易需求在波动市放大；判断层：作为低相关金融基础设施候选，而不是普通高增长股。",
@@ -274,14 +282,6 @@ window.__LEARNING_NOTES__ = {
       "timestamp": "2026-04-19 10:25 Asia/Shanghai",
       "title": "Medicare Advantage 渗透率提升不等于护城河自动更深",
       "method": "先拆新增人群质量、风险调整和监管回收",
-      "category": "需求验证 / 收入质量 / 护城河真假",
-      "source": "Feishu 深度学习 lane",
-      "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
-    },
-    {
-      "timestamp": "2026-04-19 10:13 Asia/Shanghai",
-      "title": "适应症扩张不等于利润池自动更大",
-      "method": "先拆支付覆盖、产能瓶颈和患者持续性",
       "category": "需求验证 / 收入质量 / 护城河真假",
       "source": "Feishu 深度学习 lane",
       "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
