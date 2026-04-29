@@ -1,14 +1,14 @@
 window.__LEARNING_NOTES__ = {
   "schema": "learning-notes-public.v2",
-  "updatedAt": "2026-04-29 00:04 Asia/Shanghai",
+  "updatedAt": "2026-04-29 22:36 Asia/Shanghai",
   "sourceFiles": [
     "knowledge/investing/automation/feishu-deep-study-manifest.json",
     "knowledge/investing/automation/feishu-deep-study-synthesis.md",
     "knowledge/investing/automation/feishu-deep-study-notes.md",
     "knowledge/investing/creators/meitou-learning.md"
   ],
-  "topicCount": 183,
-  "newest": "2026-04-28 10:49 Asia/Shanghai",
+  "topicCount": 186,
+  "newest": "2026-04-29 21:45 Asia/Shanghai",
   "oldest": "2026-04-17 14:00 Asia/Shanghai",
   "displayRecentCount": 10,
   "categories": [
@@ -17,15 +17,15 @@ window.__LEARNING_NOTES__ = {
       "plainName": "商业质量与护城河",
       "count": 80,
       "description": "这些笔记在提醒我：增长、客户、生态、采用率不能直接翻译成更强生意，要先看需求和利润质量。",
-      "updatedAt": "2026-04-28 10:49 Asia/Shanghai",
+      "updatedAt": "2026-04-29 21:45 Asia/Shanghai",
       "localPath": "knowledge/investing/automation/feishu-deep-study-catalog.md"
     },
     {
       "name": "财务质量 / 会计口径 / 资本配置",
       "plainName": "财务质量与资本配置",
-      "count": 42,
+      "count": 43,
       "description": "这些笔记在拆：现金流、毛利率、回购、ROIC、资本开支变化，到底是主业变强，还是口径/周期更好看。",
-      "updatedAt": "2026-04-28 10:49 Asia/Shanghai",
+      "updatedAt": "2026-04-29 21:45 Asia/Shanghai",
       "localPath": "knowledge/investing/automation/feishu-deep-study-catalog.md"
     },
     {
@@ -33,15 +33,15 @@ window.__LEARNING_NOTES__ = {
       "plainName": "组织变化与执行兑现",
       "count": 14,
       "description": "这些笔记在看：管理层、组织、激励、合作、裁员等动作，是否真的能变成经营兑现。",
-      "updatedAt": "2026-04-28 10:49 Asia/Shanghai",
+      "updatedAt": "2026-04-29 21:45 Asia/Shanghai",
       "localPath": "knowledge/investing/automation/feishu-deep-study-catalog.md"
     },
     {
       "name": "组合方法 / 估值纪律 / 风险框架",
       "plainName": "组合方法与风险纪律",
-      "count": 26,
+      "count": 28,
       "description": "这些笔记服务于仓位、估值、风险、赔率和复盘，目的是把学习压回可执行的组合语言。",
-      "updatedAt": "2026-04-28 10:49 Asia/Shanghai",
+      "updatedAt": "2026-04-29 21:45 Asia/Shanghai",
       "localPath": "knowledge/investing/automation/feishu-deep-study-catalog.md"
     },
     {
@@ -49,7 +49,7 @@ window.__LEARNING_NOTES__ = {
       "plainName": "证据质量与反方验证",
       "count": 5,
       "description": "这些笔记专门检查证据硬度：来源是否可靠、口径是否可审计、反方有没有被认真处理。",
-      "updatedAt": "2026-04-28 10:49 Asia/Shanghai",
+      "updatedAt": "2026-04-29 21:45 Asia/Shanghai",
       "localPath": "knowledge/investing/automation/feishu-deep-study-catalog.md"
     },
     {
@@ -57,7 +57,7 @@ window.__LEARNING_NOTES__ = {
       "plainName": "待归类观察",
       "count": 16,
       "description": "这些内容暂时有价值，但还没稳定到足够明确的母框架，后续会继续归并。",
-      "updatedAt": "2026-04-28 10:49 Asia/Shanghai",
+      "updatedAt": "2026-04-29 21:45 Asia/Shanghai",
       "localPath": "knowledge/investing/automation/feishu-deep-study-catalog.md"
     }
   ],
@@ -207,11 +207,27 @@ window.__LEARNING_NOTES__ = {
   ],
   "recent": [
     {
-      "timestamp": "2026-04-29 01:15 Asia/Shanghai",
-      "title": "加密基础设施收费网络识别法",
-      "method": "先问谁都需要、切换成本高不高、收费模式稳不稳",
-      "category": "基础设施识别 / 收费网络 / 合规护城河",
-      "source": "0429 博客 Module 3 创作者摘要",
+      "timestamp": "2026-04-29 21:45 Asia/Shanghai",
+      "title": "CBOE 是美股最稀缺的“市场越动荡越赚钱”标的",
+      "method": "来源层：美投长文 / 本地 consolidation；事实层：SPX 指数期权与 VIX 交易需求在波动市放大；判断层：作为低相关金融基础设施候选，而不是普通高增长股。",
+      "category": "组合方法 / 估值纪律 / 风险框架",
+      "source": "Feishu 深度学习 lane",
+      "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
+    },
+    {
+      "timestamp": "2026-04-29 21:45 Asia/Shanghai",
+      "title": "台积电 DCF 估值已前滚到 base $407 / bull $500 / bear $321",
+      "method": "来源层：美投 TSM 估值长文；事实层：$407/$500/$321 是 DCF 情景锚；判断层：用估值拆解辅助决策，不把情景锚当目标价。",
+      "category": "财务质量 / 会计口径 / 资本配置",
+      "source": "Feishu 深度学习 lane",
+      "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
+    },
+    {
+      "timestamp": "2026-04-29 21:45 Asia/Shanghai",
+      "title": "Netflix 广告套餐月活不到两年从 2300 万飙至 1.9 亿",
+      "method": "来源层：美投 NFLX 5+2；事实层：广告套餐月活快速放大；判断层：重新评估内容飞轮、广告层和竞争格局。",
+      "category": "组合方法 / 估值纪律 / 风险框架",
+      "source": "Feishu 深度学习 lane",
       "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
     },
     {
@@ -269,54 +285,30 @@ window.__LEARNING_NOTES__ = {
       "category": "需求验证 / 收入质量 / 护城河真假",
       "source": "Feishu 深度学习 lane",
       "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
-    },
-    {
-      "timestamp": "2026-04-19 07:45 Asia/Shanghai",
-      "title": "品牌 / 公信力强不等于替代风险自动很低",
-      "method": "先拆制度依赖、替代路径和声誉事件尾部风险",
-      "category": "其他 / 待归类",
-      "source": "Feishu 深度学习 lane",
-      "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
-    },
-    {
-      "timestamp": "2026-04-19 07:35 Asia/Shanghai",
-      "title": "经常性收入占比高不等于需求反脆弱自动更强",
-      "method": "先拆需求刚性、合同重定价和容量利用率",
-      "category": "需求验证 / 收入质量 / 护城河真假",
-      "source": "Feishu 深度学习 lane",
-      "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
-    },
-    {
-      "timestamp": "2026-04-19 07:25 Asia/Shanghai",
-      "title": "零售广告业务增长不等于平台化利润池自动更厚",
-      "method": "先拆流量归因、商家 ROI 和用户体验约束",
-      "category": "需求验证 / 收入质量 / 护城河真假",
-      "source": "Feishu 深度学习 lane",
-      "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
     }
   ],
   "fallbackRecent": [
     {
-      "timestamp": "2026-04-28 10:49 Asia/Shanghai",
-      "title": "博客创作者摘要不是一次性展示",
-      "method": "先拆来源数字、学习归档和前端联动证据",
-      "category": "证据质量 / 来源层级 / 反方验证",
-      "source": "Feishu 深度学习 lane",
-      "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
-    },
-    {
-      "timestamp": "2026-04-27 01:35 Asia/Shanghai",
-      "title": "信用债不是股票的简单替代",
-      "method": "先拆信用风险、久期和经济周期位置",
+      "timestamp": "2026-04-29 21:45 Asia/Shanghai",
+      "title": "CBOE 是美股最稀缺的“市场越动荡越赚钱”标的",
+      "method": "来源层：美投长文 / 本地 consolidation；事实层：SPX 指数期权与 VIX 交易需求在波动市放大；判断层：作为低相关金融基础设施候选，而不是普通高增长股。",
       "category": "组合方法 / 估值纪律 / 风险框架",
       "source": "Feishu 深度学习 lane",
       "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
     },
     {
-      "timestamp": "2026-04-27 01:25 Asia/Shanghai",
-      "title": "财务规划不等于投资体系完整",
-      "method": "先拆目标期限、风险预算和复盘纠错",
+      "timestamp": "2026-04-29 21:45 Asia/Shanghai",
+      "title": "台积电 DCF 估值已前滚到 base $407 / bull $500 / bear $321",
+      "method": "来源层：美投 TSM 估值长文；事实层：$407/$500/$321 是 DCF 情景锚；判断层：用估值拆解辅助决策，不把情景锚当目标价。",
       "category": "财务质量 / 会计口径 / 资本配置",
+      "source": "Feishu 深度学习 lane",
+      "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
+    },
+    {
+      "timestamp": "2026-04-29 21:45 Asia/Shanghai",
+      "title": "Netflix 广告套餐月活不到两年从 2300 万飙至 1.9 亿",
+      "method": "来源层：美投 NFLX 5+2；事实层：广告套餐月活快速放大；判断层：重新评估内容飞轮、广告层和竞争格局。",
+      "category": "组合方法 / 估值纪律 / 风险框架",
       "source": "Feishu 深度学习 lane",
       "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md"
     }
@@ -348,24 +340,24 @@ window.__LEARNING_NOTES__ = {
     }
   ],
   "featuredLatest": {
-    "title": "加密基础设施收费网络识别法",
-    "timestamp": "2026-04-29 01:15 Asia/Shanghai",
-    "category": "基础设施识别 / 收费网络 / 合规护城河",
+    "title": "CBOE 是美股最稀缺的“市场越动荡越赚钱”标的",
+    "timestamp": "2026-04-29 21:45 Asia/Shanghai",
+    "category": "组合方法 / 估值纪律 / 风险框架",
     "localRecord": "knowledge/investing/automation/feishu-deep-study-notes.md",
-    "source": "0429 博客 Module 3 创作者摘要",
-    "summary": "这次学习来自 2026-04-29 每日博客 Module 3 和 Module 1 的联动。美投讲美股讨论特斯拉三大变动和进场时机，美投侃新闻讨论滞胀和微软护城河变化，环球视野财经讨论半导体 ETF 见顶、NVDA 新高和 MSFT 财报波动。核心学习点：识别基础设施平台时，先问它是不是不管谁赢都收费；公司变动多时先分清愿景 vs 现金流；宏观恶化时 AI 故事不能当护身符。",
+    "source": "美投 / 本地学习系统",
+    "summary": "这次学习来自本地美投刷新后的 CBOE 长文。来源层：美投材料 + 本地 consolidation，尚需后续官方口径复核。事实层：CBOE 是 SPX 指数期权的重要垄断入口，美投口径下运营利润率约 63%，市场动荡时 SPX/VIX 对冲和交易需求上升。判断层：它不是纯高增长故事，而是长期确定性 + 市场波动弹性 + 组合分散化的候选标的。公开引用时要把 63% 标成来源口径，不直接当跨公司同口径硬比较。",
     "bullets": [
-      "基础设施平台识别法：谁都需要、切换成本高、收费模式稳。",
-      "公司变动多时先分清愿景更大 vs 现金流更硬。",
-      "半导体 ETF 见顶讨论是短期风险信号，NVDA 新高不等于追涨理由。"
+      "来源层：美投长文 + 本地学习 consolidation，63% 运营利润率属于来源口径，后续公开引用需标注待官方复核。",
+      "事实层：SPX 指数期权、VIX 波动率产品和市场数据构成高利润金融基础设施，市场越波动，交易/对冲需求越强。",
+      "判断层：CBOE 更适合作为组合分散化与波动率受益候选，不应按普通高增长科技股语言表达。"
     ],
-    "systemEffect": "已把 0429 博客 Module 3 创作者摘要同步到学习系统；以后每日博客生成后，必须同步刷新学习 notes 数据、保留数字摘要，并截图验收学习页兼容性。",
-    "sourcePath": "xinyanghuang7.github.io/posts/2026/04/29.html#creator-digest"
+    "systemEffect": "已建立 CBOE 专题笔记并加入候选池；以后讨论组合分散化、波动率受益、交易所收费网络时，优先把 CBOE 与 ICE/CME 等金融基础设施放在同一框架比较。",
+    "sourcePath": "outputs/meitou/raw/tofu-h0kb2.html"
   },
   "statCards": [
     {
       "label": "学习总数",
-      "value": 183,
+      "value": 186,
       "note": "本地学习 lane 已沉淀的主题总量",
       "path": "knowledge/investing/automation/feishu-deep-study-catalog.md"
     },
@@ -383,7 +375,7 @@ window.__LEARNING_NOTES__ = {
     },
     {
       "label": "最近更新",
-      "value": "2026-04-29 01:15 Asia/Shanghai",
+      "value": "2026-04-29 21:45 Asia/Shanghai",
       "note": "最新一条学习进入系统的时间",
       "path": "knowledge/investing/automation/feishu-deep-study-topic-log.md"
     }
