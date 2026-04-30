@@ -19158,3 +19158,327 @@ body.post-0430 #market .holding-view-strip {
         gap: 0.72rem;
     }
 }
+
+
+/* 2026-05-01 lightweight PM dashboard upgrade for daily professional watchboard */
+body.post-0430 .pm-dashboard-section .section-header {
+    margin-bottom: clamp(1rem, 2vw, 1.35rem);
+}
+
+body.post-0430 .pm-dashboard-shell,
+body.post-0430 .decision-status-card,
+body.post-0430 .method-scoreboard,
+body.post-0430 .creator-decision-brief,
+body.post-0430 .news-grade-board {
+    width: min(1160px, calc(100% - 2rem));
+    margin: 0 auto clamp(1rem, 2vw, 1.35rem);
+    border: 1px solid rgba(112, 78, 42, 0.14);
+    border-radius: 30px;
+    background:
+        radial-gradient(circle at 90% 0%, rgba(212,175,55,0.16), transparent 32%),
+        linear-gradient(180deg, rgba(255, 251, 244, 0.98), rgba(248, 239, 224, 0.95));
+    box-shadow: 0 24px 58px rgba(94, 58, 22, 0.10);
+    overflow: hidden;
+}
+
+body.post-0430 .pm-dashboard-shell {
+    padding: clamp(1.2rem, 2.4vw, 1.8rem);
+}
+
+body.post-0430 .pm-dashboard-lead {
+    display: grid;
+    gap: 0.55rem;
+    padding: clamp(1rem, 2vw, 1.35rem);
+    border-radius: 24px;
+    background: rgba(126, 47, 43, 0.065);
+    border: 1px solid rgba(126, 47, 43, 0.12);
+}
+
+body.post-0430 .pm-dashboard-lead h3,
+body.post-0430 .decision-status-card h3,
+body.post-0430 .scoreboard-head h3,
+body.post-0430 .creator-decision-brief h3,
+body.post-0430 .news-grade-board h3 {
+    margin: 0;
+    color: var(--paper-ink-final);
+    font-family: var(--font-heading-site);
+    line-height: 1.28;
+}
+
+body.post-0430 .pm-dashboard-lead p,
+body.post-0430 .pm-dashboard-card p,
+body.post-0430 .decision-status-grid p,
+body.post-0430 .scoreboard-grid em,
+body.post-0430 .creator-decision-brief p,
+body.post-0430 .news-grade-grid p,
+body.post-0430 .scenario-matrix p,
+body.post-0430 .market-tape {
+    color: var(--paper-ink-soft-final) !important;
+    line-height: 1.72;
+}
+
+body.post-0430 .pm-dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.85rem;
+    margin-top: 1rem;
+}
+
+body.post-0430 .pm-dashboard-card {
+    position: relative;
+    min-height: 170px;
+    padding: 1rem 1rem 0.95rem;
+    border-radius: 22px;
+    border: 1px solid rgba(112, 78, 42, 0.11);
+    background: rgba(255, 248, 236, 0.72);
+}
+
+body.post-0430 .pm-dashboard-card strong {
+    display: block;
+    margin: 0.5rem 0 0.35rem;
+    color: var(--paper-ink-final);
+    font-size: 1.02rem;
+}
+
+body.post-0430 .pm-status-dot {
+    display: inline-flex;
+    width: 0.72rem;
+    height: 0.72rem;
+    border-radius: 999px;
+    box-shadow: 0 0 0 5px rgba(212,175,55,0.10);
+}
+
+body.post-0430 .status-positive { background: #3f8f5f; }
+body.post-0430 .status-neutral { background: #d4af37; }
+body.post-0430 .status-caution { background: #c88b2c; }
+body.post-0430 .status-risk { background: #8f2f36; }
+body.post-0430 .status-watch { background: #4d78a8; }
+
+body.post-0430 .market-tape {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 0.82rem 0.92rem;
+    border-radius: 999px;
+    border: 1px solid rgba(126, 47, 43, 0.12);
+    background: rgba(255, 252, 247, 0.82);
+}
+
+body.post-0430 .market-tape span,
+body.post-0430 .market-tape strong {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.9rem;
+    padding: 0.34rem 0.68rem;
+    border-radius: 999px;
+}
+
+body.post-0430 .market-tape span {
+    color: var(--paper-burgundy-final);
+    font-weight: 900;
+    background: rgba(126, 47, 43, 0.08);
+}
+
+body.post-0430 .market-tape strong {
+    color: var(--paper-ink-final);
+    background: rgba(212,175,55,0.12);
+    font-size: 0.82rem;
+}
+
+body.post-0430 .decision-status-card,
+body.post-0430 .method-scoreboard,
+body.post-0430 .creator-decision-brief,
+body.post-0430 .news-grade-board {
+    padding: clamp(1.05rem, 2vw, 1.4rem);
+}
+
+body.post-0430 .decision-status-card {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.35fr);
+    gap: 1rem;
+    align-items: start;
+    margin-top: 1rem;
+}
+
+body.post-0430 .decision-status-grid,
+body.post-0430 .scoreboard-grid,
+body.post-0430 .news-grade-grid,
+body.post-0430 .scenario-matrix {
+    display: grid;
+    gap: 0.75rem;
+}
+
+body.post-0430 .decision-status-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+body.post-0430 .decision-status-grid p,
+body.post-0430 .scoreboard-grid > div,
+body.post-0430 .news-grade-grid > div,
+body.post-0430 .scenario-matrix > div {
+    margin: 0;
+    padding: 0.9rem 0.95rem;
+    border-radius: 18px;
+    border: 1px solid rgba(112, 78, 42, 0.10);
+    background: rgba(255, 248, 236, 0.68);
+}
+
+body.post-0430 .scoreboard-head {
+    margin-bottom: 0.85rem;
+}
+
+body.post-0430 .scoreboard-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+body.post-0430 .scoreboard-grid span,
+body.post-0430 .scenario-matrix span {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--paper-gold-final);
+    font-size: 0.76rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+body.post-0430 .scoreboard-grid strong {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--paper-ink-final);
+    font-size: 1.08rem;
+}
+
+body.post-0430 .scoreboard-grid em {
+    display: block;
+    font-style: normal;
+    font-size: 0.92rem;
+}
+
+body.post-0430 .creator-decision-brief {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    gap: 1rem;
+    align-items: center;
+}
+
+body.post-0430 .decision-number-strip {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+}
+
+body.post-0430 .decision-number-strip strong {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.4rem;
+    padding: 0.65rem;
+    border-radius: 16px;
+    background: rgba(126,47,43,0.08);
+    border: 1px solid rgba(126,47,43,0.12);
+    color: var(--paper-burgundy-final);
+    text-align: center;
+}
+
+body.post-0430 .news-grade-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+body.post-0430 .news-grade-grid > div {
+    position: relative;
+    padding-left: 3.4rem;
+}
+
+body.post-0430 .grade {
+    position: absolute;
+    left: 0.9rem;
+    top: 0.92rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.85rem;
+    height: 1.85rem;
+    border-radius: 999px;
+    color: #fff;
+    font-size: 0.8rem;
+    box-shadow: 0 8px 18px rgba(80,45,24,0.16);
+}
+
+body.post-0430 .grade-a { background: #8f2f36; }
+body.post-0430 .grade-b { background: #b8792a; }
+body.post-0430 .grade-c { background: #4d78a8; }
+body.post-0430 .grade-d { background: #777067; }
+
+body.post-0430 .news-grade-grid strong {
+    display: block;
+    color: var(--paper-ink-final);
+    margin-bottom: 0.25rem;
+}
+
+body.post-0430 .scenario-matrix {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 0.85rem;
+}
+
+body.post-0430 .scenario-matrix p {
+    margin: 0;
+    font-size: 0.93rem;
+}
+
+body.post-0430 #decision-cards .action-card {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 1080px) {
+    body.post-0430 .pm-dashboard-grid,
+    body.post-0430 .scoreboard-grid,
+    body.post-0430 .news-grade-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 820px) {
+    body.post-0430 .decision-status-card,
+    body.post-0430 .creator-decision-brief {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    body.post-0430 .article-mobile-jump {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    body.post-0430 .pm-dashboard-shell,
+    body.post-0430 .decision-status-card,
+    body.post-0430 .method-scoreboard,
+    body.post-0430 .creator-decision-brief,
+    body.post-0430 .news-grade-board {
+        width: min(100% - 1rem, 100%);
+        border-radius: 22px;
+        padding: 0.95rem;
+    }
+
+    body.post-0430 .pm-dashboard-grid,
+    body.post-0430 .decision-status-grid,
+    body.post-0430 .scoreboard-grid,
+    body.post-0430 .news-grade-grid,
+    body.post-0430 .scenario-matrix,
+    body.post-0430 .decision-number-strip {
+        grid-template-columns: 1fr;
+    }
+
+    body.post-0430 .pm-dashboard-card {
+        min-height: 0;
+    }
+
+    body.post-0430 .market-tape {
+        border-radius: 22px;
+    }
+}
