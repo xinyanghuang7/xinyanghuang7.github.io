@@ -19058,3 +19058,103 @@ body.learning-notes-page .learning-lane-card p {
         text-align: center !important;
     }
 }
+/* 2026-04-30 benchmark article polish: source/time/move radar */
+body.post-0430 #market .section-title-group {
+    max-width: 880px;
+}
+
+body.post-0430 #market .analysis-box.analysis-box-plain {
+    border-left: 6px solid rgba(126, 47, 43, 0.72);
+    background:
+        radial-gradient(circle at 8% 0%, rgba(212, 175, 55, 0.13), transparent 30%),
+        linear-gradient(180deg, rgba(255, 251, 244, 0.98), rgba(249, 239, 224, 0.94));
+}
+
+body.post-0430 #market .holding-news-card,
+body.post-0430 #market .watchlist-radar-board {
+    box-shadow: 0 24px 56px rgba(94, 58, 22, 0.10);
+}
+
+body.post-0430 #market .holding-news-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 0.9rem;
+}
+
+body.post-0430 #market .holding-news-flow > div {
+    min-height: 238px;
+    background:
+        linear-gradient(180deg, rgba(255, 251, 244, 0.88), rgba(252, 244, 233, 0.72));
+}
+
+body.post-0430 #market .holding-news-flow strong,
+body.post-0430 #market .creator-number-grid span {
+    color: rgba(126, 47, 43, 0.88);
+    letter-spacing: 0.04em;
+}
+
+body.post-0430 #market .creator-number-grid.watchlist-grid {
+    gap: 0.9rem;
+}
+
+body.post-0430 #market .creator-number-grid.watchlist-grid > div {
+    position: relative;
+    overflow: hidden;
+    min-height: 188px;
+    background:
+        linear-gradient(180deg, rgba(255, 251, 244, 0.92), rgba(250, 241, 229, 0.80));
+}
+
+body.post-0430 #market .creator-number-grid.watchlist-grid > div::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(126, 47, 43, 0.68), rgba(212, 175, 55, 0.72));
+}
+
+body.post-0430 #market .creator-takeaway-strip,
+body.post-0430 #market .holding-view-strip {
+    border-color: rgba(126, 47, 43, 0.16);
+    background: rgba(255, 252, 247, 0.84);
+}
+
+@media (max-width: 768px) {
+    body.post-0430 .article-mobile-jump {
+        position: static;
+        top: auto;
+        z-index: 1;
+        width: min(100% - 1.4rem, 520px);
+        margin: 0.75rem auto 1.1rem;
+        border-radius: 28px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        box-shadow: 0 10px 24px rgba(103, 74, 18, 0.10);
+    }
+
+    body.post-0430 .article-mobile-jump a {
+        min-height: 34px;
+        font-size: 0.72rem;
+        padding: 0.34rem 0.42rem;
+    }
+
+    body.post-0430 #market .holding-news-flow {
+        grid-template-columns: 1fr !important;
+        gap: 0.72rem;
+    }
+
+    body.post-0430 #market .holding-news-flow > div,
+    body.post-0430 #market .creator-number-grid.watchlist-grid > div {
+        min-height: 0;
+        padding: 0.86rem 0.92rem;
+        border-radius: 18px;
+    }
+
+    body.post-0430 #market .holding-news-card,
+    body.post-0430 #market .watchlist-radar-board {
+        border-radius: 24px;
+    }
+
+    body.post-0430 #market .creator-number-grid.watchlist-grid {
+        gap: 0.72rem;
+    }
+}
