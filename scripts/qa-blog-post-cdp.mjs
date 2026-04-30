@@ -117,6 +117,11 @@ async function snap(cdp, pathWithHash, width, height, label) {
       hasNewsGrade: !!q('.news-grade-board'),
       hasScenario: qa('.scenario-matrix').length,
       hasSourceLinks: qa('a.news-source-link').length,
+      hasSourceLedger: !!q('.source-ledger'),
+      sourceLedgerLinks: qa('.source-ledger a.news-source-link').length,
+      hasSourceAudit: !!q('.source-audit-panel'),
+      sourceBoundaryMarks: qa('.source-boundary, .fact-analysis-split, .inline-source-chip').length,
+      hasCitationSchema: !!document.querySelector('script[type="application/ld+json"]')?.textContent?.includes('citation'),
       hasHoldingCards: qa('.holding-news-card').length,
       hasMobileJump: !!q('.article-mobile-jump'),
       mobileJump: rect('.article-mobile-jump'),
@@ -175,7 +180,12 @@ try {
     if (!metrics.hasPm) issues.push(`${row[3]}: missing PM dashboard`);
     if (!metrics.hasNewsGrade) issues.push(`${row[3]}: missing news grade board`);
     if (metrics.hasScenario < 1) issues.push(`${row[3]}: missing scenario matrix`);
-    if (metrics.hasSourceLinks < 1) issues.push(`${row[3]}: missing visible news source links`);
+    if (metrics.hasSourceLinks < 6) issues.push(`${row[3]}: too few visible news/source links`);
+    if (!metrics.hasSourceLedger) issues.push(`${row[3]}: missing source ledger`);
+    if (metrics.sourceLedgerLinks < 5) issues.push(`${row[3]}: source ledger has too few external references`);
+    if (!metrics.hasSourceAudit) issues.push(`${row[3]}: missing source audit panel`);
+    if (metrics.sourceBoundaryMarks < 5) issues.push(`${row[3]}: too few fact/source/analysis boundary marks`);
+    if (!metrics.hasCitationSchema) issues.push(`${row[3]}: missing citation schema metadata`);
     if (metrics.hasHoldingCards < 3) issues.push(`${row[3]}: too few holding/news cards`);
     if (metrics.hasScreenshotLeak) issues.push(`${row[3]}: screenshot/internal workflow leak in visible text`);
     if (row[1] < 600 && metrics.mobileJump?.position !== 'static') issues.push(`${row[3]}: mobile jump is not static`);
