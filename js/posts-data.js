@@ -1,9 +1,28 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-05-01",
+    "title": "2026年5月1日美股：HD 不是普通零售，而是美国房屋维修周期的 Pro 入口",
+    "desc": "2026-05-01 美股跟踪：以0430为结构标杆，HD 作为低相关宝藏标的，复核 META/NVDA/NBIS、TSM/MSFT 与创作者公开输入。",
+    "url": "posts/2026/05/01.html",
+    "keywords": [
+      "美股",
+      "价值投资",
+      "HD",
+      "Home Depot",
+      "META",
+      "NVDA",
+      "NBIS",
+      "TSM",
+      "MSFT",
+      "组合管理",
+      "投资研究"
+    ]
+  },
+  {
     "date": "2026-04-30",
     "title": "2026年4月30日美股:CBOE 不是普通交易所,而是市场波动的收费闸口",
-    "desc": "2026-04-30 美股跟踪:用 CBOE 拆市场波动收费网络;Module 2 扩展基础设施收费平台方法;Module 3 详细记录环球视野财经关于 OpenAI、半导体、SOXX、SMH、AMD、MSFT、AMZN、GOOG、META 的关键数字;持仓新闻只覆盖 META、NVDA、NBIS。",
+    "desc": "2026-04-30 美股跟踪:用 CBOE 拆市场波动收费网络;Module 2 扩展基础设施收费平台方法;Module 3 详细记录环球视野财经关于 OpenAI、半导体、SOXX、SMH、AMD、MSFT、AMZN、GOOG、META 的关键数字;持仓新闻覆盖真实持仓，并新增观察列表新闻雷达。",
     "url": "posts/2026/04/30.html",
     "keywords": [
       "美股",
