@@ -19594,3 +19594,179 @@ body.post-0430 .inline-source-chip {
     }
 }
 
+
+
+/* 0501 benchmark polish: reuse the 0430 premium dashboard language for the HD article */
+body.post-0501 .pm-dashboard-section .section-header,
+body.post-0501 .pm-dashboard-shell,
+body.post-0501 .decision-status-card,
+body.post-0501 .method-scoreboard,
+body.post-0501 .creator-decision-brief,
+body.post-0501 .news-grade-board,
+body.post-0501 .source-audit-panel,
+body.post-0501 .portfolio-bridge-card {
+    border-color: rgba(155, 35, 53, 0.22);
+}
+
+body.post-0501 .pm-dashboard-shell {
+    background:
+        radial-gradient(circle at 12% 0%, rgba(155, 35, 53, 0.16), transparent 34%),
+        radial-gradient(circle at 88% 18%, rgba(212, 175, 55, 0.20), transparent 32%),
+        linear-gradient(135deg, rgba(255,255,255,0.94), rgba(245,239,225,0.95));
+    box-shadow: 0 28px 70px rgba(45, 26, 20, 0.14);
+}
+
+body.post-0501 .hero-description,
+body.post-0501 .article-meta-chip,
+body.post-0501 .source-ledger-head p {
+    line-height: 1.9;
+}
+
+body.post-0501 .hd-metrics-board .scoreboard-grid,
+body.post-0501 #lesson .scoreboard-grid,
+body.post-0501 .news-grade-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+body.post-0501 .scoreboard-grid > div,
+body.post-0501 .news-grade-grid > div {
+    background: rgba(255,255,255,0.76);
+    border: 1px solid rgba(110, 76, 44, 0.13);
+    border-radius: 18px;
+    padding: 1rem;
+    box-shadow: 0 16px 34px rgba(45, 26, 20, 0.08);
+}
+
+body.post-0501 .scoreboard-grid span,
+body.post-0501 .news-grade-grid p {
+    color: var(--text-muted);
+    font-size: 0.86rem;
+}
+
+body.post-0501 .scoreboard-grid strong {
+    display: block;
+    color: var(--burgundy);
+    font-size: clamp(1.35rem, 2.3vw, 2rem);
+    margin: 0.35rem 0;
+}
+
+body.post-0501 .scoreboard-grid em {
+    display: block;
+    font-style: normal;
+    line-height: 1.75;
+    color: var(--text-medium);
+}
+
+body.post-0501 .creator-digest-board {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    gap: 1.25rem;
+    align-items: stretch;
+}
+
+body.post-0501 .creator-digest-board .creator-card-wide,
+body.post-0501 .creator-digest-board .creator-card-numeric {
+    grid-column: span 1;
+}
+
+body.post-0501 .creator-card,
+body.post-0501 .holding-news-card,
+body.post-0501 .action-card {
+    border-radius: 24px;
+    border: 1px solid rgba(155, 35, 53, 0.14);
+    box-shadow: 0 22px 52px rgba(45, 26, 20, 0.10);
+}
+
+body.post-0501 .holding-news-stack,
+body.post-0501 .watchlist-radar-board {
+    display: grid;
+    gap: 1.3rem;
+}
+
+body.post-0501 .holding-news-flow {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+}
+
+body.post-0501 .holding-news-flow > div {
+    background: rgba(255,255,255,0.72);
+    border: 1px solid rgba(110, 76, 44, 0.12);
+    border-radius: 16px;
+    padding: 0.95rem;
+}
+
+body.post-0501 .holding-news-flow strong,
+body.post-0501 .holding-view-strip strong,
+body.post-0501 .creator-takeaway-strip strong {
+    color: var(--burgundy);
+}
+
+body.post-0501 .holding-view-strip,
+body.post-0501 .creator-takeaway-strip {
+    margin-top: 1rem;
+    padding: 1rem 1.1rem;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(155,35,53,0.08), rgba(212,175,55,0.12));
+    border: 1px solid rgba(155,35,53,0.13);
+    line-height: 1.85;
+}
+
+body.post-0501 .action-card-grid {
+    gap: 1.25rem;
+}
+
+body.post-0501 .scenario-matrix {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 0.55rem;
+}
+
+body.post-0501 .scenario-matrix th,
+body.post-0501 .scenario-matrix td {
+    background: rgba(255,255,255,0.72);
+    padding: 0.85rem;
+    border-top: 1px solid rgba(110,76,44,0.12);
+    border-bottom: 1px solid rgba(110,76,44,0.12);
+    vertical-align: top;
+}
+
+body.post-0501 .scenario-matrix th {
+    width: 7.5rem;
+    color: var(--burgundy);
+    border-left: 1px solid rgba(110,76,44,0.12);
+    border-radius: 12px 0 0 12px;
+}
+
+body.post-0501 .scenario-matrix td {
+    border-right: 1px solid rgba(110,76,44,0.12);
+    border-radius: 0 12px 12px 0;
+}
+
+body.post-0501 .priority-panel {
+    margin-top: 1.5rem;
+    border-radius: 26px;
+    padding: clamp(1.4rem, 3vw, 2rem);
+    background: linear-gradient(135deg, rgba(35,25,18,0.92), rgba(82,34,38,0.94));
+    color: rgba(255,255,255,0.88);
+    box-shadow: 0 26px 60px rgba(45,26,20,0.18);
+}
+
+body.post-0501 .priority-panel h3 { color: #f6e7b5; }
+body.post-0501 .priority-panel li { margin: 0.7rem 0; line-height: 1.85; }
+
+@media (max-width: 900px) {
+    body.post-0501 .hd-metrics-board .scoreboard-grid,
+    body.post-0501 #lesson .scoreboard-grid,
+    body.post-0501 .news-grade-grid,
+    body.post-0501 .creator-digest-board,
+    body.post-0501 .holding-news-flow {
+        grid-template-columns: 1fr;
+    }
+    body.post-0501 .article-mobile-jump {
+        position: static;
+        margin: 0 auto 1rem;
+    }
+}
