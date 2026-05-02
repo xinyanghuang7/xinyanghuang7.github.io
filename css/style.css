@@ -20450,3 +20450,179 @@ body.post-0501 .creator-digest-board .creator-card,
 body.post-0501 .pm-dashboard-card {
     color: var(--ink) !important;
 }
+
+
+/* 0501 repair 08: desktop source ledger/evidence audit premium card layout */
+body.post-0501 .source-ledger,
+body.post-0501 .source-audit-panel,
+body.post-0501 .portfolio-bridge-card {
+    width: min(1040px, 100%);
+    max-width: 100%;
+    margin: clamp(1.25rem, 2.4vw, 1.8rem) auto;
+    border-radius: 30px;
+    border: 1px solid rgba(155,35,53,0.14);
+    background:
+        radial-gradient(circle at 8% 0%, rgba(212,175,55,0.13), transparent 32%),
+        linear-gradient(145deg, rgba(255,255,255,0.95), rgba(249,244,233,0.95));
+    box-shadow: 0 24px 64px rgba(45,26,20,0.11);
+}
+
+body.post-0501 .source-ledger {
+    padding: clamp(1.35rem, 2.4vw, 2rem);
+}
+
+body.post-0501 .source-ledger-head {
+    max-width: 78ch;
+    padding-bottom: 1rem;
+    margin-bottom: 1.1rem;
+    border-bottom: 1px solid rgba(110,76,44,0.14);
+}
+
+body.post-0501 .source-ledger-head h3,
+body.post-0501 .source-audit-panel h3,
+body.post-0501 .portfolio-bridge-card h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.28rem, 2vw, 1.8rem);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin: 0.45rem 0 0.65rem;
+}
+
+body.post-0501 .source-ledger-head p,
+body.post-0501 .source-audit-panel p,
+body.post-0501 .portfolio-bridge-card p {
+    max-width: 82ch;
+    line-height: 1.86;
+    color: var(--text-medium);
+}
+
+body.post-0501 .source-ledger-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.82rem;
+    align-items: stretch;
+}
+
+body.post-0501 .source-ledger-item {
+    display: grid !important;
+    grid-template-columns: minmax(9rem, 0.95fr) minmax(0, 1.65fr);
+    gap: 0.75rem;
+    align-items: start;
+    min-width: 0;
+    padding: 0.96rem 1.05rem;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.72);
+    border: 1px solid rgba(110,76,44,0.12);
+    box-shadow: 0 12px 28px rgba(45,26,20,0.055);
+    text-decoration: none;
+    color: inherit;
+}
+
+body.post-0501 .source-ledger-item strong {
+    min-width: 0;
+    color: var(--burgundy);
+    font-weight: 900;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+}
+
+body.post-0501 .source-ledger-item span {
+    min-width: 0;
+    color: var(--text-medium);
+    line-height: 1.68;
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+
+body.post-0501 .source-ledger-item.news-source-link:hover,
+body.post-0501 .source-ledger-item.news-source-link:focus-visible {
+    transform: translateY(-2px);
+    border-color: rgba(155,35,53,0.26);
+    box-shadow: 0 18px 36px rgba(45,26,20,0.10);
+}
+
+body.post-0501 .source-ledger-note {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, rgba(155,35,53,0.08), rgba(212,175,55,0.10));
+}
+
+body.post-0501 .source-audit-panel {
+    padding: clamp(1.15rem, 2vw, 1.55rem) clamp(1.25rem, 2.3vw, 1.75rem);
+}
+
+body.post-0501 .source-audit-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.7rem;
+}
+
+body.post-0501 .source-audit-grid > div {
+    min-width: 0;
+    padding: 0.95rem 1rem;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.72);
+    border: 1px solid rgba(110,76,44,0.12);
+    box-shadow: 0 12px 28px rgba(45,26,20,0.055);
+}
+
+body.post-0501 .source-audit-grid p {
+    margin: 0;
+    line-height: 1.7;
+}
+
+body.post-0501 .source-audit-panel .inline-source-chip {
+    display: block;
+    margin: 0 0 0.38rem;
+    padding: 0.32rem 0.58rem;
+    width: max-content;
+    max-width: 100%;
+    border-radius: 999px;
+    background: rgba(155,35,53,0.10);
+    border: 1px solid rgba(155,35,53,0.12);
+    color: var(--burgundy);
+    font-weight: 900;
+    letter-spacing: 0.03em;
+}
+
+
+body.post-0501 .portfolio-bridge-card {
+    padding: clamp(1.2rem, 2.2vw, 1.75rem);
+}
+
+body.post-0501 .portfolio-bridge-card .decision-status-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 920px) {
+    body.post-0501 .source-ledger,
+    body.post-0501 .source-audit-panel,
+    body.post-0501 .portfolio-bridge-card {
+        width: 100%;
+    }
+
+    body.post-0501 .source-ledger-grid,
+    body.post-0501 .source-audit-grid,
+    body.post-0501 .portfolio-bridge-card .decision-status-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    body.post-0501 .source-ledger-item {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 520px) {
+    body.post-0501 .source-ledger,
+    body.post-0501 .source-audit-panel,
+    body.post-0501 .portfolio-bridge-card {
+        border-radius: 22px;
+        padding: 1rem;
+    }
+
+    body.post-0501 .source-ledger-head h3,
+    body.post-0501 .source-audit-panel h3,
+    body.post-0501 .portfolio-bridge-card h3 {
+        font-size: 1.28rem;
+    }
+}
