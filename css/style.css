@@ -20626,3 +20626,23 @@ body.post-0501 .portfolio-bridge-card .decision-status-grid {
         font-size: 1.28rem;
     }
 }
+@media (max-width: 768px) {
+  body.post-0502 .article-mobile-jump {
+    position: static;
+    top: auto;
+    margin: 0 auto 1rem;
+  }
+}
+body.post-0502 .news-grade-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+body.post-0502 .news-grade-grid > div {
+  min-width: 0;
+}
+@media (max-width: 768px) {
+  body.post-0502 .news-grade-grid {
+    grid-template-columns: 1fr;
+  }
+}

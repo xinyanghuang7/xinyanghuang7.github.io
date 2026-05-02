@@ -1,6 +1,25 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-05-02",
+    "title": "2026年5月2日美股：WM 不是垃圾股，而是城市运转的收费基础设施",
+    "desc": "2026-05-02 美股跟踪：以0501修复模板为基线，复核 META/NVDA/NBIS 真实持仓、TSM/MSFT观察队列，并用 WM 拆低相关基础设施现金流。",
+    "url": "posts/2026/05/02.html",
+    "keywords": [
+      "美股",
+      "价值投资",
+      "WM",
+      "Waste Management",
+      "META",
+      "NVDA",
+      "NBIS",
+      "TSM",
+      "MSFT",
+      "组合管理",
+      "投资研究"
+    ]
+  },
+  {
     "date": "2026-05-01",
     "title": "2026年5月1日美股：HD 不是普通零售，而是美国房屋维修周期的 Pro 入口",
     "desc": "2026-05-01 美股跟踪：以0430为结构标杆，HD 作为低相关宝藏标的，复核 META/NVDA/NBIS、TSM/MSFT 与创作者公开输入。",
