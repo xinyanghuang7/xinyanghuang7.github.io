@@ -1,6 +1,29 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-05-03",
+    "title": "2026年5月3日美股：BRK.B 教的不是抄底，而是等待权的价格",
+    "desc": "2026-05-03 美股日报：以0501/0502标杆模板生成，详拆 BRK.B 资本配置案例，复核 META/NVDA/NBIS 真实持仓，扩展 TSM/MSFT/GOOGL/UNH/VST/LLY 观察雷达，并记录创作者输入边界。",
+    "url": "posts/2026/05/03.html",
+    "keywords": [
+      "美股",
+      "价值投资",
+      "BRK.B",
+      "Berkshire Hathaway",
+      "META",
+      "NVDA",
+      "NBIS",
+      "TSM",
+      "MSFT",
+      "GOOGL",
+      "UNH",
+      "VST",
+      "LLY",
+      "组合管理",
+      "投资研究"
+    ]
+  },
+  {
     "date": "2026-05-02",
     "title": "2026年5月2日美股：WM 不是垃圾股，而是城市运转的收费基础设施",
     "desc": "2026-05-02 美股跟踪：以0501修复模板为基线，复核 META/NVDA/NBIS 真实持仓、TSM/MSFT观察队列，并用 WM 拆低相关基础设施现金流。",
