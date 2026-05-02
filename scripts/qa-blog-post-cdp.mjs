@@ -116,6 +116,7 @@ async function snap(cdp, pathWithHash, width, height, label) {
       hasPm: !!q('#pm-dashboard'),
       hasNewsGrade: !!q('.news-grade-board'),
       hasScenario: qa('.scenario-matrix').length,
+      hasActionFields: qa('.action-field').length,
       hasSourceLinks: qa('a.news-source-link').length,
       hasSourceLedger: !!q('.source-ledger'),
       sourceLedgerLinks: qa('.source-ledger a.news-source-link').length,
@@ -179,7 +180,7 @@ try {
     if (!metrics.orderOk) issues.push(`${row[3]}: module order broken`);
     if (!metrics.hasPm) issues.push(`${row[3]}: missing PM dashboard`);
     if (!metrics.hasNewsGrade) issues.push(`${row[3]}: missing news grade board`);
-    if (metrics.hasScenario < 1) issues.push(`${row[3]}: missing scenario matrix`);
+    if (metrics.hasScenario < 1 && metrics.hasActionFields < 4) issues.push(`${row[3]}: missing scenario matrix/action fields`);
     if (metrics.hasSourceLinks < 6) issues.push(`${row[3]}: too few visible news/source links`);
     if (!metrics.hasSourceLedger) issues.push(`${row[3]}: missing source ledger`);
     if (metrics.sourceLedgerLinks < 5) issues.push(`${row[3]}: source ledger has too few external references`);

@@ -143,7 +143,7 @@ foreach ($file in $postFiles) {
         Add-Issue "$rel missing main.js include"
     }
 
-    if ($content -notmatch '<body class="[^"]*post-041(?:8|9)[^"]*">') {
+    if ($content -notmatch '<body class="[^"]*(post-041(?:8|9)|post-premium|post-page)[^"]*">') {
         Add-Issue "$rel missing premium post body class"
     }
 
@@ -211,10 +211,30 @@ foreach ($file in $postFiles) {
                 Add-Issue "$rel Module 3 creator digest missing required source marker $creatorToken"
             }
         }
+        if ($dateMatch.Success) {
+            $dateIso = "{0}-{1}-{2}" -f $dateMatch.Groups['year'].Value, $dateMatch.Groups['month'].Value, $dateMatch.Groups['day'].Value
+            if ([datetime]::ParseExact($dateIso, 'yyyy-MM-dd', $null) -ge [datetime]'2026-05-01') {
+                if (-not $content.Contains('https://www.youtube.com/')) {
+                    Add-Issue "$rel Module 3 creator digest missing YouTube title/source link"
+                }
+                if (-not $content.Contains('transcript')) {
+                    Add-Issue "$rel Module 3 creator digest missing explicit transcript/caption status"
+                }
+            }
+        }
     }
 
     if ($enforce0419WorkflowScaffold -and $content -match 'id="decision-cards"' -and $content -notmatch 'tracking-framework-grid\s+decision-grid-enhanced') {
         Add-Issue "$rel Module 5 missing premium decision-card grid"
+    }
+    if ($enforce0419WorkflowScaffold -and $content -match 'id="decision-cards"' -and $dateMatch.Success) {
+        $dateIsoForAction = "{0}-{1}-{2}" -f $dateMatch.Groups['year'].Value, $dateMatch.Groups['month'].Value, $dateMatch.Groups['day'].Value
+        if ([datetime]::ParseExact($dateIsoForAction, 'yyyy-MM-dd', $null) -ge [datetime]'2026-05-01') {
+            $actionFieldCount = ([regex]::Matches($content, 'class="action-field"')).Count
+            if ($actionFieldCount -lt 4) {
+                Add-Issue "$rel Module 5 missing explicit action-field blocks"
+            }
+        }
     }
 
     $enforceEnhancedSeo = $false
@@ -349,8 +369,11 @@ if (-not (Test-Path $postTemplatePath)) {
     Add-Issue 'template/post-template.html missing'
 } else {
     $postTemplate = Get-Content -Raw -Encoding UTF8 $postTemplatePath
-    if ($postTemplate -notmatch '<body class="post-0419">') {
-        Add-Issue 'template/post-template.html missing post-0419 premium body class'
+    if ($postTemplate -notmatch '<body class="[^"]*post-page[^"]*">') {
+        Add-Issue 'template/post-template.html missing post-page premium body class'
+    }
+    if ($postTemplate -match '<body class="post-0419">') {
+        Add-Issue 'template/post-template.html still hard-codes legacy post-0419-only body class'
     }
     if ($postTemplate -notmatch 'article-meta-bar') {
         Add-Issue 'template/post-template.html missing article meta bar scaffold'

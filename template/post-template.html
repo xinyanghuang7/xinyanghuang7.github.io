@@ -20,7 +20,7 @@
     <meta name="twitter:image" content="https://4fire.qzz.io/images/posts/{{DATE_ISO}}-value.jpg">
     <title>{{TITLE}} | 美股价值投资笔记</title>
     <!-- Fonts removed for performance -->
-    <link rel="stylesheet" href="../../../css/style.css?v=20260429publishgate1">
+    <link rel="stylesheet" href="../../../css/style.css?v=20260502repair03">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -44,7 +44,7 @@
     }
     </script>
 </head>
-<body class="post-0419">
+<body class="post-page post-premium">
     <a href="#main" class="skip-link">跳转到主内容</a>
     <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
 
@@ -81,7 +81,7 @@
 
     <div class="article-meta-bar article-meta-bar-compact" aria-label="文章阅读信息">
         <div class="article-meta-chip article-meta-chip-accent">{{DISPLAY_DATE}} · Premium 0428 · five-module daily research</div>
-        <div class="article-meta-chip">固定结构：Module 1 5+2 → Module 2 方法 → Module 3 创作者摘要 → Module 4 持仓新闻 → Module 5 动作地图</div>
+        <div class="article-meta-chip">固定结构：Module 0 PM 看板 → Module 1 5+2 → Module 2 方法课 → Module 3 创作者摘要 → Module 4 持仓新闻+观察列表雷达 → Module 5 情景动作地图</div>
         <div class="article-meta-chip">事实边界：行情采用 Finnhub 近窗收盘快照；新闻以 Finnhub 聚合源为检索入口，未把二手评论包装成官方事实。</div>
     </div>
 
@@ -94,6 +94,8 @@
 
     <!-- WORKFLOW_GUARDRAIL: refresh upstream truth before drafting; then reviewer + frontend close + publish/live verify -->
     <!-- HUMANIZER_REQUIRED: final Chinese copy must be polished against humanizer-zh before publish -->
+    <!-- MODULE_3_GUARDRAIL: creator digest must show source status for each fixed source: 有字幕数字 / 标题层 / 待补 transcript / 无; never leave missing字幕 as a silent blank. -->
+    <!-- MODULE_5_GUARDRAIL: action cards only for true holdings; reuse Module 4 price/news freshness; watchlist names stay in observation priority, not buy/sell advice. -->
     <main id="main">
         <section class="section" id="stock-pick" aria-labelledby="stock-pick-title">
             <div class="section-header">
@@ -158,8 +160,8 @@
             <div class="section-header">
                 <div class="section-number" aria-hidden="true">02</div>
                 <div class="section-title-group">
-                    <h2 class="section-title" id="wisdom-title">故事 / 经验分享</h2>
-                    <p class="section-subtitle">第二部分默认写一个真实、可带走、可复用的小故事：有事实依据、有边界感，最后能沉成一句真正值得带走的话，并显式告诉读者以后再遇到类似情况该先怎么看。</p>
+                    <h2 class="section-title" id="wisdom-title">一句话硬核投资实战干货</h2>
+                    <p class="section-subtitle">第二部分必须先给一句可执行结论，再用事实边界、检查清单和今天的组合映射展开；禁止退回空泛故事或鸡汤段落。</p>
                 </div>
                 <div class="section-date">{{DATE_SHORT}}</div>
             </div>

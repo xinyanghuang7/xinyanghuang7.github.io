@@ -119,9 +119,9 @@ Before any blog page is pushed, do one explicit structure pass on the final HTML
 - the 5 modules appear in the fixed order: Module 1 → Module 2 → Module 3 → Module 4 → Module 5
 - Module 1 still shows the full 5+2 backbone
 - Module 2 still carries one reusable takeaway sentence and a concrete judgment rule
-- Module 3 still covers the fixed creator / local-meitou digest layer
-- Module 4 still writes holdings only and keeps source links whenever available
-- Module 5 still uses the decision-card / holding-map scaffold and includes 当前桶位 / 核心变量 / 不要误读 / 下一步 / 当前最重要的一件事
+- Module 3 still covers the fixed creator / local-meitou digest layer and explicitly labels each creator source as 有字幕数字 / 标题层 / 待补 transcript / 无
+- Module 4 still writes holdings first, separates watchlist radar when used, and keeps source links whenever available
+- Module 5 still uses the decision-card / holding-map scaffold, only gives action cards for true holdings, reuses Module 4 freshness/price language, and includes 当前桶位 / 核心变量 / 不要误读 / 下一步 / 当前最重要的一件事
 
 If any of these regress, the page is not publish-ready.
 
@@ -147,7 +147,8 @@ If any of these regress, the page is not publish-ready.
 ### Module 3 — 关注博主 YouTube / 本地美投每日摘要
 - 固定覆盖：`美投君 / 美投侃新闻`、`本地美投更新`、`视野环球财经`
 - 每个对象都必须显式出现；无更新时写 `无`
-- YouTube 条目至少要有：最新视频标题、链接、2-5 句摘要
+- 每个 YouTube 对象必须显式标注取数状态：`有字幕数字` / `标题层` / `待补 transcript` / `无`；字幕没拿到时不能空着，也不能把标题层当作字幕事实
+- YouTube 条目至少要有：最新视频标题、链接、2-5 句摘要；如果只有标题层，摘要必须降级为“议题雷达”，不得写支撑/压力位或精确数字
 - 本地美投条目至少要有：本轮最新日报/宏观/交易页变化 + 为什么值得看
 - 这一段既是博客模块，也是学习系统输入层；若沉出 durable 方法，必须回写共享知识层
 
@@ -178,6 +179,7 @@ If any of these regress, the page is not publish-ready.
 - 卡片下方必须单列 **当日最高优先级事项**，默认 1-3 条，按优先级排序。
 - Should reuse existing rating / target-price / public-evidence query paths whenever available.
 - Must stay clearly separated from non-holdings unless explicitly labeled.
+- 观察列表只能写观察优先级 / 升档条件，不得混进真实持仓动作卡；Module 5 的价格、新闻和风险口径必须复用 Module 4，不能单独编一套。
 
 ## 2. Frontend / interaction closing rules
 
