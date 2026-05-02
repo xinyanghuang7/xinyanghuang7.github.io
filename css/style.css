@@ -20121,3 +20121,332 @@ body.post-0501 .action-field p {
 @media (max-width: 980px) {
     body.post-0501 .lesson-card-compact { grid-template-columns: 1fr; }
 }
+
+
+/* 0501 repair 05: live mobile screenshot hardening for PM / Creator / Action modules */
+body.post-0501 *,
+body.post-0501 *::before,
+body.post-0501 *::after { box-sizing: border-box; }
+
+body.post-0501 {
+    overflow-x: hidden;
+}
+
+body.post-0501 .pm-dashboard-shell,
+body.post-0501 .creator-decision-brief,
+body.post-0501 .creator-digest-board .creator-card,
+body.post-0501 .action-card-grid-flat .action-card,
+body.post-0501 .action-priority-brief {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+
+body.post-0501 .pm-dashboard-shell {
+    padding: clamp(1.35rem, 3vw, 2.2rem);
+    border-radius: 30px;
+    border: 1px solid rgba(155,35,53,0.16);
+    background:
+        radial-gradient(circle at 92% 4%, rgba(212,175,55,0.18), transparent 28%),
+        linear-gradient(145deg, rgba(255,255,255,0.96), rgba(248,242,230,0.96));
+    box-shadow: 0 24px 60px rgba(45,26,20,0.12);
+}
+
+body.post-0501 .pm-dashboard-lead {
+    padding: 0 0 1.1rem;
+    border-bottom: 1px solid rgba(110,76,44,0.14);
+    margin-bottom: 1.1rem;
+}
+
+body.post-0501 .pm-dashboard-lead h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.38rem, 2.6vw, 2.1rem);
+    line-height: 1.22;
+    color: var(--ink);
+    margin: 0.65rem 0 0.95rem;
+}
+
+body.post-0501 .pm-dashboard-lead p {
+    font-size: 1.02rem;
+    line-height: 1.9;
+    color: var(--text-medium);
+    margin: 0;
+}
+
+body.post-0501 .pm-dashboard-grid {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.9rem;
+    margin-top: 1rem;
+}
+
+body.post-0501 .pm-dashboard-card {
+    border-radius: 18px;
+    padding: 1rem;
+    background: rgba(255,255,255,0.72);
+    border: 1px solid rgba(110,76,44,0.12);
+    box-shadow: 0 12px 28px rgba(45,26,20,0.07);
+}
+
+body.post-0501 .pm-dashboard-card strong {
+    display: block;
+    color: var(--burgundy);
+    margin: 0.25rem 0 0.45rem;
+}
+
+body.post-0501 .pm-dashboard-card p {
+    margin: 0;
+    line-height: 1.68;
+    font-size: 0.94rem;
+}
+
+body.post-0501 .market-tape {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 1rem;
+}
+
+body.post-0501 .market-tape span,
+body.post-0501 .market-tape strong {
+    max-width: 100%;
+    white-space: normal;
+}
+
+body.post-0501 #creator-digest .creator-decision-brief {
+    border-radius: 30px;
+    padding: clamp(1.35rem, 3vw, 2.1rem);
+    background:
+        radial-gradient(circle at 12% 0%, rgba(155,35,53,0.12), transparent 30%),
+        linear-gradient(145deg, rgba(255,255,255,0.96), rgba(248,242,230,0.96));
+    border: 1px solid rgba(155,35,53,0.14);
+    box-shadow: 0 22px 54px rgba(45,26,20,0.10);
+}
+
+body.post-0501 #creator-digest .creator-decision-brief h3 {
+    font-family: var(--font-display);
+    color: var(--ink);
+    font-size: clamp(1.35rem, 2.5vw, 2rem);
+    line-height: 1.25;
+    margin: 0.6rem 0 0.8rem;
+}
+
+body.post-0501 #creator-digest .creator-decision-brief p {
+    color: var(--text-medium);
+    line-height: 1.9;
+    margin: 0;
+}
+
+body.post-0501 #creator-digest .decision-number-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 0.75rem;
+}
+
+body.post-0501 #creator-digest .decision-number-strip span {
+    border-radius: 16px;
+    justify-content: flex-start;
+}
+
+body.post-0501 .creator-digest-board {
+    margin-top: 1.1rem;
+}
+
+body.post-0501 .creator-digest-board .creator-card h3 a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(155,35,53,0.24);
+}
+
+body.post-0501 .action-card-grid-flat {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+body.post-0501 .action-card-grid-flat .action-card {
+    min-width: 0;
+    width: 100%;
+    padding: clamp(1.15rem, 2.4vw, 1.55rem);
+    border-radius: 24px;
+}
+
+body.post-0501 .action-card-grid-flat .action-price {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+body.post-0501 .action-field {
+    min-width: 0;
+}
+
+body.post-0501 .action-field p,
+body.post-0501 .action-card-top strong,
+body.post-0501 .action-price {
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+
+@media (max-width: 980px) {
+    body.post-0501 .pm-dashboard-grid,
+    body.post-0501 .action-card-grid-flat,
+    body.post-0501 #creator-digest .decision-number-strip {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 520px) {
+    body.post-0501 main,
+    body.post-0501 .section,
+    body.post-0501 #lesson,
+    body.post-0501 #creator-digest,
+    body.post-0501 #decision-cards,
+    body.post-0501 #pm-dashboard {
+        width: min(100% - 22px, 100%);
+        max-width: calc(100% - 22px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    body.post-0501 .section-header {
+        grid-template-columns: 44px minmax(0,1fr);
+        column-gap: 0.8rem;
+    }
+
+    body.post-0501 .section-title {
+        font-size: clamp(2.05rem, 12vw, 2.75rem);
+        line-height: 0.98;
+        overflow-wrap: normal;
+        word-break: keep-all;
+    }
+
+    body.post-0501 .section-subtitle {
+        font-size: 0.98rem;
+        line-height: 1.82;
+    }
+
+    body.post-0501 .pm-dashboard-shell,
+    body.post-0501 #creator-digest .creator-decision-brief,
+    body.post-0501 .creator-digest-board .creator-card,
+    body.post-0501 .action-card-grid-flat .action-card,
+    body.post-0501 .action-priority-brief {
+        border-radius: 22px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    body.post-0501 .pm-dashboard-card {
+        padding: 0.92rem;
+    }
+
+    body.post-0501 .action-card-grid-flat {
+        gap: 1rem;
+    }
+
+    body.post-0501 .action-card-grid-flat .action-card {
+        box-shadow: 0 16px 38px rgba(45,26,20,0.10);
+    }
+}
+
+
+/* 0501 repair 06: force viewport-safe mobile shells after live visual audit */
+@media (max-width: 520px) {
+    html,
+    body.post-0501 {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: clip;
+    }
+
+    body.post-0501 .hero-content,
+    body.post-0501 main,
+    body.post-0501 .article-meta-bar,
+    body.post-0501 .article-mobile-jump,
+    body.post-0501 .section,
+    body.post-0501 .section-header,
+    body.post-0501 .stock-card,
+    body.post-0501 .pm-dashboard-shell,
+    body.post-0501 .source-ledger,
+    body.post-0501 .source-audit-panel,
+    body.post-0501 .decision-status-card,
+    body.post-0501 .lesson-card-premium,
+    body.post-0501 .creator-decision-brief,
+    body.post-0501 .creator-digest-board,
+    body.post-0501 .creator-card,
+    body.post-0501 .holding-news-card,
+    body.post-0501 .watchlist-radar-board,
+    body.post-0501 .action-card-grid,
+    body.post-0501 .action-card,
+    body.post-0501 .action-priority-brief {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    body.post-0501 main {
+        padding-left: 11px !important;
+        padding-right: 11px !important;
+    }
+
+    body.post-0501 .section {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    body.post-0501 .article-mobile-jump {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    body.post-0501 .hero-content,
+    body.post-0501 .article-meta-bar {
+        width: calc(100% - 22px) !important;
+        max-width: calc(100% - 22px) !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    body.post-0501 .decision-number-strip span,
+    body.post-0501 .market-tape span,
+    body.post-0501 .market-tape strong,
+    body.post-0501 .action-price,
+    body.post-0501 .action-field p,
+    body.post-0501 .creator-card p,
+    body.post-0501 .pm-dashboard-card p {
+        max-width: 100% !important;
+        overflow-wrap: anywhere !important;
+        word-break: break-word !important;
+    }
+}
+
+
+/* 0501 repair 07: disable washed-out reveal state on critical live-audited modules */
+body.post-0501 #pm-dashboard,
+body.post-0501 #pm-dashboard *,
+body.post-0501 #creator-digest,
+body.post-0501 #creator-digest *,
+body.post-0501 #decision-cards,
+body.post-0501 #decision-cards * {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+body.post-0501 #pm-dashboard .fade-in,
+body.post-0501 #creator-digest .fade-in,
+body.post-0501 #decision-cards .fade-in,
+body.post-0501 #pm-dashboard .animate-in,
+body.post-0501 #creator-digest .animate-in,
+body.post-0501 #decision-cards .animate-in {
+    transform: none !important;
+}
+
+body.post-0501 .action-card-grid-flat .action-card,
+body.post-0501 .creator-digest-board .creator-card,
+body.post-0501 .pm-dashboard-card {
+    color: var(--ink) !important;
+}
