@@ -1,0 +1,216 @@
+/* Lightweight timeline archive: date anchors + readable preview cards. */
+body.site-home-page::before,
+body.site-home-page::after {
+  display: none !important;
+  content: none !important;
+}
+
+.timeline-archive {
+  margin: 34px 0 42px;
+  padding: clamp(20px, 4vw, 36px);
+  border: 1px solid rgba(36, 33, 24, 0.14);
+  border-radius: 18px;
+  background: rgba(255, 250, 240, 0.76);
+  box-shadow: none;
+}
+
+.timeline-archive-head {
+  max-width: 760px;
+  margin-bottom: 22px;
+}
+
+.timeline-kicker {
+  margin: 0 0 8px;
+  color: #8a5a24;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.timeline-archive-head h3 {
+  margin: 0 0 10px;
+  color: #242118;
+  font-size: clamp(1.35rem, 2.6vw, 2rem);
+  line-height: 1.3;
+}
+
+.timeline-archive-head p {
+  margin: 0;
+  color: #6d6558;
+  line-height: 1.75;
+}
+
+.timeline-month-nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 0 16px;
+  scrollbar-width: thin;
+}
+
+.timeline-month-pill {
+  flex: 0 0 auto;
+  border: 1px solid rgba(36, 33, 24, 0.16);
+  border-radius: 999px;
+  padding: 8px 13px;
+  background: transparent;
+  color: #242118;
+  font: inherit;
+  cursor: pointer;
+  transition: background 160ms ease-out, color 160ms ease-out, border-color 160ms ease-out;
+}
+
+.timeline-month-pill:hover,
+.timeline-month-pill:focus-visible {
+  border-color: rgba(138, 90, 36, 0.62);
+  outline: none;
+}
+
+.timeline-month-pill.is-active {
+  border-color: #242118;
+  background: #242118;
+  color: #fffaf0;
+}
+
+.timeline-carousel-wrap {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.timeline-carousel {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 18px 4px 26px;
+  outline: none;
+}
+
+.timeline-card {
+  flex: 0 0 min(74vw, 430px);
+  scroll-snap-align: center;
+  opacity: 0.68;
+  transform: scale(0.94);
+  filter: blur(0.2px);
+  transition: transform 180ms ease-out, opacity 180ms ease-out, filter 180ms ease-out;
+}
+
+.timeline-card.is-active,
+.timeline-card:hover,
+.timeline-card:focus-within {
+  opacity: 1;
+  transform: scale(1);
+  filter: none;
+}
+
+.timeline-card-link {
+  display: block;
+  min-height: 226px;
+  padding: 22px;
+  border: 1px solid rgba(36, 33, 24, 0.14);
+  border-radius: 14px;
+  background: #fffaf0;
+  color: #242118;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+.timeline-card-link:focus-visible {
+  outline: 3px solid rgba(138, 90, 36, 0.36);
+  outline-offset: 3px;
+}
+
+.timeline-card time {
+  color: #8a5a24;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.timeline-card h4 {
+  margin: 12px 0;
+  color: #242118;
+  font-size: clamp(1.16rem, 2vw, 1.55rem);
+  line-height: 1.35;
+}
+
+.timeline-card p {
+  margin: 0;
+  color: #6d6558;
+  line-height: 1.72;
+}
+
+.timeline-card-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.timeline-card-keywords span {
+  border: 1px solid rgba(36, 33, 24, 0.12);
+  border-radius: 999px;
+  padding: 3px 8px;
+  color: #8a5a24;
+  font-size: 0.78rem;
+}
+
+.timeline-arrow {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(36, 33, 24, 0.16);
+  border-radius: 999px;
+  background: transparent;
+  color: #242118;
+  cursor: pointer;
+  transition: background 160ms ease-out, color 160ms ease-out;
+}
+
+.timeline-arrow:hover,
+.timeline-arrow:focus-visible {
+  background: #242118;
+  color: #fffaf0;
+  outline: none;
+}
+
+.legacy-calendar-details {
+  margin-top: 28px;
+  border: 1px solid rgba(36, 33, 24, 0.12);
+  border-radius: 14px;
+  background: rgba(255, 250, 240, 0.52);
+}
+
+.legacy-calendar-details > summary {
+  cursor: pointer;
+  padding: 14px 18px;
+  color: #6d6558;
+  font-weight: 700;
+}
+
+.legacy-calendar-details .calendar-section {
+  margin: 0;
+  border-top: 1px solid rgba(36, 33, 24, 0.1);
+}
+
+@media (max-width: 720px) {
+  .timeline-carousel-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-arrow {
+    display: none;
+  }
+
+  .timeline-card {
+    flex-basis: 84vw;
+  }
+
+  .timeline-archive {
+    margin-left: -4px;
+    margin-right: -4px;
+    padding: 18px 14px;
+  }
+}

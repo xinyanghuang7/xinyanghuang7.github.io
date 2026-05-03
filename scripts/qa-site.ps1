@@ -13,7 +13,11 @@ $newPostPath = Join-Path $root 'scripts\new-post.ps1'
 $postTemplatePath = Join-Path $root 'template\post-template.html'
 $optionsIndexPath = Join-Path $root 'options\index.html'
 $courseManifestPath = Join-Path $root 'options\course-manifest.json'
-$blogBackpropValidatorPath = Join-Path $root '..\scripts\investing\validate_blog_backprop_diff.py'
+$blogBackpropValidatorCandidates = @(
+    (Join-Path $root '..\scripts\investing\validate_blog_backprop_diff.py'),
+    (Join-Path $root '..\..\..\scripts\investing\validate_blog_backprop_diff.py')
+)
+$blogBackpropValidatorPath = $blogBackpropValidatorCandidates | Where-Object { Test-Path $_ } | Select-Object -First 1
 $creatorDigestRequiredDate = [datetime]'2026-04-28'
 $coursePublicPlaceholderPattern = '\{\{[^}]+\}\}|XXX\.XX|待填充|最新动态\.\.\.|新闻分析\.\.\.|基于调研数据|TODO|TBD'
 $encodingRiskPattern = '�|锟|锟斤拷|骞|鏈|鏃|鍒|浠|璇|銆|鈥|�\?|\?{2,}'

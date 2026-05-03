@@ -1,0 +1,350 @@
+/*
+ * Blog Reading Layer
+ * 2026-05-03: content-first Markdown-like article mode.
+ * This file deliberately flattens heavy premium cards without deleting content.
+ */
+:root {
+  --reading-bg: #f7f2e8;
+  --reading-paper: #fffaf0;
+  --reading-text: #242118;
+  --reading-muted: #6d6558;
+  --reading-soft: rgba(255, 250, 240, 0.76);
+  --reading-line: rgba(36, 33, 24, 0.16);
+  --reading-accent: #8a5a24;
+  --reading-accent-soft: rgba(138, 90, 36, 0.1);
+  --reading-max: 860px;
+  --reading-wide: 980px;
+  --reading-radius: 12px;
+  --reading-duration: 180ms;
+}
+
+body.blog-reading-page {
+  background: var(--reading-bg);
+  color: var(--reading-text);
+}
+
+body.blog-reading-page #header {
+  background: rgba(247, 242, 232, 0.92);
+  border-bottom: 1px solid var(--reading-line);
+  backdrop-filter: blur(14px);
+}
+
+body.blog-reading-page .site-loader {
+  display: none !important;
+}
+
+body.blog-reading-page .hero {
+  min-height: auto;
+  padding: clamp(84px, 12vw, 128px) 20px 34px;
+  background: linear-gradient(180deg, rgba(247, 242, 232, 0.98), rgba(255, 250, 240, 0.72));
+}
+
+body.blog-reading-page .hero-bg-pattern,
+body.blog-reading-page .hero::before,
+body.blog-reading-page .hero::after,
+body.blog-reading-page .hero-content::before,
+body.blog-reading-page .hero-content::after {
+  display: none !important;
+  content: none !important;
+}
+
+body.blog-reading-page .hero-content {
+  display: block !important;
+  max-width: var(--reading-max) !important;
+  margin: 0 auto !important;
+  padding: 18px 0 16px !important;
+  text-align: left !important;
+}
+
+body.blog-reading-page .subtitle,
+body.blog-reading-page .module-kicker,
+body.blog-reading-page .section-date,
+body.blog-reading-page .five-plus-kicker,
+body.blog-reading-page .news-panel-kicker {
+  color: var(--reading-accent);
+  letter-spacing: 0.08em;
+}
+
+body.blog-reading-page .hero h1 {
+  max-width: 14em;
+  margin: 12px 0 18px;
+  color: var(--reading-text);
+  font-size: clamp(2.1rem, 5vw, 4.1rem);
+  line-height: 1.08;
+}
+
+body.blog-reading-page .tagline,
+body.blog-reading-page .hero-description {
+  max-width: var(--reading-max);
+  color: var(--reading-muted);
+  font-size: clamp(1rem, 1.5vw, 1.18rem);
+  line-height: 1.82;
+}
+
+body.blog-reading-page .hero-action-row,
+body.blog-reading-page .article-mobile-jump,
+body.blog-reading-page .article-meta-bar {
+  max-width: var(--reading-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body.blog-reading-page .hero-action-link,
+body.blog-reading-page .article-mobile-jump a,
+body.blog-reading-page .article-meta-chip {
+  border-radius: 999px;
+  box-shadow: none !important;
+}
+
+body.blog-reading-page main#main {
+  max-width: var(--reading-wide);
+  margin: 0 auto;
+  padding: 12px 20px 84px;
+}
+
+body.blog-reading-page .section {
+  max-width: var(--reading-max);
+  margin: 0 auto;
+  padding: 0 0 56px;
+  background: transparent !important;
+}
+
+body.blog-reading-page .section + .section {
+  border-top: 1px solid var(--reading-line);
+  padding-top: 42px;
+}
+
+body.blog-reading-page .section-header {
+  display: block;
+  margin: 0 0 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+body.blog-reading-page .section-number {
+  width: auto;
+  height: auto;
+  margin-bottom: 8px;
+  color: var(--reading-accent);
+  background: transparent !important;
+  border: 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+body.blog-reading-page .section-title,
+body.blog-reading-page .section-title-group h2 {
+  margin: 0 0 10px;
+  color: var(--reading-text);
+  font-size: clamp(1.55rem, 3vw, 2.25rem);
+  line-height: 1.28;
+}
+
+body.blog-reading-page .section-subtitle {
+  max-width: 760px;
+  color: var(--reading-muted);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+body.blog-reading-page p,
+body.blog-reading-page li {
+  color: var(--reading-text);
+  font-size: clamp(1rem, 1.3vw, 1.08rem);
+  line-height: 1.88;
+}
+
+body.blog-reading-page h3 {
+  color: var(--reading-text);
+  line-height: 1.38;
+}
+
+body.blog-reading-page a {
+  text-underline-offset: 0.18em;
+}
+
+/* Flatten old premium components into readable Markdown-like blocks. */
+body.blog-reading-page .pm-dashboard-shell,
+body.blog-reading-page .source-ledger,
+body.blog-reading-page .source-audit-panel,
+body.blog-reading-page .decision-status-card,
+body.blog-reading-page .stock-card,
+body.blog-reading-page .analysis-box,
+body.blog-reading-page .method-scoreboard,
+body.blog-reading-page .lesson-card,
+body.blog-reading-page .creator-decision-brief,
+body.blog-reading-page .creator-card,
+body.blog-reading-page .news-grade-board,
+body.blog-reading-page .holding-news-card,
+body.blog-reading-page .watchlist-news-card,
+body.blog-reading-page .action-card,
+body.blog-reading-page .scenario-matrix,
+body.blog-reading-page .portfolio-bridge-card {
+  margin: 22px 0;
+  padding: clamp(18px, 2.6vw, 28px);
+  border: 1px solid var(--reading-line) !important;
+  border-radius: var(--reading-radius) !important;
+  background: var(--reading-soft) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+body.blog-reading-page .pm-dashboard-grid,
+body.blog-reading-page .scoreboard-grid,
+body.blog-reading-page .source-ledger-grid,
+body.blog-reading-page .source-audit-grid,
+body.blog-reading-page .decision-status-grid,
+body.blog-reading-page .five-plus-grid,
+body.blog-reading-page .creator-card-grid,
+body.blog-reading-page .news-grade-grid,
+body.blog-reading-page .holding-news-grid,
+body.blog-reading-page .action-card-grid,
+body.blog-reading-page .tracking-framework-grid,
+body.blog-reading-page .lesson-checklist,
+body.blog-reading-page .news-signal-grid,
+body.blog-reading-page .creator-brief-grid {
+  display: block !important;
+}
+
+body.blog-reading-page .pm-dashboard-card,
+body.blog-reading-page .five-plus-card,
+body.blog-reading-page .grade-card,
+body.blog-reading-page .source-ledger-item,
+body.blog-reading-page .lesson-checklist > div,
+body.blog-reading-page .creator-brief-grid > div,
+body.blog-reading-page .decision-status-grid > p,
+body.blog-reading-page .source-audit-grid > div,
+body.blog-reading-page .scoreboard-grid > div,
+body.blog-reading-page .action-field,
+body.blog-reading-page .scenario-row {
+  margin: 14px 0 !important;
+  padding: 0 0 14px !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--reading-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.blog-reading-page .pm-dashboard-card:last-child,
+body.blog-reading-page .five-plus-card:last-child,
+body.blog-reading-page .grade-card:last-child,
+body.blog-reading-page .source-ledger-item:last-child,
+body.blog-reading-page .lesson-checklist > div:last-child,
+body.blog-reading-page .creator-brief-grid > div:last-child,
+body.blog-reading-page .decision-status-grid > p:last-child,
+body.blog-reading-page .source-audit-grid > div:last-child,
+body.blog-reading-page .scoreboard-grid > div:last-child,
+body.blog-reading-page .action-field:last-child,
+body.blog-reading-page .scenario-row:last-child {
+  border-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+body.blog-reading-page .pm-dashboard-lead,
+body.blog-reading-page .lesson-card-main,
+body.blog-reading-page .stock-thesis-box {
+  border-left: 4px solid var(--reading-accent);
+  padding-left: 18px;
+}
+
+body.blog-reading-page .market-tape {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--reading-line);
+}
+
+body.blog-reading-page .market-tape strong,
+body.blog-reading-page .inline-source-chip,
+body.blog-reading-page .creator-status-pill,
+body.blog-reading-page .holding-action-badge,
+body.blog-reading-page .holding-label,
+body.blog-reading-page .tracking-badge {
+  display: inline-flex;
+  width: fit-content;
+  border: 1px solid var(--reading-line);
+  border-radius: 999px;
+  padding: 4px 9px;
+  background: rgba(138, 90, 36, 0.08);
+  color: var(--reading-accent);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+body.blog-reading-page .stock-ticker {
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+}
+
+body.blog-reading-page .subsection-title {
+  margin-top: 34px;
+  padding-top: 18px;
+  border-top: 1px solid var(--reading-line);
+}
+
+body.blog-reading-page .news-node-list,
+body.blog-reading-page ul {
+  padding-left: 1.25em;
+}
+
+body.blog-reading-page .news-node-list li,
+body.blog-reading-page .creator-takeaway-strip,
+body.blog-reading-page .source-boundary,
+body.blog-reading-page .action-price {
+  color: var(--reading-muted);
+}
+
+body.blog-reading-page table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 22px 0;
+  font-size: 0.96rem;
+}
+
+body.blog-reading-page th,
+body.blog-reading-page td {
+  border-bottom: 1px solid var(--reading-line);
+  padding: 10px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+
+body.blog-reading-page .back-to-top {
+  box-shadow: none;
+}
+
+@media (max-width: 760px) {
+  body.blog-reading-page .hero {
+    padding-top: 74px;
+  }
+
+  body.blog-reading-page main#main,
+  body.blog-reading-page .section,
+  body.blog-reading-page .hero-content,
+  body.blog-reading-page .article-meta-bar,
+  body.blog-reading-page .article-mobile-jump {
+    max-width: 100%;
+  }
+
+  body.blog-reading-page main#main {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  body.blog-reading-page .pm-dashboard-shell,
+  body.blog-reading-page .source-ledger,
+  body.blog-reading-page .source-audit-panel,
+  body.blog-reading-page .decision-status-card,
+  body.blog-reading-page .stock-card,
+  body.blog-reading-page .lesson-card,
+  body.blog-reading-page .creator-card,
+  body.blog-reading-page .holding-news-card,
+  body.blog-reading-page .watchlist-news-card,
+  body.blog-reading-page .action-card {
+    padding: 18px;
+  }
+}

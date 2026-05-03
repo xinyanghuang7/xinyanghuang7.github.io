@@ -28,6 +28,7 @@
     <!-- Fonts removed for performance -->
     
     <link rel="stylesheet" href="css/style.css?v=20260429publishgate1">
+    <link rel="stylesheet" href="css/timeline-archive.css?v=20260503timeline1">
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -269,6 +270,20 @@
                 <div id="searchResults" class="search-results" role="listbox" hidden></div>
             </div>
 
+
+            <section class="timeline-archive" id="timelineArchive" aria-label="时间线文章归档">
+                <div class="timeline-archive-head">
+                    <p class="timeline-kicker">Timeline Archive</p>
+                    <h3>按月份回看研究，不在日历格子里找文章</h3>
+                    <p>点击月份锚点定位到当月文章；左右滑动卡片，当前文章自动居中。点开后直接进入简洁阅读页，少看装饰，多看内容。</p>
+                </div>
+                <div class="timeline-month-nav" id="timelineMonthNav" aria-label="月份锚点"></div>
+                <div class="timeline-carousel-wrap">
+                    <button class="timeline-arrow" id="timelinePrev" type="button" aria-label="上一篇">←</button>
+                    <div class="timeline-carousel" id="timelineCarousel" tabindex="0" aria-label="文章卡片预览"></div>
+                    <button class="timeline-arrow" id="timelineNext" type="button" aria-label="下一篇">→</button>
+                </div>
+            </section>
             <!-- 日历归档 -->
             <div class="calendar-section" id="calendarSection">
                 <div class="calendar-header">
@@ -809,6 +824,7 @@
 
     <script src="js/posts-data.js?v=20260424round5fix14"></script>
     <script src="js/main.js?v=20260424round5fix14"></script>
+    <script src="js/timeline-archive.js?v=20260503timeline1"></script>
     <script src="js/main-calendar.js?v=20260421editorial11js"></script>
     <script>
         // Set current date with proper datetime attribute

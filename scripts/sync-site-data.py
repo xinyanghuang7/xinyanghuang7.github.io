@@ -100,6 +100,7 @@ def build_jsonld_payload(path: Path, text: str) -> dict:
 
     jsonld_type = "Article"
     date_modified = date
+    preserved_citation = None
 
     jsonld_match = JSONLD_BLOCK_RE.search(text)
     if jsonld_match:
@@ -108,14 +109,17 @@ def build_jsonld_payload(path: Path, text: str) -> dict:
             if isinstance(existing, dict):
                 existing_type = existing.get("@type")
                 existing_date_modified = existing.get("dateModified")
+                existing_citation = existing.get("citation")
                 if isinstance(existing_type, str) and existing_type.strip():
                     jsonld_type = existing_type.strip()
                 if isinstance(existing_date_modified, str) and existing_date_modified.strip():
                     date_modified = clean_text(existing_date_modified)
+                if isinstance(existing_citation, list) and existing_citation:
+                    preserved_citation = existing_citation
         except json.JSONDecodeError:
             pass
 
-    return {
+    payload = {
         "@context": "https://schema.org",
         "@type": jsonld_type,
         "headline": title,
@@ -133,6 +137,9 @@ def build_jsonld_payload(path: Path, text: str) -> dict:
         "mainEntityOfPage": canonical,
         "image": [image],
     }
+    if preserved_citation:
+        payload["citation"] = preserved_citation
+    return payload
 
 
 def sync_post_jsonld(path: Path) -> bool:
