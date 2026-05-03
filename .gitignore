@@ -18,6 +18,7 @@ __pycache__/
 venv/
 
 # Local scratch / evidence / temporary payloads
+.worktrees/
 _tmp/
 tmp/
 artifacts/
