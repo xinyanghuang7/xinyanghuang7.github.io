@@ -405,3 +405,123 @@ body.blog-reading-page .markdown-body td {
     -webkit-overflow-scrolling: touch;
   }
 }
+
+
+/* Phase 4: calm legacy 0501/0502 premium DOM into a vertical reading flow. */
+body.blog-reading-page .source-ledger-grid,
+body.blog-reading-page .source-audit-grid,
+body.blog-reading-page .pm-dashboard-grid,
+body.blog-reading-page .five-plus-grid,
+body.blog-reading-page .creator-digest-board,
+body.blog-reading-page .news-grade-grid,
+body.blog-reading-page .watchlist-radar-board,
+body.blog-reading-page .action-card-grid,
+body.blog-reading-page .decision-status-grid,
+body.blog-reading-page .scoreboard-grid {
+  display: block !important;
+}
+
+body.blog-reading-page .source-ledger-grid > *,
+body.blog-reading-page .source-audit-grid > *,
+body.blog-reading-page .pm-dashboard-grid > *,
+body.blog-reading-page .five-plus-grid > *,
+body.blog-reading-page .creator-digest-board > *,
+body.blog-reading-page .news-grade-grid > *,
+body.blog-reading-page .watchlist-radar-board > *,
+body.blog-reading-page .action-card-grid > *,
+body.blog-reading-page .decision-status-grid > *,
+body.blog-reading-page .scoreboard-grid > * {
+  margin: 14px 0 !important;
+}
+
+body.blog-reading-page .pm-dashboard-card,
+body.blog-reading-page .five-plus-card,
+body.blog-reading-page .creator-card,
+body.blog-reading-page .holding-news-card,
+body.blog-reading-page .action-card,
+body.blog-reading-page .source-ledger-item,
+body.blog-reading-page .scoreboard-grid > div,
+body.blog-reading-page .news-grade-grid > div {
+  border-radius: 12px !important;
+  padding: 18px 20px !important;
+}
+
+body.blog-reading-page .market-tape,
+body.blog-reading-page .decision-number-strip,
+body.blog-reading-page .creator-takeaway-strip {
+  display: block !important;
+  overflow: visible !important;
+  white-space: normal !important;
+}
+
+body.blog-reading-page .market-tape > *,
+body.blog-reading-page .decision-number-strip > *,
+body.blog-reading-page .creator-takeaway-strip > * {
+  display: inline-block;
+  margin: 4px 8px 4px 0;
+  white-space: normal;
+}
+
+body.blog-reading-page .holding-news-flow,
+body.blog-reading-page .lesson-checklist {
+  display: block !important;
+}
+
+body.blog-reading-page .holding-news-flow > *,
+body.blog-reading-page .lesson-checklist > * {
+  margin: 12px 0 !important;
+}
+
+body.blog-reading-page .hero-description {
+  max-width: var(--reading-max);
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--reading-muted);
+  line-height: 1.78;
+}
+
+@media (max-width: 760px) {
+  body.blog-reading-page .article-meta-bar,
+  body.blog-reading-page .article-mobile-jump {
+    display: none;
+  }
+
+  body.blog-reading-page .hero-action-row {
+    gap: 8px;
+  }
+
+  body.blog-reading-page .hero-action-link {
+    padding: 8px 10px;
+  }
+}
+
+/* Phase 4b: reduce mobile hero/meta dominance on legacy reading posts. */
+@media (max-width: 760px) {
+  body.blog-reading-page .hero {
+    padding-top: 76px;
+    padding-bottom: 28px;
+  }
+
+  body.blog-reading-page .hero-content h1 {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 1.12;
+  }
+
+  body.blog-reading-page .hero-description {
+    font-size: 0.98rem;
+    line-height: 1.72;
+  }
+
+  body.blog-reading-page .hero-action-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: var(--reading-max);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  body.blog-reading-page .hero-action-link {
+    width: 100%;
+    justify-content: center;
+  }
+}
