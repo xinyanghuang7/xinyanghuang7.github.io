@@ -4,6 +4,7 @@ Single source of truth for the public blog / options-course output standard.
 
 Last updated: 2026-04-24
 Public domain: `https://4fire.qzz.io/`
+> 2026-05-03 update: default daily blog output is migrating to docs/blog-simplified-standard.md. Premium visual components are no longer the default; use them only when they improve comprehension. Content clarity and Markdown-like reading now outrank decorative component density.
 
 ## 0.0424 velvet-note style freeze
 

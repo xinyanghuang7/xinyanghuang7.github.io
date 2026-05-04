@@ -348,3 +348,60 @@ body.blog-reading-page .back-to-top {
     padding: 18px;
   }
 }
+
+/* Phase 2: support truly Markdown-first main sections, not only legacy .section wrappers. */
+body.blog-reading-page .blog-article > section,
+body.blog-reading-page .markdown-body > section {
+  max-width: var(--reading-max);
+  margin: 0 auto;
+  padding: 0 0 56px;
+}
+
+body.blog-reading-page .blog-article > section + section,
+body.blog-reading-page .markdown-body > section + section {
+  border-top: 1px solid var(--reading-line);
+  padding-top: 42px;
+}
+
+body.blog-reading-page .markdown-body h2 {
+  margin: 0 0 18px;
+  color: var(--reading-text);
+  font-size: clamp(1.55rem, 3vw, 2.25rem);
+  line-height: 1.28;
+}
+
+body.blog-reading-page .markdown-body h3 {
+  margin: 30px 0 12px;
+  font-size: 1.16rem;
+}
+
+body.blog-reading-page .markdown-body blockquote {
+  margin: 24px 0;
+  padding: 18px 22px;
+  border-left: 4px solid var(--reading-accent);
+  background: rgba(138, 90, 36, 0.08);
+  color: var(--reading-text);
+}
+
+body.blog-reading-page .markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 0.94em;
+}
+
+body.blog-reading-page .markdown-body th,
+body.blog-reading-page .markdown-body td {
+  border-bottom: 1px solid var(--reading-line);
+  padding: 10px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+
+@media (max-width: 760px) {
+  body.blog-reading-page .markdown-body table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}

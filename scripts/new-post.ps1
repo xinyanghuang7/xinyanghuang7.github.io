@@ -13,7 +13,7 @@ if ($parts.Count -ne 3) {
 $year, $month, $day = $parts
 $postDir = "posts/$year/$month"
 $postFile = "$postDir/$day.html"
-$templateFile = 'template/post-template.html'
+$templateFile = 'template/post-reading-template.html'
 
 $baseDir = Split-Path $PSScriptRoot -Parent
 $fullDir = Join-Path $baseDir $postDir
@@ -133,12 +133,24 @@ $replacements = [ordered]@{
     '{{STOCK_HIGHLIGHTS}}' = $stockHighlights
     '{{STOCK_RISKS}}' = $stockRisks
     '{{STOCK_ADVICE}}' = 'Replace with a real conclusion, and tag the ticker as holding / watchlist / candidate / case-study.'
+    '{{STOCK_IDENTITY}}' = 'Replace with holding / watchlist / candidate / case-study.'
+    '{{PM_ONE_SENTENCE}}' = 'Replace with the one sentence that matters today.'
+    '{{PM_BRIEF}}' = 'Replace with 2-4 sentences that separate facts, judgment, and action boundary.'
+    '{{PORTFOLIO_STATUS}}' = 'Replace with current portfolio posture.'
+    '{{TODAY_ACTION}}' = 'Replace with hold/add/reduce/watch actions and evidence cutoff.'
+    '{{BIGGEST_RISK}}' = 'Replace with the biggest near-term thesis risk.'
+    '{{BIGGEST_OPPORTUNITY}}' = 'Replace with the biggest asymmetric opportunity.'
     '{{WISDOM_THEME}}' = 'Framework theme'
     '{{WISDOM_TITLE}}' = 'Replace with the real framework title'
     '{{WISDOM_CONTENT}}' = $wisdomContent
     '{{WISDOM_RULES}}' = $wisdomRules
     '{{WISDOM_CASE}}' = $wisdomCase
     '{{WISDOM_TAKEAWAY}}' = 'Replace with the one-sentence takeaway.'
+    '{{CREATOR_DIGEST}}' = 'Replace with creator/local-system digest. Mark each item as verified fact, title layer, or pending transcript.'
+    '{{MARKET_SUMMARY}}' = 'Replace with holdings news and observation radar summary.'
+    '{{MARKET_ROWS}}' = '<tr><td>HOLDING1</td><td>Replace with news/variable</td><td>Replace with judgment</td><td>Replace with evidence boundary</td></tr>'
+    '{{DECISION_ROWS}}' = '<tr><td>HOLDING1</td><td>Hold / watch</td><td>Replace with add trigger</td><td>Replace with downgrade trigger</td></tr>'
+    '{{SOURCE_LIST}}' = '<li>Replace with source name, link if available, and what it supports.</li>'
     '{{MARKET_STOCKS}}' = $marketStocks
     '{{DECISION_CARDS}}' = $decisionCards
     '{{ANALYSIS_SUMMARY}}' = '<strong>Summary:</strong> Replace with the real action summary and evidence boundary.'
@@ -157,12 +169,12 @@ Write-Host ''
 Write-Host 'Post scaffold created.' -ForegroundColor Green
 Write-Host ("  File: " + $postFile) -ForegroundColor Cyan
 Write-Host ''
-Write-Host 'Default premium workflow:' -ForegroundColor Yellow
+Write-Host 'Default simplified reading workflow:' -ForegroundColor Yellow
 Write-Host '  1. Refresh upstream truth (command-center / portfolio / candidate-pool / ticker files / real-time-thesis-monitor when Module 3 is freshness-sensitive)' -ForegroundColor Gray
-Write-Host ('  2. Draft ' + $postFile + ' with teaching-first prose and no filler short lines') -ForegroundColor Gray
-Write-Host '  3. Run reviewer chain: blog-reviewer -> blog-semantic-reviewer -> frontend close' -ForegroundColor Gray
+Write-Host ('  2. Draft ' + $postFile + ' with Markdown-first prose, explicit evidence boundaries, and no component-first filler') -ForegroundColor Gray
+Write-Host '  3. Run reviewer chain: content review -> semantic review -> lightweight frontend compatibility close' -ForegroundColor Gray
 Write-Host '  4. Run python .\scripts\sync-site-data.py' -ForegroundColor Gray
 Write-Host '  5. Run .\scripts\qa-site.ps1' -ForegroundColor Gray
 Write-Host ('  6. Run python .\scripts\investing\validate_blog_backprop_diff.py --base-ref HEAD') -ForegroundColor Gray
 Write-Host ('  7. Run python .\scripts\deploy.py --date ' + $Date) -ForegroundColor Gray
-Write-Host '  8. Verify GitHub + live domain + browser render before calling it done' -ForegroundColor Gray
+Write-Host '  8. Verify GitHub + live domain + desktop/mobile browser render before calling it done' -ForegroundColor Gray

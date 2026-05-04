@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{DESCRIPTION}}">
+    <meta name="keywords" content="美股,价值投资,{{STOCK_TICKER}},{{STOCK_NAME}},投资研究,组合管理">
+    <meta name="author" content="ValueInvest">
+    <meta name="theme-color" content="#ECE9E0">
+    <link rel="icon" type="image/svg+xml" href="../../../favicon.svg">
+    <link rel="canonical" href="https://4fire.qzz.io/posts/{{DATE_CANONICAL}}.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://4fire.qzz.io/posts/{{DATE_CANONICAL}}.html">
+    <meta property="og:title" content="{{TITLE}} | 美股价值投资笔记">
+    <meta property="og:description" content="{{DESCRIPTION}}">
+    <meta property="og:image" content="https://4fire.qzz.io/images/posts/{{DATE_ISO}}-value.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{TITLE}} | 美股价值投资笔记">
+    <meta name="twitter:description" content="{{DESCRIPTION}}">
+    <meta name="twitter:image" content="https://4fire.qzz.io/images/posts/{{DATE_ISO}}-value.jpg">
+    <title>{{TITLE}} | 美股价值投资笔记</title>
+    <link rel="stylesheet" href="../../../css/style.css?v=20260502repair13">
+    <link rel="stylesheet" href="../../../css/blog-reading.css?v=20260504phase2">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "{{TITLE}}",
+        "description": "{{DESCRIPTION}}",
+        "author": { "@type": "Person", "name": "ValueInvest" },
+        "publisher": { "@type": "Organization", "name": "ValueInvest Blog" },
+        "datePublished": "{{DATE_ISO}}",
+        "dateModified": "{{DATE_ISO}}",
+        "mainEntityOfPage": "https://4fire.qzz.io/posts/{{DATE_CANONICAL}}.html",
+        "image": ["https://4fire.qzz.io/images/posts/{{DATE_ISO}}-value.jpg"]
+    }
+    </script>
+</head>
+<body class="post-page post-premium blog-reading-page">
+    <a href="#main" class="skip-link">跳转到主内容</a>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="页面阅读进度"></div>
+
+    <header id="header">
+        <div class="nav-container">
+            <a href="../../../index.html" class="logo" aria-label="ValueInvest 首页">Value<span>Invest</span></a>
+            <nav aria-label="文章页主导航">
+                <ul class="nav-links">
+                    <li><a href="../../../index.html#about">关于</a></li>
+                    <li><a href="../../../index.html#research-standards">研究方法</a></li>
+                    <li><a href="../../../learning/">学习笔记</a></li>
+                    <li><a href="../../../options/">期权教材</a></li>
+                    <li><a href="../../../index.html#archive">文章目录</a></li>
+                </ul>
+            </nav>
+            <div class="nav-date">{{DISPLAY_DATE}}</div>
+        </div>
+    </header>
+
+    <section class="hero" role="banner">
+        <div class="hero-bg-pattern hero-bg-post" aria-hidden="true"></div>
+        <div class="hero-content">
+            <div class="subtitle">Daily Research Note · Markdown-first</div>
+            <h1>{{HERO_TITLE}}</h1>
+            <p class="tagline">{{HERO_SUBTITLE}}</p>
+        </div>
+    </section>
+
+    <nav class="reading-toc" aria-label="文章目录">
+        <a href="#pm-dashboard">PM 看板</a>
+        <a href="#stock-pick">标的 / 案例</a>
+        <a href="#lesson">方法课</a>
+        <a href="#creator-digest">创作者摘要</a>
+        <a href="#market">新闻雷达</a>
+        <a href="#decision-cards">动作地图</a>
+    </nav>
+
+    <!-- WORKFLOW_GUARDRAIL: refresh upstream truth before drafting; then reviewer + frontend close + publish/live verify -->
+    <!-- SIMPLIFIED_STANDARD: write content first; use h2/h3/p/ul/blockquote/table before creating visual components. -->
+    <main id="main" class="blog-article markdown-body">
+        <section id="pm-dashboard">
+            <h2>00 今日 PM 看板</h2>
+            <blockquote>今日一句话：{{PM_ONE_SENTENCE}}</blockquote>
+            <p>{{PM_BRIEF}}</p>
+            <ul>
+                <li><strong>组合状态：</strong>{{PORTFOLIO_STATUS}}</li>
+                <li><strong>今日动作：</strong>{{TODAY_ACTION}}</li>
+                <li><strong>最大风险：</strong>{{BIGGEST_RISK}}</li>
+                <li><strong>最大机会：</strong>{{BIGGEST_OPPORTUNITY}}</li>
+            </ul>
+        </section>
+
+        <section id="stock-pick">
+            <h2>01 今日标的 / 案例：{{STOCK_TICKER}}</h2>
+            <p><strong>今日身份：</strong>{{STOCK_IDENTITY}}</p>
+            <p>{{STOCK_ADVICE}}</p>
+            <h3>行业与商业模式</h3>
+            <p>{{STOCK_BUSINESS}}</p>
+            <h3>护城河与资本配置</h3>
+            <ul>
+{{STOCK_HIGHLIGHTS}}
+            </ul>
+            <h3>风险边界</h3>
+            <ul>
+{{STOCK_RISKS}}
+            </ul>
+        </section>
+
+        <section id="lesson">
+            <h2>02 一句话硬核投资实战干货</h2>
+            <blockquote>{{WISDOM_TAKEAWAY}}</blockquote>
+{{WISDOM_CONTENT}}
+            <h3>可复用规则</h3>
+            <ul>
+{{WISDOM_RULES}}
+            </ul>
+            <h3>案例说明</h3>
+{{WISDOM_CASE}}
+        </section>
+
+        <section id="creator-digest">
+            <h2>03 关注博主 / 本地美投每日摘要</h2>
+            <p>{{CREATOR_DIGEST}}</p>
+            <p><strong>边界：</strong>创作者层用于改变问题清单，不能在缺少独立事实核验时直接改变动作卡。</p>
+        </section>
+
+        <section id="market">
+            <h2>04 持仓新闻解读 + 观察列表雷达</h2>
+            <p>{{MARKET_SUMMARY}}</p>
+            <table>
+                <thead><tr><th>资产</th><th>新闻 / 变量</th><th>我的判断</th><th>证据边界</th></tr></thead>
+                <tbody>
+{{MARKET_ROWS}}
+                </tbody>
+            </table>
+        </section>
+
+        <section id="decision-cards">
+            <h2>05 持仓动作卡片 + 当日最高优先级</h2>
+            <p>{{ANALYSIS_SUMMARY}}</p>
+            <table>
+                <thead><tr><th>持仓</th><th>当前动作</th><th>加仓触发</th><th>暂停 / 降级触发</th></tr></thead>
+                <tbody>
+{{DECISION_ROWS}}
+                </tbody>
+            </table>
+        </section>
+
+        <section id="sources">
+            <h2>来源与边界</h2>
+            <ul>
+{{SOURCE_LIST}}
+            </ul>
+            <p>默认边界：不写未经核验的实时价格；观察列表不冒充持仓；创作者标题层不进入动作结论。</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 ValueInvest Blog · Markdown-first daily research note.</p>
+    </footer>
+    <script src="../../../js/main.js?v=20260502repair03"></script>
+</body>
+</html>
