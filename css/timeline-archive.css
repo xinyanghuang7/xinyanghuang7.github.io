@@ -214,3 +214,68 @@ body.site-home-page::after {
     padding: 18px 14px;
   }
 }
+
+
+/* Phase 3: make the timeline the primary archive picker; keep old calendar as an explicit fallback. */
+.timeline-archive {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(255, 250, 240, 0.94), rgba(247, 242, 232, 0.78)),
+    radial-gradient(circle at 88% 8%, rgba(138, 90, 36, 0.08), transparent 34%);
+}
+
+.timeline-archive::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, #8a5a24, rgba(138, 90, 36, 0.08));
+  opacity: 0.5;
+}
+
+.timeline-carousel {
+  margin-inline: -4px;
+  padding-inline: max(4px, calc((100% - min(74vw, 430px)) / 2));
+}
+
+.timeline-card-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.timeline-card h4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.timeline-card p {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.legacy-calendar-details {
+  overflow: hidden;
+}
+
+.legacy-calendar-details:not([open]) .calendar-section {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .timeline-carousel {
+    padding-inline: 8vw;
+  }
+
+  .timeline-card-link {
+    min-height: 214px;
+    padding: 18px;
+  }
+}
