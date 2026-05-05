@@ -1,72 +1,80 @@
 # Blog Reading System 2026-05
 
-目标：把每日博客从“复杂前端展示页”收敛成“内容优先、Markdown 风、好阅读、好跳转”的投资笔记系统。
+Goal: move the daily blog from a complex frontend showcase into a content-first investment notes system: Markdown-like, readable, easy to navigate, and stable on mobile.
 
-## 原则
+## Principles
 
-1. 首页负责发现与跳转，不承载正文复杂模块。
-2. 文章页负责深度阅读，优先 Markdown 语义：标题、段落、列表、表格、引用、来源。
-3. CSS 只服务可读性：行宽、行高、标题层级、引用块、表格和移动端节奏。
-4. JS 只服务导航：时间线、卡片居中、预览抽屉、键盘与 ESC。
-5. 事实、来源、创作者输入、我的判断必须分层，不能为了“像专业”编造。
+1. The homepage is for discovery and navigation, not for carrying full article complexity.
+2. Article pages are for deep reading. Prefer Markdown semantics: headings, paragraphs, lists, tables, quotes, and sources.
+3. CSS should serve readability only: line width, line height, heading hierarchy, quotes, tables, and mobile rhythm.
+4. JS should serve navigation only: timeline, card centering, preview drawer, keyboard navigation, and ESC.
+5. Facts, sources, creator input, and my judgment must be separated. Do not invent certainty just to look professional.
 
-## 首页 / 归档入口
+## Homepage / archive entry
 
-- 使用时间线归档替代默认日历格子。
-- 月份锚点定位到该月第一篇文章。
-- 横向卡片预览，当前卡片自动居中。
-- 点击非当前卡片：先居中。
-- 点击当前卡片：打开轻量预览抽屉。
-- 抽屉只放摘要、日期、关键词和“阅读全文”，不承载完整正文。
-- 传统日历保留在折叠区作为兼容视图。
+- Use timeline archive as the primary picker instead of the default calendar grid.
+- Month anchors should land on the first article of that month.
+- Horizontal preview cards should auto-center the active card.
+- Clicking a non-active card first centers it.
+- Clicking the active card opens a light preview drawer.
+- The drawer only carries summary, date, keywords, and a read-more link; it must not carry the full article.
+- Keep the legacy calendar inside a folded compatibility area.
 
-## 文章页模板
+## Article page template
 
-文章正文应尽量接近：
+Article bodies should be close to this structure:
 
 ```markdown
-# 标题
+# Title
 
-> 一句话核心结论
+> One-sentence core conclusion
 
-## 1. 今天最重要的判断
-## 2. 发生了什么
-## 3. 为什么重要
-## 4. 对持仓 / 观察池的影响
-## 5. 风险与反证
-## 6. 下一步观察
-## 7. 来源与证据边界
+## 1. Today's most important judgment
+## 2. What happened
+## 3. Why it matters
+## 4. Impact on holdings / watchlist
+## 5. Risks and disconfirming evidence
+## 6. Next observations
+## 7. Sources and evidence boundaries
 ```
 
-每日投资文章最低要求：
+Minimum requirements for every daily investment article:
 
-- 一句话结论
-- 事实层
-- 来源层
-- 我的判断
-- 动作边界
-- 风险与反证
-- 下一步观察
+- One-sentence conclusion
+- Fact layer
+- Source layer
+- My judgment
+- Action boundary
+- Risks and disconfirming evidence
+- Next observations
 
-## 样式边界
+## Style boundaries
 
-保留：
+Keep:
 
-- 阅读型 hero
-- 目录 / 快速跳转
-- 重点引用块
-- 简洁表格
-- 来源区
-- 上一篇 / 下一篇
+- Reading-style hero
+- Table of contents / quick jumps
+- Key quote block
+- Simple tables
+- Source section
+- Previous / next article links
 
-弱化或禁止：
+Weaken or avoid:
 
-- 大量嵌套小卡片
-- dashboard 迷宫
-- 复杂渐变与过度动画
-- 为每个 section 单独设计组件
-- 把观察列表写成交易动作
+- Many nested mini-cards
+- Dashboard maze layouts
+- Heavy gradients and excessive animation
+- Bespoke components for every section
+- Turning watchlists into trade instructions
 
-## 0503 样板
+## 0503 sample
 
-0503 先作为过渡样板：保留原内容信息量，但通过 `blog-reading.css` 降低卡片复杂度。后续新文章应从源头按 Markdown 结构生成，而不是先生成 dashboard 再用 CSS 压平。
+The 0503 article is a transition sample: it keeps the original information density, but uses `blog-reading.css` to reduce card complexity. Future articles should be generated from Markdown structure at the source, not generated as dashboard pages and then flattened by CSS.
+
+## Phase 2 execution standard
+
+1. New articles should start from a Markdown outline, not from a dashboard layout.
+2. Each article should use only a few semantic components: conclusion quote, fact list, source list, risks/disconfirming evidence, and action boundary.
+3. Page acceptance must include desktop screenshots and 390px mobile screenshots.
+4. Remote acceptance Chrome runs must disable the local proxy to avoid global mihomo / Clash interference.
+5. New CSS should first reuse reading variables from `blog-reading.css`; only reusable cross-article rules should enter `style.css`.

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{description}}">
+  <link rel="canonical" href="https://4fire.qzz.io/posts/{{yyyy}}/{{mm}}/{{dd}}.html">
+  <title>{{title}} | US Stock Value Investing Notes</title>
+  <link rel="stylesheet" href="../../../css/style.css?v=20260505compat1">
+  <link rel="stylesheet" href="../../../css/blog-reading.css?v=20260506template1">
+</head>
+<body class="post-page blog-reading-page blog-markdown-template">
+  <header id="header" class="site-header"></header>
+
+  <main class="post-main">
+    <section class="hero blog-reading-hero">
+      <div class="hero-content">
+        <p class="subtitle">{{date}} · daily investment note</p>
+        <h1>{{title}}</h1>
+        <p class="tagline">{{one_line_conclusion}}</p>
+      </div>
+    </section>
+
+    <nav class="article-mobile-jump" aria-label="Article quick jumps">
+      <a href="#judgment">Judgment</a>
+      <a href="#facts">Facts</a>
+      <a href="#impact">Impact</a>
+      <a href="#risks">Risks</a>
+      <a href="#sources">Sources</a>
+    </nav>
+
+    <article class="blog-article markdown-body">
+      <aside class="article-meta-bar">
+        <span class="article-meta-chip">{{date}}</span>
+        <span class="article-meta-chip">{{tickers}}</span>
+        <span class="article-meta-chip">facts / sources / judgment separated</span>
+      </aside>
+
+      <blockquote class="reading-lede">
+        {{one_line_conclusion}}
+      </blockquote>
+
+      <section id="judgment" class="article-section">
+        <h2>1. Today's most important judgment</h2>
+        {{judgment_markdown}}
+      </section>
+
+      <section id="facts" class="article-section">
+        <h2>2. What happened</h2>
+        {{facts_markdown}}
+      </section>
+
+      <section id="why" class="article-section">
+        <h2>3. Why it matters</h2>
+        {{why_markdown}}
+      </section>
+
+      <section id="impact" class="article-section">
+        <h2>4. Impact on holdings / watchlist</h2>
+        {{impact_markdown}}
+      </section>
+
+      <section id="risks" class="article-section">
+        <h2>5. Risks and disconfirming evidence</h2>
+        {{risks_markdown}}
+      </section>
+
+      <section id="next" class="article-section">
+        <h2>6. Next observations</h2>
+        {{next_markdown}}
+      </section>
+
+      <section id="sources" class="article-section source-ledger">
+        <h2>7. Sources and evidence boundaries</h2>
+        {{sources_markdown}}
+      </section>
+    </article>
+  </main>
+
+  <script src="../../../js/main.js?v=20260502repair03"></script>
+</body>
+</html>
