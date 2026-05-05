@@ -525,3 +525,209 @@ body.blog-reading-page .hero-description {
     justify-content: center;
   }
 }
+
+/* Phase 5: stronger Markdown-note mode for 0503 and future reading pages. */
+body.blog-reading-page .hero-action-row,
+body.blog-reading-page .article-meta-bar,
+body.blog-reading-page .article-mobile-jump {
+  max-width: var(--reading-max);
+}
+
+body.blog-reading-page .hero-action-row {
+  justify-content: flex-start;
+}
+
+body.blog-reading-page .blog-article {
+  counter-reset: reading-section;
+}
+
+body.blog-reading-page .section-header {
+  position: relative;
+}
+
+body.blog-reading-page .section-number {
+  display: inline-block;
+  min-width: 0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(138, 90, 36, 0.34);
+  padding-bottom: 2px;
+  letter-spacing: 0.08em;
+}
+
+body.blog-reading-page .section-title::before,
+body.blog-reading-page .section-title-group h2::before {
+  content: "";
+}
+
+body.blog-reading-page .section-title,
+body.blog-reading-page .section-title-group h2,
+body.blog-reading-page .markdown-body h2 {
+  max-width: 16em;
+  letter-spacing: -0.025em;
+}
+
+body.blog-reading-page .section-subtitle,
+body.blog-reading-page .section-date {
+  max-width: 760px;
+}
+
+body.blog-reading-page .section-date {
+  margin-top: 8px;
+  font-size: 0.82rem;
+}
+
+body.blog-reading-page .pm-dashboard-shell,
+body.blog-reading-page .source-ledger,
+body.blog-reading-page .source-audit-panel,
+body.blog-reading-page .decision-status-card,
+body.blog-reading-page .stock-card,
+body.blog-reading-page .analysis-box,
+body.blog-reading-page .method-scoreboard,
+body.blog-reading-page .lesson-card,
+body.blog-reading-page .creator-decision-brief,
+body.blog-reading-page .creator-card,
+body.blog-reading-page .news-grade-board,
+body.blog-reading-page .holding-news-card,
+body.blog-reading-page .watchlist-news-card,
+body.blog-reading-page .action-card,
+body.blog-reading-page .scenario-matrix,
+body.blog-reading-page .portfolio-bridge-card {
+  border-left: 3px solid rgba(138, 90, 36, 0.34) !important;
+  border-top: 0 !important;
+  border-right: 0 !important;
+  border-bottom: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  padding: 4px 0 4px 22px !important;
+}
+
+body.blog-reading-page .pm-dashboard-lead,
+body.blog-reading-page .lesson-card-main,
+body.blog-reading-page .stock-thesis-box {
+  border-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+body.blog-reading-page .pm-dashboard-card,
+body.blog-reading-page .five-plus-card,
+body.blog-reading-page .grade-card,
+body.blog-reading-page .source-ledger-item,
+body.blog-reading-page .lesson-checklist > div,
+body.blog-reading-page .creator-brief-grid > div,
+body.blog-reading-page .decision-status-grid > p,
+body.blog-reading-page .source-audit-grid > div,
+body.blog-reading-page .scoreboard-grid > div,
+body.blog-reading-page .action-field,
+body.blog-reading-page .scenario-row,
+body.blog-reading-page .holding-news-flow > *,
+body.blog-reading-page .watchlist-radar-board > *,
+body.blog-reading-page .creator-digest-board > * {
+  padding: 0 0 16px !important;
+  margin: 16px 0 !important;
+  border-bottom: 1px solid var(--reading-line) !important;
+}
+
+body.blog-reading-page .pm-dashboard-card strong,
+body.blog-reading-page .five-plus-card h3,
+body.blog-reading-page .source-ledger-item strong,
+body.blog-reading-page .decision-status-grid strong,
+body.blog-reading-page .action-card h3,
+body.blog-reading-page .holding-news-card h3,
+body.blog-reading-page .watchlist-news-card h3 {
+  color: var(--reading-text) !important;
+  font-size: 1.04rem;
+}
+
+body.blog-reading-page .source-ledger-item {
+  display: block !important;
+  color: inherit;
+  text-decoration: none;
+}
+
+body.blog-reading-page .source-ledger-item span,
+body.blog-reading-page .scoreboard-grid em,
+body.blog-reading-page .five-plus-card p,
+body.blog-reading-page .pm-dashboard-card p,
+body.blog-reading-page .action-field p,
+body.blog-reading-page .holding-news-card p,
+body.blog-reading-page .watchlist-news-card p {
+  color: var(--reading-muted) !important;
+}
+
+body.blog-reading-page .market-tape,
+body.blog-reading-page .decision-number-strip,
+body.blog-reading-page .creator-takeaway-strip {
+  border-top: 1px solid var(--reading-line) !important;
+  padding-top: 14px !important;
+}
+
+body.blog-reading-page .market-tape strong,
+body.blog-reading-page .inline-source-chip,
+body.blog-reading-page .creator-status-pill,
+body.blog-reading-page .holding-action-badge,
+body.blog-reading-page .holding-label,
+body.blog-reading-page .tracking-badge {
+  border-radius: 6px;
+  background: rgba(138, 90, 36, 0.07);
+}
+
+body.blog-reading-page .source-boundary {
+  display: block;
+  margin: 12px 0;
+  border-left: 3px solid rgba(138, 90, 36, 0.32);
+  padding-left: 12px;
+}
+
+body.blog-reading-page img {
+  max-width: 100%;
+  height: auto;
+}
+
+body.blog-reading-page .hero-action-link,
+body.blog-reading-page .article-mobile-jump a,
+body.blog-reading-page .article-meta-chip {
+  border-radius: 8px !important;
+}
+
+@media (max-width: 760px) {
+  body.blog-reading-page .pm-dashboard-shell,
+  body.blog-reading-page .source-ledger,
+  body.blog-reading-page .source-audit-panel,
+  body.blog-reading-page .decision-status-card,
+  body.blog-reading-page .stock-card,
+  body.blog-reading-page .analysis-box,
+  body.blog-reading-page .method-scoreboard,
+  body.blog-reading-page .lesson-card,
+  body.blog-reading-page .creator-decision-brief,
+  body.blog-reading-page .creator-card,
+  body.blog-reading-page .news-grade-board,
+  body.blog-reading-page .holding-news-card,
+  body.blog-reading-page .watchlist-news-card,
+  body.blog-reading-page .action-card,
+  body.blog-reading-page .scenario-matrix,
+  body.blog-reading-page .portfolio-bridge-card {
+    padding-left: 16px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  body.site-home-page .hero::before,
+  body.site-home-page .hero::after,
+  body.site-home-page .hero-bg-pattern,
+  body.site-home-page .hero-bg-pattern::before,
+  body.site-home-page .hero-bg-pattern::after,
+  body.site-home-page .hero-content::before,
+  body.site-home-page .hero-content::after,
+  body.blog-reading-page .hero::before,
+  body.blog-reading-page .hero::after,
+  body.blog-reading-page .hero-bg-pattern,
+  body.blog-reading-page .hero-bg-pattern::before,
+  body.blog-reading-page .hero-bg-pattern::after,
+  body.blog-reading-page .hero-content::before,
+  body.blog-reading-page .hero-content::after {
+    display: none !important;
+    content: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+}

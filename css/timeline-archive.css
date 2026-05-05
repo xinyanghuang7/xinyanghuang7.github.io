@@ -6,12 +6,25 @@ body.site-home-page::after {
 }
 
 .timeline-archive {
+  position: relative;
+  overflow: hidden;
   margin: 34px 0 42px;
   padding: clamp(20px, 4vw, 36px);
   border: 1px solid rgba(36, 33, 24, 0.14);
   border-radius: 18px;
-  background: rgba(255, 250, 240, 0.76);
+  background:
+    linear-gradient(135deg, rgba(255, 250, 240, 0.94), rgba(247, 242, 232, 0.78)),
+    radial-gradient(circle at 88% 8%, rgba(138, 90, 36, 0.08), transparent 34%);
   box-shadow: none;
+}
+
+.timeline-archive::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, #8a5a24, rgba(138, 90, 36, 0.08));
+  opacity: 0.5;
 }
 
 .timeline-archive-head {
@@ -86,7 +99,8 @@ body.site-home-page::after {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  padding: 18px 4px 26px;
+  margin-inline: -4px;
+  padding: 18px max(4px, calc((100% - min(74vw, 430px)) / 2)) 26px;
   outline: none;
 }
 
@@ -108,8 +122,10 @@ body.site-home-page::after {
 }
 
 .timeline-card-link {
-  display: block;
+  display: flex;
   min-height: 226px;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 22px;
   border: 1px solid rgba(36, 33, 24, 0.14);
   border-radius: 14px;
@@ -131,16 +147,26 @@ body.site-home-page::after {
 }
 
 .timeline-card h4 {
+  display: -webkit-box;
   margin: 12px 0;
+  overflow: hidden;
   color: #242118;
   font-size: clamp(1.16rem, 2vw, 1.55rem);
   line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
 }
 
 .timeline-card p {
+  display: -webkit-box;
   margin: 0;
+  overflow: hidden;
   color: #6d6558;
   line-height: 1.72;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
 }
 
 .timeline-card-keywords {
@@ -156,6 +182,16 @@ body.site-home-page::after {
   padding: 3px 8px;
   color: #8a5a24;
   font-size: 0.78rem;
+}
+
+.timeline-card-cta {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 16px;
+  border-bottom: 1px solid rgba(138, 90, 36, 0.45);
+  color: #8a5a24;
+  font-size: 0.88rem;
+  font-weight: 700;
 }
 
 .timeline-arrow {
@@ -176,7 +212,106 @@ body.site-home-page::after {
   outline: none;
 }
 
+.timeline-preview-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  align-items: end;
+  background: rgba(36, 33, 24, 0);
+  pointer-events: none;
+  transition: background 320ms ease-out;
+}
+
+.timeline-preview-drawer.is-open {
+  background: rgba(36, 33, 24, 0.32);
+  pointer-events: auto;
+}
+
+.timeline-preview-panel {
+  width: min(920px, calc(100vw - 24px));
+  max-height: min(86vh, 620px);
+  margin: 0 auto 12px;
+  overflow: auto;
+  border: 1px solid rgba(36, 33, 24, 0.14);
+  border-radius: 22px;
+  background: #fffaf0;
+  color: #242118;
+  box-shadow: 0 24px 80px rgba(36, 33, 24, 0.22);
+  transform: translateY(110%);
+  transition: transform 360ms ease-out;
+}
+
+.timeline-preview-drawer.is-open .timeline-preview-panel {
+  transform: translateY(0);
+}
+
+.timeline-preview-close {
+  float: right;
+  width: 38px;
+  height: 38px;
+  margin: 16px 16px 0 0;
+  border: 1px solid rgba(36, 33, 24, 0.15);
+  border-radius: 999px;
+  background: transparent;
+  color: #242118;
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+.timeline-preview-content {
+  padding: clamp(26px, 5vw, 46px);
+}
+
+.timeline-preview-content time {
+  color: #8a5a24;
+  font-weight: 700;
+}
+
+.timeline-preview-content h3 {
+  max-width: 13em;
+  margin: 10px 0 14px;
+  font-size: clamp(1.7rem, 4vw, 3rem);
+  line-height: 1.15;
+}
+
+.timeline-preview-content p {
+  max-width: 760px;
+  color: #5f574c;
+  font-size: 1.04rem;
+  line-height: 1.82;
+}
+
+.timeline-preview-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.timeline-read-link,
+.timeline-secondary-button {
+  border: 1px solid #242118;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font: inherit;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.timeline-read-link {
+  background: #242118;
+  color: #fffaf0;
+}
+
+.timeline-secondary-button {
+  background: transparent;
+  color: #242118;
+}
+
 .legacy-calendar-details {
+  overflow: hidden;
   margin-top: 28px;
   border: 1px solid rgba(36, 33, 24, 0.12);
   border-radius: 14px;
@@ -195,87 +330,16 @@ body.site-home-page::after {
   border-top: 1px solid rgba(36, 33, 24, 0.1);
 }
 
-@media (max-width: 720px) {
-  .timeline-carousel-wrap {
-    grid-template-columns: 1fr;
-  }
-
-  .timeline-arrow {
-    display: none;
-  }
-
-  .timeline-card {
-    flex-basis: 84vw;
-  }
-
-  .timeline-archive {
-    margin-left: -4px;
-    margin-right: -4px;
-    padding: 18px 14px;
-  }
-}
-
-
-/* Phase 3: make the timeline the primary archive picker; keep old calendar as an explicit fallback. */
-.timeline-archive {
-  position: relative;
-  overflow: hidden;
-  background:
-    linear-gradient(135deg, rgba(255, 250, 240, 0.94), rgba(247, 242, 232, 0.78)),
-    radial-gradient(circle at 88% 8%, rgba(138, 90, 36, 0.08), transparent 34%);
-}
-
-.timeline-archive::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto;
-  height: 3px;
-  background: linear-gradient(90deg, #8a5a24, rgba(138, 90, 36, 0.08));
-  opacity: 0.5;
-}
-
-.timeline-carousel {
-  margin-inline: -4px;
-  padding-inline: max(4px, calc((100% - min(74vw, 430px)) / 2));
-}
-
-.timeline-card-link {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.timeline-card h4 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.timeline-card p {
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.legacy-calendar-details {
-  overflow: hidden;
-}
-
 .legacy-calendar-details:not([open]) .calendar-section {
   display: none;
 }
 
 @media (max-width: 720px) {
-  .timeline-carousel {
-    padding-inline: 8vw;
-  }
-
-  .timeline-card-link {
-    min-height: 214px;
-    padding: 18px;
-  }
+  .timeline-carousel-wrap { grid-template-columns: 1fr; }
+  .timeline-arrow { display: none; }
+  .timeline-card { flex-basis: 84vw; }
+  .timeline-carousel { padding-inline: 8vw; }
+  .timeline-card-link { min-height: 214px; padding: 18px; }
+  .timeline-archive { margin-left: -4px; margin-right: -4px; padding: 18px 14px; }
+  .timeline-preview-panel { width: calc(100vw - 16px); margin-bottom: 8px; border-radius: 18px; }
 }

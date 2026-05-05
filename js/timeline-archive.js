@@ -1,5 +1,5 @@
 // Lightweight timeline archive built from js/posts-data.js.
-// Keeps homepage selection simple: month anchors + centered reading cards.
+// Homepage does discovery only: month anchors + centered cards + a small preview drawer.
 (function () {
   const posts = window.__POSTS__ || window.POSTS_DATABASE || [];
   const nav = document.getElementById('timelineMonthNav');
@@ -16,13 +16,11 @@
   const months = [...new Set(posts.map((post) => monthKey(post.date)).filter(Boolean))];
   let currentIndex = 0;
   let scrollTimer = null;
+  let drawer = null;
 
   function escapeHtml(value) {
-    return String(value || '').replace(/[&<>"]/g, (char) => ({
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      '"': '&quot;'
+    return String(value || '').replace(/[&<>\"]/g, (char) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;'
     }[char]));
   }
 
@@ -47,15 +45,60 @@
       const keywords = (post.keywords || []).slice(0, 4).map((word) => `<span>${escapeHtml(word)}</span>`).join('');
       return `
         <article class="timeline-card${index === 0 ? ' is-active' : ''}" data-index="${index}" data-month="${key}">
-          <a href="${post.url}" class="timeline-card-link">
+          <a href="${post.url}" class="timeline-card-link" aria-label="预览：${escapeHtml(title)}">
             <time datetime="${date}">${date}</time>
             <h4>${escapeHtml(title)}</h4>
             <p>${escapeHtml(desc)}</p>
             ${keywords ? `<div class="timeline-card-keywords" aria-label="文章关键词">${keywords}</div>` : ''}
+            <span class="timeline-card-cta">预览摘要</span>
           </a>
         </article>
       `;
     }).join('');
+  }
+
+  function ensureDrawer() {
+    if (drawer) return drawer;
+    drawer = document.createElement('aside');
+    drawer.className = 'timeline-preview-drawer';
+    drawer.setAttribute('aria-hidden', 'true');
+    drawer.innerHTML = '<div class="timeline-preview-panel" role="dialog" aria-modal="false" aria-labelledby="timelinePreviewTitle"><button class="timeline-preview-close" type="button" aria-label="关闭预览">×</button><div class="timeline-preview-content"></div></div>';
+    document.body.appendChild(drawer);
+    drawer.addEventListener('click', (event) => {
+      if (event.target === drawer || event.target.closest('.timeline-preview-close')) closePreview();
+    });
+    return drawer;
+  }
+
+  function openPreview(index) {
+    const post = posts[index];
+    if (!post) return;
+    const box = ensureDrawer();
+    const title = compactTitle(post.title);
+    const desc = post.desc || post.summary || '点击阅读全文，进入 Markdown 风格的完整投资笔记。';
+    const keywords = (post.keywords || []).slice(0, 6).map((word) => `<span>${escapeHtml(word)}</span>`).join('');
+    box.querySelector('.timeline-preview-content').innerHTML = `
+      <p class="timeline-kicker">Reading Preview</p>
+      <time datetime="${escapeHtml(post.date || '')}">${escapeHtml(post.date || '')}</time>
+      <h3 id="timelinePreviewTitle">${escapeHtml(title)}</h3>
+      <p>${escapeHtml(desc)}</p>
+      ${keywords ? `<div class="timeline-card-keywords">${keywords}</div>` : ''}
+      <div class="timeline-preview-actions">
+        <a class="timeline-read-link" href="${post.url}">阅读全文</a>
+        <button class="timeline-secondary-button" type="button">继续选文章</button>
+      </div>
+    `;
+    box.querySelector('.timeline-secondary-button').addEventListener('click', closePreview, { once: true });
+    box.classList.add('is-open');
+    box.setAttribute('aria-hidden', 'false');
+    box.querySelector('.timeline-read-link').focus({ preventScroll: true });
+  }
+
+  function closePreview() {
+    if (!drawer) return;
+    drawer.classList.remove('is-open');
+    drawer.setAttribute('aria-hidden', 'true');
+    carousel.focus({ preventScroll: true });
   }
 
   function setActive(index, shouldScroll = true) {
@@ -81,18 +124,11 @@
     const cards = [...carousel.querySelectorAll('.timeline-card')];
     const carouselBox = carousel.getBoundingClientRect();
     const center = carouselBox.left + carouselBox.width / 2;
-    let nearest = currentIndex;
-    let nearestDistance = Number.POSITIVE_INFINITY;
-    cards.forEach((card, index) => {
+    return cards.reduce((nearest, card, index) => {
       const box = card.getBoundingClientRect();
-      const cardCenter = box.left + box.width / 2;
-      const distance = Math.abs(cardCenter - center);
-      if (distance < nearestDistance) {
-        nearestDistance = distance;
-        nearest = index;
-      }
-    });
-    return nearest;
+      const distance = Math.abs((box.left + box.width / 2) - center);
+      return distance < nearest.distance ? { index, distance } : nearest;
+    }, { index: currentIndex, distance: Number.POSITIVE_INFINITY }).index;
   }
 
   function bind() {
@@ -107,28 +143,25 @@
     nextButton?.addEventListener('click', () => setActive(currentIndex + 1));
 
     carousel.addEventListener('keydown', (event) => {
-      if (event.key === 'ArrowLeft') {
-        event.preventDefault();
-        setActive(currentIndex - 1);
-      }
-      if (event.key === 'ArrowRight') {
-        event.preventDefault();
-        setActive(currentIndex + 1);
-      }
-      if (event.key === 'Enter') {
-        const activeLink = carousel.querySelector('.timeline-card.is-active a');
-        if (activeLink) activeLink.click();
-      }
+      if (event.key === 'ArrowLeft') { event.preventDefault(); setActive(currentIndex - 1); }
+      if (event.key === 'ArrowRight') { event.preventDefault(); setActive(currentIndex + 1); }
+      if (event.key === 'Enter') { event.preventDefault(); openPreview(currentIndex); }
     });
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closePreview(); });
+
+    carousel.addEventListener('wheel', (event) => {
+      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+      event.preventDefault();
+      setActive(currentIndex + (event.deltaY > 0 ? 1 : -1));
+    }, { passive: false });
 
     carousel.addEventListener('click', (event) => {
       const card = event.target.closest('.timeline-card');
       if (!card) return;
+      event.preventDefault();
       const index = Number(card.dataset.index);
-      if (index !== currentIndex) {
-        event.preventDefault();
-        setActive(index);
-      }
+      if (index !== currentIndex) setActive(index);
+      else openPreview(index);
     });
 
     carousel.addEventListener('scroll', () => {
