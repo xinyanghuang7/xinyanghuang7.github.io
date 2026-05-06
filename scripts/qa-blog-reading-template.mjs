@@ -4,7 +4,7 @@ import fs from 'node:fs/promises';
 
 const chromePath = process.env.CHROME_PATH || 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 const base = process.env.SITE_BASE || 'http://127.0.0.1:8899/';
-const path = process.env.TEMPLATE_PATH || 'templates/blog-reading-template.html';
+const path = process.env.TEMPLATE_PATH || process.argv[2] || 'templates/blog-reading-template.html';
 const outDir = process.env.OUT_DIR || 'artifacts/qa-blog-reading-template';
 const port = Number(process.env.CDP_PORT || 9256);
 

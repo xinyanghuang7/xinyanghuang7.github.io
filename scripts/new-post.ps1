@@ -13,12 +13,16 @@ if ($parts.Count -ne 3) {
 $year, $month, $day = $parts
 $postDir = "posts/$year/$month"
 $postFile = "$postDir/$day.html"
-$templateFile = 'template/post-reading-template.html'
+$templateFile = 'templates/blog-reading-template.html'
 
 $baseDir = Split-Path $PSScriptRoot -Parent
 $fullDir = Join-Path $baseDir $postDir
 $fullPath = Join-Path $baseDir $postFile
 $templatePath = Join-Path $baseDir $templateFile
+
+function New-TodoBlock([string]$text) {
+    return "<p><strong>TODO:</strong> $text</p>"
+}
 
 if (!(Test-Path $fullDir)) {
     New-Item -ItemType Directory -Force -Path $fullDir | Out-Null
@@ -41,119 +45,23 @@ if (!(Test-Path $templatePath)) {
 
 $template = Get-Content $templatePath -Raw -Encoding UTF8
 
-$stockHighlights = @'
-                        <li><strong>Highlight 1:</strong> Replace with a real business-quality point.</li>
-                        <li><strong>Highlight 2:</strong> Replace with a real valuation / moat point.</li>
-                        <li><strong>Highlight 3:</strong> Replace with a real long-term thesis point.</li>
-'@
-
-$stockRisks = @'
-                        <li><strong>Risk 1:</strong> Replace with a real thesis risk.</li>
-                        <li><strong>Risk 2:</strong> Replace with a real execution / valuation risk.</li>
-'@
-
-$wisdomContent = @'
-                    <p>Replace with real framework content. Separate verified facts from personal judgment.</p>
-                    <p class="flow-gap-md">If the evidence is soft, say so clearly instead of pretending certainty.</p>
-'@
-
-$wisdomRules = @'
-                        <li><strong>Rule 1:</strong> Replace with an actionable rule.</li>
-                        <li><strong>Rule 2:</strong> Replace with an actionable rule.</li>
-                        <li><strong>Rule 3:</strong> Replace with an actionable rule.</li>
-'@
-
-$wisdomCase = @'
-                    <p>Replace with a real case and real numbers.</p>
-                    <p class="flow-gap-sm">Do not leave this as slogan-only content.</p>
-                    <p class="flow-gap-sm"><strong>Key takeaway:</strong> Turn the case into a usable decision rule.</p>
-'@
-
-$marketStocks = @'
-                <article class="stock-detail-card">
-                    <div class="stock-detail-header">
-                        <div>
-                            <div class="stock-detail-ticker">HOLDING1</div>
-                            <div class="stock-detail-name">Replace with a real holding / watchlist label</div>
-                        </div>
-                        <div class="stock-price">
-                            <div class="price-value">Replace with real data cutoff</div>
-                        </div>
-                    </div>
-                    <div class="news-list">
-                        <div class="news-item">
-                            <div class="news-title">Evidence audit</div>
-                            <div class="news-perspective"><strong>[Audit]</strong> Replace with external basis, data cutoff, my judgment, confidence, and evidence strength.</div>
-                        </div>
-                    </div>
-                </article>
-'@
-
-$decisionCards = @'
-                <article class="tracking-card tracking-card-core">
-                    <div class="tracking-card-header">
-                        <span class="tracking-card-ticker">HOLDING1</span>
-                        <span class="tracking-badge tracking-badge-core">核心 holding</span>
-                    </div>
-                    <div class="tracking-row">
-                        <span class="tracking-label">当前桶位</span>
-                        <span class="tracking-value tracking-value-core">Replace with the real bucket / posture and make sure it matches Module 3.</span>
-                    </div>
-                    <div class="tracking-row">
-                        <span class="tracking-label">核心变量</span>
-                        <span class="tracking-value tracking-value-core">Replace with the single most important thing to watch now.</span>
-                    </div>
-                    <div class="tracking-row">
-                        <span class="tracking-label">不要误读</span>
-                        <span class="tracking-value tracking-value-core">Replace with the key trap / false signal / overread warning.</span>
-                    </div>
-                    <div class="tracking-row">
-                        <span class="tracking-label">下一步</span>
-                        <span class="tracking-value tracking-value-core">Replace with the next action boundary and evidence path.</span>
-                    </div>
-                </article>
-'@
-
+$displayDate = "$year-$month-$day"
 $replacements = [ordered]@{
-    '{{TITLE}}' = ($year + ' US Stock Note')
-    '{{DESCRIPTION}}' = ($Date + ' daily stock-pick, investing framework, and portfolio decision note.')
-    '{{DISPLAY_DATE}}' = $Date
-    '{{DATE_ISO}}' = $Date
-    '{{DATE_CANONICAL}}' = ($year + '/' + $month + '/' + $day)
-    '{{HERO_TITLE}}' = 'Replace with the real hero title'
-    '{{HERO_SUBTITLE}}' = '"Replace with one sentence worth remembering"'
-    '{{DATE_SHORT}}' = ($year + '/' + $month + '/' + $day)
-    '{{STOCK_TICKER}}' = 'XXX'
-    '{{STOCK_NAME}}' = 'Replace with real company name'
-    '{{STOCK_EXCHANGE}}' = 'Exchange · Listing info'
-    '{{STOCK_INDUSTRY}}' = 'Industry'
-    '{{STOCK_BUSINESS}}' = 'Core business'
-    '{{STOCK_CAP}}' = 'Market-cap bucket'
-    '{{STOCK_DIVIDEND}}' = 'Dividend / buyback note'
-    '{{STOCK_HIGHLIGHTS}}' = $stockHighlights
-    '{{STOCK_RISKS}}' = $stockRisks
-    '{{STOCK_ADVICE}}' = 'Replace with a real conclusion, and tag the ticker as holding / watchlist / candidate / case-study.'
-    '{{STOCK_IDENTITY}}' = 'Replace with holding / watchlist / candidate / case-study.'
-    '{{PM_ONE_SENTENCE}}' = 'Replace with the one sentence that matters today.'
-    '{{PM_BRIEF}}' = 'Replace with 2-4 sentences that separate facts, judgment, and action boundary.'
-    '{{PORTFOLIO_STATUS}}' = 'Replace with current portfolio posture.'
-    '{{TODAY_ACTION}}' = 'Replace with hold/add/reduce/watch actions and evidence cutoff.'
-    '{{BIGGEST_RISK}}' = 'Replace with the biggest near-term thesis risk.'
-    '{{BIGGEST_OPPORTUNITY}}' = 'Replace with the biggest asymmetric opportunity.'
-    '{{WISDOM_THEME}}' = 'Framework theme'
-    '{{WISDOM_TITLE}}' = 'Replace with the real framework title'
-    '{{WISDOM_CONTENT}}' = $wisdomContent
-    '{{WISDOM_RULES}}' = $wisdomRules
-    '{{WISDOM_CASE}}' = $wisdomCase
-    '{{WISDOM_TAKEAWAY}}' = 'Replace with the one-sentence takeaway.'
-    '{{CREATOR_DIGEST}}' = 'Replace with creator/local-system digest. Mark each item as verified fact, title layer, or pending transcript.'
-    '{{MARKET_SUMMARY}}' = 'Replace with holdings news and observation radar summary.'
-    '{{MARKET_ROWS}}' = '<tr><td>HOLDING1</td><td>Replace with news/variable</td><td>Replace with judgment</td><td>Replace with evidence boundary</td></tr>'
-    '{{DECISION_ROWS}}' = '<tr><td>HOLDING1</td><td>Hold / watch</td><td>Replace with add trigger</td><td>Replace with downgrade trigger</td></tr>'
-    '{{SOURCE_LIST}}' = '<li>Replace with source name, link if available, and what it supports.</li>'
-    '{{MARKET_STOCKS}}' = $marketStocks
-    '{{DECISION_CARDS}}' = $decisionCards
-    '{{ANALYSIS_SUMMARY}}' = '<strong>Summary:</strong> Replace with the real action summary and evidence boundary.'
+    '{{description}}' = "$displayDate daily investment note with facts, judgment, risks, and source boundaries."
+    '{{yyyy}}' = $year
+    '{{mm}}' = $month
+    '{{dd}}' = $day
+    '{{title}}' = "$displayDate US Stock Note"
+    '{{date}}' = $displayDate
+    '{{one_line_conclusion}}' = 'Replace with the one sentence that matters today.'
+    '{{tickers}}' = 'TICKERS TBD'
+    '{{judgment_markdown}}' = (New-TodoBlock 'Write the main judgment first. Separate fact, interpretation, and action boundary.')
+    '{{facts_markdown}}' = (New-TodoBlock 'List only verified facts, numbers, dates, and what changed today.')
+    '{{why_markdown}}' = (New-TodoBlock 'Explain why these facts matter for business quality, valuation, or portfolio risk.')
+    '{{impact_markdown}}' = (New-TodoBlock 'Map impact to holdings, watchlist names, and candidate pool. State no-action cases explicitly.')
+    '{{risks_markdown}}' = (New-TodoBlock 'Name disconfirming evidence, what would make the thesis wrong, and data freshness limits.')
+    '{{next_markdown}}' = (New-TodoBlock 'Define the next observations, trigger levels, and when to revisit.')
+    '{{sources_markdown}}' = '<ul><li>TODO: source name, link if available, what it supports, and confidence boundary.</li></ul>'
 }
 
 $content = $template
@@ -161,16 +69,22 @@ foreach ($key in $replacements.Keys) {
     $content = $content.Replace($key, [string]$replacements[$key])
 }
 
-$utf8Bom = [byte[]](0xEF, 0xBB, 0xBF)
-$bytes = [System.Text.Encoding]::UTF8.GetBytes($content)
-[System.IO.File]::WriteAllBytes($fullPath, $utf8Bom + $bytes)
+$unresolved = [regex]::Matches($content, '\{\{[^}]+\}\}')
+if ($unresolved.Count -gt 0) {
+    Write-Host 'Error: unresolved placeholders remain:' -ForegroundColor Red
+    $unresolved | Select-Object -ExpandProperty Value -Unique | ForEach-Object { Write-Host "  $_" -ForegroundColor Red }
+    exit 1
+}
+
+$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+[System.IO.File]::WriteAllText($fullPath, $content, $utf8NoBom)
 
 Write-Host ''
-Write-Host 'Post scaffold created.' -ForegroundColor Green
+Write-Host 'Markdown-first post scaffold created.' -ForegroundColor Green
 Write-Host ("  File: " + $postFile) -ForegroundColor Cyan
 Write-Host ''
 Write-Host 'Default simplified reading workflow:' -ForegroundColor Yellow
-Write-Host '  1. Refresh upstream truth (command-center / portfolio / candidate-pool / ticker files / real-time-thesis-monitor when Module 3 is freshness-sensitive)' -ForegroundColor Gray
+Write-Host '  1. Refresh upstream truth (command-center / portfolio / candidate-pool / ticker files / real-time-thesis-monitor when freshness-sensitive)' -ForegroundColor Gray
 Write-Host ('  2. Draft ' + $postFile + ' with Markdown-first prose, explicit evidence boundaries, and no component-first filler') -ForegroundColor Gray
 Write-Host '  3. Run reviewer chain: content review -> semantic review -> lightweight frontend compatibility close' -ForegroundColor Gray
 Write-Host '  4. Run python .\scripts\sync-site-data.py' -ForegroundColor Gray
