@@ -78,3 +78,16 @@ The 0503 article is a transition sample: it keeps the original information densi
 3. Page acceptance must include desktop screenshots and 390px mobile screenshots.
 4. Remote acceptance Chrome runs must disable the local proxy to avoid global mihomo / Clash interference.
 5. New CSS should first reuse reading variables from `blog-reading.css`; only reusable cross-article rules should enter `style.css`.
+
+## Release and editing hardening
+
+These rules are mandatory after the 2026-05-06 proxy / QA false-positive incident:
+
+1. **GitHub push must bypass the flaky local Git proxy.** Use:
+   ```powershell
+   git -c http.proxy= -c https.proxy= push origin main
+   ```
+   The user's global Git config may point `http.proxy` / `https.proxy` at `127.0.0.1:7890`; that proxy can fail TLS handshakes even when direct GitHub access works. Do not treat that failure as a repo or GitHub outage until a proxy-bypassed `ls-remote`/`push` has been tried.
+2. **HTML QA must be attribute-order independent.** Tools such as BeautifulSoup can rewrite `<meta>` and `<link>` attribute order. QA should validate semantics with order-independent regex/lookaheads, not strict serialized strings.
+3. **Avoid whole-file HTML rewrites unless necessary.** Prefer precise edits or byte-safe ASCII/version replacements. If a parser rewrite is necessary, immediately run `scripts/qa-site.ps1` and a browser screenshot check.
+4. **Live validation should use cache-busting URLs when checking a fresh deploy.** Example: `https://4fire.qzz.io/posts/YYYY/MM/DD.html?v=YYYYMMDDHHMM`. If the cache-busted URL passes and the plain URL is stale, treat it as CDN cache propagation rather than failed deployment.

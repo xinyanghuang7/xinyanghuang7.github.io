@@ -201,7 +201,7 @@ foreach ($file in $postFiles) {
         }
     }
 
-    if ($content -notmatch '<link rel="canonical" href="https://4fire\.qzz\.io/posts/') {
+    if ($content -notmatch '<link(?=[^>]*\brel="canonical")(?=[^>]*\bhref="https://4fire\.qzz\.io/posts/)[^>]*>') {
         Add-Issue "$rel missing canonical on 4fire.qzz.io"
     }
 
@@ -249,15 +249,15 @@ foreach ($file in $postFiles) {
         }
     }
 
-    if ($enforceEnhancedSeo -and ($content -notmatch '<meta\s+name="keywords"\s+content="[^"]+"')) {
+    if ($enforceEnhancedSeo -and ($content -notmatch '<meta(?=[^>]*\bname="keywords")(?=[^>]*\bcontent="[^"]+")[^>]*>')) {
         Add-Issue "$rel missing meta keywords"
     }
 
-    if ($enforceEnhancedSeo -and ($content -notmatch '<meta\s+property="og:image"\s+content="https://4fire\.qzz\.io/[^"]+"')) {
+    if ($enforceEnhancedSeo -and ($content -notmatch '<meta(?=[^>]*\bproperty="og:image")(?=[^>]*\bcontent="https://4fire\.qzz\.io/[^"]+")[^>]*>')) {
         Add-Issue "$rel missing absolute production og:image"
     }
 
-    if ($enforceEnhancedSeo -and ($content -notmatch '<meta\s+name="twitter:image"\s+content="https://4fire\.qzz\.io/[^"]+"')) {
+    if ($enforceEnhancedSeo -and ($content -notmatch '<meta(?=[^>]*\bname="twitter:image")(?=[^>]*\bcontent="https://4fire\.qzz\.io/[^"]+")[^>]*>')) {
         Add-Issue "$rel missing absolute production twitter:image"
     }
 
