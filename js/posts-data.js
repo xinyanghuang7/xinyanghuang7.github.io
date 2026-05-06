@@ -2,12 +2,12 @@
 window.__POSTS__ = [
   {
     "date": "2026-05-03",
-    "title": "2026年5月3日美股：BRK.B 教的不是抄底，而是等待权的价格",
+    "title": "BRK.B 教的不是抄底，而是等待权的价格",
     "desc": "2026-05-03 美股日报：以0501/0502标杆模板生成，详拆 BRK.B 资本配置案例，复核 META/NVDA/NBIS 真实持仓，扩展 TSM/MSFT/GOOGL/UNH/VST/LLY 观察雷达，并记录创作者输入边界。",
     "url": "posts/2026/05/03.html",
     "keywords": [
-      "美股",
-      "价值投资",
+      "US stocks",
+      "value investing",
       "BRK.B",
       "Berkshire Hathaway",
       "META",
@@ -19,8 +19,8 @@ window.__POSTS__ = [
       "UNH",
       "VST",
       "LLY",
-      "组合管理",
-      "投资研究"
+      "portfolio management",
+      "research"
     ]
   },
   {
