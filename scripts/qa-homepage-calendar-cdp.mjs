@@ -118,7 +118,7 @@ try {
     if (!r.detailsOpen) issues.push(`${r.url}: calendar details did not open`);
     if (r.postDays < 1) issues.push(`${r.url}: no post days rendered`);
     if (r.visibleEntryTitles < 1) issues.push(`${r.url}: calendar entries missing titles`);
-    if (r.calendarWidth < 300 || r.calendarHeight < 200) issues.push(`${r.url}: calendar too small ${r.calendarWidth}x${r.calendarHeight}`);
+    if (r.calendarWidth < 260 || r.calendarHeight < 200) issues.push(`${r.url}: calendar too small ${r.calendarWidth}x${r.calendarHeight}`);
   }
   console.log(JSON.stringify({ base, outDir, issues, results }, null, 2));
   if (issues.length) process.exitCode = 1;

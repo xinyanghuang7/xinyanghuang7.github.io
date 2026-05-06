@@ -21509,17 +21509,33 @@ body.site-home-page .calendar-entry-desc {
     border-radius: 14px !important;
   }
 
-  body.site-home-page .calendar-entry-desc { display: none !important; }
+  body.site-home-page .calendar-entry-card,
+  body.site-home-page .calendar-entry-title,
+  body.site-home-page .calendar-entry-desc {
+    display: none !important;
+  }
 
-  body.site-home-page .calendar-entry-title {
-    font-family: var(--font-sans);
-    font-size: 0.66rem !important;
-    line-height: 1.24 !important;
-    -webkit-line-clamp: 2;
+  body.site-home-page .calendar-day.has-post {
+    position: relative;
+    border-color: rgba(124, 36, 52, 0.32) !important;
+    background: linear-gradient(180deg, rgba(255, 248, 240, 1), rgba(244, 231, 213, 0.98)) !important;
+  }
+
+  body.site-home-page .calendar-day.has-post::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    transform: translateX(-50%);
+    background: rgba(124, 36, 52, 0.88);
+    box-shadow: 0 0 0 4px rgba(124, 36, 52, 0.12);
   }
 
   body.site-home-page .calendar-day-number {
-    margin-bottom: 0.22rem !important;
+    margin-bottom: 0 !important;
     font-size: 0.62rem !important;
   }
 }
