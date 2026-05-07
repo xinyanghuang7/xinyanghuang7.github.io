@@ -90,6 +90,7 @@ Write-Host ('  2. Draft ' + $postFile + ' with PM brief + 5 modules + source/evi
 Write-Host '  3. Run reviewer chain: content review -> semantic review -> lightweight frontend compatibility close' -ForegroundColor Gray
 Write-Host '  4. Run python .\scripts\sync-site-data.py' -ForegroundColor Gray
 Write-Host '  5. Run .\scripts\qa-site.ps1' -ForegroundColor Gray
+Write-Host '  Note: Do not use scripts/generate_blog.py or scripts/generate_blog_full.py for default posts; they are legacy-only guarded generators.' -ForegroundColor DarkYellow
 Write-Host ('  6. Run python .\scripts\investing\validate_blog_backprop_diff.py --base-ref HEAD') -ForegroundColor Gray
 Write-Host ('  7. Run python .\scripts\deploy.py --date ' + $Date) -ForegroundColor Gray
 Write-Host '  8. Verify GitHub + live domain + desktop/mobile browser render before calling it done' -ForegroundColor Gray

@@ -15,6 +15,13 @@ from datetime import datetime
 
 import requests
 
+
+LEGACY_GENERATOR_NOTICE = """
+ERROR: This generator is legacy-only and still emits the old component-heavy daily-post layout.
+Default daily posts must be created with scripts/new-post.ps1 + templates/blog-reading-template.html.
+If you intentionally need to regenerate an old legacy page, rerun with --legacy.
+""".strip()
+
 # ============ 路径配置 ============
 BASE_DIR = Path(__file__).parent.parent
 PORTFOLIO_FILE = Path.home() / ".openclaw" / "skills" / "portfolio-tracker" / "data" / "portfolio.json"
@@ -560,7 +567,12 @@ def main():
     parser.add_argument('--stock', help='指定分析标的（可选，默认使用推荐引擎）')
     parser.add_argument('--skip-images', action='store_true')
     parser.add_argument('--skip-deploy', action='store_true')
+    parser.add_argument('--legacy', action='store_true', help='Allow this legacy component-heavy generator to run intentionally')
     args = parser.parse_args()
+
+    if not args.legacy:
+        print(LEGACY_GENERATOR_NOTICE)
+        return
     
     try:
         date_obj = datetime.strptime(args.date, '%Y-%m-%d')

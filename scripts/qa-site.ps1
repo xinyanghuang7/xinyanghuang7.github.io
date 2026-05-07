@@ -166,6 +166,18 @@ foreach ($file in $postFiles) {
         }
     }
 
+    $enforceMarkdownTemplateDefault = $false
+    if ($dateMatch.Success) {
+        $dateIsoForMarkdownDefault = "{0}-{1}-{2}" -f $dateMatch.Groups['year'].Value, $dateMatch.Groups['month'].Value, $dateMatch.Groups['day'].Value
+        if ([datetime]::ParseExact($dateIsoForMarkdownDefault, 'yyyy-MM-dd', $null) -ge [datetime]'2026-05-04') {
+            $enforceMarkdownTemplateDefault = $true
+        }
+    }
+
+    if ($enforceMarkdownTemplateDefault -and $content -notmatch '<body class="[^"]*blog-markdown-template[^"]*">') {
+        Add-Issue "$rel is after 2026-05-03 but missing default blog-markdown-template body class"
+    }
+
     if ($enforce0419WorkflowScaffold -and $content -notmatch 'article-meta-bar') {
         Add-Issue "$rel missing article meta bar"
     }

@@ -279,15 +279,17 @@ If there is tension between "more features" and "more reliable quality", choose 
 
 ## 6. Golden reference and one-command target
 
-- `posts/2026/04/18.html` is the current **golden-reference post** for premium daily-blog finish quality.
-- "Use 0418 as template" does **not** mean copy its topic; it means inherit its bar for:
-  - 4-part module closure
-  - balanced card density
+> 2026-05-07 update: this premium/dashboard standard is now a **legacy/premium exception reference**, not the default daily-post generation path. Default daily publishing uses `docs/blog-reading-system-202605.md`, `templates/blog-reading-template.html`, and `scripts/new-post.ps1`.
+
+- `posts/2026/04/18.html` remains a historical **golden-reference post** for premium finish quality when an explicitly premium/dashboard repair is requested.
+- "Use 0418 as template" does **not** mean copy its old implementation path; it means inherit its bar for:
+  - module closure
+  - balanced density
   - clear prose load-bearing capacity (not bullet-only)
-  - strong Module 3 explanation sequencing
-  - polished Module 4 card quality
-- The long-term target is: **one simple publish command should be enough to generate a near-finished premium post**.
-- The default template should already ship the premium quick-nav / article-meta-bar / Module 4 decision-card scaffold, but under the 0424 style freeze that scaffold must render in the new sharper cinematic visual system instead of the older softer rounded-card language.
+  - strong explanation sequencing
+  - polished action-card quality when action cards are actually needed
+- The long-term target is: **one simple publish command should be enough to generate a near-finished Markdown-first benchmark post**.
+- The default template must be `templates/blog-reading-template.html`. Legacy premium quick-nav / old dashboard scaffolds are allowed only for explicit legacy repair work, not new daily posts.
 - To get there, the upstream stack must already be wired before drafting:
   1. investing-system state refreshed
   2. Module 3 ranking inherited from `real-time-thesis-monitor`
