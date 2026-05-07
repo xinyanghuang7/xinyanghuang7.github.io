@@ -16,7 +16,7 @@ INDEX_FILE = ROOT / "index.html"
 POSTS_DATA_FILE = ROOT / "js" / "posts-data.js"
 
 TITLE_RE = re.compile(r"<title>(.*?)\s*\|", re.IGNORECASE | re.DOTALL)
-META_RE_TEMPLATE = r'<meta\s+{kind}="{name}"\s+content="([^"]*)"'
+META_RE_TEMPLATE = r'<meta\s+(?:{kind}="{name}"\s+content="([^"]*)"|content="([^"]*)"\s+{kind}="{name}")'
 TICKER_RE = re.compile(r'class="stock-ticker"[^>]*>([A-Z]{1,5})<', re.IGNORECASE)
 CANONICAL_RE = re.compile(r'<link\s+rel="canonical"\s+href="([^"]+)"', re.IGNORECASE)
 JSONLD_BLOCK_RE = re.compile(
@@ -31,7 +31,13 @@ def clean_text(value: str) -> str:
 
 def extract_first(pattern: re.Pattern[str], text: str) -> str:
     match = pattern.search(text)
-    return clean_text(match.group(1)) if match else ""
+    if not match:
+        return ""
+    for i in range(1, (match.lastindex or 0) + 1):
+        val = clean_text(match.group(i) or "")
+        if val:
+            return val
+    return ""
 
 
 def meta_pattern(name: str, *, kind: str = "name") -> re.Pattern[str]:
