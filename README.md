@@ -95,7 +95,7 @@
 - `scripts/build-search-index.ps1`（作为 sync-site-data 子模块）
 - `scripts/build-sitemap.ps1`
 - `scripts/deploy.py`
-- `scripts/generate_blog.py`（仅维护，暂不用于前端生成）
+- `scripts/generate_blog.py` / `scripts/generate_blog_full.py`（legacy-only guarded generators；默认日报禁止使用，默认走 `scripts/new-post.ps1` + `templates/blog-reading-template.html`）
 - `scripts/generate_images.py`
 - `scripts/new-post.ps1`
 - `scripts/portfolio_reader.py`

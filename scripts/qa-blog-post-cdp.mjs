@@ -97,7 +97,9 @@ async function snap(cdp, pathWithHash, width, height, label) {
       };
     };
     const text = document.body.innerText || '';
-    const moduleIds = ['#stock-pick', '#lesson', '#creator-digest', '#market', '#decision-cards'];
+    const requiredModuleIds = ['#stock-pick', '#lesson', '#creator-digest', '#market', '#decision-cards', '#risks'];
+    const optionalTailIds = ['#sources'].filter(id => !!q(id));
+    const moduleIds = [...requiredModuleIds, ...optionalTailIds];
     const articleSections = qa('article.blog-article section.article-section, article section.article-section')
       .map(sec => sec.id)
       .filter(Boolean);
@@ -115,7 +117,7 @@ async function snap(cdp, pathWithHash, width, height, label) {
       overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
       replacementChars: (text.match(/�/g) || []).length,
       titleReplacementChars: ((document.title || '').match(/�/g) || []).length,
-      anchorsOk: ['#pm-dashboard', ...moduleIds].every(id => !!q(id)),
+      anchorsOk: ['#pm-dashboard', ...requiredModuleIds].every(id => !!q(id)),
       orderOk,
       articleSections,
       modulePositions,

@@ -1,5 +1,7 @@
 # Blog Simplified Markdown Timeline Implementation Plan
 
+> **Status note (2026-05-07):** This is a historical implementation plan, not the current default-publish runbook. The current default daily path is `scripts/new-post.ps1` + `templates/blog-reading-template.html`; `scripts/generate_blog.py` / `scripts/generate_blog_full.py` are guarded legacy-only generators.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use `subagent-driven-development` (recommended) or `executing-plans` to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** 从 2026-05-03 文章和首页归档入口开始，把博客从“复杂前端组件堆叠”改造成“内容优先、Markdown 阅读感、轻量时间线归档 + 卡片预览”的长期研究站。
@@ -85,11 +87,11 @@
   - 第二批试点：不要求立刻大改内容，但先移除过重视觉依赖，统一到阅读样式。
 
 - `scripts/new-post.ps1`
-  - 默认使用 `template/post-reading-template.html`。
+  - 2026-05-07 已收口：默认使用 `templates/blog-reading-template.html`。
   - 提醒写作流程从“填卡片”改为“写 Markdown-like 正文”。
 
 - `scripts/generate_blog_full.py`
-  - 中期改造：生成 HTML 时输出阅读型结构，而不是复杂卡片结构。
+  - 2026-05-07 已改为 guarded legacy-only；不得作为默认日报入口。
 
 ---
 
@@ -761,8 +763,8 @@ Expected:
 - Modify: `scripts/new-post.ps1`
 
 - [ ] **Step 1: 从 0503 瘦身后结构抽出新模板**
-- [ ] **Step 2: `new-post.ps1` 默认模板改为 `template/post-reading-template.html`**
-- [ ] **Step 3: 保留旧模板为 legacy，不删除**
+- [x] **Step 2: `new-post.ps1` 默认模板改为 `templates/blog-reading-template.html`（2026-05-07 current canonical path）**
+- [x] **Step 3: 保留旧模板为 legacy，不删除；legacy generators require `--legacy`**
 - [ ] **Step 4: 创建一篇测试草稿验证模板路径**
 
 Run:
