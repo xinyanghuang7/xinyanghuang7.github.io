@@ -984,3 +984,77 @@ body.blog-markdown-template .markdown-body h2:first-of-type {
     margin-top: 24px;
   }
 }
+
+
+/* Phase 6: benchmark-depth Markdown-first pages keep structured modules readable. */
+body.blog-reading-page.blog-markdown-template .pm-dashboard-grid,
+body.blog-reading-page.blog-markdown-template .source-ledger-grid,
+body.blog-reading-page.blog-markdown-template .source-audit-grid,
+body.blog-reading-page.blog-markdown-template .news-grade-grid,
+body.blog-reading-page.blog-markdown-template .holding-news-grid,
+body.blog-reading-page.blog-markdown-template .creator-digest-board,
+body.blog-reading-page.blog-markdown-template .action-card-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+body.blog-reading-page.blog-markdown-template .pm-dashboard-shell,
+body.blog-reading-page.blog-markdown-template .source-ledger,
+body.blog-reading-page.blog-markdown-template .source-audit-panel,
+body.blog-reading-page.blog-markdown-template .creator-decision-brief,
+body.blog-reading-page.blog-markdown-template .creator-card,
+body.blog-reading-page.blog-markdown-template .news-grade-board,
+body.blog-reading-page.blog-markdown-template .holding-news-card,
+body.blog-reading-page.blog-markdown-template .action-card {
+  border: 1px solid rgba(36, 33, 24, 0.14) !important;
+  border-left: 3px solid rgba(138, 90, 36, 0.34) !important;
+  border-radius: 14px !important;
+  background: rgba(255, 250, 240, 0.64) !important;
+  padding: clamp(18px, 2.4vw, 26px) !important;
+}
+
+body.blog-reading-page.blog-markdown-template .pm-dashboard-card,
+body.blog-reading-page.blog-markdown-template .source-ledger-item,
+body.blog-reading-page.blog-markdown-template .source-audit-grid > div,
+body.blog-reading-page.blog-markdown-template .news-grade-grid > div,
+body.blog-reading-page.blog-markdown-template .action-field,
+body.blog-reading-page.blog-markdown-template .holding-news-flow > *,
+body.blog-reading-page.blog-markdown-template .creator-digest-board > * {
+  min-width: 0;
+}
+
+body.blog-reading-page.blog-markdown-template .action-card-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+body.blog-reading-page.blog-markdown-template .holding-news-grid {
+  grid-template-columns: 1fr;
+}
+
+@media (max-width: 760px) {
+  body.blog-reading-page.blog-markdown-template .pm-dashboard-grid,
+  body.blog-reading-page.blog-markdown-template .source-ledger-grid,
+  body.blog-reading-page.blog-markdown-template .source-audit-grid,
+  body.blog-reading-page.blog-markdown-template .news-grade-grid,
+  body.blog-reading-page.blog-markdown-template .holding-news-grid,
+  body.blog-reading-page.blog-markdown-template .creator-digest-board,
+  body.blog-reading-page.blog-markdown-template .action-card-grid {
+    display: block !important;
+  }
+
+  body.blog-reading-page.blog-markdown-template .article-mobile-jump {
+    position: static !important;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    padding: 0 16px;
+  }
+
+  body.blog-reading-page.blog-markdown-template .article-mobile-jump a {
+    flex: 1 1 calc(50% - 8px);
+    text-align: center;
+  }
+}

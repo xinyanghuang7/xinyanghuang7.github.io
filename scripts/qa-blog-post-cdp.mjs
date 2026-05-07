@@ -97,7 +97,7 @@ async function snap(cdp, pathWithHash, width, height, label) {
       };
     };
     const text = document.body.innerText || '';
-    const moduleIds = ['#stock-pick', '#lesson', '#creator-digest', '#market', '#decision-cards'];
+    const moduleIds = ['#stock-pick', '#lesson', '#market', '#decision-cards', '#creator-digest'];
     const moduleOrder = moduleIds.map(id => ({ id, top: q(id)?.getBoundingClientRect().top ?? null }));
     const orderOk = moduleOrder.every(x => x.top !== null)
       && moduleOrder.slice(1).every((x, i) => x.top > moduleOrder[i].top);
@@ -146,6 +146,8 @@ const chrome = spawn(chromePath, [
   '--disable-gpu',
   '--no-first-run',
   '--no-default-browser-check',
+  '--no-proxy-server',
+  '--ignore-certificate-errors',
   `--remote-debugging-port=${port}`,
   '--window-size=1440,1500',
   'about:blank',
@@ -174,6 +176,7 @@ try {
   for (const row of cases) {
     const metrics = await snap(cdp, ...row);
     results.push(metrics);
+    if (/chrome-error:\/\//.test(metrics.url)) issues.push(`${row[3]}: Chrome failed to load target URL`);
     if (metrics.overflowX > 0) issues.push(`${row[3]}: horizontal overflow ${metrics.overflowX}px`);
     if (metrics.replacementChars > 0 || metrics.titleReplacementChars > 0) issues.push(`${row[3]}: replacement/mojibake chars detected`);
     if (!metrics.anchorsOk) issues.push(`${row[3]}: missing required anchors`);
@@ -181,7 +184,7 @@ try {
     if (!metrics.hasPm) issues.push(`${row[3]}: missing PM dashboard`);
     if (!metrics.hasNewsGrade) issues.push(`${row[3]}: missing news grade board`);
     if (metrics.hasScenario < 1 && metrics.hasActionFields < 4) issues.push(`${row[3]}: missing scenario matrix/action fields`);
-    if (metrics.hasSourceLinks < 6) issues.push(`${row[3]}: too few visible news/source links`);
+    if (metrics.hasSourceLinks < 6 && !/chrome-error:\/\//.test(metrics.url)) issues.push(`${row[3]}: too few visible news/source links`);
     if (!metrics.hasSourceLedger) issues.push(`${row[3]}: missing source ledger`);
     if (metrics.sourceLedgerLinks < 5) issues.push(`${row[3]}: source ledger has too few external references`);
     if (!metrics.hasSourceAudit) issues.push(`${row[3]}: missing source audit panel`);

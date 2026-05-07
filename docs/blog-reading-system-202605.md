@@ -79,6 +79,19 @@ The 0503 article is a transition sample: it keeps the original information densi
 4. Remote acceptance Chrome runs must disable the local proxy to avoid global mihomo / Clash interference.
 5. New CSS should first reuse reading variables from `blog-reading.css`; only reusable cross-article rules should enter `style.css`.
 
+
+## Default daily production path after 2026-05-07
+
+The default daily post path is now **Markdown-first benchmark-depth**, not the old component-heavy premium template.
+
+1. Create new posts through `scripts/new-post.ps1`; it must read `templates/blog-reading-template.html`.
+2. Keep `template/post-template.html` as legacy only for old pages; do not use it for new daily posts.
+3. The default article shell must include these stable anchors in this order: `pm-dashboard`, `stock-pick`, `lesson`, `creator-digest`, `market`, `decision-cards`, `risks`, `sources`.
+4. Prose remains the primary surface; benchmark components are allowed only where they improve understanding: PM brief, creator digest/source ledger, holding news cards, action cards, and evidence audit.
+5. `scripts/qa-site.ps1` must validate the Markdown-first template path, not the legacy premium template path.
+6. `scripts/qa-blog-post-cdp.mjs` is the browser gate for benchmark-depth pages and should check required anchors, source links, evidence audit, holding cards, action fields, overflow, mojibake, and Chrome load failures.
+7. A release is not complete until local QA, browser screenshots, GitHub push, and live-domain browser verification pass.
+
 ## Release and editing hardening
 
 These rules are mandatory after the 2026-05-06 proxy / QA false-positive incident:

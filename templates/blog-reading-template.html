@@ -6,8 +6,8 @@
   <meta name="description" content="{{description}}">
   <link rel="canonical" href="https://4fire.qzz.io/posts/{{yyyy}}/{{mm}}/{{dd}}.html">
   <title>{{title}} | US Stock Value Investing Notes</title>
-  <link rel="stylesheet" href="../../../css/style.css?v=20260505compat1">
-  <link rel="stylesheet" href="../../../css/blog-reading.css?v=20260506template1">
+  <link rel="stylesheet" href="../../../css/style.css?v=20260507markdown1">
+  <link rel="stylesheet" href="../../../css/blog-reading.css?v=20260507markdown1">
 </head>
 <body class="post-page blog-reading-page blog-markdown-template">
   <header id="header" class="site-header"></header>
@@ -22,11 +22,13 @@
     </section>
 
     <nav class="article-mobile-jump" aria-label="Article quick jumps">
-      <a href="#judgment">Judgment</a>
-      <a href="#facts">Facts</a>
-      <a href="#impact">Impact</a>
-      <a href="#risks">Risks</a>
-      <a href="#sources">Sources</a>
+      <a href="#pm-dashboard">看板</a>
+      <a href="#stock-pick">标的</a>
+      <a href="#lesson">方法</a>
+      <a href="#creator-digest">创作者</a>
+      <a href="#market">新闻</a>
+      <a href="#decision-cards">动作</a>
+      <a href="#sources">来源</a>
     </nav>
 
     <article class="blog-article markdown-body">
@@ -40,34 +42,39 @@
         {{one_line_conclusion}}
       </blockquote>
 
-      <section id="judgment" class="article-section">
-        <h2>1. Today's most important judgment</h2>
-        {{judgment_markdown}}
+      <section id="pm-dashboard" class="article-section">
+        <h2>0. 今日 PM 看板</h2>
+        {{pm_dashboard_markdown}}
       </section>
 
-      <section id="facts" class="article-section">
-        <h2>2. What happened</h2>
-        {{facts_markdown}}
+      <section id="stock-pick" class="article-section">
+        <h2>1. 今日宝藏标的 / Case Study</h2>
+        {{stock_pick_markdown}}
       </section>
 
-      <section id="why" class="article-section">
-        <h2>3. Why it matters</h2>
-        {{why_markdown}}
+      <section id="lesson" class="article-section">
+        <h2>2. 一句话硬核投资实战干货</h2>
+        {{lesson_markdown}}
       </section>
 
-      <section id="impact" class="article-section">
-        <h2>4. Impact on holdings / watchlist</h2>
-        {{impact_markdown}}
+      <section id="creator-digest" class="article-section">
+        <h2>3. 关注博主 YouTube / 本地美投每日摘要</h2>
+        {{creator_digest_markdown}}
+      </section>
+
+      <section id="market" class="article-section">
+        <h2>4. 持仓新闻解读 + 观察列表雷达</h2>
+        {{market_markdown}}
+      </section>
+
+      <section id="decision-cards" class="article-section">
+        <h2>5. 持仓动作卡片 + 当日最高优先级事项</h2>
+        {{decision_cards_markdown}}
       </section>
 
       <section id="risks" class="article-section">
-        <h2>5. Risks and disconfirming evidence</h2>
+        <h2>6. 风险、反证和下一步观察</h2>
         {{risks_markdown}}
-      </section>
-
-      <section id="next" class="article-section">
-        <h2>6. Next observations</h2>
-        {{next_markdown}}
       </section>
 
       <section id="sources" class="article-section source-ledger">
@@ -77,6 +84,6 @@
     </article>
   </main>
 
-  <script src="../../../js/main.js?v=20260502repair03"></script>
+  <script src="../../../js/main.js?v=20260507markdown1"></script>
 </body>
 </html>

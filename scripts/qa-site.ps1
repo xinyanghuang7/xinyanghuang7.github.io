@@ -10,7 +10,8 @@ $indexPath = Join-Path $root 'index.html'
 $mainJsPath = Join-Path $root 'js\main.js'
 $postsDataPath = Join-Path $root 'js\posts-data.js'
 $newPostPath = Join-Path $root 'scripts\new-post.ps1'
-$postTemplatePath = Join-Path $root 'template\post-template.html'
+$legacyPostTemplatePath = Join-Path $root 'template\post-template.html'
+$blogReadingTemplatePath = Join-Path $root 'templates\blog-reading-template.html'
 $optionsIndexPath = Join-Path $root 'options\index.html'
 $courseManifestPath = Join-Path $root 'options\course-manifest.json'
 $blogBackpropValidatorCandidates = @(
@@ -369,24 +370,30 @@ if (-not (Test-Path $newPostPath)) {
     Add-Issue 'scripts/new-post.ps1 missing'
 }
 
-if (-not (Test-Path $postTemplatePath)) {
-    Add-Issue 'template/post-template.html missing'
+if (-not (Test-Path $blogReadingTemplatePath)) {
+    Add-Issue 'templates/blog-reading-template.html missing'
 } else {
-    $postTemplate = Get-Content -Raw -Encoding UTF8 $postTemplatePath
-    if ($postTemplate -notmatch '<body class="[^"]*post-page[^"]*">') {
-        Add-Issue 'template/post-template.html missing post-page premium body class'
+    $blogReadingTemplate = Get-Content -Raw -Encoding UTF8 $blogReadingTemplatePath
+    if ($blogReadingTemplate -notmatch '<body class="[^"]*blog-reading-page[^"]*blog-markdown-template[^"]*">') {
+        Add-Issue 'templates/blog-reading-template.html missing Markdown-first body classes'
     }
-    if ($postTemplate -match '<body class="post-0419">') {
-        Add-Issue 'template/post-template.html still hard-codes legacy post-0419-only body class'
+    if ($blogReadingTemplate -notmatch 'blog-reading.css') {
+        Add-Issue 'templates/blog-reading-template.html missing blog-reading.css'
     }
-    if ($postTemplate -notmatch 'article-meta-bar') {
-        Add-Issue 'template/post-template.html missing article meta bar scaffold'
+    foreach ($requiredAnchor in @('pm-dashboard','stock-pick','lesson','creator-digest','market','decision-cards','sources')) {
+        if ($blogReadingTemplate -notmatch ('id="' + [regex]::Escape($requiredAnchor) + '"')) {
+            Add-Issue ('templates/blog-reading-template.html missing required daily anchor #' + $requiredAnchor)
+        }
     }
-    if ($postTemplate -notmatch 'tracking-framework-grid\s+decision-grid-enhanced') {
-        Add-Issue 'template/post-template.html missing premium decision-card grid scaffold'
+    if ($blogReadingTemplate -match 'TODO|TBD') {
+        Add-Issue 'templates/blog-reading-template.html contains visible TODO/TBD text'
     }
-    if ($postTemplate -notmatch '\{\{DECISION_CARDS\}\}') {
-        Add-Issue 'template/post-template.html missing decision-card placeholder scaffold'
+}
+
+if (Test-Path $legacyPostTemplatePath) {
+    $legacyPostTemplate = Get-Content -Raw -Encoding UTF8 $legacyPostTemplatePath
+    if ($legacyPostTemplate -notmatch 'LEGACY TEMPLATE') {
+        Add-Issue 'template/post-template.html is legacy but not explicitly marked LEGACY TEMPLATE'
     }
 }
 

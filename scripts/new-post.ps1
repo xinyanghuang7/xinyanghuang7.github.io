@@ -53,15 +53,16 @@ $replacements = [ordered]@{
     '{{dd}}' = $day
     '{{title}}' = "$displayDate US Stock Note"
     '{{date}}' = $displayDate
-    '{{one_line_conclusion}}' = 'Replace with the one sentence that matters today.'
+    '{{one_line_conclusion}}' = '写一句今天最重要、可复核、能指导动作边界的核心结论。'
     '{{tickers}}' = 'TICKERS TBD'
-    '{{judgment_markdown}}' = (New-TodoBlock 'Write the main judgment first. Separate fact, interpretation, and action boundary.')
-    '{{facts_markdown}}' = (New-TodoBlock 'List only verified facts, numbers, dates, and what changed today.')
-    '{{why_markdown}}' = (New-TodoBlock 'Explain why these facts matter for business quality, valuation, or portfolio risk.')
-    '{{impact_markdown}}' = (New-TodoBlock 'Map impact to holdings, watchlist names, and candidate pool. State no-action cases explicitly.')
-    '{{risks_markdown}}' = (New-TodoBlock 'Name disconfirming evidence, what would make the thesis wrong, and data freshness limits.')
-    '{{next_markdown}}' = (New-TodoBlock 'Define the next observations, trigger levels, and when to revisit.')
-    '{{sources_markdown}}' = '<ul><li>TODO: source name, link if available, what it supports, and confidence boundary.</li></ul>'
+    '{{pm_dashboard_markdown}}' = (New-TodoBlock '写 PM brief：组合姿态、今日动作/不动作、最大风险、最大机会、证据截止。')
+    '{{stock_pick_markdown}}' = (New-TodoBlock '写今日标的 5+2，并先标注身份：holding / watchlist / candidate / case-study。')
+    '{{lesson_markdown}}' = (New-TodoBlock '写一句可复用投资规则，再给极简依据、失效边界和它如何映射到当前持仓/候选。')
+    '{{creator_digest_markdown}}' = (New-TodoBlock '固定覆盖美投君/本地美投系统/环球视野财经；逐项标注有字幕数字/标题层/待补 transcript/无。')
+    '{{market_markdown}}' = (New-TodoBlock '真实持仓优先；观察列表另起层；每条写来源、时间、核心事实、影响、动作是否改变。')
+    '{{decision_cards_markdown}}' = (New-TodoBlock '只给真实持仓动作卡：状态、动作、加仓/暂停/减仓触发、风控线、今日最高优先级。')
+    '{{risks_markdown}}' = (New-TodoBlock '写共同叙事风险、反证、失效条件、下一步观察。')
+    '{{sources_markdown}}' = '<ul><li><strong>TODO:</strong> source name, link if available, what it supports, and confidence boundary.</li></ul>'
 }
 
 $content = $template
@@ -83,9 +84,9 @@ Write-Host ''
 Write-Host 'Markdown-first post scaffold created.' -ForegroundColor Green
 Write-Host ("  File: " + $postFile) -ForegroundColor Cyan
 Write-Host ''
-Write-Host 'Default simplified reading workflow:' -ForegroundColor Yellow
+Write-Host 'Default Markdown-first benchmark workflow:' -ForegroundColor Yellow
 Write-Host '  1. Refresh upstream truth (command-center / portfolio / candidate-pool / ticker files / real-time-thesis-monitor when freshness-sensitive)' -ForegroundColor Gray
-Write-Host ('  2. Draft ' + $postFile + ' with Markdown-first prose, explicit evidence boundaries, and no component-first filler') -ForegroundColor Gray
+Write-Host ('  2. Draft ' + $postFile + ' with PM brief + 5 modules + source/evidence boundaries; use prose first, components only when they improve comprehension') -ForegroundColor Gray
 Write-Host '  3. Run reviewer chain: content review -> semantic review -> lightweight frontend compatibility close' -ForegroundColor Gray
 Write-Host '  4. Run python .\scripts\sync-site-data.py' -ForegroundColor Gray
 Write-Host '  5. Run .\scripts\qa-site.ps1' -ForegroundColor Gray
