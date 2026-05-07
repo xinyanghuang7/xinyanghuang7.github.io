@@ -97,7 +97,7 @@ async function snap(cdp, pathWithHash, width, height, label) {
       };
     };
     const text = document.body.innerText || '';
-    const moduleIds = ['#stock-pick', '#lesson', '#market', '#decision-cards', '#creator-digest'];
+    const moduleIds = ['#stock-pick', '#lesson', '#creator-digest', '#market', '#decision-cards'];
     const moduleOrder = moduleIds.map(id => ({ id, top: q(id)?.getBoundingClientRect().top ?? null }));
     const orderOk = moduleOrder.every(x => x.top !== null)
       && moduleOrder.slice(1).every((x, i) => x.top > moduleOrder[i].top);
