@@ -98,9 +98,13 @@ async function snap(cdp, pathWithHash, width, height, label) {
     };
     const text = document.body.innerText || '';
     const moduleIds = ['#stock-pick', '#lesson', '#creator-digest', '#market', '#decision-cards'];
-    const moduleOrder = moduleIds.map(id => ({ id, top: q(id)?.getBoundingClientRect().top ?? null }));
-    const orderOk = moduleOrder.every(x => x.top !== null)
-      && moduleOrder.slice(1).every((x, i) => x.top > moduleOrder[i].top);
+    const articleSections = qa('article.blog-article section.article-section, article section.article-section')
+      .map(sec => sec.id)
+      .filter(Boolean);
+    const modulePositions = moduleIds.map(id => articleSections.indexOf(id.slice(1)));
+    const moduleOrder = moduleIds.map((id, idx) => ({ id, index: modulePositions[idx], top: q(id)?.getBoundingClientRect().top ?? null }));
+    const orderOk = modulePositions.every(idx => idx >= 0)
+      && modulePositions.slice(1).every((idx, i) => idx > modulePositions[i]);
     const hasScreenshotLeak = /截图|截屏|screenshot|内部工作流|internal workflow/i.test(text);
     const visibleMeta = q('.article-meta-bar')?.innerText || '';
     return {
@@ -113,6 +117,8 @@ async function snap(cdp, pathWithHash, width, height, label) {
       titleReplacementChars: ((document.title || '').match(/�/g) || []).length,
       anchorsOk: ['#pm-dashboard', ...moduleIds].every(id => !!q(id)),
       orderOk,
+      articleSections,
+      modulePositions,
       hasPm: !!q('#pm-dashboard'),
       hasNewsGrade: !!q('.news-grade-board'),
       hasScenario: qa('.scenario-matrix').length,
