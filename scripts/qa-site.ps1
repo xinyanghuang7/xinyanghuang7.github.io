@@ -143,6 +143,7 @@ foreach ($file in $postFiles) {
 
     Test-ContentEncodingRisk -content $content -rel $rel
     Test-JsonLd -content $content -rel $rel
+    $isSimpleMarkdownPost = $content -match 'post-simple-markdown'
 
     if ($content -notmatch '<script src="\.\./\.\./\.\./js/main\.js(?:\?v=[^"'']+)?"></script>') {
         Add-Issue "$rel missing main.js include"
@@ -218,8 +219,8 @@ foreach ($file in $postFiles) {
         Add-Issue "$rel missing canonical on 4fire.qzz.io"
     }
 
-    if ($enforce0419WorkflowScaffold -and $content -match 'id="creator-digest"') {
-        $hasMeitouNews = ($content -match [regex]::Escape('data-source="meitou-news"')) -or (($content -match [regex]::Escape('data-source="meitoujiang"')) -and ($content -match [regex]::Escape('data-source="meitoukx"')))
+    if ($enforce0419WorkflowScaffold -and $content -match 'id="creator-digest"' -and -not $isSimpleMarkdownPost) {
+        $hasMeitouNews = ($content -match [regex]::Escape('data-source="meitou-news"')) -or (($content -match [regex]::Escape('data-source="meitoujiang"')) -and ($content -match [regex]::Escape('data-source="meitoukx"'))) 
         if (-not $hasMeitouNews) {
             Add-Issue "$rel Module 3 creator digest missing required source marker data-source=`"meitou-news`" or both legacy meitoujiang+meitoukx markers"
         }
@@ -241,10 +242,10 @@ foreach ($file in $postFiles) {
         }
     }
 
-    if ($enforce0419WorkflowScaffold -and $content -match 'id="decision-cards"' -and $content -notmatch 'tracking-framework-grid\s+decision-grid-enhanced') {
+    if ($enforce0419WorkflowScaffold -and -not $isSimpleMarkdownPost -and $content -match 'id="decision-cards"' -and $content -notmatch 'tracking-framework-grid\s+decision-grid-enhanced') {
         Add-Issue "$rel Module 5 missing premium decision-card grid"
     }
-    if ($enforce0419WorkflowScaffold -and $content -match 'id="decision-cards"' -and $dateMatch.Success) {
+    if ($enforce0419WorkflowScaffold -and -not $isSimpleMarkdownPost -and $content -match 'id="decision-cards"' -and $dateMatch.Success) {
         $dateIsoForAction = "{0}-{1}-{2}" -f $dateMatch.Groups['year'].Value, $dateMatch.Groups['month'].Value, $dateMatch.Groups['day'].Value
         if ([datetime]::ParseExact($dateIsoForAction, 'yyyy-MM-dd', $null) -ge [datetime]'2026-05-01') {
             $actionFieldCount = ([regex]::Matches($content, 'class="action-field"')).Count

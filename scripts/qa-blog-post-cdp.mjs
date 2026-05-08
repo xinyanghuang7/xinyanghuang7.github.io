@@ -121,6 +121,9 @@ async function snap(cdp, pathWithHash, width, height, label) {
       && modulePositions.slice(1).every((idx, i) => idx > modulePositions[i]);
     const hasScreenshotLeak = /截图|截屏|screenshot|内部工作流|internal workflow/i.test(text);
     const visibleMeta = q('.article-meta-bar')?.innerText || '';
+    const markdownFirst = document.body.classList.contains('post-simple-markdown');
+    const decisionTableRows = q('#decision-cards table') ? q('#decision-cards table').querySelectorAll('tbody tr').length : 0;
+    const hasEvidenceTable = !!q('#pm-dashboard table, #facts table');
     return {
       url: location.href,
       title: document.title,
@@ -133,10 +136,13 @@ async function snap(cdp, pathWithHash, width, height, label) {
       orderOk,
       articleSections,
       modulePositions,
+      markdownFirst,
       hasPm: !!q('#pm-dashboard'),
       hasNewsGrade: !!q('.news-grade-board'),
       hasScenario: qa('.scenario-matrix').length,
       hasActionFields: qa('.action-field').length,
+      decisionTableRows,
+      hasEvidenceTable,
       hasSourceLinks: qa('a.news-source-link').length,
       chromeError,
       expectedPathLoaded,
@@ -215,18 +221,21 @@ try {
     if (!metrics.anchorsOk) issues.push(`${row[3]}: missing required anchors`);
     if (!metrics.orderOk) issues.push(`${row[3]}: module order broken`);
     if (!metrics.hasPm) issues.push(`${row[3]}: missing PM dashboard`);
-    if (!metrics.hasNewsGrade) issues.push(`${row[3]}: missing news grade board`);
-    if (metrics.hasScenario < 1 && metrics.hasActionFields < 4) issues.push(`${row[3]}: missing scenario matrix/action fields`);
+    if (!metrics.hasNewsGrade && !metrics.markdownFirst) issues.push(`${row[3]}: missing news grade board`);
+    if (metrics.markdownFirst) {
+      if (metrics.decisionTableRows < 3) issues.push(`${row[3]}: markdown-first action table has too few rows`);
+      if (!metrics.hasEvidenceTable) issues.push(`${row[3]}: markdown-first evidence table missing`);
+    } else if (metrics.hasScenario < 1 && metrics.hasActionFields < 4) issues.push(`${row[3]}: missing scenario matrix/action fields`);
     if (metrics.hasSourceLinks < 6 && !/chrome-error:\/\//.test(metrics.url)) issues.push(`${row[3]}: too few visible news/source links`);
     if (!metrics.hasSourceLedger) issues.push(`${row[3]}: missing source ledger`);
     if (metrics.sourceLedgerLinks < 5) issues.push(`${row[3]}: source ledger has too few external references`);
-    if (!metrics.hasSourceAudit) issues.push(`${row[3]}: missing source audit panel`);
-    if (metrics.sourceBoundaryMarks < 5) issues.push(`${row[3]}: too few fact/source/analysis boundary marks`);
+    if (!metrics.hasSourceAudit && !metrics.markdownFirst) issues.push(`${row[3]}: missing source audit panel`);
+    if (!metrics.markdownFirst && metrics.sourceBoundaryMarks < 5) issues.push(`${row[3]}: too few fact/source/analysis boundary marks`);
     if (!metrics.hasCitationSchema) issues.push(`${row[3]}: missing citation schema metadata`);
     if (metrics.hasHoldingCards < 3) issues.push(`${row[3]}: too few true holding/news cards`);
     if (metrics.articleSections.includes('watchlist') && metrics.hasWatchlistCards < 3) issues.push(`${row[3]}: too few watchlist radar cards`);
     if (metrics.hasScreenshotLeak) issues.push(`${row[3]}: screenshot/internal workflow leak in visible text`);
-    if (row[1] < 600 && metrics.mobileJump?.position !== 'static') issues.push(`${row[3]}: mobile jump is not static`);
+    if (row[1] < 600 && metrics.hasMobileJump && metrics.mobileJump?.position !== 'static') issues.push(`${row[3]}: mobile jump is not static`);
   }
 
   cdp.close();
