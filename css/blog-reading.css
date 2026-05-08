@@ -1058,3 +1058,83 @@ body.blog-reading-page.blog-markdown-template .holding-news-grid {
     text-align: center;
   }
 }
+
+/* 2026-05-08 0503 repair: benchmark-depth reading page visual contract. */
+body.blog-reading-page.blog-markdown-template .five-plus-grid,
+body.blog-reading-page.blog-markdown-template .scoreboard-grid,
+body.blog-reading-page.blog-markdown-template .decision-status-grid,
+body.blog-reading-page.blog-markdown-template .lesson-checklist,
+body.blog-reading-page.blog-markdown-template .watchlist-radar-board {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+body.blog-reading-page.blog-markdown-template .five-plus-card,
+body.blog-reading-page.blog-markdown-template .lesson-card,
+body.blog-reading-page.blog-markdown-template .method-scoreboard,
+body.blog-reading-page.blog-markdown-template .decision-status-card,
+body.blog-reading-page.blog-markdown-template .watchlist-news-card,
+body.blog-reading-page.blog-markdown-template .stock-thesis-box {
+  margin: 22px 0;
+  border: 1px solid rgba(36, 33, 24, 0.14) !important;
+  border-left: 3px solid rgba(138, 90, 36, 0.34) !important;
+  border-radius: 14px !important;
+  background: rgba(255, 250, 240, 0.64) !important;
+  padding: clamp(18px, 2.4vw, 26px) !important;
+  box-shadow: none !important;
+}
+
+body.blog-reading-page.blog-markdown-template .watchlist-news-card .holding-news-flow,
+body.blog-reading-page.blog-markdown-template .watchlist-news-card .holding-news-head,
+body.blog-reading-page.blog-markdown-template .scenario-matrix,
+body.blog-reading-page.blog-markdown-template .lesson-checklist > div,
+body.blog-reading-page.blog-markdown-template .scoreboard-grid > div,
+body.blog-reading-page.blog-markdown-template .decision-status-grid > p,
+body.blog-reading-page.blog-markdown-template .five-plus-card {
+  min-width: 0;
+}
+
+body.blog-reading-page.blog-markdown-template .scenario-matrix {
+  margin: 14px 0;
+}
+
+body.blog-reading-page.blog-markdown-template .scenario-row {
+  display: grid;
+  grid-template-columns: minmax(88px, 0.32fr) minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+
+body.blog-reading-page.blog-markdown-template .scenario-row strong,
+body.blog-reading-page.blog-markdown-template .lesson-checklist strong,
+body.blog-reading-page.blog-markdown-template .scoreboard-grid strong,
+body.blog-reading-page.blog-markdown-template .decision-status-grid strong {
+  color: var(--reading-accent);
+}
+
+body.blog-reading-page.blog-markdown-template .hero-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+@media (max-width: 760px) {
+  body.blog-reading-page.blog-markdown-template .five-plus-grid,
+  body.blog-reading-page.blog-markdown-template .scoreboard-grid,
+  body.blog-reading-page.blog-markdown-template .decision-status-grid,
+  body.blog-reading-page.blog-markdown-template .lesson-checklist,
+  body.blog-reading-page.blog-markdown-template .watchlist-radar-board {
+    display: block !important;
+  }
+
+  body.blog-reading-page.blog-markdown-template .scenario-row {
+    display: block;
+  }
+
+  body.blog-reading-page.blog-markdown-template .scenario-row strong {
+    display: block;
+    margin-bottom: 4px;
+  }
+}

@@ -8,6 +8,7 @@ const postPath = process.env.POST_PATH;
 const outDir = process.env.OUT_DIR || 'artifacts/qa-blog-post-cdp';
 const port = Number(process.env.CDP_PORT || 9234);
 const waitMs = Number(process.env.PAGE_WAIT_MS || 2200);
+const expectedPostPath = new URL(postPath, 'https://example.invalid/').pathname;
 
 if (!postPath) {
   console.error('POST_PATH is required, e.g. posts/2026/04/30.html');
@@ -97,9 +98,20 @@ async function snap(cdp, pathWithHash, width, height, label) {
       };
     };
     const text = document.body.innerText || '';
+    const html = document.documentElement.outerHTML || '';
+    const root = q('article.blog-article, main, body') || document;
+    const market = q('#market') || root;
+    const chromeError = location.href.startsWith('chrome-error://');
+    const expectedPostPath = ${JSON.stringify(expectedPostPath)};
+    const expectedPathLoaded = location.pathname.endsWith(expectedPostPath);
+    const statusLikePage = !!document.title && text.length > 2000;
+    const hasArticle = !!q('article.blog-article, main article, body.post-page');
+    const sourceLedger = root.querySelector('[data-qa="source-ledger"], .source-ledger');
+    const sourceLedgerLinks = sourceLedger ? sourceLedger.querySelectorAll('[data-qa="source-ledger-item"], a.news-source-link, a[href^="http"]').length : 0;
+    const holdingCards = Array.from(market.querySelectorAll('[data-qa="holding-news-card"], .holding-news-card'));
+    const watchlistCards = Array.from(root.querySelectorAll('[data-qa="watchlist-news-card"], .watchlist-news-card'));
     const requiredModuleIds = ['#stock-pick', '#lesson', '#creator-digest', '#market', '#decision-cards', '#risks'];
-    const optionalTailIds = ['#sources'].filter(id => !!q(id));
-    const moduleIds = [...requiredModuleIds, ...optionalTailIds];
+    const moduleIds = ['#stock-pick', '#lesson', '#creator-digest', '#market', ...(q('#watchlist') ? ['#watchlist'] : []), '#decision-cards', '#risks', ...(q('#sources') ? ['#sources'] : [])];
     const articleSections = qa('article.blog-article section.article-section, article section.article-section')
       .map(sec => sec.id)
       .filter(Boolean);
@@ -115,8 +127,8 @@ async function snap(cdp, pathWithHash, width, height, label) {
       ready: document.readyState,
       bodyClass: document.body.className,
       overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
-      replacementChars: (text.match(/�/g) || []).length,
-      titleReplacementChars: ((document.title || '').match(/�/g) || []).length,
+      replacementChars: (text.match(/\uFFFD/g) || []).length,
+      titleReplacementChars: ((document.title || '').match(/\uFFFD/g) || []).length,
       anchorsOk: ['#pm-dashboard', ...requiredModuleIds].every(id => !!q(id)),
       orderOk,
       articleSections,
@@ -126,12 +138,20 @@ async function snap(cdp, pathWithHash, width, height, label) {
       hasScenario: qa('.scenario-matrix').length,
       hasActionFields: qa('.action-field').length,
       hasSourceLinks: qa('a.news-source-link').length,
-      hasSourceLedger: !!q('.source-ledger'),
-      sourceLedgerLinks: qa('.source-ledger a.news-source-link').length,
+      chromeError,
+      expectedPathLoaded,
+      statusLikePage,
+      hasArticle,
+      htmlLength: html.length,
+      sourceClassMentions: (html.match(/source-ledger/g) || []).length,
+      holdingClassMentions: (html.match(/holding-news-card/g) || []).length,
+      hasSourceLedger: !!sourceLedger,
+      sourceLedgerLinks,
       hasSourceAudit: !!q('.source-audit-panel'),
       sourceBoundaryMarks: qa('.source-boundary, .fact-analysis-split, .inline-source-chip').length,
       hasCitationSchema: !!document.querySelector('script[type="application/ld+json"]')?.textContent?.includes('citation'),
-      hasHoldingCards: qa('.holding-news-card').length,
+      hasHoldingCards: holdingCards.length,
+      hasWatchlistCards: watchlistCards.length,
       hasMobileJump: !!q('.article-mobile-jump'),
       mobileJump: rect('.article-mobile-jump'),
       pmGrid: rect('.pm-dashboard-grid'),
@@ -184,7 +204,12 @@ try {
   for (const row of cases) {
     const metrics = await snap(cdp, ...row);
     results.push(metrics);
-    if (/chrome-error:\/\//.test(metrics.url)) issues.push(`${row[3]}: Chrome failed to load target URL`);
+    const loadFailed = metrics.chromeError || !metrics.expectedPathLoaded || !metrics.statusLikePage || !metrics.hasArticle;
+    if (metrics.chromeError) issues.push(`${row[3]}: Chrome failed to load target URL`);
+    if (!metrics.expectedPathLoaded) issues.push(`${row[3]}: loaded unexpected path ${metrics.url}`);
+    if (!metrics.statusLikePage) issues.push(`${row[3]}: loaded page is too small or missing title (htmlLength=${metrics.htmlLength})`);
+    if (!metrics.hasArticle) issues.push(`${row[3]}: loaded page lacks article/post root`);
+    if (loadFailed) continue;
     if (metrics.overflowX > 0) issues.push(`${row[3]}: horizontal overflow ${metrics.overflowX}px`);
     if (metrics.replacementChars > 0 || metrics.titleReplacementChars > 0) issues.push(`${row[3]}: replacement/mojibake chars detected`);
     if (!metrics.anchorsOk) issues.push(`${row[3]}: missing required anchors`);
@@ -198,7 +223,8 @@ try {
     if (!metrics.hasSourceAudit) issues.push(`${row[3]}: missing source audit panel`);
     if (metrics.sourceBoundaryMarks < 5) issues.push(`${row[3]}: too few fact/source/analysis boundary marks`);
     if (!metrics.hasCitationSchema) issues.push(`${row[3]}: missing citation schema metadata`);
-    if (metrics.hasHoldingCards < 3) issues.push(`${row[3]}: too few holding/news cards`);
+    if (metrics.hasHoldingCards < 3) issues.push(`${row[3]}: too few true holding/news cards`);
+    if (metrics.articleSections.includes('watchlist') && metrics.hasWatchlistCards < 3) issues.push(`${row[3]}: too few watchlist radar cards`);
     if (metrics.hasScreenshotLeak) issues.push(`${row[3]}: screenshot/internal workflow leak in visible text`);
     if (row[1] < 600 && metrics.mobileJump?.position !== 'static') issues.push(`${row[3]}: mobile jump is not static`);
   }

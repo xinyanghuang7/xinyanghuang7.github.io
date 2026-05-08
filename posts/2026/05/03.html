@@ -1,142 +1,199 @@
 <!DOCTYPE html>
-
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="2026-05-03 美股日报：以0501/0502标杆模板生成，详拆 BRK.B 资本配置案例，复核 META/NVDA/NBIS 真实持仓，扩展 TSM/MSFT/GOOGL/UNH/VST/LLY 观察雷达，并记录创作者输入边界。" name="description"/>
+<meta content="2026-05-03 美股日报：对标0430/0501标杆页，围绕 BRK.B 的等待权和资本配置纪律，复核 META/NVDA/NBIS 三只真实持仓，区分 TSM/MSFT/GOOGL/UNH/VST/LLY 观察雷达，并保留创作者输入边界。" name="description"/>
 <meta content="US stocks,value investing,BRK.B,Berkshire Hathaway,META,NVDA,NBIS,TSM,MSFT,GOOGL,UNH,VST,LLY,portfolio management,research" name="keywords"/>
 <meta content="https://4fire.qzz.io/posts/2026/05/03.html" property="og:url"/>
-<meta content="BRK.B is about the price of waiting, not dip buying" property="og:title"/>
-<meta content="0503 Markdown-first sample: BRK.B waiting option, AI capex, holdings radar, and action boundaries." property="og:description"/>
+<meta content="BRK.B 教的不是抄底，而是等待权的价格" property="og:title"/>
+<meta content="用 BRK.B 校准等待权，再把 META/NVDA/NBIS 的持仓动作和 TSM/MSFT 等观察雷达分层写清。" property="og:description"/>
 <meta content="https://4fire.qzz.io/images/hero-bg.jpg" property="og:image"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="BRK.B is about the price of waiting, not dip buying" name="twitter:title">
-<meta content="0503 Markdown-first sample: BRK.B waiting option, AI capex, holdings radar, and action boundaries." name="twitter:description"/>
+<meta content="BRK.B 教的不是抄底，而是等待权的价格" name="twitter:title"/>
+<meta content="用 BRK.B 校准等待权，再把 META/NVDA/NBIS 的持仓动作和 TSM/MSFT 等观察雷达分层写清。" name="twitter:description"/>
 <meta content="https://4fire.qzz.io/images/hero-bg.jpg" name="twitter:image"/>
 <link href="https://4fire.qzz.io/posts/2026/05/03.html" rel="canonical"/>
 <title>BRK.B 教的不是抄底，而是等待权的价格 | US Stock Value Investing Notes</title>
-<link href="../../../css/style.css?v=20260507benchmark1" rel="stylesheet"/>
-<link href="../../../css/blog-reading.css?v=20260507benchmark1" rel="stylesheet"/>
-</meta><script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "BRK.B 教的不是抄底，而是等待权的价格",
-  "description": "0503 Markdown-first benchmark-depth post: BRK.B waiting option, AI capex, holdings radar, and action boundaries.",
-  "author": {
-    "@type": "Person",
-    "name": "ValueInvest"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "ValueInvest Blog"
-  },
-  "datePublished": "2026-05-03",
-  "dateModified": "2026-05-03",
-  "mainEntityOfPage": "https://4fire.qzz.io/posts/2026/05/03.html",
-  "citation": [
-    "https://www.berkshirehathaway.com/reports.html",
-    "https://investor.fb.com/financials/",
-    "https://investor.nvidia.com/financial-info/quarterly-results/default.aspx",
-    "https://ir.nebius.com/financials/quarterly-results/default.aspx",
-    "https://investor.tsmc.com/english/quarterly-results",
-    "https://www.microsoft.com/en-us/Investor/earnings"
-  ]
-}</script></head>
-<body class="post-page post-premium blog-reading-page blog-markdown-template">
+<link href="../../../css/style.css?v=20260508repair02" rel="stylesheet"/>
+<link href="../../../css/blog-reading.css?v=20260508repair02" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "BRK.B 教的不是抄底，而是等待权的价格",
+    "description": "2026-05-03 美股日报：对标0430/0501标杆页，围绕 BRK.B 的等待权和资本配置纪律，复核 META/NVDA/NBIS 三只真实持仓，区分 TSM/MSFT/GOOGL/UNH/VST/LLY 观察雷达，并保留创作者输入边界。",
+    "author": {
+        "@type": "Person",
+        "name": "ValueInvest"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "ValueInvest Blog"
+    },
+    "datePublished": "2026-05-03",
+    "dateModified": "2026-05-08",
+    "mainEntityOfPage": "https://4fire.qzz.io/posts/2026/05/03.html",
+    "image": [
+        "https://4fire.qzz.io/images/hero-bg.jpg"
+    ],
+    "citation": [
+        "https://www.berkshirehathaway.com/reports.html",
+        "https://investor.fb.com/financials/",
+        "https://investor.nvidia.com/financial-info/quarterly-results/default.aspx",
+        "https://ir.nebius.com/financials/quarterly-results/default.aspx",
+        "https://investor.tsmc.com/english/quarterly-results",
+        "https://www.microsoft.com/en-us/Investor/earnings",
+        "https://www.youtube.com/@meitoujun",
+        "https://www.youtube.com/@UniversalVisionFinance"
+    ]
+}
+</script>
+</head>
+<body class="post-page post-premium post-0503 blog-reading-page blog-markdown-template">
 <a class="skip-link" href="#main">Skip to main content</a>
 <div aria-label="Reading progress" class="progress-bar" id="progressBar" role="progressbar"></div>
 <header class="site-header" id="header"></header>
 <main class="post-main">
 <section class="hero blog-reading-hero">
 <div class="hero-content">
-<p class="subtitle">2026-05-03 · premium weekend research note</p>
+<p class="subtitle">2026-05-03 · benchmark-depth weekend research note</p>
 <h1>BRK.B 教的不是抄底，而是等待权的价格</h1>
 <p class="tagline">这不是一篇把 BRK.B 写成今日买点的文章，而是用它校准组合纪律：当 AI capex、云需求和算力故事越来越热，现金、耐心和选择权本身也有价格。</p>
+<div class="hero-action-row" aria-label="核心章节入口">
+<a class="hero-action-link" href="#pm-dashboard">PM 看板</a>
+<a class="hero-action-link" href="#market">持仓新闻</a>
+<a class="hero-action-link" href="#decision-cards">动作地图</a>
+</div>
 </div>
 </section>
-<nav aria-label="Article quick jumps" class="article-mobile-jump"><a href="#pm-dashboard">看板</a><a href="#facts">事实</a><a href="#stock-pick">BRK.B</a><a href="#lesson">方法</a><a href="#creator-digest">创作者</a><a href="#market">持仓</a><a href="#watchlist">观察</a><a href="#decision-cards">动作</a><a href="#risks">风险</a></nav>
+<nav aria-label="Article quick jumps" class="article-mobile-jump">
+<a href="#pm-dashboard">看板</a><a href="#facts">事实</a><a href="#stock-pick">BRK.B</a><a href="#lesson">方法</a><a href="#creator-digest">创作者</a><a href="#market">持仓</a><a href="#watchlist">观察</a><a href="#decision-cards">动作</a><a href="#risks">风险</a>
+</nav>
 <article class="blog-article markdown-body" id="main">
 <aside class="article-meta-bar">
-<span class="article-meta-chip">2026-05-03</span>
+<span class="article-meta-chip">2026-05-03 / 2026-05-08 benchmark 修复版</span>
 <span class="article-meta-chip">BRK.B / META / NVDA / NBIS / TSM / MSFT / GOOGL / UNH / VST / LLY</span>
-<span class="article-meta-chip">Markdown-first shell · benchmark-depth content · facts / judgment / action separated</span>
+<span class="article-meta-chip">事实 / 判断 / 动作分层 · holding 与 watchlist 分离</span>
 </aside>
-<blockquote class="reading-lede">
-  0503 的核心不是“把 BRK.B 加进买入清单”，而是重新给组合定一条纪律：如果下一笔加仓不能明显优于保留现金，那么等待不是偷懒，而是一种有价格的选择权。
-</blockquote>
+<blockquote class="reading-lede">0503 的核心不是“把 BRK.B 加进买入清单”，而是重新给组合定一条纪律：如果下一笔加仓不能明显优于保留现金，那么等待不是偷懒，而是一种有价格的选择权。</blockquote>
 
+<section class="article-section" id="pm-dashboard">
+<h2>0. 今日 PM 看板</h2>
+<div class="pm-dashboard-shell">
+<div class="pm-dashboard-lead"><span class="module-kicker">Portfolio Manager Brief</span><h3>今日一句话：AI 持仓不因周末噪音改仓，BRK.B 用来校准“现金也是选择权”的组合纪律。</h3><p>当前真实持仓仍是 META / NVDA / NBIS，组合对 AI spending、AI ROI、云需求和算力基础设施的共同叙事暴露较高。BRK.B 今天只作为资本配置案例，不被写成持仓，也不进入动作卡。</p></div>
+<div class="pm-dashboard-grid">
+<article class="pm-dashboard-card"><span class="pm-status-dot status-neutral"></span><strong>组合状态</strong><p>真实持仓：META、NVDA、NBIS。共同主线是 AI 投入最终能否变成广告效率、客户 ROI、交付和现金流。</p></article>
+<article class="pm-dashboard-card"><span class="pm-status-dot status-caution"></span><strong>今日动作</strong><p>不新增交易指令；只把加仓阈值、复查阈值和观察列表升级条件写清。</p></article>
+<article class="pm-dashboard-card"><span class="pm-status-dot status-risk"></span><strong>最大风险</strong><p>市场从“愿意为 AI 投入付费”切换到“马上要看 ROI”，三个持仓可能被同一折现逻辑压缩。</p></article>
+<article class="pm-dashboard-card"><span class="pm-status-dot status-positive"></span><strong>最大机会</strong><p>META 广告效率、NVDA 客户回报、NBIS 交付兑现若同时变硬，组合仍有进攻弹性。</p></article>
+<article class="pm-dashboard-card"><span class="pm-status-dot status-watch"></span><strong>观察升级位</strong><p>Promotion Queue 仍优先看 TSM → MSFT；BRK.B 是防御蓝筹扩展池 / case-study，不替代升档队列。</p></article>
+</div>
+<div class="market-tape"><span>0503 结论</span><strong>holding 才进动作卡</strong><strong>watchlist 只写升级条件</strong><strong>无 transcript 不写精确点位</strong><strong>等待权也是资产</strong></div>
+</div>
+<div class="source-ledger source-ledger-top" data-qa="source-ledger">
+<div class="source-ledger-head"><span class="module-kicker">Source Ledger</span><h3>来源台账：先标注证据层级，再允许下判断</h3><p>下方不是装饰性引用，而是本文实际用来写 Module 1/3/4/5 的证据台账：官方统计用于业务事实，行情/新闻用于时间线，YouTube 字幕用于创作者观点，投资结论单独标为“我的解读”。取不到实时价或 transcript 时明确降级，不用含糊措辞伪装确定性。</p></div>
+<div class="source-ledger-grid">
+<a class="source-ledger-item news-source-link" data-qa="source-ledger-item" href="https://www.berkshirehathaway.com/reports.html" rel="noopener" target="_blank"><strong>Berkshire Hathaway reports</strong><span>理解保险浮存金、现金及短债、回购纪律、经营业务和投资组合结构；BRK.B 当前系统身份是防御蓝筹扩展池 / watch。</span></a>
+<a class="source-ledger-item news-source-link" data-qa="source-ledger-item" href="https://investor.fb.com/financials/" rel="noopener" target="_blank"><strong>Meta Investor Relations</strong><span>复核 Q1 2026：Revenue $56.31B、Family DAP 3.56B、ad impressions +19%、average price per ad +12%、FCF $12.39B、2026 capex guidance $125B-$145B。</span></a>
+<a class="source-ledger-item news-source-link" data-qa="source-ledger-item" href="https://investor.nvidia.com/financial-info/quarterly-results/default.aspx" rel="noopener" target="_blank"><strong>NVIDIA Quarterly Results</strong><span>复核下一硬验证窗口：FY2027 Q1 financial results conference call 将在 2026-05-20 举行；生态新闻不等于加仓信号。</span></a>
+<a class="source-ledger-item news-source-link" data-qa="source-ledger-item" href="https://ir.nebius.com/financials/quarterly-results/default.aspx" rel="noopener" target="_blank"><strong>Nebius Investor Results</strong><span>复核下一硬验证窗口：Q1 2026 results 将在 2026-05-13 盘前发布；重点是收入、交付、capex、融资和现金流。</span></a>
+<a class="source-ledger-item news-source-link" data-qa="source-ledger-item" href="https://investor.tsmc.com/english/quarterly-results" rel="noopener" target="_blank"><strong>TSMC Quarterly Results</strong><span>观察 AI/HPC 制造需求、先进制程、CoWoS、毛利率和 capex；它是 Promotion Queue #1，不是今天的动作卡。</span></a>
+<a class="source-ledger-item news-source-link" data-qa="source-ledger-item" href="https://www.microsoft.com/en-us/Investor/earnings" rel="noopener" target="_blank"><strong>Microsoft Earnings</strong><span>观察 Azure、AI business、Copilot 和 capex ROI；它是 Promotion Queue #2，不是今天的持仓动作。</span></a>
+<a class="source-ledger-item news-source-link" data-qa="source-ledger-item" href="https://www.youtube.com/@meitoujun" rel="noopener" target="_blank"><strong>美投君 / 美投侃新闻</strong><span>本日只作为创作者标题层雷达；没有 transcript 时不写支撑位、目标价或精确数字。</span></a>
+<a class="source-ledger-item news-source-link" data-qa="source-ledger-item" href="https://www.youtube.com/@UniversalVisionFinance" rel="noopener" target="_blank"><strong>环球视野财经</strong><span>本日只作为市场讨论主题雷达；观点进入问题清单，不替代官方或财报事实。</span></a>
+</div>
+</div>
+<div class="source-audit-panel"><span class="module-kicker">Evidence Audit</span><h3>证据分层：把事实、来源、判断和动作拆开</h3><div class="source-audit-grid"><div><span class="inline-source-chip">官方事实</span><p>公司 IR、财报、SEC、官方新闻稿，优先级最高。</p></div><div><span class="inline-source-chip">新闻层</span><p>可靠媒体和公开行情只用于解释背景，不能替代公司披露。</p></div><div><span class="inline-source-chip">创作者层</span><p>无 transcript 时只保留主题和问题，不写精确交易建议。</p></div><div><span class="inline-source-chip">我的判断</span><p>单独写成动作边界、升级条件和反证，不冒充事实来源。</p></div></div></div>
+</section>
 
-
-
-
-
-
-
-
-<section class="article-section" id="pm-dashboard"><h2>0. 今日 PM 看板</h2><div class="pm-dashboard-shell"><div class="pm-dashboard-lead"><span class="module-kicker">Portfolio Manager Brief</span><h3>0503 创作者层只形成问题清单</h3><p>这一屏先把组合姿态、动作边界和证据等级写清：研究对象可以进入文章，但只有真实持仓进入动作卡；来源层不足时必须降级。</p></div><div class="pm-dashboard-grid"><article class="pm-dashboard-card"><span class="pm-status-dot status-neutral"></span><strong>组合状态</strong><p>META / NVDA / NBIS 仍是 AI 主线暴露，相关性高。</p></article><article class="pm-dashboard-card"><span class="pm-status-dot status-caution"></span><strong>今日动作</strong><p>周末不制造动作；BRK.B 只校准资本配置纪律。</p></article><article class="pm-dashboard-card"><span class="pm-status-dot status-risk"></span><strong>最大风险</strong><p>AI capex ROI 被市场重新定价，而公司层证据还没跟上。</p></article><article class="pm-dashboard-card"><span class="pm-status-dot status-positive"></span><strong>最大机会</strong><p>广告效率、推理需求、数据中心利用率和 neocloud 交付继续兑现。</p></article><article class="pm-dashboard-card"><span class="pm-status-dot status-watch"></span><strong>等待权</strong><p>现金、耐心和选择权是纪律，不是没有观点。</p></article></div><div class="market-tape"><span>事实层优先</span><strong>创作者标题层降级</strong><strong>真实持仓才有动作</strong><strong>观察列表只写升档条件</strong><strong>Markdown-first 但 benchmark-depth</strong></div></div><div class="source-ledger source-ledger-top"><div class="source-ledger-head"><span class="module-kicker">Source Ledger</span><h3>来源台账：先标注证据层级，再允许下判断</h3><p>官方事实、新闻层、创作者标题层、本地系统边界和我的判断必须分开；取不到实时价或 transcript 时明确降级。</p></div><div class="source-ledger-grid"><a class="source-ledger-item news-source-link" href="https://www.berkshirehathaway.com/reports.html" rel="noopener" target="_blank"><strong>Berkshire Hathaway reports</strong><span>理解保险浮存金、现金及短债、回购纪律、经营业务和投资组合结构。</span></a><a class="source-ledger-item news-source-link" href="https://investor.fb.com/financials/" rel="noopener" target="_blank"><strong>Meta Investor Relations</strong><span>复核 META 财报、AI capex、广告效率与管理层 ROI 口径。</span></a><a class="source-ledger-item news-source-link" href="https://investor.nvidia.com/financial-info/quarterly-results/default.aspx" rel="noopener" target="_blank"><strong>NVIDIA Quarterly Results</strong><span>复核 NVDA 数据中心需求、毛利率和客户 ROI 旁证。</span></a><a class="source-ledger-item news-source-link" href="https://ir.nebius.com/financials/quarterly-results/default.aspx" rel="noopener" target="_blank"><strong>Nebius Investor Results</strong><span>复核 NBIS 收入、合同、融资、交付和现金流压力。</span></a><a class="source-ledger-item news-source-link" href="https://investor.tsmc.com/english/quarterly-results" rel="noopener" target="_blank"><strong>TSMC Quarterly Results</strong><span>观察 AI/HPC 制造需求、先进制程和 capex 口径。</span></a><a class="source-ledger-item news-source-link" href="https://www.microsoft.com/en-us/Investor/earnings" rel="noopener" target="_blank"><strong>Microsoft Earnings</strong><span>观察 Azure、AI business、Copilot 和 capex ROI 边界。</span></a></div></div></section><section class="article-section" id="facts">
-<h2>Source Ledger / Evidence Audit：事实、来源与判断边界</h2>
-<p>这篇文章只使用可说明来源层级的事实。BRK.B 的部分来自 Berkshire 官方年报、季度报告和长期披露框架，用于理解保险浮存金、现金和资本配置；META 的关键背景是 2026 capex guidance 被媒体报道上修至 $125B-$145B，并引发市场对 AI 投入回报的追问；NVDA 的背景来自 hyperscaler AI spending 量级报道、TSMC 和 Microsoft 财报对 AI 需求的旁证；NBIS 的关键事实是 Reuters/CNBC 等报道 Nebius 与 Meta 的 AI infrastructure deal 最高可达约 $27B，但这仍然只是收入能见度和交付压力的开始，不是利润与现金流兑现。</p>
-<p>这里必须强调边界：周末稿不写盘中精确实时价，不把频道标题层当成事实层，不把观察列表写成持仓动作。很多旧的“高密度文章”之所以有价值，不是因为卡片多，而是因为每个数字后面都写清了它改变什么、不改变什么、如何影响动作。Markdown-first 的新形式必须继承这个标准，而不是把所有内容压成“继续观察”。</p>
-<h3>Source ledger</h3>
-<ul>
-<li><strong>Berkshire Hathaway reports：</strong>用于理解保险浮存金、现金及短债、回购纪律、经营业务和投资组合结构。本文不编造周末实时价，也不把 BRK.B 写成今日交易信号。</li>
-<li><strong>Meta / Yahoo Finance / CNBC capex coverage：</strong>用于 $125B-$145B capex headline 与市场反应。该数字对 META 的意义不是“支出越多越好”，而是把 ROI 证明负担推到台前。</li>
-<li><strong>Hyperscaler AI spending coverage：</strong>$700B 量级报道只能作为新闻层背景，帮助理解 NVDA 需求环境和 AI 泡沫风险，不能替代公司 guidance。</li>
-<li><strong>Reuters / CNBC / Nebius coverage：</strong>用于 NBIS 与 Meta 大合同、客户集中、交付节奏和融资压力讨论。合同 headline 不是现金流，backlog 也不是利润。</li>
-<li><strong>TSMC / Microsoft earnings coverage：</strong>用于观察 TSM 的 AI/HPC 制造底座和 MSFT 的 Azure / Copilot / capex ROI；它们是观察列表，不是今天的持仓动作。</li>
-<li><strong>本地系统：</strong>command-center、candidate-pool、active-tickers 只决定身份和动作边界：谁是真实持仓，谁是观察，谁只是案例。</li>
-</ul>
-<h3>Key numbers and what they mean</h3>
+<section class="article-section" id="facts">
+<h2>Source Ledger / Evidence Audit：这篇文章到底在用哪些事实</h2>
+<p>这篇 0503 的修复版把“内容丰富”和“证据清楚”同时放在第一位。BRK.B 的材料来自 Berkshire 官方年报、季度报告和系统内既有资本配置框架；META / NVDA / NBIS 的持仓状态来自投资系统的真实持仓层；TSM / MSFT 是组合级 Promotion Queue；GOOGL / UNH / VST / LLY 是观察雷达，不进入持仓动作。</p>
+<p>这里故意不写周末盘中实时价，也不把频道标题层写成 transcript。对标 0430 / 0501 的关键，不是复制更多卡片，而是恢复那两篇最重要的能力：每个数字说明“改变什么 / 不改变什么”，每个标的说明“身份是什么 / 今天能不能行动”。</p>
 <table>
-<thead><tr><th>数字 / 事实</th><th>来源层级</th><th>真正含义</th><th>不能误读成什么</th></tr></thead>
+<thead><tr><th>事实 / 口径</th><th>来源层级</th><th>真正含义</th><th>不能误读成什么</th></tr></thead>
 <tbody>
-<tr><td>META capex $125B-$145B</td><td>新闻 / 公司口径报道</td><td>AI 投入回报成为下一轮估值核心问题</td><td>不能直接等同于广告效率已经兑现</td></tr>
-<tr><td>hyperscaler AI spending $700B 量级</td><td>新闻层讨论</td><td>NVDA 需求背景仍强，但泡沫/ROI 门槛也更高</td><td>不能替代 NVDA 自身订单和毛利率数据</td></tr>
-<tr><td>NBIS / Meta deal up to $27B</td><td>Reuters/CNBC 新闻层</td><td>收入能见度增强，同时交付和融资压力增强</td><td>不能等同于利润已经兑现</td></tr>
-<tr><td>TSMC Q1 revenue +35.1%</td><td>公司/新闻层</td><td>AI/HPC 制造底座继续强</td><td>不能直接变成今天买入指令</td></tr>
-<tr><td>MSFT AI capex / Azure AI 讨论</td><td>公司/新闻层</td><td>平台公司也在承受 AI 投资回报检验</td><td>不能只看投入规模忽略 FCF 压力</td></tr>
+<tr><td>BRK.B 官方主页、年报和股东材料持续更新</td><td>官方 / 系统回核</td><td>资本配置平台和接班治理仍值得研究</td><td>不是今日买入信号</td></tr>
+<tr><td>META Q1 2026 Revenue $56.31B、FCF $12.39B、capex guidance $125B-$145B</td><td>官方财报层</td><td>广告业务仍强，但 ROI 解释压力也变高</td><td>不能只看收入 beat 就加仓</td></tr>
+<tr><td>NVDA 下一硬验证窗口在 2026-05-20</td><td>官方日程 / Newsroom</td><td>当前应等客户 ROI、产品周期和财务斜率证据</td><td>不能把生态新闻当动作升级</td></tr>
+<tr><td>NBIS 下一硬验证窗口在 2026-05-13</td><td>官方 Investor Hub</td><td>prove-it holding 需要看收入、交付、融资和现金流</td><td>不能把合同 headline 当利润兑现</td></tr>
+<tr><td>TSM → MSFT 是 Promotion Queue</td><td>投资系统</td><td>它们最接近组合层升档比较</td><td>不能写成已持仓或动作卡</td></tr>
 </tbody>
 </table>
-</section><section class="article-section" id="stock-pick">
-<h2>1. 今日宝藏标的 / Case Study</h2>
-<p>BRK.B 的研究价值，首先不在于今天的价格，而在于它把“现金、浮存金、经营现金流、耐心和不被迫交易”组合成了一套资本配置系统。很多投资者说自己有耐心，但一旦组合连续几天落后指数，就开始用新故事填仓位。Berkshire 的反面教材价值就在这里：它提醒我们，投资不是每天都要证明自己有动作，更多时候是要证明自己没有被环境逼着做低质量动作。</p>
-<h3>行业：保险 + 经营业务 + 投资组合，不是单一赛道</h3>
-<p>BRK.B 表面横跨保险、铁路、能源、制造、服务和股票投资，底层却很统一：通过保险浮存金和经营现金流获得长期资金，再在更高赔率出现时配置资本。它不像 AI 公司那样拥有一个单一高增长叙事，也不像普通控股公司只是杂乱拼盘；它的核心是资本配置纪律能否跨周期复用。</p>
-<h3>商业模式：低成本浮存金让“等待”有资金来源</h3>
-<p>等待不是免费的。如果一个投资者没有现金、没有现金流、没有稳定资金来源，那么所谓耐心很容易在下跌时变成被迫卖出。保险浮存金的价值在于：只要承保纪律长期成立，这部分资金就能以很低成本留在公司系统内，配合经营业务现金流，形成危机时出手、平时不乱动的结构性优势。</p>
-<h3>护城河：不是某个产品，而是制度化的不犯错</h3>
-<p>Berkshire 的护城河很难用传统“品牌 / 网络效应 / 专利”三个词概括。它更像一种组织能力：能拒绝看起来很热但赔率不够的机会，能在现金很多时不为了证明增长而乱并购，能在别人被动收缩时保留出手能力。这个能力对当前 AI 持仓组合很重要，因为 AI 主线越拥挤，越需要一个框架提醒我们不要把“热”误读成“高赔率”。</p>
-<h3>管理层与接班：文化延续本身就是变量</h3>
-<p>BRK.B 的风险并不是“没有故事”，而是资本配置文化是否能延续。如果接班后为了市场短期期待去追高并购、提高杠杆或牺牲承保纪律，那么等待权的价值会被削弱。研究 BRK.B 时，不能只看持仓表和现金余额，也要看管理层是否继续把风险控制和长期赔率放在短期 EPS 前面。</p>
-<h3>财报与经营：不要被 GAAP 净利润波动带偏</h3>
-<p>BRK.B 的投资组合市值波动会影响会计利润，但它不等于经营质量同步变化。真正该看的，是保险承保是否理性、浮存金成本是否可控、经营业务现金流是否稳定、回购是否有价格纪律、现金和短债是否保留足够选择权。对这类公司，短期净利润波动往往比资本配置质量更噪音。</p>
-<h3>+1 投资逻辑：它补的是组合纪律，而不只是低波动</h3>
-<p>如果当前组合已经高度依赖 AI capex，BRK.B 的最大教育意义不是“买一个防御股平衡一下”，而是提醒我们：现金和等待本身可以降低错误动作的概率。低波动只是表象，更重要的是它提供一种不跟市场节奏同频交易的资本配置样本。</p>
-<h3>+2 投资风险：稳健也可能变成低效率</h3>
-<p>稳健不是免死金牌。如果现金长期找不到好去处，回购价格不够严格，或者市场估值已经把“稳健”完全计入，那么 BRK.B 也可能成为好公司但赔率不足的样本。等待权有价格，但如果为等待权付得太贵，也会降低未来回报。</p>
-</section><section class="article-section" id="lesson">
+</section>
+
+<section class="article-section" id="stock-pick">
+<h2>1. 今日宝藏标的 / Case Study：BRK.B</h2>
+<div class="decision-status-card portfolio-bridge-card"><span class="module-kicker">Candidate Status</span><h3>BRK.B 今天的身份：防御蓝筹扩展池 / watch / 资本配置案例</h3><div class="decision-status-grid"><p><strong>不是：</strong>已持仓、今日买点、动作卡对象。</p><p><strong>是：</strong>校准组合纪律的案例：现金、耐心和选择权本身有价格。</p><p><strong>升级条件：</strong>官方材料继续证明接班后资本配置纪律，且估值给到足够安全边际。</p><p><strong>失效条件：</strong>接班后追逐短期 EPS、放松回购纪律、现金长期低效闲置且估值不便宜。</p></div></div>
+<div class="five-plus-grid">
+<article class="five-plus-card"><span class="module-kicker">行业</span><h3>保险 + 经营业务 + 投资组合</h3><p>BRK.B 不是单一赛道公司，而是保险浮存金、铁路能源、制造服务和投资组合叠加的资本配置平台。它的研究价值在于跨周期调度资本，而不是某条新闻催化。</p></article>
+<article class="five-plus-card"><span class="module-kicker">商业模式</span><h3>低成本资金来源让等待可持续</h3><p>很多人说自己能等，但没有现金流和资金来源时，下跌会把等待变成被迫卖出。Berkshire 的浮存金和经营现金流让等待不是姿态，而是结构能力。</p></article>
+<article class="five-plus-card"><span class="module-kicker">护城河</span><h3>制度化地不乱动</h3><p>它的护城河不只是品牌或资产组合，而是长期拒绝低赔率动作、危机时保留火力、平时不为证明增长而乱并购的组织纪律。</p></article>
+<article class="five-plus-card"><span class="module-kicker">管理层</span><h3>接班是核心变量</h3><p>Greg Abel 时代能否延续资本配置文化，是 BRK.B 是否继续值得占一个长期研究位的关键。研究它不能只看 Buffett 光环。</p></article>
+<article class="five-plus-card"><span class="module-kicker">财报 / 经营</span><h3>不要被会计利润噪音带偏</h3><p>投资组合市值波动会影响 GAAP 净利润，但真正要看承保纪律、浮存金成本、经营现金流、回购价格纪律和现金及短债的选择权。</p></article>
+<article class="five-plus-card"><span class="module-kicker">+1 投资逻辑</span><h3>补的是组合纪律</h3><p>在 AI 主线拥挤时，BRK.B 的教育意义是提醒我们：现金不是空仓羞耻，而是避免低质量动作的选择权。</p></article>
+<article class="five-plus-card"><span class="module-kicker">+2 投资风险</span><h3>稳健也可能低效率</h3><p>如果现金长期没有高质量去处、回购价格不严格、估值已充分计入质量溢价，BRK.B 也可能只是好公司但普通赔率。</p></article>
+</div>
+<div class="method-scoreboard hd-metrics-board"><div class="scoreboard-head"><span class="module-kicker">BRK.B Key Metrics / Evidence Dashboard</span><h3>先看四个口径：现金、浮存金、回购、身份</h3></div><div class="scoreboard-grid"><div><span>现金及短债</span><strong>等待权弹药</strong><em>本文不填伪精确数字；以 Berkshire 最新年报/季报为准，重点看现金是否仍能在危机时形成选择权。</em></div><div><span>保险浮存金</span><strong>低成本资金来源</strong><em>浮存金不是免费杠杆，关键是承保纪律和长期成本。</em></div><div><span>回购纪律</span><strong>价格不合适就不买</strong><em>真正要学的是不为了证明“有动作”而牺牲赔率。</em></div><div><span>组合身份</span><strong>Case Study / Watch</strong><em>今天用于训练组合纪律，不写成真实持仓或买入动作。</em></div></div></div>
+<div class="decision-status-card"><div><span class="module-kicker">BRK.B Status Card</span><h3>今日身份：case study / discipline anchor，不是持仓动作。</h3></div><div class="decision-status-grid"><p><strong>为什么今天写：</strong>组合 AI 暴露偏高，需要一个低相关资本配置样本提醒“等待也有价值”。</p><p><strong>今日动作：</strong>不买入、不进入 Module 5，只保留研究和纪律复盘。</p><p><strong>升级条件：</strong>接班后资本配置纪律继续被官方材料证明，并且估值给到现金选择权安全边际。</p><p><strong>失效条件：</strong>现金长期低效、回购纪律弱化、经营资产质量下滑或估值提前透支质量溢价。</p></div></div>
+<div class="stock-thesis-box source-boundary"><strong>为什么今天是它：</strong>当前组合已经高集中在 AI 叙事，BRK.B 能逼我们问一个更底层的问题：下一笔钱是因为证据更硬而出手，还是因为我们不习惯等待？</div>
+</section>
+
+<section class="article-section" id="lesson">
 <h2>2. 一句话硬核投资实战干货</h2>
-<p>这篇文章最重要的一句话是：如果你说不清下一笔加仓为什么显著优于保留现金，那么今天最专业的动作可能就是不动。这个判断不是保守，也不是逃避，而是组合管理的基础。现金不是“没有观点”，现金是一张没有到期日的选择权；它让你在证据真正变硬、赔率真正出现时还能行动。</p>
-<p>把这个方法放回 META / NVDA / NBIS，就会发现每个动作都需要更高门槛。META 不能因为 AI 工具故事好听就加仓，必须看到广告效率、推荐系统、商家工具和 capex ROI 之间的路径；NVDA 不能因为大厂花钱多就加仓，必须看到客户 ROI、推理需求、networking、毛利率和产品周期继续变硬；NBIS 更不能因为合同 headline 大就加仓，必须看到融资成本、交付节点、客户付款和现金流共同改善。</p>
-<p>这也是 Markdown-first 文章应该承担的价值：不是把复杂判断塞进很多炫酷卡片里，而是用清楚段落把事实、解释、动作边界写完整。读者看完后应该知道“为什么不动”，而不是只看到“继续观察”四个字。</p>
-</section><section class="article-section creator-digest-section source-ledger" id="creator-digest"><h2>3. 关注博主 YouTube / 本地美投每日摘要</h2><div class="creator-decision-brief"><span class="module-kicker">Creator Decision Brief</span><h3>0503 创作者层只形成问题清单：Big Tech capex、AI ROI、半导体和云需求值得跟，但无 transcript 不写精确数字和动作建议。</h3><div class="decision-number-strip"><span>Creator status: 标题层</span><span>Caption: 待补 transcript</span><span>Action use: 不进 Module 5</span><span>Fact use: 不替代官方来源</span></div></div><div class="creator-digest-board"><article class="creator-card" data-source="meitou-news"><div class="creator-card-top"><span class="module-kicker">美投君 / 美投侃新闻</span><span class="creator-status-pill">标题层 · 待补 transcript</span></div><h3><a class="news-source-link" href="https://www.youtube.com/@meitoujun" rel="noopener" target="_blank">YouTube 频道标题层 / 市场情绪雷达</a></h3><p>提示 AI capex、大科技财报、OpenAI 风险和半导体讨论重心；没有 transcript 时只形成问题清单。</p><div class="creator-takeaway-strip source-boundary"><strong>边界：</strong> 没有 transcript 的数字、点位、支撑/压力不进入事实层。</div></article><article class="creator-card" data-source="local-meitou"><div class="creator-card-top"><span class="module-kicker">本地美投系统</span><span class="creator-status-pill">结构真相源</span></div><h3>持仓 / 候选 / 观察列表边界校准</h3><p>提供真实持仓、观察列表、候选池和 case-study 身份边界，防止研究对象漂移成交易动作。</p><div class="creator-takeaway-strip source-boundary"><strong>边界：</strong> 没有 transcript 的数字、点位、支撑/压力不进入事实层。</div></article><article class="creator-card" data-source="rhino-finance"><div class="creator-card-top"><span class="module-kicker">环球视野财经</span><span class="creator-status-pill">标题层 · 待补 transcript</span></div><h3><a class="news-source-link" href="https://www.youtube.com/@UniversalVisionFinance" rel="noopener" target="_blank">Big Tech spending / 云需求 / 半导体雷达</a></h3><p>帮助确认市场讨论主题；没有 transcript 时不写支撑位、目标价或精确数字。</p><div class="creator-takeaway-strip source-boundary"><strong>边界：</strong> 没有 transcript 的数字、点位、支撑/压力不进入事实层。</div></article></div><div class="source-audit-panel"><span class="module-kicker">Evidence Audit</span><h3>事实 / 来源 / 判断分层</h3><div class="source-audit-grid"><div><span class="inline-source-chip">官方事实</span><p>公司 IR / 财报 / SEC / 官方新闻稿</p></div><div><span class="inline-source-chip">新闻层</span><p>可靠媒体与公开行情，只解释其支持什么</p></div><div><span class="inline-source-chip">创作者层</span><p>标题层/待补 transcript 只形成问题</p></div><div><span class="inline-source-chip">我的判断</span><p>单独写动作边界，不冒充来源事实</p></div></div></div><div class="source-ledger"><div class="source-ledger-head"><span class="module-kicker">Source Ledger</span><h3>来源台账：先标注证据层级，再允许下判断</h3><p>官方事实、新闻层、创作者标题层、本地系统边界和我的判断必须分开；取不到实时价或 transcript 时明确降级。</p></div><div class="source-ledger-grid"><a class="source-ledger-item news-source-link" href="https://www.berkshirehathaway.com/reports.html" rel="noopener" target="_blank"><strong>Berkshire Hathaway reports</strong><span>理解保险浮存金、现金及短债、回购纪律、经营业务和投资组合结构。</span></a><a class="source-ledger-item news-source-link" href="https://investor.fb.com/financials/" rel="noopener" target="_blank"><strong>Meta Investor Relations</strong><span>复核 META 财报、AI capex、广告效率与管理层 ROI 口径。</span></a><a class="source-ledger-item news-source-link" href="https://investor.nvidia.com/financial-info/quarterly-results/default.aspx" rel="noopener" target="_blank"><strong>NVIDIA Quarterly Results</strong><span>复核 NVDA 数据中心需求、毛利率和客户 ROI 旁证。</span></a><a class="source-ledger-item news-source-link" href="https://ir.nebius.com/financials/quarterly-results/default.aspx" rel="noopener" target="_blank"><strong>Nebius Investor Results</strong><span>复核 NBIS 收入、合同、融资、交付和现金流压力。</span></a><a class="source-ledger-item news-source-link" href="https://investor.tsmc.com/english/quarterly-results" rel="noopener" target="_blank"><strong>TSMC Quarterly Results</strong><span>观察 AI/HPC 制造需求、先进制程和 capex 口径。</span></a><a class="source-ledger-item news-source-link" href="https://www.microsoft.com/en-us/Investor/earnings" rel="noopener" target="_blank"><strong>Microsoft Earnings</strong><span>观察 Azure、AI business、Copilot 和 capex ROI 边界。</span></a></div></div></section><section class="article-section" id="market"><h2>4. 持仓新闻解读：真实持仓优先，先分重要性</h2><div aria-label="新闻重要性评级" class="news-grade-board"><div class="scoreboard-head"><span class="module-kicker">News Priority Board</span><h3>先看重要性，再看全文新闻</h3></div><div class="news-grade-grid"><div><b class="grade grade-a">A</b><strong>无立即改变动作的硬节点</strong><p>本轮没有足以让 META/NVDA/NBIS 立即改仓的 A 级节点。</p></div><div><b class="grade grade-b">B</b><strong>AI capex / 云需求继续构成背景</strong><p>只能提高复核优先级，不能替代公司层证据。</p></div><div><b class="grade grade-c">C</b><strong>候选 / 观察对象用于训练方法</strong><p>WM/BRK.B/TSM/MSFT 等只决定研究顺序，不进入动作卡。</p></div><div><b class="grade grade-d">D</b><strong>缺失实时价/字幕处全部降级</strong><p>不把缺口包装成确定事实。</p></div></div></div><h3>真实持仓</h3><div class="holding-news-grid holding-news-stack"><article class="holding-news-card"><div class="holding-news-head"><div><span class="module-kicker">真实持仓 · META</span><h3>核心持仓 / ROI 证明位</h3></div><span class="holding-action-badge">持有；研究加仓条件。</span></div><div class="holding-news-flow"><div><strong>1｜价格/新鲜度</strong><p>价格口径：以公开行情/公司披露为准；本文不编造盘中精确价。</p></div><div><strong>2｜新闻/事实节点</strong><p>本段只引用公司披露、可靠新闻或上游系统已标注来源的事实；缺口不硬编。</p></div><div><strong>3｜我的解读</strong><p>不把 AI 叙事热度当加仓触发。</p></div><div><strong>4｜动作变化</strong><p>广告效率、AI 工具 adoption、margin 与 FCF 同步改善。</p></div><div class="holding-view-strip source-boundary"><strong>边界：</strong> 支出继续上修但回报路径变模糊时复查/降级。</div></div></article><article class="holding-news-card"><div class="holding-news-head"><div><span class="module-kicker">真实持仓 · NVDA</span><h3>核心持仓 / 算力需求位</h3></div><span class="holding-action-badge">持有等待。</span></div><div class="holding-news-flow"><div><strong>1｜价格/新鲜度</strong><p>价格口径：以公开行情/公司披露为准；TSM/MSFT 只作为需求背景。</p></div><div><strong>2｜新闻/事实节点</strong><p>本段只引用公司披露、可靠新闻或上游系统已标注来源的事实；缺口不硬编。</p></div><div><strong>3｜我的解读</strong><p>不因为二阶利好自动追高。</p></div><div><strong>4｜动作变化</strong><p>客户 ROI、推理需求、networking、产品周期和毛利率继续变硬。</p></div><div class="holding-view-strip source-boundary"><strong>边界：</strong> AI spending 强但客户回报转弱、估值逻辑压缩时复查。</div></div></article><article class="holding-news-card holding-news-card-risk"><div class="holding-news-head"><div><span class="module-kicker">真实持仓 · NBIS</span><h3>高弹性 prove-it holding</h3></div><span class="holding-action-badge">持有观察，不扩大仓位。</span></div><div class="holding-news-flow"><div><strong>1｜价格/新鲜度</strong><p>价格口径：以公开行情/公司披露为准；合同 headline 不是现金流。</p></div><div><strong>2｜新闻/事实节点</strong><p>本段只引用公司披露、可靠新闻或上游系统已标注来源的事实；缺口不硬编。</p></div><div><strong>3｜我的解读</strong><p>不因大客户故事自动加仓。</p></div><div><strong>4｜动作变化</strong><p>收入、交付、融资成本、毛利率、现金流连续变硬。</p></div><div class="holding-view-strip source-boundary"><strong>边界：</strong> 融资恶化、交付延迟、客户集中或现金流压力上升时降级。</div></div></article></div></section><section class="article-section" id="watchlist">
+<div class="lesson-card lesson-card-polished lesson-card-premium lesson-card-compact"><div class="lesson-card-main"><span class="module-kicker">Plain-language takeaway</span><h3>如果你说不清下一笔加仓为什么显著优于保留现金，那么今天最专业的动作可能就是不动。</h3><p>现金不是“没有观点”，现金是一张没有到期日的选择权；它让你在证据真正变硬、赔率真正出现时还能行动。</p></div><div class="lesson-checklist lesson-checklist-compact"><div><strong>等待权三问 1：下一笔加仓是否显著优于现金？</strong><p>如果只是“我怕错过”，那不是投资理由，而是情绪压力。</p></div><div><strong>等待权三问 2：证据是事实变硬，还是价格/情绪刺激？</strong><p>事实变硬通常体现在收入、利润、现金流、客户行为、订单质量和管理层口径同步改善。</p></div><div><strong>等待权三问 3：现在用掉现金，会不会降低未来选择权？</strong><p>如果未来两周有 NBIS / NVDA 硬验证窗口，今天就更不该用软新闻抢跑。</p></div><div><strong>执行边界：动作只对 holding 生效。</strong><p>观察列表可以升级研究优先级，但不能越级进入买卖卡。</p></div></div></div>
+<div class="method-scoreboard"><div class="scoreboard-head"><span class="module-kicker">Method Scoreboard</span><h3>把“等待权”压回今天的组合</h3></div><div class="scoreboard-grid"><div><strong>META</strong><p>证据硬度最高，但 capex ROI 要继续证明；可研究加仓，不是无条件加仓。</p></div><div><strong>NVDA</strong><p>公司质量高，但下一硬验证窗口前，生态新闻不足以替代客户 ROI。</p></div><div><strong>NBIS</strong><p>弹性大，但 prove-it 属性更强；合同值不能直接当利润。</p></div><div><strong>TSM / MSFT</strong><p>升档候选，但今天只给观察任务，不给持仓动作。</p></div><div><strong>BRK.B</strong><p>提供纪律样本：现金和不被迫交易也是组合资产。</p></div></div></div>
+</section>
+
+<section class="article-section creator-digest-section" id="creator-digest">
+<h2>3. 关注博主 YouTube / 本地美投每日摘要</h2>
+<div class="creator-decision-brief"><span class="module-kicker">Creator Decision Brief</span><h3>0503 创作者层只形成问题清单：AI capex、Big Tech 财报、半导体和云需求值得跟，但无 transcript 不写精确点位和动作建议。</h3><div class="decision-number-strip"><span>Creator status：标题层</span><span>Caption：待补 transcript</span><span>Action use：不进 Module 5</span><span>Fact use：不替代官方来源</span></div></div>
+<div class="creator-digest-board">
+<article class="creator-card creator-card-wide" data-source="meitou-news"><div class="creator-card-top"><span class="module-kicker">美投君 / 美投侃新闻</span><span class="creator-status-pill">标题层 · 待补 transcript</span></div><h3><a class="news-source-link" href="https://www.youtube.com/@meitoujun" rel="noopener" target="_blank">最新同日视频：未取得可审计视频页；使用频道主页作标题层雷达</a></h3><p><strong>标题/链接：</strong>当前只保留频道主页和公开标题层方向，不把它写成逐字稿来源。</p><p><strong>2-5句摘要：</strong>今天可带走的是主题，而不是数字：市场继续围绕 AI capex、大科技财报、OpenAI 风险和半导体需求讨论。它对本文的价值，是提醒我追问 AI 投入回报，而不是替代公司披露。没有 transcript 时，它只进入“下一步要问什么”，不进入“已经确认什么”。</p><p><strong>字幕状态：</strong><span class="source-boundary">待补 transcript；不写支撑位、目标价、精确指数点位或交易建议。</span></p><div class="creator-takeaway-strip source-boundary"><strong>今天带走：</strong> 用它提醒自己补问 AI 投入回报，而不是直接写支撑位、目标价或买卖建议。</div></article>
+<article class="creator-card" data-source="local-meitou"><div class="creator-card-top"><span class="module-kicker">本地美投系统</span><span class="creator-status-pill">结构真相源</span></div><h3>持仓 / 候选 / 观察列表身份边界</h3><p>本地系统最有价值的贡献不是新闻标题，而是防止身份漂移：META / NVDA / NBIS 是真实持仓，TSM / MSFT 是 Promotion Queue，BRK.B 是防御蓝筹扩展池案例。</p><div class="creator-takeaway-strip source-boundary"><strong>今天带走：</strong> 研究对象可以很多，动作对象只能是经过持仓层确认的名字。</div></article>
+<article class="creator-card creator-card-wide" data-source="rhino-finance"><div class="creator-card-top"><span class="module-kicker">环球视野财经</span><span class="creator-status-pill">标题层 · 待补 transcript</span></div><h3><a class="news-source-link" href="https://www.youtube.com/@UniversalVisionFinance" rel="noopener" target="_blank">最新同日视频：未取得可审计视频页；使用频道主页作宏观/科技雷达</a></h3><p><strong>标题/链接：</strong>当前只确认频道入口，不把频道标题层写成事实来源。</p><p><strong>2-5句摘要：</strong>它对今天文章的作用是补充市场关注方向：云需求、AI 投资和半导体链仍是主线。但没有逐字稿时，不写可验证数字、点位或结论性交易建议。它只能把外部观点变成问题清单：客户 ROI 有没有变硬？capex 是否还能被 FCF 支撑？</p><p><strong>字幕状态：</strong><span class="source-boundary">待补 transcript；不进入 Module 5 动作阈值。</span></p><div class="creator-takeaway-strip source-boundary"><strong>今天带走：</strong> 把外部观点变成问题清单：客户 ROI 有没有变硬？capex 是否还能被 FCF 支撑？</div></article>
+</div>
+</section>
+
+<section class="article-section" id="market">
+<h2>4. 持仓新闻解读：真实持仓优先，先分重要性</h2>
+<div aria-label="新闻重要性评级" class="news-grade-board"><div class="scoreboard-head"><span class="module-kicker">News Priority Board</span><h3>先看重要性，再看全文新闻</h3></div><div class="news-grade-grid"><div><b class="grade grade-a">A</b><strong>暂无改变三只持仓动作的硬节点</strong><p>没有足以让 META / NVDA / NBIS 立即改仓的 A 级证据。</p></div><div><b class="grade grade-b">B</b><strong>硬验证窗口临近</strong><p>NBIS 5/13、NVDA 5/20 是下一轮硬验证；META 要继续跟 capex ROI。</p></div><div><b class="grade grade-c">C</b><strong>观察列表提供对照</strong><p>TSM / MSFT / GOOGL / UNH / VST / LLY 只提高研究优先级。</p></div><div><b class="grade grade-d">D</b><strong>创作者标题层降级</strong><p>无 transcript 的内容不进入价格、阈值或动作事实。</p></div></div></div>
+<h3>真实持仓</h3>
+<div class="holding-news-grid holding-news-stack" data-qa="holding-news-grid">
+<article class="holding-news-card" data-qa="holding-news-card"><div class="holding-news-head"><div><span class="module-kicker">真实持仓 · META</span><h3>核心持仓 / AI 强化广告现金牛</h3></div><span class="holding-action-badge">hold · 先研究加仓</span></div><div class="holding-news-flow"><div><strong>1｜价格 / 新鲜度口径</strong><p>周末闭市，不编造盘中价；本文动作以 2026-05-08 已回核的 Meta 官方 Q1 证据为硬依据。</p></div><div><strong>2｜事实节点</strong><p>Q1 2026 Revenue $56.31B（+33% YoY）、Family DAP 3.56B、ad impressions +19%、average price per ad +12%、FCF $12.39B。</p></div><div><strong>3｜压力节点</strong><p>2026 capex guidance 上修至 $125B-$145B，说明 AI 投入回报解释压力同步抬高。</p></div><div><strong>4｜我的解读</strong><p>META 是三只持仓里最接近“现金牛 + AI 应用层兑现”的名字，但不能只看收入强，就忽略 capex/FCF 消耗。</p></div><div><strong>5｜动作变化</strong><p>维持 hold / 先研究加仓；加仓前要看到广告效率、AI 工具 adoption、margin 与 FCF 同步改善。</p></div><div class="holding-view-strip source-boundary"><strong>我的结论：</strong>META 可以继续作为新钱优先研究位，但不是无条件加仓位。</div></div></article>
+<article class="holding-news-card" data-qa="holding-news-card"><div class="holding-news-head"><div><span class="module-kicker">真实持仓 · NVDA</span><h3>核心持仓 / AI 基础设施龙头</h3></div><span class="holding-action-badge">hold · 先等</span></div><div class="holding-news-flow"><div><strong>1｜价格 / 新鲜度口径</strong><p>周末闭市，不编造盘中价；本文动作以 NVIDIA 官方财报日程和近期产品/平台披露为硬证据入口。</p></div><div><strong>2｜事实节点</strong><p>NVIDIA Newsroom 显示 FY2027 Q1 financial results conference call 将于 2026-05-20 举行，近期 Nemotron / Omniverse / GeForce NOW 等生态节点强化平台宽度。</p></div><div><strong>3｜压力节点</strong><p>生态宽度不等于客户 ROI 已经穿透；市场真正要看的是 2027 以后增长持续性、推理竞争和大客户 capex 质量。</p></div><div><strong>4｜我的解读</strong><p>NVDA thesis 未坏，但动作更像高质量 + 时间成本敏感的 holding。</p></div><div><strong>5｜动作变化</strong><p>维持 hold / 先等；5/20 前不因为二阶利好自动追高。</p></div><div class="holding-view-strip source-boundary"><strong>我的结论：</strong>NVDA 的下一步不是找更多热新闻，而是等客户 ROI 和财务斜率变硬。</div></div></article>
+<article class="holding-news-card holding-news-card-risk"><div class="holding-news-head"><div><span class="module-kicker">真实持仓 · NBIS</span><h3>高弹性 prove-it holding</h3></div><span class="holding-action-badge">watch · 先研究</span></div><div class="holding-news-flow"><div><strong>1｜价格 / 新鲜度口径</strong><p>周末闭市，不编造盘中价；NBIS 的下一硬验证不是价格波动，而是 2026-05-13 财报与电话会。</p></div><div><strong>2｜事实节点</strong><p>Nebius Investor Hub 显示 Q1 2026 results 将在 2026-05-13 盘前发布并召开电话会。</p></div><div><strong>3｜压力节点</strong><p>合同、backlog 和客户 headline 增强收入能见度，但还没有证明自由现金流、融资压力、折旧和客户集中都已穿透。</p></div><div><strong>4｜我的解读</strong><p>NBIS 和 NVDA 不能用一把尺子。NVDA 看平台锁定，NBIS 看交付、融资、电力/设备、客户集中和单位经济。</p></div><div><strong>5｜动作变化</strong><p>维持 watch / 先研究；5/13 后优先回核收入兑现、capex、融资、现金流和客户交付。</p></div><div class="holding-view-strip source-boundary"><strong>我的结论：</strong>NBIS 不是因为故事大就加仓，而是因为证据开始变硬所以提高跟踪密度。</div></div></article>
+</div>
+</section>
+
+<section class="article-section" id="watchlist">
 <h2>4b. 观察列表雷达：观察对象不冒充持仓</h2>
-<p>观察列表今天必须分层。TSM 和 MSFT 与真实持仓的关系最直接：TSM 是 AI 制造底座，MSFT 是云和企业应用层的 ROI 检验。GOOGL、UNH、VST、LLY 则是扩展雷达：有些补 AI 平台，有些补医疗防御，有些补电力基础设施，有些补制药创新，但它们不能因为被写进文章就自动变成动作。</p>
-<h3>Tier 1：TSM / MSFT，直接验证 AI 主线的底层强度</h3>
-<p><strong>TSM：</strong>Q1 revenue +35.1% 是观察 AI/HPC 制造需求的硬证据。它对 NVDA 的意义是供应链和先进制程需求仍强，对组合的意义是提供比单一 GPU 公司更底层的制造暴露。但 TSM 也有地缘、capex、毛利率和客户集中风险，所以它是 Promotion Queue，不是自动买入。</p>
-<p><strong>MSFT：</strong>MSFT 的意义在于把 AI 投入和企业应用/云收入连接起来。Azure、Copilot、OpenAI 关系和 capex ROI 是下一阶段观察重点。它能帮助我们判断 AI 是否从基础设施扩张走向应用层变现，但它同样要面对资本开支重、折旧上升和回报周期拉长的问题。</p>
-<h3>Tier 2：GOOGL / VST，分别对应平台 AI 和电力约束</h3>
-<p><strong>GOOGL：</strong>它是 AI 搜索、广告和云基础设施的混合样本。TPU、Cloud backlog、搜索体验变化和 AI 成本结构都值得看，但目前它与 META 的平台风险有重叠，不能只因为 AI 主题强就升级。</p>
-<p><strong>VST：</strong>VST 的价值在于把 AI 数据中心的电力需求转成低相关基础设施线索。若 AI capex 继续扩张，电力瓶颈、长期购电合同、核电/燃气资产和监管回报率都会变重要。但它的风险也很现实：电价周期、监管、燃料成本和估值预期已经可能提前反映。</p>
-<h3>Tier 3：UNH / LLY，医疗防御和创新药雷达</h3>
-<p><strong>UNH：</strong>更偏防御和医疗支付体系样本。它能提供非 AI 现金流观察，但也受到医疗成本、监管、报销和管理层信任的压力。它不是今天的主线，只作为低相关防御雷达。</p>
-<p><strong>LLY：</strong>LLY 是创新药和 GLP-1 需求的长期样本，但估值通常已经包含很高增长预期。对组合来说，它不是防御股，而是另一种高质量高预期资产；只有当增长证据和估值窗口同时合适，才有研究升级意义。</p>
-</section><section class="article-section" id="decision-cards"><h2>5. 持仓动作卡片 + 当日最高优先级事项</h2><div class="action-card-grid tracking-framework-grid decision-grid-enhanced action-card-grid-premium action-card-grid-flat"><article class="action-card"><div class="action-card-top"><span class="module-kicker">META</span><strong>核心持仓 / ROI 证明位</strong></div><div class="action-price">价格口径：以公开行情/公司披露为准；本文不编造盘中精确价。</div><div class="action-field"><span>当前状态</span><p>持有；研究加仓条件。</p></div><div class="action-field"><span>建议动作</span><p>不把 AI 叙事热度当加仓触发。</p></div><div class="action-field"><span>执行阈值</span><p>广告效率、AI 工具 adoption、margin 与 FCF 同步改善。</p></div><div class="action-field"><span>风险控制边界</span><p>支出继续上修但回报路径变模糊时复查/降级。</p></div></article><article class="action-card"><div class="action-card-top"><span class="module-kicker">NVDA</span><strong>核心持仓 / 算力需求位</strong></div><div class="action-price">价格口径：以公开行情/公司披露为准；TSM/MSFT 只作为需求背景。</div><div class="action-field"><span>当前状态</span><p>持有等待。</p></div><div class="action-field"><span>建议动作</span><p>不因为二阶利好自动追高。</p></div><div class="action-field"><span>执行阈值</span><p>客户 ROI、推理需求、networking、产品周期和毛利率继续变硬。</p></div><div class="action-field"><span>风险控制边界</span><p>AI spending 强但客户回报转弱、估值逻辑压缩时复查。</p></div></article><article class="action-card action-card-risk"><div class="action-card-top"><span class="module-kicker">NBIS</span><strong>高弹性 prove-it holding</strong></div><div class="action-price">价格口径：以公开行情/公司披露为准；合同 headline 不是现金流。</div><div class="action-field"><span>当前状态</span><p>持有观察，不扩大仓位。</p></div><div class="action-field"><span>建议动作</span><p>不因大客户故事自动加仓。</p></div><div class="action-field"><span>执行阈值</span><p>收入、交付、融资成本、毛利率、现金流连续变硬。</p></div><div class="action-field"><span>风险控制边界</span><p>融资恶化、交付延迟、客户集中或现金流压力上升时降级。</p></div></article></div><div class="creator-decision-brief action-priority-brief"><span class="module-kicker">Priority Board</span><h3>最高优先级：真实持仓看硬证据，观察列表只看升档条件。</h3><div class="decision-number-strip"><span>1 · META capex ROI</span><span>2 · NVDA 客户回报</span><span>3 · NBIS 融资/交付</span><span>4 · TSM/MSFT 升档观察</span><span>5 · BRK.B 校准等待权</span></div><p>非持仓对象不进入动作卡；它们只影响研究优先级和下一步观察。</p></div></section><section class="article-section" id="risks">
+<div class="watchlist-radar-board" data-qa="watchlist-radar-board">
+<article class="watchlist-news-card" data-qa="watchlist-news-card"><div class="holding-news-head"><div><span class="module-kicker">观察中 · TSM</span><h3>Promotion Queue #1：AI/HPC 制造底座</h3></div><span class="holding-action-badge">未持仓 · 升档候选</span></div><div class="holding-news-flow"><div><strong>1｜官方事实层</strong><p>TSMC 2026Q1 quarterly results：1Q26 net revenue $35.90B、gross margin 66.2%、operating margin 58.1%；2Q26 revenue guidance $39.0B-$40.2B，gross margin 65.5%-67.5%。</p></div><div><strong>2｜关系层</strong><p>对 NVDA 是供应链和先进制程旁证，对组合是比单一 GPU 公司更底层的制造暴露。</p></div><div><strong>3｜观察点</strong><p>CoWoS、N2、capex、毛利率、地缘风险、客户集中和海外扩产折价。</p></div><div class="holding-view-strip source-boundary"><strong>边界：</strong>升档研究优先级高，但今天不写买入动作。</div></div></article>
+<article class="watchlist-news-card" data-qa="watchlist-news-card"><div class="holding-news-head"><div><span class="module-kicker">观察中 · MSFT</span><h3>Promotion Queue #2：云和企业应用层 ROI 检验</h3></div><span class="holding-action-badge">未持仓 · 升档候选</span></div><div class="holding-news-flow"><div><strong>1｜官方事实层</strong><p>Microsoft FY26 Q3：Revenue $82.9B（+18% YoY）、Microsoft Cloud revenue $54.5B（+29%）、commercial RPO $627B（+99%）、AI business annual run rate 超 $37B、Azure and other cloud services +40%。</p></div><div><strong>2｜关系层</strong><p>MSFT 能帮助判断 AI 是否从基础设施扩张走向应用层变现，同时 Q3 additions to property and equipment $30.876B 也要求继续验证 capex ROI。</p></div><div><strong>3｜观察点</strong><p>Copilot 付费、Azure AI 增速、折旧压力、FCF 与 OpenAI 关系。</p></div><div class="holding-view-strip source-boundary"><strong>边界：</strong>确定性高，但不因“好公司”自动占用打孔位。</div></div></article>
+<article class="watchlist-news-card" data-qa="watchlist-news-card"><div class="holding-news-head"><div><span class="module-kicker">观察中 · GOOGL</span><h3>平台 AI / 搜索重构样本</h3></div><span class="holding-action-badge">未持仓 · Tier 2</span></div><div class="holding-news-flow"><div><strong>事实层</strong><p>TPU、Cloud backlog、搜索体验变化和 AI 成本结构值得跟踪。</p></div><div><strong>关系层</strong><p>它与 META 同属平台广告/AI 应用层，存在收益驱动重叠。</p></div><div><strong>观察点</strong><p>AI 搜索是否保护广告现金流，Cloud AI 是否能补第二增长曲线。</p></div><div class="holding-view-strip source-boundary"><strong>边界：</strong>除非搜索入口和云回报同时变硬，否则不越过 TSM / MSFT。</div></div></article>
+<article class="watchlist-news-card" data-qa="watchlist-news-card"><div class="holding-news-head"><div><span class="module-kicker">观察中 · VST</span><h3>AI 电力约束样本</h3></div><span class="holding-action-badge">未持仓 · 已覆盖</span></div><div class="holding-news-flow"><div><strong>事实层</strong><p>AI 数据中心扩张让电力瓶颈、长期购电合同和监管回报率变重要。</p></div><div><strong>关系层</strong><p>它提供低于纯 AI 平台股的不同风险来源，但仍可能被 AI 电力叙事提前定价。</p></div><div><strong>观察点</strong><p>电价周期、监管、核电/燃气资产、估值预期和实际合同质量。</p></div><div class="holding-view-strip source-boundary"><strong>边界：</strong>低相关不是自动好赔率。</div></div></article>
+<article class="watchlist-news-card" data-qa="watchlist-news-card"><div class="holding-news-head"><div><span class="module-kicker">观察中 · UNH</span><h3>医疗防御和非 AI 现金流样本</h3></div><span class="holding-action-badge">未持仓 · 医疗候选</span></div><div class="holding-news-flow"><div><strong>事实层</strong><p>UNH 的价值在于医疗保险 + Optum 服务平台的现金流和防御属性。</p></div><div><strong>关系层</strong><p>它能给 AI 集中组合提供非科技相关性，但面临 Medicare 费率、医疗成本和监管压力。</p></div><div><strong>观察点</strong><p>医疗成本率、监管信任、Optum 增速和估值安全边际。</p></div><div class="holding-view-strip source-boundary"><strong>边界：</strong>只作为低相关雷达，不写成防守必买。</div></div></article>
+<article class="watchlist-news-card" data-qa="watchlist-news-card"><div class="holding-news-head"><div><span class="module-kicker">观察中 · LLY</span><h3>创新药 / GLP-1 高质量高预期样本</h3></div><span class="holding-action-badge">未持仓 · 医疗候选</span></div><div class="holding-news-flow"><div><strong>事实层</strong><p>LLY 的长期看点是 GLP-1 和创新药平台，但估值通常已包含很高增长预期。</p></div><div><strong>关系层</strong><p>它不是传统防御股，而是另一种高质量高预期资产。</p></div><div><strong>观察点</strong><p>产能、竞争、新适应症、增长斜率和估值窗口。</p></div><div class="holding-view-strip source-boundary"><strong>边界：</strong>增长证据和估值窗口必须同时合适才有升档意义。</div></div></article>
+</div>
+</section>
+
+<section class="article-section" id="decision-cards">
+<h2>5. 持仓动作卡片 + 当日最高优先级事项</h2>
+<div class="action-card-grid tracking-framework-grid decision-grid-enhanced action-card-grid-premium action-card-grid-flat">
+<article class="action-card"><div class="action-card-top"><span class="module-kicker">META</span><strong>核心持仓 / ROI 证明位</strong></div><div class="action-price">价格 / 新鲜度：周末闭市不编造盘中价；动作复用 Meta Q1 Revenue $56.31B、FCF $12.39B 与 2026 capex guidance $125B-$145B。</div><div class="scenario-matrix"><div class="scenario-row"><strong>当前动作</strong><span>hold / 先研究加仓</span></div><div class="scenario-row"><strong>加仓触发</strong><span>广告效率、AI 工具 adoption、margin 与 FCF 同步改善。</span></div><div class="scenario-row"><strong>暂停触发</strong><span>capex 上修但 ROI 解释没有跟上。</span></div><div class="scenario-row"><strong>复查 / 降级</strong><span>广告效率改善停滞、利润率持续被投入侵蚀。</span></div></div><div class="action-field"><span>当前状态</span><p>hold / 先研究加仓。</p></div><div class="action-field"><span>建议动作</span><p>不把 AI 叙事热度当加仓触发。</p></div><div class="action-field"><span>执行阈值</span><p>广告效率、AI 工具 adoption、margin 与 FCF 同步改善。</p></div><div class="action-field"><span>风险控制边界</span><p>把收入增长和 FCF / capex 放在同一张表，不只看 revenue beat。</p></div></article>
+<article class="action-card"><div class="action-card-top"><span class="module-kicker">NVDA</span><strong>核心持仓 / 算力需求位</strong></div><div class="action-price">价格 / 新鲜度：周末闭市不编造盘中价；TSM/MSFT 只作为需求旁证，NVDA 下一硬验证窗口是 2026-05-20。</div><div class="scenario-matrix"><div class="scenario-row"><strong>当前动作</strong><span>hold / 先等</span></div><div class="scenario-row"><strong>加仓触发</strong><span>客户 ROI、推理需求、networking、产品周期和毛利率继续变硬。</span></div><div class="scenario-row"><strong>暂停触发</strong><span>只有生态新闻，没有财务斜率或客户回报证据。</span></div><div class="scenario-row"><strong>复查 / 降级</strong><span>客户 capex 收缩、推理竞争侵蚀、路线图兑现弱于预期。</span></div></div><div class="action-field"><span>当前状态</span><p>hold / 先等。</p></div><div class="action-field"><span>建议动作</span><p>不因为二阶利好或生态新闻自动追高。</p></div><div class="action-field"><span>执行阈值</span><p>客户 ROI、推理需求、networking、产品周期和毛利率继续变硬。</p></div><div class="action-field"><span>风险控制边界</span><p>不因为“AI spending 大”就自动追高。</p></div></article>
+<article class="action-card action-card-risk"><div class="action-card-top"><span class="module-kicker">NBIS</span><strong>高弹性 prove-it holding</strong></div><div class="action-price">价格 / 新鲜度：周末闭市不编造盘中价；合同 headline 不是现金流，NBIS 下一硬验证窗口是 2026-05-13。</div><div class="scenario-matrix"><div class="scenario-row"><strong>当前动作</strong><span>watch / 先研究，不扩大仓位。</span></div><div class="scenario-row"><strong>加仓触发</strong><span>收入、交付、融资成本、毛利率、现金流连续变硬。</span></div><div class="scenario-row"><strong>暂停触发</strong><span>只继续放大 backlog / 容量 / 大客户故事。</span></div><div class="scenario-row"><strong>复查 / 降级</strong><span>融资恶化、交付延迟、客户集中或现金流压力上升。</span></div></div><div class="action-field"><span>当前状态</span><p>watch / 先研究，不扩大仓位。</p></div><div class="action-field"><span>建议动作</span><p>等待 5/13 后收入、交付、融资和现金流同步回核。</p></div><div class="action-field"><span>执行阈值</span><p>收入、交付、融资成本、毛利率、现金流连续变硬。</p></div><div class="action-field"><span>风险控制边界</span><p>仓位上限绑定证据质量，不绑定故事兴奋度。</p></div></article>
+</div>
+<div class="creator-decision-brief action-priority-brief"><span class="module-kicker">Priority Board</span><h3>最高优先级：真实持仓看硬证据，观察列表只看升档条件。</h3><div class="decision-number-strip"><span>1 · NBIS 5/13 财报</span><span>2 · NVDA 5/20 财报电话会</span><span>3 · META capex ROI 表</span><span>4 · TSM/MSFT 升档比较</span><span>5 · BRK.B 等待权复盘</span></div><p>非持仓对象不进入动作卡；它们只影响研究优先级和下一步观察。</p></div>
+</section>
+
+<section class="article-section" id="risks">
 <h2>风险、反证和下一步观察</h2>
-<p>今天最重要的风险不是某一条新闻，而是组合的共同叙事风险。META、NVDA、NBIS 都不同程度依赖 AI spending 能继续，并且这些 spending 最终能被广告效率、云收入、推理需求或客户生产率证明。如果市场开始要求更短周期的 ROI，而公司层证据还没跟上，三个持仓可能会被同一套折现逻辑同时压低。</p>
-<p>第二个风险是“合同和 capex 被误读成确定利润”。NBIS 的大合同、NVDA 的客户投入、META 的 AI capex，都不是利润本身。合同需要交付，capex 需要回报，GPU 集群需要利用率，云产品需要客户付费。文章必须把这些链条写完整，否则就会把事实写成口号。</p>
-<p>第三个风险是反向的：过度追求低相关，导致买入质量普通或估值太贵的资产。BRK.B、HD、UNH、VST 这些低相关样本的意义在于训练组合思维，不是让我们看到“低相关”三个字就买。低相关只是风险来源不同，不代表赔率一定更好。</p>
+<p>今天最重要的风险不是某一条新闻，而是组合的共同叙事风险。META、NVDA、NBIS 都不同程度依赖 AI spending 继续，并且这些 spending 最终能被广告效率、云收入、推理需求或客户生产率证明。如果市场开始要求更短周期的 ROI，而公司层证据还没跟上，三个持仓可能会被同一套折现逻辑同时压低。</p>
+<p>第二个风险是“合同和 capex 被误读成确定利润”。NBIS 的大合同、NVDA 的客户投入、META 的 AI capex，都不是利润本身。合同需要交付，capex 需要回报，GPU 集群需要利用率，云产品需要客户付费。</p>
+<p>第三个风险是反向的：过度追求低相关，导致买入质量普通或估值太贵的资产。BRK.B、UNH、VST、LLY 这些样本的意义在于训练组合思维，不是让我们看到“低相关”三个字就买。</p>
 <h3>反证清单</h3>
 <ul>
 <li><strong>META 反证：</strong>AI capex 继续上修，但广告 ROI、margin、FCF 和用户增长没有同步改善。</li>
@@ -145,8 +202,9 @@
 <li><strong>BRK.B 反证：</strong>现金长期无法高效配置，接班后资本纪律弱化，或估值已经不给等待权安全边际。</li>
 <li><strong>组合反证：</strong>观察列表越来越长，但真实动作门槛越来越低，说明研究开始替代纪律。</li>
 </ul>
-</section></article>
+</section>
+</article>
 </main>
-<script src="../../../js/main.js?v=20260502repair03"></script>
+<script src="../../../js/main.js?v=20260508repair02"></script>
 </body>
 </html>
