@@ -1,6 +1,28 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-05-09",
+    "title": "VST 不是电力题材，而是 AI 时代的负荷压力测试",
+    "desc": "2026-05-09 美股日报：Markdown-first 长文版，用 VST 作为 AI 用电与电力基础设施案例，复核 META/NVDA/NBIS 三只真实持仓，并把 TSM/MSFT/GOOGL/UNH/VST/LLY 等观察列表按新闻、解读、动作边界分层。",
+    "url": "posts/2026/05/09.html",
+    "keywords": [
+      "US stocks",
+      "value investing",
+      "VST",
+      "Vistra",
+      "META",
+      "NVDA",
+      "NBIS",
+      "TSM",
+      "MSFT",
+      "GOOGL",
+      "UNH",
+      "LLY",
+      "AI electricity",
+      "portfolio management"
+    ]
+  },
+  {
     "date": "2026-05-03",
     "title": "BRK.B 教的不是抄底，而是等待权的价格",
     "desc": "2026-05-03 美股日报：Markdown-first 简化版，围绕 BRK.B 的等待权和资本配置纪律，用普通段落、表格和列表复核 META/NVDA/NBIS 三只真实持仓，并区分 TSM/MSFT/GOOGL/UNH/VST/LLY 观察雷达。",
