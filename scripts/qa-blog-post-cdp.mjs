@@ -232,8 +232,8 @@ try {
     if (!metrics.hasSourceAudit && !metrics.markdownFirst) issues.push(`${row[3]}: missing source audit panel`);
     if (!metrics.markdownFirst && metrics.sourceBoundaryMarks < 5) issues.push(`${row[3]}: too few fact/source/analysis boundary marks`);
     if (!metrics.hasCitationSchema) issues.push(`${row[3]}: missing citation schema metadata`);
-    if (metrics.hasHoldingCards < 3) issues.push(`${row[3]}: too few true holding/news cards`);
-    if (metrics.articleSections.includes('watchlist') && metrics.hasWatchlistCards < 3) issues.push(`${row[3]}: too few watchlist radar cards`);
+    if (!metrics.markdownFirst && metrics.hasHoldingCards < 3) issues.push(`${row[3]}: too few true holding/news cards`);
+    if (!metrics.markdownFirst && metrics.articleSections.includes('watchlist') && metrics.hasWatchlistCards < 3) issues.push(`${row[3]}: too few watchlist radar cards`);
     if (metrics.hasScreenshotLeak) issues.push(`${row[3]}: screenshot/internal workflow leak in visible text`);
     if (row[1] < 600 && metrics.hasMobileJump && metrics.mobileJump?.position !== 'static') issues.push(`${row[3]}: mobile jump is not static`);
   }

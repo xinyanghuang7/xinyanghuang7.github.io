@@ -1,9 +1,31 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-05-10",
+    "title": "0510：先做组合体检，再谈机会",
+    "desc": "2026-05-10 美股日报：以 0509 Markdown-first 标杆生成，复核 META/NVDA/NBIS/BOXX 真实持仓，扫描本地观察列表，并用 Cboe delayed quotes 生成 1–3 个月 CSP 雷达。",
+    "url": "posts/2026/05/10.html",
+    "keywords": [
+      "US stocks",
+      "value investing",
+      "META",
+      "NVDA",
+      "NBIS",
+      "TSM",
+      "MSFT",
+      "GOOG",
+      "AAPL",
+      "JPM",
+      "AXP",
+      "AMZN",
+      "CSP",
+      "portfolio management"
+    ]
+  },
+  {
     "date": "2026-05-09",
     "title": "VST 不是电力题材，而是 AI 时代的负荷压力测试",
-    "desc": "2026-05-09 美股日报：Markdown-first 长文版，用 VST 作为 AI 用电与电力基础设施案例，复核 META/NVDA/NBIS 三只真实持仓，并把 TSM/MSFT/GOOGL/UNH/VST/LLY 等观察列表按新闻、解读、动作边界分层。",
+    "desc": "2026-05-09 美股日报：Markdown-first 长文版，用 VST 作为 AI 用电与电力基础设施案例，复核 META/NVDA/NBIS 三只真实持仓，并把 TSM/MSFT/GOOG/KO/MCD/AAPL 等本地观察列表按新闻、解读、动作边界分层。",
     "url": "posts/2026/05/09.html",
     "keywords": [
       "US stocks",
@@ -15,9 +37,10 @@ window.__POSTS__ = [
       "NBIS",
       "TSM",
       "MSFT",
-      "GOOGL",
-      "UNH",
-      "LLY",
+      "GOOG",
+      "KO",
+      "MCD",
+      "AAPL",
       "AI electricity",
       "portfolio management"
     ]
