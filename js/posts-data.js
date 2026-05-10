@@ -1,6 +1,29 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-05-11",
+    "title": "0511：先分清证据硬度，再决定是否动手",
+    "desc": "2026-05-11 美股日报：按 0510 Markdown-first 标准生成，使用最新 daily input packet 与 Cboe delayed quotes，逐项复核 META/NVDA/NBIS/BOXX 真实持仓、本地观察列表和 CSP 雷达。",
+    "url": "posts/2026/05/11.html",
+    "keywords": [
+      "US stocks",
+      "value investing",
+      "META",
+      "NVDA",
+      "NBIS",
+      "TSM",
+      "MSFT",
+      "GOOG",
+      "AAPL",
+      "JPM",
+      "AXP",
+      "AMZN",
+      "CSP",
+      "watchlist",
+      "portfolio management"
+    ]
+  },
+  {
     "date": "2026-05-10",
     "title": "0510：先做组合体检，再谈机会",
     "desc": "2026-05-10 美股日报：以 0509 Markdown-first 标杆生成，复核 META/NVDA/NBIS/BOXX 真实持仓，扫描本地观察列表，并用 Cboe delayed quotes 生成 1–3 个月 CSP 雷达。",
