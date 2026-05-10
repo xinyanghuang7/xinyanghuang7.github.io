@@ -34,6 +34,9 @@ if ($currentBranch -ne $Branch) { Warn "current branch is $currentBranch, expect
 
 Say "Local QA"
 powershell -ExecutionPolicy Bypass -File "scripts\qa-site.ps1"
+if ($PostPath -match 'posts/.+\.html$') {
+  python scripts\validate-module4-watchlist.py $PostPath
+}
 
 Say "Network diagnosis"
 $proxyHost = "127.0.0.1"
