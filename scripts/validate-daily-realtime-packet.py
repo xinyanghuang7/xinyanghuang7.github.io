@@ -61,6 +61,13 @@ def main() -> int:
             for node in nodes:
                 if not node.get("source") or not node.get("retrieved_at") or not node.get("freshness_status"):
                     issues.append(f"{group_name} {ticker}: source node missing source/retrieved_at/freshness_status")
+            if not item.get("daily_blog_stub", {}).get("status"):
+                issues.append(f"{group_name} {ticker}: missing daily_blog_stub status")
+            csp = item.get("csp_status", {})
+            if ticker != "BOXX" and not csp.get("status"):
+                issues.append(f"{group_name} {ticker}: missing csp status")
+            if csp.get("status") == "screened" and not isinstance(csp.get("contracts"), list):
+                issues.append(f"{group_name} {ticker}: screened csp status missing contracts list")
             if group_name == "watchlist" and not item.get("blog_requirements"):
                 issues.append(f"watchlist {ticker}: missing blog requirements")
 
