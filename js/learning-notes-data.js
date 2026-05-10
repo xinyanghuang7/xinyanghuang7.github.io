@@ -1,14 +1,14 @@
 window.__LEARNING_NOTES__ = {
   "schema": "learning-notes-public.v2",
-  "updatedAt": "2026-05-09 10:45 Asia/Shanghai",
+  "updatedAt": "2026-05-10 14:20 Asia/Shanghai",
   "sourceFiles": [
     "knowledge/investing/automation/feishu-deep-study-manifest.json",
     "knowledge/investing/automation/feishu-deep-study-synthesis.md",
     "knowledge/investing/automation/feishu-deep-study-notes.md",
     "knowledge/investing/creators/meitou-learning.md"
   ],
-  "topicCount": 192,
-  "newest": "2026-05-09 10:45 Asia/Shanghai",
+  "topicCount": 193,
+  "newest": "2026-05-10 14:20 Asia/Shanghai",
   "oldest": "2026-04-17 14:00 Asia/Shanghai",
   "displayRecentCount": 10,
   "categories": [
@@ -61,6 +61,13 @@ window.__LEARNING_NOTES__ = {
       "localPath": "knowledge/investing/automation/feishu-deep-study-catalog.md"
     }
   ],
+  "latestBlogLinkage": {
+    "date": "2026-05-10",
+    "title": "0510 日更标准：每个观察标的独立事实节点 + 针对性解读",
+    "takeaway": "观察列表不能按梯队合并带过；每只 ticker 都要有事实节点、证据边界、针对新闻的解读和下一观察点。CSP 年化只是风险定价，不能替代正股 thesis。",
+    "localPath": "meitou-local/knowledge/blog-linkage-2026-05-10.md",
+    "postUrl": "posts/2026/05/10.html#market"
+  },
   "motherFrameworks": [
     {
       "title": "看到好消息，先问它是不是高质量需求",
