@@ -189,41 +189,26 @@ def shorten(value: str, limit: int = 60) -> str:
 
 
 def build_archive_html(posts: list[dict]) -> str:
-    grouped: dict[str, dict[str, list[dict]]] = defaultdict(lambda: defaultdict(list))
-    for post in posts:
-        year, month, _ = post["date"].split("-")
-        grouped[year][month].append(post)
+    """Keep the homepage archive compact.
 
-    chunks: list[str] = []
-    for year in sorted(grouped.keys(), reverse=True):
-        chunks.append('                <div class="archive-year">')
-        chunks.append(f'                    <h3 class="archive-year-title">{year}年</h3>')
-        for month in sorted(grouped[year].keys(), reverse=True):
-            month_label = f"{int(month)}月"
-            chunks.append('                    <div class="archive-month">')
-            chunks.append(f'                        <div class="archive-month-title">{month_label}</div>')
-            chunks.append('                        <div class="archive-items">')
-            for post in grouped[year][month]:
-                day = post["date"].split("-")[-1]
-                title = escape(post["title"])
-                desc = escape(shorten(post["desc"]))
-                url = escape(post["url"], quote=True)
-                chunks.extend(
-                    [
-                        f'                            <a href="{url}" class="archive-item">',
-                        f'                                <div class="archive-item-date">{day}</div>',
-                        '                                <div class="archive-item-content">',
-                        f'                                    <div class="archive-item-title">{title}</div>',
-                        f'                                    <div class="archive-item-desc">{desc}</div>',
-                        '                                </div>',
-                        '                                <div class="archive-item-arrow">→</div>',
-                        '                            </a>',
-                    ]
-                )
-            chunks.append('                        </div>')
-            chunks.append('                    </div>')
-        chunks.append('                </div>')
-    return "\n".join(chunks)
+    The main browsing entry is the interactive Timeline Archive + search index.
+    Do not render the old full-year/month mega list on the homepage; it creates
+    a very long duplicated 2026 article list. Full data still lives in
+    js/posts-data.js and the timeline/search UI.
+    """
+    latest = posts[0]
+    title = escape(latest["title"])
+    desc = escape(shorten(latest["desc"], 88))
+    url = escape(latest["url"], quote=True)
+    date = escape(latest["date"])
+    return "\n".join(
+        [
+            '                <div class="archive-compact-note" data-qa="archive-compact-note">',
+            '                    <p><strong>文章入口已精简：</strong>首页不再展开完整年份长列表；请使用上方 Timeline Archive、月份锚点与搜索框浏览全部文章。</p>',
+            f'                    <a class="archive-compact-latest" href="{url}">最新文章：{date} · {title}<span>{desc}</span></a>',
+            '                </div>',
+        ]
+    )
 
 
 def sync_index(posts: list[dict]) -> None:
