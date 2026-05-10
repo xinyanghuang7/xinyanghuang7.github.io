@@ -36,6 +36,13 @@ Say "Local QA"
 powershell -ExecutionPolicy Bypass -File "scripts\qa-site.ps1"
 if ($PostPath -match 'posts/.+\.html$') {
   python scripts\validate-module4-watchlist.py $PostPath
+  $postDate = $PostPath -replace '^posts[\\/](\d{4})[\\/](\d{2})[\\/](\d{2})\.html$','$1-$2-$3'
+  $packetPath = Join-Path (Join-Path (Split-Path $repo -Parent) 'artifacts\daily-input') "$postDate-realtime-packet.json"
+  if (Test-Path $packetPath) {
+    python scripts\validate-daily-realtime-packet.py $packetPath $PostPath
+  } else {
+    Fail "Missing realtime input packet: $packetPath. Build it before publishing."
+  }
 }
 
 Say "Network diagnosis"
