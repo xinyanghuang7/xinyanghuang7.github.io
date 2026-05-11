@@ -399,10 +399,19 @@ body.blog-reading-page .markdown-body td {
 }
 
 @media (max-width: 760px) {
-  body.blog-reading-page .markdown-body table {
+  body.blog-reading-page .markdown-body table,
+  body.blog-reading-page table[data-qa="csp-specific-contracts"] {
     display: block;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+  }
+
+  body.blog-reading-page .markdown-body table th,
+  body.blog-reading-page .markdown-body table td,
+  body.blog-reading-page table[data-qa="csp-specific-contracts"] th,
+  body.blog-reading-page table[data-qa="csp-specific-contracts"] td {
+    min-width: 96px;
+    white-space: normal;
   }
 }
 
@@ -1136,5 +1145,39 @@ body.blog-reading-page.blog-markdown-template .hero-action-row {
   body.blog-reading-page.blog-markdown-template .scenario-row strong {
     display: block;
     margin-bottom: 4px;
+  }
+}
+
+/* 2026-05-11: wide option radar tables must scroll on mobile instead of squeezing columns. */
+body.blog-reading-page .csp-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.blog-reading-page .csp-table-wrap table {
+  min-width: 1120px;
+}
+
+@media (max-width: 760px) {
+  body.blog-reading-page .csp-table-wrap {
+    margin: 20px -2px 22px 0;
+    padding-bottom: 8px;
+  }
+
+  body.blog-reading-page .csp-table-wrap table th,
+  body.blog-reading-page .csp-table-wrap table td {
+    min-width: 88px;
+  }
+}
+
+/* 2026-05-11: keep long Chinese daily-post titles inside 390px mobile viewport. */
+@media (max-width: 760px) {
+  body.blog-markdown-template .blog-reading-hero h1 {
+    max-width: 100% !important;
+    font-size: clamp(2.22rem, 10.4vw, 3.15rem) !important;
+    line-height: 1.06 !important;
+    letter-spacing: -0.035em !important;
+    overflow-wrap: anywhere;
   }
 }
