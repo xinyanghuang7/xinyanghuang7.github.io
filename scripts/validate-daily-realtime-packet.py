@@ -75,8 +75,23 @@ def main() -> int:
     if len(creators) < 3:
         issues.append("creator packet must include 3 fixed sources")
     for c in creators:
-        if not c.get("status") or not c.get("retrieved_at"):
-            issues.append(f"creator {c.get('name')}: missing status/retrieved_at")
+        name = c.get("name")
+        status = c.get("status")
+        if not status or not c.get("retrieved_at"):
+            issues.append(f"creator {name}: missing status/retrieved_at")
+            continue
+        if isinstance(status, str) and status.startswith("channel_probe_"):
+            issues.append(f"creator {name}: legacy shallow channel_probe status is no longer allowed; must use real recent-video probe")
+        if not str(c.get("url", "")).startswith("local:"):
+            recent = c.get("recent_probe")
+            if not isinstance(recent, dict):
+                issues.append(f"creator {name}: missing recent_probe from real channel fetch")
+                continue
+            recent_status = recent.get("status")
+            if recent_status not in {"channel_recent_ok", "channel_recent_empty", "channel_recent_failed", "channel_recent_error", "channel_recent_script_missing"}:
+                issues.append(f"creator {name}: unexpected recent_probe status {recent_status}")
+            if recent_status in {"channel_recent_failed", "channel_recent_error", "channel_recent_script_missing"} and not recent.get("error"):
+                issues.append(f"creator {name}: failed recent_probe missing explicit error")
 
     if post_path and post_path.exists():
         html = post_path.read_text(encoding="utf-8-sig")
