@@ -13,12 +13,15 @@ window.__POSTS__ = [
       "NBIS",
       "TSM",
       "MSFT",
-      "NFLX",
-      "FTNT",
-      "CBOE",
+      "GOOG",
+      "AAPL",
+      "JPM",
+      "AXP",
+      "AMZN",
       "CSP",
       "watchlist",
-      "portfolio management"
+      "portfolio management",
+      "CBOE"
     ]
   },
   {

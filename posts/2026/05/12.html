@@ -91,7 +91,7 @@
 <li data-qa="source-ledger-item"><a class="news-source-link" href="https://nvidianews.nvidia.com/news/nvidia-and-iren-announce-strategic-partnership-to-accelerate-deployment-of-up-to-5-gigawatts-of-ai-infrastructure" rel="noopener" target="_blank">NVIDIA Newsroom</a>：NVDA / IREN 最高 5GW AI infrastructure partnership，作为 NVDA 最新可验证背景节点。</li>
 <li data-qa="source-ledger-item"><a class="news-source-link" href="https://nebius.com/investor-hub" rel="noopener" target="_blank">Nebius Investor Hub</a>：NBIS 5/13 Q1 results / conference call 验证窗口。</li>
 <li data-qa="source-ledger-item"><a class="news-source-link" href="https://www.microsoft.com/en-us/investor/earnings/fy-2026-q3/press-release-webcast" rel="noopener" target="_blank">Microsoft FY26 Q3 IR</a> 与 <a class="news-source-link" href="https://www.sec.gov/Archives/edgar/data/1046179/000104617926000213/tsm-revenue20260508.htm" rel="noopener" target="_blank">TSMC April revenue 6-K</a>：观察列表中最硬的公司级节点。</li>
-<li data-qa="source-ledger-item"><a class="news-source-link" href="https://www.youtube.com/@meitoujun" rel="noopener" target="_blank">美投君 / 美投侃新闻</a>、<a class="news-source-link" href="https://www.youtube.com/@UniversalVisionFinance" rel="noopener" target="_blank">环球视野财经</a>：0512 channel_recent failed，未取得可审计 transcript。</li>
+<li data-qa="source-ledger-item"><a class="news-source-link" href="https://www.youtube.com/@meitoujun" rel="noopener" target="_blank">美投君 / 美投侃新闻</a>、<a class="news-source-link" href="https://www.youtube.com/@UniversalVisionFinance" rel="noopener" target="_blank">环球视野财经</a>：0512 后续通过独立代理端口恢复 channel_recent；仅取得最新视频标题，transcript 仍被 YouTube bot-gate 阻断。</li>
 <li data-qa="source-ledger-item">本地持仓系统 / portfolio-tracker：只用于确认真实持仓和观察列表角色，不用于公开行情或新闻背书。</li>
 </ul></div>
 </section>
@@ -126,13 +126,13 @@
 
 <section class="article-section creator-digest-section" id="creator-digest">
 <h2>3. 关注博主 YouTube / 本地美投每日摘要</h2>
-<p>0512 固定覆盖三个来源；本轮输入包继续使用真实 recent-video 抓取，而不是浅层频道 URL probe。结果是：美投君 / 美投侃新闻与环球视野财经均为 <code>channel_recent_failed</code>，报错为 YouTube API page 连接被重置；没有可审计字幕，就不能写支撑位、目标价、指数点位或宏观结论。</p>
+<p>0512 固定覆盖三个来源；后续排障确认，本机启动独立 Mihomo 测试端口 <code>17990</code> 并切到 <code>HK - 香港综合</code> 后，真实 recent-video 抓取已恢复；但单条视频 transcript 仍触发 YouTube “Sign in to confirm you’re not a bot”，所以本段只写“标题层新鲜度”，不写字幕派生观点、支撑位、目标价或宏观结论。</p>
 <table><thead><tr><th>来源</th><th>0512 获取状态</th><th>可写内容</th><th>是否回写学习系统</th></tr></thead><tbody>
-<tr><td><a class="news-source-link" href="https://www.youtube.com/@meitoujun" rel="noopener" target="_blank">美投君 / 美投侃新闻</a></td><td>channel_recent_failed；YouTube API page 连接被重置；transcript 未取得。</td><td>不编摘要，不写交易数字；仅记录本日未取得可审计 transcript。</td><td>否，未产生可归档学习内容。</td></tr>
+<tr><td><a class="news-source-link" href="https://www.youtube.com/@meitoujun" rel="noopener" target="_blank">美投君 / 美投侃新闻</a></td><td>channel_recent_ok；最新三条：<a class="news-source-link" href="https://www.youtube.com/watch?v=gM5wm2x7fi8" rel="noopener" target="_blank">三大风险齐聚！美股狂热即将终结？</a>、<a class="news-source-link" href="https://www.youtube.com/watch?v=cgKUgAJE3cs" rel="noopener" target="_blank">AI产业已秘密转向！趁市场未动，这3大机会抓紧布局！</a>、<a class="news-source-link" href="https://www.youtube.com/watch?v=XOyG9mE-6KY" rel="noopener" target="_blank">马斯克又放大招！特斯拉发生3大变动，股价又要跌了？</a>；transcript 仍未取得。</td><td>只能说明创作者近期关注“美股风险 / AI 产业转向 / TSLA 变化”这些题目；不能把标题当作已验证结论。</td><td>否，未产生可归档 transcript 学习内容。</td></tr>
 <tr><td>本地美投系统</td><td>local_system_available；0510 blog-linkage 摘要可用。</td><td>沿用 0510 学习：观察列表必须独立事实节点；CSP 年化不是收益承诺；今天无新增公共学习页同步。</td><td>否，今天没有新增持久框架。</td></tr>
-<tr><td><a class="news-source-link" href="https://www.youtube.com/@UniversalVisionFinance" rel="noopener" target="_blank">环球视野财经</a></td><td>channel_recent_failed；YouTube tab/API page 连接被重置；transcript 未取得。</td><td>不把标题层或频道层写成宏观判断；市场解释只用可追溯公司/行情/期权数据。</td><td>否，未产生可归档学习内容。</td></tr>
+<tr><td><a class="news-source-link" href="https://www.youtube.com/@UniversalVisionFinance" rel="noopener" target="_blank">环球视野财经</a></td><td>channel_recent_ok；最新三条：<a class="news-source-link" href="https://www.youtube.com/watch?v=t2gFRHMXyg8" rel="noopener" target="_blank">美股 TSLA、BA、NVDA异动！Trump访华，随访公司利好？一只加仓计划！</a>、<a class="news-source-link" href="https://www.youtube.com/watch?v=TFAjKuscydU" rel="noopener" target="_blank">会员第287期：重要公司Q1财报后2026、2027前瞻估值，强支撑点位</a>、<a class="news-source-link" href="https://www.youtube.com/watch?v=FonXCJnDQoQ" rel="noopener" target="_blank">半导体吸干流动性！AI大市值超标普40%</a>；transcript 仍未取得。</td><td>只能说明频道近期标题覆盖 TSLA / BA / NVDA、财报后估值、AI/半导体集中度；市场解释仍只用可追溯公司/行情/期权数据。</td><td>否，未产生可归档 transcript 学习内容。</td></tr>
 </tbody></table>
-<p><strong>今天带走：</strong>Module 3 的质量不是“必须有观点”，而是“必须有边界”。失败状态也是数据源新鲜度的一部分。</p>
+<p><strong>今天带走：</strong>Module 3 的质量不是“必须有观点”，而是“必须有边界”。现在边界从“频道 recent 失败”更新为“recent 成功、transcript 被 YouTube bot-gate 阻断”。</p>
 </section>
 
 <section class="article-section" id="market">
