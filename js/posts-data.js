@@ -1,6 +1,27 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-05-12",
+    "title": "0512：数据刷新了，动作不一定要刷新",
+    "desc": "2026-05-12 美股日报：全面对齐 0510/0511 Markdown-first 标准，刷新 Cboe delayed quotes、官方入口状态、创作者失败边界和 CSP 质量排序。",
+    "url": "posts/2026/05/12.html",
+    "keywords": [
+      "US stocks",
+      "value investing",
+      "META",
+      "NVDA",
+      "NBIS",
+      "TSM",
+      "MSFT",
+      "NFLX",
+      "FTNT",
+      "CBOE",
+      "CSP",
+      "watchlist",
+      "portfolio management"
+    ]
+  },
+  {
     "date": "2026-05-11",
     "title": "0511：先分清证据硬度，再决定是否动手",
     "desc": "2026-05-11 美股日报：按 0510 Markdown-first 标准生成，使用最新 daily input packet 与严格 >10% CSP 口径 与 Cboe delayed quotes，逐项复核 META/NVDA/NBIS/BOXX 真实持仓、本地观察列表和 CSP 雷达。",
