@@ -24,10 +24,54 @@ function Test-Tcp($HostName, $Port) {
   } catch { return $false }
 }
 
+function Get-TrackedPublishFiles($PostPath) {
+  $files = @($PostPath, 'index.html', 'js/posts-data.js')
+  if (Test-Path 'sitemap.xml') { $files += 'sitemap.xml' }
+  return $files | Select-Object -Unique
+}
+
+function Get-PathStatusLines([string[]]$Paths) {
+  if (!$Paths -or $Paths.Count -eq 0) { return @() }
+  $output = & git status --short -- $Paths 2>$null
+  if ($LASTEXITCODE -ne 0 -or !$output) { return @() }
+  return @($output)
+}
+
+function Ensure-PublishCommit($PostPath) {
+  $paths = Get-TrackedPublishFiles $PostPath
+  $statusLines = Get-PathStatusLines $paths
+  if ($statusLines.Count -eq 0) {
+    Write-Host 'publish paths already committed' -ForegroundColor DarkGray
+    return
+  }
+
+  Say 'Stage/commit publish payload'
+  Write-Host ($statusLines -join "`n")
+  & git add -- $paths
+  if ($LASTEXITCODE -ne 0) { Fail 'git add failed for publish payload' }
+
+  $remaining = Get-PathStatusLines $paths
+  if ($remaining.Count -eq 0) {
+    Write-Host 'nothing left to commit after staging; continuing' -ForegroundColor DarkGray
+    return
+  }
+
+  $postDate = $null
+  if ($PostPath -match '^posts[\/](\d{4})[\/](\d{2})[\/](\d{2})\.html$') {
+    $postDate = "$($Matches[1])-$($Matches[2])-$($Matches[3])"
+  }
+  $message = if ($postDate) { "publish: add/update $postDate daily blog" } else { "publish: update blog payload" }
+  & git commit -m $message
+  if ($LASTEXITCODE -ne 0) { Fail 'git commit failed for publish payload' }
+}
+
 Say "Preflight: repo and post"
 if (!(Test-Path $PostPath)) { Fail "POST_PATH not found: $PostPath" }
+Ensure-PublishCommit $PostPath
 $localHead = (git rev-parse HEAD).Trim()
 $currentBranch = (git branch --show-current).Trim()
+$headTreeCheck = & git ls-tree -r --name-only HEAD -- $PostPath
+if ($LASTEXITCODE -ne 0 -or !$headTreeCheck) { Fail "HEAD does not contain $PostPath; refuse to publish" }
 Write-Host "repo=$repo"
 Write-Host "branch=$currentBranch head=$localHead post=$PostPath"
 if ($currentBranch -ne $Branch) { Warn "current branch is $currentBranch, expected $Branch" }
@@ -68,17 +112,40 @@ if ($githubOk) {
 }
 
 Say "Git push"
+$pushSucceeded = $false
 & git @pushArgs
-if ($LASTEXITCODE -ne 0) { Fail "git push failed" }
+if ($LASTEXITCODE -eq 0) {
+  $pushSucceeded = $true
+} else {
+  Warn "git push failed; checking API fallback"
+  $token = $env:gh_token
+  if ([string]::IsNullOrWhiteSpace($token)) { $token = $env:GH_TOKEN }
+  if ([string]::IsNullOrWhiteSpace($token)) { $token = $env:GITHUB_TOKEN }
+  if (![string]::IsNullOrWhiteSpace($token) -and $PostPath -match '^posts[\/](\d{4})[\/](\d{2})[\/](\d{2})\.html$') {
+    $postDate = "$($Matches[1])-$($Matches[2])-$($Matches[3])"
+    Say "Fallback deploy via GitHub Contents API"
+    python scripts/deploy.py --date $postDate --path scripts/publish-blog.ps1
+    if ($LASTEXITCODE -ne 0) { Fail "git push failed and API fallback deploy failed" }
+    $pushSucceeded = $true
+    $remoteHead = 'api-fallback-deploy'
+  } else {
+    Fail "git push failed"
+  }
+}
 
-Say "Verify remote HEAD"
-$remoteOutput = & git @remoteArgs
-$remoteLine = $remoteOutput | Select-Object -First 1
-if (!$remoteLine) { Fail "cannot read remote HEAD" }
-$remoteHead = ($remoteLine -split "\s+")[0]
-Write-Host "localHead=$localHead"
-Write-Host "remoteHead=$remoteHead"
-if ($remoteHead -ne $localHead) { Fail "remote HEAD mismatch; GitHub has not received the intended commit" }
+if ($pushSucceeded -and !$remoteHead) {
+  Say "Verify remote HEAD"
+  $remoteOutput = & git @remoteArgs
+  $remoteLine = $remoteOutput | Select-Object -First 1
+  if (!$remoteLine) { Fail "cannot read remote HEAD" }
+  $remoteHead = ($remoteLine -split "\s+")[0]
+  Write-Host "localHead=$localHead"
+  Write-Host "remoteHead=$remoteHead"
+  if ($remoteHead -ne $localHead) { Fail "remote HEAD mismatch; GitHub has not received the intended commit" }
+} elseif ($remoteHead -eq 'api-fallback-deploy') {
+  Write-Host "localHead=$localHead"
+  Write-Host "remoteHead=api-fallback-deploy"
+}
 
 Say "Live formal-domain QA"
 $env:SITE_BASE = $LiveBase
