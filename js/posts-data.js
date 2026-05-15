@@ -1,6 +1,29 @@
 // Auto-generated from posts/**/*.html. Do not edit by hand.
 window.__POSTS__ = [
   {
+    "date": "2026-05-15",
+    "title": "0515：NBIS 变硬了，但动作要慢半拍",
+    "desc": "2026-05-15 美股日报：基于 00:55–00:57 Asia/Shanghai 的 Cboe delayed quotes、Nebius Q1 shareholder letter、官方入口状态和本地持仓系统，更新真实持仓、观察列表、CSP 期权雷达与动作边界。",
+    "url": "posts/2026/05/15.html",
+    "keywords": [
+      "US stocks",
+      "value investing",
+      "META",
+      "NVDA",
+      "NBIS",
+      "TSM",
+      "MSFT",
+      "GOOG",
+      "AAPL",
+      "JPM",
+      "AXP",
+      "AMZN",
+      "CSP",
+      "watchlist",
+      "portfolio management"
+    ]
+  },
+  {
     "date": "2026-05-14",
     "title": "0514：NBIS财报窗口打开，数据必须重新排序",
     "desc": "2026-05-14 美股日报：全面对齐 0512 Markdown-first 标准，刷新 Cboe delayed quotes、官方入口状态、创作者失败边界和 CSP 质量排序。",
